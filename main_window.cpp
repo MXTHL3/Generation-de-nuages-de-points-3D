@@ -1,11 +1,12 @@
 #include "main_window.h"
 
-MainWindow::MainWindow() : main_box{Gtk::ORIENTATION_VERTICAL}
+MainWindow::MainWindow() : //main_box{Gtk::ORIENTATION_VERTICAL}, 
+draw_box{Gtk::ORIENTATION_VERTICAL}
 {
     set_title("Reconnaissance 3D");
     set_default_size(1440, 810);
 
-    add(main_box);
+    /*add(main_box);
     main_box.pack_start(menubar, Gtk::PACK_SHRINK);
 
     menu_bar = {
@@ -26,7 +27,10 @@ MainWindow::MainWindow() : main_box{Gtk::ORIENTATION_VERTICAL}
     {
         std::vector<std::string> sub(menu.begin() + 1, menu.end());
         add_menu_item(menu[0], sub);
-    }
+    }*/
+
+    draw_box.pack_start(main_gl, Gtk::PACK_EXPAND_WIDGET);
+    add(draw_box);
 
     show_all_children();
 }
