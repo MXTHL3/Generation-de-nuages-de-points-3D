@@ -1,16 +1,24 @@
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 `pkg-config --cflags gtkmm-3.0`
-LIBS = `pkg-config --libs gtkmm-3.0`
+CXX      := g++
+CXXFLAGS := -std=c++17 -Wall -Wextra -O2
+CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy)
+LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy)
+LDFLAGS  += -lgmp -lmpfr
 
-TARGET = app
+TARGET   := app
 
-SRCS = main.cpp main_window.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRCS := main.cpp \
+        main_window.cpp \
+        gl.cpp \
+        gl_shaders_utils.cpp \
+        cgal.cpp \
+        cgal_shape.cpp
+
+OBJS := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) $(OBJS) -o $(TARGET) $(LIBS)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -18,4 +26,4 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-re: clean all
+.PHONY: all clean
