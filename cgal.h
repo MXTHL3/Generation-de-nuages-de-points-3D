@@ -11,7 +11,8 @@ typedef CGAL::Surface_mesh<Point> SurfaceMesh;
 class Cgal {
 public:
     virtual ~Cgal() = default;
-    virtual void build_mesh() = 0;
+    virtual void build_cube_mesh() = 0;
+    virtual void build_mesh_from_file(const std::string& filename) = 0;
     std::vector<float> to_vertex_data() const;
     const SurfaceMesh& mesh() const { return m_mesh; }
 

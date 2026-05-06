@@ -56,6 +56,15 @@ void MainWindow::add_menu_item(const std::string& menu_item,
 
     for (const auto& label : sub_menu_items) {
         auto _sub = Gtk::make_managed<Gtk::MenuItem>(label);
+
+        if (label == "Ouvrir modèle 3D") {
+            _sub->signal_activate().connect([this]() {
+                m_handle_file.open_model(*this, [this](const std::string& path) {
+                    m_gl->load_file(path);
+                });
+            });
+        }
+
         sub_menu->append(*_sub);
         _sub->show();
     }

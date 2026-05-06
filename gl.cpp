@@ -45,6 +45,27 @@ Gl::Gl(std::unique_ptr<Cgal> scene_)
     gl_area.signal_render().connect(sigc::mem_fun(*this, &Gl::on_render), false);
     gl_area.signal_unrealize().connect(sigc::mem_fun(*this, &Gl::on_unrealize), false);
 
+    gl_area.add_events(Gdk::BUTTON_PRESS_MASK |
+                       Gdk::BUTTON_RELEASE_MASK |
+                       Gdk::POINTER_MOTION_MASK);
+
+    gl_area.signal_button_press_event().connect(
+        sigc::mem_fun(*this, &Gl::on_button_press));
+    gl_area.signal_button_release_event().connect(
+        sigc::mem_fun(*this, &Gl::on_button_release));
+    gl_area.signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &Gl::on_motion));
+
+    gl_area.add_events(Gdk::BUTTON_PRESS_MASK |
+                       Gdk::BUTTON_RELEASE_MASK |
+                       Gdk::POINTER_MOTION_MASK |
+                       Gdk::SCROLL_MASK);          
+
+    gl_area.signal_key_press_event().connect(
+        sigc::mem_fun(*this, &Gl::on_key_press));
+    gl_area.set_can_focus(true);
+    gl_area.grab_focus();
+
     gl_area.show();
 }
 
@@ -87,14 +108,6 @@ void Gl::on_realize()
     glDepthFunc(GL_LESS);
     glDepthMask(GL_TRUE);
     glDisable(GL_CULL_FACE);
-
-    tick_id = gl_area.add_tick_callback(sigc::mem_fun(*this, &Gl::on_tick));
-}
-
-bool Gl::on_tick(const Glib::RefPtr<Gdk::FrameClock>&)
-{
-    gl_area.queue_render();
-    return true;
 }
 
 void Gl::upload_geometry()
@@ -102,7 +115,7 @@ void Gl::upload_geometry()
     if (!scene || vao == 0 || vbo == 0)
         return;
 
-    scene->build_mesh();
+    scene->build_cube_mesh();
     vertex_data = scene->to_vertex_data();
 
     glBindVertexArray(vao);
@@ -131,6 +144,25 @@ void Gl::upload_geometry()
     glBindVertexArray(0);
 }
 
+void Gl::load_file(const std::string& path)
+{
+    if (gl_area.get_realized())
+        gl_area.make_current();
+
+    scene->build_mesh_from_file(path);
+    vertex_data = scene->to_vertex_data();
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER,
+                 vertex_data.size() * sizeof(float),
+                 vertex_data.data(),
+                 GL_STATIC_DRAW);
+    glBindVertexArray(0);
+
+    gl_area.queue_render();
+}
+
 bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&)
 {
     int w = gl_area.get_allocated_width();
@@ -144,11 +176,11 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&)
 
     glUseProgram(shader_program);
 
-    angle_y += 0.01f;
+    glm::mat4 model = glm::rotate(glm::mat4(1.0f), angle_y, glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, angle_x, glm::vec3(1.0f, 0.0f, 0.0f));
 
-    glm::mat4 model = glm::rotate(glm::mat4(1.0f), angle_y, glm::vec3(0.5f, 1.0f, 0.0f));
     glm::mat4 view = glm::lookAt(
-        glm::vec3(4.0f, 3.0f, 5.0f),
+        glm::vec3(0.0f, 0.0f, m_zoom),
         glm::vec3(0.0f, 0.0f, 0.0f),
         glm::vec3(0.0f, 1.0f, 0.0f)
     );
@@ -171,11 +203,6 @@ void Gl::on_unrealize()
 {
     gl_area.make_current();
 
-    if (tick_id != 0) {
-        gl_area.remove_tick_callback(tick_id);
-        tick_id = 0;
-    }
-
     if (vbo != 0) {
         glDeleteBuffers(1, &vbo);
         vbo = 0;
@@ -190,4 +217,57 @@ void Gl::on_unrealize()
         glDeleteProgram(shader_program);
         shader_program = 0;
     }
+}
+
+bool Gl::on_button_press(GdkEventButton* e)
+{
+    if (e->button == 1) {
+        m_dragging = true;
+        m_last_x = e->x;
+        m_last_y = e->y;
+    }
+    return true;
+}
+
+bool Gl::on_button_release(GdkEventButton* e)
+{
+    if (e->button == 1)
+        m_dragging = false;
+    return true;
+}
+
+bool Gl::on_motion(GdkEventMotion* e)
+{
+    if (!m_dragging) return true;
+
+    double dx = e->x - m_last_x;
+    double dy = e->y - m_last_y;
+    m_last_x = e->x;
+    m_last_y = e->y;
+
+    angle_y += static_cast<float>(dx) * 0.01f;
+    angle_x += static_cast<float>(dy) * 0.01f;
+
+    gl_area.queue_render();
+    return true;
+}
+
+bool Gl::on_key_press(GdkEventKey* e)
+{
+    switch (e->keyval) {
+        case GDK_KEY_plus:
+        case GDK_KEY_KP_Add:
+            m_zoom -= 0.3f;
+            break;
+        case GDK_KEY_minus:
+        case GDK_KEY_KP_Subtract:
+            m_zoom += 0.3f;
+            break;
+        default:
+            return false;
+    }
+
+    m_zoom = std::clamp(m_zoom, 1.0f, 20.0f);
+    gl_area.queue_render();
+    return true;
 }

@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include "gl.h"
+#include "handle_file.h"
 
 class MainWindow : public Gtk::Window {
 public:
@@ -17,5 +18,6 @@ private:
     Gtk::MenuBar menubar;
     std::vector<std::vector<std::string>> menu_bar_data;
     std::unique_ptr<Gl> m_gl;
+    HandleFile m_handle_file;
     void build_menubar();
 };
