@@ -67,8 +67,8 @@ int main(){
 
     CGAL_Mesh mesh;
 
-    if(!CGAL::IO::read_polygon_mesh(in_filepath, mesh)){
-        std::cout<< "Erreur le fichier présenté ne peut être lu ! Il doit avoir le format PLY/OBJ"<<std::endl;
+    if(!CGAL::IO::read_polygon_mesh(in_filepath, mesh, CGAL::parameters::verbose(true))){
+        return -1;
     }
     
     // On veut que des triangles
