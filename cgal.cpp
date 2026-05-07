@@ -15,7 +15,7 @@ void Cgal::add_triangle(SurfaceMesh::Vertex_index a,
 std::vector<float> Cgal::to_vertex_data() const
 {
     std::vector<float> data;
-    data.reserve(m_mesh.number_of_faces() * 3 * 6);
+    data.reserve(m_mesh.number_of_faces() * 3 * 3);
     auto positions = m_mesh.points();
 
     for (auto face : m_mesh.faces())
@@ -29,16 +29,9 @@ std::vector<float> Cgal::to_vertex_data() const
         for (auto vi : verts)
         {
             const Point& p = positions[vi];
-
-            float x = static_cast<float>(p.x());
-            float y = static_cast<float>(p.y());
-            float z = static_cast<float>(p.z());
-            data.push_back(x);
-            data.push_back(y);
-            data.push_back(z);
-            data.push_back((x + 1.0f) * 0.5f);
-            data.push_back((y + 1.0f) * 0.5f);
-            data.push_back((z + 1.0f) * 0.5f);
+            data.push_back(static_cast<float>(p.x()));
+            data.push_back(static_cast<float>(p.y()));
+            data.push_back(static_cast<float>(p.z()));
         }
     }
 

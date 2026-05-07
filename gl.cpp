@@ -5,30 +5,21 @@
 
 static const char* VERTEX_SHADER_SRC = R"glsl(
     #version 330
-
     layout(location = 0) in vec3 position;
-    layout(location = 1) in vec3 color;
-
-    out vec3 fragColor;
-
     uniform mat4 model;
     uniform mat4 view;
     uniform mat4 projection;
-
     void main() {
-        fragColor = color;
         gl_Position = projection * view * model * vec4(position, 1.0);
     }
 )glsl";
 
 static const char* FRAGMENT_SHADER_SRC = R"glsl(
     #version 330
-
-    in vec3 fragColor;
+    uniform vec3 u_color;
     out vec4 outputColor;
-
     void main() {
-        outputColor = vec4(fragColor, 1.0);
+        outputColor = vec4(u_color, 1.0);
     }
 )glsl";
 
@@ -135,11 +126,8 @@ void Gl::upload_geometry()
 
     std::cout << "vertex count = " << vertex_data.size() / 6 << std::endl;
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
 
     glBindVertexArray(0);
 }
@@ -192,8 +180,27 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&)
     glUniformMatrix4fv(glGetUniformLocation(shader_program, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader_program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
+    GLint color_loc = glGetUniformLocation(shader_program, "u_color");
+    GLsizei vertex_count = static_cast<GLsizei>(vertex_data.size() / 3);
+
     glBindVertexArray(vao);
-    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(vertex_data.size() / 6));
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glEnable(GL_POLYGON_OFFSET_FILL);
+    glPolygonOffset(1.0f, 1.0f);
+    glUniform3f(color_loc, 1.0f, 1.0f, 1.0f);
+    glDrawArrays(GL_TRIANGLES, 0, vertex_count);
+    glDisable(GL_POLYGON_OFFSET_FILL);
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
+    glDrawArrays(GL_TRIANGLES, 0, vertex_count);
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glPointSize(1.0f);
+    glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
+    glDrawArrays(GL_POINTS, 0, vertex_count);
+
     glBindVertexArray(0);
 
     return true;
