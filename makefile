@@ -12,7 +12,8 @@ SRCS := main.cpp \
         gl_shaders_utils.cpp \
         cgal.cpp \
         cgal_shape.cpp \
-        handle_file.cpp
+        handle_file.cpp \
+        model_marker.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 
