@@ -2,16 +2,20 @@
 #include <cmath>
 #include <iostream>
 
-ModelMarker::ModelMarker(Gtk::Fixed* parent, const glm::vec3& /*center_3d*/, float /*zoom*/)
+ModelMarker::ModelMarker(Gtk::Fixed* parent, const glm::vec3& world_pos, float /*zoom*/,
+                        MarkerType type, const glm::vec3& color)
     : m_parent_fixed(parent)
+    , m_type(type)
+    , m_color(color)
+    , m_world_pos(world_pos)
+
 {
     set_size_request(20, 20);
-    add_events(Gdk::ENTER_NOTIFY_MASK | Gdk::LEAVE_NOTIFY_MASK | Gdk::BUTTON_PRESS_MASK);
+    add_events(Gdk::ENTER_NOTIFY_MASK |
+                Gdk::LEAVE_NOTIFY_MASK |
+                Gdk::BUTTON_PRESS_MASK);
     set_can_focus(false);
     set_has_window(true);
-    add_events(Gdk::ENTER_NOTIFY_MASK |
-        Gdk::LEAVE_NOTIFY_MASK |
-        Gdk::BUTTON_PRESS_MASK);
 }
 
 void ModelMarker::set_position(double x, double y) {
@@ -24,14 +28,14 @@ void ModelMarker::set_position(double x, double y) {
 }
 
 bool ModelMarker::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
-    double center_x = get_width()  / 2.0;
+    double center_x = get_width() / 2.0;
     double center_y = get_height() / 2.0;
-
-    cr->set_source_rgb(0.0, m_hovered ? 0.5 : 1.0, 0.0);
+    
+    cr->set_source_rgb(m_color.r, m_color.g * (m_hovered ? 0.5 : 1.0), m_color.b);
     cr->set_line_width(2.0);
     cr->arc(center_x, center_y, 8.0, 0.0, 2 * M_PI);
     cr->stroke_preserve();
-    cr->set_source_rgba(0.0, 1.0, 0.0, 0.3);
+    cr->set_source_rgba(m_color.r, m_color.g, m_color.b, 0.3);
     cr->fill();
     return true;
 }
@@ -50,8 +54,7 @@ bool ModelMarker::on_leave_notify_event(GdkEventCrossing*) {
 
 bool ModelMarker::on_button_press_event(GdkEventButton* e) {
     if (e->button == 1) {
-        std::cout << "marker cliqué" << std::endl;
-        signal_clicked.emit();
+        signal_clicked.emit(m_type);
         signal_request_focus.emit();
         return true;
     }

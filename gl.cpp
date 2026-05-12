@@ -58,18 +58,56 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_fixed.set_hexpand(true);
     m_fixed.set_vexpand(true);
     m_overlay.add_overlay(m_fixed);
+    m_overlay.set_overlay_pass_through(m_fixed, false);
     m_overlay.set_can_focus(true);
     m_overlay.grab_focus();
 
-    auto marker = std::make_unique<ModelMarker>(&m_fixed, glm::vec3(0.0f, 0.0f, 0.0f), m_zoom);
-    marker->signal_clicked.connect([this]() { std::cout << "ça marche" << std::endl; });
-    marker->signal_request_focus.connect([this]() { gl_area.grab_focus(); });
-    m_fixed.put(*marker, 0, 0);
+    add_center_marker(0);
+
+    auto tx_rx = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(2.0f, 0.0f, 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+    auto ty_ry = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(0.0f, 2.0f, 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+    auto tz_rz = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(0.0f, 0.0f, -2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+    auto s = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(2.0f, 2.0f, -2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+
+    m_fixed.put(*tx_rx, 0, 0);
+    m_fixed.put(*ty_ry, 0, 0);
+    m_fixed.put(*tz_rz, 0, 0);
+    m_fixed.put(*s, 0, 0);
+
+    m_markers.push_back(std::move(tx_rx));
+    m_markers.push_back(std::move(ty_ry));
+    m_markers.push_back(std::move(tz_rz));
+    m_markers.push_back(std::move(s));
 
     m_fixed.show_all();
-    m_markers.push_back(std::move(marker));
-
     m_overlay.show();
+}
+
+void Gl::add_center_marker(int model_index) {
+    glm::vec3 pos(0.0f);
+    if (model_index > 0) {
+        float off = OFFSET_STEP * static_cast<float>(model_index);
+        pos = glm::vec3(off, off, off);
+    }
+    auto marker = std::make_unique<ModelMarker>(
+        &m_fixed, pos, m_zoom, MarkerType::center, glm::vec3(0.0f, 1.0f, 0.0f)
+    );
+    marker->signal_clicked.connect([this](MarkerType type) {
+        signal_marker_clicked.emit(type);
+    });
+    marker->signal_request_focus.connect([this]() { gl_area.grab_focus(); });
+    m_fixed.put(*marker, 0, 0);
+    m_markers.push_back(std::move(marker));
+    (void)model_index;
+}
+
+void Gl::add_overlay_widget(Gtk::Widget& w) {
+    m_overlay.add_overlay(w);
+    m_overlay.set_overlay_pass_through(w, true);
 }
 
 void Gl::load_file(const std::string& path) {
@@ -84,13 +122,31 @@ void Gl::load_file(const std::string& path) {
     scene->set_offset(off, off, off);
     m_scenes.push_back(std::move(scene));
 
-    auto marker = std::make_unique<ModelMarker>(&m_fixed, glm::vec3(0.0f, 0.0f, 0.0f), m_zoom);
-    marker->signal_clicked.connect([this]() { std::cout << "ça marche" << std::endl; });
-    marker->signal_request_focus.connect([this]() { gl_area.grab_focus(); });
-    m_fixed.put(*marker, 0, 0);
+    add_center_marker(m_load_count);
+    auto tx_rx = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(off + 2.0f, off + 0.0f, off + 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
+    );
+    auto ty_ry = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(off + 0.0f, off + 2.0f, off + 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
+    );
+    auto tz_rz = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(off + 0.0f, off + 0.0f, off - 2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
+    );
+    auto s = std::make_unique<ModelMarker>(
+        &m_fixed, glm::vec3(off + 2.0f, off + 2.0f, off - 2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
+    );
+
+    m_fixed.put(*tx_rx, 0, 0);
+    m_fixed.put(*ty_ry, 0, 0);
+    m_fixed.put(*tz_rz, 0, 0);
+    m_fixed.put(*s, 0, 0);
+
+    m_markers.push_back(std::move(tx_rx));
+    m_markers.push_back(std::move(ty_ry));
+    m_markers.push_back(std::move(tz_rz));
+    m_markers.push_back(std::move(s));
 
     m_fixed.show_all();
-    m_markers.push_back(std::move(marker));
 
     rebuild_vertex_data();
     upload_vertex_data();
@@ -280,17 +336,9 @@ std::pair<double, double> Gl::project_to_2d(const glm::vec3& point_3d) {
 }
 
 void Gl::update_markers_positions() {
-    for (size_t i = 0; i < m_markers.size(); ++i) {
-        glm::vec3 center_3d;
-        if (i == 0) {
-            center_3d = glm::vec3(0.0f, 0.0f, 0.0f);
-        } else {
-            center_3d = glm::vec3(OFFSET_STEP * static_cast<float>(i),
-                                  OFFSET_STEP * static_cast<float>(i),
-                                  OFFSET_STEP * static_cast<float>(i));
-        }
-        auto [x, y] = project_to_2d(center_3d);
-        m_markers[i]->set_position(x, y);
+    for (auto& marker : m_markers) {
+        auto [x, y] = project_to_2d(marker->world_position());
+        marker->set_position(x, y);
     }
 }
 
