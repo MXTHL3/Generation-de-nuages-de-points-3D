@@ -16,9 +16,27 @@ ModelMarker::ModelMarker(Gtk::Fixed* parent, const glm::vec3& world_pos, float /
                 Gdk::BUTTON_PRESS_MASK);
     set_can_focus(false);
     set_has_window(true);
+    refresh_visibility();
+}
+
+void ModelMarker::set_marker_type(MarkerType mt) {
+    m_type = mt;
+    refresh_visibility();
+    queue_draw();
+}
+
+void ModelMarker::refresh_visibility() {
+    bool hidden = (m_type == MarkerType::unabledx ||
+                   m_type == MarkerType::unabledy ||
+                   m_type == MarkerType::unabledz ||
+                   m_type == MarkerType::unableds);
+    set_opacity(hidden ? 0.0 : 1.0);
+    set_sensitive(!hidden);
 }
 
 void ModelMarker::set_position(double x, double y) {
+    m_screen_x = x;
+    m_screen_y = y;
     if (m_parent_fixed) {
         m_parent_fixed->move(*this,
                              static_cast<int>(x) - get_width()  / 2,

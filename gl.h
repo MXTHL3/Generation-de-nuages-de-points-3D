@@ -16,6 +16,7 @@ public:
     Gtk::Widget& widget() { return m_overlay; }
     void load_file(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
+    std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     sigc::signal<void(MarkerType)> signal_marker_clicked;
 
 private:
@@ -26,16 +27,16 @@ private:
     GLuint vbo = 0;
     GLuint shader_program = 0;
     std::vector<float> vertex_data;
-    std::vector<std::unique_ptr<Cgal>>        m_scenes;
+    std::vector<std::unique_ptr<Cgal>> m_scenes;
     std::vector<std::unique_ptr<ModelMarker>> m_markers;
 
-    int   m_load_count = 0;
-    float angle_x  = 0.0f;
-    float angle_y  = 0.0f;
-    bool  m_dragging = false;
-    double m_last_x  = 0.0;
-    double m_last_y  = 0.0;
-    float m_zoom    = 5.0f;
+    int m_load_count = 0;
+    float angle_x = 0.0f;
+    float angle_y = 0.0f;
+    bool m_dragging = false;
+    double m_last_x = 0.0;
+    double m_last_y = 0.0;
+    float m_zoom = 5.0f;
 
     void rebuild_vertex_data();
     void upload_vertex_data();
@@ -50,4 +51,5 @@ private:
     void focus_gl_area();
     std::pair<double, double> project_to_2d(const glm::vec3& point_3d);
     void add_center_marker(int model_index);
+    bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 };

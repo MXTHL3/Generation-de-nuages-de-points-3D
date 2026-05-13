@@ -23,7 +23,17 @@ static const char* FRAGMENT_SHADER_SRC = R"glsl(
     }
 )glsl";
 
-static constexpr float OFFSET_STEP = 1.0f;
+static constexpr float OFFSET_STEP = 1.5f;
+
+
+static void wire_markers_to_center(
+    std::vector<std::unique_ptr<ModelMarker>>& markers,
+    ModelMarker* center,
+    size_t first_axis_idx)
+{
+    for (size_t i = first_axis_idx; i < first_axis_idx + 4 && i < markers.size(); ++i)
+        markers[i]->set_center_marker(center);
+}
 
 Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     default_scene->build_cube_mesh();
@@ -47,7 +57,7 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_overlay.signal_button_press_event().connect(sigc::mem_fun(*this, &Gl::on_button_press));
     m_overlay.signal_button_release_event().connect(sigc::mem_fun(*this, &Gl::on_button_release));
     m_overlay.signal_motion_notify_event().connect(sigc::mem_fun(*this, &Gl::on_motion));
-    m_overlay.signal_key_press_event().connect(sigc::mem_fun(*this, &Gl::on_key_press));  
+    m_overlay.signal_key_press_event().connect(sigc::mem_fun(*this, &Gl::on_key_press));
 
     gl_area.set_can_focus(true);
     gl_area.grab_focus();
@@ -62,16 +72,20 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_overlay.set_can_focus(true);
     m_overlay.grab_focus();
 
+    m_fixed.signal_draw().connect(sigc::mem_fun(*this, &Gl::on_fixed_draw), false);
+
     add_center_marker(0);
+    ModelMarker* center0 = m_markers.back().get();  
+    size_t first_axis = m_markers.size();            
 
     auto tx_rx = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(2.0f, 0.0f, 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+        &m_fixed, glm::vec3(2.0f, 0.0f, 0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f));
     auto ty_ry = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(0.0f, 2.0f, 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+        &m_fixed, glm::vec3(0.0f, 2.0f, 0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f));
     auto tz_rz = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(0.0f, 0.0f, -2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+        &m_fixed, glm::vec3(0.0f, 0.0f, -2.0f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f));
     auto s = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(2.0f, 2.0f, -2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f));
+        &m_fixed, glm::vec3(2.0f, 2.0f, -2.0f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f));
 
     m_fixed.put(*tx_rx, 0, 0);
     m_fixed.put(*ty_ry, 0, 0);
@@ -82,6 +96,8 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_markers.push_back(std::move(ty_ry));
     m_markers.push_back(std::move(tz_rz));
     m_markers.push_back(std::move(s));
+
+    wire_markers_to_center(m_markers, center0, first_axis);
 
     m_fixed.show_all();
     m_overlay.show();
@@ -123,18 +139,17 @@ void Gl::load_file(const std::string& path) {
     m_scenes.push_back(std::move(scene));
 
     add_center_marker(m_load_count);
+    ModelMarker* centerN = m_markers.back().get();
+    size_t first_axis = m_markers.size();
+
     auto tx_rx = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(off + 2.0f, off + 0.0f, off + 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
-    );
+        &m_fixed, glm::vec3(off + 2.0f, off + 0.0f, off + 0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f));
     auto ty_ry = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(off + 0.0f, off + 2.0f, off + 0.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
-    );
+        &m_fixed, glm::vec3(off + 0.0f, off + 2.0f, off + 0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f));
     auto tz_rz = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(off + 0.0f, off + 0.0f, off - 2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
-    );
+        &m_fixed, glm::vec3(off + 0.0f, off + 0.0f, off - 2.0f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f));
     auto s = std::make_unique<ModelMarker>(
-        &m_fixed, glm::vec3(off + 2.0f, off + 2.0f, off - 2.0f), m_zoom, MarkerType::unabled, glm::vec3(0.0f, 0.0f, 1.0f)
-    );
+        &m_fixed, glm::vec3(off + 2.0f, off + 2.0f, off - 2.0f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f));
 
     m_fixed.put(*tx_rx, 0, 0);
     m_fixed.put(*ty_ry, 0, 0);
@@ -145,6 +160,8 @@ void Gl::load_file(const std::string& path) {
     m_markers.push_back(std::move(ty_ry));
     m_markers.push_back(std::move(tz_rz));
     m_markers.push_back(std::move(s));
+
+    wire_markers_to_center(m_markers, centerN, first_axis);
 
     m_fixed.show_all();
 
@@ -273,6 +290,36 @@ void Gl::on_unrealize() {
     if (shader_program != 0) { glDeleteProgram(shader_program); shader_program = 0; }
 }
 
+bool Gl::on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
+    for (const auto& marker : m_markers) {
+        ModelMarker* center = marker->get_center_marker();
+        if (!center) continue; 
+
+        MarkerType t = marker->get_marker_type();
+        if (t == MarkerType::unabledx || t == MarkerType::unabledy ||
+            t == MarkerType::unabledz || t == MarkerType::unableds)
+            continue;
+
+        double x0 = marker->screen_x();
+        double y0 = marker->screen_y();
+        double x1 = center->screen_x();
+        double y1 = center->screen_y();
+
+        cr->set_source_rgba(0.0, 0.0, 0.8, 0.55);
+        cr->set_line_width(1.2);
+
+        std::vector<double> dashes = {6.0, 4.0};
+        cr->set_dash(dashes, 0.0);
+
+        cr->move_to(x0, y0);
+        cr->line_to(x1, y1);
+        cr->stroke();
+    }
+
+    cr->unset_dash();
+    return false;   
+}
+
 bool Gl::on_button_press(GdkEventButton* e) {
     if (e->button == 1) { m_dragging = true; m_last_x = e->x; m_last_y = e->y; }
     return true;
@@ -330,7 +377,7 @@ std::pair<double, double> Gl::project_to_2d(const glm::vec3& point_3d) {
     glm::vec3 ndc = glm::vec3(clip) / clip.w;
 
     double x = (ndc.x * 0.5 + 0.5) * w;
-    double y = (1.0 - (ndc.y * 0.5 + 0.5)) * h;   
+    double y = (1.0 - (ndc.y * 0.5 + 0.5)) * h;
 
     return {x, y};
 }
@@ -340,6 +387,7 @@ void Gl::update_markers_positions() {
         auto [x, y] = project_to_2d(marker->world_position());
         marker->set_position(x, y);
     }
+    m_fixed.queue_draw();
 }
 
 void Gl::focus_gl_area() {

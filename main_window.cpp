@@ -56,6 +56,36 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl)
     show_all_children();
 }
 
+void MainWindow::update_markers()
+{
+    if (!m_gl) return;
+    const std::string& mode = transformation_mode[m_tm_id];
+    for (auto& mm : m_gl->get_markers()) {
+        MarkerType g = mm->get_marker_type();
+        if (mode.empty()) {
+            if (g == MarkerType::tx || g == MarkerType::rx) mm->set_marker_type(MarkerType::unabledx);
+            else if (g == MarkerType::ty || g == MarkerType::ry) mm->set_marker_type(MarkerType::unabledy);
+            else if (g == MarkerType::tz || g == MarkerType::rz) mm->set_marker_type(MarkerType::unabledz);
+            else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
+        } else if (mode == "Translation mode") {
+            if (g == MarkerType::unabledx || g == MarkerType::rx) mm->set_marker_type(MarkerType::tx);
+            else if (g == MarkerType::unabledy || g == MarkerType::ry) mm->set_marker_type(MarkerType::ty);
+            else if (g == MarkerType::unabledz || g == MarkerType::rz) mm->set_marker_type(MarkerType::tz);
+            else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
+        } else if (mode == "Rotation mode") {
+            if (g == MarkerType::tx || g == MarkerType::unabledx) mm->set_marker_type(MarkerType::rx);
+            else if (g == MarkerType::ty || g == MarkerType::unabledy) mm->set_marker_type(MarkerType::ry);
+            else if (g == MarkerType::tz || g == MarkerType::unabledz) mm->set_marker_type(MarkerType::rz);
+            else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
+        } else if (mode == "Scale mode") {
+            if (g == MarkerType::tx || g == MarkerType::rx || g == MarkerType::unabledx) mm->set_marker_type(MarkerType::unabledx);
+            else if (g == MarkerType::ty || g == MarkerType::ry || g == MarkerType::unabledy) mm->set_marker_type(MarkerType::unabledy);
+            else if (g == MarkerType::tz || g == MarkerType::rz || g == MarkerType::unabledz) mm->set_marker_type(MarkerType::unabledz);
+            else if (g == MarkerType::unableds) mm->set_marker_type(MarkerType::s);
+        }
+    }
+}
+
 void MainWindow::update_status_label()
 {
     const std::string& mode = transformation_mode[m_tm_id];
@@ -66,6 +96,7 @@ void MainWindow::update_status_label()
             "<span foreground='red' font='12'>" + mode + "</span>"
         );
     }
+    update_markers();
 }
 
 void MainWindow::build_menubar()
@@ -89,6 +120,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
             _sub->signal_activate().connect([this]() {
                 m_handle_file.open_model(*this, [this](const std::string& path) {
                     m_gl->load_file(path);
+                    update_markers();
                 });
             });
         }
