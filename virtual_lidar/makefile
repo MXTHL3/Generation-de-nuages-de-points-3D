@@ -6,7 +6,13 @@ LIBS = -lgmp -lmpfr
 TARGET = scan_lidar
 
 # Fichier source
-SOURCES = lidar_scan.cpp
+SOURCES = main.cpp \
+		entity.cpp \
+		lidar_factory.cpp \
+		lidar.cpp \
+		point_cloud_exporter.cpp \
+		pose.cpp \
+		scene.cpp
 
 all: $(TARGET)
 
