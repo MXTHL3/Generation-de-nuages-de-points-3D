@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
         
 
 
-        auto ousterModel = LidarFactory::createFromJsonConfig("lidars_config/ouster_os2_128.json");
+        auto ousterModel = LidarFactory::createFromJsonConfig(LidarModels::OUSTER_OS2_128);
         
         Pose lidarPose(Point3(0, 0, 2));
         LidarEntity myLidar(ousterModel, 2, lidarPose);
