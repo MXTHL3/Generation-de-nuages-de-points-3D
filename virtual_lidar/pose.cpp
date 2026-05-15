@@ -1,25 +1,23 @@
 #include "pose.hpp"
+#include "units.hpp"
 
 Pose::Pose(Point3 p, double rx, double ry, double rz)
-    : m_position(p), m_rx(rx), m_ry(ry), m_rz(rz){ 
+    : m_position(p), m_rx(to_radians(rx)), m_ry(to_radians(ry)), m_rz(to_radians(rz)){ 
     }
 
 Transform3 Pose::getTransform() const {
     // TODO :: à voir un passage à glm
-    double rx_rad = m_rx * M_PI / 180.0;
-    double ry_rad = m_ry * M_PI / 180.0;
-    double rz_rad = m_rz * M_PI / 180.0;
 
     Transform3 rotX(1.0, 0.0, 0.0,
-                    0.0, std::cos(rx_rad), -std::sin(rx_rad),
-                    0.0, std::sin(rx_rad), std::cos(rx_rad));
+                    0.0, std::cos(m_rx), -std::sin(m_rx),
+                    0.0, std::sin(m_rx), std::cos(m_rx));
     
-    Transform3 rotY(std::cos(ry_rad), 0.0, std::sin(ry_rad),
+    Transform3 rotY(std::cos(m_ry), 0.0, std::sin(m_ry),
                     0.0, 1, 0.0,
-                    -std::sin(ry_rad), 0.0, std::cos(ry_rad));
+                    -std::sin(m_ry), 0.0, std::cos(m_ry));
 
-    Transform3 rotZ(std::cos(rz_rad), -std::sin(rz_rad), 0.0,
-                    std::sin(rz_rad), std::cos(rz_rad), 0.0,
+    Transform3 rotZ(std::cos(m_rz), -std::sin(m_rz), 0.0,
+                    std::sin(m_rz), std::cos(m_rz), 0.0,
                     0.0, 0.0, 1.0);
 
     return Transform3(CGAL::TRANSLATION, m_position - Point3(0, 0, 0)) * rotX * rotY * rotZ;

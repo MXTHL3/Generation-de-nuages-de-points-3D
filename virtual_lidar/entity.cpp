@@ -19,9 +19,8 @@ const Lidar& LidarEntity::config() const { return *m_model; }
 
 const double& LidarEntity::h_step() const { return m_model->m_h_step.at(m_step_index); }
 
-std::vector<Ray3> LidarEntity::scan(double h_deg) const {
+std::vector<Ray3> LidarEntity::scan(double h_rad) const {
     Transform3 world_xf = getTransform();
-    double h_rad = h_deg * M_PI / 180.0;
     std::vector<Ray3> rays;
 
     for(const auto& laser : m_model->m_lasers) {

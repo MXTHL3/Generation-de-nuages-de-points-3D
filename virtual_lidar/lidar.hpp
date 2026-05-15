@@ -25,6 +25,6 @@ public:
     Lidar(std::string model, double min_r, double max_r, std::vector<double> m_h_step, double accuracy);
 
     // ajoute un laser (1 rayon à lancer) au Lidar
-    void addLaser(double v_deg, double h_deg, double d_off);
+    void addLaser(double v_rad, double h_rad, double d_off);
 };
 #endif
