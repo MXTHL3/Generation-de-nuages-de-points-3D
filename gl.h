@@ -10,6 +10,12 @@
 #include "cgal.h"
 #include "model_marker.h"
 
+struct ModelTransform {
+    float pos_x = 0.0f, pos_y = 0.0f, pos_z = 0.0f;
+    float angle_x = 0.0f, angle_y = 0.0f, angle_z = 0.0f;
+    float scale = 1.0f;
+};
+
 class Gl {
 public:
     explicit Gl(std::unique_ptr<Cgal> default_scene);
@@ -29,6 +35,7 @@ private:
     std::vector<float> vertex_data;
     std::vector<std::unique_ptr<Cgal>> m_scenes;
     std::vector<std::unique_ptr<ModelMarker>> m_markers;
+    std::vector<ModelTransform> m_transforms;
 
     int m_load_count = 0;
     float angle_x = 0.0f;
@@ -50,6 +57,12 @@ private:
     void update_markers_positions();
     void focus_gl_area();
     std::pair<double, double> project_to_2d(const glm::vec3& point_3d);
+    std::pair<double, double> project_to_2d(const glm::vec3& local_pos,
+                                            const ModelTransform& tr);
+    glm::mat4 make_model_matrix(const ModelTransform& tr) const;
     void add_center_marker(int model_index);
     bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+    void on_marker_dragged(MarkerType type, int model_index, double dx, double dy);
+    void connect_marker_signals(ModelMarker* marker);
+
 };

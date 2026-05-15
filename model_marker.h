@@ -10,12 +10,13 @@ enum class MarkerType {
 
 class ModelMarker : public Gtk::DrawingArea {
 public:
-    ModelMarker(Gtk::Fixed* parent, const glm::vec3& world_pos, float zoom, MarkerType type,
-                const glm::vec3& color);
+    ModelMarker(Gtk::Fixed* parent, const glm::vec3& local_pos, float zoom, MarkerType type,
+                const glm::vec3& color, int model_index = 0);
     void set_position(double x, double y);
-    MarkerType get_marker_type() { return m_type; };
+    MarkerType get_marker_type() const { return m_type; };
     void set_marker_type(MarkerType mt);
-    const glm::vec3& world_position() const { return m_world_pos; }
+    const glm::vec3& local_position() const { return m_local_pos; }
+    int model_index() const { return m_model_index; }
 
     void set_center_marker(ModelMarker* center) { m_center_marker = center; }
     ModelMarker* get_center_marker() const { return m_center_marker; }
@@ -25,14 +26,20 @@ public:
 
     sigc::signal<void(MarkerType)> signal_clicked;
     sigc::signal<void()> signal_request_focus;
+    sigc::signal<void(MarkerType, int, double, double)> signal_dragged;
 
 private:
     Gtk::Fixed* m_parent_fixed;
     ModelMarker* m_center_marker = nullptr;
     MarkerType m_type;
     glm::vec3 m_color;
-    glm::vec3 m_world_pos;
+    glm::vec3 m_local_pos;
+    int m_model_index  = 0;
     bool m_hovered = false;
+    bool m_hidden = false;
+    bool m_dragging = false;
+    double m_drag_last_x = 0.0;
+    double m_drag_last_y = 0.0;
     double m_screen_x = 0.0;
     double m_screen_y = 0.0;
 
@@ -40,5 +47,7 @@ private:
     bool on_enter_notify_event(GdkEventCrossing* event) override;
     bool on_leave_notify_event(GdkEventCrossing* event) override;
     bool on_button_press_event(GdkEventButton* event) override;
+    bool on_button_release_event(GdkEventButton* event) override;
+    bool on_motion_notify_event(GdkEventMotion* event) override;
     void refresh_visibility();
 };
