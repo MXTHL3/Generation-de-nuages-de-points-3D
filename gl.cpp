@@ -404,9 +404,7 @@ std::pair<double, double> Gl::project_to_2d(const glm::vec3& local_pos,
 
     float aspect = static_cast<float>(w) / static_cast<float>(h);
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 1000.0f);
-
-    int midx  = static_cast<int>(tr.pos_x == 0 && tr.pos_y == 0 && tr.pos_z == 0
-                                 ? 0 : 0);  
+  
     float off_unused = 0.0f; (void)off_unused;
 
     glm::mat4 model_mat = cam * make_model_matrix(tr);

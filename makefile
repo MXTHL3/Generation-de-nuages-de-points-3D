@@ -1,5 +1,5 @@
 CXX      := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -O2
+CXXFLAGS := -std=c++17 -Wall -Wextra -O2 -Iinclude
 CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy)
 LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy)
 LDFLAGS  += -lgmp -lmpfr
@@ -13,7 +13,13 @@ SRCS := main.cpp \
         cgal.cpp \
         cgal_shape.cpp \
         handle_file.cpp \
-        model_marker.cpp
+        model_marker.cpp \
+        pose.cpp \
+        lidar.cpp \
+        lidar_factory.cpp \
+        entity.cpp \
+        scene.cpp \
+        point_cloud_exporter.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 
