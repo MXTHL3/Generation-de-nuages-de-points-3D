@@ -28,7 +28,8 @@ class StaticEntity : public IEntity {
 public:
     StaticEntity(std::shared_ptr<Object> obj, Pose p);
     Transform3 getTransform() const override;
-    void update(double) override;
+    // TODO:: plus très sur d'en avoir besoin
+    void update(double dt) override;
 
     std::shared_ptr<Object> getMesh() const { return m_object; }
 private:
@@ -39,18 +40,21 @@ private:
 // Lidar dans la scène
 class LidarEntity : public IEntity {
 public:
-        LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, Pose p);
+        LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double m_fov_h, Pose p);
         Transform3 getTransform() const override;
+            // TODO:: plus très sur d'en avoir besoin
         void update(double dt) override;
 
         // génère les rayons à lancer
         std::vector<Ray3> scan(double h_deg) const;
         const Lidar& config() const;
         const double& h_step() const;
+        const double& fov_h() const;
 
 private:
     std::shared_ptr<Lidar> m_model; // Ref du Lidar
     unsigned int m_step_index;      // Indice du step horizontal
+    double m_fov_h;
     Pose m_pose;                    // Position du Lidar
 };
 

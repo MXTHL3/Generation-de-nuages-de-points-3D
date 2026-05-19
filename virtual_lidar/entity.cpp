@@ -1,4 +1,7 @@
 #include "entity.hpp"
+
+#include "units.hpp"
+
 // STATIC ENTITY
 StaticEntity::StaticEntity(std::shared_ptr<Object> obj, Pose p)
     : m_object(obj), m_pose(p) {}
@@ -8,8 +11,8 @@ Transform3 StaticEntity::getTransform() const { return m_pose.getTransform(); }
 void StaticEntity::update(double) {}
 
 // LIDAR ENTITY
-LidarEntity::LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, Pose p)
-    : m_model(model), m_step_index(step_index), m_pose(p) {}
+LidarEntity::LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double fov_h, Pose p)
+    : m_model(model), m_step_index(step_index), m_fov_h(to_radians(fov_h)), m_pose(p) {}
 
 Transform3 LidarEntity::getTransform() const { return m_pose.getTransform(); }
 
@@ -18,6 +21,8 @@ void LidarEntity::update(double) {}
 const Lidar& LidarEntity::config() const { return *m_model; }
 
 const double& LidarEntity::h_step() const { return m_model->m_h_step.at(m_step_index); }
+
+const double& LidarEntity::fov_h() const { return m_fov_h; }
 
 std::vector<Ray3> LidarEntity::scan(double h_rad) const {
     Transform3 world_xf = getTransform();
@@ -31,7 +36,7 @@ std::vector<Ray3> LidarEntity::scan(double h_rad) const {
                     std::cos(laser.v_rad) * std::sin(h),
                     std::sin(laser.v_rad));
 
-        rays.push_back({m_pose.m_position, world_xf.transform(dir)});
+        rays.push_back({m_pose.pos(), world_xf.transform(dir)});
     }
 
     return rays;
