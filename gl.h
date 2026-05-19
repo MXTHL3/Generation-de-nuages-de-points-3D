@@ -9,6 +9,10 @@
 #include <memory>
 #include "cgal.h"
 #include "model_marker.h"
+#include "scene.h"
+#include "entity.h"
+#include "lidar_factory.h"
+#include "point_cloud_exporter.h"
 
 struct ModelTransform {
     float pos_x = 0.0f, pos_y = 0.0f, pos_z = 0.0f;
@@ -16,12 +20,15 @@ struct ModelTransform {
     float scale = 1.0f;
 };
 
+#include "cgal_glm_utils.h"
+
 class Gl {
 public:
     explicit Gl(std::unique_ptr<Cgal> default_scene);
     Gtk::Widget& widget() { return m_overlay; }
     void load_file(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
+    void run_scan(const std::string& lidar_config_path, const std::string& output_path);
     std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     sigc::signal<void(MarkerType)> signal_marker_clicked;
 

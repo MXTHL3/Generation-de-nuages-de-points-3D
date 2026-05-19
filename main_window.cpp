@@ -125,6 +125,22 @@ void MainWindow::add_menu_item(const std::string& menu_item,
             });
         }
 
+        else if (label == "Lancer scan") {
+            _sub->signal_activate().connect([this]() {
+                Gtk::FileChooserDialog dialog("Enregistrer le nuage de points",
+                                            Gtk::FILE_CHOOSER_ACTION_SAVE);
+                dialog.set_transient_for(*this);
+                dialog.set_current_name("scan.ply");
+                dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+                dialog.add_button("Enregistrer", Gtk::RESPONSE_OK);
+
+                if (dialog.run() == Gtk::RESPONSE_OK) {
+                    std::string out_path = dialog.get_filename();
+                    m_gl->run_scan("lidars_config/ouster_os1_64.json", out_path);
+                }
+            });
+        }
+
         sub_menu->append(*_sub);
         _sub->show();
     }

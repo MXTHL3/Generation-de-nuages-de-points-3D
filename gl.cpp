@@ -456,6 +456,68 @@ void Gl::update_markers_positions() {
     m_fixed.queue_draw();
 }
 
+void Gl::run_scan(const std::string& lidar_config_path,
+                  const std::string& output_path)
+{
+    Scene world;
+
+    for (size_t i = 0; i < m_scenes.size(); ++i)
+    {
+        const SurfaceMesh& mesh = m_scenes[i]->mesh();
+        float off = OFFSET_STEP * static_cast<float>(i);
+
+        glm::mat4 glm_off = glm::translate(glm::mat4(1.0f), glm::vec3(off, off, off));
+        glm::mat4 glm_tr  = make_model_matrix(m_transforms[i]);
+        glm::mat4 combined = glm_off * glm_tr;
+
+        Transform3 xform(
+            combined[0][0], combined[1][0], combined[2][0], combined[3][0],
+            combined[0][1], combined[1][1], combined[2][1], combined[3][1],
+            combined[0][2], combined[1][2], combined[2][2], combined[3][2]
+        );
+
+        auto obj = std::make_shared<Object>();
+        for (const auto& face : mesh.faces())
+        {
+            auto h  = mesh.halfedge(face);
+            Point3 p0 = mesh.point(mesh.source(h));
+            Point3 p1 = mesh.point(mesh.target(h));
+            Point3 p2 = mesh.point(mesh.target(mesh.next(h)));
+            obj->m_triangles.push_back(
+                Triangle3(p0, p1, p2).transform(xform));
+        }
+
+        auto entity = std::make_shared<StaticEntity>(obj, Pose());
+        world.addEntity(entity);
+    }
+
+    world.build();
+
+    auto lidar_model = LidarFactory::createFromJsonConfig(lidar_config_path);
+    LidarEntity lidar(lidar_model, 0, Pose(Point3(0, 0, 2)));
+
+    std::vector<Point3> cloud;
+    double h_step = lidar.h_step();
+    for (double hr = 0.0; hr < 360.0; hr += h_step)
+    {
+        for (const Ray3& ray : lidar.scan(hr))
+        {
+            double dist;
+            if (world.intersect(ray, dist))
+            {
+                if (dist >= lidar_model->m_min_dist &&
+                    dist <= lidar_model->m_max_dist)
+                    cloud.push_back(ray.point(dist));
+            }
+        }
+    }
+
+    PlyExporter exporter;
+    exporter.save(output_path, cloud);
+
+    std::cout << "Scan terminé : " << cloud.size() << " points → " << output_path << "\n";
+}
+
 void Gl::focus_gl_area() {
     gl_area.grab_focus();
 }
