@@ -15,7 +15,7 @@ public:
     Pose(Point3 p = Point3(0, 0, 0), double rx = 0.0, double ry = 0.0, double rz = 0.0);
     
     // Calcule la matrice de transformation
-    Transform3 getTransform() const;
+    Transform3 transform() const;
 
     double rx() const { return m_rx; }
     double ry() const { return m_ry; }

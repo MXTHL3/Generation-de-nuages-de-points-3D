@@ -2,22 +2,22 @@
 
 #include <iterator>
 
-void Scene::addEntity(std::shared_ptr<StaticEntity> ent) { 
-    m_objects.push_back(ent); 
-}
+void Scene::add_entity(std::shared_ptr<IEntity> ent) { 
+    m_entities.push_back(ent);
 
-void Scene::addLidar(std::shared_ptr<LidarEntity> lidar_ent){
-    m_lidars.push_back(lidar_ent);
+    if(auto lidar = std::dynamic_pointer_cast<LidarEntity>(ent)){
+        m_lidars.push_back(lidar.get());
+    }
 }
 
 void Scene::build(){
     m_triangles.clear();
-    for(auto& ent : m_objects) {
+    for(auto& ent : m_entities) {
         auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent);
 
-        if(staticEnt && staticEnt->getMesh()) {
-            Transform3 xform = staticEnt->getTransform();
-            const auto& local_tris = staticEnt->getMesh()->m_triangles;
+        if(staticEnt) {
+            Transform3 xform = staticEnt->transform();
+            const auto& local_tris = staticEnt->meshTriangles();
 
             for(const auto& tri : local_tris) {
                 m_triangles.push_back(tri.transform(xform));
@@ -53,7 +53,7 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
     if(lidar_id < m_lidars.size()){
         
         std::vector<Point3> pointCloud;
-        std::shared_ptr<LidarEntity> lidar_ent = m_lidars[lidar_id];
+        LidarEntity* lidar_ent = m_lidars[lidar_id];
 
         double fov_h = lidar_ent->fov_h();
         double step = lidar_ent->h_step();
@@ -75,6 +75,6 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
 
         return pointCloud;
     }
-    throw new std::runtime_error("L'index donné qui correspond à une 'entité Lidar' pour scanner la scène n'existe pas !");
+    throw std::runtime_error("L'index donné qui correspond à une 'entité Lidar' pour scanner la scène n'existe pas !");
 
 }

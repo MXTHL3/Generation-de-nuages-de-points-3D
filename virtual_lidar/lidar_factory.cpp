@@ -32,3 +32,29 @@ std::shared_ptr<Lidar> LidarFactory::createFromJsonConfig(const std::string& con
 
     return lidar;
 }
+
+bool LidarFactory::saveToJson(const std::string& configPath, const Lidar& lidar){
+
+    nlohmann::json data;
+    data["model"] = lidar.m_model;
+    data["min_range"] = lidar.m_min_dist;
+    data["max_range"] = lidar.m_max_dist;
+    data["h_step"] = lidar.m_h_step;
+    data["accuracy"] = lidar.m_accuracy;
+
+    data["lasers"] = nlohmann::json::array();
+    for(const auto& laser : lidar.m_lasers){
+        nlohmann::json laser_json;
+
+        laser_json["v_angle"] = to_degrees(laser.v_rad);
+        laser_json["h_offset"] = to_degrees(laser.h_off);
+        laser_json["d_offset"] = laser.d_off;
+
+        data["lasers"].push_back(laser_json);
+    } 
+
+    std::ofstream file(configPath);
+    if(!file.is_open()) return false;
+    file << data.dump(4);
+    return true;
+}

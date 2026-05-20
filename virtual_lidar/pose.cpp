@@ -5,7 +5,7 @@ Pose::Pose(Point3 p, double rx, double ry, double rz)
     : m_position(p), m_rx(to_radians(rx)), m_ry(to_radians(ry)), m_rz(to_radians(rz)){ 
     }
 
-Transform3 Pose::getTransform() const {
+Transform3 Pose::transform() const {
     // TODO :: à voir un passage à glm
 
     Transform3 rotX(1.0, 0.0, 0.0,

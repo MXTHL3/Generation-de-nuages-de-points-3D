@@ -13,8 +13,8 @@ typedef K::Triangle_3 Triangle3;
 class IEntity {
 public:
     virtual ~IEntity() {};
-    virtual Transform3 getTransform() const = 0;    // Récupère la position dans la scène
-    virtual void update(double dt) = 0;             // Update de la position         
+    virtual Transform3 transform() const = 0;    // Récupère la position dans la scène
+    virtual const Pose& pose() const = 0;      
 };
 
 // Contient le mesh
@@ -27,11 +27,11 @@ public:
 class StaticEntity : public IEntity {
 public:
     StaticEntity(std::shared_ptr<Object> obj, Pose p);
-    Transform3 getTransform() const override;
-    // TODO:: plus très sur d'en avoir besoin
-    void update(double dt) override;
+    Transform3 transform() const override;
+    const Pose& pose() const override{ return m_pose; }
 
-    std::shared_ptr<Object> getMesh() const { return m_object; }
+    const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
+
 private:
     std::shared_ptr<Object> m_object; // Ref du Mesh
     Pose m_pose;                      // Position du Mesh
@@ -41,9 +41,9 @@ private:
 class LidarEntity : public IEntity {
 public:
         LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double m_fov_h, Pose p);
-        Transform3 getTransform() const override;
-            // TODO:: plus très sur d'en avoir besoin
-        void update(double dt) override;
+        Transform3 transform() const override;
+        const Pose& pose() const override{ return m_pose; }
+        unsigned int step_index() const { return m_step_index;}
 
         // génère les rayons à lancer
         std::vector<Ray3> scan(double h_deg) const;

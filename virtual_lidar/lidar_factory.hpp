@@ -14,6 +14,7 @@ namespace LidarModels {
 class LidarFactory {
 public:
     static std::shared_ptr<Lidar> createFromJsonConfig(const std::string& configPath);
+    static bool saveToJson(const std::string& configPath, const Lidar& lidar);
 };
 
 #endif
