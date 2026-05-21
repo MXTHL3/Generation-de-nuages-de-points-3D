@@ -7,6 +7,8 @@
 #include "scene_utils.hpp"
 #include "point_cloud_exporter.hpp"
 
+std::string scene_path = "scenes_config/test_scene.json";
+
 int main(int argc, char* argv[]) {
     try {
         Scene world;
@@ -14,11 +16,11 @@ int main(int argc, char* argv[]) {
 
         if(argc > 1) {
 
-            // chill
+            scene_path = argv[1];
             return 1;
 
         }else{
-            if(SceneLoader::load_scene_from_json("scenes_config/test.json", world, assets)){
+            if(SceneLoader::load_scene_from_json(scene_path, world, assets)){
                 world.build();
 
                 std::vector<Point3> resultCloud = world.scan(0);
