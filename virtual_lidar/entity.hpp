@@ -3,6 +3,8 @@
 
 #include "pose.hpp"
 #include "lidar.hpp"
+#include "noise_model.hpp"
+
 #include <memory>
 #include <vector>
 
@@ -51,11 +53,17 @@ public:
         const double& h_step() const;
         const double& fov_h() const;
 
+        void noise_model(std::shared_ptr<NoiseModel> model) {m_noise_model = model; }
+        double noisy_distance(double d) const {
+            return m_noise_model ? m_noise_model->apply(d) : d;
+        }
+
 private:
     std::shared_ptr<Lidar> m_model; // Ref du Lidar
     unsigned int m_step_index;      // Indice du step horizontal
     double m_fov_h;
     Pose m_pose;                    // Position du Lidar
+    std::shared_ptr<NoiseModel> m_noise_model = std::make_shared<OusterOS2Noise>(); //Modele de génération de bruit à voir pour le placer directement dans le JSON
 };
 
 #endif

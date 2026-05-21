@@ -67,7 +67,16 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
 
                 if(hit){
                     if(hit->distance >= config.m_min_dist && hit->distance){
-                        pointCloud.push_back(hit->point);
+
+                        double noisy_dist = lidar_ent->noisy_distance(hit->distance);
+                        
+                        Vector3 dir = ray.to_vector();
+
+                        dir = dir / std::sqrt(CGAL::to_double(dir.squared_length()));
+                        
+                        Point3 noisy_point = ray.source() + (dir * noisy_dist);
+                        
+                        pointCloud.push_back(noisy_point);
                     }
                 }
             }

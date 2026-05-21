@@ -12,7 +12,10 @@ SOURCES = main.cpp \
 		lidar.cpp \
 		point_cloud_exporter.cpp \
 		pose.cpp \
-		scene.cpp
+		scene.cpp \
+		scene_utils.cpp \
+		asset_manager.cpp \
+		noise_model.cpp
 
 all: $(TARGET)
 

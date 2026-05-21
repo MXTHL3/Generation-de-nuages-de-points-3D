@@ -1,0 +1,37 @@
+{
+    "lidar_entities": [
+        {
+            "lidar_config": "lidars_config/ouster_os2_128.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    1.25
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "step_index": 2
+        }
+    ],
+    "static_entities": [
+        {
+            "mesh_path": "ply_models/plane.ply",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        }
+    ]
+}
