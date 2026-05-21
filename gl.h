@@ -29,6 +29,9 @@ public:
     void load_file(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
     void run_scan(const std::string& lidar_config_path, const std::string& output_path);
+    void set_lidar_config(const std::string& path) { m_lidar_config = path; }
+    const std::string& get_lidar_config() const { return m_lidar_config; }
+    void toggle_point_cloud() { m_show_point_cloud = !m_show_point_cloud; gl_area.queue_render(); }
     std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     sigc::signal<void(MarkerType)> signal_marker_clicked;
 
@@ -38,6 +41,11 @@ private:
     Gtk::Fixed m_fixed;
     GLuint vao = 0;
     GLuint vbo = 0;
+    GLuint vao_cloud = 0;
+    GLuint vbo_cloud = 0;
+    int m_cloud_point_count = 0;
+    bool m_show_point_cloud  = false;
+    std::string m_lidar_config = "lidars_config/ouster_os1_64.json";
     GLuint shader_program = 0;
     std::vector<float> vertex_data;
     std::vector<std::unique_ptr<Cgal>> m_scenes;

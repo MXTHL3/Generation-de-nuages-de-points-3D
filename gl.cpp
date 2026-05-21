@@ -237,6 +237,14 @@ void Gl::on_realize() {
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
+    glGenBuffers(1, &vbo_cloud);
+
+    glGenVertexArrays(1, &vao_cloud);
+    glBindVertexArray(vao_cloud);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(0);
+    glBindVertexArray(0);
 
     rebuild_vertex_data();
     upload_vertex_data();
@@ -316,6 +324,18 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
         offset_verts += vc;
     }
 
+    if (m_show_point_cloud && m_cloud_point_count > 0) {
+        glm::mat4 identity_model = cam;
+        glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(identity_model));
+        glUniform3f(color_loc, 1.0f, 0.9f, 0.0f);
+
+        glBindVertexArray(vao_cloud);
+        glPointSize(3.0f);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glDrawArrays(GL_POINTS, 0, m_cloud_point_count);
+        glPointSize(1.0f);
+    }
+
     glBindVertexArray(0);
     update_markers_positions();
     return true;
@@ -324,6 +344,8 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
 void Gl::on_unrealize() {
     gl_area.make_current();
     if (vbo != 0) { glDeleteBuffers(1, &vbo); vbo = 0; }
+    if (vbo_cloud != 0) { glDeleteBuffers(1, &vbo_cloud); vbo_cloud = 0; }
+    if (vao_cloud != 0) { glDeleteVertexArrays(1, &vao_cloud); vao_cloud = 0; }
     if (vao != 0) { glDeleteVertexArrays(1, &vao); vao = 0; }
     if (shader_program != 0) { glDeleteProgram(shader_program); shader_program = 0; }
 }
@@ -492,9 +514,15 @@ void Gl::run_scan(const std::string& lidar_config_path,
     }
 
     world.build();
+    std::cout << "Triangles dans la scène : " << world.triangle_count() << "\n";
+    if (!m_scenes.empty()) {
+        auto h = m_scenes[0]->mesh().halfedge(*m_scenes[0]->mesh().faces().begin());
+        auto p = m_scenes[0]->mesh().point(m_scenes[0]->mesh().source(h));
+        std::cout << "Premier sommet mesh[0] : " << p << "\n";
+    }
 
     auto lidar_model = LidarFactory::createFromJsonConfig(lidar_config_path);
-    LidarEntity lidar(lidar_model, 0, Pose(Point3(0, 0, 2)));
+    LidarEntity lidar(lidar_model, 0, Pose(Point3(0, 0, 0)));
 
     std::vector<Point3> cloud;
     double h_step = lidar.h_step();
@@ -514,6 +542,29 @@ void Gl::run_scan(const std::string& lidar_config_path,
 
     PlyExporter exporter;
     exporter.save(output_path, cloud);
+
+    std::vector<float> cloud_data;
+    cloud_data.reserve(cloud.size() * 3);
+    for (const auto& p : cloud) {
+        cloud_data.push_back(static_cast<float>(p.x()));
+        cloud_data.push_back(static_cast<float>(p.y()));
+        cloud_data.push_back(static_cast<float>(p.z()));
+    }
+    m_cloud_point_count = static_cast<int>(cloud.size());
+
+    if (gl_area.get_realized()) gl_area.make_current();
+    glBindVertexArray(vao_cloud);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
+    glBufferData(GL_ARRAY_BUFFER,
+                cloud_data.size() * sizeof(float),
+                cloud_data.data(), GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(0);
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    m_show_point_cloud = true;
+    gl_area.queue_render();
 
     std::cout << "Scan terminé : " << cloud.size() << " points → " << output_path << "\n";
 }

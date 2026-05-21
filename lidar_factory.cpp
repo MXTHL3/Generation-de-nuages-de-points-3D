@@ -12,11 +12,11 @@ std::shared_ptr<Lidar> LidarFactory::createFromJsonConfig(const std::string& con
     file >> data;
 
     auto lidar = std::make_shared<Lidar>(
-        data["model"],
-        data["min_range"],
-        data["max_range"],
-        data["h_step"],
-        data["accuracy"]
+        data.value("model", data.value("model_name", std::string("unknown"))),
+        data.value("min_range", data.value("min_dist", 0.5)),
+        data.value("max_range", data.value("max_dist", 100.0)),
+        data.value("h_step", std::vector<double>{1.0}),
+        data.value("accuracy", 0.02)
     );
 
     for(const auto& laser : data["lasers"]) {

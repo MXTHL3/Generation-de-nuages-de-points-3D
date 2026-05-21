@@ -17,7 +17,8 @@ public:
 private:
     Gtk::Box main_box;
     Gtk::MenuBar menubar;
-    Gtk::Label m_status_label; 
+    Gtk::Label m_status_label;
+    Gtk::ComboBoxText m_lidar_combo; 
     std::vector<std::vector<std::string>> menu_bar_data;
     std::unique_ptr<Gl> m_gl;
     HandleFile m_handle_file;

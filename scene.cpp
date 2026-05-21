@@ -23,7 +23,7 @@ void Scene::build(){
 }
 
 boost::optional<Point3> Scene::intersect(const Ray3& ray, double& distance) const {
-    if(!m_tree && m_tree->empty()) return boost::none;
+    if(!m_tree || m_tree->empty()) return boost::none;
 
     auto impact = m_tree->first_intersection(ray);
 

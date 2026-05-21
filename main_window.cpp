@@ -18,6 +18,28 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl)
 
     add(main_box);
     main_box.pack_start(menubar, Gtk::PACK_SHRINK);
+
+    Gtk::Box* lidar_bar = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 6);
+    lidar_bar->set_margin_start(8);
+    lidar_bar->set_margin_end(8);
+    lidar_bar->set_margin_top(2);
+    lidar_bar->set_margin_bottom(2);
+
+    auto* lidar_label = Gtk::make_managed<Gtk::Label>("Modèle LiDAR :");
+    m_lidar_combo.append("lidars_config/ouster_os1_64.json", "Ouster OS1-64");
+    m_lidar_combo.append("lidars_config/ouster_os2_128.json", "Ouster OS2-128");
+    m_lidar_combo.append("lidars_config/vedolyne_vlp16.json", "Velodyne VLP-16");
+    m_lidar_combo.append("lidars_config/velodyne_vlp32c.json", "Velodyne VLP-32C");
+    m_lidar_combo.set_active(0);
+
+    m_lidar_combo.signal_changed().connect([this]() {
+        std::string chosen = m_lidar_combo.get_active_id();
+        if (!chosen.empty()) m_gl->set_lidar_config(chosen);
+    });
+
+    lidar_bar->pack_start(*lidar_label, Gtk::PACK_SHRINK);
+    lidar_bar->pack_start(m_lidar_combo, Gtk::PACK_SHRINK);
+    main_box.pack_start(*lidar_bar, Gtk::PACK_SHRINK);
     main_box.pack_start(m_gl->widget(), Gtk::PACK_EXPAND_WIDGET);
 
     m_gl->signal_marker_clicked.connect([this](MarkerType type) {
@@ -124,7 +146,6 @@ void MainWindow::add_menu_item(const std::string& menu_item,
                 });
             });
         }
-
         else if (label == "Lancer scan") {
             _sub->signal_activate().connect([this]() {
                 Gtk::FileChooserDialog dialog("Enregistrer le nuage de points",
@@ -134,10 +155,13 @@ void MainWindow::add_menu_item(const std::string& menu_item,
                 dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
                 dialog.add_button("Enregistrer", Gtk::RESPONSE_OK);
 
-                if (dialog.run() == Gtk::RESPONSE_OK) {
-                    std::string out_path = dialog.get_filename();
-                    m_gl->run_scan("lidars_config/ouster_os1_64.json", out_path);
-                }
+                if (dialog.run() == Gtk::RESPONSE_OK)
+                    m_gl->run_scan(m_gl->get_lidar_config(), dialog.get_filename());
+            });
+        }
+        else if (label == "Afficher/masquer nuage") {
+            _sub->signal_activate().connect([this]() {
+                m_gl->toggle_point_cloud();
             });
         }
 

@@ -18,6 +18,7 @@ public:
     void build();
     // retourne le point d'intersection du rayon
     boost::optional<Point3> intersect(const Ray3& ray, double& distance) const;
+    size_t triangle_count() const { return m_triangles.size(); }
 
 private:
     // les entités à rendre dans la scène
