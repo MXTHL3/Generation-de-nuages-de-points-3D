@@ -514,28 +514,42 @@ void Gl::run_scan(const std::string& lidar_config_path,
     }
 
     world.build();
-    std::cout << "Triangles dans la scène : " << world.triangle_count() << "\n";
-    if (!m_scenes.empty()) {
-        auto h = m_scenes[0]->mesh().halfedge(*m_scenes[0]->mesh().faces().begin());
-        auto p = m_scenes[0]->mesh().point(m_scenes[0]->mesh().source(h));
-        std::cout << "Premier sommet mesh[0] : " << p << "\n";
-    }
 
     auto lidar_model = LidarFactory::createFromJsonConfig(lidar_config_path);
-    LidarEntity lidar(lidar_model, 0, Pose(Point3(0, 0, 0)));
+
+    const double D = 10.0;  
+
+    struct LidarSetup {
+        Point3 position;
+        double rx, ry, rz;
+    };
+
+    const std::vector<LidarSetup> setups = {
+        { Point3( D,  0,  0),   0.0,  0.0,  0.0 },  
+        { Point3(-D,  0,  0),   0.0, 180.0,  0.0 },  
+        { Point3( 0,  D,  0),  0.0,   0.0,  0.0 },  
+        { Point3( 0, -D,  0), 180.0,  0.0,  0.0 },  
+        { Point3( 0,  0,  D),   0.0,  -90.0,  0.0 },  
+        { Point3( 0,  0, -D),   0.0, 90.0,  0.0 },  
+    };
 
     std::vector<Point3> cloud;
-    double h_step = lidar.h_step();
-    for (double hr = 0.0; hr < 360.0; hr += h_step)
+    double h_step = lidar_model->m_h_step.at(0);
+
+    for (const auto& setup : setups)
     {
-        for (const Ray3& ray : lidar.scan(hr))
+        LidarEntity lidar(lidar_model, 0,
+                          Pose(setup.position, setup.rx, setup.ry, setup.rz));
+
+        for (double hr = 0.0; hr < 360.0; hr += h_step)
         {
-            double dist;
-            if (world.intersect(ray, dist))
+            for (const Ray3& ray : lidar.scan(hr))
             {
-                if (dist >= lidar_model->m_min_dist &&
-                    dist <= lidar_model->m_max_dist)
-                    cloud.push_back(ray.point(dist));
+                double dist;
+                if (world.intersect(ray, dist))
+                    if (dist >= lidar_model->m_min_dist &&
+                        dist <= lidar_model->m_max_dist)
+                        cloud.push_back(ray.point(dist));
             }
         }
     }
@@ -566,7 +580,7 @@ void Gl::run_scan(const std::string& lidar_config_path,
     m_show_point_cloud = true;
     gl_area.queue_render();
 
-    std::cout << "Scan terminé : " << cloud.size() << " points → " << output_path << "\n";
+    std::cout << "Scan terminé : " << cloud.size() << " points (6 positions) → " << output_path << "\n";
 }
 
 void Gl::focus_gl_area() {

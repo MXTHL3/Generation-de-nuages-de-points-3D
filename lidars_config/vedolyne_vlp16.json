@@ -1,24 +1,92 @@
 {
-    "model_name": "Velodyne VLP-16",
+    "model": "Velodyne VLP-16",
     "min_range": 0.5,
     "max_range": 100.0,
+    "h_step": [
+        0.4,
+        0.2
+    ],
     "accuracy": 0.03,
     "lasers": [
-        { "v_angle": -15.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -13.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -11.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -9.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -7.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -5.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -3.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": -1.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 1.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 3.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 5.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 7.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 9.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 11.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 13.0, "h_offset": 0.0, "d_offset": 0.0 },
-        { "v_angle": 15.0, "h_offset": 0.0, "d_offset": 0.0 }
+        {
+            "v_angle": -15.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -13.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -11.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -9.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -7.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -5.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -3.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": -1.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 1.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 3.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 5.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 7.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 9.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 11.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 13.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        },
+        {
+            "v_angle": 15.0,
+            "h_offset": 0.0,
+            "d_offset": 0.0
+        }
     ]
 }
