@@ -54,16 +54,15 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl)
             "Ouvrir modèle 3D", "Charger scène", "Charger scan (PLY/LAS)",
             "Sauvegarder nuage de points", "Capturer image", "Quitter"},
         {"Scène",
-            "Ajouter humain", "Ajouter objet",
             "Supprimer sélection", "Réinitialiser scène"},
         {"Scanner 3D",
-            "Lancer scan", "Arrêter scan", "Paramètres scanner"},
+            "Lancer scan", "Paramètres scanner"},
         {"Simulation",
             "Visualiser rayons laser", "Visualiser intersections",
             "Coloration par distance"},
         {"Nuage de points",
             "Afficher/masquer nuage", "Filtrage bruit",
-            "Ajuster nombre de points", "Color mapping", "Exporter"},
+            "Ajuster nombre de points", "Color mapping"},
         {"IA",
             "Générer ensemble de données"},
         {"Affichage",
@@ -148,15 +147,32 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         }
         else if (label == "Lancer scan") {
             _sub->signal_activate().connect([this]() {
-                Gtk::FileChooserDialog dialog("Enregistrer le nuage de points",
-                                            Gtk::FILE_CHOOSER_ACTION_SAVE);
+
+                Gtk::FileChooserDialog dialog("Enregistrer le nuage de points", Gtk::FILE_CHOOSER_ACTION_SAVE);
+
                 dialog.set_transient_for(*this);
-                dialog.set_current_name("scan.ply");
                 dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
                 dialog.add_button("Enregistrer", Gtk::RESPONSE_OK);
 
+                auto filter_ply = Gtk::FileFilter::create();
+                filter_ply->set_name("PLY (*.ply)");
+                filter_ply->add_pattern("*.ply");
+
+                auto filter_las = Gtk::FileFilter::create();
+                filter_las->set_name("LAS (*.las)");
+                filter_las->add_pattern("*.las");
+
+                dialog.add_filter(filter_ply);
+                dialog.add_filter(filter_las);
+                dialog.set_filter(filter_ply);
+                dialog.set_current_name("scan.ply");
+
                 if (dialog.run() == Gtk::RESPONSE_OK)
-                    m_gl->run_scan(m_gl->get_lidar_config(), dialog.get_filename());
+                {
+                    m_gl->run_scan(
+                        m_gl->get_lidar_config(),
+                        dialog.get_filename());
+                }
             });
         }
         else if (label == "Afficher/masquer nuage") {

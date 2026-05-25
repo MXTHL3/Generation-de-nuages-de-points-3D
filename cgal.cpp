@@ -29,9 +29,9 @@ std::vector<float> Cgal::to_vertex_data() const
         for (auto vi : verts)
         {
             const Point& p = positions[vi];
-            data.push_back(static_cast<float>(p.x()) + m_ox);
-            data.push_back(static_cast<float>(p.y()) + m_oy);
-            data.push_back(static_cast<float>(p.z()) + m_oz);
+            data.push_back(static_cast<float>(p.x()));
+            data.push_back(static_cast<float>(p.y()));
+            data.push_back(static_cast<float>(p.z()));
         }
     }
 

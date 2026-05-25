@@ -75,7 +75,6 @@ glm::mat4 Gl::make_model_matrix(const ModelTransform& tr) const {
 
 Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     default_scene->build_cube_mesh();
-    default_scene->set_offset(0.0f, 0.0f, 0.0f);
     m_scenes.push_back(std::move(default_scene));
     m_transforms.push_back({});
 
@@ -156,18 +155,51 @@ void Gl::add_overlay_widget(Gtk::Widget& w) {
     m_overlay.set_overlay_pass_through(w, true);
 }
 
+void Gl::build_grid(float size, float step)
+{
+    std::vector<float> grid;
+    float half = size * 0.5f;
+
+    for (float z = -half; z <= half; z += step) {
+        grid.push_back(-half); grid.push_back(0.0f); grid.push_back(z);
+        grid.push_back( half); grid.push_back(0.0f); grid.push_back(z);
+    }
+
+    for (float x = -half; x <= half; x += step) {
+        grid.push_back(x); grid.push_back(0.0f); grid.push_back(-half);
+        grid.push_back(x); grid.push_back(0.0f); grid.push_back( half);
+    }
+
+    grid_vertex_count = static_cast<GLsizei>(grid.size() / 3);
+
+    glGenVertexArrays(1, &vao_grid);
+    glGenBuffers(1, &vbo_grid);
+
+    glBindVertexArray(vao_grid);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_grid);
+
+    glBufferData(GL_ARRAY_BUFFER,
+                 grid.size() * sizeof(float),
+                 grid.data(),
+                 GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(0);
+
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 void Gl::load_file(const std::string& path) {
     if (gl_area.get_realized()) gl_area.make_current();
 
     m_load_count++;
-    float off = OFFSET_STEP * static_cast<float>(m_load_count);
-    int midx  = m_load_count;
+    int midx = m_load_count;
 
     auto scene = std::make_unique<CgalShape>();
     scene->build_mesh_from_file(path);
-    scene->set_offset(off, off, off);
     m_scenes.push_back(std::move(scene));
-    m_transforms.push_back({});   
+    m_transforms.push_back({});
 
     add_center_marker(midx);
     ModelMarker* centerN = m_markers.back().get();
@@ -260,6 +292,7 @@ void Gl::on_realize() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    build_grid(100.0f, 5.0f);
     update_markers_positions();
 }
 
@@ -290,6 +323,14 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
     glUniformMatrix4fv(glGetUniformLocation(shader_program, "view"),       1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader_program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
+    glBindVertexArray(vao_grid);
+    glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(cam));
+    glUniform3f(color_loc, 0.7f, 0.2f, 0.9f);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glDrawArrays(GL_LINES, 0, grid_vertex_count);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glBindVertexArray(0);
+
     glBindVertexArray(vao);
 
     GLint offset_verts = 0;
@@ -298,8 +339,8 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
 
         float off = OFFSET_STEP * static_cast<float>(i);
         glm::mat4 model = cam;
-        model = glm::translate(model, glm::vec3(off, off, off));  
-        model = model * make_model_matrix(tr);                     
+        model = glm::translate(model, glm::vec3(off, off, off));
+        model = model * make_model_matrix(tr);
 
         glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(model));
 
@@ -343,6 +384,8 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
 
 void Gl::on_unrealize() {
     gl_area.make_current();
+    if (vbo_grid != 0) { glDeleteBuffers(1, &vbo_grid); vbo_grid = 0; }
+    if (vao_grid != 0) { glDeleteVertexArrays(1, &vao_grid); vao_grid = 0; }
     if (vbo != 0) { glDeleteBuffers(1, &vbo); vbo = 0; }
     if (vbo_cloud != 0) { glDeleteBuffers(1, &vbo_cloud); vbo_cloud = 0; }
     if (vao_cloud != 0) { glDeleteVertexArrays(1, &vao_cloud); vao_cloud = 0; }
@@ -426,8 +469,6 @@ std::pair<double, double> Gl::project_to_2d(const glm::vec3& local_pos,
 
     float aspect = static_cast<float>(w) / static_cast<float>(h);
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 1000.0f);
-  
-    float off_unused = 0.0f; (void)off_unused;
 
     glm::mat4 model_mat = cam * make_model_matrix(tr);
     glm::vec4 clip = projection * view * model_mat * glm::vec4(local_pos, 1.0f);
@@ -478,18 +519,15 @@ void Gl::update_markers_positions() {
     m_fixed.queue_draw();
 }
 
-void Gl::run_scan(const std::string& lidar_config_path,
-                  const std::string& output_path)
-{
+void Gl::run_scan(const std::string& lidar_config_path, const std::string& output_path) {
     Scene world;
 
-    for (size_t i = 0; i < m_scenes.size(); ++i)
-    {
+    for (size_t i = 0; i < m_scenes.size(); ++i) {
         const SurfaceMesh& mesh = m_scenes[i]->mesh();
         float off = OFFSET_STEP * static_cast<float>(i);
 
         glm::mat4 glm_off = glm::translate(glm::mat4(1.0f), glm::vec3(off, off, off));
-        glm::mat4 glm_tr  = make_model_matrix(m_transforms[i]);
+        glm::mat4 glm_tr = make_model_matrix(m_transforms[i]);
         glm::mat4 combined = glm_off * glm_tr;
 
         Transform3 xform(
@@ -499,12 +537,14 @@ void Gl::run_scan(const std::string& lidar_config_path,
         );
 
         auto obj = std::make_shared<Object>();
-        for (const auto& face : mesh.faces())
-        {
-            auto h  = mesh.halfedge(face);
+
+        for (const auto& face : mesh.faces()) {
+            auto h = mesh.halfedge(face);
+
             Point3 p0 = mesh.point(mesh.source(h));
             Point3 p1 = mesh.point(mesh.target(h));
             Point3 p2 = mesh.point(mesh.target(mesh.next(h)));
+
             obj->m_triangles.push_back(
                 Triangle3(p0, p1, p2).transform(xform));
         }
@@ -517,70 +557,89 @@ void Gl::run_scan(const std::string& lidar_config_path,
 
     auto lidar_model = LidarFactory::createFromJsonConfig(lidar_config_path);
 
-    const double D = 10.0;  
+    constexpr double D = 10.0;
 
     struct LidarSetup {
         Point3 position;
-        double rx, ry, rz;
+        double rx;
+        double ry;
+        double rz;
     };
 
     const std::vector<LidarSetup> setups = {
-        { Point3( D,  0,  0),   0.0,  0.0,  0.0 },  
-        { Point3(-D,  0,  0),   0.0, 180.0,  0.0 },  
-        { Point3( 0,  D,  0),  0.0,   0.0,  0.0 },  
-        { Point3( 0, -D,  0), 180.0,  0.0,  0.0 },  
-        { Point3( 0,  0,  D),   0.0,  -90.0,  0.0 },  
-        { Point3( 0,  0, -D),   0.0, 90.0,  0.0 },  
+        { Point3( D,  0,  0),   0.0,   0.0,   0.0 },
+        { Point3(-D,  0,  0),   0.0, 180.0,   0.0 },
+        { Point3( 0,  D,  0),   0.0,   0.0,   0.0 },
+        { Point3( 0, -D,  0), 180.0,   0.0,   0.0 },
+        { Point3( 0,  0,  D),   0.0, -90.0,   0.0 },
+        { Point3( 0,  0, -D),   0.0,  90.0,   0.0 }
     };
 
     std::vector<Point3> cloud;
-    double h_step = lidar_model->m_h_step.at(0);
 
-    for (const auto& setup : setups)
-    {
-        LidarEntity lidar(lidar_model, 0,
-                          Pose(setup.position, setup.rx, setup.ry, setup.rz));
+    const double h_step = lidar_model->m_h_step.at(0);
 
-        for (double hr = 0.0; hr < 360.0; hr += h_step)
-        {
-            for (const Ray3& ray : lidar.scan(hr))
-            {
+    for (const auto& setup : setups) {
+        LidarEntity lidar(lidar_model, 0, Pose(setup.position, setup.rx, setup.ry, setup.rz));
+
+        for (double hr = 0.0; hr < 360.0; hr += h_step) {
+            for (const Ray3& ray : lidar.scan(hr)) {
                 double dist;
-                if (world.intersect(ray, dist))
+
+                if (world.intersect(ray, dist)) {
                     if (dist >= lidar_model->m_min_dist &&
-                        dist <= lidar_model->m_max_dist)
+                        dist <= lidar_model->m_max_dist) {
                         cloud.push_back(ray.point(dist));
+                    }
+                }
             }
         }
     }
 
-    PlyExporter exporter;
-    exporter.save(output_path, cloud);
+    std::unique_ptr<IPointCloudExporter> exporter;
+
+    std::string ext = std::filesystem::path(output_path).extension().string();
+
+    std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c) {
+        return static_cast<char>(std::tolower(c));
+    });
+
+    if (ext == ".las" || ext == ".laz") {
+        exporter = std::make_unique<LasExporter>();
+    }
+    else {
+        exporter = std::make_unique<PlyExporter>();
+    }
+
+    exporter->save(output_path, cloud);
 
     std::vector<float> cloud_data;
     cloud_data.reserve(cloud.size() * 3);
+
     for (const auto& p : cloud) {
         cloud_data.push_back(static_cast<float>(p.x()));
         cloud_data.push_back(static_cast<float>(p.y()));
         cloud_data.push_back(static_cast<float>(p.z()));
     }
+
     m_cloud_point_count = static_cast<int>(cloud.size());
 
-    if (gl_area.get_realized()) gl_area.make_current();
+    if (gl_area.get_realized())
+        gl_area.make_current();
+
     glBindVertexArray(vao_cloud);
     glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
-    glBufferData(GL_ARRAY_BUFFER,
-                cloud_data.size() * sizeof(float),
-                cloud_data.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, cloud_data.size() * sizeof(float), cloud_data.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     m_show_point_cloud = true;
+
     gl_area.queue_render();
 
-    std::cout << "Scan terminé : " << cloud.size() << " points (6 positions) → " << output_path << "\n";
+    std::cout << "Scan terminé : " << cloud.size() << " points (6 positions) -> " << output_path << std::endl;
 }
 
 void Gl::focus_gl_area() {

@@ -1,7 +1,7 @@
 CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2 -Iinclude
-CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy)
-LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy)
+CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy pdal)
+LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy pdal)
 LDFLAGS  += -lgmp -lmpfr
 
 TARGET   := app

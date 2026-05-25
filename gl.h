@@ -7,6 +7,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <vector>
 #include <memory>
+#include <filesystem>
+#include <algorithm>
 #include "cgal.h"
 #include "model_marker.h"
 #include "scene.h"
@@ -26,6 +28,7 @@ class Gl {
 public:
     explicit Gl(std::unique_ptr<Cgal> default_scene);
     Gtk::Widget& widget() { return m_overlay; }
+    void build_grid(float size, float step);
     void load_file(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
     void run_scan(const std::string& lidar_config_path, const std::string& output_path);
@@ -45,6 +48,9 @@ private:
     GLuint vbo_cloud = 0;
     int m_cloud_point_count = 0;
     bool m_show_point_cloud  = false;
+    GLuint vao_grid = 0;
+    GLuint vbo_grid = 0;
+    GLsizei grid_vertex_count = 0;
     std::string m_lidar_config = "lidars_config/ouster_os1_64.json";
     GLuint shader_program = 0;
     std::vector<float> vertex_data;

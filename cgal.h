@@ -13,7 +13,6 @@ public:
     virtual ~Cgal() = default;
     virtual void build_cube_mesh() = 0;
     virtual void build_mesh_from_file(const std::string& filename) = 0;
-    void set_offset(float ox, float oy, float oz) { m_ox = ox; m_oy = oy; m_oz = oz; }
     std::vector<float> to_vertex_data() const;
     const SurfaceMesh& mesh() const { return m_mesh; }
 
@@ -23,7 +22,4 @@ protected:
     void add_triangle(SurfaceMesh::Vertex_index a,
                       SurfaceMesh::Vertex_index b,
                       SurfaceMesh::Vertex_index c);
-
-private:
-    float m_ox = 0.0f, m_oy = 0.0f, m_oz = 0.0f;
 };

@@ -26,3 +26,37 @@ void PlyExporter::save(const std::string& filename, const std::vector<Point3>& p
     }
 
 }
+
+void LasExporter::save(const std::string& filename,
+                       const std::vector<Point3>& points)
+{
+    pdal::PointTable table;
+
+    auto view = std::make_shared<pdal::PointView>(table);
+
+    for (const auto& p : points)
+    {
+        pdal::PointId id = view->size();
+
+        view->setField(pdal::Dimension::Id::X, id, static_cast<double>(p.x()));
+        view->setField(pdal::Dimension::Id::Y,id,static_cast<double>(p.y()));
+        view->setField(pdal::Dimension::Id::Z,id, static_cast<double>(p.z()));
+    }
+
+    pdal::BufferReader reader;
+    reader.addView(view);
+
+    pdal::Options options;
+    options.add("filename", filename);
+    options.add("minor_version", 4);
+    options.add("dataformat_id", 0);
+    options.add("scale_x", 0.001);
+    options.add("scale_y", 0.001);
+    options.add("scale_z", 0.001);
+
+    pdal::LasWriter writer;
+    writer.setInput(reader);
+    writer.setOptions(options);
+    writer.prepare(table);
+    writer.execute(table);
+}
