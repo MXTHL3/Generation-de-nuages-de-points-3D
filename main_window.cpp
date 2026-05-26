@@ -180,6 +180,11 @@ void MainWindow::add_menu_item(const std::string& menu_item,
                 m_gl->toggle_point_cloud();
             });
         }
+        else if (label == "Quitter") {
+            _sub->signal_activate().connect([this]() {
+                hide();
+            });
+        }
 
         sub_menu->append(*_sub);
         _sub->show();

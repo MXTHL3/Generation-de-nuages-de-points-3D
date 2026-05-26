@@ -565,7 +565,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
         double ry;
         double rz;
     };
-
+    
     const std::vector<LidarSetup> setups = {
         { Point3( D,  0,  0),   0.0,   0.0,   0.0 },
         { Point3(-D,  0,  0),   0.0, 180.0,   0.0 },
@@ -574,6 +574,12 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
         { Point3( 0,  0,  D),   0.0, -90.0,   0.0 },
         { Point3( 0,  0, -D),   0.0,  90.0,   0.0 }
     };
+    
+    /*
+    const std::vector<LidarSetup> setups = {
+        { Point3(0, 0, m_zoom), 0.0, 0.0, 0.0 }
+    };
+    */
 
     std::vector<Point3> cloud;
 

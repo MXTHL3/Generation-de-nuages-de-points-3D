@@ -85,5 +85,4 @@ private:
     bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
     void on_marker_dragged(MarkerType type, int model_index, double dx, double dy);
     void connect_marker_signals(ModelMarker* marker);
-
 };
