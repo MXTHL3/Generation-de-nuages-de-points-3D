@@ -38,6 +38,8 @@ public:
     void pose(const Pose& pose) override{ m_pose = pose; }
 
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
+    
+    void update_mesh(std::shared_ptr<Object> new_obj) { m_object = new_obj; }
 
 private:
     std::shared_ptr<Object> m_object; // Ref du Mesh
