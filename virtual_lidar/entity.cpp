@@ -3,12 +3,20 @@
 #include "units.hpp"
 
 // STATIC ENTITY
+std::shared_ptr<IEntity> StaticEntity::clone() const {
+    return std::make_shared<StaticEntity>(*this);
+}
+
 StaticEntity::StaticEntity(std::shared_ptr<Object> obj, Pose p)
     : m_object(obj), m_pose(p) {}
 
 Transform3 StaticEntity::transform() const { return m_pose.transform(); }
 
 // LIDAR ENTITY
+std::shared_ptr<IEntity> LidarEntity::clone() const {
+    return std::make_shared<LidarEntity>(*this);
+}
+
 LidarEntity::LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double fov_h, Pose p)
     : m_model(model), m_step_index(step_index), m_fov_h(to_radians(fov_h)), m_pose(p), m_noise_model(new OusterOS2Noise){}
 

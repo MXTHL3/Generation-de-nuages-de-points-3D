@@ -15,8 +15,10 @@ typedef K::Triangle_3 Triangle3;
 class IEntity {
 public:
     virtual ~IEntity() {};
+    virtual std::shared_ptr<IEntity> clone() const = 0;
     virtual Transform3 transform() const = 0;    // Récupère la position dans la scène
-    virtual const Pose& pose() const = 0;      
+    virtual const Pose& pose() const = 0;
+    virtual void pose(const Pose& pose) = 0;      
 };
 
 // Contient le mesh
@@ -29,8 +31,11 @@ public:
 class StaticEntity : public IEntity {
 public:
     StaticEntity(std::shared_ptr<Object> obj, Pose p);
+    std::shared_ptr<IEntity> clone() const override; 
+    
     Transform3 transform() const override;
     const Pose& pose() const override{ return m_pose; }
+    void pose(const Pose& pose) override{ m_pose = pose; }
 
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
 
@@ -43,7 +48,9 @@ private:
 class LidarEntity : public IEntity {
 public:
         LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double m_fov_h, Pose p);
+        std::shared_ptr<IEntity> clone()const override;
         Transform3 transform() const override;
+        void pose(const Pose& pose) override { m_pose = pose; };
         const Pose& pose() const override{ return m_pose; }
         unsigned int step_index() const { return m_step_index;}
 

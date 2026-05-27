@@ -20,6 +20,10 @@ struct Intersection {
 
 class Scene {
 public:
+
+    Scene() = default;
+
+    Scene(const Scene& scene);
     // ajoute un objet à la scène
     // TODO:: pas sur pour le shared_ptr
     void add_entity(std::shared_ptr<IEntity> ent);
@@ -32,14 +36,14 @@ public:
     // retourne le point d'intersection du rayon
     boost::optional<Intersection> intersect(const Ray3& ray) const;
 
-    const std::vector<std::shared_ptr<IEntity>>& entities(){ return m_entities; } 
+    const std::vector<std::shared_ptr<IEntity>>& entities(){ return m_entities; }
 
 private:
     // les objets à rendre dans la scène
     std::vector<std::shared_ptr<IEntity>> m_entities;
 
     // les capteurs de la scène
-    std::vector<LidarEntity*> m_lidars;
+    std::vector<std::shared_ptr<LidarEntity>> m_lidars;
 
     // les triangles à rendre dans la scène
     std::vector<Triangle3> m_triangles;

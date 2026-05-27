@@ -2,11 +2,24 @@
 
 #include <iterator>
 
+Scene::Scene(const Scene& scene){
+    for(const auto& entity : scene.m_entities){
+        if(entity){
+            m_entities.push_back(entity->clone());
+        }
+    }
+
+    for(const auto& lidar : scene.m_lidars){
+        m_lidars.push_back(std::dynamic_pointer_cast<LidarEntity>(lidar->clone()));
+    }
+}
+
+
 void Scene::add_entity(std::shared_ptr<IEntity> ent) { 
     m_entities.push_back(ent);
 
     if(auto lidar = std::dynamic_pointer_cast<LidarEntity>(ent)){
-        m_lidars.push_back(lidar.get());
+        m_lidars.push_back(lidar);
     }
 }
 
@@ -53,7 +66,7 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
     if(lidar_id < m_lidars.size()){
         
         std::vector<Point3> pointCloud;
-        LidarEntity* lidar_ent = m_lidars[lidar_id];
+        std::shared_ptr<LidarEntity> lidar_ent = m_lidars[lidar_id];
 
         double fov_h = lidar_ent->fov_h();
         double step = lidar_ent->h_step();
