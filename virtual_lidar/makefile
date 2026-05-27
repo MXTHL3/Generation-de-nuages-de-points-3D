@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17 -O3
-LIBS = -lgmp -lmpfr
+LIBS = -lgmp -lmpfr -lspdlog -lfmt
 
 # Nom de l'exécutable
 TARGET = scan_lidar
@@ -15,7 +15,8 @@ SOURCES = main.cpp \
 		scene.cpp \
 		scene_utils.cpp \
 		asset_manager.cpp \
-		noise_model.cpp
+		noise_model.cpp \
+		pipeline.cpp
 
 all: $(TARGET)
 
