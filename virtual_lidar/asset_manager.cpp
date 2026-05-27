@@ -1,5 +1,7 @@
 #include "asset_manager.hpp"
 #include "lidar_factory.hpp"
+#include "logger.hpp"
+
 #include <iostream>
 
 #include <CGAL/Simple_cartesian.h>
@@ -21,6 +23,8 @@ typedef CGAL::Surface_mesh<CGAL_Point_3> CGAL_Mesh;
 std::shared_ptr<Object> AssetManager::get_mesh(const std::string& path){
     if(m_mesh_cache.find(path) == m_mesh_cache.end()){
         m_mesh_cache[path] = load_mesh_from_file(path);
+    }else{
+        SIM_DEBUG("Le fichier lidar : {} est déjà chargé !", path);
     }
 
     return m_mesh_cache[path];
@@ -31,6 +35,7 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
 
     CGAL_Mesh mesh;
 
+
     if (!CGAL::IO::read_polygon_mesh(path, mesh, CGAL::parameters::verbose(true)))
     {
         throw std::runtime_error("Le modèle : "+ path + " ne peut être lu !");
@@ -39,6 +44,7 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
     if (!CGAL::is_triangle_mesh(mesh))
     {
         CGAL::Polygon_mesh_processing::triangulate_faces(mesh);
+        SIM_DEBUG("le maillage a été triangulé !");
     }
 
     for (const auto &f : mesh.faces())
@@ -51,6 +57,8 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
 
         obj->m_triangles.push_back(Triangle3(p0, p1, p2));
     }
+
+    SIM_INFO("Le fichier mesh : {} a été chargé !", path);
     
     return obj;
 }
@@ -58,6 +66,8 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
 std::shared_ptr<Lidar> AssetManager::get_lidar_config(const std::string& path){
     if(m_lidar_config_cache.find(path) == m_lidar_config_cache.end()){
         m_lidar_config_cache[path] = load_lidar_from_file(path);
+    }else{
+        SIM_DEBUG("Le fichier lidar : {} est déjà chargé !", path);
     }
     return m_lidar_config_cache[path];
 }
