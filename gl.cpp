@@ -234,6 +234,139 @@ void Gl::load_file(const std::string& path) {
     gl_area.queue_render();
 }
 
+void Gl::load_scan(const std::string& path) {
+    std::string ext = std::filesystem::path(path).extension().string();
+    std::transform(ext.begin(), ext.end(), ext.begin(),
+                   [](unsigned char c){ return static_cast<char>(std::tolower(c)); });
+
+    std::vector<float> cloud_data;
+
+    if (ext == ".ply") {
+        std::ifstream f(path);
+        if (!f.is_open()) {
+            std::cerr << "Impossible d'ouvrir : " << path << "\n";
+            return;
+        }
+
+        std::string line;
+        bool in_header = true;
+        int n_vertices = 0;
+
+        while (in_header && std::getline(f, line)) {
+            if (line.rfind("element vertex", 0) == 0)
+                n_vertices = std::stoi(line.substr(15));
+            else if (line == "end_header")
+                in_header = false;
+        }
+
+        cloud_data.reserve(n_vertices * 3);
+        float x, y, z;
+        while (f >> x >> y >> z) {
+            cloud_data.push_back(x);
+            cloud_data.push_back(y);
+            cloud_data.push_back(z);
+        }
+
+    } else if (ext == ".las" || ext == ".laz") {
+        pdal::Options opts;
+        opts.add("filename", path);
+
+        pdal::LasReader reader;
+        reader.setOptions(opts);
+
+        pdal::PointTable table;
+        reader.prepare(table);
+        pdal::PointViewSet viewSet = reader.execute(table);
+
+        for (const auto& view : viewSet) {
+            cloud_data.reserve(cloud_data.size() + view->size() * 3);
+            for (pdal::PointId i = 0; i < view->size(); ++i) {
+                cloud_data.push_back(
+                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::X, i)));
+                cloud_data.push_back(
+                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Y, i)));
+                cloud_data.push_back(
+                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Z, i)));
+            }
+        }
+
+    } else {
+        std::cerr << "Format de nuage non supporté : " << ext << "\n";
+        return;
+    }
+
+    m_cloud_point_count = static_cast<int>(cloud_data.size() / 3);
+
+    if (gl_area.get_realized())
+        gl_area.make_current();
+
+    glBindVertexArray(vao_cloud);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
+    glBufferData(GL_ARRAY_BUFFER,
+                 cloud_data.size() * sizeof(float),
+                 cloud_data.data(), GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(0);
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    m_show_point_cloud = true;
+    gl_area.queue_render();
+
+    std::cout << "Scan chargé : " << m_cloud_point_count << " points <- " << path << "\n";
+}
+
+void Gl::capture_image(const std::string& path) {
+    if (!gl_area.get_realized()) return;
+    gl_area.make_current();
+
+    int w = gl_area.get_allocated_width();
+    int h = gl_area.get_allocated_height();
+    if (w <= 0 || h <= 0) return;
+
+    gl_area.queue_render();
+
+    std::vector<unsigned char> pixels(w * h * 3);
+    glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
+
+    std::vector<unsigned char> flipped(w * h * 3);
+    for (int row = 0; row < h; ++row)
+        std::memcpy(flipped.data() + row * w * 3, pixels.data() + (h - 1 - row) * w * 3, w * 3);
+
+    FILE* fp = std::fopen(path.c_str(), "wb");
+    if (!fp) {
+        std::cerr << "Impossible d'ouvrir pour écriture : " << path << "\n";
+        return;
+    }
+
+    png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
+    png_infop info  = png_create_info_struct(png);
+
+    if (setjmp(png_jmpbuf(png))) {
+        png_destroy_write_struct(&png, &info);
+        std::fclose(fp);
+        std::cerr << "Erreur PNG lors de la capture\n";
+        return;
+    }
+
+    png_init_io(png, fp);
+    png_set_IHDR(png, info, w, h, 8,
+                 PNG_COLOR_TYPE_RGB,
+                 PNG_INTERLACE_NONE,
+                 PNG_COMPRESSION_TYPE_DEFAULT,
+                 PNG_FILTER_TYPE_DEFAULT);
+    png_write_info(png, info);
+
+    for (int row = 0; row < h; ++row)
+        png_write_row(png, flipped.data() + row * w * 3);
+
+    png_write_end(png, nullptr);
+    png_destroy_write_struct(&png, &info);
+    std::fclose(fp);
+
+    std::cout << "Image capturée : " << path << " (" << w << "x" << h << ")\n";
+}
+
 void Gl::rebuild_vertex_data() {
     vertex_data.clear();
     for (const auto& scene : m_scenes) {
@@ -519,6 +652,14 @@ void Gl::update_markers_positions() {
     m_fixed.queue_draw();
 }
 
+glm::vec3 Gl::get_camera_world_position() const {
+    glm::vec4 cam_pos(0.0f, 0.0f, m_zoom, 1.0f);
+    glm::mat4 rot = glm::rotate(glm::mat4(1.0f), angle_y, glm::vec3(0.0f, 1.0f, 0.0f));
+    rot = glm::rotate(rot, angle_x, glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::vec4 world = rot * cam_pos;
+    return glm::vec3(world);
+}
+
 void Gl::run_scan(const std::string& lidar_config_path, const std::string& output_path) {
     Scene world;
 
@@ -565,7 +706,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
         double ry;
         double rz;
     };
-    
+    /*
     const std::vector<LidarSetup> setups = {
         { Point3( D,  0,  0),   0.0,   0.0,   0.0 },
         { Point3(-D,  0,  0),   0.0, 180.0,   0.0 },
@@ -574,12 +715,22 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
         { Point3( 0,  0,  D),   0.0, -90.0,   0.0 },
         { Point3( 0,  0, -D),   0.0,  90.0,   0.0 }
     };
-    
-    /*
-    const std::vector<LidarSetup> setups = {
-        { Point3(0, 0, m_zoom), 0.0, 0.0, 0.0 }
-    };
     */
+    
+    glm::vec3 gcwp = get_camera_world_position();
+    glm::vec3 dir = glm::normalize(-gcwp); 
+
+    double ry_rad = std::atan2(-dir.x, -dir.z);  
+    double rx_rad = std::asin(dir.y);             
+    double rx_deg = glm::degrees(rx_rad);
+    double ry_deg = glm::degrees(ry_rad);
+
+    std::cout << "cam pos: " << gcwp.x << " " << gcwp.y << " " << gcwp.z << std::endl;
+    std::cout << "lidar rot: " << rx_deg << " " << ry_deg << " " << 0.0 << std::endl;
+
+    const std::vector<LidarSetup> setups = {
+        { Point3(gcwp.x, gcwp.y, gcwp.z), rx_deg, ry_deg, 0.0 }
+    };
 
     std::vector<Point3> cloud;
 

@@ -5,10 +5,14 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
 #include <vector>
 #include <memory>
 #include <filesystem>
 #include <algorithm>
+#include <fstream>
+#include <pdal/io/LasReader.hpp>
+#include <png.h>
 #include "cgal.h"
 #include "model_marker.h"
 #include "scene.h"
@@ -30,6 +34,8 @@ public:
     Gtk::Widget& widget() { return m_overlay; }
     void build_grid(float size, float step);
     void load_file(const std::string& path);
+    void load_scan(const std::string& path);
+    void capture_image(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
     void run_scan(const std::string& lidar_config_path, const std::string& output_path);
     void set_lidar_config(const std::string& path) { m_lidar_config = path; }
@@ -85,4 +91,5 @@ private:
     bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
     void on_marker_dragged(MarkerType type, int model_index, double dx, double dy);
     void connect_marker_signals(ModelMarker* marker);
+    glm::vec3 get_camera_world_position() const;
 };

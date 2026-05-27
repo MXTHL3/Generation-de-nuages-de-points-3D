@@ -52,7 +52,7 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl)
     menu_bar_data = {
         {"Fichier",
             "Ouvrir modèle 3D", "Charger scène", "Charger scan (PLY/LAS)",
-            "Sauvegarder nuage de points", "Capturer image", "Quitter"},
+            "Capturer image", "Quitter"},
         {"Scène",
             "Supprimer sélection", "Réinitialiser scène"},
         {"Scanner 3D",
@@ -143,6 +143,53 @@ void MainWindow::add_menu_item(const std::string& menu_item,
                     m_gl->load_file(path);
                     update_markers();
                 });
+            });
+        }
+        else if (label == "Charger scan (PLY/LAS)") {
+            _sub->signal_activate().connect([this]() {
+                Gtk::FileChooserDialog dialog("Charger un nuage de points", Gtk::FILE_CHOOSER_ACTION_OPEN);
+                dialog.set_transient_for(*this);
+                dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+                dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
+
+                auto filter_ply = Gtk::FileFilter::create();
+                filter_ply->set_name("Nuages de points (*.ply, *.las, *.laz)");
+                filter_ply->add_pattern("*.ply");
+                filter_ply->add_pattern("*.las");
+                filter_ply->add_pattern("*.laz");
+                dialog.add_filter(filter_ply);
+
+                auto filter_all = Gtk::FileFilter::create();
+                filter_all->set_name("Tous les fichiers");
+                filter_all->add_pattern("*");
+                dialog.add_filter(filter_all);
+
+                if (dialog.run() == Gtk::RESPONSE_OK)
+                    m_gl->load_scan(dialog.get_filename());
+            });
+        }
+        else if (label == "Capturer image") {
+            _sub->signal_activate().connect([this]() {
+                Gtk::FileChooserDialog dialog("Enregistrer l'image",
+                                            Gtk::FILE_CHOOSER_ACTION_SAVE);
+                dialog.set_transient_for(*this);
+                dialog.add_button("Annuler",      Gtk::RESPONSE_CANCEL);
+                dialog.add_button("Enregistrer",  Gtk::RESPONSE_OK);
+                dialog.set_do_overwrite_confirmation(true);
+                dialog.set_current_name("capture.png");
+
+                auto filter_png = Gtk::FileFilter::create();
+                filter_png->set_name("Images PNG (*.png)");
+                filter_png->add_pattern("*.png");
+                dialog.add_filter(filter_png);
+
+                auto filter_all = Gtk::FileFilter::create();
+                filter_all->set_name("Tous les fichiers");
+                filter_all->add_pattern("*");
+                dialog.add_filter(filter_all);
+
+                if (dialog.run() == Gtk::RESPONSE_OK)
+                    m_gl->capture_image(dialog.get_filename());
             });
         }
         else if (label == "Lancer scan") {
