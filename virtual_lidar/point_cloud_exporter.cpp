@@ -1,4 +1,5 @@
 #include "point_cloud_exporter.hpp"
+#include "logger.hpp"
 
 #include <fstream>
 
@@ -22,7 +23,10 @@ void PlyExporter::save(const std::string& filename, const std::vector<Point3>& p
     // Contenu : X Y Z
 
     for(const auto& p : points) {
-        out_file << p.x() << " " << p.y() << " " << p.z() << std::endl;
+        out_file << p.x() << " " << p.y() << " " << p.z() << "\n";
     }
 
+    SIM_INFO("Fichier PLY : {} écrit !", filename);
+
+    out_file.close();
 }
