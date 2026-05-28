@@ -17,6 +17,7 @@ public:
     virtual ~IEntity() {};
     virtual std::shared_ptr<IEntity> clone() const = 0;
     virtual Transform3 transform() const = 0;    // Récupère la position dans la scène
+    virtual const std::string& name() const = 0;
     virtual const Pose& pose() const = 0;
     virtual void pose(const Pose& pose) = 0;      
 };
@@ -30,10 +31,11 @@ public:
 // Objet statique dans la scène à voir si l'on doit avoir des objets en mouvement
 class StaticEntity : public IEntity {
 public:
-    StaticEntity(std::shared_ptr<Object> obj, Pose p);
+    StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p);
     std::shared_ptr<IEntity> clone() const override; 
-    
+    const std::string& name() const override {return m_name;};
     Transform3 transform() const override;
+
     const Pose& pose() const override{ return m_pose; }
     void pose(const Pose& pose) override{ m_pose = pose; }
 
@@ -42,6 +44,7 @@ public:
     void update_mesh(std::shared_ptr<Object> new_obj) { m_object = new_obj; }
 
 private:
+    std::string m_name;
     std::shared_ptr<Object> m_object; // Ref du Mesh
     Pose m_pose;                      // Position du Mesh
 };
@@ -51,6 +54,7 @@ class LidarEntity : public IEntity {
 public:
         LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double m_fov_h, Pose p);
         std::shared_ptr<IEntity> clone()const override;
+        const std::string& name() const override {return m_model->m_name; };
         Transform3 transform() const override;
         void pose(const Pose& pose) override { m_pose = pose; };
         const Pose& pose() const override{ return m_pose; }

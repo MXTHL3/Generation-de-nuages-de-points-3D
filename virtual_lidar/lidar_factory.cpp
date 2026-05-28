@@ -36,7 +36,7 @@ std::shared_ptr<Lidar> LidarFactory::createFromJsonConfig(const std::string& con
 bool LidarFactory::saveToJson(const std::string& configPath, const Lidar& lidar){
 
     nlohmann::json data;
-    data["model"] = lidar.m_model;
+    data["model"] = lidar.m_name;
     data["min_range"] = lidar.m_min_dist;
     data["max_range"] = lidar.m_max_dist;
     data["h_step"] = lidar.m_h_step;

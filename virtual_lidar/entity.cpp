@@ -7,8 +7,8 @@ std::shared_ptr<IEntity> StaticEntity::clone() const {
     return std::make_shared<StaticEntity>(*this);
 }
 
-StaticEntity::StaticEntity(std::shared_ptr<Object> obj, Pose p)
-    : m_object(obj), m_pose(p) {}
+StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p)
+    : m_name(name), m_object(obj), m_pose(p) {}
 
 Transform3 StaticEntity::transform() const { return m_pose.transform(); }
 

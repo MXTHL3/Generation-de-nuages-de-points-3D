@@ -31,7 +31,8 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
         for(const auto& item : j["static_entities"]){
             Pose pose = parse_pose_from_json(item.at("pose"));
             auto shared_mesh = assets.get_mesh(item.at("mesh_path"));
-            auto staticEnt = std::make_shared<StaticEntity>(shared_mesh, pose);
+            std::string name = item.at("name");
+            auto staticEnt = std::make_shared<StaticEntity>(name, shared_mesh, pose);
             world.add_entity(staticEnt);
         }
     }else{
