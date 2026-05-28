@@ -1,7 +1,7 @@
 {
   "model": "Ouster OS2-128",
   "min_range": 1.0,
-  "max_range": 240.0,
+  "max_range": 1000.0,
   "h_step": [0.703125, 0.3515626, 0.1757825],
   "accuracy": 0.01,
   "lasers": [

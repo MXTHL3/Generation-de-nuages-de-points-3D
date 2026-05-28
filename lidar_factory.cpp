@@ -5,7 +5,7 @@ std::shared_ptr<Lidar> LidarFactory::createFromJsonConfig(const std::string& con
     std::ifstream file(configPath);
     
     if(!file.is_open()){
-        std::runtime_error("Erreur le fichier de configuration de Lidar : "+ configPath + " ne peut être lu.");
+        throw std::runtime_error("Erreur le fichier de configuration de Lidar : "+ configPath + " ne peut être lu.");
     }
 
     nlohmann::json data;

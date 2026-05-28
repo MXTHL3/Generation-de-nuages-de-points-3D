@@ -27,18 +27,16 @@ std::vector<Ray3> LidarEntity::scan(double h_deg) const {
     for(const auto& laser : m_model->m_lasers) {
         double h = h_rad + laser.h_off;
 
-        // Conversion coordonnées sphériques en cartésiennes
-        /*
         Vector3 dir(std::cos(laser.v_rad) * std::cos(h),
                     std::cos(laser.v_rad) * std::sin(h),
                     std::sin(laser.v_rad));
-        */
-       // Forward = -Z, Up = Y, Right = X (convention OpenGL)
-        Vector3 dir(-std::cos(laser.v_rad) * std::sin(h),   // X
-                    std::sin(laser.v_rad),                   // Y (up)
-                    -std::cos(laser.v_rad) * std::cos(h));   // Z (forward = -Z)
 
-        rays.push_back({m_pose.m_position, world_xf.transform(dir)});
+        Vector3 transformed_dir(
+            world_xf.m(0,0)*dir.x() + world_xf.m(0,1)*dir.y() + world_xf.m(0,2)*dir.z(),
+            world_xf.m(1,0)*dir.x() + world_xf.m(1,1)*dir.y() + world_xf.m(1,2)*dir.z(),
+            world_xf.m(2,0)*dir.x() + world_xf.m(2,1)*dir.y() + world_xf.m(2,2)*dir.z()
+        );
+        rays.push_back({m_pose.m_position, transformed_dir});
     }
 
     return rays;

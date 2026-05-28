@@ -661,142 +661,101 @@ glm::vec3 Gl::get_camera_world_position() const {
 }
 
 void Gl::run_scan(const std::string& lidar_config_path, const std::string& output_path) {
-    Scene world;
+    std::shared_ptr<Lidar> lidar;
+    try {
+        lidar = LidarFactory::createFromJsonConfig(lidar_config_path);
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur chargement LiDAR : " << e.what() << "\n";
+        return;
+    }
+    std::cout << "LiDAR chargé : " << lidar->m_lasers.size() << " lasers, "
+              << "h_step=" << lidar->m_h_step[0] << "\n";
 
+    glm::vec3 cam_glm = get_camera_world_position();
+    Point3 cam_pos(-cam_glm.x, -cam_glm.y, cam_glm.z);
+    std::cout << "Position caméra : " << -cam_glm.x << " " << -cam_glm.y << " " << cam_glm.z << "\n";
+
+    Scene scene;
+    int total_tris = 0;
     for (size_t i = 0; i < m_scenes.size(); ++i) {
-        const SurfaceMesh& mesh = m_scenes[i]->mesh();
-        float off = OFFSET_STEP * static_cast<float>(i);
-
-        glm::mat4 glm_off = glm::translate(glm::mat4(1.0f), glm::vec3(off, off, off));
-        glm::mat4 glm_tr = make_model_matrix(m_transforms[i]);
-        glm::mat4 combined = glm_off * glm_tr;
-
-        Transform3 xform(
-            combined[0][0], combined[1][0], combined[2][0], combined[3][0],
-            combined[0][1], combined[1][1], combined[2][1], combined[3][1],
-            combined[0][2], combined[1][2], combined[2][2], combined[3][2]
-        );
+        const ModelTransform& tr = m_transforms[i];
+        Transform3 cgal_tr = model_transform_to_cgal(tr);
+        float off = 1.5f * static_cast<float>(i);
 
         auto obj = std::make_shared<Object>();
+        const SurfaceMesh& sm = m_scenes[i]->mesh();
 
-        for (const auto& face : mesh.faces()) {
-            auto h = mesh.halfedge(face);
+        for (auto face : sm.faces()) {
+            std::vector<Point3> pts;
+            for (auto v : CGAL::vertices_around_face(sm.halfedge(face), sm))
+                pts.push_back(sm.point(v));
 
-            Point3 p0 = mesh.point(mesh.source(h));
-            Point3 p1 = mesh.point(mesh.target(h));
-            Point3 p2 = mesh.point(mesh.target(mesh.next(h)));
-
-            obj->m_triangles.push_back(
-                Triangle3(p0, p1, p2).transform(xform));
+            if (pts.size() == 3) {
+                obj->m_triangles.push_back(Triangle3(
+                    cgal_tr.transform(pts[0]) + Vector3(off, off, off),
+                    cgal_tr.transform(pts[1]) + Vector3(off, off, off),
+                    cgal_tr.transform(pts[2]) + Vector3(off, off, off)));
+                total_tris++;
+            }
         }
 
         auto entity = std::make_shared<StaticEntity>(obj, Pose());
-        world.addEntity(entity);
+        scene.addEntity(entity);
     }
+    scene.build();
+    std::cout << "Scène : " << total_tris << " triangles\n";
 
-    world.build();
-
-    auto lidar_model = LidarFactory::createFromJsonConfig(lidar_config_path);
-
-    constexpr double D = 10.0;
-
-    struct LidarSetup {
-        Point3 position;
-        double rx;
-        double ry;
-        double rz;
-    };
-    /*
-    const std::vector<LidarSetup> setups = {
-        { Point3( D,  0,  0),   0.0,   0.0,   0.0 },
-        { Point3(-D,  0,  0),   0.0, 180.0,   0.0 },
-        { Point3( 0,  D,  0),   0.0,   0.0,   0.0 },
-        { Point3( 0, -D,  0), 180.0,   0.0,   0.0 },
-        { Point3( 0,  0,  D),   0.0, -90.0,   0.0 },
-        { Point3( 0,  0, -D),   0.0,  90.0,   0.0 }
-    };
-    */
+    if (total_tris == 0) {
+        std::cerr << "Aucun triangle dans la scène !\n";
+        return;
+    }
     
-    glm::vec3 gcwp = get_camera_world_position();
-    glm::vec3 dir = glm::normalize(-gcwp); 
+    glm::vec3 forward = glm::normalize(-cam_glm);
+    double pitch_deg = std::asin(static_cast<double>(forward.y)) * 180.0 / M_PI;
+    double yaw_deg   = std::atan2(static_cast<double>(forward.z),
+                                static_cast<double>(forward.x)) * 180.0 / M_PI;
 
-    double ry_rad = std::atan2(-dir.x, -dir.z);  
-    double rx_rad = std::asin(dir.y);             
-    double rx_deg = glm::degrees(rx_rad);
-    double ry_deg = glm::degrees(ry_rad);
-
-    std::cout << "cam pos: " << gcwp.x << " " << gcwp.y << " " << gcwp.z << std::endl;
-    std::cout << "lidar rot: " << rx_deg << " " << ry_deg << " " << 0.0 << std::endl;
-
-    const std::vector<LidarSetup> setups = {
-        { Point3(gcwp.x, gcwp.y, gcwp.z), rx_deg, ry_deg, 0.0 }
-    };
+    Pose scanner_pose(cam_pos, pitch_deg, yaw_deg, 0.0);
+    LidarEntity scanner(lidar, 0, scanner_pose);
 
     std::vector<Point3> cloud;
+    const double h_step_deg = lidar->m_h_step[0];
+    int ray_count = 0;
 
-    const double h_step = lidar_model->m_h_step.at(0);
-
-    for (const auto& setup : setups) {
-        LidarEntity lidar(lidar_model, 0, Pose(setup.position, setup.rx, setup.ry, setup.rz));
-
-        for (double hr = 0.0; hr < 360.0; hr += h_step) {
-            for (const Ray3& ray : lidar.scan(hr)) {
-                double dist;
-
-                if (world.intersect(ray, dist)) {
-                    if (dist >= lidar_model->m_min_dist &&
-                        dist <= lidar_model->m_max_dist) {
-                        cloud.push_back(ray.point(dist));
-                    }
-                }
-            }
+    for (double h = 0.0; h < 360.0; h += h_step_deg) {
+        std::vector<Ray3> rays = scanner.scan(h);
+        ray_count += rays.size();
+        for (const Ray3& ray : rays) {
+            double dist = 0.0;
+            auto hit = scene.intersect(ray, dist);
+            if (hit && dist >= lidar->m_min_dist && dist <= lidar->m_max_dist)
+                cloud.push_back(*hit);
         }
     }
 
+    std::cout << "Rayons lancés : " << ray_count << "\n";
+    std::cout << "Points scannés : " << cloud.size() << "\n";
+
+    if (cloud.empty()) {
+        std::cerr << "Aucun point — vérifier que la scène est dans le champ du LiDAR.\n";
+        return;
+    }
+
+    std::string ext = output_path.substr(output_path.rfind('.'));
     std::unique_ptr<IPointCloudExporter> exporter;
+    if (ext == ".ply")       exporter = std::make_unique<PlyExporter>();
+    else if (ext == ".las")  exporter = std::make_unique<LasExporter>();
+    else { std::cerr << "Format non supporté : " << ext << "\n"; return; }
 
-    std::string ext = std::filesystem::path(output_path).extension().string();
-
-    std::transform(ext.begin(),ext.end(),ext.begin(),[](unsigned char c) {
-        return static_cast<char>(std::tolower(c));
-    });
-
-    if (ext == ".las" || ext == ".laz") {
-        exporter = std::make_unique<LasExporter>();
-    }
-    else {
-        exporter = std::make_unique<PlyExporter>();
+    try {
+        exporter->save(output_path, cloud);
+        std::cout << "Exporté : " << output_path << "\n";
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur export : " << e.what() << "\n";
+        return;
     }
 
-    exporter->save(output_path, cloud);
-
-    std::vector<float> cloud_data;
-    cloud_data.reserve(cloud.size() * 3);
-
-    for (const auto& p : cloud) {
-        cloud_data.push_back(static_cast<float>(p.x()));
-        cloud_data.push_back(static_cast<float>(p.y()));
-        cloud_data.push_back(static_cast<float>(p.z()));
-    }
-
-    m_cloud_point_count = static_cast<int>(cloud.size());
-
-    if (gl_area.get_realized())
-        gl_area.make_current();
-
-    glBindVertexArray(vao_cloud);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
-    glBufferData(GL_ARRAY_BUFFER, cloud_data.size() * sizeof(float), cloud_data.data(), GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    m_show_point_cloud = true;
-
-    gl_area.queue_render();
-
-    std::cout << "Scan terminé : " << cloud.size() << " points (6 positions) -> " << output_path << std::endl;
+    load_scan(output_path);
 }
 
 void Gl::focus_gl_area() {
