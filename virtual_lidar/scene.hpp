@@ -22,7 +22,11 @@ class Scene {
 public:
 
     Scene() = default;
-
+    ~Scene(){
+        m_triangles.clear();
+        m_triangles.shrink_to_fit();
+        m_tree.reset();
+    }
     Scene(const Scene& scene);
     // ajoute un objet à la scène
     // TODO:: pas sur pour le shared_ptr

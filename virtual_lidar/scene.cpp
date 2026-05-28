@@ -38,8 +38,10 @@ void Scene::build(){
         }
     }
 
-    m_tree = std::make_unique<Tree>(m_triangles.begin(), m_triangles.end());
+    // opti ou pas mais fait pas de mal
+    m_triangles.shrink_to_fit();
 
+    m_tree = std::make_unique<Tree>(m_triangles.begin(), m_triangles.end());
     m_tree->accelerate_distance_queries();
 }
 
