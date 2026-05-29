@@ -24,7 +24,7 @@ std::shared_ptr<Object> AssetManager::get_mesh(const std::string& path){
     if(m_mesh_cache.find(path) == m_mesh_cache.end()){
         m_mesh_cache[path] = load_mesh_from_file(path);
     }else{
-        SIM_DEBUG("Le fichier lidar : {} est déjà chargé !", path);
+        //SIM_DEBUG("Le fichier lidar : {} est déjà chargé !", path);
     }
 
     return m_mesh_cache[path];
