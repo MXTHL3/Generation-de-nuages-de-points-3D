@@ -672,8 +672,20 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
               << "h_step=" << lidar->m_h_step[0] << "\n";
 
     glm::vec3 cam_glm = get_camera_world_position();
-    Point3 cam_pos(-cam_glm.x, -cam_glm.y, cam_glm.z);
+
+    double angle_y_2 = std::fmod(static_cast<double>(glm::degrees(angle_y)), 360.0);
+    double sign;
+    if (angle_y_2 >= 90 && angle_y_2 <= 270) {
+        sign = 1;
+    } else {
+        sign = -1;
+    }
+
+    Point3 cam_pos(-cam_glm.x, sign * cam_glm.y, cam_glm.z);
+
     std::cout << "Position caméra : " << -cam_glm.x << " " << -cam_glm.y << " " << cam_glm.z << "\n";
+    std::cout << "Angle x : " << glm::degrees(angle_x) << " Angle y : " << angle_y_2 << std::endl; 
+    std::cout << "Signe : " << sign << std::endl;
 
     Scene scene;
     int total_tris = 0;

@@ -13,6 +13,7 @@
 #include <fstream>
 #include <pdal/io/LasReader.hpp>
 #include <png.h>
+#include <bits/stdc++.h>
 #include "cgal.h"
 #include "model_marker.h"
 #include "scene.h"
