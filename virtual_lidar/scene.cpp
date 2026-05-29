@@ -1,16 +1,17 @@
 #include "scene.hpp"
+#include "logger.hpp"
 
 #include <iterator>
 
 Scene::Scene(const Scene& scene){
     for(const auto& entity : scene.m_entities){
         if(entity){
-            m_entities.push_back(entity->clone());
+            auto cloned_entity = entity->clone();
+            m_entities.push_back(cloned_entity);
+            if(auto cloned_lidar_entity = std::dynamic_pointer_cast<LidarEntity>(cloned_entity)){
+                m_lidars.push_back(cloned_lidar_entity);   
+            }
         }
-    }
-
-    for(const auto& lidar : scene.m_lidars){
-        m_lidars.push_back(std::dynamic_pointer_cast<LidarEntity>(lidar->clone()));
     }
 }
 
@@ -96,7 +97,9 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
                 }
             }
         }
-
+        if(pointCloud.empty()){
+            SIM_WARNING("Aucune intersection trouvée !");
+        }
         return pointCloud;
     }
     throw std::runtime_error("L'index donné qui correspond à une 'entité Lidar' pour scanner la scène n'existe pas !");
