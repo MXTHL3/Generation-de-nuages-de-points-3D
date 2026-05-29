@@ -26,7 +26,7 @@ std::vector<Ray3> LidarEntity::scan(double h_deg) const {
 
     for(const auto& laser : m_model->m_lasers) {
         double h = h_rad + laser.h_off;
-
+        
         Vector3 dir(std::cos(laser.v_rad) * std::cos(h),
                     std::cos(laser.v_rad) * std::sin(h),
                     std::sin(laser.v_rad));

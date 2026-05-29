@@ -715,21 +715,23 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
     double yaw_deg   = std::atan2(static_cast<double>(forward.z),
                                 static_cast<double>(forward.x)) * 180.0 / M_PI;
 
-    Pose scanner_pose(cam_pos, pitch_deg, yaw_deg, 0.0);
-    LidarEntity scanner(lidar, 0, scanner_pose);
-
     std::vector<Point3> cloud;
     const double h_step_deg = lidar->m_h_step[0];
     int ray_count = 0;
 
-    for (double h = 0.0; h < 360.0; h += h_step_deg) {
-        std::vector<Ray3> rays = scanner.scan(h);
-        ray_count += rays.size();
-        for (const Ray3& ray : rays) {
-            double dist = 0.0;
-            auto hit = scene.intersect(ray, dist);
-            if (hit && dist >= lidar->m_min_dist && dist <= lidar->m_max_dist)
-                cloud.push_back(*hit);
+    for (double w = 0.0; w < 360.0; w += 20.0) {
+        Pose scanner_pose(cam_pos, pitch_deg, yaw_deg + w, 0.0);
+        LidarEntity scanner(lidar, 0, scanner_pose);
+
+        for (double h = 0.0; h < 360.0; h += h_step_deg) {
+            std::vector<Ray3> rays = scanner.scan(h);
+            ray_count += rays.size();
+            for (const Ray3& ray : rays) {
+                double dist = 0.0;
+                auto hit = scene.intersect(ray, dist);
+                if (hit && dist >= lidar->m_min_dist && dist <= lidar->m_max_dist)
+                    cloud.push_back(*hit);
+            }
         }
     }
 
