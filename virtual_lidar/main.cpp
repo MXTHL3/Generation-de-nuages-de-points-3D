@@ -15,7 +15,7 @@
 
 std::string scene_path = "scenes_config/test_scene.json";
 
-std::string human_base_path = "ply_models/human_base/human_base_";
+std::string human_base_anims_paths = "dataset/animations";
 
 int main(int argc, char* argv[]) {
     try {
@@ -25,20 +25,20 @@ int main(int argc, char* argv[]) {
         std::vector<KeyframesConfig> keyframe_configs;
         
         KeyframesConfig c;
-        c.scenario_name = "augmentation_run_humain";
+        c.scenario_name = "augmentation_animation_humain";
         ObjectAnimation human_anim;
         human_anim.object_name = "human_1";
-        
-        ObjectAnimation human_anim_2;
-        human_anim.object_name = "human_2";
 
-        for(int i = 0; i <= 15; i++){
-            human_anim.keyframes_paths.push_back(human_base_path + std::to_string(i) + ".ply");
-            human_anim_2.keyframes_paths.push_back(human_base_path + std::to_string(i) + ".ply");
+        for(const auto& file : std::filesystem::directory_iterator(human_base_anims_paths)){
+            if(file.is_regular_file() && file.path().extension() == ".ply"){
+                std::string file_path = file.path().string();
+                human_anim.keyframes_paths.push_back(file_path);
+                SIM_INFO("Keyframe trouvée : {}", file_path);     
+            }
         }
 
         c.objects_animation.push_back(human_anim);
-        c.objects_animation.push_back(human_anim_2);
+        //c.objects_animation.push_back(human_anim_2);
         keyframe_configs.push_back(c);
 
         if(argc > 1) {
@@ -48,14 +48,20 @@ int main(int argc, char* argv[]) {
 
         }else{
             if(SceneLoader::load_scene_from_json(scene_path, world, assets)){
+                SIM_INFO("ETAPE 1 - JSON chargé. Entités : {}", world.entities().size());
                 Pipeline pipeline;
-                std::shared_ptr<KeyframeLayoutAugmentation> keyframe_augmentation = std::make_shared<KeyframeLayoutAugmentation>(keyframe_configs);
-                pipeline.add_step(keyframe_augmentation);
 
-                std::shared_ptr<SpatialLayoutAugmentation> spatial_augmentation = std::make_shared<SpatialLayoutAugmentation>(100, 42);
-                pipeline.add_step(spatial_augmentation);
+                auto scene_initiale = std::make_unique<Scene>(world);
+                SIM_INFO("ETAPE 2 - Copie Initiale. Entités : {}, Lidars : {}", scene_initiale->entities().size());
                 
-                std::vector<std::shared_ptr<Scene>> scenes = pipeline.execute(std::make_shared<Scene>(world), assets);
+                pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(100, 42));
+
+                pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(10, 0.0, 360.0, 42));
+
+                pipeline.add_step(std::make_unique<KeyframeLayoutAugmentation>(keyframe_configs));
+                
+                std::vector<std::unique_ptr<Scene>> scenes = pipeline.execute(std::move(scene_initiale), assets);
+                SIM_INFO("ETAPE 3 - Fin du Pipeline. Nombre de scènes générées : {}", scenes.size());
 
                 PlyExporter exporter;
                 std::vector<Point3> resultCloud;
@@ -67,9 +73,10 @@ int main(int argc, char* argv[]) {
                     // TODO :: soluce temporaire il faut surement retirer les shared_ptr car pas utile pour scene soit (unique_ptr?)
                     scene.reset();
 
+                    SIM_INFO("Le nombre de points du nuages est : {}", resultCloud.size());
 
                     i++;
-                    int part_n = i / 500;
+                    int part_n = i / 100000;
                     std::string dir = "dataset/p"+ std::to_string(part_n);
                     std::filesystem::create_directories(dir);
                     exporter.save(dir + "/test_" + std::to_string(i) + ".ply", resultCloud);

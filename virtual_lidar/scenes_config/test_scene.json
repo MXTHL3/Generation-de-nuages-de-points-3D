@@ -6,7 +6,7 @@
                 "position": [
                     0.0,
                     0.0,
-                    1.25
+                    1.5
                 ],
                 "rotation": [
                     0.0,
@@ -19,10 +19,11 @@
     ],
     "static_entities": [
         {
-            "mesh_path": "ply_models/plane.ply",
+            "name": "human_1",
+            "mesh_path": "ply_models/human_base.ply",
             "pose": {
                 "position": [
-                    0.0,
+                    5.0,
                     0.0,
                     0.0
                 ],
