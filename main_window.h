@@ -4,11 +4,14 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <cstdio>     
+#include <cstdlib>    
+#include <sstream>    
 #include "gl.h"
-#include "handle_file.h"
 #include "model_marker.h"
+#include "menu_items_actions.h"
 
-class MainWindow : public Gtk::Window {
+class MainWindow : public Gtk::Window, public MenuItemsActions {
 public:
     explicit MainWindow(std::unique_ptr<Gl> gl);
     void add_menu_item(const std::string& menu_item,
@@ -20,13 +23,13 @@ private:
     Gtk::Label m_status_label;
     Gtk::ComboBoxText m_lidar_combo; 
     std::vector<std::vector<std::string>> menu_bar_data;
-    std::unique_ptr<Gl> m_gl;
-    HandleFile m_handle_file;
 
     const std::vector<std::string> transformation_mode = {
         "", "Translation mode", "Rotation mode", "Scale mode"
     };
     int m_tm_id = 0;   
+
+    Gtk::Window& as_window() override { return *this; }
 
     void update_markers();
     void update_status_label();

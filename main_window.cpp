@@ -1,9 +1,8 @@
 #include "main_window.h"
 
-MainWindow::MainWindow(std::unique_ptr<Gl> gl)
-    : main_box(Gtk::ORIENTATION_VERTICAL)
-    , m_gl(std::move(gl))
-{
+MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTICAL) {
+    m_gl = std::move(gl);
+    
     set_title("Reconnaissance 3D");
     set_default_size(1440, 810);
 
@@ -64,7 +63,7 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl)
             "Afficher/masquer nuage", "Filtrage bruit",
             "Ajuster nombre de points", "Color mapping"},
         {"IA",
-            "Générer ensemble de données"},
+            "Générer ensemble de données", "Lancer analyse reconnaissance"},
         {"Affichage",
             "Vue caméra", "Vue scanner", "Plein écran"},
         {"Paramètres",
@@ -132,109 +131,23 @@ void MainWindow::add_menu_item(const std::string& menu_item,
                                const std::vector<std::string>& sub_menu_items)
 {
     auto _menu_item = Gtk::make_managed<Gtk::MenuItem>(menu_item);
-    auto sub_menu   = Gtk::make_managed<Gtk::Menu>();
+    auto sub_menu = Gtk::make_managed<Gtk::Menu>();
 
     for (const auto& label : sub_menu_items) {
-        auto _sub = Gtk::make_managed<Gtk::MenuItem>(label);
+        auto _sub_widget = Gtk::make_managed<Gtk::MenuItem>(label);
+        _sub = _sub_widget;   
 
-        if (label == "Ouvrir modèle 3D") {
-            _sub->signal_activate().connect([this]() {
-                m_handle_file.open_model(*this, [this](const std::string& path) {
-                    m_gl->load_file(path);
-                    update_markers();
-                });
-            });
-        }
-        else if (label == "Charger scan (PLY/LAS)") {
-            _sub->signal_activate().connect([this]() {
-                Gtk::FileChooserDialog dialog("Charger un nuage de points", Gtk::FILE_CHOOSER_ACTION_OPEN);
-                dialog.set_transient_for(*this);
-                dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
-                dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
+        if      (label == "Ouvrir modèle 3D")              { open_3d_model(); }
+        else if (label == "Charger scan (PLY/LAS)")         { load_scan(); }
+        else if (label == "Capturer image")                 { capture_image(); }
+        else if (label == "Lancer scan")                    { launch_scan(); }
+        else if (label == "Afficher/masquer nuage")         { display_cloud(); }
+        else if (label == "Générer ensemble de données")    { generate_dataset(); }
+        else if (label == "Lancer analyse reconnaissance")  { launch_recognition(); }
+        else if (label == "Quitter")                        { exit_app(); }
 
-                auto filter_ply = Gtk::FileFilter::create();
-                filter_ply->set_name("Nuages de points (*.ply, *.las, *.laz)");
-                filter_ply->add_pattern("*.ply");
-                filter_ply->add_pattern("*.las");
-                filter_ply->add_pattern("*.laz");
-                dialog.add_filter(filter_ply);
-
-                auto filter_all = Gtk::FileFilter::create();
-                filter_all->set_name("Tous les fichiers");
-                filter_all->add_pattern("*");
-                dialog.add_filter(filter_all);
-
-                if (dialog.run() == Gtk::RESPONSE_OK)
-                    m_gl->load_scan(dialog.get_filename());
-            });
-        }
-        else if (label == "Capturer image") {
-            _sub->signal_activate().connect([this]() {
-                Gtk::FileChooserDialog dialog("Enregistrer l'image",
-                                            Gtk::FILE_CHOOSER_ACTION_SAVE);
-                dialog.set_transient_for(*this);
-                dialog.add_button("Annuler",      Gtk::RESPONSE_CANCEL);
-                dialog.add_button("Enregistrer",  Gtk::RESPONSE_OK);
-                dialog.set_do_overwrite_confirmation(true);
-                dialog.set_current_name("capture.png");
-
-                auto filter_png = Gtk::FileFilter::create();
-                filter_png->set_name("Images PNG (*.png)");
-                filter_png->add_pattern("*.png");
-                dialog.add_filter(filter_png);
-
-                auto filter_all = Gtk::FileFilter::create();
-                filter_all->set_name("Tous les fichiers");
-                filter_all->add_pattern("*");
-                dialog.add_filter(filter_all);
-
-                if (dialog.run() == Gtk::RESPONSE_OK)
-                    m_gl->capture_image(dialog.get_filename());
-            });
-        }
-        else if (label == "Lancer scan") {
-            _sub->signal_activate().connect([this]() {
-
-                Gtk::FileChooserDialog dialog("Enregistrer le nuage de points", Gtk::FILE_CHOOSER_ACTION_SAVE);
-
-                dialog.set_transient_for(*this);
-                dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
-                dialog.add_button("Enregistrer", Gtk::RESPONSE_OK);
-
-                auto filter_ply = Gtk::FileFilter::create();
-                filter_ply->set_name("PLY (*.ply)");
-                filter_ply->add_pattern("*.ply");
-
-                auto filter_las = Gtk::FileFilter::create();
-                filter_las->set_name("LAS (*.las)");
-                filter_las->add_pattern("*.las");
-
-                dialog.add_filter(filter_ply);
-                dialog.add_filter(filter_las);
-                dialog.set_filter(filter_ply);
-                dialog.set_current_name("scan.ply");
-
-                if (dialog.run() == Gtk::RESPONSE_OK)
-                {
-                    m_gl->run_scan(
-                        m_gl->get_lidar_config(),
-                        dialog.get_filename());
-                }
-            });
-        }
-        else if (label == "Afficher/masquer nuage") {
-            _sub->signal_activate().connect([this]() {
-                m_gl->toggle_point_cloud();
-            });
-        }
-        else if (label == "Quitter") {
-            _sub->signal_activate().connect([this]() {
-                hide();
-            });
-        }
-
-        sub_menu->append(*_sub);
-        _sub->show();
+        sub_menu->append(*_sub_widget);
+        _sub_widget->show();
     }
 
     _menu_item->set_submenu(*sub_menu);

@@ -19,7 +19,8 @@ SRCS := main.cpp \
         lidar_factory.cpp \
         entity.cpp \
         scene.cpp \
-        point_cloud_exporter.cpp
+        point_cloud_exporter.cpp \
+        menu_items_actions.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 
