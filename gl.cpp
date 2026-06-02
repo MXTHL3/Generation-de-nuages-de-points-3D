@@ -47,12 +47,12 @@ void Gl::on_marker_dragged(MarkerType type, int idx, double dx, double dy) {
     if (idx < 0 || idx >= static_cast<int>(m_transforms.size())) return;
     ModelTransform& t = m_transforms[idx];
     switch (type) {
-        case MarkerType::tx: t.pos_x   += static_cast<float>(dx) * DRAG_SENSITIVITY; break;
-        case MarkerType::ty: t.pos_y   -= static_cast<float>(dy) * DRAG_SENSITIVITY; break;
-        case MarkerType::tz: t.pos_z   += static_cast<float>(dx) * DRAG_SENSITIVITY; break;
+        case MarkerType::tx: t.pos_x += static_cast<float>(dx) * DRAG_SENSITIVITY; break;
+        case MarkerType::ty: t.pos_y -= static_cast<float>(dy) * DRAG_SENSITIVITY; break;
+        case MarkerType::tz: t.pos_z -= static_cast<float>(dx) * DRAG_SENSITIVITY; break;
         case MarkerType::rx: t.angle_x += static_cast<float>(dy) * DRAG_SENSITIVITY; break;
         case MarkerType::ry: t.angle_y += static_cast<float>(dx) * DRAG_SENSITIVITY; break;
-        case MarkerType::rz: t.angle_z += static_cast<float>(dx) * DRAG_SENSITIVITY; break;
+        case MarkerType::rz: t.angle_z -= static_cast<float>(dx) * DRAG_SENSITIVITY; break;
         case MarkerType::s:
             t.scale += static_cast<float>(dx - dy) * DRAG_SENSITIVITY * 0.5f;
             if (t.scale < 0.01f) t.scale = 0.01f;
@@ -88,12 +88,12 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     gl_area.signal_render().connect(sigc::mem_fun(*this, &Gl::on_render), false);
     gl_area.signal_unrealize().connect(sigc::mem_fun(*this, &Gl::on_unrealize), false);
 
-    m_overlay.add_events(Gdk::BUTTON_PRESS_MASK |
-                         Gdk::BUTTON_RELEASE_MASK |
-                         Gdk::POINTER_MOTION_MASK);
-    m_overlay.signal_button_press_event().connect(sigc::mem_fun(*this, &Gl::on_button_press));
-    m_overlay.signal_button_release_event().connect(sigc::mem_fun(*this, &Gl::on_button_release));
-    m_overlay.signal_motion_notify_event().connect(sigc::mem_fun(*this, &Gl::on_motion));
+    gl_area.add_events(Gdk::BUTTON_PRESS_MASK |
+                       Gdk::BUTTON_RELEASE_MASK |
+                       Gdk::POINTER_MOTION_MASK);
+    gl_area.signal_button_press_event().connect(sigc::mem_fun(*this, &Gl::on_button_press));
+    gl_area.signal_button_release_event().connect(sigc::mem_fun(*this, &Gl::on_button_release));
+    gl_area.signal_motion_notify_event().connect(sigc::mem_fun(*this, &Gl::on_motion));
     m_overlay.signal_key_press_event().connect(sigc::mem_fun(*this, &Gl::on_key_press));
 
     gl_area.set_can_focus(true);
@@ -105,20 +105,18 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_fixed.set_hexpand(true);
     m_fixed.set_vexpand(true);
     m_overlay.add_overlay(m_fixed);
-    m_overlay.set_overlay_pass_through(m_fixed, false);
+    m_overlay.set_overlay_pass_through(m_fixed, true);
     m_overlay.set_can_focus(true);
     m_overlay.grab_focus();
 
     m_fixed.signal_draw().connect(sigc::mem_fun(*this, &Gl::on_fixed_draw), false);
 
-    add_center_marker(0);
-    ModelMarker* center0 = m_markers.back().get();
-    size_t first_axis    = m_markers.size();
+    size_t first_axis = m_markers.size();
 
-    auto tx_rx = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 2.0f,  0.0f,  0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f), 0);
-    auto ty_ry = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  2.0f,  0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f), 0);
-    auto tz_rz = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  0.0f, -2.0f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f), 0);
-    auto s     = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 2.0f,  2.0f, -2.0f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f), 0);
+    auto tx_rx = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 1.25f,  0.0f,  0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f), 0);
+    auto ty_ry = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  1.25f,  0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f), 0);
+    auto tz_rz = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  0.0f, -1.25f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f), 0);
+    auto s = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 1.25f,  1.25f, -1.25f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f), 0);
 
     connect_marker_signals(tx_rx.get());
     connect_marker_signals(ty_ry.get());
@@ -128,12 +126,15 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     m_fixed.put(*tx_rx, 0, 0);
     m_fixed.put(*ty_ry, 0, 0);
     m_fixed.put(*tz_rz, 0, 0);
-    m_fixed.put(*s,     0, 0);
+    m_fixed.put(*s, 0, 0);
 
     m_markers.push_back(std::move(tx_rx));
     m_markers.push_back(std::move(ty_ry));
     m_markers.push_back(std::move(tz_rz));
     m_markers.push_back(std::move(s));
+
+    add_center_marker(0);
+    ModelMarker* center0 = m_markers.back().get();
 
     wire_markers_to_center(m_markers, center0, first_axis);
 
@@ -203,12 +204,12 @@ void Gl::load_file(const std::string& path) {
 
     add_center_marker(midx);
     ModelMarker* centerN = m_markers.back().get();
-    size_t first_axis    = m_markers.size();
+    size_t first_axis = m_markers.size();
 
-    auto tx_rx = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 2.0f,  0.0f,  0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f), midx);
-    auto ty_ry = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  2.0f,  0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f), midx);
-    auto tz_rz = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  0.0f, -2.0f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f), midx);
-    auto s     = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 2.0f,  2.0f, -2.0f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f), midx);
+    auto tx_rx = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 1.25f,  0.0f,  0.0f), m_zoom, MarkerType::unabledx, glm::vec3(0.0f, 0.0f, 1.0f), midx);
+    auto ty_ry = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  1.25f,  0.0f), m_zoom, MarkerType::unabledy, glm::vec3(0.0f, 0.0f, 1.0f), midx);
+    auto tz_rz = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 0.0f,  0.0f, -1.25f), m_zoom, MarkerType::unabledz, glm::vec3(0.0f, 0.0f, 1.0f), midx);
+    auto s = std::make_unique<ModelMarker>(&m_fixed, glm::vec3( 1.25f,  1.25f, -1.25f), m_zoom, MarkerType::unableds, glm::vec3(0.0f, 0.0f, 1.0f), midx);
 
     connect_marker_signals(tx_rx.get());
     connect_marker_signals(ty_ry.get());
@@ -218,7 +219,7 @@ void Gl::load_file(const std::string& path) {
     m_fixed.put(*tx_rx, 0, 0);
     m_fixed.put(*ty_ry, 0, 0);
     m_fixed.put(*tz_rz, 0, 0);
-    m_fixed.put(*s,     0, 0);
+    m_fixed.put(*s, 0, 0);
 
     m_markers.push_back(std::move(tx_rx));
     m_markers.push_back(std::move(ty_ry));
@@ -281,12 +282,9 @@ void Gl::load_scan(const std::string& path) {
         for (const auto& view : viewSet) {
             cloud_data.reserve(cloud_data.size() + view->size() * 3);
             for (pdal::PointId i = 0; i < view->size(); ++i) {
-                cloud_data.push_back(
-                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::X, i)));
-                cloud_data.push_back(
-                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Y, i)));
-                cloud_data.push_back(
-                    static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Z, i)));
+                cloud_data.push_back(static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::X, i)));
+                cloud_data.push_back(static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Y, i)));
+                cloud_data.push_back(static_cast<float>(view->getFieldAs<double>(pdal::Dimension::Id::Z, i)));
             }
         }
 

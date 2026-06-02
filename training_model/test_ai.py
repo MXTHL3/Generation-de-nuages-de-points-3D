@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import open3d as o3d
 import numpy as np
-from train_ia import PointNetClassifieur, charger_nuage_points
+from train_ai import PointNetClassifieur, charger_nuage_points
 
 def predire_un_fichier(chemin_fichier, modele):
     #Prend un chemin de fichier PLY et renvoie la chaîne de caractères du verdict

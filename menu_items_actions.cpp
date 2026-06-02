@@ -175,41 +175,49 @@ void MenuItemsActions::launch_recognition() {
         dialog.add_filter(filter_all);
 
         if (dialog.run() != Gtk::RESPONSE_OK) return;
-        std::string chemin_ply = dialog.get_filename();
+        std::string ply_path = dialog.get_filename();
         dialog.hide();
 
-        std::string script = "training_model/test_ai.py";
-        std::string modele = "training_model/modele_laser.pth";
+        std::filesystem::path base_dir =
+            std::filesystem::canonical("/proc/self/exe").parent_path();
+        std::string script_dir = (base_dir / "training_model").string();
+        std::string modele = (base_dir / "training_model/modele_laser.pth").string();
+        std::string script = (base_dir / "training_model/test_ai.py").string();
+
+        std::cout << "base_dir = " << base_dir << std::endl;
+        std::cout << "script   = " << script << std::endl;
+        std::cout << "modele   = " << modele << std::endl;
+        std::cout << "exists(script) = "
+                << std::filesystem::exists(script) << std::endl;
+        std::cout << "exists(modele) = "
+                << std::filesystem::exists(modele) << std::endl;
 
         if (!std::filesystem::exists(script)) {
             Gtk::MessageDialog err(as_window(),
-                "Script introuvable : " + script + "\n"
-                "Vérifiez que le dossier training_model/ est présent.",
+                "Script introuvable : " + script,
                 false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
             err.run(); return;
         }
         if (!std::filesystem::exists(modele)) {
             Gtk::MessageDialog err(as_window(),
-                "Modèle introuvable : " + modele + "\n"
-                "Lancez d'abord train_ai.py pour générer 'modele_laser.pth'.",
+                "Modèle introuvable : " + modele + "\nLancez d'abord train_ai.py pour générer 'modele_laser.pth'.",
                 false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
             err.run(); return;
         }
 
-        std::string cmd = "cd training_model && python3 -c \""
+        std::string cmd =
+            "cd \"" + script_dir + "\" && python3 -c \""
             "import sys; sys.path.insert(0, '.'); "
             "from test_ai import predire_un_fichier; "
-            "import torch; "
             "from train_ai import PointNetClassifieur; "
-            "import os; "
-            "modele = PointNetClassifieur(); "
-            "modele.load_state_dict(torch.load('modele_laser.pth', map_location='cpu')); "
-            "modele.eval(); "
-            "chemin = os.environ.get('PLY_PATH',''); "
-            "verdict = predire_un_fichier(chemin, modele); "
-            "print(verdict)\" 2>&1";
+            "import torch, os; "
+            "m = PointNetClassifieur(); "
+            "m.load_state_dict(torch.load(os.environ['MODELE_PATH'], map_location='cpu')); "
+            "m.eval(); "
+            "print(predire_un_fichier(os.environ['PLY_PATH'], m))\" 2>&1";
 
-        setenv("PLY_PATH", chemin_ply.c_str(), 1);
+        setenv("PLY_PATH", ply_path.c_str(), 1);
+        setenv("MODELE_PATH", modele.c_str(),     1);
 
         FILE* pipe = popen(cmd.c_str(), "r");
         if (!pipe) {
@@ -218,42 +226,42 @@ void MenuItemsActions::launch_recognition() {
             err.run(); return;
         }
 
-        std::string exit;
+        std::string output;
         char buffer[256];
         while (fgets(buffer, sizeof(buffer), pipe))
-            exit += buffer;
+            output += buffer;
         int ret = pclose(pipe);
+
         unsetenv("PLY_PATH");
+        unsetenv("MODELE_PATH");
 
         std::string verdict;
         {
-            std::istringstream iss(exit);
+            std::istringstream iss(output);
             std::string line;
             while (std::getline(iss, line))
                 if (!line.empty()) verdict = line;
         }
 
-        bool is_human = (verdict.find("Humain") != std::string::npos && verdict.find("Non") == std::string::npos);
+        bool is_human = (verdict.find("Humain") != std::string::npos &&
+                         verdict.find("Non")    == std::string::npos);
 
-        std::string filename = std::filesystem::path(chemin_ply).filename().string();
-        std::string message =
-            "Fichier analysé : " + filename + "\n\n"
-            "Résultat : " + (verdict.empty() ? "(aucune sortie)" : verdict) + "\n";
+        std::string filename = std::filesystem::path(ply_path).filename().string();
+        std::string message = "Fichier analysé : " + filename + "\n\nRésultat : " +
+                               (verdict.empty() ? "(aucune sortie)" : verdict) + "\n";
 
         if (ret != 0 || verdict.find("Erreur") != std::string::npos) {
-            message += "\nDétails :\n" + exit;
+            message += "\nDétails :\n" + output;
             Gtk::MessageDialog result(as_window(), message,
                 false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK, true);
             result.set_title("Analyse IA — Erreur");
             result.run();
-        } 
-        else {
+        } else {
             Gtk::MessageDialog result(as_window(), message,
                 false,
                 is_human ? Gtk::MESSAGE_INFO : Gtk::MESSAGE_QUESTION,
                 Gtk::BUTTONS_OK, true);
-            result.set_title(is_human ? "Analyse IA — Humain détecté"
-                                        : "Analyse IA — Non-Humain");
+            result.set_title(is_human ? "Analyse IA — Humain détecté" : "Analyse IA — Non-Humain");
             result.run();
         }
     });
