@@ -32,7 +32,7 @@ public:
     // TODO:: pas sur pour le shared_ptr
     void add_entity(std::shared_ptr<IEntity> ent);
 
-    std::vector<Point3> scan(size_t lidar_id = 0) const;
+    std::vector<Point3> scan(size_t lidar_id = 0, double parameter = 0.0) const;
 
     // ajoute des meshs dans la scène
     void build();

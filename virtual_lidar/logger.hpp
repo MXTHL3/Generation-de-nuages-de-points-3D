@@ -15,8 +15,6 @@ public:
         
         logger->set_level(spdlog::level::info);
 
-        logger->set_level(spdlog::level::debug);
-    
         spdlog::set_default_logger(logger);
     }
 };
@@ -25,6 +23,6 @@ public:
 #define SIM_INFO(...) spdlog::info(__VA_ARGS__)
 #define SIM_DEBUG(...) spdlog::debug(__VA_ARGS__)
 #define SIM_WARNING(...) spdlog::warn(__VA_ARGS__)
-#define SIM_ERROR(...) spdlog::error(_VA_ARGS__)
+#define SIM_ERROR(...) spdlog::error(__VA_ARGS__)
  
 #endif

@@ -1,6 +1,7 @@
 #include "scene_utils.hpp"
 #include "lidar_factory.hpp"
 #include "units.hpp"
+#include "logger.hpp"
 
 Pose SceneLoader::parse_pose_from_json(const nlohmann::json& j){
     auto pos = j.at("position");
@@ -43,10 +44,18 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
     if(j.contains("lidar_entities")){
         for(const auto& item : j["lidar_entities"]){
             Pose pose = parse_pose_from_json(item.at("pose"));
-            unsigned int step_index = item.at("step_index");
             auto shared_lidar = assets.get_lidar_config(item.at("lidar_config"));
-            auto lidarEnt = std::make_shared<LidarEntity>(shared_lidar, step_index, 360, pose);
+            
+            std::shared_ptr<LidarEntity> lidarEnt = nullptr;
+
+            if (auto mechConfig = std::dynamic_pointer_cast<MechanicalLidarConfig>(shared_lidar)) {
+                lidarEnt = std::make_shared<MechanicalLidarEntity>(mechConfig, pose);
+            }
+            if (lidarEnt) {
             world.add_entity(lidarEnt);
+            } else {
+                std::cerr << "Erreur : Type de Lidar inconnu lors du chargement." << std::endl;
+            }
         }
     }else{
         std::cerr << "Erreur aucun lidar lu dans le fichier scène : "<< filepath << std::endl;
@@ -69,8 +78,9 @@ bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world){
         }
         else if(auto lidarEnt = std::dynamic_pointer_cast<LidarEntity>(ent)){
             nlohmann::json item;
-            item["step_index"] = lidarEnt->step_index();
+            //item["step_index"] = lidarEnt->step_index();
             item["pose"] = pose_to_json(lidarEnt->pose());
+
             j["lidar_entities"].push_back(item);
         }
     }

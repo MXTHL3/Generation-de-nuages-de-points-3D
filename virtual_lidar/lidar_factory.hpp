@@ -13,8 +13,12 @@ namespace LidarModels {
 // créé les lidars à prédéfini à partir de fichiers json
 class LidarFactory {
 public:
-    static std::shared_ptr<Lidar> createFromJsonConfig(const std::string& configPath);
-    static bool saveToJson(const std::string& configPath, const Lidar& lidar);
+    static std::shared_ptr<LidarConfig> createFromJsonConfig(const std::string& configPath);
+    static bool saveToJson(const std::string& configPath, const LidarConfig& lidar_config);
+
+private:
+    // extraction des différents types de lidars
+    static std::shared_ptr<MechanicalLidarConfig> parseMechanicalLidar(const nlohmann::json& data);
 };
 
 #endif

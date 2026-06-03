@@ -52,31 +52,42 @@ private:
 // Lidar dans la scène
 class LidarEntity : public IEntity {
 public:
-        LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index, double m_fov_h, Pose p);
-        std::shared_ptr<IEntity> clone()const override;
-        const std::string& name() const override {return m_model->m_name; };
+    LidarEntity(std::shared_ptr<LidarConfig> config, Pose p);
+    virtual ~LidarEntity() = default;
+    
+    const std::string& name() const override {return m_config->m_name; };
         Transform3 transform() const override;
+
+    std::shared_ptr<LidarConfig> config() const { return m_config; }
+
         void pose(const Pose& pose) override { m_pose = pose; };
         const Pose& pose() const override{ return m_pose; }
-        unsigned int step_index() const { return m_step_index;}
 
         // génère les rayons à lancer
-        std::vector<Ray3> scan(double h_deg) const;
-        const Lidar& config() const;
-        const double& h_step() const;
-        const double& fov_h() const;
+    virtual std::vector<Ray3> scan(double parameter) const = 0;
 
         void noise_model(std::shared_ptr<NoiseModel> model) {m_noise_model = model; }
         double noisy_distance(double d) const {
             return m_noise_model ? m_noise_model->apply(d) : d;
         }
 
-private:
-    std::shared_ptr<Lidar> m_model; // Ref du Lidar
-    unsigned int m_step_index;      // Indice du step horizontal
-    double m_fov_h;
+protected:
+    std::shared_ptr<LidarConfig> m_config;
     Pose m_pose;                    // Position du Lidar
     std::shared_ptr<NoiseModel> m_noise_model = std::make_shared<OusterOS2Noise>(); //Modele de génération de bruit à voir pour le placer directement dans le JSON
 };
+
+class MechanicalLidarEntity : public LidarEntity {
+private:
+    std::shared_ptr<MechanicalLidarConfig> m_config;
+
+public:
+    MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p);
+
+    std::shared_ptr<IEntity> clone() const override;
+
+    std::vector<Ray3> scan(double parameter) const override;
+};
+
 
 #endif

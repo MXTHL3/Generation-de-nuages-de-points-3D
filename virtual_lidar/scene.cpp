@@ -1,5 +1,6 @@
 #include "scene.hpp"
 #include "logger.hpp"
+#include "units.hpp"
 
 #include <iterator>
 
@@ -65,24 +66,28 @@ boost::optional<Intersection> Scene::intersect(const Ray3& ray) const {
     return Intersection{ *impact_point, distance, triangle_index };
 }
 
-std::vector<Point3> Scene::scan(std::size_t lidar_id) const{
+std::vector<Point3> Scene::scan(std::size_t lidar_id, double parameter) const{
     if(lidar_id < m_lidars.size()){
         
         std::vector<Point3> pointCloud;
         std::shared_ptr<LidarEntity> lidar_ent = m_lidars[lidar_id];
 
-        double fov_h = lidar_ent->fov_h();
-        double step = lidar_ent->h_step();
-        auto config = lidar_ent->config();
+        std::shared_ptr<LidarConfig> lc = lidar_ent->config();
 
-        for(double hr = 0.0; hr < fov_h; hr += step){
+        std::shared_ptr<MechanicalLidarConfig> config = std::dynamic_pointer_cast<MechanicalLidarConfig>(lc);
+
+
+        for (double hr = 0.0; hr < 360.0; hr += config->m_h_step[2])
+        {
             std::vector<Ray3> rays = lidar_ent->scan(hr);
-            
-            for(const Ray3& ray : rays){
+            for (const Ray3 &ray : rays)
+            {
                 auto hit = intersect(ray);
 
-                if(hit){
-                    if(hit->distance >= config.m_min_dist && hit->distance){
+                if (hit)
+                {
+                    if (hit->distance >= config->m_min_dist && hit->distance <= config->m_max_dist)
+                    {
 
                         double noisy_dist = lidar_ent->noisy_distance(hit->distance);
                         

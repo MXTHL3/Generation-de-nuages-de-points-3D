@@ -3,10 +3,25 @@
 
 #include <vector>
 #include <string>
+#include <nlohmann/json.hpp>
 #include <cmath>
 
+class LidarConfig {
+public:
+    std::string m_name;
+    double m_min_dist;
+    double m_max_dist;
+    double m_accuracy;
+    
+    LidarConfig(std::string name, double min_dist, double max_dist, double accuracy);
+
+    virtual ~LidarConfig();
+
+    virtual void serialize(nlohmann::json& data) const = 0;
+};
+
 // Stocke les spéfs d'un Lidar
-class Lidar {
+class MechanicalLidarConfig : public LidarConfig{
 public:
     struct Laser
     {
@@ -15,14 +30,13 @@ public:
         double d_off;   // Décalage distance par rapport à l'origine
     };
     
-    std::string m_name;            // nom du modele
-    double m_min_dist;              // distance minimale de detection  
-    double m_max_dist;              // distance maximale de detection
     std::vector<double> m_h_step;   // steps liste horizontal
-    double m_accuracy;              // précision
     std::vector<Laser> m_lasers;    // lasers du Lidar
 
-    Lidar(std::string name, double min_r, double max_r, std::vector<double> m_h_step, double accuracy);
+    MechanicalLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
+         std::vector<double> h_step);
+
+    void serialize(nlohmann::json& data) const override;
 
     // ajoute un laser (1 rayon à lancer) au Lidar
     void addLaser(double v_rad, double h_rad, double d_off);

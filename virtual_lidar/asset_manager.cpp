@@ -63,7 +63,7 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
     return obj;
 }
 
-std::shared_ptr<Lidar> AssetManager::get_lidar_config(const std::string& path){
+std::shared_ptr<LidarConfig> AssetManager::get_lidar_config(const std::string& path){
     if(m_lidar_config_cache.find(path) == m_lidar_config_cache.end()){
         m_lidar_config_cache[path] = load_lidar_from_file(path);
     }else{
@@ -72,6 +72,6 @@ std::shared_ptr<Lidar> AssetManager::get_lidar_config(const std::string& path){
     return m_lidar_config_cache[path];
 }
 
-std::shared_ptr<Lidar> AssetManager::load_lidar_from_file(const std::string& path){
+std::shared_ptr<LidarConfig> AssetManager::load_lidar_from_file(const std::string& path){
     return LidarFactory::createFromJsonConfig(path);
 }
