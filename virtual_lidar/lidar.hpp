@@ -41,4 +41,33 @@ public:
     // ajoute un laser (1 rayon à lancer) au Lidar
     void addLaser(double v_rad, double h_rad, double d_off);
 };
+
+class FlashLidarConfig : public LidarConfig {
+public:    
+    int m_resolution_h;
+    int m_resolution_v;
+    double m_fov_h;
+    double m_fov_v;
+
+    FlashLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
+        int res_h, int res_v, double fov_h, double fov_v);
+    
+    void serialize(nlohmann::json& data) const override;
+};
+
+class MirroredLidarConfig : public LidarConfig {
+public:
+    double m_amplitude_h;
+    double m_amplitude_v;
+    double m_freq_h;
+    double m_freq_v;
+    double m_phase_diff;
+    int m_sample_rate;
+
+    MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
+        double amp_h, double amp_v, double f_h, double f_v, double phase, int sample_rate);
+    
+    void serialize(nlohmann::json& data) const override;
+};
+
 #endif

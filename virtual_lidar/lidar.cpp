@@ -36,3 +36,42 @@ void MechanicalLidarConfig::serialize(nlohmann::json& data) const{
 void MechanicalLidarConfig::addLaser(double v_rad, double h_rad, double d_off){
     m_lasers.push_back({v_rad, h_rad, d_off});
 }
+
+FlashLidarConfig::FlashLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
+    int res_h, int res_v, double fov_h, double fov_v)
+    : LidarConfig(name, min_dist, max_dist, accuracy), 
+    m_resolution_h(res_h), m_resolution_v(res_v), m_fov_h(fov_h), m_fov_v(fov_v){}
+
+void FlashLidarConfig::serialize(nlohmann::json& data) const{
+    data["model"] = m_name;
+    data["min_range"] = m_min_dist;
+    data["max_range"] = m_max_dist;
+    data["accuracy"] = m_accuracy;
+
+    data["type"] = "flash";
+    data["resolution_h"] = m_resolution_h;
+    data["resolution_v"] = m_resolution_v;
+    data["fov_h"] = to_degrees(m_fov_h);
+    data["fov_v"] = to_degrees(m_fov_v);
+}
+
+MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
+    double amp_h, double amp_v, double f_h, double f_v, double phase, int sample_rate)
+    : LidarConfig(name, min_dist, max_dist, accuracy), m_amplitude_h(amp_h), 
+    m_amplitude_v(amp_v), m_freq_h(f_h), m_freq_v(f_v), m_phase_diff(phase), m_sample_rate(sample_rate){}
+
+void MirroredLidarConfig::serialize(nlohmann::json& data) const{
+    data["model"] = m_name;
+    data["min_range"] = m_min_dist;
+    data["max_range"] = m_max_dist;
+    data["accuracy"] = m_accuracy;
+
+    data["type"] = "mirrored";
+
+    data["amplitude_h"] = to_degrees(m_amplitude_h);
+    data["amplitude_v"] = to_degrees(m_amplitude_v);
+    data["freq_h"] = m_freq_h;
+    data["freq_v"] = m_freq_v;
+    data["phase_diff"] = m_phase_diff;
+    data["sample_rate"] = m_sample_rate;
+}
