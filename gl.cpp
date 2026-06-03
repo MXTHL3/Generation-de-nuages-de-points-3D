@@ -709,7 +709,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
             }
         }
 
-        auto entity = std::make_shared<StaticEntity>(obj, Pose());
+        auto entity = std::make_shared<StaticEntity>("mesh_" + std::to_string(i), obj, Pose());
         scene.addEntity(entity);
     }
     scene.build();
@@ -731,16 +731,15 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
 
     for (double w = 0.0; w < 360.0; w += 20.0) {
         Pose scanner_pose(cam_pos, pitch_deg, yaw_deg + w, 0.0);
-        LidarEntity scanner(lidar, 0, scanner_pose);
+        LidarEntity scanner(lidar, 0, 360.0, scanner_pose);
 
         for (double h = 0.0; h < 360.0; h += h_step_deg) {
             std::vector<Ray3> rays = scanner.scan(h);
             ray_count += rays.size();
             for (const Ray3& ray : rays) {
-                double dist = 0.0;
-                auto hit = scene.intersect(ray, dist);
-                if (hit && dist >= lidar->m_min_dist && dist <= lidar->m_max_dist)
-                    cloud.push_back(*hit);
+                auto hit = scene.intersect(ray);
+                if (hit && hit->distance >= lidar->m_min_dist && hit->distance <= lidar->m_max_dist)
+                    cloud.push_back(hit->point);
             }
         }
     }

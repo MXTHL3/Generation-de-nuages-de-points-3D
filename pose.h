@@ -17,4 +17,9 @@ public:
     
     // Calcule la matrice de transformation
     Transform3 getTransform() const;
+
+    double rx() const { return m_rx; }
+    double ry() const { return m_ry; }
+    double rz() const { return m_rz; }
+    const Point3& pos() const { return m_position; }
 };

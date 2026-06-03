@@ -2,7 +2,7 @@ CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2 -Iinclude
 CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy pdal libpng)
 LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy pdal libpng)
-LDFLAGS  += -lgmp -lmpfr
+LDFLAGS  += -lgmp -lmpfr -lspdlog -lfmt
 
 TARGET   := app
 
@@ -20,7 +20,11 @@ SRCS := main.cpp \
         entity.cpp \
         scene.cpp \
         point_cloud_exporter.cpp \
-        menu_items_actions.cpp
+        menu_items_actions.cpp \
+        noise_model.cpp \
+        asset_manager.cpp \
+        scene_utils.cpp \
+        pipeline.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 

@@ -1,4 +1,5 @@
 #include "pose.h"
+#include "units.h"
 
 Pose::Pose(Point3 p, double rx, double ry, double rz)
     : m_position(p), m_rx(rx), m_ry(ry), m_rz(rz){ 
