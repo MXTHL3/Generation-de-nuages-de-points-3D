@@ -63,13 +63,12 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
             "Afficher/masquer nuage", "Filtrage bruit",
             "Ajuster nombre de points", "Color mapping"},
         {"IA",
-            "Générer ensemble de données", "Lancer analyse reconnaissance"},
+            "Générer ensemble de données", "Générer ensemble de données (à partir d'un JSON)", 
+            "Lancer analyse reconnaissance"},
         {"Affichage",
-            "Vue caméra", "Vue scanner", "Plein écran"},
-        {"Paramètres",
-            "Anticrénelage", "Thème"},
+            "Plein écran"},
         {"Aide",
-            "Documentation", "À propos"}
+            "Documentation"}
     };
 
     build_menubar();
@@ -137,14 +136,16 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         auto _sub_widget = Gtk::make_managed<Gtk::MenuItem>(label);
         _sub = _sub_widget;   
 
-        if      (label == "Ouvrir modèle 3D")              { open_3d_model(); }
-        else if (label == "Charger scan (PLY/LAS)")         { load_scan(); }
-        else if (label == "Capturer image")                 { capture_image(); }
-        else if (label == "Lancer scan")                    { launch_scan(); }
-        else if (label == "Afficher/masquer nuage")         { display_cloud(); }
-        else if (label == "Générer ensemble de données")    { generate_dataset(); }
-        else if (label == "Lancer analyse reconnaissance")  { launch_recognition(); }
-        else if (label == "Quitter")                        { exit_app(); }
+        if (label == "Ouvrir modèle 3D") { open_3d_model(); }
+        else if (label == "Charger scan (PLY/LAS)") { load_scan(); }
+        else if (label == "Capturer image") { capture_image(); }
+        else if (label == "Lancer scan") { launch_scan(); }
+        else if (label == "Afficher/masquer nuage") { display_cloud(); }
+        else if (label == "Générer ensemble de données") { generate_dataset(); }
+        else if (label == "Générer ensemble de données (à partir d'un JSON)") { generate_dataset_from_json(); }
+        else if (label == "Lancer analyse reconnaissance") { launch_recognition(); }
+        else if (label == "Plein écran") { to_fullscreen(); }
+        else if (label == "Quitter") { exit_app(); }
 
         sub_menu->append(*_sub_widget);
         _sub_widget->show();

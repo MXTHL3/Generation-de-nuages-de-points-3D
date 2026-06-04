@@ -20,6 +20,8 @@ protected:
     void launch_scan();
     void display_cloud();
     void generate_dataset();
+    void generate_dataset_from_json();
     void launch_recognition();
+    void to_fullscreen();
     void exit_app();
 };

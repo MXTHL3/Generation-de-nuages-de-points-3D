@@ -31,16 +31,18 @@ void LasExporter::save(const std::string& filename,
                        const std::vector<Point3>& points)
 {
     pdal::PointTable table;
+    table.layout()->registerDim(pdal::Dimension::Id::X);
+    table.layout()->registerDim(pdal::Dimension::Id::Y);
+    table.layout()->registerDim(pdal::Dimension::Id::Z);
+    table.layout()->finalize();
 
     auto view = std::make_shared<pdal::PointView>(table);
 
-    for (const auto& p : points)
-    {
+    for (const auto& p : points) {
         pdal::PointId id = view->size();
-
         view->setField(pdal::Dimension::Id::X, id, static_cast<double>(p.x()));
-        view->setField(pdal::Dimension::Id::Y,id,static_cast<double>(p.y()));
-        view->setField(pdal::Dimension::Id::Z,id, static_cast<double>(p.z()));
+        view->setField(pdal::Dimension::Id::Y, id, static_cast<double>(p.y()));
+        view->setField(pdal::Dimension::Id::Z, id, static_cast<double>(p.z()));
     }
 
     pdal::BufferReader reader;

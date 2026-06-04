@@ -1,4 +1,11 @@
 #include "menu_items_actions.h"
+#include "pipeline.h"
+#include "asset_manager.h"
+#include "scene_utils.h"
+#include "noise_model.h"
+#include "point_cloud_exporter.h"
+#include "logger.h"
+#include <filesystem>
 
 void MenuItemsActions::open_3d_model() {
     _sub->signal_activate().connect([this]() {
@@ -157,6 +164,70 @@ void MenuItemsActions::generate_dataset() {
     });
 }
 
+void MenuItemsActions::generate_dataset_from_json() {
+    _sub->signal_activate().connect([this]() {
+        Gtk::FileChooserDialog dialog("Choisir la scène de base (JSON)",
+                                      Gtk::FILE_CHOOSER_ACTION_OPEN);
+        dialog.set_transient_for(as_window());
+        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
+        auto filter = Gtk::FileFilter::create();
+        filter->set_name("Scènes JSON (*.json)");
+        filter->add_pattern("*.json");
+        dialog.add_filter(filter);
+
+        if (dialog.run() != Gtk::RESPONSE_OK) return;
+        std::string scene_path = dialog.get_filename();
+
+        AssetManager assets;
+
+        auto base_scene = std::make_unique<Scene>();
+        if (!SceneLoader::load_scene_from_json(scene_path, *base_scene, assets)) {
+            SIM_ERROR("Impossible de charger la scène : {}", scene_path);
+            return;
+        }
+        SIM_INFO("Scène de base chargée depuis {}", scene_path);
+
+        Pipeline pipeline;
+
+        pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(5, /*seed=*/42));
+        pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(4, 0.0, 360.0, /*seed=*/123));
+
+        auto augmented_scenes = pipeline.execute(std::move(base_scene), assets);
+        SIM_INFO("{} scènes générées par le pipeline", augmented_scenes.size());
+
+        std::filesystem::create_directories("dataset_output");
+        int exported = 0;
+
+        for (size_t i = 0; i < augmented_scenes.size(); ++i) {
+            auto& scene = augmented_scenes[i];
+            scene->build();
+
+            auto cloud = scene->scan(0); 
+
+            if (cloud.empty()) {
+                SIM_WARNING("Scène {} : aucun point scanné, ignorée", i);
+                continue;
+            }
+
+            std::string out_path = "dataset_output/scan_" + std::to_string(i) + ".ply";
+            PlyExporter exporter;
+            try {
+                exporter.save(out_path, cloud);
+                SIM_INFO("Exporté : {} ({} points)", out_path, cloud.size());
+                exported++;
+            } catch (const std::exception& e) {
+                SIM_ERROR("Erreur export {} : {}", out_path, e.what());
+            }
+        }
+
+        std::string msg = std::to_string(exported) + " fichiers PLY générés dans dataset_output/";
+        Gtk::MessageDialog result(as_window(), msg, false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+        result.set_title("Génération terminée");
+        result.run();
+    });
+}
+
 void MenuItemsActions::launch_recognition() {
     _sub->signal_activate().connect([this]() {
         Gtk::FileChooserDialog dialog("Sélectionner un fichier .ply à analyser", Gtk::FILE_CHOOSER_ACTION_OPEN);
@@ -264,6 +335,17 @@ void MenuItemsActions::launch_recognition() {
             result.set_title(is_human ? "Analyse IA — Humain détecté" : "Analyse IA — Non-Humain");
             result.run();
         }
+    });
+}
+
+void MenuItemsActions::to_fullscreen() {
+    _sub->signal_activate().connect([this]() {
+        auto state = as_window().get_window()->get_state();
+
+        if (!(state & Gdk::WINDOW_STATE_FULLSCREEN))
+            as_window().fullscreen();
+        else
+            as_window().unfullscreen();
     });
 }
 

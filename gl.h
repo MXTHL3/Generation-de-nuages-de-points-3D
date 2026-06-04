@@ -20,6 +20,7 @@
 #include "entity.h"
 #include "lidar_factory.h"
 #include "point_cloud_exporter.h"
+#include "logger.h"
 
 struct ModelTransform {
     float pos_x = 0.0f, pos_y = 0.0f, pos_z = 0.0f;

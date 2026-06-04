@@ -4,9 +4,13 @@
 #include "main_window.h"
 #include "gl.h"
 #include "cgal_shape.h"
+#include "logger.h"
 
 int main(int argc, char* argv[])
 {
+    Logger::init();   
+    SIM_INFO("Démarrage de l'application");
+
     auto app = Gtk::Application::create(argc, argv, "org.demo.gtkmm");
     auto scene = std::make_unique<CgalShape>();
     auto gl = std::make_unique<Gl>(std::move(scene));

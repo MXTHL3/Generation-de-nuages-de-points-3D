@@ -1,6 +1,7 @@
 #include "gl.h"
 #include "gl_shaders_utils.h"
 #include "cgal_shape.h"
+#include "noise_model.h"
 #include <iostream>
 
 static const char* VERTEX_SHADER_SRC = R"glsl(
@@ -425,6 +426,8 @@ void Gl::on_realize() {
 
     build_grid(100.0f, 5.0f);
     update_markers_positions();
+
+    gl_area.grab_focus();
 }
 
 bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
@@ -731,7 +734,17 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
 
     for (double w = 0.0; w < 360.0; w += 20.0) {
         Pose scanner_pose(cam_pos, pitch_deg, yaw_deg + w, 0.0);
-        LidarEntity scanner(lidar, 0, 360.0, scanner_pose);
+        std::unique_ptr<NoiseModel> noise_model;
+        if (lidar->m_model.find("os2") != std::string::npos ||
+            lidar->m_model.find("OS2") != std::string::npos) {
+            noise_model = std::make_unique<OusterOS2Noise>();
+            SIM_INFO("Modèle de bruit OusterOS2 activé");
+        } 
+        else {
+            noise_model = std::make_unique<NullNoiseModel>();
+            SIM_INFO("Modèle de bruit nul (distances parfaites)");
+        }
+        LidarEntity scanner(lidar, 0, 360.0, scanner_pose, std::move(noise_model));
 
         for (double h = 0.0; h < 360.0; h += h_step_deg) {
             std::vector<Ray3> rays = scanner.scan(h);
