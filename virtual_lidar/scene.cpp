@@ -8,31 +8,36 @@ Scene::Scene(const Scene& scene){
     for(const auto& entity : scene.m_entities){
         if(entity){
             // TODO:: a virer rapidement
-            auto cloned_entity = std::dynamic_pointer_cast<StaticEntity>(entity->clone());
-            if(cloned_entity){
-                m_entities.push_back(cloned_entity);
+            auto cloned_entity = entity->clone();
+
+            if(!cloned_entity){
+                SIM_WARNING("Echec du clonage d'une entité !");
+            }else{
+                auto static_entity = std::unique_ptr<StaticEntity>(dynamic_cast<StaticEntity*>(cloned_entity.release()));
+                if(!static_entity){
+                    SIM_WARNING("dynamic cast de static_entity echoué !");
+                }else{
+                    m_entities.push_back(std::move(static_entity));
+                }
             }
         }
+        SIM_DEBUG("Scene Copiée !");
     }
 }
 
 
-void Scene::add_static_entity(std::shared_ptr<StaticEntity> ent) { 
-    m_entities.push_back(ent);
+void Scene::add_static_entity(std::unique_ptr<StaticEntity> ent) { 
+    m_entities.push_back(std::move(ent));
 }
 
 void Scene::build(){
     m_triangles.clear();
     for(auto& ent : m_entities) {
-        auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent);
+        Transform3 xform = ent->transform();
+        const auto& local_tris = ent->meshTriangles();
 
-        if(staticEnt) {
-            Transform3 xform = staticEnt->transform();
-            const auto& local_tris = staticEnt->meshTriangles();
-
-            for(const auto& tri : local_tris) {
-                m_triangles.push_back(tri.transform(xform));
-            }
+        for(const auto& tri : local_tris) {
+            m_triangles.push_back(tri.transform(xform));
         }
     }
 

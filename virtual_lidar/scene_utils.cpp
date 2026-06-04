@@ -34,8 +34,8 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
             Pose pose = parse_pose_from_json(item.at("pose"));
             auto shared_mesh = assets.get_mesh(item.at("mesh_path"));
             std::string name = item.at("name");
-            auto staticEnt = std::make_shared<StaticEntity>(name, shared_mesh, pose);
-            world.add_static_entity(staticEnt);
+            auto static_ent = std::make_unique<StaticEntity>(name, shared_mesh, pose);
+            world.add_static_entity(std::move(static_ent));
         }
     }else{
         SIM_ERROR("Erreur aucun objet lu dans le fichier scène : {}", filepath);

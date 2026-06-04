@@ -21,7 +21,7 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
 
             size_t ent_index = 0;
             for(const auto& entity : current_spatial_variation->entities()){
-                if(std::dynamic_pointer_cast<StaticEntity>(entity)){
+                if(dynamic_cast<StaticEntity*>(entity.get())){
                     double r_z = rot_z(m_gen);
 
                     Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
@@ -60,7 +60,7 @@ std::vector<std::unique_ptr<Scene>> PositionLayoutAugmentation::process(std::vec
 
             size_t ent_index = 0;
             for(const auto& entity : current_spatial_variation->entities()){
-                if(std::dynamic_pointer_cast<StaticEntity>(entity)){
+                if(dynamic_cast<StaticEntity*>(entity.get())){
                     double x = dist_x(m_gen);
                     double y = dist_y(m_gen);
 
@@ -98,7 +98,7 @@ std::unique_ptr<Scene> KeyframeLayoutAugmentation::apply_keyframe(const Scene& i
 
     for(auto& ent : new_scene->entities()){
         if(ent->name() == entity_name){
-            if(auto static_ent = std::dynamic_pointer_cast<StaticEntity>(ent)){
+            if(auto static_ent = dynamic_cast<StaticEntity*>(ent.get())){
                 auto mesh = assets.get_mesh(keyframe_path);
                 if(mesh){
                     static_ent->update_mesh(mesh);

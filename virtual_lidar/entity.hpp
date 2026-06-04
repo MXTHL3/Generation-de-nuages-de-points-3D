@@ -15,7 +15,7 @@ typedef K::Triangle_3 Triangle3;
 class IEntity {
 public:
     virtual ~IEntity() {};
-    virtual std::shared_ptr<IEntity> clone() const = 0;
+    virtual std::unique_ptr<IEntity> clone() const = 0;
     virtual Transform3 transform() const = 0;    // Récupère la position dans la scène
     virtual const std::string& name() const = 0;
     virtual const Pose& pose() const = 0;
@@ -32,7 +32,7 @@ public:
 class StaticEntity : public IEntity {
 public:
     StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p);
-    std::shared_ptr<IEntity> clone() const override; 
+    std::unique_ptr<IEntity> clone() const override; 
     const std::string& name() const override {return m_name;};
     Transform3 transform() const override;
 
@@ -84,7 +84,7 @@ private:
 public:
     MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p);
 
-    std::shared_ptr<IEntity> clone() const override;
+    std::unique_ptr<IEntity> clone() const override;
 
     std::vector<Ray3> scan(double parameter) const override;
 };

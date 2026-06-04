@@ -3,8 +3,8 @@
 #include "units.hpp"
 
 // STATIC ENTITY
-std::shared_ptr<IEntity> StaticEntity::clone() const {
-    return std::make_shared<StaticEntity>(*this);
+std::unique_ptr<IEntity> StaticEntity::clone() const {
+    return std::make_unique<StaticEntity>(*this);
 }
 
 StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p)
@@ -21,8 +21,8 @@ MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConf
     : LidarEntity(config, p), m_config(config){}
 
 
-std::shared_ptr<IEntity> MechanicalLidarEntity::clone() const {
-    return std::make_shared<MechanicalLidarEntity>(*this);
+std::unique_ptr<IEntity> MechanicalLidarEntity::clone() const {
+    return std::make_unique<MechanicalLidarEntity>(*this);
 }
 
 std::vector<Ray3> MechanicalLidarEntity::scan(double parameter) const {
