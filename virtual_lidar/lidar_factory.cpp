@@ -18,6 +18,8 @@ std::shared_ptr<LidarConfig> LidarFactory::createFromJsonConfig(const std::strin
         std::string lidar_type = data.value("type", "mechanical");
 
         if      (lidar_type == "mechanical")    return parseMechanicalLidar(data);
+        else if (lidar_type == "flash")         return parseFlashLidar(data);
+        else if (lidar_type == "mirrored")      return parseMirroredLidar(data);
         else    SIM_ERROR("Erreur type de lidar inconnu : {} dans le fichier {}", lidar_type, configPath);
     
     }catch(const nlohmann::json::type_error& e){
@@ -34,7 +36,7 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
 {   
     std::vector<double> hsteps;
     for(double hstep : data["h_step"]) {
-        hsteps.push_back(to_radians(hstep));
+        hsteps.push_back(hstep);
     }
 
     auto lidar_config = std::make_shared<MechanicalLidarConfig>(
@@ -46,6 +48,23 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
     }
 
     return lidar_config;
+}
+
+std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data){
+    return std::make_shared<FlashLidarConfig>(
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
+        data.at("resolution_h").get<double>(), data.at("resolution_v").get<double>(),
+        to_radians(data.at("fov_h").get<double>()), to_radians(data.at("fov_h").get<double>())
+    );
+}
+
+std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
+    return std::make_shared<MirroredLidarConfig>(
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
+        data.at("amplitude_h").get<double>(), data.at("amplitude_v").get<double>(),
+        to_radians(data.at("freq_h").get<double>()), to_radians(data.at("freq_v").get<double>()),
+        data.at("phase_diff").get<double>(), data.at("sample_rate").get<double>()
+    );
 }
 
 bool LidarFactory::saveToJson(const std::string& configPath, const LidarConfig& lidar_config){
