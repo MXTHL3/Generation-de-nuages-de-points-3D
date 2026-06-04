@@ -16,7 +16,8 @@ SOURCES = main.cpp \
 		scene_utils.cpp \
 		asset_manager.cpp \
 		noise_model.cpp \
-		pipeline.cpp
+		pipeline.cpp \
+		lidar_scanner.cpp
 
 all: $(TARGET)
 

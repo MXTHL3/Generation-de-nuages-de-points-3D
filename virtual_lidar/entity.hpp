@@ -56,7 +56,7 @@ public:
     virtual ~LidarEntity() = default;
     
     const std::string& name() const override {return m_config->m_name; };
-        Transform3 transform() const override;
+    Transform3 transform() const override;
 
     std::shared_ptr<LidarConfig> config() const { return m_config; }
 

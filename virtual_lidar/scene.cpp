@@ -7,22 +7,18 @@
 Scene::Scene(const Scene& scene){
     for(const auto& entity : scene.m_entities){
         if(entity){
-            auto cloned_entity = entity->clone();
-            m_entities.push_back(cloned_entity);
-            if(auto cloned_lidar_entity = std::dynamic_pointer_cast<LidarEntity>(cloned_entity)){
-                m_lidars.push_back(cloned_lidar_entity);   
+            // TODO:: a virer rapidement
+            auto cloned_entity = std::dynamic_pointer_cast<StaticEntity>(entity->clone());
+            if(cloned_entity){
+                m_entities.push_back(cloned_entity);
             }
         }
     }
 }
 
 
-void Scene::add_entity(std::shared_ptr<IEntity> ent) { 
+void Scene::add_static_entity(std::shared_ptr<StaticEntity> ent) { 
     m_entities.push_back(ent);
-
-    if(auto lidar = std::dynamic_pointer_cast<LidarEntity>(ent)){
-        m_lidars.push_back(lidar);
-    }
 }
 
 void Scene::build(){
@@ -66,7 +62,7 @@ boost::optional<Intersection> Scene::intersect(const Ray3& ray) const {
     return Intersection{ *impact_point, distance, triangle_index };
 }
 
-std::vector<Point3> Scene::scan(std::size_t lidar_id, double parameter) const{
+/*std::vector<Point3> Scene::scan(std::size_t lidar_id, double parameter) const{
     if(lidar_id < m_lidars.size()){
         
         std::vector<Point3> pointCloud;
@@ -109,4 +105,4 @@ std::vector<Point3> Scene::scan(std::size_t lidar_id, double parameter) const{
     }
     throw std::runtime_error("L'index donné qui correspond à une 'entité Lidar' pour scanner la scène n'existe pas !");
 
-}
+}*/

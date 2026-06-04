@@ -17,71 +17,77 @@ nlohmann::json SceneLoader::pose_to_json(const Pose& p){
     return j;
 }
 
-bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world, AssetManager& assets){
+bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world, std::vector<std::shared_ptr<LidarEntity>>& lidars_ent, AssetManager& assets){
     std::ifstream file(filepath);
 
     if(!file.is_open()){
-        std::cerr << "Erreur impossible de lire de fichier de scene : "<< filepath << std::endl;
+        SIM_ERROR("Impossible de lire le fichier de scène : {}", filepath); 
         return false;
     }
 
     nlohmann::json j;
     file >> j;
 
+    // Chargement des Objets de la scène
     if(j.contains("static_entities")) {
         for(const auto& item : j["static_entities"]){
             Pose pose = parse_pose_from_json(item.at("pose"));
             auto shared_mesh = assets.get_mesh(item.at("mesh_path"));
             std::string name = item.at("name");
             auto staticEnt = std::make_shared<StaticEntity>(name, shared_mesh, pose);
-            world.add_entity(staticEnt);
+            world.add_static_entity(staticEnt);
         }
     }else{
-        std::cerr << "Erreur aucun objet lu dans le fichier scène : "<< filepath << std::endl;
+        SIM_ERROR("Erreur aucun objet lu dans le fichier scène : {}", filepath);
         return false;
     }
 
+    // Chargement des Lidars
     if(j.contains("lidar_entities")){
         for(const auto& item : j["lidar_entities"]){
             Pose pose = parse_pose_from_json(item.at("pose"));
-            auto shared_lidar = assets.get_lidar_config(item.at("lidar_config"));
+            auto shared_lidar_config = assets.get_lidar_config(item.at("lidar_config"));
             
-            std::shared_ptr<LidarEntity> lidarEnt = nullptr;
-
-            if (auto mechConfig = std::dynamic_pointer_cast<MechanicalLidarConfig>(shared_lidar)) {
-                lidarEnt = std::make_shared<MechanicalLidarEntity>(mechConfig, pose);
-            }
-            if (lidarEnt) {
-            world.add_entity(lidarEnt);
-            } else {
-                std::cerr << "Erreur : Type de Lidar inconnu lors du chargement." << std::endl;
+            // TODO:: A fixer
+            if(auto mechanical_lidar_config = std::dynamic_pointer_cast<MechanicalLidarConfig>(shared_lidar_config)){
+                std::shared_ptr<LidarEntity> lidar_ent = std::make_shared<MechanicalLidarEntity>(mechanical_lidar_config, pose);
+                lidars_ent.push_back(lidar_ent);
             }
         }
     }else{
-        std::cerr << "Erreur aucun lidar lu dans le fichier scène : "<< filepath << std::endl;
+        SIM_ERROR("Erreur aucun lidar lu dans le fichier scène : {}", filepath);
         return false;
     }
 
     return true;
 }
 
-bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world){
+bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world, const std::vector<std::shared_ptr<LidarEntity>>& lidars_ent){
     nlohmann::json j;
     j["static_entities"] = nlohmann::json::array();
     j["lidar_entities"] = nlohmann::json::array();      
 
+    // sauvegarde des objets de la scène
     for(const auto& ent : world.entities()){
-        if(auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent)){
+        if(ent){
             nlohmann::json item;
-            item["pose"] = pose_to_json(staticEnt->pose());
+            item["name"] = ent->name();
+            item["pose"] = pose_to_json(ent->pose());
             j["static_entities"].push_back(item);
+        }else{
+            return false;
         }
-        else if(auto lidarEnt = std::dynamic_pointer_cast<LidarEntity>(ent)){
-            nlohmann::json item;
-            //item["step_index"] = lidarEnt->step_index();
-            item["pose"] = pose_to_json(lidarEnt->pose());
+    }
 
+    // sauvegarde des lidars 
+    for(const auto& lidar_ent : lidars_ent){
+        if(lidar_ent){
+            nlohmann::json item;
+            item["lidar_config"] = lidar_ent->config()->m_name;
+            item["pose"] = pose_to_json(lidar_ent->pose());
             j["lidar_entities"].push_back(item);
+        }else{
+            return false;
         }
     }
 

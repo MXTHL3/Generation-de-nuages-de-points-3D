@@ -24,13 +24,12 @@ public:
     Scene() = default;
     ~Scene(){
         m_triangles.clear();
-        m_triangles.shrink_to_fit();
         m_tree.reset();
     }
     Scene(const Scene& scene);
     // ajoute un objet à la scène
     // TODO:: pas sur pour le shared_ptr
-    void add_entity(std::shared_ptr<IEntity> ent);
+    void add_static_entity(std::shared_ptr<StaticEntity> ent);
 
     std::vector<Point3> scan(size_t lidar_id = 0, double parameter = 0.0) const;
 
@@ -40,14 +39,11 @@ public:
     // retourne le point d'intersection du rayon
     boost::optional<Intersection> intersect(const Ray3& ray) const;
 
-    const std::vector<std::shared_ptr<IEntity>>& entities(){ return m_entities; }
+    const std::vector<std::shared_ptr<StaticEntity>>& entities(){ return m_entities; }
 
 private:
     // les objets à rendre dans la scène
-    std::vector<std::shared_ptr<IEntity>> m_entities;
-
-    // les capteurs de la scène
-    std::vector<std::shared_ptr<LidarEntity>> m_lidars;
+    std::vector<std::shared_ptr<StaticEntity>> m_entities;
 
     // les triangles à rendre dans la scène
     std::vector<Triangle3> m_triangles;

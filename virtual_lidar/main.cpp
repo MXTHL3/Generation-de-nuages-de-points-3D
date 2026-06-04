@@ -12,6 +12,7 @@
 #include "point_cloud_exporter.hpp"
 #include "pipeline.hpp"
 #include "logger.hpp"
+#include "lidar_scanner.hpp"
 
 std::string scene_path = "scenes_config/test_scene.json";
 
@@ -51,7 +52,8 @@ int main(int argc, char *argv[])
             scene_path = argv[1];
         }
 
-        if (SceneLoader::load_scene_from_json(scene_path, world, assets))
+        std::vector<std::shared_ptr<LidarEntity>> lidars;
+        if (SceneLoader::load_scene_from_json(scene_path, world, lidars, assets))
         {
             SIM_INFO("ETAPE 1 - JSON chargé. Entités : {}", world.entities().size());
             Pipeline pipeline;
@@ -70,11 +72,15 @@ int main(int argc, char *argv[])
 
             PlyExporter exporter;
             std::vector<Point3> resultCloud;
+            LidarScanner scanner;
+
+            auto ouster_lidar = std::dynamic_pointer_cast<MechanicalLidarEntity>(lidars[0]);
+
             int i = 0;
             for (auto &scene : scenes)
             {
                 scene->build();
-                resultCloud = scene->scan(0);
+                resultCloud = scanner.scan(ouster_lidar, *scene);
                 // on relache la scene pour libérer le cache mémoire en mémoire sinon il sera uniquement relaché après la boucle
                 // TODO :: soluce temporaire il faut surement retirer les shared_ptr car pas utile pour scene soit (unique_ptr?)
                 scene.reset();

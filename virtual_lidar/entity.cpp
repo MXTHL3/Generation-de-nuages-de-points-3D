@@ -20,6 +20,11 @@ LidarEntity::LidarEntity(std::shared_ptr<LidarConfig> config, Pose p)
 MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p)
     : LidarEntity(config, p), m_config(config){}
 
+
+std::shared_ptr<IEntity> MechanicalLidarEntity::clone() const {
+    return std::make_shared<MechanicalLidarEntity>(*this);
+}
+
 std::vector<Ray3> MechanicalLidarEntity::scan(double parameter) const {
     Transform3 world_xf = transform();
     std::vector<Ray3> rays;
