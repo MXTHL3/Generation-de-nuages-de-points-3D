@@ -19,8 +19,8 @@ public:
 private:
     // extraction des différents types de lidars
     static std::shared_ptr<MechanicalLidarConfig> parseMechanicalLidar(const nlohmann::json& data);
-    std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data);
-    std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data);
+    static std::shared_ptr<FlashLidarConfig> parseFlashLidar(const nlohmann::json &data);
+    static std::shared_ptr<MirroredLidarConfig> parseMirroredLidar(const nlohmann::json &data);
 };
 
 #endif
