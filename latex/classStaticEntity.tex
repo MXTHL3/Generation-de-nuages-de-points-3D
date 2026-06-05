@@ -1,0 +1,153 @@
+\hypertarget{classStaticEntity}{}\doxysection{Static\+Entity Class Reference}
+\label{classStaticEntity}\index{StaticEntity@{StaticEntity}}
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for Static\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classStaticEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Static\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classStaticEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classStaticEntity_a39d094da25efd1ba7d1cd523f6c8befc}{Static\+Entity}} (std\+::string \mbox{\hyperlink{classStaticEntity_a3e95ce33778161b32ed51e4a230a14bc}{name}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ obj, \mbox{\hyperlink{classPose}{Pose}} p)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classStaticEntity_a4c59c71f1926bcc7c3cc6e537a6398b9}{clone}} () const override
+\item 
+\mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} \mbox{\hyperlink{classStaticEntity_acfda9d46fbbbf50667d00556a479b715}{get\+Transform}} () const override
+\item 
+void \mbox{\hyperlink{classStaticEntity_ab9da1163487c6031953f6d2ad495324e}{update}} (double) override
+\item 
+const std\+::string \& \mbox{\hyperlink{classStaticEntity_a3e95ce33778161b32ed51e4a230a14bc}{name}} () const override
+\item 
+const \mbox{\hyperlink{classPose}{Pose}} \& \mbox{\hyperlink{classStaticEntity_ac9ff212bfb416d217021ae54a3b08c16}{pose}} () const override
+\item 
+void \mbox{\hyperlink{classStaticEntity_ad6c07a9905afaa87daf77cb36e80653d}{pose}} (const \mbox{\hyperlink{classPose}{Pose}} \&p) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ \mbox{\hyperlink{classStaticEntity_a47bc2f25bdc2db03981d20894a22295d}{get\+Mesh}} () const
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}} $>$ \& \mbox{\hyperlink{classStaticEntity_af8d8ed479968f75609d9cff7f37166da}{mesh\+Triangles}} () const
+\item 
+void \mbox{\hyperlink{classStaticEntity_a66e14c819885a70f7db9a7bc27cf986a}{update\+\_\+mesh}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ new\+\_\+obj)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStaticEntity_a39d094da25efd1ba7d1cd523f6c8befc}\label{classStaticEntity_a39d094da25efd1ba7d1cd523f6c8befc}} 
+\index{StaticEntity@{StaticEntity}!StaticEntity@{StaticEntity}}
+\index{StaticEntity@{StaticEntity}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{StaticEntity()}{StaticEntity()}}
+{\footnotesize\ttfamily Static\+Entity\+::\+Static\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$}]{obj,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStaticEntity_a4c59c71f1926bcc7c3cc6e537a6398b9}\label{classStaticEntity_a4c59c71f1926bcc7c3cc6e537a6398b9}} 
+\index{StaticEntity@{StaticEntity}!clone@{clone}}
+\index{clone@{clone}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Static\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_ab4fb4e0e9a30da784cf5f8a8dcd81156}{IEntity}}.
+
+\mbox{\Hypertarget{classStaticEntity_a47bc2f25bdc2db03981d20894a22295d}\label{classStaticEntity_a47bc2f25bdc2db03981d20894a22295d}} 
+\index{StaticEntity@{StaticEntity}!getMesh@{getMesh}}
+\index{getMesh@{getMesh}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getMesh()}{getMesh()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classObject}{Object}}$>$ Static\+Entity\+::get\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classStaticEntity_acfda9d46fbbbf50667d00556a479b715}\label{classStaticEntity_acfda9d46fbbbf50667d00556a479b715}} 
+\index{StaticEntity@{StaticEntity}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} Static\+Entity\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a22bb978fc9614c256d0f5a4832abae43}{IEntity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStaticEntity_acfda9d46fbbbf50667d00556a479b715_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStaticEntity_af8d8ed479968f75609d9cff7f37166da}\label{classStaticEntity_af8d8ed479968f75609d9cff7f37166da}} 
+\index{StaticEntity@{StaticEntity}!meshTriangles@{meshTriangles}}
+\index{meshTriangles@{meshTriangles}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{meshTriangles()}{meshTriangles()}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}$>$\& Static\+Entity\+::mesh\+Triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classStaticEntity_a3e95ce33778161b32ed51e4a230a14bc}\label{classStaticEntity_a3e95ce33778161b32ed51e4a230a14bc}} 
+\index{StaticEntity@{StaticEntity}!name@{name}}
+\index{name@{name}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const std\+::string\& Static\+Entity\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{IEntity}}.
+
+\mbox{\Hypertarget{classStaticEntity_ac9ff212bfb416d217021ae54a3b08c16}\label{classStaticEntity_ac9ff212bfb416d217021ae54a3b08c16}} 
+\index{StaticEntity@{StaticEntity}!pose@{pose}}
+\index{pose@{pose}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classPose}{Pose}}\& Static\+Entity\+::pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a44cacc896675bc364bc776214f1e66ae}{IEntity}}.
+
+\mbox{\Hypertarget{classStaticEntity_ad6c07a9905afaa87daf77cb36e80653d}\label{classStaticEntity_ad6c07a9905afaa87daf77cb36e80653d}} 
+\index{StaticEntity@{StaticEntity}!pose@{pose}}
+\index{pose@{pose}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Static\+Entity\+::pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}{IEntity}}.
+
+\mbox{\Hypertarget{classStaticEntity_ab9da1163487c6031953f6d2ad495324e}\label{classStaticEntity_ab9da1163487c6031953f6d2ad495324e}} 
+\index{StaticEntity@{StaticEntity}!update@{update}}
+\index{update@{update}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Static\+Entity\+::update (\begin{DoxyParamCaption}\item[{double}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}{IEntity}}.
+
+\mbox{\Hypertarget{classStaticEntity_a66e14c819885a70f7db9a7bc27cf986a}\label{classStaticEntity_a66e14c819885a70f7db9a7bc27cf986a}} 
+\index{StaticEntity@{StaticEntity}!update\_mesh@{update\_mesh}}
+\index{update\_mesh@{update\_mesh}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{update\_mesh()}{update\_mesh()}}
+{\footnotesize\ttfamily void Static\+Entity\+::update\+\_\+mesh (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$}]{new\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entity_8h}{entity.\+h}}\item 
+\mbox{\hyperlink{entity_8cpp}{entity.\+cpp}}\end{DoxyCompactItemize}

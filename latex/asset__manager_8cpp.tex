@@ -1,0 +1,89 @@
+\hypertarget{asset__manager_8cpp}{}\doxysection{asset\+\_\+manager.\+cpp File Reference}
+\label{asset__manager_8cpp}\index{asset\_manager.cpp@{asset\_manager.cpp}}
+{\ttfamily \#include \char`\"{}asset\+\_\+manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lidar\+\_\+factory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Simple\+\_\+cartesian.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Point\+\_\+3.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Triangle\+\_\+3.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Polygon\+\_\+mesh\+\_\+processing/\+IO/polygon\+\_\+mesh\+\_\+io.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Surface\+\_\+mesh.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Polygon\+\_\+mesh\+\_\+processing/triangulate\+\_\+faces.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Polygon\+\_\+mesh\+\_\+processing/transform.\+h$>$}\newline
+Include dependency graph for asset\+\_\+manager.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{asset__manager_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{asset__manager_8cpp_a45d32ff06499b3d3bb8a37719b33008b}{SIM\+\_\+\+ERROR}}(...)~spdlog\+::error(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef CGAL\+::\+Simple\+\_\+cartesian$<$ double $>$ \mbox{\hyperlink{asset__manager_8cpp_a3c01774fc10462ecfaf77dad1447e89e}{Kernel}}
+\item 
+typedef Kernel\+::\+Point\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}{CGAL\+\_\+\+Point\+\_\+3}}
+\item 
+typedef Kernel\+::\+Vector\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_ad41ee899d61e0dad191e3c2fa4adce4b}{CGAL\+\_\+\+Vector\+\_\+3}}
+\item 
+typedef Kernel\+::\+Ray\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a0815c4854020e77295b4b380515c9a4c}{CGAL\+\_\+\+Ray\+\_\+3}}
+\item 
+typedef Kernel\+::\+Triangle\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a0a177e0b2a67716fd91432326736d5cb}{CGAL\+\_\+\+Triangle\+\_\+3}}
+\item 
+typedef CGAL\+::\+Surface\+\_\+mesh$<$ \mbox{\hyperlink{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}{CGAL\+\_\+\+Point\+\_\+3}} $>$ \mbox{\hyperlink{asset__manager_8cpp_a53a26d2f76976100df71da3d23fb55f7}{CGAL\+\_\+\+Mesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{asset__manager_8cpp_a45d32ff06499b3d3bb8a37719b33008b}\label{asset__manager_8cpp_a45d32ff06499b3d3bb8a37719b33008b}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!SIM\_ERROR@{SIM\_ERROR}}
+\index{SIM\_ERROR@{SIM\_ERROR}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{SIM\_ERROR}{SIM\_ERROR}}
+{\footnotesize\ttfamily \#define SIM\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~spdlog\+::error(\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{asset__manager_8cpp_a53a26d2f76976100df71da3d23fb55f7}\label{asset__manager_8cpp_a53a26d2f76976100df71da3d23fb55f7}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!CGAL\_Mesh@{CGAL\_Mesh}}
+\index{CGAL\_Mesh@{CGAL\_Mesh}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{CGAL\_Mesh}{CGAL\_Mesh}}
+{\footnotesize\ttfamily typedef CGAL\+::\+Surface\+\_\+mesh$<$\mbox{\hyperlink{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}{CGAL\+\_\+\+Point\+\_\+3}}$>$ \mbox{\hyperlink{asset__manager_8cpp_a53a26d2f76976100df71da3d23fb55f7}{CGAL\+\_\+\+Mesh}}}
+
+\mbox{\Hypertarget{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}\label{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!CGAL\_Point\_3@{CGAL\_Point\_3}}
+\index{CGAL\_Point\_3@{CGAL\_Point\_3}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{CGAL\_Point\_3}{CGAL\_Point\_3}}
+{\footnotesize\ttfamily typedef Kernel\+::\+Point\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a20f87ecbaf19276e57cc794528d3a84f}{CGAL\+\_\+\+Point\+\_\+3}}}
+
+\mbox{\Hypertarget{asset__manager_8cpp_a0815c4854020e77295b4b380515c9a4c}\label{asset__manager_8cpp_a0815c4854020e77295b4b380515c9a4c}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!CGAL\_Ray\_3@{CGAL\_Ray\_3}}
+\index{CGAL\_Ray\_3@{CGAL\_Ray\_3}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{CGAL\_Ray\_3}{CGAL\_Ray\_3}}
+{\footnotesize\ttfamily typedef Kernel\+::\+Ray\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a0815c4854020e77295b4b380515c9a4c}{CGAL\+\_\+\+Ray\+\_\+3}}}
+
+\mbox{\Hypertarget{asset__manager_8cpp_a0a177e0b2a67716fd91432326736d5cb}\label{asset__manager_8cpp_a0a177e0b2a67716fd91432326736d5cb}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!CGAL\_Triangle\_3@{CGAL\_Triangle\_3}}
+\index{CGAL\_Triangle\_3@{CGAL\_Triangle\_3}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{CGAL\_Triangle\_3}{CGAL\_Triangle\_3}}
+{\footnotesize\ttfamily typedef Kernel\+::\+Triangle\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_a0a177e0b2a67716fd91432326736d5cb}{CGAL\+\_\+\+Triangle\+\_\+3}}}
+
+\mbox{\Hypertarget{asset__manager_8cpp_ad41ee899d61e0dad191e3c2fa4adce4b}\label{asset__manager_8cpp_ad41ee899d61e0dad191e3c2fa4adce4b}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!CGAL\_Vector\_3@{CGAL\_Vector\_3}}
+\index{CGAL\_Vector\_3@{CGAL\_Vector\_3}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{CGAL\_Vector\_3}{CGAL\_Vector\_3}}
+{\footnotesize\ttfamily typedef Kernel\+::\+Vector\+\_\+3 \mbox{\hyperlink{asset__manager_8cpp_ad41ee899d61e0dad191e3c2fa4adce4b}{CGAL\+\_\+\+Vector\+\_\+3}}}
+
+\mbox{\Hypertarget{asset__manager_8cpp_a3c01774fc10462ecfaf77dad1447e89e}\label{asset__manager_8cpp_a3c01774fc10462ecfaf77dad1447e89e}} 
+\index{asset\_manager.cpp@{asset\_manager.cpp}!Kernel@{Kernel}}
+\index{Kernel@{Kernel}!asset\_manager.cpp@{asset\_manager.cpp}}
+\doxysubsubsection{\texorpdfstring{Kernel}{Kernel}}
+{\footnotesize\ttfamily typedef CGAL\+::\+Simple\+\_\+cartesian$<$double$>$ \mbox{\hyperlink{asset__manager_8cpp_a3c01774fc10462ecfaf77dad1447e89e}{Kernel}}}
+

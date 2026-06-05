@@ -1,0 +1,138 @@
+\hypertarget{classCgal}{}\doxysection{Cgal Class Reference}
+\label{classCgal}\index{Cgal@{Cgal}}
+
+
+{\ttfamily \#include $<$cgal.\+h$>$}
+
+
+
+Inheritance diagram for Cgal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classCgal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Cgal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classCgal__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classCgal_a4320e3bda6d290340a27812e3d8955d0}{$\sim$\+Cgal}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classCgal_a8c8dee21b90918c15bf38fd378c271d9}{build\+\_\+cube\+\_\+mesh}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classCgal_a582f120c6f9545cf82c51bc747712b07}{build\+\_\+mesh\+\_\+from\+\_\+file}} (const std\+::string \&filename)=0
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classCgal_a52114aa511fcf4dbea848db6f7d9d666}{to\+\_\+vertex\+\_\+data}} () const
+\item 
+const \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} \& \mbox{\hyperlink{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}{mesh}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Surface\+Mesh\+::\+Vertex\+\_\+index \mbox{\hyperlink{classCgal_a154e737d7f475f585d9b4136661609bc}{add\+\_\+vertex}} (double x, double y, double z)
+\item 
+void \mbox{\hyperlink{classCgal_acd43ae6dde0c8c9f378e65992026de6a}{add\+\_\+triangle}} (Surface\+Mesh\+::\+Vertex\+\_\+index a, Surface\+Mesh\+::\+Vertex\+\_\+index b, Surface\+Mesh\+::\+Vertex\+\_\+index c)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} \mbox{\hyperlink{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}{m\+\_\+mesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCgal_a4320e3bda6d290340a27812e3d8955d0}\label{classCgal_a4320e3bda6d290340a27812e3d8955d0}} 
+\index{Cgal@{Cgal}!````~Cgal@{$\sim$Cgal}}
+\index{````~Cgal@{$\sim$Cgal}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cgal()}{~Cgal()}}
+{\footnotesize\ttfamily virtual Cgal\+::$\sim$\+Cgal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCgal_acd43ae6dde0c8c9f378e65992026de6a}\label{classCgal_acd43ae6dde0c8c9f378e65992026de6a}} 
+\index{Cgal@{Cgal}!add\_triangle@{add\_triangle}}
+\index{add\_triangle@{add\_triangle}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{add\_triangle()}{add\_triangle()}}
+{\footnotesize\ttfamily void Cgal\+::add\+\_\+triangle (\begin{DoxyParamCaption}\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{a,  }\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{b,  }\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCgal_acd43ae6dde0c8c9f378e65992026de6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCgal_a154e737d7f475f585d9b4136661609bc}\label{classCgal_a154e737d7f475f585d9b4136661609bc}} 
+\index{Cgal@{Cgal}!add\_vertex@{add\_vertex}}
+\index{add\_vertex@{add\_vertex}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{add\_vertex()}{add\_vertex()}}
+{\footnotesize\ttfamily Surface\+Mesh\+::\+Vertex\+\_\+index Cgal\+::add\+\_\+vertex (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCgal_a154e737d7f475f585d9b4136661609bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classCgal_a8c8dee21b90918c15bf38fd378c271d9}\label{classCgal_a8c8dee21b90918c15bf38fd378c271d9}} 
+\index{Cgal@{Cgal}!build\_cube\_mesh@{build\_cube\_mesh}}
+\index{build\_cube\_mesh@{build\_cube\_mesh}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{build\_cube\_mesh()}{build\_cube\_mesh()}}
+{\footnotesize\ttfamily virtual void Cgal\+::build\+\_\+cube\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb}{Cgal\+Shape}}.
+
+\mbox{\Hypertarget{classCgal_a582f120c6f9545cf82c51bc747712b07}\label{classCgal_a582f120c6f9545cf82c51bc747712b07}} 
+\index{Cgal@{Cgal}!build\_mesh\_from\_file@{build\_mesh\_from\_file}}
+\index{build\_mesh\_from\_file@{build\_mesh\_from\_file}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{build\_mesh\_from\_file()}{build\_mesh\_from\_file()}}
+{\footnotesize\ttfamily virtual void Cgal\+::build\+\_\+mesh\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86}{Cgal\+Shape}}.
+
+\mbox{\Hypertarget{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}\label{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}} 
+\index{Cgal@{Cgal}!mesh@{mesh}}
+\index{mesh@{mesh}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}}\& Cgal\+::mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classCgal_a52114aa511fcf4dbea848db6f7d9d666}\label{classCgal_a52114aa511fcf4dbea848db6f7d9d666}} 
+\index{Cgal@{Cgal}!to\_vertex\_data@{to\_vertex\_data}}
+\index{to\_vertex\_data@{to\_vertex\_data}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{to\_vertex\_data()}{to\_vertex\_data()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Cgal\+::to\+\_\+vertex\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}\label{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}} 
+\index{Cgal@{Cgal}!m\_mesh@{m\_mesh}}
+\index{m\_mesh@{m\_mesh}!Cgal@{Cgal}}
+\doxysubsubsection{\texorpdfstring{m\_mesh}{m\_mesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} Cgal\+::m\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cgal_8h}{cgal.\+h}}\item 
+\mbox{\hyperlink{cgal_8cpp}{cgal.\+cpp}}\end{DoxyCompactItemize}

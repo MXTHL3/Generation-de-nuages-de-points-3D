@@ -1,0 +1,60 @@
+\hypertarget{classPipelineStep}{}\doxysection{Pipeline\+Step Class Reference}
+\label{classPipelineStep}\index{PipelineStep@{PipelineStep}}
+
+
+{\ttfamily \#include $<$pipeline.\+h$>$}
+
+
+
+Inheritance diagram for Pipeline\+Step\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPipelineStep__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pipeline\+Step\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classPipelineStep__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classPipelineStep_a9d707b9a09c3a2ad60b671e1bc5d297f}{$\sim$\+Pipeline\+Step}} ()
+\item 
+virtual std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPipelineStep_a9d707b9a09c3a2ad60b671e1bc5d297f}\label{classPipelineStep_a9d707b9a09c3a2ad60b671e1bc5d297f}} 
+\index{PipelineStep@{PipelineStep}!````~PipelineStep@{$\sim$PipelineStep}}
+\index{````~PipelineStep@{$\sim$PipelineStep}!PipelineStep@{PipelineStep}}
+\doxysubsubsection{\texorpdfstring{$\sim$PipelineStep()}{~PipelineStep()}}
+{\footnotesize\ttfamily virtual Pipeline\+Step\+::$\sim$\+Pipeline\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}\label{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}} 
+\index{PipelineStep@{PipelineStep}!process@{process}}
+\index{process@{process}!PipelineStep@{PipelineStep}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classScene}{Scene}}$>$ $>$ Pipeline\+Step\+::process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$}]{input\+\_\+scenes,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classKeyframeLayoutAugmentation_a488a82b9ebf044e73e973a51e43f3830}{Keyframe\+Layout\+Augmentation}}, \mbox{\hyperlink{classRotationLayoutAugmentation_aefacdf5d4f6b2b74450defcb0150400d}{Rotation\+Layout\+Augmentation}}, and \mbox{\hyperlink{classPositionLayoutAugmentation_ade02783b47885767566ad4d18768481c}{Position\+Layout\+Augmentation}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pipeline_8h}{pipeline.\+h}}\end{DoxyCompactItemize}

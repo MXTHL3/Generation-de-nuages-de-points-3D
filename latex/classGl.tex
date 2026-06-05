@@ -1,0 +1,157 @@
+\hypertarget{classGl}{}\doxysection{Gl Class Reference}
+\label{classGl}\index{Gl@{Gl}}
+
+
+{\ttfamily \#include $<$gl.\+h$>$}
+
+
+
+Collaboration diagram for Gl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classGl__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGl_a7f9e02f67520b23402061cb58420c70b}{Gl}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCgal}{Cgal}} $>$ default\+\_\+scene)
+\item 
+Gtk\+::\+Widget \& \mbox{\hyperlink{classGl_a92e2dc7d8d682a4597e6b36a7baff396}{widget}} ()
+\item 
+void \mbox{\hyperlink{classGl_a643d518702ab2e28f62b0414247f2137}{build\+\_\+grid}} (float size, float step)
+\item 
+void \mbox{\hyperlink{classGl_a97e61d917cbe1e275e1fc872b4d656a6}{load\+\_\+file}} (const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classGl_a5bdcca5a28273112b61476cfe13a2674}{load\+\_\+scan}} (const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classGl_a7086ea1109c9b754e531fd3d1870c1f6}{capture\+\_\+image}} (const std\+::string \&path)
+\item 
+void \mbox{\hyperlink{classGl_aa0687592e446cb744fcc588420821483}{add\+\_\+overlay\+\_\+widget}} (Gtk\+::\+Widget \&w)
+\item 
+void \mbox{\hyperlink{classGl_ad7911c5da5492309af8bf125d26ecde1}{run\+\_\+scan}} (const std\+::string \&lidar\+\_\+config\+\_\+path, const std\+::string \&output\+\_\+path)
+\item 
+void \mbox{\hyperlink{classGl_a06b6675f97657ca3b46bd3c9367aa972}{set\+\_\+lidar\+\_\+config}} (const std\+::string \&path)
+\item 
+const std\+::string \& \mbox{\hyperlink{classGl_a282f1d04873290629695e206e9cd2fbe}{get\+\_\+lidar\+\_\+config}} () const
+\item 
+void \mbox{\hyperlink{classGl_a39222fbea430ff6081ecc704ac39d7a6}{toggle\+\_\+point\+\_\+cloud}} ()
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classModelMarker}{Model\+Marker}} $>$ $>$ \& \mbox{\hyperlink{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}{get\+\_\+markers}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ \mbox{\hyperlink{classGl_a8555c2fc90241017c1e7b1b35b06b286}{signal\+\_\+marker\+\_\+clicked}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGl_a7f9e02f67520b23402061cb58420c70b}\label{classGl_a7f9e02f67520b23402061cb58420c70b}} 
+\index{Gl@{Gl}!Gl@{Gl}}
+\index{Gl@{Gl}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{Gl()}{Gl()}}
+{\footnotesize\ttfamily Gl\+::\+Gl (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCgal}{Cgal}} $>$}]{default\+\_\+scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGl_aa0687592e446cb744fcc588420821483}\label{classGl_aa0687592e446cb744fcc588420821483}} 
+\index{Gl@{Gl}!add\_overlay\_widget@{add\_overlay\_widget}}
+\index{add\_overlay\_widget@{add\_overlay\_widget}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{add\_overlay\_widget()}{add\_overlay\_widget()}}
+{\footnotesize\ttfamily void Gl\+::add\+\_\+overlay\+\_\+widget (\begin{DoxyParamCaption}\item[{Gtk\+::\+Widget \&}]{w }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a643d518702ab2e28f62b0414247f2137}\label{classGl_a643d518702ab2e28f62b0414247f2137}} 
+\index{Gl@{Gl}!build\_grid@{build\_grid}}
+\index{build\_grid@{build\_grid}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{build\_grid()}{build\_grid()}}
+{\footnotesize\ttfamily void Gl\+::build\+\_\+grid (\begin{DoxyParamCaption}\item[{float}]{size,  }\item[{float}]{step }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a7086ea1109c9b754e531fd3d1870c1f6}\label{classGl_a7086ea1109c9b754e531fd3d1870c1f6}} 
+\index{Gl@{Gl}!capture\_image@{capture\_image}}
+\index{capture\_image@{capture\_image}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{capture\_image()}{capture\_image()}}
+{\footnotesize\ttfamily void Gl\+::capture\+\_\+image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a282f1d04873290629695e206e9cd2fbe}\label{classGl_a282f1d04873290629695e206e9cd2fbe}} 
+\index{Gl@{Gl}!get\_lidar\_config@{get\_lidar\_config}}
+\index{get\_lidar\_config@{get\_lidar\_config}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_lidar\_config()}{get\_lidar\_config()}}
+{\footnotesize\ttfamily const std\+::string\& Gl\+::get\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}\label{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}} 
+\index{Gl@{Gl}!get\_markers@{get\_markers}}
+\index{get\_markers@{get\_markers}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_markers()}{get\_markers()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classModelMarker}{Model\+Marker}}$>$ $>$\& Gl\+::get\+\_\+markers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a97e61d917cbe1e275e1fc872b4d656a6}\label{classGl_a97e61d917cbe1e275e1fc872b4d656a6}} 
+\index{Gl@{Gl}!load\_file@{load\_file}}
+\index{load\_file@{load\_file}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{load\_file()}{load\_file()}}
+{\footnotesize\ttfamily void Gl\+::load\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a5bdcca5a28273112b61476cfe13a2674}\label{classGl_a5bdcca5a28273112b61476cfe13a2674}} 
+\index{Gl@{Gl}!load\_scan@{load\_scan}}
+\index{load\_scan@{load\_scan}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{load\_scan()}{load\_scan()}}
+{\footnotesize\ttfamily void Gl\+::load\+\_\+scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{classGl_a5bdcca5a28273112b61476cfe13a2674_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGl_ad7911c5da5492309af8bf125d26ecde1}\label{classGl_ad7911c5da5492309af8bf125d26ecde1}} 
+\index{Gl@{Gl}!run\_scan@{run\_scan}}
+\index{run\_scan@{run\_scan}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{run\_scan()}{run\_scan()}}
+{\footnotesize\ttfamily void Gl\+::run\+\_\+scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{lidar\+\_\+config\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGl_ad7911c5da5492309af8bf125d26ecde1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGl_a06b6675f97657ca3b46bd3c9367aa972}\label{classGl_a06b6675f97657ca3b46bd3c9367aa972}} 
+\index{Gl@{Gl}!set\_lidar\_config@{set\_lidar\_config}}
+\index{set\_lidar\_config@{set\_lidar\_config}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_lidar\_config()}{set\_lidar\_config()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a39222fbea430ff6081ecc704ac39d7a6}\label{classGl_a39222fbea430ff6081ecc704ac39d7a6}} 
+\index{Gl@{Gl}!toggle\_point\_cloud@{toggle\_point\_cloud}}
+\index{toggle\_point\_cloud@{toggle\_point\_cloud}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{toggle\_point\_cloud()}{toggle\_point\_cloud()}}
+{\footnotesize\ttfamily void Gl\+::toggle\+\_\+point\+\_\+cloud (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a92e2dc7d8d682a4597e6b36a7baff396}\label{classGl_a92e2dc7d8d682a4597e6b36a7baff396}} 
+\index{Gl@{Gl}!widget@{widget}}
+\index{widget@{widget}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{widget()}{widget()}}
+{\footnotesize\ttfamily Gtk\+::\+Widget\& Gl\+::widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGl_a8555c2fc90241017c1e7b1b35b06b286}\label{classGl_a8555c2fc90241017c1e7b1b35b06b286}} 
+\index{Gl@{Gl}!signal\_marker\_clicked@{signal\_marker\_clicked}}
+\index{signal\_marker\_clicked@{signal\_marker\_clicked}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{signal\_marker\_clicked}{signal\_marker\_clicked}}
+{\footnotesize\ttfamily sigc\+::signal$<$void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ Gl\+::signal\+\_\+marker\+\_\+clicked}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gl_8h}{gl.\+h}}\item 
+\mbox{\hyperlink{gl_8cpp}{gl.\+cpp}}\end{DoxyCompactItemize}

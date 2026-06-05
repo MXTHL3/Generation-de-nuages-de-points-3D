@@ -1,0 +1,6 @@
+<map id="PipelineStep" name="PipelineStep">
+<area shape="rect" id="node1" title=" " alt="" coords="323,5,462,97"/>
+<area shape="rect" id="node2" href="$classKeyframeLayoutAugmentation.html" title=" " alt="" coords="5,145,252,237"/>
+<area shape="rect" id="node3" href="$classPositionLayoutAugmentation.html" title=" " alt="" coords="275,145,510,237"/>
+<area shape="rect" id="node4" href="$classRotationLayoutAugmentation.html" title=" " alt="" coords="535,145,773,237"/>
+</map>

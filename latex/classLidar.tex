@@ -1,0 +1,106 @@
+\hypertarget{classLidar}{}\doxysection{Lidar Class Reference}
+\label{classLidar}\index{Lidar@{Lidar}}
+
+
+{\ttfamily \#include $<$lidar.\+h$>$}
+
+
+
+Collaboration diagram for Lidar\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classLidar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLidar_1_1Laser}{Laser}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLidar_a74cab51ddb5e1f0a3b715fa520845e69}{Lidar}} (std\+::string model, double min\+\_\+r, double max\+\_\+r, std\+::vector$<$ double $>$ \mbox{\hyperlink{classLidar_adfb402f1c800038244aeec9831fd0d6b}{m\+\_\+h\+\_\+step}}, double accuracy)
+\item 
+void \mbox{\hyperlink{classLidar_a0ea040e1d57528acd8556c9c04d70f9d}{add\+Laser}} (double v\+\_\+deg, double h\+\_\+deg, double d\+\_\+off)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLidar_a702933e67ca9631aac50f848a3fc45e8}{m\+\_\+model}}
+\item 
+double \mbox{\hyperlink{classLidar_a573764cdccd9df8c09ae4c286cae88fa}{m\+\_\+min\+\_\+dist}}
+\item 
+double \mbox{\hyperlink{classLidar_ad1ed4bacf884e388ca33b9fd0f51bb83}{m\+\_\+max\+\_\+dist}}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classLidar_adfb402f1c800038244aeec9831fd0d6b}{m\+\_\+h\+\_\+step}}
+\item 
+double \mbox{\hyperlink{classLidar_a7b887a1303971aea0e60a0f321ff74b2}{m\+\_\+accuracy}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structLidar_1_1Laser}{Laser}} $>$ \mbox{\hyperlink{classLidar_abb22f45a68efc7e39141744483db881f}{m\+\_\+lasers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLidar_a74cab51ddb5e1f0a3b715fa520845e69}\label{classLidar_a74cab51ddb5e1f0a3b715fa520845e69}} 
+\index{Lidar@{Lidar}!Lidar@{Lidar}}
+\index{Lidar@{Lidar}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{Lidar()}{Lidar()}}
+{\footnotesize\ttfamily Lidar\+::\+Lidar (\begin{DoxyParamCaption}\item[{std\+::string}]{model,  }\item[{double}]{min\+\_\+r,  }\item[{double}]{max\+\_\+r,  }\item[{std\+::vector$<$ double $>$}]{m\+\_\+h\+\_\+step,  }\item[{double}]{accuracy }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLidar_a0ea040e1d57528acd8556c9c04d70f9d}\label{classLidar_a0ea040e1d57528acd8556c9c04d70f9d}} 
+\index{Lidar@{Lidar}!addLaser@{addLaser}}
+\index{addLaser@{addLaser}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{addLaser()}{addLaser()}}
+{\footnotesize\ttfamily void Lidar\+::add\+Laser (\begin{DoxyParamCaption}\item[{double}]{v\+\_\+deg,  }\item[{double}]{h\+\_\+deg,  }\item[{double}]{d\+\_\+off }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLidar_a7b887a1303971aea0e60a0f321ff74b2}\label{classLidar_a7b887a1303971aea0e60a0f321ff74b2}} 
+\index{Lidar@{Lidar}!m\_accuracy@{m\_accuracy}}
+\index{m\_accuracy@{m\_accuracy}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_accuracy}{m\_accuracy}}
+{\footnotesize\ttfamily double Lidar\+::m\+\_\+accuracy}
+
+\mbox{\Hypertarget{classLidar_adfb402f1c800038244aeec9831fd0d6b}\label{classLidar_adfb402f1c800038244aeec9831fd0d6b}} 
+\index{Lidar@{Lidar}!m\_h\_step@{m\_h\_step}}
+\index{m\_h\_step@{m\_h\_step}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_h\_step}{m\_h\_step}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ Lidar\+::m\+\_\+h\+\_\+step}
+
+\mbox{\Hypertarget{classLidar_abb22f45a68efc7e39141744483db881f}\label{classLidar_abb22f45a68efc7e39141744483db881f}} 
+\index{Lidar@{Lidar}!m\_lasers@{m\_lasers}}
+\index{m\_lasers@{m\_lasers}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_lasers}{m\_lasers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structLidar_1_1Laser}{Laser}}$>$ Lidar\+::m\+\_\+lasers}
+
+\mbox{\Hypertarget{classLidar_ad1ed4bacf884e388ca33b9fd0f51bb83}\label{classLidar_ad1ed4bacf884e388ca33b9fd0f51bb83}} 
+\index{Lidar@{Lidar}!m\_max\_dist@{m\_max\_dist}}
+\index{m\_max\_dist@{m\_max\_dist}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_max\_dist}{m\_max\_dist}}
+{\footnotesize\ttfamily double Lidar\+::m\+\_\+max\+\_\+dist}
+
+\mbox{\Hypertarget{classLidar_a573764cdccd9df8c09ae4c286cae88fa}\label{classLidar_a573764cdccd9df8c09ae4c286cae88fa}} 
+\index{Lidar@{Lidar}!m\_min\_dist@{m\_min\_dist}}
+\index{m\_min\_dist@{m\_min\_dist}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_min\_dist}{m\_min\_dist}}
+{\footnotesize\ttfamily double Lidar\+::m\+\_\+min\+\_\+dist}
+
+\mbox{\Hypertarget{classLidar_a702933e67ca9631aac50f848a3fc45e8}\label{classLidar_a702933e67ca9631aac50f848a3fc45e8}} 
+\index{Lidar@{Lidar}!m\_model@{m\_model}}
+\index{m\_model@{m\_model}!Lidar@{Lidar}}
+\doxysubsubsection{\texorpdfstring{m\_model}{m\_model}}
+{\footnotesize\ttfamily std\+::string Lidar\+::m\+\_\+model}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lidar_8h}{lidar.\+h}}\item 
+\mbox{\hyperlink{lidar_8cpp}{lidar.\+cpp}}\end{DoxyCompactItemize}

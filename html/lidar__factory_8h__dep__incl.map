@@ -1,0 +1,13 @@
+<map id="lidar_factory.h" name="lidar_factory.h">
+<area shape="rect" id="node1" title=" " alt="" coords="199,5,314,32"/>
+<area shape="rect" id="node2" href="$asset__manager_8cpp.html" title=" " alt="" coords="5,80,153,107"/>
+<area shape="rect" id="node3" href="$gl_8h.html" title=" " alt="" coords="177,80,224,107"/>
+<area shape="rect" id="node10" href="$lidar__factory_8cpp.html" title=" " alt="" coords="248,80,377,107"/>
+<area shape="rect" id="node11" href="$scene__utils_8cpp.html" title=" " alt="" coords="402,80,525,107"/>
+<area shape="rect" id="node4" href="$gl_8cpp.html" title=" " alt="" coords="77,155,138,181"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title=" " alt="" coords="134,304,217,331"/>
+<area shape="rect" id="node6" href="$main__window_8h.html" title=" " alt="" coords="213,229,335,256"/>
+<area shape="rect" id="node8" href="$menu__items__actions_8h.html" title=" " alt="" coords="264,155,433,181"/>
+<area shape="rect" id="node7" href="$main__window_8cpp.html" title=" " alt="" coords="241,304,379,331"/>
+<area shape="rect" id="node9" href="$menu__items__actions_8cpp.html" title=" " alt="" coords="359,229,543,256"/>
+</map>
