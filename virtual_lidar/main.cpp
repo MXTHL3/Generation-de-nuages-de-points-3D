@@ -52,14 +52,14 @@ int main(int argc, char *argv[])
             scene_path = argv[1];
         }
 
-        std::vector<std::shared_ptr<LidarEntity>> lidars;
+        std::vector<std::unique_ptr<LidarEntity>> lidars;
         if (SceneLoader::load_scene_from_json(scene_path, world, lidars, assets))
         {
             SIM_INFO("ETAPE 1 - JSON chargé. Entités : {}", world.entities().size());
             Pipeline pipeline;
 
             auto scene_initiale = std::make_unique<Scene>(world);
-            SIM_INFO("ETAPE 2 - Copie Initiale. Entités : {}, Lidars : {}", scene_initiale->entities().size());
+            SIM_INFO("ETAPE 2 - Copie Initiale. Entités : {}, Lidars : {}", scene_initiale->entities().size(), lidars.size());
 
             // pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(100, 42));
 
@@ -74,13 +74,13 @@ int main(int argc, char *argv[])
             std::vector<Point3> resultCloud;
             LidarScanner scanner;
 
-            auto ouster_lidar = std::dynamic_pointer_cast<MechanicalLidarEntity>(lidars[0]);
+            auto ouster_lidar = dynamic_cast<MechanicalLidarEntity*>(lidars[0].get());
 
             int i = 0;
             for (auto &scene : scenes)
             {
                 scene->build();
-                resultCloud = scanner.scan(ouster_lidar, *scene);
+                resultCloud = scanner.scan(*ouster_lidar, *scene);
                 // on relache la scene pour libérer le cache mémoire en mémoire sinon il sera uniquement relaché après la boucle
                 // TODO :: soluce temporaire il faut surement retirer les shared_ptr car pas utile pour scene soit (unique_ptr?)
                 scene.reset();

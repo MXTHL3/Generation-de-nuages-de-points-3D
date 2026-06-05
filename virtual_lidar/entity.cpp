@@ -3,22 +3,20 @@
 #include "units.hpp"
 
 // STATIC ENTITY
+
 std::unique_ptr<IEntity> StaticEntity::clone() const {
     return std::make_unique<StaticEntity>(*this);
 }
+Transform3 IEntity::transform() const { return m_pose.transform(); }
 
 StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p)
-    : m_name(name), m_object(obj), m_pose(p) {}
-
-Transform3 StaticEntity::transform() const { return m_pose.transform(); }
-
-Transform3 LidarEntity::transform() const { return m_pose.transform(); }
+    : IEntity(p), m_name(name), m_object(obj) {}
 
 LidarEntity::LidarEntity(std::shared_ptr<LidarConfig> config, Pose p)
-    : m_config(config), m_pose(p) {}
+    : IEntity(p), m_config(config){}
 
 MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p)
-    : LidarEntity(config, p), m_config(config){}
+    : LidarEntity(config, p){}
 
 
 std::unique_ptr<IEntity> MechanicalLidarEntity::clone() const {

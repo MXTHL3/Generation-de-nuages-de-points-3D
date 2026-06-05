@@ -17,7 +17,7 @@ nlohmann::json SceneLoader::pose_to_json(const Pose& p){
     return j;
 }
 
-bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world, std::vector<std::shared_ptr<LidarEntity>>& lidars_ent, AssetManager& assets){
+bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world, std::vector<std::unique_ptr<LidarEntity>>& lidars_ent, AssetManager& assets){
     std::ifstream file(filepath);
 
     if(!file.is_open()){
@@ -50,8 +50,8 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
             
             // TODO:: A fixer
             if(auto mechanical_lidar_config = std::dynamic_pointer_cast<MechanicalLidarConfig>(shared_lidar_config)){
-                std::shared_ptr<LidarEntity> lidar_ent = std::make_shared<MechanicalLidarEntity>(mechanical_lidar_config, pose);
-                lidars_ent.push_back(lidar_ent);
+                std::unique_ptr<LidarEntity> lidar_ent = std::make_unique<MechanicalLidarEntity>(mechanical_lidar_config, pose);
+                lidars_ent.push_back(std::move(lidar_ent));
             }
         }
     }else{
@@ -62,12 +62,12 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
     return true;
 }
 
-bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world, const std::vector<std::shared_ptr<LidarEntity>>& lidars_ent){
+bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world, const std::vector<std::unique_ptr<LidarEntity>>& lidars_ent){
     nlohmann::json j;
     j["static_entities"] = nlohmann::json::array();
     j["lidar_entities"] = nlohmann::json::array();      
 
-    // sauvegarde des objets de la scène
+    // sauvegarde des objets de la scènes
     for(const auto& ent : world.entities()){
         if(ent){
             nlohmann::json item;
@@ -83,7 +83,7 @@ bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world, 
     for(const auto& lidar_ent : lidars_ent){
         if(lidar_ent){
             nlohmann::json item;
-            item["lidar_config"] = lidar_ent->config()->m_name;
+            item["lidar_config"] = lidar_ent->config().m_name;
             item["pose"] = pose_to_json(lidar_ent->pose());
             j["lidar_entities"].push_back(item);
         }else{

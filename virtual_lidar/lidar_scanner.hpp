@@ -8,7 +8,7 @@
 class LidarScanner{
 public:
     LidarScanner() = default;
-    std::vector<Point3> scan(const std::shared_ptr<MechanicalLidarEntity>& lidar_ent, const Scene& scene) const;
+    std::vector<Point3> scan(const MechanicalLidarEntity& lidar_ent, const Scene& scene) const;
 };
 
 #endif

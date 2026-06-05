@@ -9,6 +9,7 @@ std::shared_ptr<LidarConfig> LidarFactory::createFromJsonConfig(const std::strin
     
     if(!file.is_open()){
         SIM_ERROR("Erreur le fichier de configuration de Lidar : {} ne peut être lu.", configPath);
+        return nullptr;
     }
 
     nlohmann::json data;
@@ -54,7 +55,7 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
     return std::make_shared<FlashLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
         data.at("resolution_h").get<double>(), data.at("resolution_v").get<double>(),
-        to_radians(data.at("fov_h").get<double>()), to_radians(data.at("fov_h").get<double>())
+        to_radians(data.at("fov_h").get<double>()), to_radians(data.at("fov_v").get<double>())
     );
 }
 
@@ -74,14 +75,16 @@ bool LidarFactory::saveToJson(const std::string& configPath, const LidarConfig& 
     try{
         lidar_config.serialize(data);
 
-    std::ofstream file(configPath);
+        std::ofstream file(configPath);
+        
         if(!file.is_open()){
             SIM_ERROR("Impossible d'écrire la configuration de lidar dans {}", configPath);
+            return false;
         }
 
-    file << data.dump(4);
+        file << data.dump(4);
         SIM_INFO("Configuration de lidar {} sauvegardée dans : {}", lidar_config.m_name, configPath);
-    return true;
+        return true;
     }catch(const std::exception& e){
         SIM_ERROR("Erreur lors de la save du lidar {} dans {} : {}", lidar_config.m_name, configPath, e.what());
         return false;

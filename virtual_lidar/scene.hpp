@@ -28,7 +28,6 @@ public:
     }
     Scene(const Scene& scene);
     // ajoute un objet à la scène
-    // TODO:: pas sur pour le shared_ptr
     void add_static_entity(std::unique_ptr<StaticEntity> ent);
 
     std::vector<Point3> scan(size_t lidar_id = 0, double parameter = 0.0) const;
