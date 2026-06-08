@@ -29,35 +29,40 @@ def predire_un_fichier(chemin_fichier, modele):
 # BOUCLE AUTOMATIQUE SUR LE DOSSIER
 # ==========================================
 if __name__ == "__main__":
-    nom_modele = "modele_laser.pth"
-    
+    nom_modele = os.environ.get("MODELE_PATH", "modele_laser.pth")
+ 
     if not os.path.exists(nom_modele):
-        print(f"Erreur : Le fichier de poids '{nom_modele}' est introuvable. Lance d'abord train_ia.py.")
-        exit()
-
-    # charger le modèle 
+        print(f"Erreur : Le fichier de poids '{nom_modele}' est introuvable. "
+              "Lancer d'abord train_ai.py pour générer 'modele_laser.pth'.")
+        exit(1)
+ 
+    # chargement du modèle
     modele = PointNetClassifieur()
-    modele.load_state_dict(torch.load(nom_modele))
+    modele.load_state_dict(torch.load(nom_modele, map_location="cpu"))
     modele.eval()
-
-    # dossier à scanner (. dossier courant)
-    dossier_scans = "." 
-    
-    print("--- VÉRIFICATION AUTOMATIQUE DES NUAGES DE POINTS ---")
-    print(f"Analyse du dossier : {os.path.abspath(dossier_scans)}\n")
-
-    compteur_ply = 0
-    #liste tous les fichiers 
-    for nom_fichier in os.listdir(dossier_scans):
-        # fichiers se terminent par .ply
-        if nom_fichier.lower().endswith(".ply"):
-            compteur_ply += 1
-            chemin_complet = os.path.join(dossier_scans, nom_fichier)
-            
-            #fonction prédiction
-            verdict = predire_un_fichier(chemin_complet, modele)
-            
-            print(f"[{compteur_ply}] Fichier : {nom_fichier:<25} -> Verdict : {verdict}")
-
-    if compteur_ply == 0:
-        print("Aucun fichier .ply trouvé dans ce dossier.")
+ 
+    ply_path = os.environ.get("PLY_PATH", "")
+ 
+    if ply_path:
+        if not os.path.exists(ply_path):
+            print(f"Erreur : Fichier introuvable : {ply_path}")
+            exit(1)
+ 
+        verdict = predire_un_fichier(ply_path, modele)
+        print(verdict)  
+ 
+    else:
+        dossier_scans = "."
+        print("--- VÉRIFICATION AUTOMATIQUE DES NUAGES DE POINTS ---")
+        print(f"Analyse du dossier : {os.path.abspath(dossier_scans)}\n")
+ 
+        compteur_ply = 0
+        for nom_fichier in sorted(os.listdir(dossier_scans)):
+            if nom_fichier.lower().endswith(".ply"):
+                compteur_ply += 1
+                chemin_complet = os.path.join(dossier_scans, nom_fichier)
+                verdict = predire_un_fichier(chemin_complet, modele)
+                print(f"[{compteur_ply}] Fichier : {nom_fichier:<25} -> Verdict : {verdict}")
+ 
+        if compteur_ply == 0:
+            print("Aucun fichier .ply trouvé dans ce dossier.")

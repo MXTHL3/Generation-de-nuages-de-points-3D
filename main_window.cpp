@@ -50,18 +50,16 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
 
     menu_bar_data = {
         {"Fichier",
-            "Ouvrir modèle 3D", "Charger scène", "Charger scan (PLY/LAS)",
+            "Ouvrir modèle 3D", "Charger scène (JSON)", "Charger scan (PLY/LAS)",
             "Capturer image", "Quitter"},
         {"Scène",
             "Supprimer sélection", "Réinitialiser scène"},
         {"Scanner 3D",
             "Lancer scan", "Paramètres scanner"},
         {"Simulation",
-            "Visualiser rayons laser", "Visualiser intersections",
-            "Coloration par distance"},
+            "Visualiser rayons laser", "Visualiser intersections"},
         {"Nuage de points",
-            "Afficher/masquer nuage", "Filtrage bruit",
-            "Ajuster nombre de points", "Color mapping"},
+            "Afficher/masquer nuage", "Filtrage bruit"},
         {"IA",
             "Générer ensemble de données", "Générer ensemble de données (à partir d'un JSON)", 
             "Lancer analyse reconnaissance"},
@@ -138,6 +136,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
 
         if (label == "Ouvrir modèle 3D") { open_3d_model(); }
         else if (label == "Charger scan (PLY/LAS)") { load_scan(); }
+        else if (label == "Charger scène (JSON)") { load_json_scene(); }
         else if (label == "Capturer image") { capture_image(); }
         else if (label == "Lancer scan") { launch_scan(); }
         else if (label == "Afficher/masquer nuage") { display_cloud(); }
@@ -145,6 +144,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         else if (label == "Générer ensemble de données (à partir d'un JSON)") { generate_dataset_from_json(); }
         else if (label == "Lancer analyse reconnaissance") { launch_recognition(); }
         else if (label == "Plein écran") { to_fullscreen(); }
+        else if (label == "Documentation") { open_docs(); }
         else if (label == "Quitter") { exit_app(); }
 
         sub_menu->append(*_sub_widget);

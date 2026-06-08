@@ -82,26 +82,43 @@ class PointNetClassifieur(nn.Module):
 # ==========================================
 # DATASET 
 # ==========================================
-class DatasetScannerFictif(Dataset):
-    def __init__(self, num_echantillons=400): # plus d exemples
-        self.num_echantillons = num_echantillons
-        self.fichiers_humains = ["human.ply"]
-        self.fichiers_non_humains = [ "gargole.ply"]
-        
+class DatasetScannerFichiers(Dataset):
+    def __init__(self, num_echantillons=400):
+        self.echantillons = []   
+ 
+        dataset_dir = os.environ.get("DATASET_DIR", "")
+ 
+        if dataset_dir and os.path.isdir(dataset_dir):
+            for root, _dirs, files in os.walk(dataset_dir):
+                label = 1 if "humain" in os.path.basename(root).lower() else 0
+                for f in files:
+                    if f.lower().endswith(".ply"):
+                        self.echantillons.append((os.path.join(root, f), label))
+ 
+            if not self.echantillons:
+                print(f"[train_ai] Aucun fichier .ply trouvé dans {dataset_dir}, "
+                      "utilisation des fichiers de référence.")
+ 
+        if not self.echantillons:
+            fichiers_humains = ["human.ply"]
+            fichiers_non_humains  = ["gargole.ply"]
+            for _ in range(num_echantillons):
+                classe = np.random.choice([0, 1])
+                fichier = (np.random.choice(fichiers_humains)
+                           if classe == 1
+                           else np.random.choice(fichiers_non_humains))
+                self.echantillons.append((fichier, classe))
+ 
+        print(f"[train_ai] Dataset : {len(self.echantillons)} échantillons chargés.")
+ 
     def __len__(self):
-        return self.num_echantillons
-        
+        return len(self.echantillons)
+ 
     def __getitem__(self, idx):
-        classe = np.random.choice([0, 1])
-        
-        if classe == 1:
-            fichier = np.random.choice(self.fichiers_humains)
-        else:
-            fichier = np.random.choice(self.fichiers_non_humains)
-            
-        # augmentation de données pendant l entrainement
-        points = charger_nuage_points(fichier, augmenter_data=True)
+        chemin, classe = self.echantillons[idx]
+        points = charger_nuage_points(chemin, augmenter_data=True)
         return points, torch.tensor(classe, dtype=torch.long)
+
 
 # =========================================
 # BOUCLE ENTRAINEMENT 
@@ -109,7 +126,7 @@ class DatasetScannerFictif(Dataset):
 if __name__ == "__main__":
     print("--- Début de l'entraînement IA ---")
     
-    dataset = DatasetScannerFictif(num_echantillons=400)
+    dataset = DatasetScannerFichiers(num_echantillons=400)
     dataloader = DataLoader(dataset, batch_size=32, shuffle=True)  #paquets 32 et on mélange les fichiers
     
     model = PointNetClassifieur()

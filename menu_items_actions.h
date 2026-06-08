@@ -2,8 +2,13 @@
 
 #include <gtkmm.h>
 #include <memory>
+#include <filesystem>
+#include <cstdlib>
+#include <thread>
 #include "gl.h"
 #include "handle_file.h"
+#include "scene_utils.h"
+#include "asset_manager.h"
 
 class MenuItemsActions {
 protected:
@@ -16,6 +21,7 @@ protected:
 
     void open_3d_model();
     void load_scan();
+    void load_json_scene();
     void capture_image();
     void launch_scan();
     void display_cloud();
@@ -23,5 +29,6 @@ protected:
     void generate_dataset_from_json();
     void launch_recognition();
     void to_fullscreen();
+    void open_docs();
     void exit_app();
 };
