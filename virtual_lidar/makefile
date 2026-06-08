@@ -17,7 +17,8 @@ SOURCES = main.cpp \
 		asset_manager.cpp \
 		noise_model.cpp \
 		pipeline.cpp \
-		lidar_scanner.cpp
+		lidar_scanner.cpp \
+		horizontal_step.cpp
 
 all: $(TARGET)
 

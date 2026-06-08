@@ -75,9 +75,9 @@ void FlashLidarConfig::serialize(nlohmann::json& data) const{
 }
 
 MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
-    double amp_h, double amp_v, double f_h, double f_v, double phase, int sample_rate)
+    double amp_h, double amp_v, double f_h, double f_v, double phase, int points_per_second)
     : LidarConfig(name, min_dist, max_dist, accuracy), m_amplitude_h(amp_h), 
-    m_amplitude_v(amp_v), m_freq_h(f_h), m_freq_v(f_v), m_phase_diff(phase), m_sample_rate(sample_rate){}
+    m_amplitude_v(amp_v), m_freq_h(f_h), m_freq_v(f_v), m_phase_diff(phase), m_points_per_second(points_per_second){}
 
 void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["model"] = m_name;
@@ -94,5 +94,5 @@ void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["freq_h"] = m_freq_h;
     data["freq_v"] = m_freq_v;
     data["phase_diff"] = m_phase_diff;
-    data["sample_rate"] = m_sample_rate;
+    data["points_per_second"] = m_points_per_second;
 }

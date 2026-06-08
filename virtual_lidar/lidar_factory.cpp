@@ -111,7 +111,7 @@ std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nloh
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
         data.at("amplitude_h").get<double>(), data.at("amplitude_v").get<double>(),
         to_radians(data.at("freq_h").get<double>()), to_radians(data.at("freq_v").get<double>()),
-        data.at("phase_diff").get<double>(), data.at("sample_rate").get<double>()
+        data.at("phase_diff").get<double>(), data.at("points_per_second").get<double>()
     );
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
