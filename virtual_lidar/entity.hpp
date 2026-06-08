@@ -70,7 +70,7 @@ public:
 
 protected:
     std::shared_ptr<LidarConfig> m_config;
-    mutable NoiseModel m_noise_model;
+    NoiseModel m_noise_model;
 };
 
 class MechanicalLidarEntity : public LidarEntity {

@@ -25,13 +25,13 @@ public:
     void profile(const NoiseProfile& profile);
     const NoiseProfile& profile() const;
     // Applique le bruit a la distance initiale
-    double apply(double real_distance);
+    double apply(double real_distance)const;
 
 private:
     double find_sigma(double distance) const;
 
     NoiseProfile m_profile;
-    std::mt19937 m_gen;
+    mutable std::mt19937 m_gen;
 };
 
 /*

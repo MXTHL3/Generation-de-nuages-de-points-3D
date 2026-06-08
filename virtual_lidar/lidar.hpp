@@ -8,6 +8,8 @@
 
 #include "noise_model.hpp"
 
+#include "horizontal_step.hpp"
+
 class LidarConfig {
 public:
     std::string m_name;
@@ -35,17 +37,23 @@ public:
         double h_off;   // Décalage angulaire horizontal en radians 
         double d_off;   // Décalage distance par rapport à l'origine
     };
-    
-    std::vector<double> m_h_step;   // steps liste horizontal
+
+
+    std::unique_ptr<HorizontalStepSource> m_h_step;
+
     std::vector<Laser> m_lasers;    // lasers du Lidar
+    double m_rotation_rate = 10.0;  // Hz tours par secondes
 
     MechanicalLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
-         std::vector<double> h_step);
+         double rotation_rate);
 
     void serialize(nlohmann::json& data) const override;
 
     // ajoute un laser (1 rayon à lancer) au Lidar
     void addLaser(double v_rad, double h_rad, double d_off);
+    
+    // Résolution horizontale (azimutale) en degrés
+    double horizontal_step() const;
 };
 
 class FlashLidarConfig : public LidarConfig {

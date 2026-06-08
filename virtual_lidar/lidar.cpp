@@ -1,5 +1,6 @@
 #include "lidar.hpp"
 #include "units.hpp"
+#include "logger.hpp"
 #include <iostream>
 
 LidarConfig::LidarConfig(std::string name, double min_dist, double max_dist, double accuracy)
@@ -18,8 +19,12 @@ void LidarConfig::serialize_noise_profile(nlohmann::json& data) const{
 }
 
 
-MechanicalLidarConfig::MechanicalLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, std::vector<double> h_step)
-    : LidarConfig(name, min_dist, max_dist, accuracy), m_h_step(h_step){}
+MechanicalLidarConfig::MechanicalLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, double rotation_rate)
+    : LidarConfig(name, min_dist, max_dist, accuracy), m_rotation_rate(rotation_rate){}
+
+double MechanicalLidarConfig::horizontal_step() const {
+    return m_h_step->compute_h_step();
+}
 
 void MechanicalLidarConfig::serialize(nlohmann::json& data) const{
     data["model"] = m_name;
@@ -29,12 +34,11 @@ void MechanicalLidarConfig::serialize(nlohmann::json& data) const{
 
     serialize_noise_profile(data);
 
-    data["type"] = "mechanical";
-
-    data["h_step"] = nlohmann::json::array();
-    for(double hstep : m_h_step) {
-        data["h_step"].push_back(to_degrees(hstep));
+    if(m_h_step){
+        m_h_step->serialize(data);
     }
+
+    data["type"] = "mechanical";
 
     data["lasers"] = nlohmann::json::array();
     for(const auto& laser : m_lasers){

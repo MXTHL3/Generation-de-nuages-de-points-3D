@@ -6,9 +6,9 @@ std::vector<Point3> LidarScanner::scan(const MechanicalLidarEntity& lidar_ent, c
 
     std::vector<Point3> pointCloud;
 
-    MechanicalLidarConfig config = lidar_ent.config();
+    const MechanicalLidarConfig& config = lidar_ent.config();
 
-    for (double hr = 0.0; hr < 360.0; hr += config.m_h_step[2])
+    for (double hr = 0.0; hr < 360.0; hr += config.horizontal_step())
     {
         std::vector<Ray3> rays = lidar_ent.scan(hr);
         for (const Ray3 &ray : rays)

@@ -14,7 +14,7 @@ const NoiseProfile& NoiseModel::profile() const {
         return m_profile;
 }
 
-double NoiseModel::apply(double real_distance) {
+double NoiseModel::apply(double real_distance) const{
         double sigma = find_sigma(real_distance);
 
         // pas de bruit si sigma nul après le point ne sera surement pas détecté de toute manière car zone aveugle
