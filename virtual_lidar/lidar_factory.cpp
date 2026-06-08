@@ -33,6 +33,27 @@ std::shared_ptr<LidarConfig> LidarFactory::createFromJsonConfig(const std::strin
     return nullptr;
 }
 
+NoiseProfile LidarFactory::parseNoiseProfile(const nlohmann::json& data){
+    NoiseProfile profile;
+    profile.resolution = data.value("noise_resolution", 0.0);
+
+    if(data.contains("noise_profile")){
+        for(const auto& step : data["noise_profile"]){
+            profile.steps.push_back({
+                step.at("max_distance").get<double>(),
+                step.at("sigma").get<double>()});
+        }
+        SIM_DEBUG("Profil de bruit chargé : {} paliers, résolution {:.4f} mètres", 
+            profile.steps.size(), 
+            profile.resolution);
+    }else{
+        // Profil par défaut
+        profile.steps.push_back({0.03, 999.0});
+        SIM_DEBUG("Pas de profil de bruit trouvé on en génère un par défaut");
+    }
+    return profile;
+}
+
 std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const nlohmann::json &data)
 {   
     std::vector<double> hsteps;
@@ -48,24 +69,34 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
         lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
     }
 
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
     return lidar_config;
 }
 
 std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data){
-    return std::make_shared<FlashLidarConfig>(
+    auto lidar_config = std::make_shared<FlashLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
         data.at("resolution_h").get<double>(), data.at("resolution_v").get<double>(),
         to_radians(data.at("fov_h").get<double>()), to_radians(data.at("fov_v").get<double>())
     );
+
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
+    return lidar_config;
 }
 
 std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
-    return std::make_shared<MirroredLidarConfig>(
+    auto lidar_config = std::make_shared<MirroredLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
         data.at("amplitude_h").get<double>(), data.at("amplitude_v").get<double>(),
         to_radians(data.at("freq_h").get<double>()), to_radians(data.at("freq_v").get<double>()),
         data.at("phase_diff").get<double>(), data.at("sample_rate").get<double>()
     );
+
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
+    return lidar_config;
 }
 
 bool LidarFactory::saveToJson(const std::string& configPath, const LidarConfig& lidar_config){

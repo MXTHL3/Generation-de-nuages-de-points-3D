@@ -7,6 +7,17 @@ LidarConfig::LidarConfig(std::string name, double min_dist, double max_dist, dou
 
 LidarConfig::~LidarConfig() = default;
 
+void LidarConfig::serialize_noise_profile(nlohmann::json& data) const{
+    data["noise_resolution"] = m_noise_profile.resolution;
+    data["noise_profile"] = nlohmann::json::array();
+    for(const auto& step : m_noise_profile.steps){
+        data["noise_profile"].push_back({
+            {"max_distance", step.max_distance}, 
+            {"sigma", step.sigma}});
+    }
+}
+
+
 MechanicalLidarConfig::MechanicalLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, std::vector<double> h_step)
     : LidarConfig(name, min_dist, max_dist, accuracy), m_h_step(h_step){}
 
@@ -15,6 +26,8 @@ void MechanicalLidarConfig::serialize(nlohmann::json& data) const{
     data["min_range"] = m_min_dist;
     data["max_range"] = m_max_dist;
     data["accuracy"] = m_accuracy;
+
+    serialize_noise_profile(data);
 
     data["type"] = "mechanical";
 
@@ -48,6 +61,8 @@ void FlashLidarConfig::serialize(nlohmann::json& data) const{
     data["max_range"] = m_max_dist;
     data["accuracy"] = m_accuracy;
 
+    serialize_noise_profile(data);
+
     data["type"] = "flash";
     data["resolution_h"] = m_resolution_h;
     data["resolution_v"] = m_resolution_v;
@@ -65,6 +80,8 @@ void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["min_range"] = m_min_dist;
     data["max_range"] = m_max_dist;
     data["accuracy"] = m_accuracy;
+
+    serialize_noise_profile(data);
 
     data["type"] = "mirrored";
 

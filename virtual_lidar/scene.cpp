@@ -21,8 +21,8 @@ Scene::Scene(const Scene& scene){
                 }
             }
         }
+        SIM_DEBUG("Scene Copiée !");
     }
-    SIM_DEBUG("Scene Copiée !");
 }
 
 

@@ -17,6 +17,8 @@ public:
     static bool saveToJson(const std::string& configPath, const LidarConfig& lidar_config);
 
 private:
+    static NoiseProfile parseNoiseProfile(const nlohmann::json& data);
+
     // extraction des différents types de lidars
     static std::shared_ptr<MechanicalLidarConfig> parseMechanicalLidar(const nlohmann::json& data);
     static std::shared_ptr<FlashLidarConfig> parseFlashLidar(const nlohmann::json &data);

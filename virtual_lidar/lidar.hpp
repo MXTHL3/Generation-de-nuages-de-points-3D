@@ -6,18 +6,24 @@
 #include <nlohmann/json.hpp>
 #include <cmath>
 
+#include "noise_model.hpp"
+
 class LidarConfig {
 public:
     std::string m_name;
     double m_min_dist;
     double m_max_dist;
     double m_accuracy;
+    NoiseProfile m_noise_profile;
     
     LidarConfig(std::string name, double min_dist, double max_dist, double accuracy);
 
     virtual ~LidarConfig();
 
     virtual void serialize(nlohmann::json& data) const = 0;
+
+protected:
+    void serialize_noise_profile(nlohmann::json& data) const;
 };
 
 // Stocke les spéfs d'un Lidar

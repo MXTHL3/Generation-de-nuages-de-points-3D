@@ -13,7 +13,7 @@ StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p
     : IEntity(p), m_name(name), m_object(obj) {}
 
 LidarEntity::LidarEntity(std::shared_ptr<LidarConfig> config, Pose p)
-    : IEntity(p), m_config(config){}
+    : IEntity(p), m_config(config), m_noise_model(config->m_noise_profile){}
 
 MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p)
     : LidarEntity(config, p){}
@@ -29,14 +29,15 @@ std::vector<Ray3> MechanicalLidarEntity::scan(double parameter) const {
 
     double h_rad = to_radians(parameter);
 
-    for(const auto& laser : m_config->m_lasers) {
+    for(const auto& laser : config().m_lasers) {
         double h = h_rad + laser.h_off;
         // Conversion coordonnées sphériques en cartésiennes
         Vector3 dir(std::cos(laser.v_rad) * std::cos(h),
                     std::cos(laser.v_rad) * std::sin(h),
                     std::sin(laser.v_rad));
 
-        rays.push_back({m_pose.pos(), world_xf.transform(dir)});
+        Vector3 world_dir = world_xf.transform(dir) - world_xf.transform(Vector3(0, 0, 0));
+        rays.push_back({m_pose.pos(), world_dir});
     }
 
     return rays;

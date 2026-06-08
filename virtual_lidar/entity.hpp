@@ -62,15 +62,15 @@ public:
         // génère les rayons à lancer
     virtual std::vector<Ray3> scan(double parameter) const = 0;
 
-    void noise_model(std::shared_ptr<NoiseModel> model) {m_noise_model = model; }
+    void noise_model(const NoiseModel& model) {m_noise_model = model; }
     
-    double noisy_distance(double d) const {
-        return m_noise_model ? m_noise_model->apply(d) : d;
+    double noisy_distance(double d) const{
+        return m_noise_model.apply(d);
     }
 
 protected:
     std::shared_ptr<LidarConfig> m_config;
-    std::shared_ptr<NoiseModel> m_noise_model = std::make_shared<OusterOS2Noise>(); //Modele de génération de bruit à voir pour le placer directement dans le JSON
+    mutable NoiseModel m_noise_model;
 };
 
 class MechanicalLidarEntity : public LidarEntity {

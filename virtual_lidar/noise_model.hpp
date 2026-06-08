@@ -3,14 +3,38 @@
 
 #include <random>
 #include <cmath>
+#include <nlohmann/json.hpp>
+
+struct NoiseStep{
+    double max_distance; // <= x
+    double sigma; // écart type du bruit gaussien
+};
+
+struct NoiseProfile{
+    std::vector<NoiseStep> steps;
+    double resolution = 0.0;
+};
+
 
 class NoiseModel {
 public:
+    NoiseModel();
     virtual ~NoiseModel() = default;
+    NoiseModel(const NoiseProfile& profile, unsigned int seed = 42);
+
+    void profile(const NoiseProfile& profile);
+    const NoiseProfile& profile() const;
     // Applique le bruit a la distance initiale
-    virtual double apply(double real_distance) = 0;
+    double apply(double real_distance);
+
+private:
+    double find_sigma(double distance) const;
+
+    NoiseProfile m_profile;
+    std::mt19937 m_gen;
 };
 
+/*
 class NullNoiseModel : public NoiseModel {
 public :
     double apply(double real_distance) override{
@@ -27,6 +51,6 @@ public:
     OusterOS2Noise() : m_gen(std::random_device{}()) {}
 
     double apply(double real_distance) override;
-};
+};*/
 
 #endif
