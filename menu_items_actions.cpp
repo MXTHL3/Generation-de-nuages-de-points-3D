@@ -497,6 +497,137 @@ void MenuItemsActions::open_docs() {
     });
 }
 
+void MenuItemsActions::reset_scene() {
+    _sub->signal_activate().connect([this]() {
+        Gtk::MessageDialog confirm(as_window(),
+            "Supprimer tous les modèles chargés ?\nLe cube par défaut sera conservé.",
+            false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO, true);
+        if (confirm.run() != Gtk::RESPONSE_YES) return;
+ 
+        m_gl->reset_scene();
+        m_handle_file = HandleFile{};   
+        update_markers();
+    });
+}
+
+void MenuItemsActions::scanner_settings() {
+    _sub->signal_activate().connect([this]() {
+        struct Defaults {
+            double min_range = 1.0;
+            double max_range = 1000.0;
+            double h_step0 = 0.703125;
+            double h_step1 = 0.3515626;
+            double h_step2 = 0.1757825;
+            double accuracy = 0.01;
+        };
+        static const Defaults DEF;
+ 
+        Gtk::Dialog dlg("Paramètres scanner", as_window(), true);
+        dlg.set_default_size(420, -1);
+        dlg.set_resizable(false);
+        dlg.add_button("Fermer", Gtk::RESPONSE_CLOSE);
+ 
+        auto* area = dlg.get_content_area();
+        auto* vbox = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 10);
+        vbox->set_margin_start(16); vbox->set_margin_end(16);
+        vbox->set_margin_top(12); vbox->set_margin_bottom(12);
+ 
+        {
+            auto* row = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
+            auto* lbl = Gtk::make_managed<Gtk::Label>("Modèle LiDAR :");
+            lbl->set_xalign(0.0f);
+            lbl->set_size_request(140, -1);
+            row->pack_start(*lbl, Gtk::PACK_SHRINK);
+ 
+            auto* combo = Gtk::make_managed<Gtk::ComboBoxText>();
+            combo->append("lidars_config/ouster_os1_64.json", "Ouster OS1-64");
+            combo->append("lidars_config/ouster_os2_128.json", "Ouster OS2-128");
+            combo->append("lidars_config/vedolyne_vlp16.json", "Velodyne VLP-16");
+            combo->append("lidars_config/velodyne_vlp32c.json", "Velodyne VLP-32C");
+            combo->set_active_id(m_gl->get_lidar_config());
+            if (combo->get_active_row_number() < 0) combo->set_active(0);
+ 
+            combo->signal_changed().connect([this, combo]() {
+                std::string chosen = combo->get_active_id();
+                if (!chosen.empty()) {
+                    m_gl->set_lidar_config(chosen);
+                    m_gl->clear_lidar_override();  
+                }
+            });
+ 
+            row->pack_start(*combo, Gtk::PACK_EXPAND_WIDGET);
+            vbox->pack_start(*row, Gtk::PACK_SHRINK);
+        }
+ 
+        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL),
+                         Gtk::PACK_SHRINK);
+ 
+        auto make_slider = [&](const std::string& label, double vmin, double vmax, double step, double value,
+            int decimals, std::function<void(double)> on_change) {
+            auto* row  = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
+            auto* lbl  = Gtk::make_managed<Gtk::Label>(label + " :");
+            lbl->set_xalign(0.0f);
+            lbl->set_size_request(140, -1);
+ 
+            auto* scale = Gtk::make_managed<Gtk::Scale>(Gtk::ORIENTATION_HORIZONTAL);
+            scale->set_range(vmin, vmax);
+            scale->set_increments(step, step * 10);
+            scale->set_value(value);
+            scale->set_digits(decimals);
+            scale->set_hexpand(true);
+            scale->set_draw_value(true);
+            scale->set_value_pos(Gtk::POS_RIGHT);
+ 
+            scale->signal_value_changed().connect([scale, on_change]() {
+                on_change(scale->get_value());
+            });
+ 
+            row->pack_start(*lbl,   Gtk::PACK_SHRINK);
+            row->pack_start(*scale, Gtk::PACK_EXPAND_WIDGET);
+            vbox->pack_start(*row,  Gtk::PACK_SHRINK);
+            return scale;
+        };
+ 
+        auto cur = m_gl->get_lidar_override();
+ 
+        double init_min = cur ? cur->m_min_dist : DEF.min_range;
+        double init_max = cur ? cur->m_max_dist : DEF.max_range;
+        double init_hs0 = cur ? (cur->m_h_step.size() > 0 ? cur->m_h_step[0] : DEF.h_step0) : DEF.h_step0;
+        double init_hs1 = cur ? (cur->m_h_step.size() > 1 ? cur->m_h_step[1] : DEF.h_step1) : DEF.h_step1;
+        double init_hs2 = cur ? (cur->m_h_step.size() > 2 ? cur->m_h_step[2] : DEF.h_step2) : DEF.h_step2;
+        double init_acc = cur ? cur->m_accuracy : DEF.accuracy;
+ 
+        auto* s_min = make_slider("Min range (m)", 0.1, 50.0, 0.1, init_min, 1, [this](double v){ m_gl->lidar_override_set_min(v); });
+        auto* s_max = make_slider("Max range (m)", 10.0, 2000.0, 5.0, init_max, 0, [this](double v){ m_gl->lidar_override_set_max(v); });
+        auto* s_hs0 = make_slider("H-step fin (°)", 0.05, 5.0, 0.01, init_hs0, 3, [this](double v){ m_gl->lidar_override_set_hstep(0, v); });
+        auto* s_hs1 = make_slider("H-step moyen (°)", 0.05, 5.0, 0.01, init_hs1, 3, [this](double v){ m_gl->lidar_override_set_hstep(1, v); });
+        auto* s_hs2 = make_slider("H-step large (°)", 0.05, 5.0, 0.01, init_hs2, 3, [this](double v){ m_gl->lidar_override_set_hstep(2, v); });
+        auto* s_acc = make_slider("Précision (m)", 0.001, 0.5, 0.001, init_acc, 3, [this](double v){ m_gl->lidar_override_set_accuracy(v); });
+ 
+        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
+ 
+        auto* btn_reset = Gtk::make_managed<Gtk::Button>("Réinitialiser");
+        btn_reset->signal_clicked().connect([=]() {
+            s_min->set_value(DEF.min_range);
+            s_max->set_value(DEF.max_range);
+            s_hs0->set_value(DEF.h_step0);
+            s_hs1->set_value(DEF.h_step1);
+            s_hs2->set_value(DEF.h_step2);
+            s_acc->set_value(DEF.accuracy);
+        });
+ 
+        auto* btn_box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL);
+        btn_box->pack_end(*btn_reset, Gtk::PACK_SHRINK);
+        vbox->pack_start(*btn_box, Gtk::PACK_SHRINK);
+ 
+        area->pack_start(*vbox, Gtk::PACK_SHRINK);
+        dlg.show_all_children();
+        dlg.run();
+    });
+}
+
+
+
 void MenuItemsActions::exit_app() {
     _sub->signal_activate().connect([this]() {
         as_window().hide();

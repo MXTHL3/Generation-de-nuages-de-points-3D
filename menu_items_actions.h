@@ -30,5 +30,7 @@ protected:
     void launch_recognition();
     void to_fullscreen();
     void open_docs();
+    void reset_scene();
+    void scanner_settings();
     void exit_app();
 };

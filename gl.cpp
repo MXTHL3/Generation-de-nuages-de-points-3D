@@ -664,7 +664,10 @@ glm::vec3 Gl::get_camera_world_position() const {
 void Gl::run_scan(const std::string& lidar_config_path, const std::string& output_path) {
     std::shared_ptr<Lidar> lidar;
     try {
-        lidar = LidarFactory::createFromJsonConfig(lidar_config_path);
+        if (m_lidar_override)
+            lidar = m_lidar_override;
+        else
+            lidar = LidarFactory::createFromJsonConfig(lidar_config_path);
     } catch (const std::exception& e) {
         std::cerr << "Erreur chargement LiDAR : " << e.what() << "\n";
         return;
@@ -780,6 +783,56 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
     }
 
     load_scan(output_path);
+}
+
+static std::shared_ptr<Lidar> ensure_override(std::shared_ptr<Lidar>& ov, const std::string& config_path) {
+    if (!ov) {
+        try { ov = LidarFactory::createFromJsonConfig(config_path); }
+        catch (...) {
+            ov = std::make_shared<Lidar>("custom", 1.0, 1000.0, std::vector<double>{0.703125, 0.3515626, 0.1757825}, 0.01);
+        }
+    }
+    return ov;
+}
+
+void Gl::lidar_override_set_min(double v) {
+    ensure_override(m_lidar_override, m_lidar_config)->m_min_dist = v;
+}
+void Gl::lidar_override_set_max(double v) {
+    ensure_override(m_lidar_override, m_lidar_config)->m_max_dist = v;
+}
+void Gl::lidar_override_set_hstep(size_t idx, double v) {
+    auto& hs = ensure_override(m_lidar_override, m_lidar_config)->m_h_step;
+    if (idx < hs.size()) hs[idx] = v;
+}
+void Gl::lidar_override_set_accuracy(double v) {
+    ensure_override(m_lidar_override, m_lidar_config)->m_accuracy = v;
+}
+
+void Gl::reset_scene() {
+    if (gl_area.get_realized()) gl_area.make_current();
+
+    if (m_scenes.size() > 1)
+        m_scenes.erase(m_scenes.begin() + 1, m_scenes.end());
+
+    if (m_transforms.size() > 1)
+        m_transforms.erase(m_transforms.begin() + 1, m_transforms.end());
+
+    constexpr size_t MARKERS_PER_MODEL = 5;
+    constexpr size_t CUBE_MARKERS = MARKERS_PER_MODEL; 
+
+    for (size_t i = CUBE_MARKERS; i < m_markers.size(); ++i)
+        m_fixed.remove(*m_markers[i]);
+
+    if (m_markers.size() > CUBE_MARKERS)
+        m_markers.erase(m_markers.begin() + CUBE_MARKERS, m_markers.end());
+
+    m_load_count = 0;
+
+    rebuild_vertex_data();
+    upload_vertex_data();
+    update_markers_positions();
+    gl_area.queue_render();
 }
 
 void Gl::focus_gl_area() {

@@ -18,27 +18,6 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
     add(main_box);
     main_box.pack_start(menubar, Gtk::PACK_SHRINK);
 
-    Gtk::Box* lidar_bar = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 6);
-    lidar_bar->set_margin_start(8);
-    lidar_bar->set_margin_end(8);
-    lidar_bar->set_margin_top(2);
-    lidar_bar->set_margin_bottom(2);
-
-    auto* lidar_label = Gtk::make_managed<Gtk::Label>("Modèle LiDAR :");
-    m_lidar_combo.append("lidars_config/ouster_os1_64.json", "Ouster OS1-64");
-    m_lidar_combo.append("lidars_config/ouster_os2_128.json", "Ouster OS2-128");
-    m_lidar_combo.append("lidars_config/vedolyne_vlp16.json", "Velodyne VLP-16");
-    m_lidar_combo.append("lidars_config/velodyne_vlp32c.json", "Velodyne VLP-32C");
-    m_lidar_combo.set_active(0);
-
-    m_lidar_combo.signal_changed().connect([this]() {
-        std::string chosen = m_lidar_combo.get_active_id();
-        if (!chosen.empty()) m_gl->set_lidar_config(chosen);
-    });
-
-    lidar_bar->pack_start(*lidar_label, Gtk::PACK_SHRINK);
-    lidar_bar->pack_start(m_lidar_combo, Gtk::PACK_SHRINK);
-    main_box.pack_start(*lidar_bar, Gtk::PACK_SHRINK);
     main_box.pack_start(m_gl->widget(), Gtk::PACK_EXPAND_WIDGET);
 
     m_gl->signal_marker_clicked.connect([this](MarkerType type) {
@@ -56,8 +35,6 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
             "Supprimer sélection", "Réinitialiser scène"},
         {"Scanner 3D",
             "Lancer scan", "Paramètres scanner"},
-        {"Simulation",
-            "Visualiser rayons laser", "Visualiser intersections"},
         {"Nuage de points",
             "Afficher/masquer nuage", "Filtrage bruit"},
         {"IA",
@@ -84,17 +61,17 @@ void MainWindow::update_markers()
             else if (g == MarkerType::ty || g == MarkerType::ry) mm->set_marker_type(MarkerType::unabledy);
             else if (g == MarkerType::tz || g == MarkerType::rz) mm->set_marker_type(MarkerType::unabledz);
             else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
-        } else if (mode == "Translation mode") {
+        } else if (mode == "Mode translation") {
             if (g == MarkerType::unabledx || g == MarkerType::rx) mm->set_marker_type(MarkerType::tx);
             else if (g == MarkerType::unabledy || g == MarkerType::ry) mm->set_marker_type(MarkerType::ty);
             else if (g == MarkerType::unabledz || g == MarkerType::rz) mm->set_marker_type(MarkerType::tz);
             else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
-        } else if (mode == "Rotation mode") {
+        } else if (mode == "Mode rotation") {
             if (g == MarkerType::tx || g == MarkerType::unabledx) mm->set_marker_type(MarkerType::rx);
             else if (g == MarkerType::ty || g == MarkerType::unabledy) mm->set_marker_type(MarkerType::ry);
             else if (g == MarkerType::tz || g == MarkerType::unabledz) mm->set_marker_type(MarkerType::rz);
             else if (g == MarkerType::s) mm->set_marker_type(MarkerType::unableds);
-        } else if (mode == "Scale mode") {
+        } else if (mode == "Mode échelle") {
             if (g == MarkerType::tx || g == MarkerType::rx || g == MarkerType::unabledx) mm->set_marker_type(MarkerType::unabledx);
             else if (g == MarkerType::ty || g == MarkerType::ry || g == MarkerType::unabledy) mm->set_marker_type(MarkerType::unabledy);
             else if (g == MarkerType::tz || g == MarkerType::rz || g == MarkerType::unabledz) mm->set_marker_type(MarkerType::unabledz);
@@ -138,6 +115,8 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         else if (label == "Charger scan (PLY/LAS)") { load_scan(); }
         else if (label == "Charger scène (JSON)") { load_json_scene(); }
         else if (label == "Capturer image") { capture_image(); }
+        else if (label == "Réinitialiser scène") { reset_scene(); }
+        else if (label == "Paramètres scanner") { scanner_settings(); }
         else if (label == "Lancer scan") { launch_scan(); }
         else if (label == "Afficher/masquer nuage") { display_cloud(); }
         else if (label == "Générer ensemble de données") { generate_dataset(); }

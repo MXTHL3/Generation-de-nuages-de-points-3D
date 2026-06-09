@@ -25,7 +25,7 @@ private:
     std::vector<std::vector<std::string>> menu_bar_data;
 
     const std::vector<std::string> transformation_mode = {
-        "", "Translation mode", "Rotation mode", "Scale mode"
+        "", "Mode translation", "Mode rotation", "Mode échelle"
     };
     int m_tm_id = 0;   
 
