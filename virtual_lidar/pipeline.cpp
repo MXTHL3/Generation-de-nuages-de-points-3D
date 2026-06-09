@@ -2,7 +2,7 @@
 #include "pose.hpp"
 #include "logger.hpp"
 
-std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets)
+/*std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets)
 {
     std::vector<std::unique_ptr<Scene>> output_scenes;
 
@@ -21,22 +21,43 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
 
             size_t ent_index = 0;
             for(const auto& entity : current_spatial_variation->entities()){
-                if(dynamic_cast<StaticEntity*>(entity.get())){
-                    double r_z = rot_z(m_gen);
+                double r_z = rot_z(m_gen);
 
-                    Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
-                    entity->pose(random_pose);
-                    SIM_DEBUG("Entité copié : {} et oritentée en Z: {:.2f}", entity->name(), random_pose.rz());
-                    ent_index++;
-                
-                }
-
+                Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
+                entity->pose(random_pose);
+                SIM_DEBUG("Entité copié : {} et oritentée en Z: {:.2f}", entity->name(), random_pose.rz());
+                ent_index++;
             }
         
             SIM_INFO("Reconstruction de l'arbre pour la variation {}", ent_index);
             output_scenes.push_back(std::move(current_spatial_variation));
         }
     }
+    return output_scenes;
+}*/
+
+std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets){
+    std::vector<std::unique_ptr<Scene>> output_scenes;
+    double step = 360.0 / static_cast<double>(m_number_of_variations);
+
+    SIM_INFO("Rotation uniforme : {} variations, pas de {:.2f}°", m_number_of_variations, step);
+
+    for(const auto& base_scene : input_scenes){
+        SIM_INFO("Génération de variations de rotation sur la scène {}", "nom des scènes à def");
+        for(size_t i = 0; i < m_number_of_variations; i++){
+            double r_z = i * step;
+            auto current_variation = std::make_unique<Scene>(*base_scene);
+
+            for(const auto& entity : current_variation->entities()){
+                Pose rotated_pose(entity->pose().pos(), 0.0, 0.0, r_z);
+                entity->pose(rotated_pose);
+            }
+
+            output_scenes.push_back(std::move(current_variation));
+        }
+    }
+
+    SIM_INFO("{} scènes générées", output_scenes.size());
     return output_scenes;
 }
 
@@ -60,25 +81,22 @@ std::vector<std::unique_ptr<Scene>> PositionLayoutAugmentation::process(std::vec
 
             size_t ent_index = 0;
             for(const auto& entity : current_spatial_variation->entities()){
-                if(dynamic_cast<StaticEntity*>(entity.get())){
-                    double x = dist_x(m_gen);
-                    double y = dist_y(m_gen);
+                double x = dist_x(m_gen);
+                double y = dist_y(m_gen);
 
-                    bool is_too_close = true;
+                bool is_too_close = true;
 
-                    while(is_too_close){
-                        x = x < 5 && x > -5 ? dist_x(m_gen) : x;
-                        y = y < 5 && y > -5 ? dist_y(m_gen) : y;
+                while(is_too_close){
+                    x = x < 5 && x > -5 ? dist_x(m_gen) : x;
+                    y = y < 5 && y > -5 ? dist_y(m_gen) : y;
                         
-                        if(!(x < 5 && x > -5) || !(y < 5 && y > -5))is_too_close = false;
-                    }
-
-                    Pose random_pose({x, y, 0.0});
-                    entity->pose(random_pose);
-                    SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Y: {:.2f}", entity->name(), random_pose.pos().x(), random_pose.pos().y());
-                    ent_index++;
+                    if(!(x < 5 && x > -5) && !(y < 5 && y > -5))is_too_close = false;
                 }
 
+                Pose random_pose({x, y, 0.0});
+                entity->pose(random_pose);
+                SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Y: {:.2f}", entity->name(), random_pose.pos().x(), random_pose.pos().y());
+                ent_index++;
             }
         
             SIM_INFO("Reconstruction de l'arbre pour la variation {}", ent_index);
@@ -98,14 +116,12 @@ std::unique_ptr<Scene> KeyframeLayoutAugmentation::apply_keyframe(const Scene& i
 
     for(auto& ent : new_scene->entities()){
         if(ent->name() == entity_name){
-            if(auto static_ent = dynamic_cast<StaticEntity*>(ent.get())){
-                auto mesh = assets.get_mesh(keyframe_path);
-                if(mesh){
-                    static_ent->update_mesh(mesh);
-                }else{
-                    // Pour l'instant on génère la scène quand meme si cela fait une scene doublon
-                    SIM_WARNING("Fichier de la keyframe : {} vide pour {}", keyframe_path, entity_name);
-                }
+            auto mesh = assets.get_mesh(keyframe_path);
+            if(mesh){
+                ent->update_mesh(mesh);
+            }else{
+                // Pour l'instant on génère la scène quand meme si cela fait une scene doublon
+                SIM_WARNING("Fichier de la keyframe : {} vide pour {}", keyframe_path, entity_name);
             }
             break;
         }
@@ -166,7 +182,7 @@ std::vector<std::unique_ptr<Scene>> KeyframeLayoutAugmentation::generate_combina
 
 void Pipeline::add_step(std::unique_ptr<PipelineStep> step){
         m_steps.push_back(std::move(step));
-    }
+}
 
 std::vector<std::unique_ptr<Scene>> Pipeline::execute(std::unique_ptr<Scene> input_scene, AssetManager& assets){
     SIM_INFO("Démarrage du pieline de génération de scènes !");

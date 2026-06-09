@@ -63,9 +63,9 @@ int main(int argc, char *argv[])
 
             // pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(100, 42));
 
-            pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(2, 0.0, 360.0, 42));
+            pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(20));
 
-            pipeline.add_step(std::make_unique<KeyframeLayoutAugmentation>(keyframe_configs));
+            //pipeline.add_step(std::make_unique<KeyframeLayoutAugmentation>(keyframe_configs));
 
             std::vector<std::unique_ptr<Scene>> scenes = pipeline.execute(std::move(scene_initiale), assets);
             SIM_INFO("ETAPE 3 - Fin du Pipeline. Nombre de scènes générées : {}", scenes.size());

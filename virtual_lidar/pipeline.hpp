@@ -25,17 +25,16 @@ public:
     std::vector<std::unique_ptr<Scene>> process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets) override;
 };
 
-// Génération de scènes aléatoires avec rotations différentes
+// Génération de scènes aléatoires avec positions différentes
 class RotationLayoutAugmentation : public PipelineStep{
 private:
     size_t m_number_of_variations; // nombre de variations (de scène généré par augmentations) par scènes
-    double m_start_angle, m_end_angle; // Domaine des angles de rotations générés
-    std::mt19937 m_gen;
 
-public:
-    RotationLayoutAugmentation(size_t number_of_variations, double start_angle, double end_angle, unsigned int seed = 42)
-        :m_number_of_variations(number_of_variations), m_start_angle(start_angle), m_end_angle(end_angle), m_gen(seed){}
-    
+public:    
+    RotationLayoutAugmentation(size_t number_of_variations)
+        :m_number_of_variations(number_of_variations){}
+
+    // TODO:: A voir pour le domaine d'exclusion si c'est une radius ou une zone rectangulaire pour l'instant en dur
     std::vector<std::unique_ptr<Scene>> process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets) override;
 };
 
