@@ -79,6 +79,14 @@ MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, doub
     : LidarConfig(name, min_dist, max_dist, accuracy), m_points_per_second(points_per_second),
     m_fov_h(fov_h), m_fov_v(fov_v), m_integration_time(integration_time){}
 
+bool MirroredLidarConfig::is_lissajou() const{
+    return std::holds_alternative<LissajouParams>(m_mirrored_scan_params);
+}
+
+bool MirroredLidarConfig::is_raster() const{
+    return std::holds_alternative<RasterParams>(m_mirrored_scan_params);
+}
+
 void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["model"] = m_name;
     data["min_range"] = m_min_dist;
@@ -93,16 +101,23 @@ void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["fov_v"] = m_fov_v;
     data["integration_time"] = m_integration_time;
 
-    data["lissajou"] = {
-        {"amplitude_h", to_degrees(m_lissajou.m_amplitude_h)},
-        {"amplitude_v", to_degrees(m_lissajou.m_amplitude_v)},
-        {"freq_h", m_lissajou.m_freq_h},
-        {"freq_v", m_lissajou.m_freq_v},
-        {"phase_diff", m_lissajou.m_phase_diff}
-    };
-
-    data["raster"] = {
-        {"resolution_h", m_raster.resolution_h},
-        {"resolution_v", m_raster.resolution_v}
-    };
+    if(is_lissajou()){
+        LissajouParams lissajou_params = std::get<LissajouParams>(m_mirrored_scan_params);
+        data["lissajou"] = {
+            {"amplitude_h", to_degrees(lissajou_params.m_amplitude_h)},
+            {"amplitude_v", to_degrees(lissajou_params.m_amplitude_v)},
+            {"freq_h", lissajou_params.m_freq_h},
+            {"freq_v", lissajou_params.m_freq_v},
+            {"phase_diff", lissajou_params.m_phase_diff}
+        };
+    }else if(is_raster()){
+        RasterParams raster_params = std::get<RasterParams>(m_mirrored_scan_params);
+        data["raster"] = {
+            {"resolution_h", raster_params.resolution_h},
+            {"resolution_v", raster_params.resolution_v}
+        };
+    }else{
+        SIM_ERROR("Erreur non gérée !");
+        throw;
+    }
 }

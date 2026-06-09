@@ -95,10 +95,42 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
 }
 
 std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data){
+    bool has_res = data.contains("resolution_h") && data.contains("resolution_v");
+    bool has_fov = data.contains("fov_h") && data.contains("fov_v");
+    bool has_angr = data.contains("angular_resolution_h") && data.contains("angular_resolution_v");
+    
+    FlashFovResolution params;
+
+    if(has_res && has_fov){
+        params.res_h = data["resolution_h"].get<int>();
+        params.res_v = data["resolution_v"].get<int>();
+        params.fov_h = data["fov_h"].get<double>();
+        params.fov_v = data["fov_v"].get<double>();
+    }
+
+    if(has_angr && has_fov){
+        double angular_resolution_h = data["angular_resolution_h"].get<double>();
+        double angular_resolution_v = data["angular_resolution_v"].get<double>();
+        params.fov_h = data["fov_h"].get<double>();
+        params.fov_v = data["fov_v"].get<double>();
+        params.res_h = static_cast<int>(params.fov_h / angular_resolution_h);
+        params.res_v = static_cast<int>(params.fov_v / angular_resolution_v);
+    }
+
+    if(has_angr && has_res){
+        double angular_resolution_h = data["angular_resolution_h"].get<double>();
+        double angular_resolution_v = data["angular_resolution_v"].get<double>();
+        params.res_h = data["resolution_h"].get<int>();
+        params.res_v = data["resolution_v"].get<int>();
+        params.fov_h = params.res_h * angular_resolution_h;
+        params.fov_v = params.res_v * angular_resolution_v;
+    }
+    
     auto lidar_config = std::make_shared<FlashLidarConfig>(
-        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
-        data.at("resolution_h").get<double>(), data.at("resolution_v").get<double>(),
-        to_radians(data.at("fov_h").get<double>()), to_radians(data.at("fov_v").get<double>())
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), 
+        data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
+        params.res_h, params.res_v,
+        to_radians(params.fov_h), to_radians(params.fov_v)
     );
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
@@ -112,24 +144,25 @@ std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nloh
         data.at("points_per_second").get<int>(), data.at("fov_h").get<double>(), data.at("fov_v").get<double>(), data.at("integration_time").get<double>() 
     );
 
-    if(data.contains("lissajou")){
-        const auto& lissajou_json = data["lissajou"];
-        lidar_config->m_lissajou.m_amplitude_h = to_radians(lissajou_json.at("amplitude_h").get<double>());
-        lidar_config->m_lissajou.m_amplitude_v = to_radians(lissajou_json.at("amplitude_v").get<double>());
-        lidar_config->m_lissajou.m_freq_h = to_radians(lissajou_json.at("freq_h").get<double>());
-        lidar_config->m_lissajou.m_freq_v = to_radians(lissajou_json.at("freq_v").get<double>());
-        lidar_config->m_lissajou.m_phase_diff = to_radians(lissajou_json.at("phase_diff").get<double>());   
-    }else{
-        SIM_ERROR("Pas de paramètre pour le mode lissajou dans la config du lidar Miroir : {}", lidar_config->m_name);
-        throw;
-    }
+    std::string mode = data.value("scan_mode", "lissajou");
 
-    if(data.contains("raster")){
+    if(mode == "lissajou"){
+        const auto& lissajou_json = data["lissajou"];
+        lidar_config->m_mirrored_scan_params = LissajouParams{
+            to_radians(lissajou_json.at("amplitude_h").get<double>()),
+            to_radians(lissajou_json.at("amplitude_v").get<double>()),
+            to_radians(lissajou_json.at("freq_h").get<double>()),
+            to_radians(lissajou_json.at("freq_v").get<double>()),
+            to_radians(lissajou_json.at("phase_diff").get<double>())
+        };   
+    }else if(mode == "raster"){
         const auto& raster_json = data["raster"];
-        lidar_config->m_raster.resolution_h = raster_json.at("resolution_h").get<int>();
-        lidar_config->m_raster.resolution_v = raster_json.at("resolution_v").get<int>();
+        lidar_config->m_mirrored_scan_params = RasterParams {
+            raster_json.at("resolution_h").get<int>(),
+            raster_json.at("resolution_v").get<int>()
+        };
     }else{
-        SIM_ERROR("Pas de paramètre pour mode le raster dans la config du lidar Miroir : {}", lidar_config->m_name);
+        SIM_ERROR("Paramètre non reconnu pour le mode (il doit être soit 'raster' soit 'lissajou' dans la config du lidar Miroir : {}", lidar_config->m_name);
         throw;
     }
 

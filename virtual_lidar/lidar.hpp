@@ -80,12 +80,6 @@ public:
     void serialize(nlohmann::json& data) const override;
 };
 
-/// @brief Mode de balayage d'un Lidar Miroir
-enum class MirorredScanMode {
-    LISSAJOU,   ///< motif rosace non répétitif
-    RASTER      ///< balayage ligne par ligne
-};
-
 struct LissajouParams {
     double m_amplitude_h;           ///< Amplitude de balayage horizontal (radians)
     double m_amplitude_v;           ///< Amplitude de balayage vertical (radians)  
@@ -108,8 +102,10 @@ public:
     double m_fov_v;                 ///< Fov vertical maximal (radians)
     double m_integration_time;      ///< Durée d'acumulation d'une frame (secondes)
 
-    LissajouParams m_lissajou;      ///< Paramètres pour scan mode LISSAJOU
-    RasterParams m_raster;          ///< Paramètres pour scan mode RASTER
+    std::variant<LissajouParams, RasterParams> m_mirrored_scan_params; ///< contient les paramètres pour lissajou ou raster
+
+    bool is_lissajou() const;
+    bool is_raster() const;
 
     MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
         int points_per_second, double fov_h, double fov_v, double integration_time);

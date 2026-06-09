@@ -15,6 +15,11 @@ namespace LidarModels {
     const std::string VELDOYNE_VLP32C =         "lidars_config/velodyne_vlp32c.json";
 };
 
+struct FlashFovResolution {
+    int res_h = 0, res_v = 0;
+    double fov_h = 0.0, fov_v = 0.0;
+};
+
 // créé les lidars à prédéfini à partir de fichiers json
 class LidarFactory {
 public:
