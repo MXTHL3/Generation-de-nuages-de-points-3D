@@ -50,8 +50,13 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
             
             // TODO:: A fixer
             if(auto mechanical_lidar_config = std::dynamic_pointer_cast<MechanicalLidarConfig>(shared_lidar_config)){
+                SIM_DEBUG("{}", shared_lidar_config->to_string());
                 std::unique_ptr<LidarEntity> lidar_ent = std::make_unique<MechanicalLidarEntity>(mechanical_lidar_config, pose);
                 lidars_ent.push_back(std::move(lidar_ent));
+            }else if(auto flash_lidar_config = std::dynamic_pointer_cast<FlashLidarConfig>(shared_lidar_config)){
+                SIM_DEBUG("{}", shared_lidar_config->to_string());
+            }else if(auto flash_lidar_config = std::dynamic_pointer_cast<MirroredLidarConfig>(shared_lidar_config)){
+                SIM_DEBUG("{}", shared_lidar_config->to_string());
             }
         }
     }else{

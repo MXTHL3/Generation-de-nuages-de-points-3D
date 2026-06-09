@@ -2,6 +2,7 @@
 #include "units.hpp"
 #include "logger.hpp"
 #include <iostream>
+#include <iomanip>
 
 LidarConfig::LidarConfig(std::string name, double min_dist, double max_dist, double accuracy)
     :m_name(name), m_min_dist(min_dist), m_max_dist(max_dist), m_accuracy(accuracy){}
@@ -50,6 +51,31 @@ void MechanicalLidarConfig::serialize(nlohmann::json& data) const{
     }
 }
 
+std::string MechanicalLidarConfig::to_string() const{
+    std::ostringstream os;
+    os << std::fixed << std::setprecision(4);
+    os << "Lidar " << m_name << " (mechanical)\n";
+    os << " Range : " << m_min_dist << " - " << m_max_dist << " m\n";
+    os << " Rotation rate : " << m_rotation_rate << " Hz\n";
+    os << " H step : " << horizontal_step() << "°\n";
+    os << " Lasers : " << m_lasers.size() << " channels/lasers" ;
+
+    if(!m_lasers.empty()){
+        os << " V range : " << to_degrees(m_lasers.front().v_rad)
+            << "° à " << to_degrees(m_lasers.back().v_rad) << "°\n";
+    }
+
+    os << " Noise : " << m_noise_profile.steps.size() << " palier(s) \n"; 
+    for(const auto& s : m_noise_profile.steps){
+        os << "     [<" << s.max_distance << " m -> +-" << s.sigma * 100 << "cm]";
+        os << "\n";
+    }
+
+    os << " Quantification : " << m_noise_profile.resolution * 1000 << "mm\n";
+
+    return os.str();
+}
+
 void MechanicalLidarConfig::addLaser(double v_rad, double h_rad, double d_off){
     m_lasers.push_back({v_rad, h_rad, d_off});
 }
@@ -72,6 +98,26 @@ void FlashLidarConfig::serialize(nlohmann::json& data) const{
     data["resolution_v"] = m_resolution_v;
     data["fov_h"] = to_degrees(m_fov_h);
     data["fov_v"] = to_degrees(m_fov_v);
+}
+
+std::string FlashLidarConfig::to_string() const{
+    std::ostringstream os;
+    os << "Lidar " << m_name << " (flash)\n";
+    os << std::fixed << std::setprecision(4);
+    os << " Range : " << m_min_dist << " - " << m_max_dist << " m\n";
+    os << " Resolution : " << m_resolution_h << " par " << m_resolution_v << " pixels\n";
+    os << " Fov : " << to_degrees(m_fov_h) << "° par "<< to_degrees(m_fov_v) << "°\n";
+    os << " Total points : " << m_resolution_h * m_resolution_v << " pts/frame\n";
+
+    os << " Noise : " << m_noise_profile.steps.size() << " palier(s)"; 
+    for(const auto& s : m_noise_profile.steps){
+        os << "     [<" << s.max_distance << " m -> +-" << s.sigma * 100 << "cm]";
+        os << "\n";
+    }
+
+    os << " Quantification : " << m_noise_profile.resolution * 1000 << "mm\n";
+
+    return os.str();
 }
 
 MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
@@ -120,4 +166,24 @@ void MirroredLidarConfig::serialize(nlohmann::json& data) const{
         SIM_ERROR("Erreur non gérée !");
         throw;
     }
+}
+
+std::string MirroredLidarConfig::to_string() const{
+    std::ostringstream os;
+    os << "Lidar " << m_name << " (mirror)\n";
+    os << std::fixed << std::setprecision(4);
+    os << " Range : " << m_min_dist << " - " << m_max_dist << " m\n";
+    os << " Fov : " << to_degrees(m_fov_h) << "° par "<< to_degrees(m_fov_v) << "°\n";
+    os << " Total points per second : " << m_points_per_second << " pts/s\n";
+    os << " integration : "<< m_integration_time << " s\n";
+    
+    os << " Noise : " << m_noise_profile.steps.size() << " palier(s)"; 
+    for(const auto& s : m_noise_profile.steps){
+        os << "     [<" << s.max_distance << " m -> +-" << s.sigma * 100 << "cm]";
+        os << "\n";
+    }
+
+    os << " Quantification : " << m_noise_profile.resolution * 1000 << "mm\n";
+
+    return os.str();
 }

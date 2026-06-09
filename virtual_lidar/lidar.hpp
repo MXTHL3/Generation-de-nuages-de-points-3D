@@ -28,6 +28,8 @@ public:
     /// @brief Serialise le configuration complète en JSON.
     virtual void serialize(nlohmann::json& data) const = 0;
 
+    virtual std::string to_string() const = 0;
+
 protected:
 
     /// @brief Serialise le profil de bruit.
@@ -56,6 +58,8 @@ public:
 
     void serialize(nlohmann::json& data) const override;
 
+    std::string to_string() const override;
+
     /// @brief Ajoute un laser au capteur.
     /// @param v_rad Angle vertical/élévation (radians).
     /// @param h_rad Décalage azimutal (radians).
@@ -78,6 +82,8 @@ public:
         int res_h, int res_v, double fov_h, double fov_v);
     
     void serialize(nlohmann::json& data) const override;
+
+    std::string to_string() const override;
 };
 
 struct LissajouParams {
@@ -109,8 +115,10 @@ public:
 
     MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
         int points_per_second, double fov_h, double fov_v, double integration_time);
-    
+
     void serialize(nlohmann::json& data) const override;
+
+    std::string to_string() const override;
 };
 
 #endif
