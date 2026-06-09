@@ -109,10 +109,29 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
 std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
     auto lidar_config = std::make_shared<MirroredLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
-        data.at("amplitude_h").get<double>(), data.at("amplitude_v").get<double>(),
-        to_radians(data.at("freq_h").get<double>()), to_radians(data.at("freq_v").get<double>()),
-        data.at("phase_diff").get<double>(), data.at("points_per_second").get<double>()
+        data.at("points_per_second").get<int>(), data.at("fov_h").get<double>(), data.at("fov_v").get<double>(), data.at("integration_time").get<double>() 
     );
+
+    if(data.contains("lissajou")){
+        const auto& lissajou_json = data["lissajou"];
+        lidar_config->m_lissajou.m_amplitude_h = to_radians(lissajou_json.at("amplitude_h").get<double>());
+        lidar_config->m_lissajou.m_amplitude_v = to_radians(lissajou_json.at("amplitude_v").get<double>());
+        lidar_config->m_lissajou.m_freq_h = to_radians(lissajou_json.at("freq_h").get<double>());
+        lidar_config->m_lissajou.m_freq_v = to_radians(lissajou_json.at("freq_v").get<double>());
+        lidar_config->m_lissajou.m_phase_diff = to_radians(lissajou_json.at("phase_diff").get<double>());   
+    }else{
+        SIM_ERROR("Pas de paramètre pour le mode lissajou dans la config du lidar Miroir : {}", lidar_config->m_name);
+        throw;
+    }
+
+    if(data.contains("raster")){
+        const auto& raster_json = data["raster"];
+        lidar_config->m_raster.resolution_h = raster_json.at("resolution_h").get<int>();
+        lidar_config->m_raster.resolution_v = raster_json.at("resolution_v").get<int>();
+    }else{
+        SIM_ERROR("Pas de paramètre pour mode le raster dans la config du lidar Miroir : {}", lidar_config->m_name);
+        throw;
+    }
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
 

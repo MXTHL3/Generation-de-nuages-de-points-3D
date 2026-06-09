@@ -74,10 +74,10 @@ void FlashLidarConfig::serialize(nlohmann::json& data) const{
     data["fov_v"] = to_degrees(m_fov_v);
 }
 
-MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
-    double amp_h, double amp_v, double f_h, double f_v, double phase, int points_per_second)
-    : LidarConfig(name, min_dist, max_dist, accuracy), m_amplitude_h(amp_h), 
-    m_amplitude_v(amp_v), m_freq_h(f_h), m_freq_v(f_v), m_phase_diff(phase), m_points_per_second(points_per_second){}
+MirroredLidarConfig::MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
+    int points_per_second, double fov_h, double fov_v, double integration_time)
+    : LidarConfig(name, min_dist, max_dist, accuracy), m_points_per_second(points_per_second),
+    m_fov_h(fov_h), m_fov_v(fov_v), m_integration_time(integration_time){}
 
 void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     data["model"] = m_name;
@@ -88,11 +88,21 @@ void MirroredLidarConfig::serialize(nlohmann::json& data) const{
     serialize_noise_profile(data);
 
     data["type"] = "mirrored";
-
-    data["amplitude_h"] = to_degrees(m_amplitude_h);
-    data["amplitude_v"] = to_degrees(m_amplitude_v);
-    data["freq_h"] = m_freq_h;
-    data["freq_v"] = m_freq_v;
-    data["phase_diff"] = m_phase_diff;
     data["points_per_second"] = m_points_per_second;
+    data["fov_h"] = m_fov_h;
+    data["fov_v"] = m_fov_v;
+    data["integration_time"] = m_integration_time;
+
+    data["lissajou"] = {
+        {"amplitude_h", to_degrees(m_lissajou.m_amplitude_h)},
+        {"amplitude_v", to_degrees(m_lissajou.m_amplitude_v)},
+        {"freq_h", m_lissajou.m_freq_h},
+        {"freq_v", m_lissajou.m_freq_v},
+        {"phase_diff", m_lissajou.m_phase_diff}
+    };
+
+    data["raster"] = {
+        {"resolution_h", m_raster.resolution_h},
+        {"resolution_v", m_raster.resolution_v}
+    };
 }

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <variant>
 #include <nlohmann/json.hpp>
 
 #include "noise_model.hpp"
@@ -79,18 +80,39 @@ public:
     void serialize(nlohmann::json& data) const override;
 };
 
+/// @brief Mode de balayage d'un Lidar Miroir
+enum class MirorredScanMode {
+    LISSAJOU,   ///< motif rosace non répétitif
+    RASTER      ///< balayage ligne par ligne
+};
+
+struct LissajouParams {
+    double m_amplitude_h;           ///< Amplitude de balayage horizontal (radians)
+    double m_amplitude_v;           ///< Amplitude de balayage vertical (radians)  
+    double m_freq_h;                ///< Fréquence d'oscillation horizontale (Hz)
+    double m_freq_v;                ///< Fréquence d'oscillation verticale (Hz)
+    double m_phase_diff;            ///< "Déphasage" entre 2 axes (radians)
+};
+
+struct RasterParams {
+    int resolution_h = 0;           ///< Nombre de colonnes
+    int resolution_v = 0;           ///< Nombre de lignes
+};
+
 /// @brief Configuration d'un lidar à miroir (balayage de Lissajous)
 class MirroredLidarConfig : public LidarConfig {
 public:
-    double m_amplitude_h;   ///< Amplitude de balayage horizontal (radians)
-    double m_amplitude_v;   ///< Amplitude de balayage vertical (radians)  
-    double m_freq_h;        ///< Fréquence d'oscillation horizontale (Hz)
-    double m_freq_v;        ///< Fréquence d'oscillation verticale (Hz)
-    double m_phase_diff;    ///< "Déphasage" entre 2 axes (radians)
-    int m_points_per_second;      ///< Tir par secondes
+    int m_points_per_second;        ///< Tir par secondes
+
+    double m_fov_h;                 ///< Fov horizontal maximal (radians)
+    double m_fov_v;                 ///< Fov vertical maximal (radians)
+    double m_integration_time;      ///< Durée d'acumulation d'une frame (secondes)
+
+    LissajouParams m_lissajou;      ///< Paramètres pour scan mode LISSAJOU
+    RasterParams m_raster;          ///< Paramètres pour scan mode RASTER
 
     MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
-        double amp_h, double amp_v, double f_h, double f_v, double phase, int points_per_second);
+        int points_per_second, double fov_h, double fov_v, double integration_time);
     
     void serialize(nlohmann::json& data) const override;
 };

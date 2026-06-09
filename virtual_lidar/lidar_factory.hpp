@@ -6,8 +6,13 @@
 
 // alias pour les configs en json
 namespace LidarModels {
-    const std::string OUSTER_OS1_64 = "lidars_config/ouster_os1_64.json";
-    const std::string OUSTER_OS2_128 = "lidars_config/ouster_os2_128.json";
+    const std::string OUSTER_OS1_64 =           "lidars_config/ouster_os1_64.json";
+    const std::string OUSTER_OS2_128_REVD =     "lidars_config/ouster_os2_128_revd.json";
+    const std::string OUSTER_OS2_128_REV7 =     "lidars_config/ouster_os2_128_rev7.json";
+
+
+    const std::string VELODYNE_VLP16 =          "lidars_config/velodyne_vpl16.json";
+    const std::string VELDOYNE_VLP32C =         "lidars_config/velodyne_vlp32c.json";
 };
 
 // créé les lidars à prédéfini à partir de fichiers json
