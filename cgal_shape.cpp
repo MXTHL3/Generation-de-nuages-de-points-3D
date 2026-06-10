@@ -42,47 +42,62 @@ void CgalShape::build_mesh_from_file(const std::string& filename)
     }
 
     std::string ext = filename.substr(last_occur);
-    if (ext != ".obj") {
-        std::cerr << "Format non supporté : " << ext << "\n";
-        return;
-    }
 
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Impossible d'ouvrir : " << filename << "\n";
-        return;
-    }
-
-    m_mesh.clear();
-
-    std::vector<SurfaceMesh::Vertex_index> vertices;
-    std::string line;
-
-    while (std::getline(file, line)) {
-        std::istringstream iss(line);
-        std::string token;
-        iss >> token;
-
-        if (token == "v") {
-            double x, y, z;
-            iss >> x >> y >> z;
-            vertices.push_back(add_vertex(x, y, z));
+    if (ext == ".obj") {
+        std::ifstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Impossible d'ouvrir : " << filename << "\n";
+            return;
         }
-        else if (token == "f") {
-            std::vector<int> indices;
-            std::string part;
-            while (iss >> part) {
-                int idx = std::stoi(part.substr(0, part.find('/')));
-                indices.push_back(idx - 1);
+
+        m_mesh.clear();
+
+        std::vector<SurfaceMesh::Vertex_index> vertices;
+        std::string line;
+
+        while (std::getline(file, line)) {
+            std::istringstream iss(line);
+            std::string token;
+            iss >> token;
+
+            if (token == "v") {
+                double x, y, z;
+                iss >> x >> y >> z;
+                vertices.push_back(add_vertex(x, y, z));
             }
-            
-            for (size_t i = 1; i + 1 < indices.size(); ++i)
-                add_triangle(vertices[indices[0]],
-                             vertices[indices[i]],
-                             vertices[indices[i + 1]]);
+            else if (token == "f") {
+                std::vector<int> indices;
+                std::string part;
+                while (iss >> part) {
+                    int idx = std::stoi(part.substr(0, part.find('/')));
+                    indices.push_back(idx - 1);
+                }
+                for (size_t i = 1; i + 1 < indices.size(); ++i)
+                    add_triangle(vertices[indices[0]],
+                                 vertices[indices[i]],
+                                 vertices[indices[i + 1]]);
+            }
         }
-    }
 
-    std::cout << "Maillage chargé : " << vertices.size() << " sommets, "
-              << m_mesh.number_of_faces() << " faces\n";
+        std::cout << "Maillage chargé : " << vertices.size() << " sommets, "
+                  << m_mesh.number_of_faces() << " faces\n";
+    }
+    else if (ext == ".ply" || ext == ".off" || ext == ".stl") {
+        m_mesh.clear();
+
+        if (!CGAL::IO::read_polygon_mesh(filename, m_mesh, CGAL::parameters::verbose(true))) {
+            std::cerr << "Impossible de lire : " << filename << "\n";
+            return;
+        }
+
+        if (!CGAL::is_triangle_mesh(m_mesh)) {
+            CGAL::Polygon_mesh_processing::triangulate_faces(m_mesh);
+        }
+
+        std::cout << "Maillage chargé : " << m_mesh.number_of_vertices() << " sommets, "
+                  << m_mesh.number_of_faces() << " faces\n";
+    }
+    else {
+        std::cerr << "Format non supporté : " << ext << "\n";
+    }
 }

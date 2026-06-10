@@ -4,8 +4,8 @@
 
 // STATIC ENTITY
 
-StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p)
-    : m_name(std::move(name)), m_object(obj), m_pose(p) {}
+StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path)
+    : m_name(std::move(name)), m_object(obj), m_pose(p), m_mesh_path(std::move(mesh_path)) {}
 
 std::shared_ptr<IEntity> StaticEntity::clone() const {
     return std::make_shared<StaticEntity>(*this);

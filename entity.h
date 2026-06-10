@@ -31,7 +31,7 @@ public:
 // Objet statique dans la scène à voir si l'on doit avoir des objets en mouvement
 class StaticEntity : public IEntity {
 public:
-    StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p);
+    StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path = "");
 
     std::shared_ptr<IEntity> clone() const override;
     Transform3 getTransform() const override;
@@ -39,6 +39,7 @@ public:
 
     const std::string& name() const override { return m_name; }
     const Pose& pose() const override { return m_pose; }
+    const std::string& mesh_path() const { return m_mesh_path; }
     void pose(const Pose& p) override { m_pose = p; }
 
     std::shared_ptr<Object> getMesh() const { return m_object; }
@@ -49,6 +50,7 @@ private:
     std::string m_name;
     std::shared_ptr<Object> m_object; // Ref du Mesh
     Pose m_pose;                      // Position du Mesh
+    std::string m_mesh_path;
 };
 
 // Lidar dans la scène

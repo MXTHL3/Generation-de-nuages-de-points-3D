@@ -69,6 +69,7 @@ void MenuItemsActions::load_json_scene() {
             return;
 
         const std::string filepath = dialog.get_filename();
+        std::filesystem::path base_dir = std::filesystem::canonical("/proc/self/exe").parent_path();
 
         Scene world;
         AssetManager assets;
@@ -88,6 +89,15 @@ void MenuItemsActions::load_json_scene() {
         }
 
         world.build();
+
+        for (const auto& ent : world.entities()) {
+            if (auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent)) {
+                std::filesystem::path abs_path = base_dir / staticEnt->mesh_path();
+                m_gl->load_file(abs_path.string());
+            }
+        }
+
+        update_markers();
 
         Gtk::MessageDialog ok(
             as_window(),
