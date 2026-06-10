@@ -7,7 +7,6 @@
 
 #include <CGAL/config.h>
 
-#include "scene.hpp"
 #include "scene_utils.hpp"
 #include "point_cloud_exporter.hpp"
 #include "pipeline.hpp"
@@ -74,13 +73,12 @@ int main(int argc, char *argv[])
             std::vector<Point3> resultCloud;
             LidarScanner scanner;
 
-            auto ouster_lidar = dynamic_cast<MechanicalLidarEntity*>(lidars[0].get());
 
             int i = 0;
             for (auto &scene : scenes)
             {
                 scene->build();
-                resultCloud = scanner.scan(*ouster_lidar, *scene);
+                resultCloud = scanner.scan(*lidars[0], *scene);
                 // on relache la scene pour libérer le cache mémoire en mémoire sinon il sera uniquement relaché après la boucle
                 // TODO :: soluce temporaire il faut surement retirer les shared_ptr car pas utile pour scene soit (unique_ptr?)
                 scene.reset();

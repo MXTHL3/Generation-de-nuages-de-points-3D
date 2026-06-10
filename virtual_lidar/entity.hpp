@@ -60,10 +60,10 @@ public:
     const LidarConfig& config() const { return *m_config; };
 
         // génère les rayons à lancer
-    virtual std::vector<Ray3> scan(double parameter) const = 0;
+    virtual std::vector<Ray3> generate_rays() const = 0;
 
     void noise_model(const NoiseModel& model) {m_noise_model = model; }
-    
+
     double noisy_distance(double d) const{
         return m_noise_model.apply(d);
     }
@@ -80,7 +80,41 @@ public:
     const MechanicalLidarConfig& config() const{ return static_cast<const MechanicalLidarConfig&>(*m_config); }
     std::unique_ptr<IEntity> clone() const override;
 
-    std::vector<Ray3> scan(double parameter) const override;
+    std::vector<Ray3> scan(double parameter) const;
+    std::vector<Ray3> generate_rays() const override;
+};
+
+std::vector<Ray3> generate_ray_grid(
+    const Point3& origin,
+    const Transform3& wolrd_xf,
+    double fov_h, double fov_v,
+    int res_h, int res_v
+);
+
+class FlashLidarEntity : public LidarEntity {
+public:
+    FlashLidarEntity(std::shared_ptr<FlashLidarConfig> config, Pose p);
+
+    const FlashLidarConfig& config() const{ return static_cast<const FlashLidarConfig&>(*m_config); };
+
+    std::unique_ptr<IEntity> clone() const override;
+
+    std::vector<Ray3> generate_rays() const override;
+};
+
+class MirroredLidarEntity : public LidarEntity {
+public:
+    MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p);
+
+    const MirroredLidarConfig& config() const{ return static_cast<const MirroredLidarConfig&>(*m_config); };
+
+    std::unique_ptr<IEntity> clone() const override;
+    
+    std::vector<Ray3> generate_rays() const override;
+
+private:
+    std::vector<Ray3> generate_lissajou() const;
+    std::vector<Ray3> generate_raster() const;
 };
 
 

@@ -1,35 +1,30 @@
 #include "lidar_scanner.hpp"
 #include "logger.hpp"
 
-std::vector<Point3> LidarScanner::scan(const MechanicalLidarEntity& lidar_ent, const Scene& scene) const
+std::vector<Point3> LidarScanner::scan(const LidarEntity& lidar_ent, const Scene& scene) const
 {
 
     std::vector<Point3> pointCloud;
 
-    const MechanicalLidarConfig& config = lidar_ent.config();
+    const LidarConfig& config = lidar_ent.config();
 
-    for (double hr = 0.0; hr < 360.0; hr += config.horizontal_step())
-    {
-        std::vector<Ray3> rays = lidar_ent.scan(hr);
-        for (const Ray3 &ray : rays)
-        {
-            auto hit = scene.intersect(ray);
+    std::vector<Ray3> rays = lidar_ent.generate_rays();
 
-            if (hit)
-            {
-                if (hit->distance >= config.m_min_dist && hit->distance <= config.m_max_dist)
-                {
+    for(const Ray3 &ray : rays){
+        auto hit = scene.intersect(ray);
 
-                    double noisy_dist = lidar_ent.noisy_distance(hit->distance);
+        if (hit){
+            if (hit->distance >= config.m_min_dist && hit->distance <= config.m_max_dist){
 
-                    Vector3 dir = ray.to_vector();
+                double noisy_dist = lidar_ent.noisy_distance(hit->distance);
 
-                    dir = dir / std::sqrt(CGAL::to_double(dir.squared_length()));
+                Vector3 dir = ray.to_vector();
 
-                    Point3 noisy_point = ray.source() + (dir * noisy_dist);
+                dir = dir / std::sqrt(CGAL::to_double(dir.squared_length()));
 
-                    pointCloud.push_back(noisy_point);
-                }
+                Point3 noisy_point = ray.source() + (dir * noisy_dist);
+
+                pointCloud.push_back(noisy_point);
             }
         }
     }
