@@ -315,6 +315,21 @@ void Gl::load_scan(const std::string& path) {
     std::cout << "Scan chargé : " << m_cloud_point_count << " points <- " << path << "\n";
 }
 
+void Gl::set_transform(int idx, const ModelTransform& tr) {
+    if (idx >= 0 && idx < static_cast<int>(m_transforms.size()))
+        m_transforms[idx] = tr;
+}
+
+void Gl::set_camera(float pos_x, float pos_y, float pos_z, float rx, float ry, float zoom) {
+    float dist = std::sqrt(pos_x*pos_x + pos_y*pos_y + pos_z*pos_z);
+    m_zoom  = (dist > 0.01f) ? dist : zoom;
+
+    angle_x = rx;
+    angle_y = ry;
+
+    gl_area.queue_render();
+}
+
 void Gl::capture_image(const std::string& path) {
     if (!gl_area.get_realized()) return;
     gl_area.make_current();
@@ -471,7 +486,7 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
     for (size_t i = 0; i < m_scenes.size(); ++i) {
         const ModelTransform& tr = m_transforms[i];
 
-        float off = OFFSET_STEP * static_cast<float>(i);
+        float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(i) : 0.0f;
         glm::mat4 model = cam;
         model = glm::translate(model, glm::vec3(off, off, off));
         model = model * make_model_matrix(tr);
@@ -618,7 +633,6 @@ std::pair<double, double> Gl::project_to_2d(const glm::vec3& local_pos,
 void Gl::update_markers_positions() {
     for (auto& marker : m_markers) {
         int midx = marker->model_index();
-        float off = OFFSET_STEP * static_cast<float>(midx);
 
         int w = gl_area.get_allocated_width();
         int h = gl_area.get_allocated_height();
@@ -638,6 +652,7 @@ void Gl::update_markers_positions() {
         const ModelTransform& tr = (midx < static_cast<int>(m_transforms.size()))
                                     ? m_transforms[midx] : ModelTransform{};
 
+        float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(midx) : 0.0f;                            
         glm::mat4 model = cam;
         model = glm::translate(model, glm::vec3(off, off, off));
         model = model * make_model_matrix(tr);
@@ -697,7 +712,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
     for (size_t i = 0; i < m_scenes.size(); ++i) {
         const ModelTransform& tr = m_transforms[i];
         Transform3 cgal_tr = model_transform_to_cgal(tr);
-        float off = 1.5f * static_cast<float>(i);
+        float off = tr.use_offset ? 1.5f * static_cast<float>(i) : 0.0f;
 
         auto obj = std::make_shared<Object>();
         const SurfaceMesh& sm = m_scenes[i]->mesh();

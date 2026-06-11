@@ -90,10 +90,45 @@ void MenuItemsActions::load_json_scene() {
 
         world.build();
 
+        m_gl->reset_scene();
+
+        int entity_idx = 1; 
         for (const auto& ent : world.entities()) {
             if (auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent)) {
                 std::filesystem::path abs_path = base_dir / staticEnt->mesh_path();
                 m_gl->load_file(abs_path.string());
+
+                const Pose& p = staticEnt->pose();
+                const Point3& pos = p.pos();
+
+                ModelTransform tr;
+                tr.pos_x = static_cast<float>(pos.x());
+                tr.pos_y = static_cast<float>(pos.y());
+                tr.pos_z = static_cast<float>(pos.z());
+                tr.angle_x = static_cast<float>(p.rx());
+                tr.angle_y = static_cast<float>(p.ry());
+                tr.angle_z = static_cast<float>(p.rz());
+                tr.use_offset = false;
+
+                m_gl->set_transform(entity_idx, tr);
+                ++entity_idx;
+            }
+        }
+
+        for (const auto& ent : world.entities()) {
+            if (auto lidarEnt = std::dynamic_pointer_cast<LidarEntity>(ent)) {
+                const Pose& p = lidarEnt->pose();
+                const Point3& pos = p.pos();
+
+                m_gl->set_camera(
+                    static_cast<float>(pos.x()),
+                    static_cast<float>(pos.y()),
+                    static_cast<float>(pos.z()),
+                    static_cast<float>(p.rx()),
+                    static_cast<float>(p.ry()),
+                    5.0f  
+                );
+                break; 
             }
         }
 
@@ -502,7 +537,8 @@ void MenuItemsActions::open_docs() {
 
         std::string cmd = "cmd.exe /c start \"\" \"" + doc_path + "\"";
         std::thread([cmd]() {
-            std::system(cmd.c_str());
+            int ret = std::system(cmd.c_str());
+            (void)ret;
         }).detach();
     });
 }

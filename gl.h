@@ -26,6 +26,7 @@ struct ModelTransform {
     float pos_x = 0.0f, pos_y = 0.0f, pos_z = 0.0f;
     float angle_x = 0.0f, angle_y = 0.0f, angle_z = 0.0f;
     float scale = 1.0f;
+    bool use_offset = true;
 };
 
 #include "cgal_glm_utils.h"
@@ -37,6 +38,8 @@ public:
     void build_grid(float size, float step);
     void load_file(const std::string& path);
     void load_scan(const std::string& path);
+    void set_transform(int idx, const ModelTransform& tr);
+    void set_camera(float pos_x, float pos_y, float pos_z, float rx, float ry, float zoom);
     void capture_image(const std::string& path);
     void add_overlay_widget(Gtk::Widget& w);
     void run_scan(const std::string& lidar_config_path, const std::string& output_path);
