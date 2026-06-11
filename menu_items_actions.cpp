@@ -132,6 +132,19 @@ void MenuItemsActions::load_json_scene() {
             }
         }
 
+        {
+            std::ifstream f2(filepath);
+            nlohmann::json j2;
+            f2 >> j2;
+            if (j2.contains("lidar_entities") && !j2["lidar_entities"].empty()) {
+                std::string lidar_cfg = j2["lidar_entities"][0].value("lidar_config", "");
+                if (!lidar_cfg.empty()) {
+                    m_gl->set_lidar_config(lidar_cfg);
+                    m_gl->clear_lidar_override();
+                }
+            }
+        }
+
         update_markers();
 
         Gtk::MessageDialog ok(
