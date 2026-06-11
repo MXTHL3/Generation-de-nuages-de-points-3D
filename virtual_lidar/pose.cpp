@@ -6,8 +6,6 @@ Pose::Pose(Point3 p, double rx, double ry, double rz)
     }
 
 Transform3 Pose::transform() const {
-    // TODO :: à voir un passage à glm
-
     Transform3 rotX(1.0, 0.0, 0.0,
                     0.0, std::cos(m_rx), -std::sin(m_rx),
                     0.0, std::sin(m_rx), std::cos(m_rx));

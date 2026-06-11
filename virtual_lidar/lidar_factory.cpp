@@ -43,7 +43,7 @@ NoiseProfile LidarFactory::parseNoiseProfile(const nlohmann::json& data){
                 step.at("max_distance").get<double>(),
                 step.at("sigma").get<double>()});
         }
-        SIM_DEBUG("Profil de bruit chargé : {} paliers, résolution {:.4f} mètres", 
+        SIM_DEBUG("Profil de bruit chargé : {} paliers, résolution {:.2f} mètres", 
             profile.steps.size(), 
             profile.resolution);
     }else{
@@ -83,7 +83,7 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
         throw new std::runtime_error("Pas de résolution horizontale (azimuth) trouvé");
     }
 
-    SIM_DEBUG("Resolution horizontale calculée : {:.4f} degrés", lidar_config->horizontal_step());
+    SIM_DEBUG("Resolution horizontale calculée : {:.2f} degrés", lidar_config->horizontal_step());
     
     for(const auto& laser : data.at("lasers")){
         lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());

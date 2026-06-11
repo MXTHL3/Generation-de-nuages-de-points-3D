@@ -13,7 +13,8 @@ public:
 
         logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
         
-        logger->set_level(spdlog::level::info);
+        logger->set_level(spdlog::level::trace);
+        //logger->set_level(spdlog::level::info);
 
         spdlog::set_default_logger(logger);
     }
