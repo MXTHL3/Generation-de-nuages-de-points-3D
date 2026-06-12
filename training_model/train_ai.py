@@ -1,4 +1,5 @@
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import numpy as np
 import torch
 import torch.nn as nn
@@ -7,146 +8,161 @@ from torch.utils.data import Dataset, DataLoader
 import open3d as o3d
 
 # ==========================================
-# PRÉPARATION, NETTOYAGE ET NORMALISATION
-# ==========================================
-def charger_nuage_points(chemin_ply, augmenter_data=False):
-    # lit un fichier PLY avec Open3D, le nettoie, le normalise et l augmente
-    if not os.path.exists(chemin_ply):
-        return torch.rand(1024, 3, dtype=torch.float32)
-
-    pcd = o3d.io.read_point_cloud(chemin_ply)
-    
-    if not pcd.is_empty():
-        pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0) #enlèves les bruits
-        points = np.asarray(pcd.points)
-    else:
-        points = np.array([])
-    
-    if len(points) > 1024:
-        indices = np.random.choice(len(points), 1024, replace=False)
-        points = points[indices]
-    elif len(points) < 1024 and len(points) > 0:
-        indices = np.random.choice(len(points), 1024, replace=True)
-        points = points[indices]
-    else:
-        return torch.rand(1024, 3, dtype=torch.float32)
-
-    # NORMALISATION 
-    # Centre 0,0,0
-    points = points - np.mean(points, axis=0)
-    # rayon de 1
-    dist_max = np.max(np.sqrt(np.sum(points**2, axis=1)))
-    if dist_max > 0:
-        points = points / dist_max  # tout à la même échelle
-
-    # AUGMENTATION DE DONNÉES 
-    if augmenter_data:
-        # rotation aléatoire autour de l axe Y pour que l ia voit le fichier sous différentes formes
-        theta = np.random.uniform(0, 2 * np.pi)
-        rotation_matrix = np.array([
-            [np.cos(theta), 0, np.sin(theta)],
-            [0, 1, 0],
-            [-np.sin(theta), 0, np.cos(theta)]
-        ])
-        points = np.dot(points, rotation_matrix)
-        
-        # simuler vrai laser
-        #bruit = np.random.normal(0, 0.02, size=points.shape)
-        #points = points + bruit
-
-    return torch.tensor(points, dtype=torch.float32)
-
-# ==========================================
 # ARCHITECTURE POINTNET
 # ==========================================
-class PointNetClassifieur(nn.Module):
-    def __init__(self):  # préparer structure de données
-        super(PointNetClassifieur, self).__init__() # pour avoir toutes les fonctions
+class PointNetSegmentation(nn.Module):
+    def __init__(self):
+        super(PointNetSegmentation, self).__init__()
         self.mlp1 = nn.Sequential(
             nn.Linear(3, 64), nn.ReLU(),
             nn.Linear(64, 128), nn.ReLU(),
-            nn.Linear(128, 512), nn.ReLU()   # permet de savoir c est quelles formes
+            nn.Linear(128, 512), nn.ReLU()
         )
-        self.fc = nn.Sequential(  #décision finale
+        self.segmentation_head = nn.Sequential(
             nn.Linear(512, 256), nn.ReLU(),
-            nn.Dropout(0.4), # 0.4 pour pas surapprentissage
-            nn.Linear(256, 2)  #h ou nh
+            nn.Dropout(0.3),
+            nn.Linear(256, 2)  # [0: Décor, 1: Humain]
         )
 
-    def forward(self, x):   #flux de données
-        x = self.mlp1(x) 
-        x = torch.max(x, dim=1)[0] # Global Max Pooling matrice décision finale
-        x = self.fc(x)  # matrice décision finale
+    def forward(self, x):
+        feat = self.mlp1(x)
+        global_feat = torch.max(feat, dim=1, keepdim=True)[0]
+        x = feat + global_feat
+        x = self.segmentation_head(x)
         return x
 
+
+def preparer_nuage(chemin, max_points=1024):
+    pcd = o3d.io.read_point_cloud(chemin)
+
+    if not pcd.is_empty():
+        pcd, _ = pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
+        points_nettoyes = np.asarray(pcd.points)
+    else:
+        points_nettoyes = np.array([])
+
+    if len(points_nettoyes) == 0:
+        return None, None
+
+    if len(points_nettoyes) > max_points:
+        indices = np.random.choice(len(points_nettoyes), max_points, replace=False)
+    else:
+        indices = np.random.choice(len(points_nettoyes), max_points, replace=True)
+
+    points_reels = points_nettoyes[indices]
+
+    points_norm = points_reels - np.mean(points_reels, axis=0)
+    dist_max = np.max(np.sqrt(np.sum(points_norm**2, axis=1)))
+    if dist_max > 0:
+        points_norm = points_norm / dist_max
+
+    return points_norm, points_reels
+
+
+def charger_un_fichier(args):
+    """Charge et prépare un seul fichier .ply (utilisé par le ThreadPoolExecutor)."""
+    chemin, est_humain, max_points = args
+    points_norm, _ = preparer_nuage(chemin, max_points)
+    if points_norm is None:
+        return None
+
+    labels = np.zeros(max_points, dtype=np.int64)
+    if est_humain:
+        hauteurs = points_norm[:, 2]
+        seuil = np.percentile(hauteurs, 20)
+        labels[hauteurs > seuil] = 1
+
+    return (
+        torch.tensor(points_norm, dtype=torch.float32),
+        torch.tensor(labels, dtype=torch.long),
+    )
+
+
 # ==========================================
-# DATASET 
+# DATASET
 # ==========================================
-class DatasetScannerFichiers(Dataset):
-    def __init__(self, num_echantillons=400):
-        self.echantillons = []   
- 
-        dataset_dir = os.environ.get("DATASET_DIR", "")
- 
+class DatasetScans(Dataset):
+    def __init__(self, max_points=1024):
+        self.max_points = max_points
+        self.donnees = []
+
+        fichiers = []
+
+        dataset_dir = os.environ.get("DATASET_DIR", "").strip()
+
         if dataset_dir and os.path.isdir(dataset_dir):
+            print(f"[train_ai] Chargement du dataset depuis : {dataset_dir}")
             for root, _dirs, files in os.walk(dataset_dir):
-                label = 1 if "humain" in os.path.basename(root).lower() else 0
+                est_humain = "humain" in os.path.basename(root).lower()
                 for f in files:
                     if f.lower().endswith(".ply"):
-                        self.echantillons.append((os.path.join(root, f), label))
- 
-            if not self.echantillons:
-                print(f"[train_ai] Aucun fichier .ply trouvé dans {dataset_dir}, "
-                      "utilisation des fichiers de référence.")
- 
-        if not self.echantillons:
-            fichiers_humains = ["human.ply"]
-            fichiers_non_humains  = ["gargole.ply"]
-            for _ in range(num_echantillons):
-                classe = np.random.choice([0, 1])
-                fichier = (np.random.choice(fichiers_humains)
-                           if classe == 1
-                           else np.random.choice(fichiers_non_humains))
-                self.echantillons.append((fichier, classe))
- 
-        print(f"[train_ai] Dataset : {len(self.echantillons)} échantillons chargés.")
- 
+                        fichiers.append((os.path.join(root, f), est_humain))
+        else:
+            print("[train_ai] DATASET_DIR non défini, utilisation du dossier courant.")
+            for f in os.listdir("."):
+                if f.lower().endswith(".ply"):
+                    fichiers.append((os.path.join(".", f), True))
+
+        print(f"[train_ai] {len(fichiers)} fichier(s) .ply trouvé(s).")
+
+        if len(fichiers) == 0:
+            return
+
+        print("[train_ai] Pré-chargement des nuages en mémoire (parallèle)...")
+        taches = [(chemin, est_humain, max_points) for chemin, est_humain in fichiers]
+
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            futures = {executor.submit(charger_un_fichier, t): t for t in taches}
+            termines = 0
+            for future in as_completed(futures):
+                resultat = future.result()
+                if resultat is not None:
+                    self.donnees.append(resultat)
+
+                termines += 1
+                if termines % 10 == 0 or termines == len(taches):
+                    print(f"[train_ai]   {termines}/{len(taches)} fichiers chargés...")
+
+        print(f"[train_ai] {len(self.donnees)} nuage(s) valide(s) en mémoire.")
+
     def __len__(self):
-        return len(self.echantillons)
- 
+        return min(len(self.donnees), 400)
+
     def __getitem__(self, idx):
-        chemin, classe = self.echantillons[idx]
-        points = charger_nuage_points(chemin, augmenter_data=True)
-        return points, torch.tensor(classe, dtype=torch.long)
+        return self.donnees[idx]
 
 
-# =========================================
-# BOUCLE ENTRAINEMENT 
-# =========================================
+# ==========================================
+# MAIN
+# ==========================================
 if __name__ == "__main__":
-    print("--- Début de l'entraînement IA ---")
-    
-    dataset = DatasetScannerFichiers(num_echantillons=400)
-    dataloader = DataLoader(dataset, batch_size=32, shuffle=True)  #paquets 32 et on mélange les fichiers
-    
-    model = PointNetClassifieur()
-    criterion = nn.CrossEntropyLoss() # à quel point mon ia c est trompé
+    print("--- ENTRAÎNEMENT DE L'IA SUR LES SCANS ---")
+
+    dataset = DatasetScans()
+
+    if len(dataset.donnees) == 0:
+        print("Erreur : Aucun fichier .ply trouvé ou valide.")
+        exit(1)
+
+    dataloader = DataLoader(dataset, batch_size=16, shuffle=True, num_workers=2)
+
+    model = PointNetSegmentation()
+    criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
-    
-    print("Entraînement en cours...")
+
     model.train()
-    for epoch in range(1, 6): # 5 époques
+    print(f"Apprentissage démarré sur {len(dataset.donnees)} fichier(s)...")
+
+    for epoch in range(1, 16):  # 15 époques
         perte_totale = 0.0
-        for nuages, labels in dataloader:
+        for scenes, labels in dataloader:
             optimizer.zero_grad()
-            sorties = model(nuages)  # prédiction
-            loss = criterion(sorties, labels)
-            loss.backward()  # on regarde où ça s est trompé
+            sorties = model(scenes)
+            loss = criterion(sorties.view(-1, 2), labels.view(-1))
+            loss.backward()
             optimizer.step()
             perte_totale += loss.item()
-            
-        print(f"Époque {epoch}/5 - Perte (Loss): {perte_totale/len(dataloader):.4f}")
-        
-    print("\n--- Entraînement terminé ---")
+        print(f"Époque {epoch}/15 - Perte (Loss) : {perte_totale/len(dataloader):.4f}")
+
     torch.save(model.state_dict(), "modele_laser.pth")
-    print("Modèle sauvegardé sous le nom : 'modele_laser.pth'")
+    print("\nL'IA s'est entraînée sur les fichiers !")

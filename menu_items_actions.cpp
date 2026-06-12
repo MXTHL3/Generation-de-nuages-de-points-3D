@@ -343,9 +343,22 @@ void MenuItemsActions::generate_dataset() {
  
         unsetenv("DATASET_DIR");
  
-        Gtk::MessageDialog done(as_window(),
-            "Entraînement terminé :\n\n" + output,
-            false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+        Gtk::Dialog done("Entraînement terminé", as_window(), true);
+        done.add_button("OK", Gtk::RESPONSE_OK);
+
+        auto* area = done.get_content_area();
+        auto* scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
+        scroll->set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+        scroll->set_size_request(500, 300);  // largeur x hauteur fixe
+
+        auto* tv = Gtk::make_managed<Gtk::TextView>();
+        tv->get_buffer()->set_text("Entraînement terminé :\n\n" + output);
+        tv->set_editable(false);
+        tv->set_wrap_mode(Gtk::WRAP_WORD);
+        scroll->add(*tv);
+
+        area->pack_start(*scroll, Gtk::PACK_EXPAND_WIDGET);
+        area->show_all();
         done.run();
     });
 }
@@ -497,27 +510,40 @@ void MenuItemsActions::launch_recognition() {
                 if (!line.empty()) verdict = line;
         }
  
-        bool is_human = (verdict.find("Humain") != std::string::npos &&
-                         verdict.find("Non") == std::string::npos);
- 
+        int nb_humains = 0;
+        bool parse_ok = false;
+        try {
+            size_t space = verdict.find(' ');
+            if (space != std::string::npos) {
+                nb_humains = std::stoi(verdict.substr(0, space));
+                parse_ok = true;
+            }
+        } catch (...) {}
+
         std::string filename = std::filesystem::path(ply_path).filename().string();
         std::string message  = "Fichier analysé : " + filename +
-                               "\n\nRésultat : " +
-                               (verdict.empty() ? "(aucune sortie)" : verdict) + "\n";
- 
-        if (ret != 0 || verdict.find("Erreur") != std::string::npos) {
+                            "\n\nRésultat : " +
+                            (verdict.empty() ? "(aucune sortie)" : verdict) + "\n";
+
+        if (ret != 0 || verdict.find("Erreur") != std::string::npos || !parse_ok) {
             message += "\nDétails :\n" + output;
             Gtk::MessageDialog result(as_window(), message,
                 false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK, true);
             result.set_title("Analyse IA — Erreur");
             result.run();
-        } else {
+        } else if (nb_humains == 0) {
             Gtk::MessageDialog result(as_window(), message,
-                false,
-                is_human ? Gtk::MESSAGE_INFO : Gtk::MESSAGE_QUESTION,
-                Gtk::BUTTONS_OK, true);
-            result.set_title(is_human ? "Analyse IA — Humain détecté"
-                                      : "Analyse IA — Non-Humain");
+                false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_OK, true);
+            result.set_title("Analyse IA — Aucun humain détecté");
+            result.run();
+        } else {
+            std::string titre = "Analyse IA — " + std::to_string(nb_humains) +
+                                " silhouette" + (nb_humains > 1 ? "s" : "") + " humaine" +
+                                (nb_humains > 1 ? "s" : "") + " détectée" +
+                                (nb_humains > 1 ? "s" : "");
+            Gtk::MessageDialog result(as_window(), message,
+                false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+            result.set_title(titre);
             result.run();
         }
     });
