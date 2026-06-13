@@ -1,11 +1,4 @@
 #include "menu_items_actions.h"
-#include "pipeline.h"
-#include "asset_manager.h"
-#include "scene_utils.h"
-#include "noise_model.h"
-#include "point_cloud_exporter.h"
-#include "logger.h"
-#include <filesystem>
 
 void MenuItemsActions::open_3d_model() {
     _sub->signal_activate().connect([this]() {
@@ -73,8 +66,9 @@ void MenuItemsActions::load_json_scene() {
 
         Scene world;
         AssetManager assets;
+        std::vector<std::unique_ptr<LidarEntity>> lidars;
 
-        if (!SceneLoader::load_scene_from_json(filepath, world, assets))
+        if (!SceneLoader::load_scene_from_json(filepath, world, lidars, assets))
         {
             Gtk::MessageDialog err(
                 as_window(),
@@ -92,44 +86,40 @@ void MenuItemsActions::load_json_scene() {
 
         m_gl->reset_scene();
 
-        int entity_idx = 1; 
+        int entity_idx = 1;
         for (const auto& ent : world.entities()) {
-            if (auto staticEnt = std::dynamic_pointer_cast<StaticEntity>(ent)) {
-                std::filesystem::path abs_path = base_dir / staticEnt->mesh_path();
-                m_gl->load_file(abs_path.string());
+            std::filesystem::path abs_path = base_dir / ent->mesh_path();
+            m_gl->load_file(abs_path.string());
 
-                const Pose& p = staticEnt->pose();
-                const Point3& pos = p.pos();
+            const Pose& p = ent->pose();
+            const Point3& pos = p.pos();
 
-                ModelTransform tr;
-                tr.pos_x = static_cast<float>(pos.x());
-                tr.pos_y = static_cast<float>(pos.y());
-                tr.pos_z = static_cast<float>(pos.z());
-                tr.angle_x = static_cast<float>(p.rx());
-                tr.angle_y = static_cast<float>(p.ry());
-                tr.angle_z = static_cast<float>(p.rz());
-                tr.use_offset = false;
+            ModelTransform tr;
+            tr.pos_x = static_cast<float>(pos.x());
+            tr.pos_y = static_cast<float>(pos.y());
+            tr.pos_z = static_cast<float>(pos.z());
+            tr.angle_x = static_cast<float>(p.rx());
+            tr.angle_y = static_cast<float>(p.ry());
+            tr.angle_z = static_cast<float>(p.rz());
+            tr.use_offset = false;
 
-                m_gl->set_transform(entity_idx, tr);
-                ++entity_idx;
-            }
+            m_gl->set_transform(entity_idx, tr);
+            ++entity_idx;
         }
 
-        for (const auto& ent : world.entities()) {
-            if (auto lidarEnt = std::dynamic_pointer_cast<LidarEntity>(ent)) {
-                const Pose& p = lidarEnt->pose();
-                const Point3& pos = p.pos();
+        for (const auto& lidar_ent : lidars) {       
+            const Pose& p = lidar_ent->pose();
+            const Point3& pos = p.pos();
 
-                m_gl->set_camera(
-                    static_cast<float>(pos.x()),
-                    static_cast<float>(pos.y()),
-                    static_cast<float>(pos.z()),
-                    static_cast<float>(p.rx()),
-                    static_cast<float>(p.ry()),
-                    5.0f  
-                );
-                break; 
-            }
+            m_gl->set_camera(
+                static_cast<float>(pos.x()),
+                static_cast<float>(pos.y()),
+                static_cast<float>(pos.z()),
+                static_cast<float>(p.rx()),
+                static_cast<float>(p.ry()),
+                5.0f
+            );
+            break;
         }
 
         {
@@ -379,13 +369,19 @@ void MenuItemsActions::generate_dataset_from_json() {
         std::string scene_path = dialog.get_filename();
 
         AssetManager assets;
+        std::vector<std::unique_ptr<LidarEntity>> lidars;
 
         auto base_scene = std::make_unique<Scene>();
-        if (!SceneLoader::load_scene_from_json(scene_path, *base_scene, assets)) {
+        if (!SceneLoader::load_scene_from_json(scene_path, *base_scene, lidars, assets)) {
             SIM_ERROR("Impossible de charger la scène : {}", scene_path);
             return;
         }
         SIM_INFO("Scène de base chargée depuis {}", scene_path);
+
+        if (lidars.empty()) {
+            SIM_ERROR("Aucun lidar trouvé dans la scène : {}", scene_path);
+            return;
+        }
 
         Pipeline pipeline;
 
@@ -398,11 +394,13 @@ void MenuItemsActions::generate_dataset_from_json() {
         std::filesystem::create_directories("dataset_output");
         int exported = 0;
 
+        LidarScanner scanner;
+
         for (size_t i = 0; i < augmented_scenes.size(); ++i) {
             auto& scene = augmented_scenes[i];
             scene->build();
 
-            auto cloud = scene->scan(0); 
+            auto cloud = scanner.scan(*lidars[0], *scene);
 
             if (cloud.empty()) {
                 SIM_WARNING("Scène {} : aucun point scanné, ignorée", i);
@@ -420,10 +418,11 @@ void MenuItemsActions::generate_dataset_from_json() {
             }
         }
 
-        std::string msg = std::to_string(exported) + " fichiers PLY générés dans dataset_output/";
-        Gtk::MessageDialog result(as_window(), msg, false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
-        result.set_title("Génération terminée");
-        result.run();
+        Gtk::MessageDialog msg(as_window(),
+            std::to_string(exported) + " / " + std::to_string(augmented_scenes.size()) +
+            " scène(s) exportée(s) dans dataset_output/",
+            false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+        msg.run();
     });
 }
 
@@ -600,60 +599,52 @@ void MenuItemsActions::scanner_settings() {
         struct Defaults {
             double min_range = 1.0;
             double max_range = 1000.0;
-            double h_step0 = 0.703125;
-            double h_step1 = 0.3515626;
-            double h_step2 = 0.1757825;
-            double accuracy = 0.01;
+            double h_step    = 0.3515625;
+            double accuracy  = 0.01;
         };
         static const Defaults DEF;
- 
+
         Gtk::Dialog dlg("Paramètres scanner", as_window(), true);
         dlg.set_default_size(420, -1);
         dlg.set_resizable(false);
         dlg.add_button("Fermer", Gtk::RESPONSE_CLOSE);
- 
+
         auto* area = dlg.get_content_area();
         auto* vbox = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 10);
         vbox->set_margin_start(16); vbox->set_margin_end(16);
         vbox->set_margin_top(12); vbox->set_margin_bottom(12);
- 
+
+        auto* combo = Gtk::make_managed<Gtk::ComboBoxText>();
         {
             auto* row = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
             auto* lbl = Gtk::make_managed<Gtk::Label>("Modèle LiDAR :");
             lbl->set_xalign(0.0f);
             lbl->set_size_request(140, -1);
             row->pack_start(*lbl, Gtk::PACK_SHRINK);
- 
-            auto* combo = Gtk::make_managed<Gtk::ComboBoxText>();
+
             combo->append("lidars_config/ouster_os1_64.json", "Ouster OS1-64");
-            combo->append("lidars_config/ouster_os2_128.json", "Ouster OS2-128");
+            combo->append("lidars_config/ouster_os2_128_revd.json", "Ouster OS2-128 (revD)");
             combo->append("lidars_config/vedolyne_vlp16.json", "Velodyne VLP-16");
             combo->append("lidars_config/velodyne_vlp32c.json", "Velodyne VLP-32C");
+            combo->append("lidars_config/continental_hfl110.json", "Continental HFL110 (flash)");
+            combo->append("lidars_config/livox_mid_360.json", "Livox Mid-360 (mirroir)");
             combo->set_active_id(m_gl->get_lidar_config());
             if (combo->get_active_row_number() < 0) combo->set_active(0);
- 
-            combo->signal_changed().connect([this, combo]() {
-                std::string chosen = combo->get_active_id();
-                if (!chosen.empty()) {
-                    m_gl->set_lidar_config(chosen);
-                    m_gl->clear_lidar_override();  
-                }
-            });
- 
+
             row->pack_start(*combo, Gtk::PACK_EXPAND_WIDGET);
             vbox->pack_start(*row, Gtk::PACK_SHRINK);
         }
- 
+
         vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL),
                          Gtk::PACK_SHRINK);
- 
+
         auto make_slider = [&](const std::string& label, double vmin, double vmax, double step, double value,
             int decimals, std::function<void(double)> on_change) {
             auto* row  = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
             auto* lbl  = Gtk::make_managed<Gtk::Label>(label + " :");
             lbl->set_xalign(0.0f);
             lbl->set_size_request(140, -1);
- 
+
             auto* scale = Gtk::make_managed<Gtk::Scale>(Gtk::ORIENTATION_HORIZONTAL);
             scale->set_range(vmin, vmax);
             scale->set_increments(step, step * 10);
@@ -662,56 +653,67 @@ void MenuItemsActions::scanner_settings() {
             scale->set_hexpand(true);
             scale->set_draw_value(true);
             scale->set_value_pos(Gtk::POS_RIGHT);
- 
+
             scale->signal_value_changed().connect([scale, on_change]() {
                 on_change(scale->get_value());
             });
- 
+
             row->pack_start(*lbl,   Gtk::PACK_SHRINK);
             row->pack_start(*scale, Gtk::PACK_EXPAND_WIDGET);
             vbox->pack_start(*row,  Gtk::PACK_SHRINK);
             return scale;
         };
- 
+
         auto cur = m_gl->get_lidar_override();
- 
+        auto cur_mech = std::dynamic_pointer_cast<MechanicalLidarConfig>(cur);
+
         double init_min = cur ? cur->m_min_dist : DEF.min_range;
         double init_max = cur ? cur->m_max_dist : DEF.max_range;
-        double init_hs0 = cur ? (cur->m_h_step.size() > 0 ? cur->m_h_step[0] : DEF.h_step0) : DEF.h_step0;
-        double init_hs1 = cur ? (cur->m_h_step.size() > 1 ? cur->m_h_step[1] : DEF.h_step1) : DEF.h_step1;
-        double init_hs2 = cur ? (cur->m_h_step.size() > 2 ? cur->m_h_step[2] : DEF.h_step2) : DEF.h_step2;
+        double init_hs  = (cur_mech && cur_mech->m_h_step) ? cur_mech->horizontal_step() : DEF.h_step;
         double init_acc = cur ? cur->m_accuracy : DEF.accuracy;
- 
+
         auto* s_min = make_slider("Min range (m)", 0.1, 50.0, 0.1, init_min, 1, [this](double v){ m_gl->lidar_override_set_min(v); });
         auto* s_max = make_slider("Max range (m)", 10.0, 2000.0, 5.0, init_max, 0, [this](double v){ m_gl->lidar_override_set_max(v); });
-        auto* s_hs0 = make_slider("H-step fin (°)", 0.05, 5.0, 0.01, init_hs0, 3, [this](double v){ m_gl->lidar_override_set_hstep(0, v); });
-        auto* s_hs1 = make_slider("H-step moyen (°)", 0.05, 5.0, 0.01, init_hs1, 3, [this](double v){ m_gl->lidar_override_set_hstep(1, v); });
-        auto* s_hs2 = make_slider("H-step large (°)", 0.05, 5.0, 0.01, init_hs2, 3, [this](double v){ m_gl->lidar_override_set_hstep(2, v); });
+        auto* s_hs  = make_slider("H-step (°)", 0.05, 5.0, 0.01, init_hs, 3, [this](double v){ m_gl->lidar_override_set_hstep(0, v); });
         auto* s_acc = make_slider("Précision (m)", 0.001, 0.5, 0.001, init_acc, 3, [this](double v){ m_gl->lidar_override_set_accuracy(v); });
- 
+
+        s_hs->set_sensitive(cur_mech != nullptr);
+
+        combo->signal_changed().connect([this, combo, s_hs]() {
+            std::string chosen = combo->get_active_id();
+            if (!chosen.empty()) {
+                m_gl->set_lidar_config(chosen);
+                m_gl->clear_lidar_override();
+
+                try {
+                    auto fresh_cfg = LidarFactory::createFromJsonConfig(chosen);
+                    bool is_mech = std::dynamic_pointer_cast<MechanicalLidarConfig>(fresh_cfg) != nullptr;
+                    s_hs->set_sensitive(is_mech);
+                } catch (...) {
+                    s_hs->set_sensitive(false);
+                }
+            }
+        });
+
         vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
- 
+
         auto* btn_reset = Gtk::make_managed<Gtk::Button>("Réinitialiser");
         btn_reset->signal_clicked().connect([=]() {
             s_min->set_value(DEF.min_range);
             s_max->set_value(DEF.max_range);
-            s_hs0->set_value(DEF.h_step0);
-            s_hs1->set_value(DEF.h_step1);
-            s_hs2->set_value(DEF.h_step2);
+            s_hs->set_value(DEF.h_step);
             s_acc->set_value(DEF.accuracy);
         });
- 
+
         auto* btn_box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL);
         btn_box->pack_end(*btn_reset, Gtk::PACK_SHRINK);
         vbox->pack_start(*btn_box, Gtk::PACK_SHRINK);
- 
+
         area->pack_start(*vbox, Gtk::PACK_SHRINK);
         dlg.show_all_children();
         dlg.run();
     });
 }
-
-
 
 void MenuItemsActions::exit_app() {
     _sub->signal_activate().connect([this]() {

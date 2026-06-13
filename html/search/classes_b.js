@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rotationlayoutaugmentation_266',['RotationLayoutAugmentation',['../classRotationLayoutAugmentation.html',1,'']]]
+  ['object_339',['Object',['../classObject.html',1,'']]],
+  ['objectanimation_340',['ObjectAnimation',['../structObjectAnimation.html',1,'']]]
 ];

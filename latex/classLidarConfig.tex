@@ -1,0 +1,190 @@
+\hypertarget{classLidarConfig}{}\doxysection{Lidar\+Config Class Reference}
+\label{classLidarConfig}\index{LidarConfig@{LidarConfig}}
+
+
+Configuration abstraite de base d\textquotesingle{}un lidar. Contient les paramètres communs de tout les types de lidars. Chaque sous classe ajoute les paramètres spécifiques à sa technologie.  
+
+
+
+
+{\ttfamily \#include $<$lidar.\+h$>$}
+
+
+
+Inheritance diagram for Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarConfig__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classLidarConfig__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLidarConfig_a1858bad718d3da3eff1f4f73aeeb9b17}{Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy)
+\item 
+virtual \mbox{\hyperlink{classLidarConfig_a1de3fa83ac94873297006e51288a8052}{$\sim$\+Lidar\+Config}} ()
+\item 
+virtual void \mbox{\hyperlink{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}{serialize}} (nlohmann\+::json \&data) const =0
+\begin{DoxyCompactList}\small\item\em Serialise le configuration complète en JSON. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classLidarConfig_ad083150ce1d303f13883622f69ce50e6}{to\+\_\+string}} () const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLidarConfig_a9d4f6adb894ccdc4209295f7a01adbef}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Identifiant/nom du modèle. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLidarConfig_aa26b700cfa7d740a59b84aa492332ce7}{m\+\_\+min\+\_\+dist}}
+\begin{DoxyCompactList}\small\item\em Distance minimale de détection (mètres). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLidarConfig_a4583f5d1852bb18ba508f9bc4a722497}{m\+\_\+max\+\_\+dist}}
+\begin{DoxyCompactList}\small\item\em Distance maximale de détection (mètres). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLidarConfig_a5715b4c8fb47e1574f3facbc5fbd3202}{m\+\_\+accuracy}}
+\begin{DoxyCompactList}\small\item\em Précision du capteur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \mbox{\hyperlink{classLidarConfig_aeccdc1dba2eda3156dfe97453ca01425}{m\+\_\+noise\+\_\+profile}}
+\begin{DoxyCompactList}\small\item\em Profil de bruit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}{serialize\+\_\+noise\+\_\+profile}} (nlohmann\+::json \&data) const
+\begin{DoxyCompactList}\small\item\em Serialise le profil de bruit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration abstraite de base d\textquotesingle{}un lidar. Contient les paramètres communs de tout les types de lidars. Chaque sous classe ajoute les paramètres spécifiques à sa technologie. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLidarConfig_a1858bad718d3da3eff1f4f73aeeb9b17}\label{classLidarConfig_a1858bad718d3da3eff1f4f73aeeb9b17}} 
+\index{LidarConfig@{LidarConfig}!LidarConfig@{LidarConfig}}
+\index{LidarConfig@{LidarConfig}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{LidarConfig()}{LidarConfig()}}
+{\footnotesize\ttfamily Lidar\+Config\+::\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLidarConfig_a1de3fa83ac94873297006e51288a8052}\label{classLidarConfig_a1de3fa83ac94873297006e51288a8052}} 
+\index{LidarConfig@{LidarConfig}!````~LidarConfig@{$\sim$LidarConfig}}
+\index{````~LidarConfig@{$\sim$LidarConfig}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{$\sim$LidarConfig()}{~LidarConfig()}}
+{\footnotesize\ttfamily Lidar\+Config\+::$\sim$\+Lidar\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}\label{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}} 
+\index{LidarConfig@{LidarConfig}!serialize@{serialize}}
+\index{serialize@{serialize}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual void Lidar\+Config\+::serialize (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Serialise le configuration complète en JSON. 
+
+
+
+Implemented in \mbox{\hyperlink{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}{Mirrored\+Lidar\+Config}}, \mbox{\hyperlink{classFlashLidarConfig_a588ddea2bde4c9418743522aad55df16}{Flash\+Lidar\+Config}}, and \mbox{\hyperlink{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3}{Mechanical\+Lidar\+Config}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarConfig_a02b3411e3e2c8052b197bab919344d03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}\label{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}} 
+\index{LidarConfig@{LidarConfig}!serialize\_noise\_profile@{serialize\_noise\_profile}}
+\index{serialize\_noise\_profile@{serialize\_noise\_profile}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{serialize\_noise\_profile()}{serialize\_noise\_profile()}}
+{\footnotesize\ttfamily void Lidar\+Config\+::serialize\+\_\+noise\+\_\+profile (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Serialise le profil de bruit. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarConfig_afd66aff351b8315f454f29a79c70caa3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarConfig_ad083150ce1d303f13883622f69ce50e6}\label{classLidarConfig_ad083150ce1d303f13883622f69ce50e6}} 
+\index{LidarConfig@{LidarConfig}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily virtual std\+::string Lidar\+Config\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}{Mirrored\+Lidar\+Config}}, \mbox{\hyperlink{classFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4}{Flash\+Lidar\+Config}}, and \mbox{\hyperlink{classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70}{Mechanical\+Lidar\+Config}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLidarConfig_a5715b4c8fb47e1574f3facbc5fbd3202}\label{classLidarConfig_a5715b4c8fb47e1574f3facbc5fbd3202}} 
+\index{LidarConfig@{LidarConfig}!m\_accuracy@{m\_accuracy}}
+\index{m\_accuracy@{m\_accuracy}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_accuracy}{m\_accuracy}}
+{\footnotesize\ttfamily double Lidar\+Config\+::m\+\_\+accuracy}
+
+
+
+Précision du capteur. 
+
+\mbox{\Hypertarget{classLidarConfig_a4583f5d1852bb18ba508f9bc4a722497}\label{classLidarConfig_a4583f5d1852bb18ba508f9bc4a722497}} 
+\index{LidarConfig@{LidarConfig}!m\_max\_dist@{m\_max\_dist}}
+\index{m\_max\_dist@{m\_max\_dist}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_max\_dist}{m\_max\_dist}}
+{\footnotesize\ttfamily double Lidar\+Config\+::m\+\_\+max\+\_\+dist}
+
+
+
+Distance maximale de détection (mètres). 
+
+\mbox{\Hypertarget{classLidarConfig_aa26b700cfa7d740a59b84aa492332ce7}\label{classLidarConfig_aa26b700cfa7d740a59b84aa492332ce7}} 
+\index{LidarConfig@{LidarConfig}!m\_min\_dist@{m\_min\_dist}}
+\index{m\_min\_dist@{m\_min\_dist}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_min\_dist}{m\_min\_dist}}
+{\footnotesize\ttfamily double Lidar\+Config\+::m\+\_\+min\+\_\+dist}
+
+
+
+Distance minimale de détection (mètres). 
+
+\mbox{\Hypertarget{classLidarConfig_a9d4f6adb894ccdc4209295f7a01adbef}\label{classLidarConfig_a9d4f6adb894ccdc4209295f7a01adbef}} 
+\index{LidarConfig@{LidarConfig}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Lidar\+Config\+::m\+\_\+name}
+
+
+
+Identifiant/nom du modèle. 
+
+\mbox{\Hypertarget{classLidarConfig_aeccdc1dba2eda3156dfe97453ca01425}\label{classLidarConfig_aeccdc1dba2eda3156dfe97453ca01425}} 
+\index{LidarConfig@{LidarConfig}!m\_noise\_profile@{m\_noise\_profile}}
+\index{m\_noise\_profile@{m\_noise\_profile}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_noise\_profile}{m\_noise\_profile}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} Lidar\+Config\+::m\+\_\+noise\+\_\+profile}
+
+
+
+Profil de bruit. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lidar_8h}{lidar.\+h}}\item 
+\mbox{\hyperlink{lidar_8cpp}{lidar.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="LidarConfig" name="LidarConfig">
+<area shape="rect" id="node1" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,160,197,340"/>
+<area shape="rect" id="node2" href="$structNoiseProfile.html" title="Profil du bruit d&#39;un capteur lidar." alt="" coords="50,5,153,97"/>
+</map>

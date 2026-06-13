@@ -1,0 +1,4 @@
+<map id="ColumnCountSource" name="ColumnCountSource">
+<area shape="rect" id="node1" title="Résolution à partir du nombre de colonnes par tour." alt="" coords="15,160,194,267"/>
+<area shape="rect" id="node2" href="$classHorizontalStepSource.html" title="Interface pour le calcul de la résolution (horizontale) azimuth d&#39;un LidarMecanique...." alt="" coords="5,5,204,112"/>
+</map>

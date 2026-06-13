@@ -11,7 +11,7 @@ Collaboration diagram for Scene\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=185pt]{classScene__coll__graph}
+\includegraphics[width=199pt]{classScene__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -21,21 +21,19 @@ Collaboration diagram for Scene\+:
 \item 
 \mbox{\hyperlink{classScene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$\+Scene}} ()
 \item 
-\mbox{\hyperlink{classScene_a001b5dcc104150a69e69e6ff09992f83}{Scene}} (const \mbox{\hyperlink{classScene}{Scene}} \&other)
+\mbox{\hyperlink{classScene_aae99632f6bac1360a8c7463c9ab0f613}{Scene}} (const \mbox{\hyperlink{classScene}{Scene}} \&scene)
 \item 
-void \mbox{\hyperlink{classScene_a0d7ea65631c7b551157f54b3cc1eab3e}{add\+\_\+entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ ent)
+void \mbox{\hyperlink{classScene_ab3499787d60be4fc615816aa4ada9423}{add\+\_\+static\+\_\+entity}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ ent)
 \item 
-void \mbox{\hyperlink{classScene_aaec1211c4dc9e2fc0437c66b5077032c}{add\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ ent)
+std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}{scan}} (size\+\_\+t lidar\+\_\+id=0, double parameter=0.\+0) const
 \item 
 void \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build}} ()
 \item 
 boost\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{intersect}} (const \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&ray) const
 \item 
-std\+::vector$<$ \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} $>$ \mbox{\hyperlink{classScene_a2678b65d338e84d96f4b5c789384f4ef}{scan}} (size\+\_\+t lidar\+\_\+id=0) const
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ $>$ \& \mbox{\hyperlink{classScene_a799db83d2c67e0f0d330bc02d6b28875}{entities}} ()
 \item 
-const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ \& \mbox{\hyperlink{classScene_a8e574c01500e4b2f2cf437551d961ce0}{entities}} () const
-\item 
-size\+\_\+t \mbox{\hyperlink{classScene_a2a78a7f29105ecde56579a5dc0b1b168}{triangle\+\_\+count}} () const
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ $>$ \& \mbox{\hyperlink{classScene_a3091106c25c63131813668b22ac4f163}{entities}} () const
 \end{DoxyCompactItemize}
 
 
@@ -52,49 +50,27 @@ size\+\_\+t \mbox{\hyperlink{classScene_a2a78a7f29105ecde56579a5dc0b1b168}{trian
 \doxysubsubsection{\texorpdfstring{$\sim$Scene()}{~Scene()}}
 {\footnotesize\ttfamily Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classScene_a001b5dcc104150a69e69e6ff09992f83}\label{classScene_a001b5dcc104150a69e69e6ff09992f83}} 
+\mbox{\Hypertarget{classScene_aae99632f6bac1360a8c7463c9ab0f613}\label{classScene_aae99632f6bac1360a8c7463c9ab0f613}} 
 \index{Scene@{Scene}!Scene@{Scene}}
 \index{Scene@{Scene}!Scene@{Scene}}
 \doxysubsubsection{\texorpdfstring{Scene()}{Scene()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{other }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classScene_a0d7ea65631c7b551157f54b3cc1eab3e}\label{classScene_a0d7ea65631c7b551157f54b3cc1eab3e}} 
-\index{Scene@{Scene}!add\_entity@{add\_entity}}
-\index{add\_entity@{add\_entity}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{add\_entity()}{add\_entity()}}
-{\footnotesize\ttfamily void Scene\+::add\+\_\+entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$}]{ent }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classScene_ab3499787d60be4fc615816aa4ada9423}\label{classScene_ab3499787d60be4fc615816aa4ada9423}} 
+\index{Scene@{Scene}!add\_static\_entity@{add\_static\_entity}}
+\index{add\_static\_entity@{add\_static\_entity}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{add\_static\_entity()}{add\_static\_entity()}}
+{\footnotesize\ttfamily void Scene\+::add\+\_\+static\+\_\+entity (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$}]{ent }\end{DoxyParamCaption})}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classScene_a0d7ea65631c7b551157f54b3cc1eab3e_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classScene_aaec1211c4dc9e2fc0437c66b5077032c}\label{classScene_aaec1211c4dc9e2fc0437c66b5077032c}} 
-\index{Scene@{Scene}!addEntity@{addEntity}}
-\index{addEntity@{addEntity}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
-{\footnotesize\ttfamily void Scene\+::add\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$}]{ent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classScene_aaec1211c4dc9e2fc0437c66b5077032c_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=291pt]{classScene_aaec1211c4dc9e2fc0437c66b5077032c_icgraph}
+\includegraphics[width=350pt]{classScene_ab3499787d60be4fc615816aa4ada9423_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}\label{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}} 
@@ -108,23 +84,29 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=269pt]{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph}
+\includegraphics[width=350pt]{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classScene_a8e574c01500e4b2f2cf437551d961ce0}\label{classScene_a8e574c01500e4b2f2cf437551d961ce0}} 
+\mbox{\Hypertarget{classScene_a799db83d2c67e0f0d330bc02d6b28875}\label{classScene_a799db83d2c67e0f0d330bc02d6b28875}} 
 \index{Scene@{Scene}!entities@{entities}}
 \index{entities@{entities}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{entities()}{entities()}}
-{\footnotesize\ttfamily const std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classIEntity}{IEntity}}$>$ $>$\& Scene\+::entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{entities()}{entities()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classStaticEntity}{Static\+Entity}}$>$ $>$\& Scene\+::entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=347pt]{classScene_a8e574c01500e4b2f2cf437551d961ce0_icgraph}
+\includegraphics[width=350pt]{classScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classScene_a3091106c25c63131813668b22ac4f163}\label{classScene_a3091106c25c63131813668b22ac4f163}} 
+\index{Scene@{Scene}!entities@{entities}}
+\index{entities@{entities}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{entities()}{entities()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classStaticEntity}{Static\+Entity}}$>$ $>$\& Scene\+::entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classScene_a02db3e0311c490af05727af9f51f4b3a}\label{classScene_a02db3e0311c490af05727af9f51f4b3a}} 
 \index{Scene@{Scene}!intersect@{intersect}}
 \index{intersect@{intersect}!Scene@{Scene}}
@@ -136,28 +118,14 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{classScene_a02db3e0311c490af05727af9f51f4b3a_icgraph}
+\includegraphics[width=350pt]{classScene_a02db3e0311c490af05727af9f51f4b3a_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classScene_a2678b65d338e84d96f4b5c789384f4ef}\label{classScene_a2678b65d338e84d96f4b5c789384f4ef}} 
+\mbox{\Hypertarget{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}\label{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}} 
 \index{Scene@{Scene}!scan@{scan}}
 \index{scan@{scan}!Scene@{Scene}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} $>$ Scene\+::scan (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{lidar\+\_\+id = {\ttfamily 0} }\end{DoxyParamCaption}) const}
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=285pt]{classScene_a2678b65d338e84d96f4b5c789384f4ef_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classScene_a2a78a7f29105ecde56579a5dc0b1b168}\label{classScene_a2a78a7f29105ecde56579a5dc0b1b168}} 
-\index{Scene@{Scene}!triangle\_count@{triangle\_count}}
-\index{triangle\_count@{triangle\_count}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{triangle\_count()}{triangle\_count()}}
-{\footnotesize\ttfamily size\+\_\+t Scene\+::triangle\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}$>$ Scene\+::scan (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{lidar\+\_\+id = {\ttfamily 0},  }\item[{double}]{parameter = {\ttfamily 0.0} }\end{DoxyParamCaption}) const}
 
 
 

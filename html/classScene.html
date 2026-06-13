@@ -75,7 +75,7 @@ Collaboration diagram for Scene:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene__coll__graph.png" border="0" usemap="#aScene_coll__map" alt="Collaboration graph"/></div>
 <map name="aScene_coll__map" id="aScene_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,145,215"/>
+<area shape="rect" title=" " alt="" coords="5,5,164,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -85,22 +85,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a93ccc41b0a2f6c24e467d5d9de76ec0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b8cec2e32546713915f8c6303c951f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a3b8cec2e32546713915f8c6303c951f1">~Scene</a> ()</td></tr>
 <tr class="separator:a3b8cec2e32546713915f8c6303c951f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a001b5dcc104150a69e69e6ff09992f83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a001b5dcc104150a69e69e6ff09992f83">Scene</a> (const <a class="el" href="classScene.html">Scene</a> &amp;other)</td></tr>
-<tr class="separator:a001b5dcc104150a69e69e6ff09992f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d7ea65631c7b551157f54b3cc1eab3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a0d7ea65631c7b551157f54b3cc1eab3e">add_entity</a> (std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; ent)</td></tr>
-<tr class="separator:a0d7ea65631c7b551157f54b3cc1eab3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec1211c4dc9e2fc0437c66b5077032c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#aaec1211c4dc9e2fc0437c66b5077032c">addEntity</a> (std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; ent)</td></tr>
-<tr class="separator:aaec1211c4dc9e2fc0437c66b5077032c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae99632f6bac1360a8c7463c9ab0f613"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#aae99632f6bac1360a8c7463c9ab0f613">Scene</a> (const <a class="el" href="classScene.html">Scene</a> &amp;scene)</td></tr>
+<tr class="separator:aae99632f6bac1360a8c7463c9ab0f613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3499787d60be4fc615816aa4ada9423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#ab3499787d60be4fc615816aa4ada9423">add_static_entity</a> (std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; ent)</td></tr>
+<tr class="separator:ab3499787d60be4fc615816aa4ada9423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f38f3e03adcbb1523bd528bcbb7b57c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a8f38f3e03adcbb1523bd528bcbb7b57c">scan</a> (size_t lidar_id=0, double parameter=0.0) const</td></tr>
+<tr class="separator:a8f38f3e03adcbb1523bd528bcbb7b57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e33abfb4027a9bc2a5bb944fe4c4c9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a">build</a> ()</td></tr>
 <tr class="separator:a6e33abfb4027a9bc2a5bb944fe4c4c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02db3e0311c490af05727af9f51f4b3a"><td class="memItemLeft" align="right" valign="top">boost::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a">intersect</a> (const <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;ray) const</td></tr>
 <tr class="separator:a02db3e0311c490af05727af9f51f4b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2678b65d338e84d96f4b5c789384f4ef"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="pose_8h.html#aa5f79e114fac96f63b8aed4ad1a34c86">Point3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a2678b65d338e84d96f4b5c789384f4ef">scan</a> (size_t lidar_id=0) const</td></tr>
-<tr class="separator:a2678b65d338e84d96f4b5c789384f4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e574c01500e4b2f2cf437551d961ce0"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a8e574c01500e4b2f2cf437551d961ce0">entities</a> () const</td></tr>
-<tr class="separator:a8e574c01500e4b2f2cf437551d961ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a78a7f29105ecde56579a5dc0b1b168"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a2a78a7f29105ecde56579a5dc0b1b168">triangle_count</a> () const</td></tr>
-<tr class="separator:a2a78a7f29105ecde56579a5dc0b1b168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799db83d2c67e0f0d330bc02d6b28875"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875">entities</a> ()</td></tr>
+<tr class="separator:a799db83d2c67e0f0d330bc02d6b28875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3091106c25c63131813668b22ac4f163"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a3091106c25c63131813668b22ac4f163">entities</a> () const</td></tr>
+<tr class="separator:a3091106c25c63131813668b22ac4f163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a93ccc41b0a2f6c24e467d5d9de76ec0d"></a>
@@ -153,8 +151,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a001b5dcc104150a69e69e6ff09992f83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a001b5dcc104150a69e69e6ff09992f83">&#9670;&nbsp;</a></span>Scene() <span class="overload">[2/2]</span></h2>
+<a id="aae99632f6bac1360a8c7463c9ab0f613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae99632f6bac1360a8c7463c9ab0f613">&#9670;&nbsp;</a></span>Scene() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +161,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">Scene::Scene </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classScene.html">Scene</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramname"><em>scene</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -172,16 +170,16 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0d7ea65631c7b551157f54b3cc1eab3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d7ea65631c7b551157f54b3cc1eab3e">&#9670;&nbsp;</a></span>add_entity()</h2>
+<a id="ab3499787d60be4fc615816aa4ada9423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3499787d60be4fc615816aa4ada9423">&#9670;&nbsp;</a></span>add_static_entity()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Scene::add_entity </td>
+          <td class="memname">void Scene::add_static_entity </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt;&#160;</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt;&#160;</td>
           <td class="paramname"><em>ent</em></td><td>)</td>
           <td></td>
         </tr>
@@ -190,58 +188,14 @@ Public Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classScene_a0d7ea65631c7b551157f54b3cc1eab3e_icgraph.png" border="0" usemap="#aclassScene_a0d7ea65631c7b551157f54b3cc1eab3e_icgraph" alt=""/></div>
-<map name="aclassScene_a0d7ea65631c7b551157f54b3cc1eab3e_icgraph" id="aclassScene_a0d7ea65631c7b551157f54b3cc1eab3e_icgraph">
-<area shape="rect" title=" " alt="" coords="764,35,903,61"/>
-<area shape="rect" href="classScene.html#aaec1211c4dc9e2fc0437c66b5077032c" title=" " alt="" coords="557,5,688,32"/>
-<area shape="rect" href="classSceneLoader.html#aead389f4fda2dca8538c76f7dee55167" title=" " alt="" coords="529,57,716,98"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="325,5,428,32"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,57,481,98"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,64,224,91"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="aaec1211c4dc9e2fc0437c66b5077032c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaec1211c4dc9e2fc0437c66b5077032c">&#9670;&nbsp;</a></span>addEntity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::addEntity </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt;&#160;</td>
-          <td class="paramname"><em>ent</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classScene_aaec1211c4dc9e2fc0437c66b5077032c_cgraph.png" border="0" usemap="#aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_cgraph" alt=""/></div>
-<map name="aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_cgraph" id="aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,136,32"/>
-<area shape="rect" href="classScene.html#a0d7ea65631c7b551157f54b3cc1eab3e" title=" " alt="" coords="184,5,323,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classScene_aaec1211c4dc9e2fc0437c66b5077032c_icgraph.png" border="0" usemap="#aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_icgraph" alt=""/></div>
-<map name="aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_icgraph" id="aclassScene_aaec1211c4dc9e2fc0437c66b5077032c_icgraph">
-<area shape="rect" title=" " alt="" coords="156,5,287,32"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
+<div class="center"><img src="classScene_ab3499787d60be4fc615816aa4ada9423_icgraph.png" border="0" usemap="#aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph" alt=""/></div>
+<map name="aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph" id="aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph">
+<area shape="rect" title=" " alt="" coords="764,75,945,102"/>
+<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="529,39,716,80"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="571,105,674,131"/>
+<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
 </map>
 </div>
 
@@ -266,15 +220,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph.png" border="0" usemap="#aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph" alt=""/></div>
 <map name="aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph" id="aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph">
-<area shape="rect" title=" " alt="" coords="156,5,257,32"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" title=" " alt="" coords="499,42,600,69"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="310,71,413,98"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a8e574c01500e4b2f2cf437551d961ce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e574c01500e4b2f2cf437551d961ce0">&#9670;&nbsp;</a></span>entities()</h2>
+<a id="a799db83d2c67e0f0d330bc02d6b28875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799db83d2c67e0f0d330bc02d6b28875">&#9670;&nbsp;</a></span>entities() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,10 +239,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt;std::shared_ptr&lt;<a class="el" href="classIEntity.html">IEntity</a>&gt; &gt;&amp; Scene::entities </td>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classStaticEntity.html">StaticEntity</a>&gt; &gt;&amp; Scene::entities </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -298,12 +254,39 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classScene_a8e574c01500e4b2f2cf437551d961ce0_icgraph.png" border="0" usemap="#aclassScene_a8e574c01500e4b2f2cf437551d961ce0_icgraph" alt=""/></div>
-<map name="aclassScene_a8e574c01500e4b2f2cf437551d961ce0_icgraph" id="aclassScene_a8e574c01500e4b2f2cf437551d961ce0_icgraph">
-<area shape="rect" title=" " alt="" coords="243,13,361,39"/>
-<area shape="rect" href="classSceneLoader.html#aa547c10d3e3ed701234457090fd64daa" title=" " alt="" coords="5,5,195,47"/>
+<div class="center"><img src="classScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph.png" border="0" usemap="#aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph" alt=""/></div>
+<map name="aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph" id="aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph">
+<area shape="rect" title=" " alt="" coords="509,46,628,73"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="277,5,456,47"/>
+<area shape="rect" href="classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60" title=" " alt="" coords="272,71,461,112"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a3091106c25c63131813668b22ac4f163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3091106c25c63131813668b22ac4f163">&#9670;&nbsp;</a></span>entities() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::unique_ptr&lt;<a class="el" href="classStaticEntity.html">StaticEntity</a>&gt; &gt;&amp; Scene::entities </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -327,62 +310,40 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_a02db3e0311c490af05727af9f51f4b3a_icgraph.png" border="0" usemap="#aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph" alt=""/></div>
 <map name="aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph" id="aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph">
-<area shape="rect" title=" " alt="" coords="156,31,283,57"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
-<area shape="rect" href="classScene.html#a2678b65d338e84d96f4b5c789384f4ef" title=" " alt="" coords="7,56,106,83"/>
+<area shape="rect" title=" " alt="" coords="721,31,848,57"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="550,5,653,32"/>
+<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="529,56,673,83"/>
+<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,49,481,90"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,56,224,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a2678b65d338e84d96f4b5c789384f4ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2678b65d338e84d96f4b5c789384f4ef">&#9670;&nbsp;</a></span>scan()</h2>
+<a id="a8f38f3e03adcbb1523bd528bcbb7b57c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f38f3e03adcbb1523bd528bcbb7b57c">&#9670;&nbsp;</a></span>scan()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="pose_8h.html#aa5f79e114fac96f63b8aed4ad1a34c86">Point3</a> &gt; Scene::scan </td>
+          <td class="memname">std::vector&lt;<a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a>&gt; Scene::scan </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>lidar_id</em> = <code>0</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>lidar_id</em> = <code>0</code>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classScene_a2678b65d338e84d96f4b5c789384f4ef_cgraph.png" border="0" usemap="#aclassScene_a2678b65d338e84d96f4b5c789384f4ef_cgraph" alt=""/></div>
-<map name="aclassScene_a2678b65d338e84d96f4b5c789384f4ef_cgraph" id="aclassScene_a2678b65d338e84d96f4b5c789384f4ef_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,104,32"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="152,5,279,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a2a78a7f29105ecde56579a5dc0b1b168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a78a7f29105ecde56579a5dc0b1b168">&#9670;&nbsp;</a></span>triangle_count()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">size_t Scene::triangle_count </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>parameter</em> = <code>0.0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

@@ -1,0 +1,93 @@
+\hypertarget{classHorizontalStepSource}{}\doxysection{Horizontal\+Step\+Source Class Reference}
+\label{classHorizontalStepSource}\index{HorizontalStepSource@{HorizontalStepSource}}
+
+
+Interface pour le calcul de la résolution (horizontale) azimuth d\textquotesingle{}un Lidar\+Mecanique. Les fiches techniques des constructeurs donnent 3 résolution horizontale de manière différente.  
+
+
+
+
+{\ttfamily \#include $<$horizontal\+\_\+step.\+h$>$}
+
+
+
+Inheritance diagram for Horizontal\+Step\+Source\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classHorizontalStepSource__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Horizontal\+Step\+Source\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classHorizontalStepSource__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classHorizontalStepSource_adebb12eeed2f33f0b7f9df78420e6400}{$\sim$\+Horizontal\+Step\+Source}} ()=default
+\item 
+virtual double \mbox{\hyperlink{classHorizontalStepSource_a466b1856b9eb8064cb2407489584b2e0}{compute\+\_\+h\+\_\+step}} () const =0
+\begin{DoxyCompactList}\small\item\em Calcule la résolution horizontale en degrés. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classHorizontalStepSource_a3e7eaf9e76f0ae756d8416d6343c27aa}{serialize}} (nlohmann\+::json \&data) const =0
+\begin{DoxyCompactList}\small\item\em Sérialize la résolution horizontale dans l\textquotesingle{}objet JSON source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface pour le calcul de la résolution (horizontale) azimuth d\textquotesingle{}un Lidar\+Mecanique. Les fiches techniques des constructeurs donnent 3 résolution horizontale de manière différente. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHorizontalStepSource_adebb12eeed2f33f0b7f9df78420e6400}\label{classHorizontalStepSource_adebb12eeed2f33f0b7f9df78420e6400}} 
+\index{HorizontalStepSource@{HorizontalStepSource}!````~HorizontalStepSource@{$\sim$HorizontalStepSource}}
+\index{````~HorizontalStepSource@{$\sim$HorizontalStepSource}!HorizontalStepSource@{HorizontalStepSource}}
+\doxysubsubsection{\texorpdfstring{$\sim$HorizontalStepSource()}{~HorizontalStepSource()}}
+{\footnotesize\ttfamily virtual Horizontal\+Step\+Source\+::$\sim$\+Horizontal\+Step\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHorizontalStepSource_a466b1856b9eb8064cb2407489584b2e0}\label{classHorizontalStepSource_a466b1856b9eb8064cb2407489584b2e0}} 
+\index{HorizontalStepSource@{HorizontalStepSource}!compute\_h\_step@{compute\_h\_step}}
+\index{compute\_h\_step@{compute\_h\_step}!HorizontalStepSource@{HorizontalStepSource}}
+\doxysubsubsection{\texorpdfstring{compute\_h\_step()}{compute\_h\_step()}}
+{\footnotesize\ttfamily virtual double Horizontal\+Step\+Source\+::compute\+\_\+h\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calcule la résolution horizontale en degrés. 
+
+
+
+Implemented in \mbox{\hyperlink{classPointsPerSecondSource_acbda7e1454408b8d19d5d0fb42ad1821}{Points\+Per\+Second\+Source}}, \mbox{\hyperlink{classDirectResolutionSource_aaf0b3d4e7e9dccb3273133ac85357952}{Direct\+Resolution\+Source}}, and \mbox{\hyperlink{classColumnCountSource_a06f6b0a4b63846e33b3be8c3ed7d3bb2}{Column\+Count\+Source}}.
+
+\mbox{\Hypertarget{classHorizontalStepSource_a3e7eaf9e76f0ae756d8416d6343c27aa}\label{classHorizontalStepSource_a3e7eaf9e76f0ae756d8416d6343c27aa}} 
+\index{HorizontalStepSource@{HorizontalStepSource}!serialize@{serialize}}
+\index{serialize@{serialize}!HorizontalStepSource@{HorizontalStepSource}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily virtual void Horizontal\+Step\+Source\+::serialize (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Sérialize la résolution horizontale dans l\textquotesingle{}objet JSON source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & L\textquotesingle{}objet JSON. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classPointsPerSecondSource_a790cdcbdc825bcff986694f585bd46ef}{Points\+Per\+Second\+Source}}, \mbox{\hyperlink{classDirectResolutionSource_ab86816283169fa57ca6261358a3e53ce}{Direct\+Resolution\+Source}}, and \mbox{\hyperlink{classColumnCountSource_a773fbe505b02acc95db423e07aa886a2}{Column\+Count\+Source}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{horizontal__step_8h}{horizontal\+\_\+step.\+h}}\end{DoxyCompactItemize}

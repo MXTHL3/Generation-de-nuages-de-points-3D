@@ -1,0 +1,98 @@
+\hypertarget{classMirroredLidarEntity}{}\doxysection{Mirrored\+Lidar\+Entity Class Reference}
+\label{classMirroredLidarEntity}\index{MirroredLidarEntity@{MirroredLidarEntity}}
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for Mirrored\+Lidar\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classMirroredLidarEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mirrored\+Lidar\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMirroredLidarEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMirroredLidarEntity_a46acaeffc0bdcbd4cdccde20ffad1b2c}{Mirrored\+Lidar\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139}{config}}, \mbox{\hyperlink{classPose}{Pose}} p)
+\item 
+const \mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}} \& \mbox{\hyperlink{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139}{config}} () const
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}{clone}} () const override
+\item 
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}{generate\+\_\+rays}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMirroredLidarEntity_a46acaeffc0bdcbd4cdccde20ffad1b2c}\label{classMirroredLidarEntity_a46acaeffc0bdcbd4cdccde20ffad1b2c}} 
+\index{MirroredLidarEntity@{MirroredLidarEntity}!MirroredLidarEntity@{MirroredLidarEntity}}
+\index{MirroredLidarEntity@{MirroredLidarEntity}!MirroredLidarEntity@{MirroredLidarEntity}}
+\doxysubsubsection{\texorpdfstring{MirroredLidarEntity()}{MirroredLidarEntity()}}
+{\footnotesize\ttfamily Mirrored\+Lidar\+Entity\+::\+Mirrored\+Lidar\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}} $>$}]{config,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}\label{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}} 
+\index{MirroredLidarEntity@{MirroredLidarEntity}!clone@{clone}}
+\index{clone@{clone}!MirroredLidarEntity@{MirroredLidarEntity}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Mirrored\+Lidar\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
+
+\mbox{\Hypertarget{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139}\label{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139}} 
+\index{MirroredLidarEntity@{MirroredLidarEntity}!config@{config}}
+\index{config@{config}!MirroredLidarEntity@{MirroredLidarEntity}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}}\& Mirrored\+Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}\label{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}} 
+\index{MirroredLidarEntity@{MirroredLidarEntity}!generate\_rays@{generate\_rays}}
+\index{generate\_rays@{generate\_rays}!MirroredLidarEntity@{MirroredLidarEntity}}
+\doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mirrored\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entity_8h}{entity.\+h}}\item 
+\mbox{\hyperlink{entity_8cpp}{entity.\+cpp}}\end{DoxyCompactItemize}

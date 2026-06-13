@@ -17,23 +17,47 @@ Collaboration diagram for Lidar\+Factory\+:
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidar}{Lidar}} $>$ \mbox{\hyperlink{classLidarFactory_a891cc931a297a8283228dd9e269ab43d}{create\+From\+Json\+Config}} (const std\+::string \&config\+Path)
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}{create\+From\+Json\+Config}} (const std\+::string \&config\+Path)
+\item 
+static bool \mbox{\hyperlink{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}{save\+To\+Json}} (const std\+::string \&config\+Path, const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \&lidar\+\_\+config)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLidarFactory_a891cc931a297a8283228dd9e269ab43d}\label{classLidarFactory_a891cc931a297a8283228dd9e269ab43d}} 
+\mbox{\Hypertarget{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}\label{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}} 
 \index{LidarFactory@{LidarFactory}!createFromJsonConfig@{createFromJsonConfig}}
 \index{createFromJsonConfig@{createFromJsonConfig}!LidarFactory@{LidarFactory}}
 \doxysubsubsection{\texorpdfstring{createFromJsonConfig()}{createFromJsonConfig()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidar}{Lidar}} $>$ Lidar\+Factory\+::create\+From\+Json\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ Lidar\+Factory\+::create\+From\+Json\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classLidarFactory_a891cc931a297a8283228dd9e269ab43d_icgraph}
+\includegraphics[width=330pt]{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}\label{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}} 
+\index{LidarFactory@{LidarFactory}!saveToJson@{saveToJson}}
+\index{saveToJson@{saveToJson}!LidarFactory@{LidarFactory}}
+\doxysubsubsection{\texorpdfstring{saveToJson()}{saveToJson()}}
+{\footnotesize\ttfamily bool Lidar\+Factory\+::save\+To\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+Path,  }\item[{const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \&}]{lidar\+\_\+config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph}
 \end{center}
 \end{figure}
 

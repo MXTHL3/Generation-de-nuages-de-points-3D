@@ -61,35 +61,109 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">entity.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="entity_8h_source.html">entity.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="units_8h_source.html">units.h</a>&quot;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="logger_8h_source.html">logger.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for entity.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="entity_8cpp__incl.png" border="0" usemap="#aentity_8cpp" alt=""/></div>
 <map name="aentity_8cpp" id="aentity_8cpp">
-<area shape="rect" title=" " alt="" coords="451,5,537,32"/>
-<area shape="rect" href="entity_8h.html" title=" " alt="" coords="165,80,236,107"/>
-<area shape="rect" title=" " alt="" coords="429,229,492,256"/>
-<area shape="rect" href="units_8h.html" title=" " alt="" coords="461,80,527,107"/>
-<area shape="rect" href="pose_8h.html" title=" " alt="" coords="168,155,233,181"/>
-<area shape="rect" title=" " alt="" coords="31,304,93,331"/>
-<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="81,155,144,181"/>
-<area shape="rect" title=" " alt="" coords="23,229,82,256"/>
-<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="258,155,375,181"/>
-<area shape="rect" title=" " alt="" coords="399,155,477,181"/>
-<area shape="rect" href="cgal_8h.html" title=" " alt="" coords="170,229,231,256"/>
-<area shape="rect" title=" " alt="" coords="308,304,493,331"/>
-<area shape="rect" title=" " alt="" coords="118,304,283,331"/>
-<area shape="rect" title=" " alt="" coords="281,229,353,256"/>
+<area shape="rect" title=" " alt="" coords="767,5,853,32"/>
+<area shape="rect" href="entity_8h.html" title=" " alt="" coords="477,80,548,107"/>
+<area shape="rect" href="units_8h.html" title=" " alt="" coords="777,80,843,107"/>
+<area shape="rect" href="logger_8h.html" title=" " alt="" coords="873,80,947,107"/>
+<area shape="rect" href="pose_8h.html" title=" " alt="" coords="100,162,165,189"/>
+<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="447,162,509,189"/>
+<area shape="rect" title=" " alt="" coords="215,244,277,271"/>
+<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="655,244,773,271"/>
+<area shape="rect" title=" " alt="" coords="585,162,662,189"/>
+<area shape="rect" title=" " alt="" coords="5,244,191,271"/>
+<area shape="rect" title=" " alt="" coords="357,319,415,345"/>
+<area shape="rect" title=" " alt="" coords="353,244,421,271"/>
+<area shape="rect" title=" " alt="" coords="509,319,655,345"/>
+<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="445,244,580,271"/>
+<area shape="rect" title=" " alt="" coords="679,319,751,345"/>
+<area shape="rect" title=" " alt="" coords="777,319,840,345"/>
+<area shape="rect" title=" " alt="" coords="848,162,972,189"/>
+<area shape="rect" title=" " alt="" coords="996,155,1144,196"/>
 </map>
 </div>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd">generate_ray_grid</a> (const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;origin, const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;world_xf, double fov_h, double fov_v, int res_h, int res_v)</td></tr>
+<tr class="separator:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a71418d6a5291ec99a1c2399d6e0f27bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71418d6a5291ec99a1c2399d6e0f27bd">&#9670;&nbsp;</a></span>generate_ray_grid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a>&gt; generate_ray_grid </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;&#160;</td>
+          <td class="paramname"><em>world_xf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res_h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph.png" border="0" usemap="#aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" alt=""/></div>
+<map name="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" id="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph">
+<area shape="rect" title=" " alt="" coords="280,5,420,32"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="5,5,232,32"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

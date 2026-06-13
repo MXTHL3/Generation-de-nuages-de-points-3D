@@ -1,0 +1,5 @@
+<map id="MechanicalLidarConfig::to_string" name="MechanicalLidarConfig::to_string">
+<area shape="rect" id="node1" title=" " alt="" coords="5,35,175,76"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="223,5,392,47"/>
+<area shape="rect" id="node3" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="260,71,355,98"/>
+</map>

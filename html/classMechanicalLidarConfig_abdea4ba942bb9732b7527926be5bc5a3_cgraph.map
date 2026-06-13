@@ -1,0 +1,5 @@
+<map id="MechanicalLidarConfig::serialize" name="MechanicalLidarConfig::serialize">
+<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="5,35,175,76"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="223,5,381,47"/>
+<area shape="rect" id="node3" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="255,71,349,98"/>
+</map>

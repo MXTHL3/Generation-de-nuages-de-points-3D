@@ -3,9 +3,9 @@
 #include "pose.h"
 #include "lidar.h"
 #include "noise_model.h"
+
 #include <memory>
 #include <vector>
-#include <string>
 
 typedef K::Ray_3 Ray3;
 typedef K::Triangle_3 Triangle3;
@@ -13,13 +13,17 @@ typedef K::Triangle_3 Triangle3;
 // Objet présent dans la scène
 class IEntity {
 public:
-    virtual ~IEntity() {};
-    virtual std::shared_ptr<IEntity> clone() const = 0;
-    virtual Transform3 getTransform() const = 0;    // Récupère la position dans la scène
-    virtual void update(double dt) = 0;             // Update de la position
+    IEntity(Pose pose): m_pose(pose){};
+    virtual ~IEntity(){};
+    virtual std::unique_ptr<IEntity> clone() const = 0;
+    Transform3 transform() const;    // Récupère la position dans la scene
     virtual const std::string& name() const = 0;
-    virtual const Pose& pose() const = 0;
-    virtual void pose(const Pose& p) = 0;         
+    const Pose& pose() const { return m_pose; }
+    void pose(const Pose& pose) { m_pose = pose; }
+
+
+protected:
+    Pose m_pose;
 };
 
 // Contient le mesh
@@ -32,56 +36,84 @@ public:
 class StaticEntity : public IEntity {
 public:
     StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path = "");
+    std::unique_ptr<IEntity> clone() const override; 
+    const std::string& name() const override final {return m_name;};
 
-    std::shared_ptr<IEntity> clone() const override;
-    Transform3 getTransform() const override;
-    void update(double) override {}
-
-    const std::string& name() const override { return m_name; }
-    const Pose& pose() const override { return m_pose; }
-    const std::string& mesh_path() const { return m_mesh_path; }
-    void pose(const Pose& p) override { m_pose = p; }
-
-    std::shared_ptr<Object> getMesh() const { return m_object; }
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
+    const std::string& mesh_path() const { return m_mesh_path; }
+
     void update_mesh(std::shared_ptr<Object> new_obj) { m_object = new_obj; }
 
 private:
     std::string m_name;
     std::shared_ptr<Object> m_object; // Ref du Mesh
-    Pose m_pose;                      // Position du Mesh
     std::string m_mesh_path;
 };
 
 // Lidar dans la scène
 class LidarEntity : public IEntity {
 public:
-    LidarEntity(std::shared_ptr<Lidar> model, unsigned int step_index,
-                double fov_h, Pose p,
-                std::unique_ptr<NoiseModel> noise = std::make_unique<NullNoiseModel>());
+    LidarEntity(std::shared_ptr<LidarConfig> config, Pose p);
+    virtual ~LidarEntity() = default;
+    
+    const std::string& name() const override final { return m_config->m_name; };
 
-    std::shared_ptr<IEntity> clone() const override;
-    Transform3 getTransform() const override;
-    void update(double) override {}
+    const LidarConfig& config() const { return *m_config; };
 
-    const std::string& name() const override { return m_name; }
-    const Pose& pose() const override { return m_pose; }
-    void pose(const Pose& p) override { m_pose = p; }
+        // génère les rayons à lancer
+    virtual std::vector<Ray3> generate_rays() const = 0;
 
-    // génère les rayons à lancer
-    std::vector<Ray3> scan(double h_deg) const;
-    const Lidar& config() const;
-    const double& h_step() const;
-    const double& fov_h() const { return m_fov_h; }
-    const unsigned int& step_index() const { return m_step_index; }
+    void noise_model(const NoiseModel& model) {m_noise_model = model; }
+
+    double noisy_distance(double d) const{
+        return m_noise_model.apply(d);
+    }
+
+protected:
+    std::shared_ptr<LidarConfig> m_config;
+    NoiseModel m_noise_model;
+};
+
+class MechanicalLidarEntity : public LidarEntity {
+public:
+    MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p);
+
+    const MechanicalLidarConfig& config() const{ return static_cast<const MechanicalLidarConfig&>(*m_config); }
+    std::unique_ptr<IEntity> clone() const override;
+
+    std::vector<Ray3> scan(double parameter) const;
+    std::vector<Ray3> generate_rays() const override;
+};
+
+std::vector<Ray3> generate_ray_grid(
+    const Point3& origin,
+    const Transform3& wolrd_xf,
+    double fov_h, double fov_v,
+    int res_h, int res_v
+);
+
+class FlashLidarEntity : public LidarEntity {
+public:
+    FlashLidarEntity(std::shared_ptr<FlashLidarConfig> config, Pose p);
+
+    const FlashLidarConfig& config() const{ return static_cast<const FlashLidarConfig&>(*m_config); };
+
+    std::unique_ptr<IEntity> clone() const override;
+
+    std::vector<Ray3> generate_rays() const override;
+};
+
+class MirroredLidarEntity : public LidarEntity {
+public:
+    MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p);
+
+    const MirroredLidarConfig& config() const{ return static_cast<const MirroredLidarConfig&>(*m_config); };
+
+    std::unique_ptr<IEntity> clone() const override;
+    
+    std::vector<Ray3> generate_rays() const override;
 
 private:
-    std::string m_name = "lidar";
-    std::shared_ptr<Lidar> m_model; // Ref du Lidar
-    unsigned int m_step_index;      // Indice du step horizontal
-    double m_fov_h;
-    Pose m_pose;                    // Position du Lidar
-    std::unique_ptr<NoiseModel> m_noise_model;
-
-    friend class Scene;
+    std::vector<Ray3> generate_lissajou() const;
+    std::vector<Ray3> generate_raster() const;
 };

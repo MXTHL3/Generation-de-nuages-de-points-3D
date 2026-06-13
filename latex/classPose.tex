@@ -11,15 +11,15 @@ Collaboration diagram for Pose\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{classPose__coll__graph}
+\includegraphics[width=163pt]{classPose__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classPose_a003946d312cf765f56b70f620b58337d}{Pose}} (\mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} p=\mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}}(0, 0, 0), double \mbox{\hyperlink{classPose_af69e1ca12c440103c3657974b6c6f873}{rx}}=0.\+0, double \mbox{\hyperlink{classPose_a525262b2e0219f06f64a882a47913a4f}{ry}}=0.\+0, double \mbox{\hyperlink{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}{rz}}=0.\+0)
+\mbox{\hyperlink{classPose_a003946d312cf765f56b70f620b58337d}{Pose}} (\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} p=\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}(0, 0, 0), double \mbox{\hyperlink{classPose_af69e1ca12c440103c3657974b6c6f873}{rx}}=0.\+0, double \mbox{\hyperlink{classPose_a525262b2e0219f06f64a882a47913a4f}{ry}}=0.\+0, double \mbox{\hyperlink{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}{rz}}=0.\+0)
 \item 
-\mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} \mbox{\hyperlink{classPose_a6606afa248b1a7ec4dcfdf140331e2ed}{get\+Transform}} () const
+\mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classPose_aec890b33cbf23751f0ffa443adbf5b92}{transform}} () const
 \item 
 double \mbox{\hyperlink{classPose_af69e1ca12c440103c3657974b6c6f873}{rx}} () const
 \item 
@@ -27,18 +27,7 @@ double \mbox{\hyperlink{classPose_a525262b2e0219f06f64a882a47913a4f}{ry}} () con
 \item 
 double \mbox{\hyperlink{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}{rz}} () const
 \item 
-const \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} \& \mbox{\hyperlink{classPose_aae157bfbdb804365e7e2fea1c08facc7}{pos}} () const
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} \mbox{\hyperlink{classPose_a336c7138368c6c7b32a513b931ad477e}{m\+\_\+position}}
-\item 
-double \mbox{\hyperlink{classPose_a81a9183129644458b12808edae11a510}{m\+\_\+rx}}
-\item 
-double \mbox{\hyperlink{classPose_ac181b627f3b74bddad552492aaaffeee}{m\+\_\+ry}}
-\item 
-double \mbox{\hyperlink{classPose_a095a5a701c3e40346c7c13e8d33c21fa}{m\+\_\+rz}}
+const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \& \mbox{\hyperlink{classPose_aae157bfbdb804365e7e2fea1c08facc7}{pos}} () const
 \end{DoxyCompactItemize}
 
 
@@ -47,76 +36,81 @@ double \mbox{\hyperlink{classPose_a095a5a701c3e40346c7c13e8d33c21fa}{m\+\_\+rz}}
 \index{Pose@{Pose}!Pose@{Pose}}
 \index{Pose@{Pose}!Pose@{Pose}}
 \doxysubsubsection{\texorpdfstring{Pose()}{Pose()}}
-{\footnotesize\ttfamily Pose\+::\+Pose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}}}]{p = {\ttfamily \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}}(0,~0,~0)},  }\item[{double}]{rx = {\ttfamily 0.0},  }\item[{double}]{ry = {\ttfamily 0.0},  }\item[{double}]{rz = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Pose\+::\+Pose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}}]{p = {\ttfamily \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}(0,~0,~0)},  }\item[{double}]{rx = {\ttfamily 0.0},  }\item[{double}]{ry = {\ttfamily 0.0},  }\item[{double}]{rz = {\ttfamily 0.0} }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classPose_a6606afa248b1a7ec4dcfdf140331e2ed}\label{classPose_a6606afa248b1a7ec4dcfdf140331e2ed}} 
-\index{Pose@{Pose}!getTransform@{getTransform}}
-\index{getTransform@{getTransform}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} Pose\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classPose_aae157bfbdb804365e7e2fea1c08facc7}\label{classPose_aae157bfbdb804365e7e2fea1c08facc7}} 
+\index{Pose@{Pose}!pos@{pos}}
+\index{pos@{pos}!Pose@{Pose}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}\& Pose\+::pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classPose_a6606afa248b1a7ec4dcfdf140331e2ed_icgraph}
+\includegraphics[width=350pt]{classPose_aae157bfbdb804365e7e2fea1c08facc7_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classPose_aae157bfbdb804365e7e2fea1c08facc7}\label{classPose_aae157bfbdb804365e7e2fea1c08facc7}} 
-\index{Pose@{Pose}!pos@{pos}}
-\index{pos@{pos}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{pos()}{pos()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}}\& Pose\+::pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
 \mbox{\Hypertarget{classPose_af69e1ca12c440103c3657974b6c6f873}\label{classPose_af69e1ca12c440103c3657974b6c6f873}} 
 \index{Pose@{Pose}!rx@{rx}}
 \index{rx@{rx}!Pose@{Pose}}
 \doxysubsubsection{\texorpdfstring{rx()}{rx()}}
 {\footnotesize\ttfamily double Pose\+::rx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPose_af69e1ca12c440103c3657974b6c6f873_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classPose_a525262b2e0219f06f64a882a47913a4f}\label{classPose_a525262b2e0219f06f64a882a47913a4f}} 
 \index{Pose@{Pose}!ry@{ry}}
 \index{ry@{ry}!Pose@{Pose}}
 \doxysubsubsection{\texorpdfstring{ry()}{ry()}}
 {\footnotesize\ttfamily double Pose\+::ry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPose_a525262b2e0219f06f64a882a47913a4f_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}\label{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}} 
 \index{Pose@{Pose}!rz@{rz}}
 \index{rz@{rz}!Pose@{Pose}}
 \doxysubsubsection{\texorpdfstring{rz()}{rz()}}
 {\footnotesize\ttfamily double Pose\+::rz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPose_ad9b2d5a2671e7be99e730a61ddd906d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classPose_aec890b33cbf23751f0ffa443adbf5b92}\label{classPose_aec890b33cbf23751f0ffa443adbf5b92}} 
+\index{Pose@{Pose}!transform@{transform}}
+\index{transform@{transform}!Pose@{Pose}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} Pose\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classPose_a336c7138368c6c7b32a513b931ad477e}\label{classPose_a336c7138368c6c7b32a513b931ad477e}} 
-\index{Pose@{Pose}!m\_position@{m\_position}}
-\index{m\_position@{m\_position}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{m\_position}{m\_position}}
-{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_aa5f79e114fac96f63b8aed4ad1a34c86}{Point3}} Pose\+::m\+\_\+position}
-
-\mbox{\Hypertarget{classPose_a81a9183129644458b12808edae11a510}\label{classPose_a81a9183129644458b12808edae11a510}} 
-\index{Pose@{Pose}!m\_rx@{m\_rx}}
-\index{m\_rx@{m\_rx}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{m\_rx}{m\_rx}}
-{\footnotesize\ttfamily double Pose\+::m\+\_\+rx}
-
-\mbox{\Hypertarget{classPose_ac181b627f3b74bddad552492aaaffeee}\label{classPose_ac181b627f3b74bddad552492aaaffeee}} 
-\index{Pose@{Pose}!m\_ry@{m\_ry}}
-\index{m\_ry@{m\_ry}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{m\_ry}{m\_ry}}
-{\footnotesize\ttfamily double Pose\+::m\+\_\+ry}
-
-\mbox{\Hypertarget{classPose_a095a5a701c3e40346c7c13e8d33c21fa}\label{classPose_a095a5a701c3e40346c7c13e8d33c21fa}} 
-\index{Pose@{Pose}!m\_rz@{m\_rz}}
-\index{m\_rz@{m\_rz}!Pose@{Pose}}
-\doxysubsubsection{\texorpdfstring{m\_rz}{m\_rz}}
-{\footnotesize\ttfamily double Pose\+::m\+\_\+rz}
-
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPose_aec890b33cbf23751f0ffa443adbf5b92_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

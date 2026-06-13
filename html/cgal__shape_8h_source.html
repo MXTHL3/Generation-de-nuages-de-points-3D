@@ -72,14 +72,16 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classCgalShape.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCgalShape.html">CgalShape</a> : <span class="keyword">public</span> <a class="code" href="classCgal.html">Cgal</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb">build_cube_mesh</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86">build_mesh_from_file</a>(<span class="keyword">const</span> std::string&amp; filename) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;CGAL/Polygon_mesh_processing/triangulate_faces.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classCgalShape.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCgalShape.html">CgalShape</a> : <span class="keyword">public</span> <a class="code" href="classCgal.html">Cgal</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb">build_cube_mesh</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86">build_mesh_from_file</a>(<span class="keyword">const</span> std::string&amp; filename) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
 <div class="ttc" id="acgal_8h_html"><div class="ttname"><a href="cgal_8h.html">cgal.h</a></div></div>
-<div class="ttc" id="aclassCgalShape_html"><div class="ttname"><a href="classCgalShape.html">CgalShape</a></div><div class="ttdef"><b>Definition:</b> cgal_shape.h:9</div></div>
+<div class="ttc" id="aclassCgalShape_html"><div class="ttname"><a href="classCgalShape.html">CgalShape</a></div><div class="ttdef"><b>Definition:</b> cgal_shape.h:11</div></div>
 <div class="ttc" id="aclassCgalShape_html_a589f7390ac7fb9a99d21cc0cb7f92afb"><div class="ttname"><a href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb">CgalShape::build_cube_mesh</a></div><div class="ttdeci">void build_cube_mesh() override</div><div class="ttdef"><b>Definition:</b> cgal_shape.cpp:3</div></div>
 <div class="ttc" id="aclassCgalShape_html_ab031b5370d1d46046e1221f04eaeeb86"><div class="ttname"><a href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86">CgalShape::build_mesh_from_file</a></div><div class="ttdeci">void build_mesh_from_file(const std::string &amp;filename) override</div><div class="ttdef"><b>Definition:</b> cgal_shape.cpp:36</div></div>
 <div class="ttc" id="aclassCgal_html"><div class="ttname"><a href="classCgal.html">Cgal</a></div><div class="ttdef"><b>Definition:</b> cgal.h:11</div></div>

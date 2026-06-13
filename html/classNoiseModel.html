@@ -65,38 +65,61 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classNoiseModel-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">NoiseModel Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">NoiseModel Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire "mt19937" est déterministe : on peut générer des séquences bruités identiques avec la même seed !  
+ <a href="classNoiseModel.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="noise__model_8h_source.html">noise_model.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for NoiseModel:</div>
-<div class="dyncontent">
-<div class="center"><img src="classNoiseModel__inherit__graph.png" border="0" usemap="#aNoiseModel_inherit__map" alt="Inheritance graph"/></div>
-<map name="aNoiseModel_inherit__map" id="aNoiseModel_inherit__map">
-<area shape="rect" title=" " alt="" coords="82,5,217,97"/>
-<area shape="rect" href="classNullNoiseModel.html" title=" " alt="" coords="5,153,131,230"/>
-<area shape="rect" href="classOusterOS2Noise.html" title=" " alt="" coords="155,145,309,237"/>
-</map>
-</div>
 <div class="dynheader">
 Collaboration diagram for NoiseModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNoiseModel__coll__graph.png" border="0" usemap="#aNoiseModel_coll__map" alt="Collaboration graph"/></div>
 <map name="aNoiseModel_coll__map" id="aNoiseModel_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,140,97"/>
+<area shape="rect" title="Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil d..." alt="" coords="5,5,140,156"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a30567b9a76d9feb725c1f5c4e0786de2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#a30567b9a76d9feb725c1f5c4e0786de2">NoiseModel</a> ()</td></tr>
+<tr class="separator:a30567b9a76d9feb725c1f5c4e0786de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9501ef07369f301f5aa553ed61c8b74"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#aa9501ef07369f301f5aa553ed61c8b74">~NoiseModel</a> ()=default</td></tr>
 <tr class="separator:aa9501ef07369f301f5aa553ed61c8b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7d6760c2331e97337ad54eabeac5b84"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#ae7d6760c2331e97337ad54eabeac5b84">apply</a> (double real_distance)=0</td></tr>
-<tr class="separator:ae7d6760c2331e97337ad54eabeac5b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac55ca73a6fb61b729390eb64c0415645"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#ac55ca73a6fb61b729390eb64c0415645">NoiseModel</a> (const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp;<a class="el" href="classNoiseModel.html#ae06784cecda69dcc1f15603fcc273813">profile</a>, unsigned int seed=42)</td></tr>
+<tr class="separator:ac55ca73a6fb61b729390eb64c0415645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06784cecda69dcc1f15603fcc273813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#ae06784cecda69dcc1f15603fcc273813">profile</a> (const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp;profile)</td></tr>
+<tr class="memdesc:ae06784cecda69dcc1f15603fcc273813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace par un nouveau profil de bruit.  <a href="classNoiseModel.html#ae06784cecda69dcc1f15603fcc273813">More...</a><br /></td></tr>
+<tr class="separator:ae06784cecda69dcc1f15603fcc273813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dbcc5297ee8d3cba0c4536309d6c254"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#a8dbcc5297ee8d3cba0c4536309d6c254">profile</a> () const</td></tr>
+<tr class="memdesc:a8dbcc5297ee8d3cba0c4536309d6c254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le profil de bruit.  <a href="classNoiseModel.html#a8dbcc5297ee8d3cba0c4536309d6c254">More...</a><br /></td></tr>
+<tr class="separator:a8dbcc5297ee8d3cba0c4536309d6c254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d03275e709b72a5a4d43c7cd6b8d3a0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0">apply</a> (double real_distance) const</td></tr>
+<tr class="memdesc:a9d03275e709b72a5a4d43c7cd6b8d3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique le bruit à une mesure de distance.  <a href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0">More...</a><br /></td></tr>
+<tr class="separator:a9d03275e709b72a5a4d43c7cd6b8d3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire "mt19937" est déterministe : on peut générer des séquences bruités identiques avec la même seed ! </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a30567b9a76d9feb725c1f5c4e0786de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30567b9a76d9feb725c1f5c4e0786de2">&#9670;&nbsp;</a></span>NoiseModel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NoiseModel::NoiseModel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa9501ef07369f301f5aa553ed61c8b74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9501ef07369f301f5aa553ed61c8b74">&#9670;&nbsp;</a></span>~NoiseModel()</h2>
 
@@ -122,37 +145,148 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae7d6760c2331e97337ad54eabeac5b84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7d6760c2331e97337ad54eabeac5b84">&#9670;&nbsp;</a></span>apply()</h2>
+<a id="ac55ca73a6fb61b729390eb64c0415645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac55ca73a6fb61b729390eb64c0415645">&#9670;&nbsp;</a></span>NoiseModel() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual double NoiseModel::apply </td>
+          <td class="memname">NoiseModel::NoiseModel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp;&#160;</td>
+          <td class="paramname"><em>profile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>seed</em> = <code>42</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&#160;</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">profile</td><td>Profil de bruit (paliers et résolution de bruit). </td></tr>
+    <tr><td class="paramname">seed</td><td>Graine du générateur aléatoire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9d03275e709b72a5a4d43c7cd6b8d3a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d03275e709b72a5a4d43c7cd6b8d3a0">&#9670;&nbsp;</a></span>apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double NoiseModel::apply </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>real_distance</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applique le bruit à une mesure de distance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">real_distance</td><td>Distance réelle (mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Distance bruitée (mètres). </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0_icgraph.png" border="0" usemap="#aclassNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0_icgraph" alt=""/></div>
+<map name="aclassNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0_icgraph" id="aclassNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0_icgraph">
+<area shape="rect" title="Applique le bruit à une mesure de distance." alt="" coords="904,13,1047,39"/>
+<area shape="rect" href="classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title=" " alt="" coords="721,5,856,47"/>
+<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="529,13,673,39"/>
+<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8dbcc5297ee8d3cba0c4536309d6c254"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dbcc5297ee8d3cba0c4536309d6c254">&#9670;&nbsp;</a></span>profile() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp; NoiseModel::profile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le profil de bruit. </p>
+<dl class="section return"><dt>Returns</dt><dd>profil de bruit courant. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254_icgraph.png" border="0" usemap="#aclassNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254_icgraph" alt=""/></div>
+<map name="aclassNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254_icgraph" id="aclassNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254_icgraph">
+<area shape="rect" title="Retourne le profil de bruit." alt="" coords="201,5,349,32"/>
+<area shape="rect" href="classNoiseModel.html#ae06784cecda69dcc1f15603fcc273813" title="Remplace par un nouveau profil de bruit." alt="" coords="5,5,153,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae06784cecda69dcc1f15603fcc273813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae06784cecda69dcc1f15603fcc273813">&#9670;&nbsp;</a></span>profile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NoiseModel::profile </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structNoiseProfile.html">NoiseProfile</a> &amp;&#160;</td>
+          <td class="paramname"><em>profile</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classOusterOS2Noise.html#a01bea6dc5b4ed2a1190299de4ded2a0f">OusterOS2Noise</a>, and <a class="el" href="classNullNoiseModel.html#af6dfe3fb6d4a2ba17bfd002dc078ae56">NullNoiseModel</a>.</p>
+<p>Remplace par un nouveau profil de bruit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">profile</td><td>nouveau profil de bruit. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classNoiseModel_ae06784cecda69dcc1f15603fcc273813_cgraph.png" border="0" usemap="#aclassNoiseModel_ae06784cecda69dcc1f15603fcc273813_cgraph" alt=""/></div>
+<map name="aclassNoiseModel_ae06784cecda69dcc1f15603fcc273813_cgraph" id="aclassNoiseModel_ae06784cecda69dcc1f15603fcc273813_cgraph">
+<area shape="rect" title="Remplace par un nouveau profil de bruit." alt="" coords="5,5,153,32"/>
+<area shape="rect" href="classNoiseModel.html#a8dbcc5297ee8d3cba0c4536309d6c254" title="Retourne le profil de bruit." alt="" coords="201,5,349,32"/>
+</map>
+</div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="noise__model_8h_source.html">noise_model.h</a></li>
+<li><a class="el" href="noise__model_8cpp.html">noise_model.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

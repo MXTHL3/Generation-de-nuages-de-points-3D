@@ -5,7 +5,6 @@
 {\ttfamily \#include \char`\"{}noise\+\_\+model.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$string$>$}\newline
 Include dependency graph for entity.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -32,6 +31,12 @@ class \mbox{\hyperlink{classObject}{Object}}
 class \mbox{\hyperlink{classStaticEntity}{Static\+Entity}}
 \item 
 class \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}}
+\item 
+class \mbox{\hyperlink{classMechanicalLidarEntity}{Mechanical\+Lidar\+Entity}}
+\item 
+class \mbox{\hyperlink{classFlashLidarEntity}{Flash\+Lidar\+Entity}}
+\item 
+class \mbox{\hyperlink{classMirroredLidarEntity}{Mirrored\+Lidar\+Entity}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -39,6 +44,11 @@ class \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}}
 typedef K\+::\+Ray\+\_\+3 \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}
 \item 
 typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&wolrd\+\_\+xf, double fov\+\_\+h, double fov\+\_\+v, int res\+\_\+h, int res\+\_\+v)
 \end{DoxyCompactItemize}
 
 
@@ -55,3 +65,20 @@ typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da6
 \doxysubsubsection{\texorpdfstring{Triangle3}{Triangle3}}
 {\footnotesize\ttfamily typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}}
 
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}\label{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}} 
+\index{entity.h@{entity.h}!generate\_ray\_grid@{generate\_ray\_grid}}
+\index{generate\_ray\_grid@{generate\_ray\_grid}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{generate\_ray\_grid()}{generate\_ray\_grid()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{entity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph}
+\end{center}
+\end{figure}

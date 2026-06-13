@@ -1,333 +1,74 @@
 {
     "model": "Ouster OS1-64",
-    "min_range": 0.1,
-    "max_range": 1000.0,
-    "h_step": [
-        0.703125,
-        0.3515626,
-        0.1757825
-    ],
+    "type": "mechanical",
+    "min_range": 0.8,
+    "max_range": 120.0,
+    "h_step": [0.703125, 0.3515626, 0.1757825],
     "accuracy": 0.01,
     "lasers": [
-        {
-            "v_angle": -22.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -21.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -21.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -20.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -19.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -18.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -18.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -17.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -16.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -16.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -15.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -14.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -13.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -13.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -12.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -11.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -11.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -10.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -9.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -8.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -8.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -7.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -6.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -6.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -5.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -4.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -3.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -3.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -2.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -1.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -1.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": -0.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 0.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 1.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 1.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 2.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 3.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 3.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 4.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 5.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 6.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 6.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 7.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 8.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 8.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 9.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 10.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 11.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 11.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 12.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 13.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 13.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 14.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 15.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 16.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 16.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 17.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 18.21,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 18.93,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 19.64,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 20.36,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 21.07,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 21.79,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        },
-        {
-            "v_angle": 22.5,
-            "h_offset": 0.0,
-            "d_offset": 0.0
-        }
+        { "v_angle": -22.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -21.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -21.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -20.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -19.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -18.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -18.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -17.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -16.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -16.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -15.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -14.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -13.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -13.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -12.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -11.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -11.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -10.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -9.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -8.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -8.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -7.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -6.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -6.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -5.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -4.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -3.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -3.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -2.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -1.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -1.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -0.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -0.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -1.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -1.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -2.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -3.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -3.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -4.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -5.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -6.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -6.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -7.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -8.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -8.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -9.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -10.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -11.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -11.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -12.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -13.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -13.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -14.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -15.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -16.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -16.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -17.5, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -18.21, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -18.93, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -19.64, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -20.36, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -21.07, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -21.79, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -22.5, "h_offset": 0.0, "d_offset": 0.0 }
     ]
 }

@@ -1,4 +1,6 @@
 <map id="LidarEntity" name="LidarEntity">
-<area shape="rect" id="node1" title=" " alt="" coords="5,219,139,457"/>
-<area shape="rect" id="node2" href="$classIEntity.html" title=" " alt="" coords="5,5,139,171"/>
+<area shape="rect" id="node1" title=" " alt="" coords="98,447,242,612"/>
+<area shape="rect" id="node2" href="$classIEntity.html" title=" " alt="" coords="5,219,116,384"/>
+<area shape="rect" id="node3" href="$classPose.html" title=" " alt="" coords="5,5,116,156"/>
+<area shape="rect" id="node4" href="$classNoiseModel.html" title="Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil d..." alt="" coords="140,226,275,377"/>
 </map>

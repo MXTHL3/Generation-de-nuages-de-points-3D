@@ -1,0 +1,4 @@
+<map id="NoiseModel::profile" name="NoiseModel::profile">
+<area shape="rect" id="node1" title="Retourne le profil de bruit." alt="" coords="201,5,349,32"/>
+<area shape="rect" id="node2" href="$classNoiseModel.html#ae06784cecda69dcc1f15603fcc273813" title="Remplace par un nouveau profil de bruit." alt="" coords="5,5,153,32"/>
+</map>

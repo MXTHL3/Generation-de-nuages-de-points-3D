@@ -63,7 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">entity.h File Reference</div>  </div>
 </div><!--header-->
@@ -73,24 +74,24 @@ $(function() {
 <code>#include &quot;<a class="el" href="noise__model_8h_source.html">noise_model.h</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for entity.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="entity_8h__incl.png" border="0" usemap="#aentity_8h" alt=""/></div>
 <map name="aentity_8h" id="aentity_8h">
-<area shape="rect" title=" " alt="" coords="415,5,486,32"/>
-<area shape="rect" href="pose_8h.html" title=" " alt="" coords="255,80,321,107"/>
-<area shape="rect" title=" " alt="" coords="405,229,467,256"/>
-<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="454,80,517,107"/>
-<area shape="rect" title=" " alt="" coords="396,155,455,181"/>
-<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="541,80,659,107"/>
-<area shape="rect" title=" " alt="" coords="683,80,760,107"/>
-<area shape="rect" href="cgal_8h.html" title=" " alt="" coords="257,155,319,181"/>
-<area shape="rect" title=" " alt="" coords="195,229,381,256"/>
-<area shape="rect" title=" " alt="" coords="5,229,171,256"/>
-<area shape="rect" title=" " alt="" coords="530,155,593,181"/>
-<area shape="rect" title=" " alt="" coords="617,155,689,181"/>
+<area shape="rect" title=" " alt="" coords="352,5,423,32"/>
+<area shape="rect" href="pose_8h.html" title=" " alt="" coords="104,80,169,107"/>
+<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="356,80,419,107"/>
+<area shape="rect" title=" " alt="" coords="215,155,277,181"/>
+<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="655,155,773,181"/>
+<area shape="rect" title=" " alt="" coords="494,80,571,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,191,181"/>
+<area shape="rect" title=" " alt="" coords="355,229,414,256"/>
+<area shape="rect" title=" " alt="" coords="353,155,421,181"/>
+<area shape="rect" title=" " alt="" coords="507,229,654,256"/>
+<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="445,155,580,181"/>
+<area shape="rect" title=" " alt="" coords="678,229,750,256"/>
+<area shape="rect" title=" " alt="" coords="775,229,837,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -98,23 +99,25 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="entity_8h__dep__incl.png" border="0" usemap="#aentity_8hdep" alt=""/></div>
 <map name="aentity_8hdep" id="aentity_8hdep">
-<area shape="rect" title=" " alt="" coords="472,5,543,32"/>
-<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="246,80,379,107"/>
-<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="381,155,487,181"/>
-<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="618,80,703,107"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="733,155,780,181"/>
-<area shape="rect" href="scene_8h.html" title=" " alt="" coords="471,80,543,107"/>
+<area shape="rect" title=" " alt="" coords="515,5,585,32"/>
+<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="269,80,402,107"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="178,155,285,181"/>
+<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="675,80,761,107"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="581,155,628,181"/>
+<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="653,155,773,181"/>
+<area shape="rect" href="scene_8h.html" title=" " alt="" coords="478,80,550,107"/>
 <area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="5,155,153,181"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="238,304,422,331"/>
-<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="269,155,356,181"/>
-<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="279,229,381,256"/>
-<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="455,229,578,256"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="797,229,858,256"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="905,379,987,405"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="769,304,891,331"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="603,229,772,256"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="742,379,881,405"/>
-<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="512,155,599,181"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="231,229,400,256"/>
+<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="360,155,447,181"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="546,304,669,331"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="223,304,407,331"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="682,379,765,405"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="519,379,658,405"/>
+<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="449,229,550,256"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="83,229,206,256"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="574,229,635,256"/>
+<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="761,229,896,256"/>
+<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="471,155,557,181"/>
 </map>
 </div>
 </div>
@@ -130,6 +133,12 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html">LidarEntity</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMechanicalLidarEntity.html">MechanicalLidarEntity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarEntity.html">FlashLidarEntity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarEntity.html">MirroredLidarEntity</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -137,6 +146,11 @@ Typedefs</h2></td></tr>
 <tr class="separator:a61f0776eb03efc22508803e9b49c2242"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d87d5c40d3f83a342da62dc4da611bc"><td class="memItemLeft" align="right" valign="top">typedef K::Triangle_3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a></td></tr>
 <tr class="separator:a5d87d5c40d3f83a342da62dc4da611bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:afefd8b045a25954cd8c383a3f81d44ea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8h.html#afefd8b045a25954cd8c383a3f81d44ea">generate_ray_grid</a> (const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;origin, const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;wolrd_xf, double fov_h, double fov_v, int res_h, int res_v)</td></tr>
+<tr class="separator:afefd8b045a25954cd8c383a3f81d44ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a61f0776eb03efc22508803e9b49c2242"></a>
@@ -164,6 +178,68 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="afefd8b045a25954cd8c383a3f81d44ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefd8b045a25954cd8c383a3f81d44ea">&#9670;&nbsp;</a></span>generate_ray_grid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a>&gt; generate_ray_grid </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;&#160;</td>
+          <td class="paramname"><em>wolrd_xf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res_h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>res_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="entity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph.png" border="0" usemap="#aentity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph" alt=""/></div>
+<map name="aentity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph" id="aentity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph">
+<area shape="rect" title=" " alt="" coords="280,5,420,32"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="5,5,232,32"/>
+</map>
+</div>
 
 </div>
 </div>

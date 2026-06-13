@@ -1,5 +1,7 @@
 <map id="MenuItemsActions::update_markers" name="MenuItemsActions::update_markers">
-<area shape="rect" id="node1" title=" " alt="" coords="503,5,699,47"/>
-<area shape="rect" id="node2" href="$classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="272,5,455,47"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title=" " alt="" coords="504,71,700,112"/>
+<area shape="rect" id="node2" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="275,5,453,47"/>
+<area shape="rect" id="node4" href="$classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="273,71,455,112"/>
+<area shape="rect" id="node5" href="$classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title=" " alt="" coords="272,136,456,177"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,78,224,105"/>
 </map>

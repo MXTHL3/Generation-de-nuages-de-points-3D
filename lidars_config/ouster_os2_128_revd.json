@@ -1,9 +1,25 @@
 {
   "model": "Ouster OS2-128",
+  "type": "mechanical",
   "min_range": 1.0,
-  "max_range": 1000.0,
-  "h_step": [0.703125, 0.3515626, 0.1757825],
-  "accuracy": 0.01,
+  "max_range": 240.0,
+  "horizontal_columns": 2048,
+  "noise_resolution": 0.003,
+  "rotation_rate": 10,
+  "noise_profile":[
+    {
+      "max_distance": 30,
+      "sigma": 0.025
+    },
+    {
+      "max_distance": 60,
+      "sigma": 0.04
+    },
+    {
+      "max_distance": 240,
+      "sigma": 0.08
+    }
+  ],
   "lasers": [
     { "v_angle": -11.25, "h_offset": 0.0, "d_offset": 0.0 }, { "v_angle": -11.07, "h_offset": 0.18, "d_offset": 0.0 },
     { "v_angle": -10.9, "h_offset": 0.0, "d_offset": 0.0 }, { "v_angle": -10.72, "h_offset": 0.18, "d_offset": 0.0 },

@@ -1,0 +1,7 @@
+<map id="FlashLidarEntity" name="FlashLidarEntity">
+<area shape="rect" id="node1" title=" " alt="" coords="94,661,246,783"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title=" " alt="" coords="98,447,242,612"/>
+<area shape="rect" id="node3" href="$classIEntity.html" title=" " alt="" coords="5,219,116,384"/>
+<area shape="rect" id="node4" href="$classPose.html" title=" " alt="" coords="5,5,116,156"/>
+<area shape="rect" id="node5" href="$classNoiseModel.html" title="Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil d..." alt="" coords="140,226,275,377"/>
+</map>

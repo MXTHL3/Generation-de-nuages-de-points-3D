@@ -1,5 +1,7 @@
 <map id="Scene::intersect" name="Scene::intersect">
-<area shape="rect" id="node1" title=" " alt="" coords="156,31,283,57"/>
-<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
-<area shape="rect" id="node3" href="$classScene.html#a2678b65d338e84d96f4b5c789384f4ef" title=" " alt="" coords="7,56,106,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="721,31,848,57"/>
+<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="550,5,653,32"/>
+<area shape="rect" id="node3" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="529,56,673,83"/>
+<area shape="rect" id="node4" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,49,481,90"/>
+<area shape="rect" id="node5" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,56,224,83"/>
 </map>

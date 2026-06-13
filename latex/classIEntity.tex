@@ -11,7 +11,7 @@ Inheritance diagram for IEntity\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=304pt]{classIEntity__inherit__graph}
+\includegraphics[width=350pt]{classIEntity__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -21,29 +21,40 @@ Collaboration diagram for IEntity\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{classIEntity__coll__graph}
+\includegraphics[width=172pt]{classIEntity__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classIEntity_a7b7fe6e95576ede4260ec370b0eeb2ea}{IEntity}} (\mbox{\hyperlink{classPose}{Pose}} \mbox{\hyperlink{classIEntity_ab5d6fafc26283ebe9a57bc642a8c70f7}{pose}})
+\item 
 virtual \mbox{\hyperlink{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}{$\sim$\+IEntity}} ()
 \item 
-virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classIEntity_ab4fb4e0e9a30da784cf5f8a8dcd81156}{clone}} () const =0
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{clone}} () const =0
 \item 
-virtual \mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} \mbox{\hyperlink{classIEntity_a22bb978fc9614c256d0f5a4832abae43}{get\+Transform}} () const =0
-\item 
-virtual void \mbox{\hyperlink{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}{update}} (double dt)=0
+\mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classIEntity_a671f515548fe22ae05d97f32b24c0117}{transform}} () const
 \item 
 virtual const std\+::string \& \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{name}} () const =0
 \item 
-virtual const \mbox{\hyperlink{classPose}{Pose}} \& \mbox{\hyperlink{classIEntity_a44cacc896675bc364bc776214f1e66ae}{pose}} () const =0
+const \mbox{\hyperlink{classPose}{Pose}} \& \mbox{\hyperlink{classIEntity_ab5d6fafc26283ebe9a57bc642a8c70f7}{pose}} () const
 \item 
-virtual void \mbox{\hyperlink{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}{pose}} (const \mbox{\hyperlink{classPose}{Pose}} \&p)=0
+void \mbox{\hyperlink{classIEntity_af2662f7e0ba099e481b502fa041f77b2}{pose}} (const \mbox{\hyperlink{classPose}{Pose}} \&pose)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPose}{Pose}} \mbox{\hyperlink{classIEntity_a0e7f2ce364a2e18a080d42dbd76d1e88}{m\+\_\+pose}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIEntity_a7b7fe6e95576ede4260ec370b0eeb2ea}\label{classIEntity_a7b7fe6e95576ede4260ec370b0eeb2ea}} 
+\index{IEntity@{IEntity}!IEntity@{IEntity}}
+\index{IEntity@{IEntity}!IEntity@{IEntity}}
+\doxysubsubsection{\texorpdfstring{IEntity()}{IEntity()}}
+{\footnotesize\ttfamily IEntity\+::\+IEntity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose}{Pose}}}]{pose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}\label{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}} 
 \index{IEntity@{IEntity}!````~IEntity@{$\sim$IEntity}}
 \index{````~IEntity@{$\sim$IEntity}!IEntity@{IEntity}}
@@ -53,25 +64,15 @@ virtual void \mbox{\hyperlink{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}{po
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classIEntity_ab4fb4e0e9a30da784cf5f8a8dcd81156}\label{classIEntity_ab4fb4e0e9a30da784cf5f8a8dcd81156}} 
+\mbox{\Hypertarget{classIEntity_aeb7b837f65889d824108ef63943ff066}\label{classIEntity_aeb7b837f65889d824108ef63943ff066}} 
 \index{IEntity@{IEntity}!clone@{clone}}
 \index{clone@{clone}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classIEntity}{IEntity}}$>$ IEntity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classIEntity}{IEntity}}$>$ IEntity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \mbox{\hyperlink{classLidarEntity_ad508068b804f0cda2042db75e44513df}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_a4c59c71f1926bcc7c3cc6e537a6398b9}{Static\+Entity}}.
-
-\mbox{\Hypertarget{classIEntity_a22bb978fc9614c256d0f5a4832abae43}\label{classIEntity_a22bb978fc9614c256d0f5a4832abae43}} 
-\index{IEntity@{IEntity}!getTransform@{getTransform}}
-\index{getTransform@{getTransform}!IEntity@{IEntity}}
-\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
-{\footnotesize\ttfamily virtual \mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} IEntity\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Implemented in \mbox{\hyperlink{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_acfda9d46fbbbf50667d00556a479b715}{Static\+Entity}}.
+Implemented in \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}{Mirrored\+Lidar\+Entity}}, \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{Flash\+Lidar\+Entity}}, \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{Mechanical\+Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}{Static\+Entity}}.
 
 \mbox{\Hypertarget{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}\label{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}} 
 \index{IEntity@{IEntity}!name@{name}}
@@ -81,40 +82,70 @@ Implemented in \mbox{\hyperlink{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bc
 
 
 
-Implemented in \mbox{\hyperlink{classLidarEntity_a93e606c3e8b68521a1ee8ee09391d906}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_a3e95ce33778161b32ed51e4a230a14bc}{Static\+Entity}}.
+Implemented in \mbox{\hyperlink{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec85e}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_ae44708dfd2c0abe9da6b1ceef2ee02fe}{Static\+Entity}}.
 
-\mbox{\Hypertarget{classIEntity_a44cacc896675bc364bc776214f1e66ae}\label{classIEntity_a44cacc896675bc364bc776214f1e66ae}} 
+\mbox{\Hypertarget{classIEntity_ab5d6fafc26283ebe9a57bc642a8c70f7}\label{classIEntity_ab5d6fafc26283ebe9a57bc642a8c70f7}} 
 \index{IEntity@{IEntity}!pose@{pose}}
 \index{pose@{pose}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily virtual const \mbox{\hyperlink{classPose}{Pose}}\& IEntity\+::pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classPose}{Pose}}\& IEntity\+::pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Implemented in \mbox{\hyperlink{classLidarEntity_a4c32a9a44b8a4b9e6d1382818fd7ee66}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_ac9ff212bfb416d217021ae54a3b08c16}{Static\+Entity}}.
-
-\mbox{\Hypertarget{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}\label{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}} 
+\mbox{\Hypertarget{classIEntity_af2662f7e0ba099e481b502fa041f77b2}\label{classIEntity_af2662f7e0ba099e481b502fa041f77b2}} 
 \index{IEntity@{IEntity}!pose@{pose}}
 \index{pose@{pose}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void IEntity\+::pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily void IEntity\+::pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{pose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classIEntity_af2662f7e0ba099e481b502fa041f77b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classIEntity_af2662f7e0ba099e481b502fa041f77b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classIEntity_a671f515548fe22ae05d97f32b24c0117}\label{classIEntity_a671f515548fe22ae05d97f32b24c0117}} 
+\index{IEntity@{IEntity}!transform@{transform}}
+\index{transform@{transform}!IEntity@{IEntity}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} IEntity\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{classIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classIEntity_a671f515548fe22ae05d97f32b24c0117_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIEntity_a0e7f2ce364a2e18a080d42dbd76d1e88}\label{classIEntity_a0e7f2ce364a2e18a080d42dbd76d1e88}} 
+\index{IEntity@{IEntity}!m\_pose@{m\_pose}}
+\index{m\_pose@{m\_pose}!IEntity@{IEntity}}
+\doxysubsubsection{\texorpdfstring{m\_pose}{m\_pose}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPose}{Pose}} IEntity\+::m\+\_\+pose\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Implemented in \mbox{\hyperlink{classLidarEntity_a928f28c9e868092119c7db1e212f16d9}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_ad6c07a9905afaa87daf77cb36e80653d}{Static\+Entity}}.
-
-\mbox{\Hypertarget{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}\label{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}} 
-\index{IEntity@{IEntity}!update@{update}}
-\index{update@{update}!IEntity@{IEntity}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily virtual void IEntity\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Implemented in \mbox{\hyperlink{classLidarEntity_a437a595d4a4358425d98be71c76e563d}{Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_ab9da1163487c6031953f6d2ad495324e}{Static\+Entity}}.
-
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{entity_8h}{entity.\+h}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{entity_8h}{entity.\+h}}\item 
+\mbox{\hyperlink{entity_8cpp}{entity.\+cpp}}\end{DoxyCompactItemize}

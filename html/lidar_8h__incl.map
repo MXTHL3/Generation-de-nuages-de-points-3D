@@ -1,6 +1,11 @@
 <map id="lidar.h" name="lidar.h">
-<area shape="rect" id="node1" title=" " alt="" coords="91,5,153,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="209,5,272,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="93,80,151,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="176,80,239,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="146,155,205,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="144,80,212,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="298,155,445,181"/>
+<area shape="rect" id="node6" href="$noise__model_8h.html" title=" " alt="" coords="446,80,563,107"/>
+<area shape="rect" id="node9" href="$horizontal__step_8h.html" title=" " alt="" coords="236,80,371,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="469,155,541,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="565,155,628,181"/>
 </map>

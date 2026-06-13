@@ -1,8 +1,12 @@
 <map id="lidar_factory.h" name="lidar_factory.h">
-<area shape="rect" id="node1" title=" " alt="" coords="129,5,243,32"/>
-<area shape="rect" id="node2" href="$lidar_8h.html" title=" " alt="" coords="91,80,153,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="178,80,325,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,68,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="93,155,151,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="176,155,239,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="291,5,405,32"/>
+<area shape="rect" id="node2" href="$lidar_8h.html" title=" " alt="" coords="239,80,302,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="305,229,452,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="25,155,87,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="92,229,151,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="111,155,179,181"/>
+<area shape="rect" id="node7" href="$noise__model_8h.html" title=" " alt="" coords="464,155,581,181"/>
+<area shape="rect" id="node10" href="$horizontal__step_8h.html" title=" " alt="" coords="203,155,338,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="483,229,555,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="579,229,642,256"/>
 </map>

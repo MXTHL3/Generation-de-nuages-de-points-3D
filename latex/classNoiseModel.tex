@@ -2,18 +2,13 @@
 \label{classNoiseModel}\index{NoiseModel@{NoiseModel}}
 
 
+Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire \char`\"{}mt19937\char`\"{} est déterministe \+: on peut générer des séquences bruités identiques avec la même seed !  
+
+
+
+
 {\ttfamily \#include $<$noise\+\_\+model.\+h$>$}
 
-
-
-Inheritance diagram for Noise\+Model\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=308pt]{classNoiseModel__inherit__graph}
-\end{center}
-\end{figure}
 
 
 Collaboration diagram for Noise\+Model\+:
@@ -27,34 +22,125 @@ Collaboration diagram for Noise\+Model\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classNoiseModel_a30567b9a76d9feb725c1f5c4e0786de2}{Noise\+Model}} ()
+\item 
 virtual \mbox{\hyperlink{classNoiseModel_aa9501ef07369f301f5aa553ed61c8b74}{$\sim$\+Noise\+Model}} ()=default
 \item 
-virtual double \mbox{\hyperlink{classNoiseModel_ae7d6760c2331e97337ad54eabeac5b84}{apply}} (double real\+\_\+distance)=0
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classNoiseModel_ac55ca73a6fb61b729390eb64c0415645}{Noise\+Model}} (const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \&\mbox{\hyperlink{classNoiseModel_ae06784cecda69dcc1f15603fcc273813}{profile}}, unsigned int seed=42)
+\item 
+void \mbox{\hyperlink{classNoiseModel_ae06784cecda69dcc1f15603fcc273813}{profile}} (const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \&profile)
+\begin{DoxyCompactList}\small\item\em Remplace par un nouveau profil de bruit. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \& \mbox{\hyperlink{classNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254}{profile}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le profil de bruit. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0}{apply}} (double real\+\_\+distance) const
+\begin{DoxyCompactList}\small\item\em Applique le bruit à une mesure de distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire \char`\"{}mt19937\char`\"{} est déterministe \+: on peut générer des séquences bruités identiques avec la même seed ! 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNoiseModel_a30567b9a76d9feb725c1f5c4e0786de2}\label{classNoiseModel_a30567b9a76d9feb725c1f5c4e0786de2}} 
+\index{NoiseModel@{NoiseModel}!NoiseModel@{NoiseModel}}
+\index{NoiseModel@{NoiseModel}!NoiseModel@{NoiseModel}}
+\doxysubsubsection{\texorpdfstring{NoiseModel()}{NoiseModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Noise\+Model\+::\+Noise\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classNoiseModel_aa9501ef07369f301f5aa553ed61c8b74}\label{classNoiseModel_aa9501ef07369f301f5aa553ed61c8b74}} 
 \index{NoiseModel@{NoiseModel}!````~NoiseModel@{$\sim$NoiseModel}}
 \index{````~NoiseModel@{$\sim$NoiseModel}!NoiseModel@{NoiseModel}}
 \doxysubsubsection{\texorpdfstring{$\sim$NoiseModel()}{~NoiseModel()}}
 {\footnotesize\ttfamily virtual Noise\+Model\+::$\sim$\+Noise\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
+\mbox{\Hypertarget{classNoiseModel_ac55ca73a6fb61b729390eb64c0415645}\label{classNoiseModel_ac55ca73a6fb61b729390eb64c0415645}} 
+\index{NoiseModel@{NoiseModel}!NoiseModel@{NoiseModel}}
+\index{NoiseModel@{NoiseModel}!NoiseModel@{NoiseModel}}
+\doxysubsubsection{\texorpdfstring{NoiseModel()}{NoiseModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Noise\+Model\+::\+Noise\+Model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \&}]{profile,  }\item[{unsigned int}]{seed = {\ttfamily 42} }\end{DoxyParamCaption})}
+
+~
+\begin{DoxyParams}{Parameters}
+{\em profile} & Profil de bruit (paliers et résolution de bruit). \\
+\hline
+{\em seed} & Graine du générateur aléatoire. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classNoiseModel_ae7d6760c2331e97337ad54eabeac5b84}\label{classNoiseModel_ae7d6760c2331e97337ad54eabeac5b84}} 
+\mbox{\Hypertarget{classNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0}\label{classNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0}} 
 \index{NoiseModel@{NoiseModel}!apply@{apply}}
 \index{apply@{apply}!NoiseModel@{NoiseModel}}
 \doxysubsubsection{\texorpdfstring{apply()}{apply()}}
-{\footnotesize\ttfamily virtual double Noise\+Model\+::apply (\begin{DoxyParamCaption}\item[{double}]{real\+\_\+distance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily double Noise\+Model\+::apply (\begin{DoxyParamCaption}\item[{double}]{real\+\_\+distance }\end{DoxyParamCaption}) const}
 
 
 
-Implemented in \mbox{\hyperlink{classOusterOS2Noise_a01bea6dc5b4ed2a1190299de4ded2a0f}{Ouster\+OS2\+Noise}}, and \mbox{\hyperlink{classNullNoiseModel_af6dfe3fb6d4a2ba17bfd002dc078ae56}{Null\+Noise\+Model}}.
+Applique le bruit à une mesure de distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em real\+\_\+distance} & Distance réelle (mètres). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distance bruitée (mètres). 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNoiseModel_a9d03275e709b72a5a4d43c7cd6b8d3a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254}\label{classNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254}} 
+\index{NoiseModel@{NoiseModel}!profile@{profile}}
+\index{profile@{profile}!NoiseModel@{NoiseModel}}
+\doxysubsubsection{\texorpdfstring{profile()}{profile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \& Noise\+Model\+::profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Retourne le profil de bruit. 
+
+\begin{DoxyReturn}{Returns}
+profil de bruit courant. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classNoiseModel_a8dbcc5297ee8d3cba0c4536309d6c254_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNoiseModel_ae06784cecda69dcc1f15603fcc273813}\label{classNoiseModel_ae06784cecda69dcc1f15603fcc273813}} 
+\index{NoiseModel@{NoiseModel}!profile@{profile}}
+\index{profile@{profile}!NoiseModel@{NoiseModel}}
+\doxysubsubsection{\texorpdfstring{profile()}{profile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Noise\+Model\+::profile (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \&}]{profile }\end{DoxyParamCaption})}
+
+
+
+Remplace par un nouveau profil de bruit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile} & nouveau profil de bruit. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classNoiseModel_ae06784cecda69dcc1f15603fcc273813_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{noise__model_8h}{noise\+\_\+model.\+h}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{noise__model_8h}{noise\+\_\+model.\+h}}\item 
+\mbox{\hyperlink{noise__model_8cpp}{noise\+\_\+model.\+cpp}}\end{DoxyCompactItemize}

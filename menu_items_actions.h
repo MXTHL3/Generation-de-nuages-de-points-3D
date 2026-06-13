@@ -5,10 +5,16 @@
 #include <filesystem>
 #include <cstdlib>
 #include <thread>
+#include "menu_items_actions.h"
 #include "gl.h"
 #include "handle_file.h"
-#include "scene_utils.h"
+#include "pipeline.h"
 #include "asset_manager.h"
+#include "scene_utils.h"
+#include "noise_model.h"
+#include "point_cloud_exporter.h"
+#include "lidar_scanner.h"      
+#include "logger.h"
 
 class MenuItemsActions {
 protected:

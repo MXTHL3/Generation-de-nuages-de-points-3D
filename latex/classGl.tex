@@ -27,6 +27,10 @@ void \mbox{\hyperlink{classGl_a97e61d917cbe1e275e1fc872b4d656a6}{load\+\_\+file}
 \item 
 void \mbox{\hyperlink{classGl_a5bdcca5a28273112b61476cfe13a2674}{load\+\_\+scan}} (const std\+::string \&path)
 \item 
+void \mbox{\hyperlink{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}{set\+\_\+transform}} (int idx, const \mbox{\hyperlink{structModelTransform}{Model\+Transform}} \&tr)
+\item 
+void \mbox{\hyperlink{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}{set\+\_\+camera}} (float pos\+\_\+x, float pos\+\_\+y, float pos\+\_\+z, float \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc}{rx}}, float \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa731a58830959369de78aac2501c6021a}{ry}}, float zoom)
+\item 
 void \mbox{\hyperlink{classGl_a7086ea1109c9b754e531fd3d1870c1f6}{capture\+\_\+image}} (const std\+::string \&path)
 \item 
 void \mbox{\hyperlink{classGl_aa0687592e446cb744fcc588420821483}{add\+\_\+overlay\+\_\+widget}} (Gtk\+::\+Widget \&w)
@@ -35,11 +39,27 @@ void \mbox{\hyperlink{classGl_ad7911c5da5492309af8bf125d26ecde1}{run\+\_\+scan}}
 \item 
 void \mbox{\hyperlink{classGl_a06b6675f97657ca3b46bd3c9367aa972}{set\+\_\+lidar\+\_\+config}} (const std\+::string \&path)
 \item 
+void \mbox{\hyperlink{classGl_a7fb1c1b80b822442fe18e4749eda3e56}{set\+\_\+lidar\+\_\+override}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ lidar)
+\item 
+void \mbox{\hyperlink{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}{clear\+\_\+lidar\+\_\+override}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classGl_ab79f766b81ba1f6a86f38087c3db5e17}{get\+\_\+lidar\+\_\+override}} () const
+\item 
+void \mbox{\hyperlink{classGl_a0bc6a9f921be20983abcbb10920bf685}{lidar\+\_\+override\+\_\+set\+\_\+min}} (double v)
+\item 
+void \mbox{\hyperlink{classGl_af66553210f98dd959603d828608ba59a}{lidar\+\_\+override\+\_\+set\+\_\+max}} (double v)
+\item 
+void \mbox{\hyperlink{classGl_a50c5eced263a4ea543046dced0db69df}{lidar\+\_\+override\+\_\+set\+\_\+hstep}} (size\+\_\+t idx, double v)
+\item 
+void \mbox{\hyperlink{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}{lidar\+\_\+override\+\_\+set\+\_\+accuracy}} (double v)
+\item 
 const std\+::string \& \mbox{\hyperlink{classGl_a282f1d04873290629695e206e9cd2fbe}{get\+\_\+lidar\+\_\+config}} () const
 \item 
 void \mbox{\hyperlink{classGl_a39222fbea430ff6081ecc704ac39d7a6}{toggle\+\_\+point\+\_\+cloud}} ()
 \item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classModelMarker}{Model\+Marker}} $>$ $>$ \& \mbox{\hyperlink{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}{get\+\_\+markers}} ()
+\item 
+void \mbox{\hyperlink{classGl_a622447c9e09b0491375e23ee1ab3debb}{reset\+\_\+scene}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -76,17 +96,53 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{capture\_image()}{capture\_image()}}
 {\footnotesize\ttfamily void Gl\+::capture\+\_\+image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}\label{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}} 
+\index{Gl@{Gl}!clear\_lidar\_override@{clear\_lidar\_override}}
+\index{clear\_lidar\_override@{clear\_lidar\_override}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{clear\_lidar\_override()}{clear\_lidar\_override()}}
+{\footnotesize\ttfamily void Gl\+::clear\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classGl_a282f1d04873290629695e206e9cd2fbe}\label{classGl_a282f1d04873290629695e206e9cd2fbe}} 
 \index{Gl@{Gl}!get\_lidar\_config@{get\_lidar\_config}}
 \index{get\_lidar\_config@{get\_lidar\_config}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{get\_lidar\_config()}{get\_lidar\_config()}}
 {\footnotesize\ttfamily const std\+::string\& Gl\+::get\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classGl_ab79f766b81ba1f6a86f38087c3db5e17}\label{classGl_ab79f766b81ba1f6a86f38087c3db5e17}} 
+\index{Gl@{Gl}!get\_lidar\_override@{get\_lidar\_override}}
+\index{get\_lidar\_override@{get\_lidar\_override}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_lidar\_override()}{get\_lidar\_override()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}$>$ Gl\+::get\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}\label{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}} 
 \index{Gl@{Gl}!get\_markers@{get\_markers}}
 \index{get\_markers@{get\_markers}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{get\_markers()}{get\_markers()}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classModelMarker}{Model\+Marker}}$>$ $>$\& Gl\+::get\+\_\+markers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}\label{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}} 
+\index{Gl@{Gl}!lidar\_override\_set\_accuracy@{lidar\_override\_set\_accuracy}}
+\index{lidar\_override\_set\_accuracy@{lidar\_override\_set\_accuracy}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{lidar\_override\_set\_accuracy()}{lidar\_override\_set\_accuracy()}}
+{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+accuracy (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a50c5eced263a4ea543046dced0db69df}\label{classGl_a50c5eced263a4ea543046dced0db69df}} 
+\index{Gl@{Gl}!lidar\_override\_set\_hstep@{lidar\_override\_set\_hstep}}
+\index{lidar\_override\_set\_hstep@{lidar\_override\_set\_hstep}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{lidar\_override\_set\_hstep()}{lidar\_override\_set\_hstep()}}
+{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+hstep (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx,  }\item[{double}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_af66553210f98dd959603d828608ba59a}\label{classGl_af66553210f98dd959603d828608ba59a}} 
+\index{Gl@{Gl}!lidar\_override\_set\_max@{lidar\_override\_set\_max}}
+\index{lidar\_override\_set\_max@{lidar\_override\_set\_max}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{lidar\_override\_set\_max()}{lidar\_override\_set\_max()}}
+{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+max (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGl_a0bc6a9f921be20983abcbb10920bf685}\label{classGl_a0bc6a9f921be20983abcbb10920bf685}} 
+\index{Gl@{Gl}!lidar\_override\_set\_min@{lidar\_override\_set\_min}}
+\index{lidar\_override\_set\_min@{lidar\_override\_set\_min}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{lidar\_override\_set\_min()}{lidar\_override\_set\_min()}}
+{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+min (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classGl_a97e61d917cbe1e275e1fc872b4d656a6}\label{classGl_a97e61d917cbe1e275e1fc872b4d656a6}} 
 \index{Gl@{Gl}!load\_file@{load\_file}}
@@ -100,14 +156,19 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{load\_scan()}{load\_scan()}}
 {\footnotesize\ttfamily void Gl\+::load\+\_\+scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=275pt]{classGl_a5bdcca5a28273112b61476cfe13a2674_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classGl_a622447c9e09b0491375e23ee1ab3debb}\label{classGl_a622447c9e09b0491375e23ee1ab3debb}} 
+\index{Gl@{Gl}!reset\_scene@{reset\_scene}}
+\index{reset\_scene@{reset\_scene}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{reset\_scene()}{reset\_scene()}}
+{\footnotesize\ttfamily void Gl\+::reset\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classGl_ad7911c5da5492309af8bf125d26ecde1}\label{classGl_ad7911c5da5492309af8bf125d26ecde1}} 
 \index{Gl@{Gl}!run\_scan@{run\_scan}}
 \index{run\_scan@{run\_scan}!Gl@{Gl}}
@@ -122,11 +183,29 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classGl_ad7911c5da5492309af8bf125d26ecde1_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}\label{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}} 
+\index{Gl@{Gl}!set\_camera@{set\_camera}}
+\index{set\_camera@{set\_camera}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_camera()}{set\_camera()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+camera (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y,  }\item[{float}]{pos\+\_\+z,  }\item[{float}]{rx,  }\item[{float}]{ry,  }\item[{float}]{zoom }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classGl_a06b6675f97657ca3b46bd3c9367aa972}\label{classGl_a06b6675f97657ca3b46bd3c9367aa972}} 
 \index{Gl@{Gl}!set\_lidar\_config@{set\_lidar\_config}}
 \index{set\_lidar\_config@{set\_lidar\_config}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{set\_lidar\_config()}{set\_lidar\_config()}}
 {\footnotesize\ttfamily void Gl\+::set\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a7fb1c1b80b822442fe18e4749eda3e56}\label{classGl_a7fb1c1b80b822442fe18e4749eda3e56}} 
+\index{Gl@{Gl}!set\_lidar\_override@{set\_lidar\_override}}
+\index{set\_lidar\_override@{set\_lidar\_override}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_lidar\_override()}{set\_lidar\_override()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$}]{lidar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}\label{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}} 
+\index{Gl@{Gl}!set\_transform@{set\_transform}}
+\index{set\_transform@{set\_transform}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_transform()}{set\_transform()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+transform (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{const \mbox{\hyperlink{structModelTransform}{Model\+Transform}} \&}]{tr }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classGl_a39222fbea430ff6081ecc704ac39d7a6}\label{classGl_a39222fbea430ff6081ecc704ac39d7a6}} 
 \index{Gl@{Gl}!toggle\_point\_cloud@{toggle\_point\_cloud}}

@@ -69,16 +69,24 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;variant&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="noise__model_8h_source.html">noise_model.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="horizontal__step_8h_source.html">horizontal_step.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for lidar.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="lidar_8h__incl.png" border="0" usemap="#alidar_8h" alt=""/></div>
 <map name="alidar_8h" id="alidar_8h">
-<area shape="rect" title=" " alt="" coords="91,5,153,32"/>
+<area shape="rect" title=" " alt="" coords="209,5,272,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" title=" " alt="" coords="93,80,151,107"/>
-<area shape="rect" title=" " alt="" coords="176,80,239,107"/>
+<area shape="rect" title=" " alt="" coords="146,155,205,181"/>
+<area shape="rect" title=" " alt="" coords="144,80,212,107"/>
+<area shape="rect" title=" " alt="" coords="298,155,445,181"/>
+<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="446,80,563,107"/>
+<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="236,80,371,107"/>
+<area shape="rect" title=" " alt="" coords="469,155,541,181"/>
+<area shape="rect" title=" " alt="" coords="565,155,628,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -86,27 +94,29 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="lidar_8h__dep__incl.png" border="0" usemap="#alidar_8hdep" alt=""/></div>
 <map name="alidar_8hdep" id="alidar_8hdep">
-<area shape="rect" title=" " alt="" coords="602,5,665,32"/>
-<area shape="rect" href="entity_8h.html" title=" " alt="" coords="442,80,513,107"/>
-<area shape="rect" href="lidar_8cpp.html" title=" " alt="" coords="595,80,672,107"/>
-<area shape="rect" href="lidar__factory_8h.html" title=" " alt="" coords="709,155,824,181"/>
-<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="552,155,685,181"/>
-<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="511,229,617,256"/>
-<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="296,155,381,181"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="218,229,265,256"/>
-<area shape="rect" href="scene_8h.html" title=" " alt="" coords="405,155,477,181"/>
-<area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="693,229,841,256"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="424,379,608,405"/>
-<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="399,229,486,256"/>
-<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="465,304,567,331"/>
-<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="755,304,877,331"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="329,304,391,331"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,453,88,480"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="103,379,225,405"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="135,304,305,331"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="112,453,251,480"/>
-<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="289,229,375,256"/>
-<area shape="rect" href="lidar__factory_8cpp.html" title=" " alt="" coords="917,229,1046,256"/>
+<area shape="rect" title=" " alt="" coords="600,5,663,32"/>
+<area shape="rect" href="entity_8h.html" title=" " alt="" coords="404,80,475,107"/>
+<area shape="rect" href="lidar_8cpp.html" title=" " alt="" coords="593,80,670,107"/>
+<area shape="rect" href="lidar__factory_8h.html" title=" " alt="" coords="743,155,858,181"/>
+<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="477,155,610,181"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="471,229,578,256"/>
+<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="634,155,719,181"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="289,229,336,256"/>
+<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="34,229,154,256"/>
+<area shape="rect" href="scene_8h.html" title=" " alt="" coords="330,155,402,181"/>
+<area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="653,229,801,256"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="477,304,647,331"/>
+<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="360,229,447,256"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="313,379,435,405"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="470,379,654,405"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="222,453,305,480"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="329,453,467,480"/>
+<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="351,304,453,331"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="735,304,858,331"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="165,304,226,331"/>
+<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="5,304,140,331"/>
+<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="179,229,265,256"/>
+<area shape="rect" href="lidar__factory_8cpp.html" title=" " alt="" coords="877,229,1007,256"/>
 </map>
 </div>
 </div>
@@ -114,9 +124,24 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidar.html">Lidar</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html">LidarConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration abstraite de base d'un lidar. Contient les paramètres communs de tout les types de lidars. Chaque sous classe ajoute les paramètres spécifiques à sa technologie.  <a href="classLidarConfig.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLidar_1_1Laser.html">Lidar::Laser</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMechanicalLidarConfig.html">MechanicalLidarConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration d'un lidar mécanique rotatif.  <a href="classMechanicalLidarConfig.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMechanicalLidarConfig_1_1Laser.html">MechanicalLidarConfig::Laser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure 1 laser physique du capteur.  <a href="structMechanicalLidarConfig_1_1Laser.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html">FlashLidarConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration d'un lidar flash (sans balayage).  <a href="classFlashLidarConfig.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLissajouParams.html">LissajouParams</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRasterParams.html">RasterParams</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html">MirroredLidarConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration d'un lidar à miroir (balayage de Lissajous)  <a href="classMirroredLidarConfig.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

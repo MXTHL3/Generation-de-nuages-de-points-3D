@@ -1,5 +1,6 @@
 <map id="to_radians" name="to_radians">
-<area shape="rect" id="node1" title=" " alt="" coords="333,5,424,32"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html#a22791db4ca1b43f9ee4cf647a67b2d06" title=" " alt="" coords="156,5,285,32"/>
-<area shape="rect" id="node3" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="585,13,676,39"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="371,5,537,47"/>
+<area shape="rect" id="node3" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="156,5,323,47"/>
+<area shape="rect" id="node4" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,13,108,39"/>
 </map>

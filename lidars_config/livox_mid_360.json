@@ -1,0 +1,33 @@
+{
+    "model": "Livox-Mid-360",
+    "type": "mirrored",
+    "min_range": 0.1,
+    "max_range": 40.0,
+    "accuracy": 0.02,
+    "points_per_second": 200000,
+    "fov_h": 360.0,
+    "fov_v": 59.0,
+    "integration_time": 0.1,
+    "lissajou":{
+        "amplitude_h": 180.0,
+        "amplitude_v": 29.5,
+        "freq_h": 7182.0,
+        "freq_v": 4115.0,
+        "phase_diff": 0.0
+    },
+    "raster":{
+        "resolution_h": 1800,
+        "resolution_v": 32
+    },
+    "noise_profile":[
+        {
+            "max_distance": 1.0,
+            "sigma": 0.03
+        },
+        {
+            "max_distance": 40.0,
+            "sigma": 0.02
+        }
+    ],
+    "noise_resolution": 0.001
+}

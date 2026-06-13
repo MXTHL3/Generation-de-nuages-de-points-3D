@@ -76,7 +76,7 @@ Collaboration diagram for Gl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGl__coll__graph.png" border="0" usemap="#aGl_coll__map" alt="Collaboration graph"/></div>
 <map name="aGl_coll__map" id="aGl_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,187,244"/>
+<area shape="rect" title=" " alt="" coords="5,5,187,229"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -92,6 +92,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a97e61d917cbe1e275e1fc872b4d656a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bdcca5a28273112b61476cfe13a2674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674">load_scan</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a5bdcca5a28273112b61476cfe13a2674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aba28ffa3a514e9973feb0a64f5b65b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a8aba28ffa3a514e9973feb0a64f5b65b">set_transform</a> (int idx, const <a class="el" href="structModelTransform.html">ModelTransform</a> &amp;tr)</td></tr>
+<tr class="separator:a8aba28ffa3a514e9973feb0a64f5b65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a712f8cc3dd980b97a4d0fecee53b5af3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a712f8cc3dd980b97a4d0fecee53b5af3">set_camera</a> (float pos_x, float pos_y, float pos_z, float <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc">rx</a>, float <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfa731a58830959369de78aac2501c6021a">ry</a>, float zoom)</td></tr>
+<tr class="separator:a712f8cc3dd980b97a4d0fecee53b5af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7086ea1109c9b754e531fd3d1870c1f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a7086ea1109c9b754e531fd3d1870c1f6">capture_image</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a7086ea1109c9b754e531fd3d1870c1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0687592e446cb744fcc588420821483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#aa0687592e446cb744fcc588420821483">add_overlay_widget</a> (Gtk::Widget &amp;w)</td></tr>
@@ -100,12 +104,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad7911c5da5492309af8bf125d26ecde1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06b6675f97657ca3b46bd3c9367aa972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a06b6675f97657ca3b46bd3c9367aa972">set_lidar_config</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a06b6675f97657ca3b46bd3c9367aa972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb1c1b80b822442fe18e4749eda3e56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a7fb1c1b80b822442fe18e4749eda3e56">set_lidar_override</a> (std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt; lidar)</td></tr>
+<tr class="separator:a7fb1c1b80b822442fe18e4749eda3e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3937e6ba83582d4dc825dbb4223aa2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#ab3937e6ba83582d4dc825dbb4223aa2e">clear_lidar_override</a> ()</td></tr>
+<tr class="separator:ab3937e6ba83582d4dc825dbb4223aa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab79f766b81ba1f6a86f38087c3db5e17"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#ab79f766b81ba1f6a86f38087c3db5e17">get_lidar_override</a> () const</td></tr>
+<tr class="separator:ab79f766b81ba1f6a86f38087c3db5e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc6a9f921be20983abcbb10920bf685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a0bc6a9f921be20983abcbb10920bf685">lidar_override_set_min</a> (double v)</td></tr>
+<tr class="separator:a0bc6a9f921be20983abcbb10920bf685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66553210f98dd959603d828608ba59a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#af66553210f98dd959603d828608ba59a">lidar_override_set_max</a> (double v)</td></tr>
+<tr class="separator:af66553210f98dd959603d828608ba59a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c5eced263a4ea543046dced0db69df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a50c5eced263a4ea543046dced0db69df">lidar_override_set_hstep</a> (size_t idx, double v)</td></tr>
+<tr class="separator:a50c5eced263a4ea543046dced0db69df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa14571b0bae4f2e48b5c91e4ae7cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a2fa14571b0bae4f2e48b5c91e4ae7cc6">lidar_override_set_accuracy</a> (double v)</td></tr>
+<tr class="separator:a2fa14571b0bae4f2e48b5c91e4ae7cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a282f1d04873290629695e206e9cd2fbe"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a282f1d04873290629695e206e9cd2fbe">get_lidar_config</a> () const</td></tr>
 <tr class="separator:a282f1d04873290629695e206e9cd2fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39222fbea430ff6081ecc704ac39d7a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a39222fbea430ff6081ecc704ac39d7a6">toggle_point_cloud</a> ()</td></tr>
 <tr class="separator:a39222fbea430ff6081ecc704ac39d7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classModelMarker.html">ModelMarker</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a5e8b7a9c67a4a530cd18b31756091d4d">get_markers</a> ()</td></tr>
 <tr class="separator:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a622447c9e09b0491375e23ee1ab3debb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a622447c9e09b0491375e23ee1ab3debb">reset_scene</a> ()</td></tr>
+<tr class="separator:a622447c9e09b0491375e23ee1ab3debb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -204,6 +224,31 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab3937e6ba83582d4dc825dbb4223aa2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3937e6ba83582d4dc825dbb4223aa2e">&#9670;&nbsp;</a></span>clear_lidar_override()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::clear_lidar_override </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a282f1d04873290629695e206e9cd2fbe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a282f1d04873290629695e206e9cd2fbe">&#9670;&nbsp;</a></span>get_lidar_config()</h2>
 
@@ -215,6 +260,31 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">const std::string&amp; Gl::get_lidar_config </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab79f766b81ba1f6a86f38087c3db5e17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79f766b81ba1f6a86f38087c3db5e17">&#9670;&nbsp;</a></span>get_lidar_override()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classLidarConfig.html">LidarConfig</a>&gt; Gl::get_lidar_override </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -250,6 +320,88 @@ Public Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fa14571b0bae4f2e48b5c91e4ae7cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa14571b0bae4f2e48b5c91e4ae7cc6">&#9670;&nbsp;</a></span>lidar_override_set_accuracy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::lidar_override_set_accuracy </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50c5eced263a4ea543046dced0db69df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c5eced263a4ea543046dced0db69df">&#9670;&nbsp;</a></span>lidar_override_set_hstep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::lidar_override_set_hstep </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af66553210f98dd959603d828608ba59a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66553210f98dd959603d828608ba59a">&#9670;&nbsp;</a></span>lidar_override_set_max()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::lidar_override_set_max </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bc6a9f921be20983abcbb10920bf685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc6a9f921be20983abcbb10920bf685">&#9670;&nbsp;</a></span>lidar_override_set_min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::lidar_override_set_min </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -299,6 +451,23 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a622447c9e09b0491375e23ee1ab3debb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622447c9e09b0491375e23ee1ab3debb">&#9670;&nbsp;</a></span>reset_scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::reset_scene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad7911c5da5492309af8bf125d26ecde1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7911c5da5492309af8bf125d26ecde1">&#9670;&nbsp;</a></span>run_scan()</h2>
 
@@ -329,20 +498,76 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGl_ad7911c5da5492309af8bf125d26ecde1_cgraph.png" border="0" usemap="#aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph" alt=""/></div>
 <map name="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph" id="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,173,108,200"/>
-<area shape="rect" href="classScene.html#aaec1211c4dc9e2fc0437c66b5077032c" title=" " alt="" coords="185,5,315,32"/>
+<area shape="rect" title=" " alt="" coords="5,209,108,236"/>
+<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="159,5,341,32"/>
 <area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title=" " alt="" coords="199,56,301,83"/>
-<area shape="rect" href="classLidarFactory.html#a891cc931a297a8283228dd9e269ab43d" title=" " alt="" coords="159,107,341,149"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="187,173,313,200"/>
-<area shape="rect" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674" title=" " alt="" coords="195,224,305,251"/>
-<area shape="rect" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,275,344,301"/>
-<area shape="rect" href="classLidarEntity.html#a22791db4ca1b43f9ee4cf647a67b2d06" title=" " alt="" coords="185,325,315,352"/>
-<area shape="rect" href="classScene.html#a0d7ea65631c7b551157f54b3cc1eab3e" title=" " alt="" coords="415,5,554,32"/>
-<area shape="rect" href="classLidarEntity.html#a905e4b804c7f0eb9dbc90e3c1365bcf3" title=" " alt="" coords="392,300,577,327"/>
-<area shape="rect" href="units_8h.html#ae19ff0d6b0a80415a531b6f3b43bc7bb" title=" " alt="" coords="439,351,530,377"/>
-<area shape="rect" href="classPose.html#a6606afa248b1a7ec4dcfdf140331e2ed" title=" " alt="" coords="625,300,772,327"/>
+<area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title=" " alt="" coords="159,107,341,149"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="167,173,333,214"/>
+<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="187,239,313,265"/>
+<area shape="rect" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674" title=" " alt="" coords="195,289,305,316"/>
+<area shape="rect" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,340,344,367"/>
+<area shape="rect" href="classLidarEntity.html#ae08b8cea0223e9cf1d15a4451c363569" title=" " alt="" coords="183,391,317,433"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#ab954c5169dbde3e408733b0cdda14d29" title=" " alt="" coords="609,121,776,162"/>
+<area shape="rect" href="classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="392,173,561,214"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="393,238,560,279"/>
+<area shape="rect" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="651,195,735,221"/>
+<area shape="rect" href="units_8h.html#ae19ff0d6b0a80415a531b6f3b43bc7bb" title=" " alt="" coords="647,245,738,272"/>
+<area shape="rect" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="625,296,760,323"/>
+<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="824,296,949,323"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a712f8cc3dd980b97a4d0fecee53b5af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a712f8cc3dd980b97a4d0fecee53b5af3">&#9670;&nbsp;</a></span>set_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::set_camera </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pos_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pos_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pos_z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>zoom</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -368,6 +593,60 @@ Here is the call graph for this function:</div>
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fb1c1b80b822442fe18e4749eda3e56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fb1c1b80b822442fe18e4749eda3e56">&#9670;&nbsp;</a></span>set_lidar_override()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::set_lidar_override </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td>
+          <td class="paramname"><em>lidar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8aba28ffa3a514e9973feb0a64f5b65b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aba28ffa3a514e9973feb0a64f5b65b">&#9670;&nbsp;</a></span>set_transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::set_transform </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structModelTransform.html">ModelTransform</a> &amp;&#160;</td>
+          <td class="paramname"><em>tr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

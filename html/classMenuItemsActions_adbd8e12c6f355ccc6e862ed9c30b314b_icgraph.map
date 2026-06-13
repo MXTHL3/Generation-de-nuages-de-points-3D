@@ -1,13 +1,16 @@
 <map id="MenuItemsActions::as_window" name="MenuItemsActions::as_window">
-<area shape="rect" id="node1" title=" " alt="" coords="551,253,717,295"/>
+<area shape="rect" id="node1" title=" " alt="" coords="551,341,717,383"/>
 <area shape="rect" id="node2" href="$classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b" title=" " alt="" coords="287,5,487,47"/>
 <area shape="rect" id="node4" href="$classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4" title=" " alt="" coords="284,71,491,98"/>
 <area shape="rect" id="node5" href="$classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9" title=" " alt="" coords="283,123,492,164"/>
 <area shape="rect" id="node6" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="283,188,492,229"/>
 <area shape="rect" id="node7" href="$classMenuItemsActions.html#ad17e8468b01f24c6ad1dcb7ba3316034" title=" " alt="" coords="290,253,485,295"/>
 <area shape="rect" id="node8" href="$classMenuItemsActions.html#a4be452343fb5af356d0c85ec8034693e" title=" " alt="" coords="272,319,503,346"/>
-<area shape="rect" id="node9" href="$classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47" title=" " alt="" coords="279,370,495,397"/>
-<area shape="rect" id="node10" href="$classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="296,421,479,463"/>
-<area shape="rect" id="node11" href="$classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title=" " alt="" coords="305,487,469,528"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,261,224,287"/>
+<area shape="rect" id="node9" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="298,371,477,412"/>
+<area shape="rect" id="node10" href="$classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47" title=" " alt="" coords="279,437,495,463"/>
+<area shape="rect" id="node11" href="$classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="296,488,479,529"/>
+<area shape="rect" id="node12" href="$classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title=" " alt="" coords="295,553,479,595"/>
+<area shape="rect" id="node13" href="$classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1" title=" " alt="" coords="286,619,489,660"/>
+<area shape="rect" id="node14" href="$classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title=" " alt="" coords="305,684,469,725"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,349,224,375"/>
 </map>

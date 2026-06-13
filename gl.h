@@ -21,6 +21,7 @@
 #include "lidar_factory.h"
 #include "point_cloud_exporter.h"
 #include "logger.h"
+#include "lidar_scanner.h"
 
 struct ModelTransform {
     float pos_x = 0.0f, pos_y = 0.0f, pos_z = 0.0f;
@@ -44,12 +45,12 @@ public:
     void add_overlay_widget(Gtk::Widget& w);
     void run_scan(const std::string& lidar_config_path, const std::string& output_path);
     void set_lidar_config(const std::string& path) { m_lidar_config = path; }
-    void set_lidar_override(std::shared_ptr<Lidar> lidar) { m_lidar_override = std::move(lidar); }
+    void set_lidar_override(std::shared_ptr<LidarConfig> lidar) { m_lidar_override = std::move(lidar); }
     void clear_lidar_override() { m_lidar_override.reset(); }
-    std::shared_ptr<Lidar> get_lidar_override() const { return m_lidar_override; }
+    std::shared_ptr<LidarConfig> get_lidar_override() const { return m_lidar_override; }
     void lidar_override_set_min(double v);
     void lidar_override_set_max(double v);
-    void lidar_override_set_hstep(size_t idx, double v);
+    void lidar_override_set_hstep(size_t /*idx*/, double v);
     void lidar_override_set_accuracy(double v);
     const std::string& get_lidar_config() const { return m_lidar_config; }
     void toggle_point_cloud() { m_show_point_cloud = !m_show_point_cloud; gl_area.queue_render(); }
@@ -76,7 +77,7 @@ private:
     std::vector<std::unique_ptr<Cgal>> m_scenes;
     std::vector<std::unique_ptr<ModelMarker>> m_markers;
     std::vector<ModelTransform> m_transforms;
-    std::shared_ptr<Lidar> m_lidar_override;   
+    std::shared_ptr<LidarConfig> m_lidar_override;   
 
     int m_load_count = 0;
     float angle_x = 0.0f;

@@ -11,7 +11,7 @@ Inheritance diagram for Lidar\+Entity\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{classLidarEntity__inherit__graph}
+\includegraphics[width=350pt]{classLidarEntity__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -21,157 +21,119 @@ Collaboration diagram for Lidar\+Entity\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=180pt]{classLidarEntity__coll__graph}
+\includegraphics[width=307pt]{classLidarEntity__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classLidarEntity_aa2c1dcbfc56dde32f702d4d87d915da7}{Lidar\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidar}{Lidar}} $>$ model, unsigned int \mbox{\hyperlink{classLidarEntity_a5a453b53a24c047144c3a81ad3342384}{step\+\_\+index}}, double \mbox{\hyperlink{classLidarEntity_a933de7bf0444da8323f46a51abc34cd2}{fov\+\_\+h}}, \mbox{\hyperlink{classPose}{Pose}} p, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} $>$ noise=std\+::make\+\_\+unique$<$ \mbox{\hyperlink{classNullNoiseModel}{Null\+Noise\+Model}} $>$())
+\mbox{\hyperlink{classLidarEntity_a48982d054651b1f7747c2709db01d9e3}{Lidar\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}{config}}, \mbox{\hyperlink{classPose}{Pose}} p)
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classLidarEntity_ad508068b804f0cda2042db75e44513df}{clone}} () const override
+virtual \mbox{\hyperlink{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}{$\sim$\+Lidar\+Entity}} ()=default
 \item 
-\mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} \mbox{\hyperlink{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3}{get\+Transform}} () const override
+const std\+::string \& \mbox{\hyperlink{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec85e}{name}} () const override final
 \item 
-void \mbox{\hyperlink{classLidarEntity_a437a595d4a4358425d98be71c76e563d}{update}} (double) override
+const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \& \mbox{\hyperlink{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}{config}} () const
 \item 
-const std\+::string \& \mbox{\hyperlink{classLidarEntity_a93e606c3e8b68521a1ee8ee09391d906}{name}} () const override
+virtual std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{generate\+\_\+rays}} () const =0
 \item 
-const \mbox{\hyperlink{classPose}{Pose}} \& \mbox{\hyperlink{classLidarEntity_a4c32a9a44b8a4b9e6d1382818fd7ee66}{pose}} () const override
+void \mbox{\hyperlink{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}{noise\+\_\+model}} (const \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \&model)
 \item 
-void \mbox{\hyperlink{classLidarEntity_a928f28c9e868092119c7db1e212f16d9}{pose}} (const \mbox{\hyperlink{classPose}{Pose}} \&p) override
-\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classLidarEntity_a22791db4ca1b43f9ee4cf647a67b2d06}{scan}} (double h\+\_\+deg) const
-\item 
-const \mbox{\hyperlink{classLidar}{Lidar}} \& \mbox{\hyperlink{classLidarEntity_a2aec65dbe4a69c1f8e3716c7b416ee7a}{config}} () const
-\item 
-const double \& \mbox{\hyperlink{classLidarEntity_a6e5772302f165cc9fc224988ecac3612}{h\+\_\+step}} () const
-\item 
-const double \& \mbox{\hyperlink{classLidarEntity_a933de7bf0444da8323f46a51abc34cd2}{fov\+\_\+h}} () const
-\item 
-const unsigned int \& \mbox{\hyperlink{classLidarEntity_a5a453b53a24c047144c3a81ad3342384}{step\+\_\+index}} () const
+double \mbox{\hyperlink{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}{noisy\+\_\+distance}} (double d) const
 \end{DoxyCompactItemize}
-\doxysubsection*{Friends}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classLidarEntity_a032858ae1fe02d2d1170981c2af2d67c}{Scene}}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarEntity_ac9a8bf8ad5fcecc4294e74f8e1bed0da}{m\+\_\+config}}
+\item 
+\mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \mbox{\hyperlink{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}{m\+\_\+noise\+\_\+model}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classLidarEntity_aa2c1dcbfc56dde32f702d4d87d915da7}\label{classLidarEntity_aa2c1dcbfc56dde32f702d4d87d915da7}} 
+\mbox{\Hypertarget{classLidarEntity_a48982d054651b1f7747c2709db01d9e3}\label{classLidarEntity_a48982d054651b1f7747c2709db01d9e3}} 
 \index{LidarEntity@{LidarEntity}!LidarEntity@{LidarEntity}}
 \index{LidarEntity@{LidarEntity}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{LidarEntity()}{LidarEntity()}}
-{\footnotesize\ttfamily Lidar\+Entity\+::\+Lidar\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidar}{Lidar}} $>$}]{model,  }\item[{unsigned int}]{step\+\_\+index,  }\item[{double}]{fov\+\_\+h,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} $>$}]{noise = {\ttfamily std\+:\+:make\+\_\+unique$<$\mbox{\hyperlink{classNullNoiseModel}{Null\+Noise\+Model}}$>$()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Lidar\+Entity\+::\+Lidar\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$}]{config,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}\label{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}} 
+\index{LidarEntity@{LidarEntity}!````~LidarEntity@{$\sim$LidarEntity}}
+\index{````~LidarEntity@{$\sim$LidarEntity}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{$\sim$LidarEntity()}{~LidarEntity()}}
+{\footnotesize\ttfamily virtual Lidar\+Entity\+::$\sim$\+Lidar\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLidarEntity_ad508068b804f0cda2042db75e44513df}\label{classLidarEntity_ad508068b804f0cda2042db75e44513df}} 
-\index{LidarEntity@{LidarEntity}!clone@{clone}}
-\index{clone@{clone}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Lidar\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classIEntity_ab4fb4e0e9a30da784cf5f8a8dcd81156}{IEntity}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=288pt]{classLidarEntity_ad508068b804f0cda2042db75e44513df_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classLidarEntity_a2aec65dbe4a69c1f8e3716c7b416ee7a}\label{classLidarEntity_a2aec65dbe4a69c1f8e3716c7b416ee7a}} 
+\mbox{\Hypertarget{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}\label{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}} 
 \index{LidarEntity@{LidarEntity}!config@{config}}
 \index{config@{config}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{config()}{config()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classLidar}{Lidar}} \& Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}\& Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classLidarEntity_a933de7bf0444da8323f46a51abc34cd2}\label{classLidarEntity_a933de7bf0444da8323f46a51abc34cd2}} 
-\index{LidarEntity@{LidarEntity}!fov\_h@{fov\_h}}
-\index{fov\_h@{fov\_h}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{fov\_h()}{fov\_h()}}
-{\footnotesize\ttfamily const double\& Lidar\+Entity\+::fov\+\_\+h (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3}\label{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3}} 
-\index{LidarEntity@{LidarEntity}!getTransform@{getTransform}}
-\index{getTransform@{getTransform}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a35caf957a4ae5ffe8a35b6c41de5652b}{Transform3}} Lidar\+Entity\+::get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classIEntity_a22bb978fc9614c256d0f5a4832abae43}{IEntity}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLidarEntity_a905e4b804c7f0eb9dbc90e3c1365bcf3_icgraph}
+\includegraphics[width=350pt]{classLidarEntity_a71631b7b04a8d72242322a32135f43f4_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classLidarEntity_a6e5772302f165cc9fc224988ecac3612}\label{classLidarEntity_a6e5772302f165cc9fc224988ecac3612}} 
-\index{LidarEntity@{LidarEntity}!h\_step@{h\_step}}
-\index{h\_step@{h\_step}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{h\_step()}{h\_step()}}
-{\footnotesize\ttfamily const double \& Lidar\+Entity\+::h\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}\label{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}} 
+\index{LidarEntity@{LidarEntity}!generate\_rays@{generate\_rays}}
+\index{generate\_rays@{generate\_rays}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
-\mbox{\Hypertarget{classLidarEntity_a93e606c3e8b68521a1ee8ee09391d906}\label{classLidarEntity_a93e606c3e8b68521a1ee8ee09391d906}} 
+
+
+Implemented in \mbox{\hyperlink{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}{Mirrored\+Lidar\+Entity}}, \mbox{\hyperlink{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}{Flash\+Lidar\+Entity}}, and \mbox{\hyperlink{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}{Mechanical\+Lidar\+Entity}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec85e}\label{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec85e}} 
 \index{LidarEntity@{LidarEntity}!name@{name}}
 \index{name@{name}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{name()}{name()}}
-{\footnotesize\ttfamily const std\+::string\& Lidar\+Entity\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily const std\+::string\& Lidar\+Entity\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
 Implements \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{IEntity}}.
 
-\mbox{\Hypertarget{classLidarEntity_a4c32a9a44b8a4b9e6d1382818fd7ee66}\label{classLidarEntity_a4c32a9a44b8a4b9e6d1382818fd7ee66}} 
-\index{LidarEntity@{LidarEntity}!pose@{pose}}
-\index{pose@{pose}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classPose}{Pose}}\& Lidar\+Entity\+::pose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}\label{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}} 
+\index{LidarEntity@{LidarEntity}!noise\_model@{noise\_model}}
+\index{noise\_model@{noise\_model}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{noise\_model()}{noise\_model()}}
+{\footnotesize\ttfamily void Lidar\+Entity\+::noise\+\_\+model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \&}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Implements \mbox{\hyperlink{classIEntity_a44cacc896675bc364bc776214f1e66ae}{IEntity}}.
-
-\mbox{\Hypertarget{classLidarEntity_a928f28c9e868092119c7db1e212f16d9}\label{classLidarEntity_a928f28c9e868092119c7db1e212f16d9}} 
-\index{LidarEntity@{LidarEntity}!pose@{pose}}
-\index{pose@{pose}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Lidar\+Entity\+::pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classIEntity_a2c753c03a594134f091eddf1fd0bfdb2}{IEntity}}.
-
-\mbox{\Hypertarget{classLidarEntity_a22791db4ca1b43f9ee4cf647a67b2d06}\label{classLidarEntity_a22791db4ca1b43f9ee4cf647a67b2d06}} 
-\index{LidarEntity@{LidarEntity}!scan@{scan}}
-\index{scan@{scan}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{h\+\_\+deg }\end{DoxyParamCaption}) const}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}\label{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}} 
+\index{LidarEntity@{LidarEntity}!noisy\_distance@{noisy\_distance}}
+\index{noisy\_distance@{noisy\_distance}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{noisy\_distance()}{noisy\_distance()}}
+{\footnotesize\ttfamily double Lidar\+Entity\+::noisy\+\_\+distance (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLidarEntity_a22791db4ca1b43f9ee4cf647a67b2d06_cgraph}
+\includegraphics[width=324pt]{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -179,33 +141,23 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=290pt]{classLidarEntity_a22791db4ca1b43f9ee4cf647a67b2d06_icgraph}
+\includegraphics[width=350pt]{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classLidarEntity_a5a453b53a24c047144c3a81ad3342384}\label{classLidarEntity_a5a453b53a24c047144c3a81ad3342384}} 
-\index{LidarEntity@{LidarEntity}!step\_index@{step\_index}}
-\index{step\_index@{step\_index}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{step\_index()}{step\_index()}}
-{\footnotesize\ttfamily const unsigned int\& Lidar\+Entity\+::step\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{classLidarEntity_a437a595d4a4358425d98be71c76e563d}\label{classLidarEntity_a437a595d4a4358425d98be71c76e563d}} 
-\index{LidarEntity@{LidarEntity}!update@{update}}
-\index{update@{update}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Lidar\+Entity\+::update (\begin{DoxyParamCaption}\item[{double}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLidarEntity_ac9a8bf8ad5fcecc4294e74f8e1bed0da}\label{classLidarEntity_ac9a8bf8ad5fcecc4294e74f8e1bed0da}} 
+\index{LidarEntity@{LidarEntity}!m\_config@{m\_config}}
+\index{m\_config@{m\_config}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{m\_config}{m\_config}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}$>$ Lidar\+Entity\+::m\+\_\+config\hspace{0.3cm}{\ttfamily [protected]}}
 
-Implements \mbox{\hyperlink{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}{IEntity}}.
-
-
-
-\doxysubsection{Friends And Related Function Documentation}
-\mbox{\Hypertarget{classLidarEntity_a032858ae1fe02d2d1170981c2af2d67c}\label{classLidarEntity_a032858ae1fe02d2d1170981c2af2d67c}} 
-\index{LidarEntity@{LidarEntity}!Scene@{Scene}}
-\index{Scene@{Scene}!LidarEntity@{LidarEntity}}
-\doxysubsubsection{\texorpdfstring{Scene}{Scene}}
-{\footnotesize\ttfamily friend class \mbox{\hyperlink{classScene}{Scene}}\hspace{0.3cm}{\ttfamily [friend]}}
+\mbox{\Hypertarget{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}\label{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}} 
+\index{LidarEntity@{LidarEntity}!m\_noise\_model@{m\_noise\_model}}
+\index{m\_noise\_model@{m\_noise\_model}!LidarEntity@{LidarEntity}}
+\doxysubsubsection{\texorpdfstring{m\_noise\_model}{m\_noise\_model}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} Lidar\+Entity\+::m\+\_\+noise\+\_\+model\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

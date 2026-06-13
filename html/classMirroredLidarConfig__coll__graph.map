@@ -1,0 +1,5 @@
+<map id="MirroredLidarConfig" name="MirroredLidarConfig">
+<area shape="rect" id="node1" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="5,389,212,584"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="13,160,205,340"/>
+<area shape="rect" id="node3" href="$structNoiseProfile.html" title="Profil du bruit d&#39;un capteur lidar." alt="" coords="57,5,160,97"/>
+</map>

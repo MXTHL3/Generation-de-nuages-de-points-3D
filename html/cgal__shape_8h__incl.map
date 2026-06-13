@@ -1,11 +1,13 @@
 <map id="cgal_shape.h" name="cgal_shape.h">
-<area shape="rect" id="node1" title=" " alt="" coords="419,5,526,32"/>
-<area shape="rect" id="node2" href="$cgal_8h.html" title=" " alt="" coords="267,80,329,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="353,80,411,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="436,80,509,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="534,80,609,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="633,80,713,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,191,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="215,155,381,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="405,155,468,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="518,5,625,32"/>
+<area shape="rect" id="node2" href="$cgal_8h.html" title=" " alt="" coords="267,87,329,114"/>
+<area shape="rect" id="node6" title=" " alt="" coords="353,87,411,114"/>
+<area shape="rect" id="node7" title=" " alt="" coords="436,87,509,114"/>
+<area shape="rect" id="node8" title=" " alt="" coords="534,87,609,114"/>
+<area shape="rect" id="node9" title=" " alt="" coords="633,87,713,114"/>
+<area shape="rect" id="node10" title=" " alt="" coords="737,80,971,121"/>
+<area shape="rect" id="node11" title=" " alt="" coords="995,80,1228,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,169,191,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="215,169,381,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="405,169,468,196"/>
 </map>

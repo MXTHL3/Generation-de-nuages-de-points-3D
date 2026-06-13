@@ -69,14 +69,16 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;random&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for noise_model.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="noise__model_8h__incl.png" border="0" usemap="#anoise__model_8h" alt=""/></div>
 <map name="anoise__model_8h" id="anoise__model_8h">
-<area shape="rect" title=" " alt="" coords="28,5,145,32"/>
+<area shape="rect" title=" " alt="" coords="75,5,192,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,77,107"/>
 <area shape="rect" title=" " alt="" coords="102,80,165,107"/>
+<area shape="rect" title=" " alt="" coords="189,80,336,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -84,25 +86,31 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="noise__model_8h__dep__incl.png" border="0" usemap="#anoise__model_8hdep" alt=""/></div>
 <map name="anoise__model_8hdep" id="anoise__model_8hdep">
-<area shape="rect" title=" " alt="" coords="627,5,744,32"/>
-<area shape="rect" href="entity_8h.html" title=" " alt="" coords="534,80,605,107"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="163,379,347,405"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="911,304,972,331"/>
-<area shape="rect" href="noise__model_8cpp.html" title=" " alt="" coords="805,80,937,107"/>
-<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="272,155,405,181"/>
-<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="407,229,513,256"/>
-<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="644,155,729,181"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="679,229,726,256"/>
-<area shape="rect" href="scene_8h.html" title=" " alt="" coords="497,155,569,181"/>
-<area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="43,229,191,256"/>
-<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="295,229,382,256"/>
-<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="292,304,393,331"/>
-<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="468,304,591,331"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="781,453,864,480"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="860,379,983,405"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="615,304,785,331"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="888,453,1027,480"/>
-<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="538,229,625,256"/>
+<area shape="rect" title=" " alt="" coords="615,5,732,32"/>
+<area shape="rect" href="entity_8h.html" title=" " alt="" coords="638,155,709,181"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="442,379,611,405"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="887,379,948,405"/>
+<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="262,80,325,107"/>
+<area shape="rect" href="noise__model_8cpp.html" title=" " alt="" coords="1073,80,1205,107"/>
+<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="480,229,613,256"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="403,304,509,331"/>
+<area shape="rect" href="entity_8cpp.html" title=" " alt="" coords="733,229,819,256"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="806,304,853,331"/>
+<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="877,304,997,331"/>
+<area shape="rect" href="scene_8h.html" title=" " alt="" coords="637,229,709,256"/>
+<area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="179,304,327,331"/>
+<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="585,304,671,331"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="672,453,795,480"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="435,453,619,480"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="808,528,891,555"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="645,528,784,555"/>
+<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="660,379,761,405"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="121,379,244,405"/>
+<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="973,379,1107,405"/>
+<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="695,304,782,331"/>
+<area shape="rect" href="lidar_8cpp.html" title=" " alt="" coords="251,155,328,181"/>
+<area shape="rect" href="lidar__factory_8h.html" title=" " alt="" coords="156,229,271,256"/>
+<area shape="rect" href="lidar__factory_8cpp.html" title=" " alt="" coords="26,304,155,331"/>
 </map>
 </div>
 </div>
@@ -110,11 +118,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNoiseStep.html">NoiseStep</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Palier du profil de bruit d'un capteur lidar.  <a href="structNoiseStep.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structNoiseProfile.html">NoiseProfile</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Profil du bruit d'un capteur lidar.  <a href="structNoiseProfile.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoiseModel.html">NoiseModel</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNullNoiseModel.html">NullNoiseModel</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOusterOS2Noise.html">OusterOS2Noise</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire "mt19937" est déterministe : on peut générer des séquences bruités identiques avec la même seed !  <a href="classNoiseModel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

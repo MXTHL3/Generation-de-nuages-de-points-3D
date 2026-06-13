@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Scene\+Loader\+:
-\nopagebreak
+Collaboration diagram for Scene\+Loader\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,25 +16,25 @@ Collaboration diagram for Scene\+Loader\+:
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static bool \mbox{\hyperlink{classSceneLoader_aead389f4fda2dca8538c76f7dee55167}{load\+\_\+scene\+\_\+from\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets)
+static bool \mbox{\hyperlink{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}{load\+\_\+scene\+\_\+from\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&lidars, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets)
 \item 
-static bool \mbox{\hyperlink{classSceneLoader_aa547c10d3e3ed701234457090fd64daa}{save\+\_\+scene\+\_\+to\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world)
+static bool \mbox{\hyperlink{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}{save\+\_\+scene\+\_\+to\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&lidars)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classSceneLoader_aead389f4fda2dca8538c76f7dee55167}\label{classSceneLoader_aead389f4fda2dca8538c76f7dee55167}} 
+\mbox{\Hypertarget{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}\label{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}} 
 \index{SceneLoader@{SceneLoader}!load\_scene\_from\_json@{load\_scene\_from\_json}}
 \index{load\_scene\_from\_json@{load\_scene\_from\_json}!SceneLoader@{SceneLoader}}
 \doxysubsubsection{\texorpdfstring{load\_scene\_from\_json()}{load\_scene\_from\_json()}}
-{\footnotesize\ttfamily bool Scene\+Loader\+::load\+\_\+scene\+\_\+from\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily bool Scene\+Loader\+::load\+\_\+scene\+\_\+from\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&}]{lidars,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classSceneLoader_aead389f4fda2dca8538c76f7dee55167_cgraph}
+\includegraphics[width=350pt]{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -43,21 +42,21 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classSceneLoader_aead389f4fda2dca8538c76f7dee55167_icgraph}
+\includegraphics[width=350pt]{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classSceneLoader_aa547c10d3e3ed701234457090fd64daa}\label{classSceneLoader_aa547c10d3e3ed701234457090fd64daa}} 
+\mbox{\Hypertarget{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}\label{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}} 
 \index{SceneLoader@{SceneLoader}!save\_scene\_to\_json@{save\_scene\_to\_json}}
 \index{save\_scene\_to\_json@{save\_scene\_to\_json}!SceneLoader@{SceneLoader}}
 \doxysubsubsection{\texorpdfstring{save\_scene\_to\_json()}{save\_scene\_to\_json()}}
-{\footnotesize\ttfamily bool Scene\+Loader\+::save\+\_\+scene\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily bool Scene\+Loader\+::save\+\_\+scene\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&}]{lidars }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=347pt]{classSceneLoader_aa547c10d3e3ed701234457090fd64daa_cgraph}
+\includegraphics[width=350pt]{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph}
 \end{center}
 \end{figure}
 

@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['laser_246',['Laser',['../structLidar_1_1Laser.html',1,'Lidar']]],
-  ['lasexporter_247',['LasExporter',['../classLasExporter.html',1,'']]],
-  ['lidar_248',['Lidar',['../classLidar.html',1,'']]],
-  ['lidarentity_249',['LidarEntity',['../classLidarEntity.html',1,'']]],
-  ['lidarfactory_250',['LidarFactory',['../classLidarFactory.html',1,'']]],
-  ['logger_251',['Logger',['../classLogger.html',1,'']]]
+  ['ientity_315',['IEntity',['../classIEntity.html',1,'']]],
+  ['intersection_316',['Intersection',['../structIntersection.html',1,'']]],
+  ['ipointcloudexporter_317',['IPointCloudExporter',['../classIPointCloudExporter.html',1,'']]]
 ];

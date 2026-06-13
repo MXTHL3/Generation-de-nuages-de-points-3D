@@ -1,0 +1,5 @@
+<map id="LidarConfig::serialize" name="LidarConfig::serialize">
+<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="471,13,629,39"/>
+<area shape="rect" id="node2" href="$classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title=" " alt="" coords="243,13,423,39"/>
+<area shape="rect" id="node3" href="$classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60" title=" " alt="" coords="5,5,195,47"/>
+</map>

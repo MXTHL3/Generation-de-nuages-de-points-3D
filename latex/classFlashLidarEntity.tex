@@ -1,0 +1,98 @@
+\hypertarget{classFlashLidarEntity}{}\doxysection{Flash\+Lidar\+Entity Class Reference}
+\label{classFlashLidarEntity}\index{FlashLidarEntity@{FlashLidarEntity}}
+
+
+{\ttfamily \#include $<$entity.\+h$>$}
+
+
+
+Inheritance diagram for Flash\+Lidar\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classFlashLidarEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Flash\+Lidar\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFlashLidarEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFlashLidarEntity_a0c31a73a787f54ef2c200f4104b3f26f}{Flash\+Lidar\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}{config}}, \mbox{\hyperlink{classPose}{Pose}} p)
+\item 
+const \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} \& \mbox{\hyperlink{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}{config}} () const
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{clone}} () const override
+\item 
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}{generate\+\_\+rays}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFlashLidarEntity_a0c31a73a787f54ef2c200f4104b3f26f}\label{classFlashLidarEntity_a0c31a73a787f54ef2c200f4104b3f26f}} 
+\index{FlashLidarEntity@{FlashLidarEntity}!FlashLidarEntity@{FlashLidarEntity}}
+\index{FlashLidarEntity@{FlashLidarEntity}!FlashLidarEntity@{FlashLidarEntity}}
+\doxysubsubsection{\texorpdfstring{FlashLidarEntity()}{FlashLidarEntity()}}
+{\footnotesize\ttfamily Flash\+Lidar\+Entity\+::\+Flash\+Lidar\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} $>$}]{config,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}\label{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}} 
+\index{FlashLidarEntity@{FlashLidarEntity}!clone@{clone}}
+\index{clone@{clone}!FlashLidarEntity@{FlashLidarEntity}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Flash\+Lidar\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
+
+\mbox{\Hypertarget{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}\label{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}} 
+\index{FlashLidarEntity@{FlashLidarEntity}!config@{config}}
+\index{config@{config}!FlashLidarEntity@{FlashLidarEntity}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}}\& Flash\+Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}\label{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}} 
+\index{FlashLidarEntity@{FlashLidarEntity}!generate\_rays@{generate\_rays}}
+\index{generate\_rays@{generate\_rays}!FlashLidarEntity@{FlashLidarEntity}}
+\doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Flash\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entity_8h}{entity.\+h}}\item 
+\mbox{\hyperlink{entity_8cpp}{entity.\+cpp}}\end{DoxyCompactItemize}

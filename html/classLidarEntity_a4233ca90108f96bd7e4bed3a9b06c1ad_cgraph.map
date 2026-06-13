@@ -1,0 +1,4 @@
+<map id="LidarEntity::noisy_distance" name="LidarEntity::noisy_distance">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" id="node2" href="$classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="188,13,331,39"/>
+</map>

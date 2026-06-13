@@ -1,0 +1,200 @@
+\hypertarget{classMirroredLidarConfig}{}\doxysection{Mirrored\+Lidar\+Config Class Reference}
+\label{classMirroredLidarConfig}\index{MirroredLidarConfig@{MirroredLidarConfig}}
+
+
+Configuration d\textquotesingle{}un lidar à miroir (balayage de Lissajous)  
+
+
+
+
+{\ttfamily \#include $<$lidar.\+h$>$}
+
+
+
+Inheritance diagram for Mirrored\+Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classMirroredLidarConfig__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mirrored\+Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classMirroredLidarConfig__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classMirroredLidarConfig_a52e459ad1a315ab476eea953a9620fbb}{is\+\_\+lissajou}} () const
+\item 
+bool \mbox{\hyperlink{classMirroredLidarConfig_ac6904b2378b42bba1cf3564cd6aa83bd}{is\+\_\+raster}} () const
+\item 
+\mbox{\hyperlink{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}{Mirrored\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, int points\+\_\+per\+\_\+second, double fov\+\_\+h, double fov\+\_\+v, double integration\+\_\+time)
+\item 
+void \mbox{\hyperlink{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}{serialize}} (nlohmann\+::json \&data) const override
+\begin{DoxyCompactList}\small\item\em Serialise le configuration complète en JSON. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}{to\+\_\+string}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classMirroredLidarConfig_a9eee5757f700c9bd9ab921060ccf4b76}{m\+\_\+points\+\_\+per\+\_\+second}}
+\begin{DoxyCompactList}\small\item\em Tir par secondes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}{m\+\_\+fov\+\_\+h}}
+\begin{DoxyCompactList}\small\item\em Fov horizontal maximal (radians) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}{m\+\_\+fov\+\_\+v}}
+\begin{DoxyCompactList}\small\item\em Fov vertical maximal (radians) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}{m\+\_\+integration\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}acumulation d\textquotesingle{}une frame (secondes) \end{DoxyCompactList}\item 
+std\+::variant$<$ \mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}}, \mbox{\hyperlink{structRasterParams}{Raster\+Params}} $>$ \mbox{\hyperlink{classMirroredLidarConfig_a028154e385f9c40dd4c718105e3c497e}{m\+\_\+mirrored\+\_\+scan\+\_\+params}}
+\begin{DoxyCompactList}\small\item\em contient les paramètres pour lissajou ou raster \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Configuration d\textquotesingle{}un lidar à miroir (balayage de Lissajous) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}\label{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!MirroredLidarConfig@{MirroredLidarConfig}}
+\index{MirroredLidarConfig@{MirroredLidarConfig}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{MirroredLidarConfig()}{MirroredLidarConfig()}}
+{\footnotesize\ttfamily Mirrored\+Lidar\+Config\+::\+Mirrored\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{int}]{points\+\_\+per\+\_\+second,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v,  }\item[{double}]{integration\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMirroredLidarConfig_a52e459ad1a315ab476eea953a9620fbb}\label{classMirroredLidarConfig_a52e459ad1a315ab476eea953a9620fbb}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!is\_lissajou@{is\_lissajou}}
+\index{is\_lissajou@{is\_lissajou}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{is\_lissajou()}{is\_lissajou()}}
+{\footnotesize\ttfamily bool Mirrored\+Lidar\+Config\+::is\+\_\+lissajou (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classMirroredLidarConfig_a52e459ad1a315ab476eea953a9620fbb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMirroredLidarConfig_ac6904b2378b42bba1cf3564cd6aa83bd}\label{classMirroredLidarConfig_ac6904b2378b42bba1cf3564cd6aa83bd}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!is\_raster@{is\_raster}}
+\index{is\_raster@{is\_raster}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{is\_raster()}{is\_raster()}}
+{\footnotesize\ttfamily bool Mirrored\+Lidar\+Config\+::is\+\_\+raster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classMirroredLidarConfig_ac6904b2378b42bba1cf3564cd6aa83bd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}\label{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!serialize@{serialize}}
+\index{serialize@{serialize}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily void Mirrored\+Lidar\+Config\+::serialize (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Serialise le configuration complète en JSON. 
+
+
+
+Implements \mbox{\hyperlink{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}{Lidar\+Config}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}\label{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Mirrored\+Lidar\+Config\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classLidarConfig_ad083150ce1d303f13883622f69ce50e6}{Lidar\+Config}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}\label{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_h@{m\_fov\_h}}
+\index{m\_fov\_h@{m\_fov\_h}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_h}{m\_fov\_h}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+h}
+
+
+
+Fov horizontal maximal (radians) 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}\label{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_v@{m\_fov\_v}}
+\index{m\_fov\_v@{m\_fov\_v}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_v}{m\_fov\_v}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+v}
+
+
+
+Fov vertical maximal (radians) 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}\label{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_integration\_time@{m\_integration\_time}}
+\index{m\_integration\_time@{m\_integration\_time}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_integration\_time}{m\_integration\_time}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+integration\+\_\+time}
+
+
+
+Durée d\textquotesingle{}acumulation d\textquotesingle{}une frame (secondes) 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_a028154e385f9c40dd4c718105e3c497e}\label{classMirroredLidarConfig_a028154e385f9c40dd4c718105e3c497e}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_mirrored\_scan\_params@{m\_mirrored\_scan\_params}}
+\index{m\_mirrored\_scan\_params@{m\_mirrored\_scan\_params}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_mirrored\_scan\_params}{m\_mirrored\_scan\_params}}
+{\footnotesize\ttfamily std\+::variant$<$\mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}}, \mbox{\hyperlink{structRasterParams}{Raster\+Params}}$>$ Mirrored\+Lidar\+Config\+::m\+\_\+mirrored\+\_\+scan\+\_\+params}
+
+
+
+contient les paramètres pour lissajou ou raster 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_a9eee5757f700c9bd9ab921060ccf4b76}\label{classMirroredLidarConfig_a9eee5757f700c9bd9ab921060ccf4b76}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_points\_per\_second@{m\_points\_per\_second}}
+\index{m\_points\_per\_second@{m\_points\_per\_second}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_points\_per\_second}{m\_points\_per\_second}}
+{\footnotesize\ttfamily int Mirrored\+Lidar\+Config\+::m\+\_\+points\+\_\+per\+\_\+second}
+
+
+
+Tir par secondes. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lidar_8h}{lidar.\+h}}\item 
+\mbox{\hyperlink{lidar_8cpp}{lidar.\+cpp}}\end{DoxyCompactItemize}

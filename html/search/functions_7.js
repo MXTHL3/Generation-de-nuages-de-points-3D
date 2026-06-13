@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['h_5fstep_348',['h_step',['../classLidarEntity.html#a6e5772302f165cc9fc224988ecac3612',1,'LidarEntity']]]
+  ['horizontal_5fstep_439',['horizontal_step',['../classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50',1,'MechanicalLidarConfig']]]
 ];

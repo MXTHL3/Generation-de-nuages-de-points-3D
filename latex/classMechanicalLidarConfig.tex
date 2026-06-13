@@ -1,0 +1,186 @@
+\hypertarget{classMechanicalLidarConfig}{}\doxysection{Mechanical\+Lidar\+Config Class Reference}
+\label{classMechanicalLidarConfig}\index{MechanicalLidarConfig@{MechanicalLidarConfig}}
+
+
+Configuration d\textquotesingle{}un lidar mécanique rotatif.  
+
+
+
+
+{\ttfamily \#include $<$lidar.\+h$>$}
+
+
+
+Inheritance diagram for Mechanical\+Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classMechanicalLidarConfig__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mechanical\+Lidar\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classMechanicalLidarConfig__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMechanicalLidarConfig_1_1Laser}{Laser}}
+\begin{DoxyCompactList}\small\item\em Structure 1 laser physique du capteur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMechanicalLidarConfig_a9a7299480343f8123b20cefc034a7b69}{Mechanical\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, double rotation\+\_\+rate)
+\item 
+void \mbox{\hyperlink{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3}{serialize}} (nlohmann\+::json \&data) const override
+\begin{DoxyCompactList}\small\item\em Serialise le configuration complète en JSON. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70}{to\+\_\+string}} () const override
+\item 
+void \mbox{\hyperlink{classMechanicalLidarConfig_ab9ddefe3bba638e1da509e80455fc75e}{add\+Laser}} (double v\+\_\+rad, double h\+\_\+rad, double d\+\_\+off)
+\begin{DoxyCompactList}\small\item\em Ajoute un laser au capteur. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50}{horizontal\+\_\+step}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la résolution verticale/azimutale en degrés à partir de \char`\"{}m\+\_\+h\+\_\+step\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classHorizontalStepSource}{Horizontal\+Step\+Source}} $>$ \mbox{\hyperlink{classMechanicalLidarConfig_a59f19db9fdbbcc18ca7ae367883ad530}{m\+\_\+h\+\_\+step}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structMechanicalLidarConfig_1_1Laser}{Laser}} $>$ \mbox{\hyperlink{classMechanicalLidarConfig_ab09d3e3cc1a10b73b9e8d17a09300651}{m\+\_\+lasers}}
+\begin{DoxyCompactList}\small\item\em lasers du Lidar. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMechanicalLidarConfig_ada7221173d77609ee1be09a95ea9ad31}{m\+\_\+rotation\+\_\+rate}} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Tours par seconde (Hz). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Configuration d\textquotesingle{}un lidar mécanique rotatif. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMechanicalLidarConfig_a9a7299480343f8123b20cefc034a7b69}\label{classMechanicalLidarConfig_a9a7299480343f8123b20cefc034a7b69}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{MechanicalLidarConfig()}{MechanicalLidarConfig()}}
+{\footnotesize\ttfamily Mechanical\+Lidar\+Config\+::\+Mechanical\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{double}]{rotation\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMechanicalLidarConfig_ab9ddefe3bba638e1da509e80455fc75e}\label{classMechanicalLidarConfig_ab9ddefe3bba638e1da509e80455fc75e}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!addLaser@{addLaser}}
+\index{addLaser@{addLaser}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{addLaser()}{addLaser()}}
+{\footnotesize\ttfamily void Mechanical\+Lidar\+Config\+::add\+Laser (\begin{DoxyParamCaption}\item[{double}]{v\+\_\+rad,  }\item[{double}]{h\+\_\+rad,  }\item[{double}]{d\+\_\+off }\end{DoxyParamCaption})}
+
+
+
+Ajoute un laser au capteur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+\_\+rad} & Angle vertical/élévation (radians). \\
+\hline
+{\em h\+\_\+rad} & Décalage azimutal (radians). \\
+\hline
+{\em d\+\_\+off} & Décalage de distance para rapport à l\textquotesingle{}origine (mètres). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50}\label{classMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!horizontal\_step@{horizontal\_step}}
+\index{horizontal\_step@{horizontal\_step}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{horizontal\_step()}{horizontal\_step()}}
+{\footnotesize\ttfamily double Mechanical\+Lidar\+Config\+::horizontal\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la résolution verticale/azimutale en degrés à partir de \char`\"{}m\+\_\+h\+\_\+step\char`\"{}. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3}\label{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!serialize@{serialize}}
+\index{serialize@{serialize}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily void Mechanical\+Lidar\+Config\+::serialize (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Serialise le configuration complète en JSON. 
+
+
+
+Implements \mbox{\hyperlink{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}{Lidar\+Config}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70}\label{classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily std\+::string Mechanical\+Lidar\+Config\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classLidarConfig_ad083150ce1d303f13883622f69ce50e6}{Lidar\+Config}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMechanicalLidarConfig_a59f19db9fdbbcc18ca7ae367883ad530}\label{classMechanicalLidarConfig_a59f19db9fdbbcc18ca7ae367883ad530}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!m\_h\_step@{m\_h\_step}}
+\index{m\_h\_step@{m\_h\_step}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_h\_step}{m\_h\_step}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classHorizontalStepSource}{Horizontal\+Step\+Source}}$>$ Mechanical\+Lidar\+Config\+::m\+\_\+h\+\_\+step}
+
+\mbox{\Hypertarget{classMechanicalLidarConfig_ab09d3e3cc1a10b73b9e8d17a09300651}\label{classMechanicalLidarConfig_ab09d3e3cc1a10b73b9e8d17a09300651}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!m\_lasers@{m\_lasers}}
+\index{m\_lasers@{m\_lasers}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_lasers}{m\_lasers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structMechanicalLidarConfig_1_1Laser}{Laser}}$>$ Mechanical\+Lidar\+Config\+::m\+\_\+lasers}
+
+
+
+lasers du Lidar. 
+
+\mbox{\Hypertarget{classMechanicalLidarConfig_ada7221173d77609ee1be09a95ea9ad31}\label{classMechanicalLidarConfig_ada7221173d77609ee1be09a95ea9ad31}} 
+\index{MechanicalLidarConfig@{MechanicalLidarConfig}!m\_rotation\_rate@{m\_rotation\_rate}}
+\index{m\_rotation\_rate@{m\_rotation\_rate}!MechanicalLidarConfig@{MechanicalLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_rotation\_rate}{m\_rotation\_rate}}
+{\footnotesize\ttfamily double Mechanical\+Lidar\+Config\+::m\+\_\+rotation\+\_\+rate = 10.\+0}
+
+
+
+Tours par seconde (Hz). 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lidar_8h}{lidar.\+h}}\item 
+\mbox{\hyperlink{lidar_8cpp}{lidar.\+cpp}}\end{DoxyCompactItemize}

@@ -21,17 +21,17 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
             auto current_spatial_variation = std::make_unique<Scene>(*base_scene);
 
             size_t ent_index = 0;
-            for(const auto& entity : current_spatial_variation->entities()){
-                if(std::dynamic_pointer_cast<StaticEntity>(entity)){
-                    double r_z = rot_z(m_gen);
+            for(auto& entity : current_spatial_variation->entities()){
+                double r_z = rot_z(m_gen);
 
-                    Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
-                    entity->pose(random_pose);
-                    SIM_DEBUG("Entité copié : {} et oritentée en Z: {:.2f}", entity->name(), random_pose.rz());
-                    ent_index++;
-                
-                }
+                Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
+                entity->pose(random_pose);
 
+                SIM_DEBUG("Entité copié : {} et orientée en Z: {:.2f}",
+                        entity->name(),
+                        random_pose.rz());
+
+                ent_index++;
             }
         
             SIM_INFO("Reconstruction de l'arbre pour la variation {}", ent_index);
@@ -61,26 +61,29 @@ std::vector<std::unique_ptr<Scene>> PositionLayoutAugmentation::process(std::vec
             auto current_spatial_variation = std::make_unique<Scene>(*base_scene);
 
             size_t ent_index = 0;
-            for(const auto& entity : current_spatial_variation->entities()){
-                if(std::dynamic_pointer_cast<StaticEntity>(entity)){
-                    double x = dist_x(m_gen);
-                    double y = dist_y(m_gen);
+            for(auto& entity : current_spatial_variation->entities()){
+                double x = dist_x(m_gen);
+                double y = dist_y(m_gen);
 
-                    bool is_too_close = true;
+                bool is_too_close = true;
 
-                    while(is_too_close){
-                        x = x < 5 && x > -5 ? dist_x(m_gen) : x;
-                        y = y < 5 && y > -5 ? dist_y(m_gen) : y;
-                        
-                        if(!(x < 5 && x > -5) || !(y < 5 && y > -5))is_too_close = false;
-                    }
+                while(is_too_close){
+                    x = x < 5 && x > -5 ? dist_x(m_gen) : x;
+                    y = y < 5 && y > -5 ? dist_y(m_gen) : y;
 
-                    Pose random_pose({x, y, 0.0});
-                    entity->pose(random_pose);
-                    SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Y: {:.2f}", entity->name(), random_pose.pos().x(), random_pose.pos().y());
-                    ent_index++;
+                    if(!(x < 5 && x > -5) || !(y < 5 && y > -5))
+                        is_too_close = false;
                 }
 
+                Pose random_pose({x, y, 0.0});
+                entity->pose(random_pose);
+
+                SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Y: {:.2f}",
+                        entity->name(),
+                        random_pose.pos().x(),
+                        random_pose.pos().y());
+
+                ent_index++;
             }
         
             SIM_INFO("Reconstruction de l'arbre pour la variation {}", ent_index);
@@ -100,15 +103,17 @@ std::unique_ptr<Scene> KeyframeLayoutAugmentation::apply_keyframe(const Scene& i
 
     for(auto& ent : new_scene->entities()){
         if(ent->name() == entity_name){
-            if(auto static_ent = std::dynamic_pointer_cast<StaticEntity>(ent)){
-                auto mesh = assets.get_mesh(keyframe_path);
-                if(mesh){
-                    static_ent->update_mesh(mesh);
-                }else{
-                    // Pour l'instant on génère la scène quand meme si cela fait une scene doublon
-                    SIM_WARNING("Fichier de la keyframe : {} vide pour {}", keyframe_path, entity_name);
-                }
+
+            auto mesh = assets.get_mesh(keyframe_path);
+
+            if(mesh){
+                ent->update_mesh(mesh);
+            }else{
+                SIM_WARNING("Fichier de la keyframe : {} vide pour {}",
+                            keyframe_path,
+                            entity_name);
             }
+
             break;
         }
     }

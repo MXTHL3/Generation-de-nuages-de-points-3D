@@ -677,7 +677,7 @@ glm::vec3 Gl::get_camera_world_position() const {
 }
 
 void Gl::run_scan(const std::string& lidar_config_path, const std::string& output_path) {
-    std::shared_ptr<Lidar> lidar;
+    std::shared_ptr<LidarConfig> lidar;
     try {
         if (m_lidar_override)
             lidar = m_lidar_override;
@@ -687,8 +687,18 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
         std::cerr << "Erreur chargement LiDAR : " << e.what() << "\n";
         return;
     }
-    std::cout << "LiDAR chargé : " << lidar->m_lasers.size() << " lasers, "
-              << "h_step=" << lidar->m_h_step[0] << "\n";
+    
+    if (auto mech = std::dynamic_pointer_cast<MechanicalLidarConfig>(lidar)) {
+        std::cout
+            << "LiDAR chargé : "
+            << mech->m_lasers.size()
+            << " lasers, h_step="
+            << mech->horizontal_step()
+            << "\n";
+    }
+    else {
+        std::cout << "LiDAR chargé : " << lidar->m_name << "\n";
+    }
 
     glm::vec3 cam_glm = get_camera_world_position();
 
@@ -731,8 +741,8 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
             }
         }
 
-        auto entity = std::make_shared<StaticEntity>("mesh_" + std::to_string(i), obj, Pose(), "");
-        scene.addEntity(entity);
+        auto entity = std::make_unique<StaticEntity>("mesh_" + std::to_string(i), obj, Pose());
+        scene.add_static_entity(std::move(entity));
     }
     scene.build();
     std::cout << "Scène : " << total_tris << " triangles\n";
@@ -748,32 +758,29 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
                                 static_cast<double>(forward.x)) * 180.0 / M_PI;
 
     std::vector<Point3> cloud;
-    const double h_step_deg = lidar->m_h_step[0];
     int ray_count = 0;
+    LidarScanner scanner;
 
     for (double w = 0.0; w < 360.0; w += 20.0) {
         Pose scanner_pose(cam_pos, pitch_deg, yaw_deg + w, 0.0);
-        std::unique_ptr<NoiseModel> noise_model;
-        if (lidar->m_model.find("os2") != std::string::npos ||
-            lidar->m_model.find("OS2") != std::string::npos) {
-            noise_model = std::make_unique<OusterOS2Noise>();
-            SIM_INFO("Modèle de bruit OusterOS2 activé");
-        } 
-        else {
-            noise_model = std::make_unique<NullNoiseModel>();
-            SIM_INFO("Modèle de bruit nul (distances parfaites)");
-        }
-        LidarEntity scanner(lidar, 0, 360.0, scanner_pose, std::move(noise_model));
 
-        for (double h = 0.0; h < 360.0; h += h_step_deg) {
-            std::vector<Ray3> rays = scanner.scan(h);
-            ray_count += rays.size();
-            for (const Ray3& ray : rays) {
-                auto hit = scene.intersect(ray);
-                if (hit && hit->distance >= lidar->m_min_dist && hit->distance <= lidar->m_max_dist)
-                    cloud.push_back(hit->point);
-            }
+        std::unique_ptr<LidarEntity> scanner_ent;
+        if (auto mech_cfg = std::dynamic_pointer_cast<MechanicalLidarConfig>(lidar)) {
+            scanner_ent = std::make_unique<MechanicalLidarEntity>(mech_cfg, scanner_pose);
+        } else if (auto flash_cfg = std::dynamic_pointer_cast<FlashLidarConfig>(lidar)) {
+            scanner_ent = std::make_unique<FlashLidarEntity>(flash_cfg, scanner_pose);
+        } else if (auto mirrored_cfg = std::dynamic_pointer_cast<MirroredLidarConfig>(lidar)) {
+            scanner_ent = std::make_unique<MirroredLidarEntity>(mirrored_cfg, scanner_pose);
+        } else {
+            std::cerr << "Type de lidar non supporté pour run_scan\n";
+            return;
         }
+
+        scanner_ent->noise_model(NoiseModel(lidar->m_noise_profile));
+
+        auto pts = scanner.scan(*scanner_ent, scene);
+        cloud.insert(cloud.end(), pts.begin(), pts.end());
+        ray_count += static_cast<int>(scanner_ent->generate_rays().size());
     }
 
     std::cout << "Rayons lancés : " << ray_count << "\n";
@@ -801,11 +808,15 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
     load_scan(output_path);
 }
 
-static std::shared_ptr<Lidar> ensure_override(std::shared_ptr<Lidar>& ov, const std::string& config_path) {
+static std::shared_ptr<LidarConfig> ensure_override(std::shared_ptr<LidarConfig>& ov, const std::string& config_path) {
     if (!ov) {
-        try { ov = LidarFactory::createFromJsonConfig(config_path); }
+        try { 
+            ov = LidarFactory::createFromJsonConfig(config_path); 
+        }
         catch (...) {
-            ov = std::make_shared<Lidar>("custom", 1.0, 1000.0, std::vector<double>{0.703125, 0.3515626, 0.1757825}, 0.01);
+            auto custom = std::make_shared<MechanicalLidarConfig>("custom", 1.0, 1000.0, 0.01, 10.0);
+            custom->m_h_step = std::make_unique<DirectResolutionSource>(0.3515625); 
+            ov = custom;
         }
     }
     return ov;
@@ -817,9 +828,13 @@ void Gl::lidar_override_set_min(double v) {
 void Gl::lidar_override_set_max(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_max_dist = v;
 }
-void Gl::lidar_override_set_hstep(size_t idx, double v) {
-    auto& hs = ensure_override(m_lidar_override, m_lidar_config)->m_h_step;
-    if (idx < hs.size()) hs[idx] = v;
+void Gl::lidar_override_set_hstep(size_t /*idx*/, double v) {
+    auto cfg = std::dynamic_pointer_cast<MechanicalLidarConfig>(ensure_override(m_lidar_override, m_lidar_config));
+    if (!cfg) {
+        std::cerr << "lidar_override_set_hstep : le lidar courant n'est pas mécanique\n";
+        return;
+    }
+    cfg->m_h_step = std::make_unique<DirectResolutionSource>(v);
 }
 void Gl::lidar_override_set_accuracy(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_accuracy = v;

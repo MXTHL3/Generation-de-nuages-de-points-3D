@@ -75,18 +75,20 @@ Collaboration diagram for LidarFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory__coll__graph.png" border="0" usemap="#aLidarFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aLidarFactory_coll__map" id="aLidarFactory_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,195,83"/>
+<area shape="rect" title=" " alt="" coords="5,5,195,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a891cc931a297a8283228dd9e269ab43d"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classLidar.html">Lidar</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a891cc931a297a8283228dd9e269ab43d">createFromJsonConfig</a> (const std::string &amp;configPath)</td></tr>
-<tr class="separator:a891cc931a297a8283228dd9e269ab43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">createFromJsonConfig</a> (const std::string &amp;configPath)</td></tr>
+<tr class="separator:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84e7ac0f70dd3080753f7858ece10466"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466">saveToJson</a> (const std::string &amp;configPath, const <a class="el" href="classLidarConfig.html">LidarConfig</a> &amp;lidar_config)</td></tr>
+<tr class="separator:a84e7ac0f70dd3080753f7858ece10466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a891cc931a297a8283228dd9e269ab43d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a891cc931a297a8283228dd9e269ab43d">&#9670;&nbsp;</a></span>createFromJsonConfig()</h2>
+<a id="a69af7f5cd3f5f3adc901cb3c3f3cfaeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">&#9670;&nbsp;</a></span>createFromJsonConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -95,7 +97,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classLidar.html">Lidar</a> &gt; LidarFactory::createFromJsonConfig </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt; LidarFactory::createFromJsonConfig </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>configPath</em></td><td>)</td>
@@ -111,10 +113,64 @@ Static Public Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLidarFactory_a891cc931a297a8283228dd9e269ab43d_icgraph.png" border="0" usemap="#aclassLidarFactory_a891cc931a297a8283228dd9e269ab43d_icgraph" alt=""/></div>
-<map name="aclassLidarFactory_a891cc931a297a8283228dd9e269ab43d_icgraph" id="aclassLidarFactory_a891cc931a297a8283228dd9e269ab43d_icgraph">
+<div class="center"><img src="classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph.png" border="0" usemap="#aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph" alt=""/></div>
+<map name="aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph" id="aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph">
 <area shape="rect" title=" " alt="" coords="156,5,339,47"/>
 <area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,13,108,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a84e7ac0f70dd3080753f7858ece10466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84e7ac0f70dd3080753f7858ece10466">&#9670;&nbsp;</a></span>saveToJson()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LidarFactory::saveToJson </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>configPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classLidarConfig.html">LidarConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>lidar_config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph.png" border="0" usemap="#aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph" alt=""/></div>
+<map name="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph" id="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,185,32"/>
+<area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="233,5,392,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph.png" border="0" usemap="#aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph" alt=""/></div>
+<map name="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph" id="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph">
+<area shape="rect" title=" " alt="" coords="243,13,423,39"/>
+<area shape="rect" href="classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60" title=" " alt="" coords="5,5,195,47"/>
 </map>
 </div>
 

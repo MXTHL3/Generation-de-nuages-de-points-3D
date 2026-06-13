@@ -1,0 +1,4 @@
+<map id="DirectResolutionSource" name="DirectResolutionSource">
+<area shape="rect" id="node1" title="Résolution angulaire donnée directmement (pas de calcul)" alt="" coords="5,160,204,267"/>
+<area shape="rect" id="node2" href="$classHorizontalStepSource.html" title="Interface pour le calcul de la résolution (horizontale) azimuth d&#39;un LidarMecanique...." alt="" coords="5,5,204,112"/>
+</map>

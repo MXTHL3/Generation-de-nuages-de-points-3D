@@ -1,0 +1,6 @@
+<map id="HorizontalStepSource" name="HorizontalStepSource">
+<area shape="rect" id="node1" title="Interface pour le calcul de la résolution (horizontale) azimuth d&#39;un LidarMecanique...." alt="" coords="209,5,407,112"/>
+<area shape="rect" id="node2" href="$classColumnCountSource.html" title="Résolution à partir du nombre de colonnes par tour." alt="" coords="5,160,184,267"/>
+<area shape="rect" id="node3" href="$classDirectResolutionSource.html" title="Résolution angulaire donnée directmement (pas de calcul)" alt="" coords="209,160,407,267"/>
+<area shape="rect" id="node4" href="$classPointsPerSecondSource.html" title="Résolution à partir du nombre de points par seconde." alt="" coords="431,160,630,267"/>
+</map>

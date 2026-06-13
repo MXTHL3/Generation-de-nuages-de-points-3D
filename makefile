@@ -24,7 +24,9 @@ SRCS := main.cpp \
         noise_model.cpp \
         asset_manager.cpp \
         scene_utils.cpp \
-        pipeline.cpp
+        pipeline.cpp \
+        horizontal_step.cpp \
+        lidar_scanner.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 

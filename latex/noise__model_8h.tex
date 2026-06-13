@@ -2,12 +2,13 @@
 \label{noise__model_8h}\index{noise\_model.h@{noise\_model.h}}
 {\ttfamily \#include $<$random$>$}\newline
 {\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
 Include dependency graph for noise\+\_\+model.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=200pt]{noise__model_8h__incl}
+\includegraphics[width=328pt]{noise__model_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -21,9 +22,9 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structNoiseStep}{Noise\+Step}}
+\begin{DoxyCompactList}\small\item\em Palier du profil de bruit d\textquotesingle{}un capteur lidar. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}}
+\begin{DoxyCompactList}\small\item\em Profil du bruit d\textquotesingle{}un capteur lidar. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classNoiseModel}{Noise\+Model}}
-\item 
-class \mbox{\hyperlink{classNullNoiseModel}{Null\+Noise\+Model}}
-\item 
-class \mbox{\hyperlink{classOusterOS2Noise}{Ouster\+OS2\+Noise}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire \char`\"{}mt19937\char`\"{} est déterministe \+: on peut générer des séquences bruités identiques avec la même seed ! \end{DoxyCompactList}\end{DoxyCompactItemize}

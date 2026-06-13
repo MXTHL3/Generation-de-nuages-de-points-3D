@@ -72,7 +72,7 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">struct </span><a class="code" href="structModelTransform.html">ModelTransform</a>;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75">    8</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="pose_8h.html#a35caf957a4ae5ffe8a35b6c41de5652b">Transform3</a> <a class="code" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75">model_transform_to_cgal</a>(<span class="keyword">const</span> <a class="code" href="structModelTransform.html">ModelTransform</a>&amp; tr)</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75">    8</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> <a class="code" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75">model_transform_to_cgal</a>(<span class="keyword">const</span> <a class="code" href="structModelTransform.html">ModelTransform</a>&amp; tr)</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    glm::mat4 m(1.0f);</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    m = glm::translate(m, glm::vec3(tr.<a class="code" href="structModelTransform.html#aabd11942bfca9af46b3698f07ffbb23f">pos_x</a>, tr.<a class="code" href="structModelTransform.html#adfc2c5377a3a440fc521defc9047b140">pos_y</a>, tr.<a class="code" href="structModelTransform.html#a0c4bb9e46745580cf349c9a03f624e3d">pos_z</a>));</div>
@@ -81,7 +81,7 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    m = glm::rotate(m, tr.<a class="code" href="structModelTransform.html#a0891065d7c2f2c545cb8c3135035ee1f">angle_z</a>, glm::vec3(0,0,1));</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    m = glm::scale(m, glm::vec3(tr.<a class="code" href="structModelTransform.html#af2b822aa3648f7fd1933970a06b52244">scale</a>));</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="pose_8h.html#a35caf957a4ae5ffe8a35b6c41de5652b">Transform3</a>(</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a>(</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        m[0][0], m[1][0], m[2][0], m[3][0],</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        m[0][1], m[1][1], m[2][1], m[3][1],</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        m[0][2], m[1][2], m[2][2], m[3][2]</div>
@@ -89,7 +89,7 @@ $(function() {
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="ttc" id="acgal__glm__utils_8h_html_a286c8c052904ce194c4d6d8b69698a75"><div class="ttname"><a href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75">model_transform_to_cgal</a></div><div class="ttdeci">Transform3 model_transform_to_cgal(const ModelTransform &amp;tr)</div><div class="ttdef"><b>Definition:</b> cgal_glm_utils.h:8</div></div>
 <div class="ttc" id="apose_8h_html"><div class="ttname"><a href="pose_8h.html">pose.h</a></div></div>
-<div class="ttc" id="apose_8h_html_a35caf957a4ae5ffe8a35b6c41de5652b"><div class="ttname"><a href="pose_8h.html#a35caf957a4ae5ffe8a35b6c41de5652b">Transform3</a></div><div class="ttdeci">CGAL::Aff_transformation_3&lt; Kernel &gt; Transform3</div><div class="ttdef"><b>Definition:</b> pose.h:8</div></div>
+<div class="ttc" id="apose_8h_html_a352c74fe120e1bb435c2df8ee255b1f5"><div class="ttname"><a href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a></div><div class="ttdeci">CGAL::Aff_transformation_3&lt; K &gt; Transform3</div><div class="ttdef"><b>Definition:</b> pose.h:8</div></div>
 <div class="ttc" id="astructModelTransform_html"><div class="ttname"><a href="structModelTransform.html">ModelTransform</a></div><div class="ttdef"><b>Definition:</b> gl.h:25</div></div>
 <div class="ttc" id="astructModelTransform_html_a0891065d7c2f2c545cb8c3135035ee1f"><div class="ttname"><a href="structModelTransform.html#a0891065d7c2f2c545cb8c3135035ee1f">ModelTransform::angle_z</a></div><div class="ttdeci">float angle_z</div><div class="ttdef"><b>Definition:</b> gl.h:27</div></div>
 <div class="ttc" id="astructModelTransform_html_a0c4bb9e46745580cf349c9a03f624e3d"><div class="ttname"><a href="structModelTransform.html#a0c4bb9e46745580cf349c9a03f624e3d">ModelTransform::pos_z</a></div><div class="ttdeci">float pos_z</div><div class="ttdef"><b>Definition:</b> gl.h:26</div></div>

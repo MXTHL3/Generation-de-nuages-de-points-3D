@@ -1,11 +1,17 @@
 <map id="MenuItemsActions::generate_dataset_from_json" name="MenuItemsActions::generate_dataset_from_json">
-<area shape="rect" id="node1" title=" " alt="" coords="5,115,215,157"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,145,215,186"/>
 <area shape="rect" id="node2" href="$classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0" title=" " alt="" coords="285,5,427,32"/>
 <area shape="rect" id="node3" href="$classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="273,57,439,98"/>
 <area shape="rect" id="node4" href="$classPipeline.html#a71057c03f4ceb9378424211d6d353956" title=" " alt="" coords="289,123,423,149"/>
-<area shape="rect" id="node5" href="$classSceneLoader.html#aead389f4fda2dca8538c76f7dee55167" title=" " alt="" coords="263,174,449,215"/>
+<area shape="rect" id="node5" href="$classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="263,174,449,215"/>
 <area shape="rect" id="node9" href="$classPlyExporter.html#ad95a65c24a12aa474436916e389424fb" title=" " alt="" coords="288,240,424,267"/>
-<area shape="rect" id="node6" href="$classScene.html#a0d7ea65631c7b551157f54b3cc1eab3e" title=" " alt="" coords="521,123,660,149"/>
-<area shape="rect" id="node7" href="$classAssetManager.html#aa22ef5097c36f7f234f93ee22675d892" title=" " alt="" coords="501,174,681,215"/>
-<area shape="rect" id="node8" href="$classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title=" " alt="" coords="497,240,684,267"/>
+<area shape="rect" id="node10" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="284,316,428,343"/>
+<area shape="rect" id="node6" href="$classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="503,97,684,124"/>
+<area shape="rect" id="node7" href="$classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title=" " alt="" coords="503,149,683,190"/>
+<area shape="rect" id="node8" href="$classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title=" " alt="" coords="500,215,687,241"/>
+<area shape="rect" id="node11" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="524,265,663,292"/>
+<area shape="rect" id="node12" href="$classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title=" " alt="" coords="497,316,689,343"/>
+<area shape="rect" id="node13" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="530,367,657,393"/>
+<area shape="rect" id="node14" href="$classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title=" " alt="" coords="526,418,661,459"/>
+<area shape="rect" id="node15" href="$classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="737,425,880,452"/>
 </map>

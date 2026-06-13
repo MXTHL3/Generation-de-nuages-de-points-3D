@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structIntersection.html" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node1" href="$classHorizontalStepSource.html" title="Interface pour le calcul de la résolution (horizontale) azimuth d&#39;un LidarMecanique...." alt="" coords="5,56,168,83"/>
+<area shape="rect" id="node2" href="$classColumnCountSource.html" title="Résolution à partir du nombre de colonnes par tour." alt="" coords="226,5,381,32"/>
+<area shape="rect" id="node3" href="$classDirectResolutionSource.html" title="Résolution angulaire donnée directmement (pas de calcul)" alt="" coords="216,56,391,83"/>
+<area shape="rect" id="node4" href="$classPointsPerSecondSource.html" title="Résolution à partir du nombre de points par seconde." alt="" coords="216,107,391,133"/>
 </map>

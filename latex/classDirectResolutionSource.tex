@@ -1,0 +1,99 @@
+\hypertarget{classDirectResolutionSource}{}\doxysection{Direct\+Resolution\+Source Class Reference}
+\label{classDirectResolutionSource}\index{DirectResolutionSource@{DirectResolutionSource}}
+
+
+Résolution angulaire donnée directmement (pas de calcul)  
+
+
+
+
+{\ttfamily \#include $<$horizontal\+\_\+step.\+h$>$}
+
+
+
+Inheritance diagram for Direct\+Resolution\+Source\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classDirectResolutionSource__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Direct\+Resolution\+Source\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classDirectResolutionSource__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDirectResolutionSource_ab57ef0e8afa1b178333133ecdc6d3c38}{Direct\+Resolution\+Source}} (double resolution\+\_\+deg)
+\item 
+double \mbox{\hyperlink{classDirectResolutionSource_aaf0b3d4e7e9dccb3273133ac85357952}{compute\+\_\+h\+\_\+step}} () const override
+\begin{DoxyCompactList}\small\item\em Calcule la résolution horizontale en degrés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDirectResolutionSource_ab86816283169fa57ca6261358a3e53ce}{serialize}} (nlohmann\+::json \&data) const override
+\begin{DoxyCompactList}\small\item\em Sérialize la résolution horizontale dans l\textquotesingle{}objet JSON source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Résolution angulaire donnée directmement (pas de calcul) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDirectResolutionSource_ab57ef0e8afa1b178333133ecdc6d3c38}\label{classDirectResolutionSource_ab57ef0e8afa1b178333133ecdc6d3c38}} 
+\index{DirectResolutionSource@{DirectResolutionSource}!DirectResolutionSource@{DirectResolutionSource}}
+\index{DirectResolutionSource@{DirectResolutionSource}!DirectResolutionSource@{DirectResolutionSource}}
+\doxysubsubsection{\texorpdfstring{DirectResolutionSource()}{DirectResolutionSource()}}
+{\footnotesize\ttfamily Direct\+Resolution\+Source\+::\+Direct\+Resolution\+Source (\begin{DoxyParamCaption}\item[{double}]{resolution\+\_\+deg }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em resolution\+\_\+deg} & Résolution horizontale (degrés). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDirectResolutionSource_aaf0b3d4e7e9dccb3273133ac85357952}\label{classDirectResolutionSource_aaf0b3d4e7e9dccb3273133ac85357952}} 
+\index{DirectResolutionSource@{DirectResolutionSource}!compute\_h\_step@{compute\_h\_step}}
+\index{compute\_h\_step@{compute\_h\_step}!DirectResolutionSource@{DirectResolutionSource}}
+\doxysubsubsection{\texorpdfstring{compute\_h\_step()}{compute\_h\_step()}}
+{\footnotesize\ttfamily double Direct\+Resolution\+Source\+::compute\+\_\+h\+\_\+step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calcule la résolution horizontale en degrés. 
+
+
+
+Implements \mbox{\hyperlink{classHorizontalStepSource_a466b1856b9eb8064cb2407489584b2e0}{Horizontal\+Step\+Source}}.
+
+\mbox{\Hypertarget{classDirectResolutionSource_ab86816283169fa57ca6261358a3e53ce}\label{classDirectResolutionSource_ab86816283169fa57ca6261358a3e53ce}} 
+\index{DirectResolutionSource@{DirectResolutionSource}!serialize@{serialize}}
+\index{serialize@{serialize}!DirectResolutionSource@{DirectResolutionSource}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily void Direct\+Resolution\+Source\+::serialize (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sérialize la résolution horizontale dans l\textquotesingle{}objet JSON source. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & L\textquotesingle{}objet JSON. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classHorizontalStepSource_a3e7eaf9e76f0ae756d8416d6343c27aa}{Horizontal\+Step\+Source}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{horizontal__step_8h}{horizontal\+\_\+step.\+h}}\item 
+\mbox{\hyperlink{horizontal__step_8cpp}{horizontal\+\_\+step.\+cpp}}\end{DoxyCompactItemize}

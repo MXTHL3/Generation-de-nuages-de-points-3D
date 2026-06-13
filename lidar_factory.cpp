@@ -1,27 +1,196 @@
 #include "lidar_factory.h"
+#include "units.h"
+#include "logger.h"
+
 #include <fstream>
 
-std::shared_ptr<Lidar> LidarFactory::createFromJsonConfig(const std::string& configPath){
+std::shared_ptr<LidarConfig> LidarFactory::createFromJsonConfig(const std::string& configPath){
     std::ifstream file(configPath);
-    
+
     if(!file.is_open()){
-        throw std::runtime_error("Erreur le fichier de configuration de Lidar : "+ configPath + " ne peut être lu.");
+        SIM_ERROR("Impossible de lire {}", configPath);
+        return nullptr;
     }
 
     nlohmann::json data;
     file >> data;
 
-    auto lidar = std::make_shared<Lidar>(
-        data.value("model", data.value("model_name", std::string("unknown"))),
-        data.value("min_range", data.value("min_dist", 0.5)),
-        data.value("max_range", data.value("max_dist", 100.0)),
-        data.value("h_step", std::vector<double>{1.0}),
-        data.value("accuracy", 0.02)
-    );
+    try {
+        std::string lidar_type = data.value("type", "mechanical");
 
-    for(const auto& laser : data["lasers"]) {
-        lidar->addLaser(laser["v_angle"], laser["h_offset"], laser["d_offset"]);
+        if (lidar_type == "mechanical") return parseMechanicalLidar(data);
+        if (lidar_type == "flash") return parseFlashLidar(data);
+        if (lidar_type == "mirrored") return parseMirroredLidar(data);
+
+        SIM_ERROR("Type inconnu {}", lidar_type);
+        return nullptr;
+
+    } catch(const std::exception& e) {
+        SIM_ERROR("Erreur parsing {} : {}", configPath, e.what());
+        return nullptr;
+    } catch(...) {
+        SIM_ERROR("Erreur inconnue parsing {}", configPath);
+        return nullptr;
+    }
+}
+
+NoiseProfile LidarFactory::parseNoiseProfile(const nlohmann::json& data){
+    NoiseProfile profile;
+    profile.resolution = data.value("noise_resolution", 0.0);
+
+    if(data.contains("noise_profile")){
+        for(const auto& step : data["noise_profile"]){
+            profile.steps.push_back({
+                step.at("max_distance").get<double>(),
+                step.at("sigma").get<double>()});
+        }
+        SIM_DEBUG("Profil de bruit chargé : {} paliers, résolution {:.2f} mètres", 
+            profile.steps.size(), 
+            profile.resolution);
+    }else{
+        // Profil par défaut
+        profile.steps.push_back({999.0, 0.03});
+        SIM_DEBUG("Pas de profil de bruit trouvé on en génère un par défaut");
+    }
+    return profile;
+}
+
+std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const nlohmann::json &data)
+{   
+
+     //vitesse de rotation
+    double rotation_rate = 0.0;
+    if(data.contains("rotation_rate")){
+        rotation_rate = data["rotation_rate"].get<double>();
+    }else if(data.contains("rpm")){
+        rotation_rate = data["rpm"].get<double>() / 60.0;
+    }else{
+        SIM_WARNING("Pas de vitesse de roration trouvée dans {}",  data.at("model").get<std::string>());
     }
 
-    return lidar;
+    auto lidar_config = std::make_shared<MechanicalLidarConfig>(
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.value("noise_resolution", 0.0), rotation_rate
+    );
+
+    // resolution horizontale azimuth
+    if(data.contains("horizontal_columns")){
+        lidar_config->m_h_step = std::make_unique<ColumnCountSource>(data.at("horizontal_columns").get<unsigned int>());
+    }else if(data.contains("horizontal_resolution")){
+        lidar_config->m_h_step = std::make_unique<DirectResolutionSource>(data.at("horizontal_resolution").get<double>());
+    }else if(data.contains("points_per_second")){
+        lidar_config->m_h_step = std::make_unique<PointsPerSecondSource>(data.at("points_per_second").get<unsigned int>(), lidar_config->m_rotation_rate, lidar_config->m_lasers.size());
+    }else {
+        SIM_WARNING("Pas de résolution horizontale trouvée dans {}, fallback à 1024", lidar_config->m_name);
+        lidar_config->m_h_step = std::make_unique<ColumnCountSource>(1024);
+    }
+
+    SIM_DEBUG("Resolution horizontale calculée : {:.2f} degrés", lidar_config->horizontal_step());
+    
+    for(const auto& laser : data.at("lasers")){
+        lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
+    }
+
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
+    return lidar_config;
+}
+
+std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data){
+    bool has_res = data.contains("resolution_h") && data.contains("resolution_v");
+    bool has_fov = data.contains("fov_h") && data.contains("fov_v");
+    bool has_angr = data.contains("angular_resolution_h") && data.contains("angular_resolution_v");
+    
+    FlashFovResolution params;
+
+    if(has_res && has_fov){
+        params.res_h = data["resolution_h"].get<int>();
+        params.res_v = data["resolution_v"].get<int>();
+        params.fov_h = data["fov_h"].get<double>();
+        params.fov_v = data["fov_v"].get<double>();
+    }
+
+    if(has_angr && has_fov){
+        double angular_resolution_h = data["angular_resolution_h"].get<double>();
+        double angular_resolution_v = data["angular_resolution_v"].get<double>();
+        params.fov_h = data["fov_h"].get<double>();
+        params.fov_v = data["fov_v"].get<double>();
+        params.res_h = static_cast<int>(params.fov_h / angular_resolution_h);
+        params.res_v = static_cast<int>(params.fov_v / angular_resolution_v);
+    }
+
+    if(has_angr && has_res){
+        double angular_resolution_h = data["angular_resolution_h"].get<double>();
+        double angular_resolution_v = data["angular_resolution_v"].get<double>();
+        params.res_h = data["resolution_h"].get<int>();
+        params.res_v = data["resolution_v"].get<int>();
+        params.fov_h = params.res_h * angular_resolution_h;
+        params.fov_v = params.res_v * angular_resolution_v;
+    }
+    
+    auto lidar_config = std::make_shared<FlashLidarConfig>(
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), 
+        data.at("max_range").get<double>(), data.value("noise_resolution", 0.0),
+        params.res_h, params.res_v,
+        to_radians(params.fov_h), to_radians(params.fov_v)
+    );
+
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
+    return lidar_config;
+}
+
+std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
+    auto lidar_config = std::make_shared<MirroredLidarConfig>(
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.value("noise_resolution", 0.0),
+        data.at("points_per_second").get<int>(), data.at("fov_h").get<double>(), data.at("fov_v").get<double>(), data.at("integration_time").get<double>() 
+    );
+
+    std::string mode = data.value("scan_mode", "lissajou");
+
+    if(mode == "lissajou"){
+        const auto& lissajou_json = data["lissajou"];
+        lidar_config->m_mirrored_scan_params = LissajouParams{
+            to_radians(lissajou_json.at("amplitude_h").get<double>()),
+            to_radians(lissajou_json.at("amplitude_v").get<double>()),
+            to_radians(lissajou_json.at("freq_h").get<double>()),
+            to_radians(lissajou_json.at("freq_v").get<double>()),
+            to_radians(lissajou_json.at("phase_diff").get<double>())
+        };   
+    }else if(mode == "raster"){
+        const auto& raster_json = data["raster"];
+        lidar_config->m_mirrored_scan_params = RasterParams {
+            raster_json.at("resolution_h").get<int>(),
+            raster_json.at("resolution_v").get<int>()
+        };
+    }else{
+        SIM_ERROR("Paramètre non reconnu pour le mode (il doit être soit 'raster' soit 'lissajou' dans la config du lidar Miroir : {}", lidar_config->m_name);
+        throw;
+    }
+
+    lidar_config->m_noise_profile = parseNoiseProfile(data);
+
+    return lidar_config;
+}
+
+bool LidarFactory::saveToJson(const std::string& configPath, const LidarConfig& lidar_config){
+
+    nlohmann::json data;
+
+    try{
+        lidar_config.serialize(data);
+
+        std::ofstream file(configPath);
+        
+        if(!file.is_open()){
+            SIM_ERROR("Impossible d'écrire la configuration de lidar dans {}", configPath);
+            return false;
+        }
+
+        file << data.dump(4);
+        SIM_INFO("Configuration de lidar {} sauvegardée dans : {}", lidar_config.m_name, configPath);
+        return true;
+    }catch(const std::exception& e){
+        SIM_ERROR("Erreur lors de la save du lidar {} dans {} : {}", lidar_config.m_name, configPath, e.what());
+        return false;
+    }
 }
