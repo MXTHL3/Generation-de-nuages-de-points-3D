@@ -37,7 +37,9 @@ void Scene::build(){
         const auto& local_tris = ent->meshTriangles();
 
         for(const auto& tri : local_tris) {
-            m_triangles.push_back(tri.transform(xform));
+            Triangle3 t = tri.transform(xform);
+            if (t.is_degenerate()) continue;
+            m_triangles.push_back(t);
         }
     }
 

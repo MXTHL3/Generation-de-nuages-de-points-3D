@@ -596,6 +596,12 @@ void MenuItemsActions::reset_scene() {
     });
 }
 
+void MenuItemsActions::reset_scans() {
+    _sub->signal_activate().connect([this]() {
+        m_gl->reset_scans();
+    });
+}
+
 void MenuItemsActions::scanner_settings() {
     _sub->signal_activate().connect([this]() {
         struct Defaults {

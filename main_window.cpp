@@ -119,6 +119,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         else if (label == "Paramètres scanner") { scanner_settings(); }
         else if (label == "Lancer scan scène complète") { launch_full_scene_scan(); }
         else if (label == "Lancer un scan par modèle 3D") { launch_one_scan_per_3d_model(); }
+        else if (label == "Réinitialiser scans") { reset_scans(); }
         else if (label == "Afficher/masquer nuage") { display_cloud(); }
         else if (label == "Générer ensemble de données") { generate_dataset(); }
         else if (label == "Lancer analyse reconnaissance") { launch_recognition(); }

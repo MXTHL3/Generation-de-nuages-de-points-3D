@@ -56,6 +56,7 @@ public:
     void toggle_point_cloud() { m_show_point_cloud = !m_show_point_cloud; gl_area.queue_render(); }
     std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     void reset_scene();
+    void reset_scans();
     sigc::signal<void(MarkerType)> signal_marker_clicked;
     size_t model_count() const { return m_scenes.size(); }
     void set_model_hidden(size_t idx, bool hidden);
@@ -73,6 +74,7 @@ private:
     GLuint vbo_cloud = 0;
     int m_cloud_point_count = 0;
     bool m_show_point_cloud  = false;
+    std::vector<float> m_cloud_data;
     GLuint vao_grid = 0;
     GLuint vbo_grid = 0;
     GLsizei grid_vertex_count = 0;

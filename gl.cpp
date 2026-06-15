@@ -295,8 +295,9 @@ void Gl::load_scan(const std::string& path) {
         std::cerr << "Format de nuage non supporté : " << ext << "\n";
         return;
     }
-
-    m_cloud_point_count = static_cast<int>(cloud_data.size() / 3);
+    
+    m_cloud_data.insert(m_cloud_data.end(), cloud_data.begin(), cloud_data.end());
+    m_cloud_point_count = static_cast<int>(m_cloud_data.size() / 3);
 
     if (gl_area.get_realized())
         gl_area.make_current();
@@ -304,8 +305,8 @@ void Gl::load_scan(const std::string& path) {
     glBindVertexArray(vao_cloud);
     glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
     glBufferData(GL_ARRAY_BUFFER,
-                 cloud_data.size() * sizeof(float),
-                 cloud_data.data(), GL_STATIC_DRAW);
+                 m_cloud_data.size() * sizeof(float),
+                 m_cloud_data.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
@@ -314,7 +315,8 @@ void Gl::load_scan(const std::string& path) {
     m_show_point_cloud = true;
     gl_area.queue_render();
 
-    std::cout << "Scan chargé : " << m_cloud_point_count << " points <- " << path << "\n";
+    std::cout << "Scan chargé : " << (cloud_data.size() / 3) << " points <- " << path
+              << " (total cumulé : " << m_cloud_point_count << " points)\n";
 }
 
 void Gl::set_transform(int idx, const ModelTransform& tr) {
@@ -872,6 +874,21 @@ void Gl::reset_scene() {
     rebuild_vertex_data();
     upload_vertex_data();
     update_markers_positions();
+    gl_area.queue_render();
+}
+
+void Gl::reset_scans() {
+    if (gl_area.get_realized()) gl_area.make_current();
+
+    m_cloud_data.clear();
+    m_cloud_point_count = 0;
+
+    glBindVertexArray(vao_cloud);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_cloud);
+    glBufferData(GL_ARRAY_BUFFER, 0, nullptr, GL_STATIC_DRAW);
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
     gl_area.queue_render();
 }
 
