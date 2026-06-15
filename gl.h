@@ -57,6 +57,11 @@ public:
     std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     void reset_scene();
     sigc::signal<void(MarkerType)> signal_marker_clicked;
+    size_t model_count() const { return m_scenes.size(); }
+    void set_model_hidden(size_t idx, bool hidden);
+    bool is_model_hidden(size_t idx) const {
+        return idx < m_model_hidden.size() ? m_model_hidden[idx] : false;
+    }
 
 private:
     Gtk::Overlay m_overlay;
@@ -77,7 +82,8 @@ private:
     std::vector<std::unique_ptr<Cgal>> m_scenes;
     std::vector<std::unique_ptr<ModelMarker>> m_markers;
     std::vector<ModelTransform> m_transforms;
-    std::shared_ptr<LidarConfig> m_lidar_override;   
+    std::shared_ptr<LidarConfig> m_lidar_override;  
+    std::vector<bool> m_model_hidden; 
 
     int m_load_count = 0;
     float angle_x = 0.0f;

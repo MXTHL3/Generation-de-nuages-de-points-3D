@@ -34,12 +34,12 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
         {"Scène",
             "Supprimer sélection", "Réinitialiser scène"},
         {"Scanner 3D",
-            "Lancer scan", "Paramètres scanner"},
+            "Paramètres scanner", "Lancer scan scène complète", "Lancer un scan par modèle 3D",
+            "Réinitialiser scans"},
         {"Nuage de points",
             "Afficher/masquer nuage", "Filtrage bruit"},
         {"IA",
-            "Générer ensemble de données", "Générer ensemble de données (à partir d'un JSON)", 
-            "Lancer analyse reconnaissance"},
+            "Générer ensemble de données", "Lancer analyse reconnaissance"},
         {"Affichage",
             "Plein écran"},
         {"Aide",
@@ -117,10 +117,10 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         else if (label == "Capturer image") { capture_image(); }
         else if (label == "Réinitialiser scène") { reset_scene(); }
         else if (label == "Paramètres scanner") { scanner_settings(); }
-        else if (label == "Lancer scan") { launch_scan(); }
+        else if (label == "Lancer scan scène complète") { launch_full_scene_scan(); }
+        else if (label == "Lancer un scan par modèle 3D") { launch_one_scan_per_3d_model(); }
         else if (label == "Afficher/masquer nuage") { display_cloud(); }
         else if (label == "Générer ensemble de données") { generate_dataset(); }
-        else if (label == "Générer ensemble de données (à partir d'un JSON)") { generate_dataset_from_json(); }
         else if (label == "Lancer analyse reconnaissance") { launch_recognition(); }
         else if (label == "Plein écran") { to_fullscreen(); }
         else if (label == "Documentation") { open_docs(); }

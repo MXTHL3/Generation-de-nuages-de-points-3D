@@ -78,6 +78,7 @@ Gl::Gl(std::unique_ptr<Cgal> default_scene) {
     default_scene->build_cube_mesh();
     m_scenes.push_back(std::move(default_scene));
     m_transforms.push_back({});
+    m_model_hidden.push_back(false);
 
     gl_area.set_hexpand(true);
     gl_area.set_vexpand(true);
@@ -202,6 +203,7 @@ void Gl::load_file(const std::string& path) {
     scene->build_mesh_from_file(path);
     m_scenes.push_back(std::move(scene));
     m_transforms.push_back({});
+    m_model_hidden.push_back(false);
 
     add_center_marker(midx);
     ModelMarker* centerN = m_markers.back().get();
@@ -485,31 +487,34 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
     GLint offset_verts = 0;
     for (size_t i = 0; i < m_scenes.size(); ++i) {
         const ModelTransform& tr = m_transforms[i];
-
-        float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(i) : 0.0f;
-        glm::mat4 model = cam;
-        model = glm::translate(model, glm::vec3(off, off, off));
-        model = model * make_model_matrix(tr);
-
-        glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(model));
-
         auto vd = m_scenes[i]->to_vertex_data();
         GLsizei vc = static_cast<GLsizei>(vd.size() / 3);
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glEnable(GL_POLYGON_OFFSET_FILL);
-        glPolygonOffset(1.0f, 1.0f);
-        glUniform3f(color_loc, 1.0f, 1.0f, 1.0f);
-        glDrawArrays(GL_TRIANGLES, offset_verts, vc);
-        glDisable(GL_POLYGON_OFFSET_FILL);
+        bool hidden = (i < m_model_hidden.size() && m_model_hidden[i]);
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
-        glDrawArrays(GL_TRIANGLES, offset_verts, vc);
+        if (!hidden) {
+            float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(i) : 0.0f;
+            glm::mat4 model = cam;
+            model = glm::translate(model, glm::vec3(off, off, off));
+            model = model * make_model_matrix(tr);
 
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
-        glDrawArrays(GL_POINTS, offset_verts, vc);
+            glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(model));
+
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            glEnable(GL_POLYGON_OFFSET_FILL);
+            glPolygonOffset(1.0f, 1.0f);
+            glUniform3f(color_loc, 1.0f, 1.0f, 1.0f);
+            glDrawArrays(GL_TRIANGLES, offset_verts, vc);
+            glDisable(GL_POLYGON_OFFSET_FILL);
+
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
+            glDrawArrays(GL_TRIANGLES, offset_verts, vc);
+
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            glUniform3f(color_loc, 0.0f, 0.0f, 0.0f);
+            glDrawArrays(GL_POINTS, offset_verts, vc);
+        }
 
         offset_verts += vc;
     }
@@ -720,6 +725,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
     Scene scene;
     int total_tris = 0;
     for (size_t i = 0; i < m_scenes.size(); ++i) {
+        if (i < m_model_hidden.size() && m_model_hidden[i]) continue;
         const ModelTransform& tr = m_transforms[i];
         Transform3 cgal_tr = model_transform_to_cgal(tr);
         float off = tr.use_offset ? 1.5f * static_cast<float>(i) : 0.0f;
@@ -849,6 +855,9 @@ void Gl::reset_scene() {
     if (m_transforms.size() > 1)
         m_transforms.erase(m_transforms.begin() + 1, m_transforms.end());
 
+    if (m_model_hidden.size() > 1)
+        m_model_hidden.erase(m_model_hidden.begin() + 1, m_model_hidden.end());    
+
     constexpr size_t MARKERS_PER_MODEL = 5;
     constexpr size_t CUBE_MARKERS = MARKERS_PER_MODEL; 
 
@@ -864,6 +873,13 @@ void Gl::reset_scene() {
     upload_vertex_data();
     update_markers_positions();
     gl_area.queue_render();
+}
+
+void Gl::set_model_hidden(size_t idx, bool hidden) {
+    if (idx < m_model_hidden.size()) {
+        m_model_hidden[idx] = hidden;
+        gl_area.queue_render();
+    }
 }
 
 void Gl::focus_gl_area() {

@@ -29,10 +29,10 @@ protected:
     void load_scan();
     void load_json_scene();
     void capture_image();
-    void launch_scan();
+    void launch_full_scene_scan();
+    void launch_one_scan_per_3d_model();
     void display_cloud();
     void generate_dataset();
-    void generate_dataset_from_json();
     void launch_recognition();
     void to_fullscreen();
     void open_docs();

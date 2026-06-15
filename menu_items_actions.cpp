@@ -173,7 +173,7 @@ void MenuItemsActions::capture_image() {
     });
 }
 
-void MenuItemsActions::launch_scan() {
+void MenuItemsActions::launch_full_scene_scan() {
     _sub->signal_activate().connect([this]() {
         Gtk::FileChooserDialog dialog("Enregistrer le nuage de points", Gtk::FILE_CHOOSER_ACTION_SAVE);
         dialog.set_transient_for(as_window());
@@ -198,6 +198,81 @@ void MenuItemsActions::launch_scan() {
                 m_gl->get_lidar_config(),
                 dialog.get_filename());
         }
+    });
+}
+
+void MenuItemsActions::launch_one_scan_per_3d_model() {
+    _sub->signal_activate().connect([this]() {
+        Gtk::Dialog format_dialog("Format des scans", as_window(), true);
+        format_dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        format_dialog.add_button("Continuer", Gtk::RESPONSE_OK);
+
+        auto* fmt_area = format_dialog.get_content_area();
+        auto* fmt_box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 8);
+        fmt_box->set_margin_start(16); fmt_box->set_margin_end(16);
+        fmt_box->set_margin_top(12);   fmt_box->set_margin_bottom(12);
+
+        auto* lbl = Gtk::make_managed<Gtk::Label>("Format d'export pour tous les scans :");
+        lbl->set_xalign(0.0f);
+
+        Gtk::RadioButton::Group group;
+        auto* radio_ply = Gtk::make_managed<Gtk::RadioButton>(group, "PLY (*.ply)");
+        auto* radio_las = Gtk::make_managed<Gtk::RadioButton>(group, "LAS (*.las)");
+        radio_ply->set_active(true);
+
+        fmt_box->pack_start(*lbl,       Gtk::PACK_SHRINK);
+        fmt_box->pack_start(*radio_ply, Gtk::PACK_SHRINK);
+        fmt_box->pack_start(*radio_las, Gtk::PACK_SHRINK);
+        fmt_area->pack_start(*fmt_box,  Gtk::PACK_SHRINK);
+        format_dialog.show_all_children();
+
+        if (format_dialog.run() != Gtk::RESPONSE_OK) return;
+        std::string ext = radio_las->get_active() ? ".las" : ".ply";
+        format_dialog.hide();
+
+        Gtk::FileChooserDialog dir_dialog(
+            "Choisir le dossier de destination des scans",
+            Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
+        dir_dialog.set_transient_for(as_window());
+        dir_dialog.add_button("Annuler",      Gtk::RESPONSE_CANCEL);
+        dir_dialog.add_button("Sélectionner", Gtk::RESPONSE_OK);
+
+        if (dir_dialog.run() != Gtk::RESPONSE_OK) return;
+        std::string output_dir = dir_dialog.get_filename();
+        dir_dialog.hide();
+
+        size_t total_models = m_gl->model_count();
+        if (total_models <= 1) {
+            Gtk::MessageDialog msg(as_window(),
+                "Aucun modèle 3D importé dans la scène à scanner.",
+                false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+            msg.run();
+            return;
+        }
+
+        std::string lidar_cfg = m_gl->get_lidar_config();
+        int succes = 0;
+
+        for (size_t i = 1; i < total_models; ++i) {
+            for (size_t j = 0; j < total_models; ++j) {
+                m_gl->set_model_hidden(j, j != i);
+            }
+
+            std::string output_path = output_dir + "/scan_modele_" + std::to_string(i) + ext;
+            m_gl->run_scan(lidar_cfg, output_path);
+
+            if (std::filesystem::exists(output_path)) succes++;
+        }
+
+        for (size_t j = 0; j < total_models; ++j) {
+            m_gl->set_model_hidden(j, false);
+        }
+
+        Gtk::MessageDialog msg(as_window(),
+            std::to_string(succes) + " / " + std::to_string(total_models - 1) +
+            " scan(s) généré(s) dans :\n" + output_dir,
+            false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+        msg.run();
     });
 }
 
@@ -350,79 +425,6 @@ void MenuItemsActions::generate_dataset() {
         area->pack_start(*scroll, Gtk::PACK_EXPAND_WIDGET);
         area->show_all();
         done.run();
-    });
-}
-
-void MenuItemsActions::generate_dataset_from_json() {
-    _sub->signal_activate().connect([this]() {
-        Gtk::FileChooserDialog dialog("Choisir la scène de base (JSON)",
-                                      Gtk::FILE_CHOOSER_ACTION_OPEN);
-        dialog.set_transient_for(as_window());
-        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
-        dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
-        auto filter = Gtk::FileFilter::create();
-        filter->set_name("Scènes JSON (*.json)");
-        filter->add_pattern("*.json");
-        dialog.add_filter(filter);
-
-        if (dialog.run() != Gtk::RESPONSE_OK) return;
-        std::string scene_path = dialog.get_filename();
-
-        AssetManager assets;
-        std::vector<std::unique_ptr<LidarEntity>> lidars;
-
-        auto base_scene = std::make_unique<Scene>();
-        if (!SceneLoader::load_scene_from_json(scene_path, *base_scene, lidars, assets)) {
-            SIM_ERROR("Impossible de charger la scène : {}", scene_path);
-            return;
-        }
-        SIM_INFO("Scène de base chargée depuis {}", scene_path);
-
-        if (lidars.empty()) {
-            SIM_ERROR("Aucun lidar trouvé dans la scène : {}", scene_path);
-            return;
-        }
-
-        Pipeline pipeline;
-
-        pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(5, /*seed=*/42));
-        pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(4, 0.0, 360.0, /*seed=*/123));
-
-        auto augmented_scenes = pipeline.execute(std::move(base_scene), assets);
-        SIM_INFO("{} scènes générées par le pipeline", augmented_scenes.size());
-
-        std::filesystem::create_directories("dataset_output");
-        int exported = 0;
-
-        LidarScanner scanner;
-
-        for (size_t i = 0; i < augmented_scenes.size(); ++i) {
-            auto& scene = augmented_scenes[i];
-            scene->build();
-
-            auto cloud = scanner.scan(*lidars[0], *scene);
-
-            if (cloud.empty()) {
-                SIM_WARNING("Scène {} : aucun point scanné, ignorée", i);
-                continue;
-            }
-
-            std::string out_path = "dataset_output/scan_" + std::to_string(i) + ".ply";
-            PlyExporter exporter;
-            try {
-                exporter.save(out_path, cloud);
-                SIM_INFO("Exporté : {} ({} points)", out_path, cloud.size());
-                exported++;
-            } catch (const std::exception& e) {
-                SIM_ERROR("Erreur export {} : {}", out_path, e.what());
-            }
-        }
-
-        Gtk::MessageDialog msg(as_window(),
-            std::to_string(exported) + " / " + std::to_string(augmented_scenes.size()) +
-            " scène(s) exportée(s) dans dataset_output/",
-            false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
-        msg.run();
     });
 }
 
