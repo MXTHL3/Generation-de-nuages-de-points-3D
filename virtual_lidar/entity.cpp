@@ -66,22 +66,21 @@ std::vector<Ray3> MechanicalLidarEntity::scan(double parameter) const {
 std::vector<Ray3> generate_ray_grid(
     const Point3& origin,
     const Transform3& world_xf,
-    double fov_h, double fov_v,
+    double fov_h_min, double fov_h_max,
+    double fov_v_min, double fov_v_max,
     int res_h, int res_v)
     {
         std::vector<Ray3> rays;
 
         Vector3 translation_effect = world_xf.transform(Vector3(0, 0, 0));
 
-        double h_start = -fov_h / 2.0;
-        double v_start = -fov_v / 2.0;
-        double h_step = fov_h / static_cast<double>(res_h);
-        double v_step = fov_v / static_cast<double>(res_v);
+        double h_step = fov_h_max - fov_h_min / static_cast<double>(res_h);
+        double v_step = fov_v_max - fov_v_min / static_cast<double>(res_v);
 
         for(int v = 0; v < res_v; v++){
-            double v_angle = v_start + v * v_step;
+            double v_angle = fov_v_min + v * v_step;
             for(int h = 0; h < res_h; h++){
-                double h_angle = h_start + h * h_step;
+                double h_angle = fov_h_min + h * h_step;
 
                 Vector3 dir(std::cos(v_angle) * std::cos(h_angle),
                     std::cos(v_angle) * std::sin(h_angle),
@@ -102,10 +101,11 @@ std::unique_ptr<IEntity> FlashLidarEntity::clone() const {
     return std::make_unique<FlashLidarEntity>(*this);
 }
 
-std::vector<Ray3> FlashLidarEntity::generate_rays() const {
+std::vector<Ray3> FlashLidarEntity::generate_rays(double duration) const {
     const auto& l_config = config();
     return generate_ray_grid(m_pose.pos(), transform(),
-    l_config.m_fov_h, l_config.m_fov_v, 
+    l_config.m_fov_h_min, l_config.m_fov_h_max,
+    l_config.m_fov_v_min, l_config.m_fov_v_max,
     l_config.m_resolution_h, l_config.m_resolution_v);
 }
 
@@ -146,8 +146,8 @@ std::vector<Ray3> MirroredLidarEntity::generate_lissajou(double duration) const 
         double h_angle = lissajou_params.m_amplitude_h * std::sin(2.0 * M_PI * lissajou_params.m_freq_h * t);
         double v_angle = lissajou_params.m_amplitude_v * std::sin(2.0 * M_PI * lissajou_params.m_freq_v * t + lissajou_params.m_phase_diff);
 
-        if(std::abs(h_angle) > half_fov_h || std::abs(v_angle) > half_fov_v)
-            continue;
+        if(h_angle < cfg.m_fov_h_min || h_angle > cfg.m_fov_h_max) continue; 
+        if(v_angle < cfg.m_fov_v_min || v_angle > cfg.m_fov_v_max) continue;
         
         Vector3 dir(std::cos(v_angle) * std::cos(h_angle),
                 std::cos(v_angle) * std::sin(h_angle),
@@ -164,6 +164,7 @@ std::vector<Ray3> MirroredLidarEntity::generate_raster() const {
     const auto& cfg = config();
     const auto& raster_cfg = std::get<RasterParams>(cfg.m_mirrored_scan_params);
     return generate_ray_grid(m_pose.pos(), transform(),
-    cfg.m_fov_h, cfg.m_fov_v, 
+    cfg.m_fov_h_min, cfg.m_fov_h_max, 
+    cfg.m_fov_v_min, cfg.m_fov_h_max, 
     raster_cfg.resolution_h, raster_cfg.resolution_v);
 }
