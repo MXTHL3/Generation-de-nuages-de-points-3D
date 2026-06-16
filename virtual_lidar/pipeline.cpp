@@ -1,4 +1,5 @@
 #include "pipeline.hpp"
+#include "units.hpp"
 #include "pose.hpp"
 #include "logger.hpp"
 
@@ -276,9 +277,12 @@ std::vector<std::unique_ptr<Scene>> GridPositionLayoutAugmentation::process(std:
             const std::pair<double, double>& current_object_pose = grid_points[i];
             auto variation_scene = std::make_unique<Scene>(*base_scene);
             for(const auto& entity : variation_scene->entities()){
-                Pose grid_pos({{current_object_pose.first, current_object_pose.second, 0},
-                                0, 0,entity->pose().pos().z()});
-                entity->pose(grid_pos);    
+                if(entity->name() == m_object_name){
+                    Pose grid_pos({{current_object_pose.first, current_object_pose.second, 0},
+                        to_degrees(entity->pose().rx()), to_degrees(entity->pose().ry()), to_degrees(entity->pose().rz())});
+                    entity->pose(grid_pos);
+                    break;
+                }    
             }
             output.push_back(std::move(variation_scene));
         }
