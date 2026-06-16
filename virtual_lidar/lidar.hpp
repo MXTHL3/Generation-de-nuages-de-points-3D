@@ -34,6 +34,7 @@ protected:
 
     /// @brief Serialise le profil de bruit.
     void serialize_noise_profile(nlohmann::json& data) const;
+    std::string noise_to_string() const;
 };
 
 /// @brief Configuration d'un lidar mécanique rotatif.
@@ -75,11 +76,13 @@ class FlashLidarConfig : public LidarConfig {
 public:    
     int m_resolution_h; ///< Nombre de pixels horizontaux.
     int m_resolution_v; ///< Nombre de pixels verticaux.
-    double m_fov_h;     ///< Champ de vision horizontal (radians).
-    double m_fov_v;     ///< Champ de vision vertical (radians).
+    double m_fov_h_min; ///< Borne inférieure champ de vision horizontal (radians).
+    double m_fov_h_max; ///< Borne supérieure champ de vision horizontal (radians).
+    double m_fov_v_min; ///< Borne inférieure champ de vision vertical (radians).
+    double m_fov_v_max; ///< Borne inférieure champ de vision vertical (radians).
 
     FlashLidarConfig(std::string name, double min_dist, double max_dist, double accuracy, 
-        int res_h, int res_v, double fov_h, double fov_v);
+        int res_h, int res_v, double fov_h_min, double fov_h_max, double fov_v_min, double fov_v_max);
     
     void serialize(nlohmann::json& data) const override;
 
@@ -104,8 +107,10 @@ class MirroredLidarConfig : public LidarConfig {
 public:
     int m_points_per_second;        ///< Tir par secondes
 
-    double m_fov_h;                 ///< Fov horizontal maximal (radians)
-    double m_fov_v;                 ///< Fov vertical maximal (radians)
+    double m_fov_h_min; ///< Borne inférieure champ de vision horizontal (radians).
+    double m_fov_h_max; ///< Borne supérieure champ de vision horizontal (radians).
+    double m_fov_v_min; ///< Borne inférieure champ de vision vertical (radians).
+    double m_fov_v_max; ///< Borne inférieure champ de vision vertical (radians).
     double m_integration_time;      ///< Durée d'acumulation d'une frame (secondes)
 
     std::variant<LissajouParams, RasterParams> m_mirrored_scan_params; ///< contient les paramètres pour lissajou ou raster
@@ -114,7 +119,7 @@ public:
     bool is_raster() const;
 
     MirroredLidarConfig(std::string name, double min_dist, double max_dist, double accuracy,
-        int points_per_second, double fov_h, double fov_v, double integration_time);
+        int points_per_second, double fov_h_min, double fov_h_max, double fov_v_min, double fov_v_max, double integration_time);
 
     void serialize(nlohmann::json& data) const override;
 

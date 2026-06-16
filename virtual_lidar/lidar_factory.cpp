@@ -88,10 +88,6 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
     }
 
     SIM_DEBUG("Resolution horizontale calculée : {:.2f} degrés", lidar_config->horizontal_step());
-    
-    for(const auto& laser : data.at("lasers")){
-        lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
-    }
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
 
@@ -100,7 +96,7 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
 
 std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::json &data){
     bool has_res = data.contains("resolution_h") && data.contains("resolution_v");
-    bool has_fov = data.contains("fov_h") && data.contains("fov_v");
+    bool has_fov = data.contains("fov_h_min") && data.contains("fov_v_min");
     bool has_angr = data.contains("angular_resolution_h") && data.contains("angular_resolution_v");
     
     FlashFovResolution params;
@@ -108,33 +104,47 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
     if(has_res && has_fov){
         params.res_h = data["resolution_h"].get<int>();
         params.res_v = data["resolution_v"].get<int>();
-        params.fov_h = data["fov_h"].get<double>();
-        params.fov_v = data["fov_v"].get<double>();
+        params.fov_h_min = data["fov_h_min"].get<double>();
+        params.fov_h_max = data["fov_h_max"].get<double>();
+        params.fov_v_min = data["fov_v_min"].get<double>();
+        params.fov_v_max = data["fov_v_max"].get<double>();
     }
 
-    if(has_angr && has_fov){
+    else if(has_angr && has_fov){
         double angular_resolution_h = data["angular_resolution_h"].get<double>();
         double angular_resolution_v = data["angular_resolution_v"].get<double>();
-        params.fov_h = data["fov_h"].get<double>();
-        params.fov_v = data["fov_v"].get<double>();
-        params.res_h = static_cast<int>(params.fov_h / angular_resolution_h);
-        params.res_v = static_cast<int>(params.fov_v / angular_resolution_v);
+        params.fov_h_min = data["fov_h_min"].get<double>();
+        params.fov_h_max = data["fov_h_max"].get<double>();
+        params.fov_v_min = data["fov_v_min"].get<double>();
+        params.fov_v_max = data["fov_v_max"].get<double>();
+        params.res_h = static_cast<int>(params.fov_h_max - params.fov_h_min / angular_resolution_h);
+        params.res_v = static_cast<int>(params.fov_v_max - params.fov_v_min / angular_resolution_v);
     }
 
-    if(has_angr && has_res){
+    else if(has_angr && has_res){
         double angular_resolution_h = data["angular_resolution_h"].get<double>();
         double angular_resolution_v = data["angular_resolution_v"].get<double>();
         params.res_h = data["resolution_h"].get<int>();
         params.res_v = data["resolution_v"].get<int>();
-        params.fov_h = params.res_h * angular_resolution_h;
-        params.fov_v = params.res_v * angular_resolution_v;
+        double amplitude_h = params.res_h * angular_resolution_h;
+        params.fov_h_min = - amplitude_h / 2.0;
+        params.fov_h_max = amplitude_h / 2.0;
+        double amplitude_v = params.res_v * angular_resolution_v;
+        params.fov_v_min = - amplitude_v / 2.0;
+        params.fov_v_max = amplitude_v / 2.0;
+    }
+
+    else {
+        SIM_ERROR("Flash lidar {} : paramètres manquants", data.at("model").get<std::string>());
+        return nullptr;
     }
     
     auto lidar_config = std::make_shared<FlashLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), 
         data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
         params.res_h, params.res_v,
-        to_radians(params.fov_h), to_radians(params.fov_v)
+        to_radians(params.fov_h_min), to_radians(params.fov_h_max),
+        to_radians(params.fov_v_min), to_radians(params.fov_v_max)
     );
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
@@ -144,8 +154,11 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
 
 std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
     auto lidar_config = std::make_shared<MirroredLidarConfig>(
-        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
-        data.at("points_per_second").get<int>(), data.at("fov_h").get<double>(), data.at("fov_v").get<double>(), data.at("integration_time").get<double>() 
+        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(),
+        data.at("noise_resolution").get<double>(), data.at("points_per_second").get<int>(), 
+        data.at("fov_h_min").get<double>(), data.at("fov_h_max").get<double>(),
+        data.at("fov_v_min").get<double>(), data.at("fov_v_max").get<double>(),
+        data.at("integration_time").get<double>() 
     );
 
     std::string mode = data.value("scan_mode", "lissajou");
