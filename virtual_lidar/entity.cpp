@@ -74,8 +74,8 @@ std::vector<Ray3> generate_ray_grid(
 
         Vector3 translation_effect = world_xf.transform(Vector3(0, 0, 0));
 
-        double h_step = fov_h_max - fov_h_min / static_cast<double>(res_h);
-        double v_step = fov_v_max - fov_v_min / static_cast<double>(res_v);
+        double h_step = (fov_h_max - fov_h_min) / static_cast<double>(res_h);
+        double v_step = (fov_v_max - fov_v_min) / static_cast<double>(res_v);
 
         for(int v = 0; v < res_v; v++){
             double v_angle = fov_v_min + v * v_step;
