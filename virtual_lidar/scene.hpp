@@ -10,14 +10,15 @@ typedef CGAL::AABB_triangle_primitive<K, std::vector<Triangle3>::iterator> Primi
 typedef CGAL::AABB_traits<K, Primitive> Traits;
 typedef CGAL::AABB_tree<Traits> Tree;
 
-// Interressant pour la récupération des faces intersectées pour l'interface graphique
+/// @brief Resultat d'une intersection rayon-triangle.
 struct Intersection {
-    Point3 point;
-    double distance;
-    size_t face_index;
+    Point3 point; ///< Point d'impact dans le repère global
+    double distance; ///< Ditance entre l'orgine du rayon et le point d'impact (mètres)
+    size_t face_index; ///< Indice du triangle intersecté dans le tableau d'une Scene
 };
 
-
+/// @brief Scène 3D contenant les entités statiques et l'arbre d'accélération AABB.
+/// La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l'intersection rayon_triangle via CGAL.
 class Scene {
 public:
 
@@ -26,28 +27,30 @@ public:
         m_triangles.clear();
         m_tree.reset();
     }
+    /// @brief Constructeur de copie
     Scene(const Scene& scene);
-    // ajoute un objet à la scène
+
+    /// @brief Ajoute une entité statique à la scène
     void add_static_entity(std::unique_ptr<StaticEntity> ent);
 
-    std::vector<Point3> scan(size_t lidar_id = 0, double parameter = 0.0) const;
-
-    // ajoute des meshs dans la scène
+    /// @brief Construit l'arbre AABB à partir des triangle transformés.
+    /// Doit être appelé pour être mit à jour si des entités sont rajoutées.
     void build();
 
-    // retourne le point d'intersection du rayon
+    /// @brief Lance un rayon et retourne pottentiellement l'intersection la plus proche de l'origine du rayon.
+    /// @param ray Rayon à intersecter (origine et direction)
+    /// @return L'intersection trouvée s'il en trouve sinon boost::none
     boost::optional<Intersection> intersect(const Ray3& ray) const;
 
+    /// @brief Accès en lecture aux entités de la scène
     const std::vector<std::unique_ptr<StaticEntity>>& entities() const { return m_entities; }
 
 private:
-    // les objets à rendre dans la scène
-    std::vector<std::unique_ptr<StaticEntity>> m_entities;
+    std::vector<std::unique_ptr<StaticEntity>> m_entities; ///< Objets de la scène
 
-    // les triangles à rendre dans la scène
-    std::vector<Triangle3> m_triangles;
-    // structure d'arbre de la scene pour calculer un rendu plus rapide O(log n) > O(n)
-    std::unique_ptr<Tree> m_tree;
+
+    std::vector<Triangle3> m_triangles; ///< Triangles transformés des maillages de la scène
+    std::unique_ptr<Tree> m_tree; ///< structure d'arbre AABB de la scene pour calculer les intersections plus rapidement O(log n) > O(n)
 };
 
 #endif
