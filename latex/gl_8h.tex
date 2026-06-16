@@ -21,17 +21,16 @@
 {\ttfamily \#include \char`\"{}lidar\+\_\+factory.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}point\+\_\+cloud\+\_\+exporter.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lidar\+\_\+scanner.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}cgal\+\_\+glm\+\_\+utils.\+h\char`\"{}}\newline
-Include dependency graph for gl.\+h\+:
-\nopagebreak
+Include dependency graph for gl.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{gl_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,6 +41,6 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structModelTransform}{Model\+Transform}}
-\item 
+\begin{DoxyCompactList}\small\item\em Transformation affine d\textquotesingle{}un modèle 3D dans la scène Open\+GL. Regroupe translation, rotation (Euler XYZ, radians) et échelle uniforme. Le flag use\+\_\+offset active un décalage automatique pour éviter la superposition des modèles chargés successivement. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classGl}{Gl}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Moteur de rendu Open\+GL/\+GTK \+: scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/\+VBO, les shaders, les marqueurs de transformation interactifs et l\textquotesingle{}interface avec le scanner lidar (run\+\_\+scan). \end{DoxyCompactList}\end{DoxyCompactItemize}

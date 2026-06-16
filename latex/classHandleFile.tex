@@ -2,11 +2,17 @@
 \label{classHandleFile}\index{HandleFile@{HandleFile}}
 
 
+Gestion de l\textquotesingle{}ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins des modèles chargés dans la session.  
+
+
+
+
 {\ttfamily \#include $<$handle\+\_\+file.\+h$>$}
 
 
 
-Collaboration diagram for Handle\+File\+:\nopagebreak
+Collaboration diagram for Handle\+File\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,10 +23,13 @@ Collaboration diagram for Handle\+File\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classHandleFile_a401d9e94440805417ca6b7bf2bc8f633}{open\+\_\+model}} (Gtk\+::\+Window \&parent, std\+::function$<$ void(const std\+::string \&)$>$ on\+\_\+loaded)
-\item 
+\begin{DoxyCompactList}\small\item\em Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et appelle le callback. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classHandleFile_a903c7d06ee445b392250ad04d20c704e}{loaded\+\_\+models}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retourne la liste des chemins des modèles ouverts depuis le début de la session. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Gestion de l\textquotesingle{}ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins des modèles chargés dans la session. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classHandleFile_a903c7d06ee445b392250ad04d20c704e}\label{classHandleFile_a903c7d06ee445b392250ad04d20c704e}} 
@@ -29,13 +38,32 @@ const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classHandleFile_a90
 \doxysubsubsection{\texorpdfstring{loaded\_models()}{loaded\_models()}}
 {\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& Handle\+File\+::loaded\+\_\+models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne la liste des chemins des modèles ouverts depuis le début de la session. 
+
+\begin{DoxyReturn}{Returns}
+Référence constante vers le vecteur de chemins. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classHandleFile_a401d9e94440805417ca6b7bf2bc8f633}\label{classHandleFile_a401d9e94440805417ca6b7bf2bc8f633}} 
 \index{HandleFile@{HandleFile}!open\_model@{open\_model}}
 \index{open\_model@{open\_model}!HandleFile@{HandleFile}}
 \doxysubsubsection{\texorpdfstring{open\_model()}{open\_model()}}
 {\footnotesize\ttfamily void Handle\+File\+::open\+\_\+model (\begin{DoxyParamCaption}\item[{Gtk\+::\+Window \&}]{parent,  }\item[{std\+::function$<$ void(const std\+::string \&)$>$}]{on\+\_\+loaded }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+
+
+Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et appelle le callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Fenêtre parente pour la boîte de dialogue modale. \\
+\hline
+{\em on\+\_\+loaded} & Callback appelé avec le chemin du fichier sélectionné. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

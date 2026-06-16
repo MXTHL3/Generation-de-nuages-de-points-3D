@@ -1,4 +1,4 @@
 <map id="GLShadersUtils::compile_shader" name="GLShadersUtils::compile_shader">
-<area shape="rect" id="node1" title=" " alt="" coords="215,5,396,47"/>
-<area shape="rect" id="node2" href="$classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node1" title="Compile un shader OpenGL et affiche les éventuelles erreurs." alt="" coords="215,5,396,47"/>
+<area shape="rect" id="node2" href="$classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title="Compile et lie un programme GLSL complet depuis les sources." alt="" coords="5,5,167,47"/>
 </map>

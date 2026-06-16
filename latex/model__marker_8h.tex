@@ -11,8 +11,7 @@ Include dependency graph for model\+\_\+marker.\+h\+:\nopagebreak
 \includegraphics[width=350pt]{model__marker_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +22,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classModelMarker}{Model\+Marker}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d\textquotesingle{}un clic ou d\textquotesingle{}un drag pour piloter la transformation du modèle 3D associé. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,7 +42,7 @@ enum class \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{
 , \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa80fcd632dc2558177aaf6f8f5cd57678}{rz}}
 , \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034}{s}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Types de marqueurs de transformation interactifs. Les valeurs prefixées par \char`\"{}unabled\char`\"{} indiquent un marqueur désactivé/invisible. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -52,6 +51,10 @@ enum class \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{
 \index{MarkerType@{MarkerType}!model\_marker.h@{model\_marker.h}}
 \doxysubsubsection{\texorpdfstring{MarkerType}{MarkerType}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Types de marqueurs de transformation interactifs. Les valeurs prefixées par \char`\"{}unabled\char`\"{} indiquent un marqueur désactivé/invisible. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{unabledx@{unabledx}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!unabledx@{unabledx}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa6f6405a641876e661604d09346d2804f}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa6f6405a641876e661604d09346d2804f}} 
@@ -67,11 +70,11 @@ unabledz&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{unableds@{unableds}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!unableds@{unableds}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa708ca8ec102c57aaeac45512ce262b19}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa708ca8ec102c57aaeac45512ce262b19}} 
-unableds&\\
+unableds&Marqueurs désactivés (cachés). \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{center@{center}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!center@{center}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667}} 
-center&\\
+center&Marqueur central (clic = cycle de mode). \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{tx@{tx}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!tx@{tx}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa7da685001e153f41a83eb6255069dc3d}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa7da685001e153f41a83eb6255069dc3d}} 
@@ -83,7 +86,7 @@ ty&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{tz@{tz}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!tz@{tz}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa73bb4387b3075739eacb9cd62ac4049c}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa73bb4387b3075739eacb9cd62ac4049c}} 
-tz&\\
+tz&Marqueurs de translation sur X, Y, Z. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{rx@{rx}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!rx@{rx}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc}} 
@@ -95,11 +98,11 @@ ry&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{rz@{rz}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!rz@{rz}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa80fcd632dc2558177aaf6f8f5cd57678}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa80fcd632dc2558177aaf6f8f5cd57678}} 
-rz&\\
+rz&Marqueurs de rotation autour de X, Y, Z. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{s@{s}!model\_marker.h@{model\_marker.h}}\index{model\_marker.h@{model\_marker.h}!s@{s}}}\mbox{\Hypertarget{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034}\label{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034}} 
-s&\\
+s&Marqueur d\textquotesingle{}échelle uniforme. \\
 \hline
 
 \end{DoxyEnumFields}

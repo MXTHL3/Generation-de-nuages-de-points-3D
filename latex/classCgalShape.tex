@@ -2,6 +2,11 @@
 \label{classCgalShape}\index{CgalShape@{CgalShape}}
 
 
+Implémentation concrète de \mbox{\hyperlink{classCgal}{Cgal}} pour la construction de maillages. Prend en charge la génération d\textquotesingle{}un cube procédural et le chargement de fichiers 3D (OBJ en natif, PLY/\+OFF/\+STL via CGAL I/O).  
+
+
+
+
 {\ttfamily \#include $<$cgal\+\_\+shape.\+h$>$}
 
 
@@ -26,11 +31,14 @@ Collaboration diagram for Cgal\+Shape\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb}{build\+\_\+cube\+\_\+mesh}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Construit un cube unitaire centré à l\textquotesingle{}origine (12 triangles). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86}{build\+\_\+mesh\+\_\+from\+\_\+file}} (const std\+::string \&filename) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Charge un maillage depuis un fichier 3D. Les fichiers OBJ sont parsés manuellement ; PLY, OFF et STL utilisent CGAL\+::\+IO\+::read\+\_\+polygon\+\_\+mesh avec triangulation automatique. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+Implémentation concrète de \mbox{\hyperlink{classCgal}{Cgal}} pour la construction de maillages. Prend en charge la génération d\textquotesingle{}un cube procédural et le chargement de fichiers 3D (OBJ en natif, PLY/\+OFF/\+STL via CGAL I/O). 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb}\label{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb}} 
@@ -38,6 +46,10 @@ void \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86}{build\+\
 \index{build\_cube\_mesh@{build\_cube\_mesh}!CgalShape@{CgalShape}}
 \doxysubsubsection{\texorpdfstring{build\_cube\_mesh()}{build\_cube\_mesh()}}
 {\footnotesize\ttfamily void Cgal\+Shape\+::build\+\_\+cube\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Construit un cube unitaire centré à l\textquotesingle{}origine (12 triangles). 
 
 
 
@@ -56,6 +68,15 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{build\_mesh\_from\_file()}{build\_mesh\_from\_file()}}
 {\footnotesize\ttfamily void Cgal\+Shape\+::build\+\_\+mesh\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+
+
+Charge un maillage depuis un fichier 3D. Les fichiers OBJ sont parsés manuellement ; PLY, OFF et STL utilisent CGAL\+::\+IO\+::read\+\_\+polygon\+\_\+mesh avec triangulation automatique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Chemin vers le fichier source. \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classCgal_a582f120c6f9545cf82c51bc747712b07}{Cgal}}.

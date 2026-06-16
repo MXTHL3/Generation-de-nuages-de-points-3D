@@ -70,13 +70,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d'un clic ou d'un drag pour piloter la transformation du modèle 3D associé.  
+ <a href="classModelMarker.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="model__marker_8h_source.html">model_marker.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ModelMarker:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModelMarker__inherit__graph.png" border="0" usemap="#aModelMarker_inherit__map" alt="Inheritance graph"/></div>
 <map name="aModelMarker_inherit__map" id="aModelMarker_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,131,180,369"/>
+<area shape="rect" title="Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo,..." alt="" coords="5,131,180,369"/>
 <area shape="rect" title=" " alt="" coords="24,5,161,83"/>
 </map>
 </div>
@@ -85,7 +88,7 @@ Collaboration diagram for ModelMarker:</div>
 <div class="dyncontent">
 <div class="center"><img src="classModelMarker__coll__graph.png" border="0" usemap="#aModelMarker_coll__map" alt="Collaboration graph"/></div>
 <map name="aModelMarker_coll__map" id="aModelMarker_coll__map">
-<area shape="rect" title=" " alt="" coords="5,131,180,369"/>
+<area shape="rect" title="Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo,..." alt="" coords="5,131,180,369"/>
 <area shape="rect" title=" " alt="" coords="24,5,161,83"/>
 </map>
 </div>
@@ -93,36 +96,51 @@ Collaboration diagram for ModelMarker:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b13b1e776240afc2107fe8c9c1778eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a7b13b1e776240afc2107fe8c9c1778eb">ModelMarker</a> (Gtk::Fixed *parent, const glm::vec3 &amp;local_pos, float zoom, <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a> type, const glm::vec3 &amp;color, int <a class="el" href="classModelMarker.html#a8bf3ea5b5b764ab941f377f819079d7c">model_index</a>=0)</td></tr>
+<tr class="memdesc:a7b13b1e776240afc2107fe8c9c1778eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un marqueur et l'attache au conteneur fixe parent.  <a href="classModelMarker.html#a7b13b1e776240afc2107fe8c9c1778eb">More...</a><br /></td></tr>
 <tr class="separator:a7b13b1e776240afc2107fe8c9c1778eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f82987a8a60fe1c6b1dc20b6ee14c72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a3f82987a8a60fe1c6b1dc20b6ee14c72">set_position</a> (double x, double y)</td></tr>
+<tr class="memdesc:a3f82987a8a60fe1c6b1dc20b6ee14c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace le marqueur à une position écran donnée.  <a href="classModelMarker.html#a3f82987a8a60fe1c6b1dc20b6ee14c72">More...</a><br /></td></tr>
 <tr class="separator:a3f82987a8a60fe1c6b1dc20b6ee14c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19691a0a72cfcecd7d19644790e94959"><td class="memItemLeft" align="right" valign="top"><a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a19691a0a72cfcecd7d19644790e94959">get_marker_type</a> () const</td></tr>
+<tr class="memdesc:a19691a0a72cfcecd7d19644790e94959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le type courant du marqueur.  <a href="classModelMarker.html#a19691a0a72cfcecd7d19644790e94959">More...</a><br /></td></tr>
 <tr class="separator:a19691a0a72cfcecd7d19644790e94959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ebbcaa32109fefd7a3b9b08fe6d3618"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a1ebbcaa32109fefd7a3b9b08fe6d3618">set_marker_type</a> (<a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a> mt)</td></tr>
+<tr class="memdesc:a1ebbcaa32109fefd7a3b9b08fe6d3618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace le type du marqueur et met à jour sa visibilité.  <a href="classModelMarker.html#a1ebbcaa32109fefd7a3b9b08fe6d3618">More...</a><br /></td></tr>
 <tr class="separator:a1ebbcaa32109fefd7a3b9b08fe6d3618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a827396fccee2d8331d8b62ac84e9e5ec"><td class="memItemLeft" align="right" valign="top">const glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a827396fccee2d8331d8b62ac84e9e5ec">local_position</a> () const</td></tr>
+<tr class="memdesc:a827396fccee2d8331d8b62ac84e9e5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la position locale 3D du marqueur (coordonnées objet).  <a href="classModelMarker.html#a827396fccee2d8331d8b62ac84e9e5ec">More...</a><br /></td></tr>
 <tr class="separator:a827396fccee2d8331d8b62ac84e9e5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bf3ea5b5b764ab941f377f819079d7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a8bf3ea5b5b764ab941f377f819079d7c">model_index</a> () const</td></tr>
+<tr class="memdesc:a8bf3ea5b5b764ab941f377f819079d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'index du modèle 3D auquel ce marqueur est rattaché.  <a href="classModelMarker.html#a8bf3ea5b5b764ab941f377f819079d7c">More...</a><br /></td></tr>
 <tr class="separator:a8bf3ea5b5b764ab941f377f819079d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2711585b03c0409e5cb01dd9de2e4935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a2711585b03c0409e5cb01dd9de2e4935">set_center_marker</a> (<a class="el" href="classModelMarker.html">ModelMarker</a> *<a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667">center</a>)</td></tr>
+<tr class="memdesc:a2711585b03c0409e5cb01dd9de2e4935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associe un marqueur central à ce marqueur (pour le dessin du trait).  <a href="classModelMarker.html#a2711585b03c0409e5cb01dd9de2e4935">More...</a><br /></td></tr>
 <tr class="separator:a2711585b03c0409e5cb01dd9de2e4935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19c83c95a27b1de9bf8d4f2ac96d103a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classModelMarker.html">ModelMarker</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a19c83c95a27b1de9bf8d4f2ac96d103a">get_center_marker</a> () const</td></tr>
+<tr class="memdesc:a19c83c95a27b1de9bf8d4f2ac96d103a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le marqueur central associé.  <a href="classModelMarker.html#a19c83c95a27b1de9bf8d4f2ac96d103a">More...</a><br /></td></tr>
 <tr class="separator:a19c83c95a27b1de9bf8d4f2ac96d103a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2703eacefdf61a885887de1c53911e8d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a2703eacefdf61a885887de1c53911e8d">screen_x</a> () const</td></tr>
+<tr class="memdesc:a2703eacefdf61a885887de1c53911e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la coordonnée X écran courante du marqueur (pixels).  <a href="classModelMarker.html#a2703eacefdf61a885887de1c53911e8d">More...</a><br /></td></tr>
 <tr class="separator:a2703eacefdf61a885887de1c53911e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade4d5424505ecc2493445f49916a571d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#ade4d5424505ecc2493445f49916a571d">screen_y</a> () const</td></tr>
+<tr class="memdesc:ade4d5424505ecc2493445f49916a571d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la coordonnée Y écran courante du marqueur (pixels).  <a href="classModelMarker.html#ade4d5424505ecc2493445f49916a571d">More...</a><br /></td></tr>
 <tr class="separator:ade4d5424505ecc2493445f49916a571d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa9fe141915e403914a8640f6ee00ed16"><td class="memItemLeft" align="right" valign="top">sigc::signal&lt; void(<a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#aa9fe141915e403914a8640f6ee00ed16">signal_clicked</a></td></tr>
+<tr class="memdesc:aa9fe141915e403914a8640f6ee00ed16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal émis lors d'un clic sur le marqueur.  <a href="classModelMarker.html#aa9fe141915e403914a8640f6ee00ed16">More...</a><br /></td></tr>
 <tr class="separator:aa9fe141915e403914a8640f6ee00ed16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32a468119f357ff2d640b61ef3bb810a"><td class="memItemLeft" align="right" valign="top">sigc::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#a32a468119f357ff2d640b61ef3bb810a">signal_request_focus</a></td></tr>
+<tr class="memdesc:a32a468119f357ff2d640b61ef3bb810a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal émis pour redonner le focus clavier à la GLArea.  <a href="classModelMarker.html#a32a468119f357ff2d640b61ef3bb810a">More...</a><br /></td></tr>
 <tr class="separator:a32a468119f357ff2d640b61ef3bb810a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abad7780df03967ae4cf6832373459a30"><td class="memItemLeft" align="right" valign="top">sigc::signal&lt; void(<a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a>, int, double, double)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html#abad7780df03967ae4cf6832373459a30">signal_dragged</a></td></tr>
+<tr class="memdesc:abad7780df03967ae4cf6832373459a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal émis lors d'un drag, avec le déplacement en pixels.  <a href="classModelMarker.html#abad7780df03967ae4cf6832373459a30">More...</a><br /></td></tr>
 <tr class="separator:abad7780df03967ae4cf6832373459a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d'un clic ou d'un drag pour piloter la transformation du modèle 3D associé. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b13b1e776240afc2107fe8c9c1778eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b13b1e776240afc2107fe8c9c1778eb">&#9670;&nbsp;</a></span>ModelMarker()</h2>
 
@@ -173,6 +191,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Construit un marqueur et l'attache au conteneur fixe parent. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Conteneur GTK fixe dans lequel le marqueur est positionné. </td></tr>
+    <tr><td class="paramname">local_pos</td><td>Position locale 3D du marqueur (en coordonnées objet). </td></tr>
+    <tr><td class="paramname">zoom</td><td>Zoom courant de la caméra (utilisé à la création). </td></tr>
+    <tr><td class="paramname">type</td><td>Type du marqueur (translation, rotation, échelle, centre…). </td></tr>
+    <tr><td class="paramname">color</td><td>Couleur RGB du marqueur. </td></tr>
+    <tr><td class="paramname">model_index</td><td>Index du modèle 3D auquel ce marqueur est rattaché. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -199,6 +230,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne le marqueur central associé. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointeur vers le marqueur central, nullptr si non défini. </dd></dl>
+
 </div>
 </div>
 <a id="a19691a0a72cfcecd7d19644790e94959"></a>
@@ -223,6 +257,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne le type courant du marqueur. </p>
 
 </div>
 </div>
@@ -249,6 +285,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne la position locale 3D du marqueur (coordonnées objet). </p>
+
 </div>
 </div>
 <a id="a8bf3ea5b5b764ab941f377f819079d7c"></a>
@@ -273,6 +311,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne l'index du modèle 3D auquel ce marqueur est rattaché. </p>
 
 </div>
 </div>
@@ -299,6 +339,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne la coordonnée X écran courante du marqueur (pixels). </p>
+
 </div>
 </div>
 <a id="ade4d5424505ecc2493445f49916a571d"></a>
@@ -323,6 +365,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne la coordonnée Y écran courante du marqueur (pixels). </p>
 
 </div>
 </div>
@@ -350,6 +394,14 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Associe un marqueur central à ce marqueur (pour le dessin du trait). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>Pointeur vers le marqueur central du même modèle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a1ebbcaa32109fefd7a3b9b08fe6d3618"></a>
@@ -367,6 +419,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Remplace le type du marqueur et met à jour sa visibilité. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mt</td><td>Nouveau type à appliquer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -396,6 +456,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Déplace le marqueur à une position écran donnée. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Coordonnée X en pixels dans le widget. </td></tr>
+    <tr><td class="paramname">y</td><td>Coordonnée Y en pixels dans le widget. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -411,6 +481,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Signal émis lors d'un clic sur le marqueur. </p>
+
 </div>
 </div>
 <a id="abad7780df03967ae4cf6832373459a30"></a>
@@ -425,6 +497,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Signal émis lors d'un drag, avec le déplacement en pixels. </p>
+<p>Paramètres : type du marqueur, index du modèle, dx, dy. </p>
+
 </div>
 </div>
 <a id="a32a468119f357ff2d640b61ef3bb810a"></a>
@@ -438,6 +513,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Signal émis pour redonner le focus clavier à la GLArea. </p>
 
 </div>
 </div>

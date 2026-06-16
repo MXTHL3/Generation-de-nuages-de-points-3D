@@ -1,8 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classIEntity.html" title=" " alt="" coords="5,81,69,108"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html" title=" " alt="" coords="120,56,212,83"/>
-<area shape="rect" id="node6" href="$classStaticEntity.html" title=" " alt="" coords="117,107,215,133"/>
-<area shape="rect" id="node3" href="$classFlashLidarEntity.html" title=" " alt="" coords="283,5,409,32"/>
-<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html" title=" " alt="" coords="263,56,429,83"/>
-<area shape="rect" id="node5" href="$classMirroredLidarEntity.html" title=" " alt="" coords="273,107,419,133"/>
+<area shape="rect" id="node1" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="5,81,69,108"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="120,56,212,83"/>
+<area shape="rect" id="node6" href="$classStaticEntity.html" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="117,107,215,133"/>
+<area shape="rect" id="node3" href="$classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="283,5,409,32"/>
+<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="263,56,429,83"/>
+<area shape="rect" id="node5" href="$classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="273,107,419,133"/>
 </map>

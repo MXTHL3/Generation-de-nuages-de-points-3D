@@ -71,14 +71,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Interface de base pour la construction et la manipulation d'un maillage CGAL. Fournit les opérations bas-niveau (ajout de sommets, de faces) et l'export des données de rendu. Les sous-classes implémentent les méthodes de construction.  
+ <a href="classCgal.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cgal_8h_source.html">cgal.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Cgal:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCgal__inherit__graph.png" border="0" usemap="#aCgal_inherit__map" alt="Inheritance graph"/></div>
 <map name="aCgal_inherit__map" id="aCgal_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,192,171"/>
-<area shape="rect" href="classCgalShape.html" title=" " alt="" coords="5,219,192,311"/>
+<area shape="rect" title="Interface de base pour la construction et la manipulation d&#39;un maillage CGAL. Fournit les opérations ..." alt="" coords="5,5,192,171"/>
+<area shape="rect" href="classCgalShape.html" title="Implémentation concrète de Cgal pour la construction de maillages. Prend en charge la génération d&#39;un..." alt="" coords="5,219,192,311"/>
 </map>
 </div>
 <div class="dynheader">
@@ -86,7 +89,7 @@ Collaboration diagram for Cgal:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCgal__coll__graph.png" border="0" usemap="#aCgal_coll__map" alt="Collaboration graph"/></div>
 <map name="aCgal_coll__map" id="aCgal_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,192,171"/>
+<area shape="rect" title="Interface de base pour la construction et la manipulation d&#39;un maillage CGAL. Fournit les opérations ..." alt="" coords="5,5,192,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -95,27 +98,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4320e3bda6d290340a27812e3d8955d0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a4320e3bda6d290340a27812e3d8955d0">~Cgal</a> ()=default</td></tr>
 <tr class="separator:a4320e3bda6d290340a27812e3d8955d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c8dee21b90918c15bf38fd378c271d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a8c8dee21b90918c15bf38fd378c271d9">build_cube_mesh</a> ()=0</td></tr>
+<tr class="memdesc:a8c8dee21b90918c15bf38fd378c271d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un maillage cubique unitaire.  <a href="classCgal.html#a8c8dee21b90918c15bf38fd378c271d9">More...</a><br /></td></tr>
 <tr class="separator:a8c8dee21b90918c15bf38fd378c271d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582f120c6f9545cf82c51bc747712b07"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a582f120c6f9545cf82c51bc747712b07">build_mesh_from_file</a> (const std::string &amp;filename)=0</td></tr>
+<tr class="memdesc:a582f120c6f9545cf82c51bc747712b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un maillage à partir d'un fichier 3D.  <a href="classCgal.html#a582f120c6f9545cf82c51bc747712b07">More...</a><br /></td></tr>
 <tr class="separator:a582f120c6f9545cf82c51bc747712b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52114aa511fcf4dbea848db6f7d9d666"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a52114aa511fcf4dbea848db6f7d9d666">to_vertex_data</a> () const</td></tr>
+<tr class="memdesc:a52114aa511fcf4dbea848db6f7d9d666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit le maillage en tableau de flottants (positions XYZ par triangle).  <a href="classCgal.html#a52114aa511fcf4dbea848db6f7d9d666">More...</a><br /></td></tr>
 <tr class="separator:a52114aa511fcf4dbea848db6f7d9d666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c1294f7adbe211f2a248646e2fda6cc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="cgal_8h.html#af6b0ec2c57113662b021361902ef4cab">SurfaceMesh</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a3c1294f7adbe211f2a248646e2fda6cc">mesh</a> () const</td></tr>
+<tr class="memdesc:a3c1294f7adbe211f2a248646e2fda6cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès en lecture au maillage CGAL sous-jacent.  <a href="classCgal.html#a3c1294f7adbe211f2a248646e2fda6cc">More...</a><br /></td></tr>
 <tr class="separator:a3c1294f7adbe211f2a248646e2fda6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a154e737d7f475f585d9b4136661609bc"><td class="memItemLeft" align="right" valign="top">SurfaceMesh::Vertex_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a154e737d7f475f585d9b4136661609bc">add_vertex</a> (double x, double y, double z)</td></tr>
+<tr class="memdesc:a154e737d7f475f585d9b4136661609bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un sommet au maillage.  <a href="classCgal.html#a154e737d7f475f585d9b4136661609bc">More...</a><br /></td></tr>
 <tr class="separator:a154e737d7f475f585d9b4136661609bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd43ae6dde0c8c9f378e65992026de6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#acd43ae6dde0c8c9f378e65992026de6a">add_triangle</a> (SurfaceMesh::Vertex_index a, SurfaceMesh::Vertex_index b, SurfaceMesh::Vertex_index c)</td></tr>
+<tr class="memdesc:acd43ae6dde0c8c9f378e65992026de6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une face triangulaire au maillage.  <a href="classCgal.html#acd43ae6dde0c8c9f378e65992026de6a">More...</a><br /></td></tr>
 <tr class="separator:acd43ae6dde0c8c9f378e65992026de6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a1f0ce4c738793d5761cf2c961ad0ec54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cgal_8h.html#af6b0ec2c57113662b021361902ef4cab">SurfaceMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCgal.html#a1f0ce4c738793d5761cf2c961ad0ec54">m_mesh</a></td></tr>
+<tr class="memdesc:a1f0ce4c738793d5761cf2c961ad0ec54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maillage CGAL interne.  <a href="classCgal.html#a1f0ce4c738793d5761cf2c961ad0ec54">More...</a><br /></td></tr>
 <tr class="separator:a1f0ce4c738793d5761cf2c961ad0ec54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface de base pour la construction et la manipulation d'un maillage CGAL. Fournit les opérations bas-niveau (ajout de sommets, de faces) et l'export des données de rendu. Les sous-classes implémentent les méthodes de construction. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4320e3bda6d290340a27812e3d8955d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4320e3bda6d290340a27812e3d8955d0">&#9670;&nbsp;</a></span>~Cgal()</h2>
 
@@ -181,14 +193,24 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ajoute une face triangulaire au maillage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Index du premier sommet. </td></tr>
+    <tr><td class="paramname">b</td><td>Index du deuxième sommet. </td></tr>
+    <tr><td class="paramname">c</td><td>Index du troisième sommet. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCgal_acd43ae6dde0c8c9f378e65992026de6a_icgraph.png" border="0" usemap="#aclassCgal_acd43ae6dde0c8c9f378e65992026de6a_icgraph" alt=""/></div>
 <map name="aclassCgal_acd43ae6dde0c8c9f378e65992026de6a_icgraph" id="aclassCgal_acd43ae6dde0c8c9f378e65992026de6a_icgraph">
-<area shape="rect" title=" " alt="" coords="265,35,405,61"/>
-<area shape="rect" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb" title=" " alt="" coords="5,5,217,32"/>
-<area shape="rect" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86" title=" " alt="" coords="24,57,199,98"/>
+<area shape="rect" title="Ajoute une face triangulaire au maillage." alt="" coords="265,35,405,61"/>
+<area shape="rect" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb" title="Construit un cube unitaire centré à l&#39;origine (12 triangles)." alt="" coords="5,5,217,32"/>
+<area shape="rect" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86" title="Charge un maillage depuis un fichier 3D. Les fichiers OBJ sont parsés manuellement ; PLY,..." alt="" coords="24,57,199,98"/>
 </map>
 </div>
 
@@ -233,14 +255,25 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ajoute un sommet au maillage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Coordonnée X. </td></tr>
+    <tr><td class="paramname">y</td><td>Coordonnée Y. </td></tr>
+    <tr><td class="paramname">z</td><td>Coordonnée Z. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Index du sommet créé. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCgal_a154e737d7f475f585d9b4136661609bc_icgraph.png" border="0" usemap="#aclassCgal_a154e737d7f475f585d9b4136661609bc_icgraph" alt=""/></div>
 <map name="aclassCgal_a154e737d7f475f585d9b4136661609bc_icgraph" id="aclassCgal_a154e737d7f475f585d9b4136661609bc_icgraph">
-<area shape="rect" title=" " alt="" coords="265,35,397,61"/>
-<area shape="rect" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb" title=" " alt="" coords="5,5,217,32"/>
-<area shape="rect" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86" title=" " alt="" coords="24,57,199,98"/>
+<area shape="rect" title="Ajoute un sommet au maillage." alt="" coords="265,35,397,61"/>
+<area shape="rect" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb" title="Construit un cube unitaire centré à l&#39;origine (12 triangles)." alt="" coords="5,5,217,32"/>
+<area shape="rect" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86" title="Charge un maillage depuis un fichier 3D. Les fichiers OBJ sont parsés manuellement ; PLY,..." alt="" coords="24,57,199,98"/>
 </map>
 </div>
 
@@ -268,6 +301,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construit un maillage cubique unitaire. </p>
 
 <p>Implemented in <a class="el" href="classCgalShape.html#a589f7390ac7fb9a99d21cc0cb7f92afb">CgalShape</a>.</p>
 
@@ -297,6 +332,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Construit un maillage à partir d'un fichier 3D. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Chemin vers le fichier source (OBJ, PLY, OFF, STL…). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implemented in <a class="el" href="classCgalShape.html#ab031b5370d1d46046e1221f04eaeeb86">CgalShape</a>.</p>
 
 </div>
@@ -324,6 +367,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Accès en lecture au maillage CGAL sous-jacent. </p>
+<dl class="section return"><dt>Returns</dt><dd>Référence constante vers le SurfaceMesh interne. </dd></dl>
+
 </div>
 </div>
 <a id="a52114aa511fcf4dbea848db6f7d9d666"></a>
@@ -340,6 +386,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Convertit le maillage en tableau de flottants (positions XYZ par triangle). </p>
+<dl class="section return"><dt>Returns</dt><dd>Vecteur de flottants, 9 valeurs par face (3 sommets × 3 coordonnées). </dd></dl>
 
 </div>
 </div>
@@ -363,6 +412,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Maillage CGAL interne. </p>
 
 </div>
 </div>

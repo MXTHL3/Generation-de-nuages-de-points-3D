@@ -2,6 +2,11 @@
 \label{classKeyframeLayoutAugmentation}\index{KeyframeLayoutAugmentation@{KeyframeLayoutAugmentation}}
 
 
+Génération de scènes par substitution de meshes (keyframes d\textquotesingle{}animation).  
+
+
+
+
 {\ttfamily \#include $<$pipeline.\+h$>$}
 
 
@@ -28,8 +33,11 @@ Collaboration diagram for Keyframe\+Layout\+Augmentation\+:\nopagebreak
 \mbox{\hyperlink{classKeyframeLayoutAugmentation_a725558338f5e21833c6d8c13bcdc2191}{Keyframe\+Layout\+Augmentation}} (std\+::vector$<$ \mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}} $>$ keyframes\+\_\+configs)
 \item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classKeyframeLayoutAugmentation_a488a82b9ebf044e73e973a51e43f3830}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Génération de scènes par substitution de meshes (keyframes d\textquotesingle{}animation). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classKeyframeLayoutAugmentation_a725558338f5e21833c6d8c13bcdc2191}\label{classKeyframeLayoutAugmentation_a725558338f5e21833c6d8c13bcdc2191}} 
@@ -39,6 +47,11 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 {\footnotesize\ttfamily Keyframe\+Layout\+Augmentation\+::\+Keyframe\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}} $>$}]{keyframes\+\_\+configs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
+\begin{DoxyParams}{Parameters}
+{\em keyframes\+\_\+configs} & Liste de scénarios d\textquotesingle{}animation. \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classKeyframeLayoutAugmentation_a488a82b9ebf044e73e973a51e43f3830}\label{classKeyframeLayoutAugmentation_a488a82b9ebf044e73e973a51e43f3830}} 
@@ -47,6 +60,20 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 \doxysubsubsection{\texorpdfstring{process()}{process()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ Keyframe\+Layout\+Augmentation\+::process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$}]{input\+\_\+scenes,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+
+
+Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+scenes} & Scènes à transformer \\
+\hline
+{\em assets} & Gestionnaire de ressources (meshes, configs) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scènes augmentées 
+\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{Pipeline\+Step}}.

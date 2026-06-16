@@ -69,15 +69,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Interface d'export de nuage de points vers un fichier.  
+ <a href="classIPointCloudExporter.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="point__cloud__exporter_8h_source.html">point_cloud_exporter.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IPointCloudExporter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIPointCloudExporter__inherit__graph.png" border="0" usemap="#aIPointCloudExporter_inherit__map" alt="Inheritance graph"/></div>
 <map name="aIPointCloudExporter_inherit__map" id="aIPointCloudExporter_inherit__map">
-<area shape="rect" title=" " alt="" coords="23,5,209,97"/>
-<area shape="rect" href="classLasExporter.html" title=" " alt="" coords="5,145,104,223"/>
-<area shape="rect" href="classPlyExporter.html" title=" " alt="" coords="129,145,226,223"/>
+<area shape="rect" title="Interface d&#39;export de nuage de points vers un fichier." alt="" coords="23,5,209,97"/>
+<area shape="rect" href="classLasExporter.html" title="Export au format LAS via PDAL." alt="" coords="5,145,104,223"/>
+<area shape="rect" href="classPlyExporter.html" title="Export au format PLY ASCII." alt="" coords="129,145,226,223"/>
 </map>
 </div>
 <div class="dynheader">
@@ -85,7 +88,7 @@ Collaboration diagram for IPointCloudExporter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIPointCloudExporter__coll__graph.png" border="0" usemap="#aIPointCloudExporter_coll__map" alt="Collaboration graph"/></div>
 <map name="aIPointCloudExporter_coll__map" id="aIPointCloudExporter_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,192,97"/>
+<area shape="rect" title="Interface d&#39;export de nuage de points vers un fichier." alt="" coords="5,5,192,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -94,9 +97,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1772aac8ba343bf6484dac08028c77ec"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPointCloudExporter.html#a1772aac8ba343bf6484dac08028c77ec">~IPointCloudExporter</a> ()</td></tr>
 <tr class="separator:a1772aac8ba343bf6484dac08028c77ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae07a92baf13257a344bbc06fafc22b26"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPointCloudExporter.html#ae07a92baf13257a344bbc06fafc22b26">save</a> (const std::string &amp;filename, const std::vector&lt; <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &gt; &amp;points)=0</td></tr>
+<tr class="memdesc:ae07a92baf13257a344bbc06fafc22b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde un nuage de points dans un fichier.  <a href="classIPointCloudExporter.html#ae07a92baf13257a344bbc06fafc22b26">More...</a><br /></td></tr>
 <tr class="separator:ae07a92baf13257a344bbc06fafc22b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface d'export de nuage de points vers un fichier. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1772aac8ba343bf6484dac08028c77ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1772aac8ba343bf6484dac08028c77ec">&#9670;&nbsp;</a></span>~IPointCloudExporter()</h2>
 
@@ -156,6 +162,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sauvegarde un nuage de points dans un fichier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Chemin du fichier de sortie. </td></tr>
+    <tr><td class="paramname">points</td><td>Nuage de points à exporter. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classLasExporter.html#a9691ea9d46dfde914188ace255b62409">LasExporter</a>, and <a class="el" href="classPlyExporter.html#ad95a65c24a12aa474436916e389424fb">PlyExporter</a>.</p>
 

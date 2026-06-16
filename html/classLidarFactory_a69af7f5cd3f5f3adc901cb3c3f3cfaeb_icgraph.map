@@ -1,4 +1,6 @@
 <map id="LidarFactory::createFromJsonConfig" name="LidarFactory::createFromJsonConfig">
-<area shape="rect" id="node1" title=" " alt="" coords="156,5,339,47"/>
-<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,13,108,39"/>
+<area shape="rect" id="node1" title="Crée une configuration lidar depuis un fichier json." alt="" coords="503,27,685,69"/>
+<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="312,5,415,32"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,57,455,98"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
 </map>

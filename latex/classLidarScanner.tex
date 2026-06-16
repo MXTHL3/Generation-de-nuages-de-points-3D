@@ -2,12 +2,16 @@
 \label{classLidarScanner}\index{LidarScanner@{LidarScanner}}
 
 
+Moteur de scan \+: intersection des rayons avec la scène et le noise Reçoit les rayons générés par l\textquotesingle{}entité Lidar, trouve les intersections avec l\textquotesingle{}arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat.  
+
+
+
+
 {\ttfamily \#include $<$lidar\+\_\+scanner.\+h$>$}
 
 
 
-Collaboration diagram for Lidar\+Scanner\+:
-\nopagebreak
+Collaboration diagram for Lidar\+Scanner\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,8 +24,11 @@ Collaboration diagram for Lidar\+Scanner\+:
 \mbox{\hyperlink{classLidarScanner_a844abd4f8e8b273c21f61c926aca6f8d}{Lidar\+Scanner}} ()=default
 \item 
 std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classLidarScanner_a81a1deceea24915af9542567f8ad426a}{scan}} (const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene) const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Effectue un scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Moteur de scan \+: intersection des rayons avec la scène et le noise Reçoit les rayons générés par l\textquotesingle{}entité Lidar, trouve les intersections avec l\textquotesingle{}arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classLidarScanner_a844abd4f8e8b273c21f61c926aca6f8d}\label{classLidarScanner_a844abd4f8e8b273c21f61c926aca6f8d}} 
@@ -39,6 +46,20 @@ std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Poi
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
 {\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ Lidar\+Scanner\+::scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption}) const}
 
+
+
+Effectue un scan. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lidar\+\_\+ent} & le lidar qui génère les rayons. \\
+\hline
+{\em scene} & la scène construite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nuage de points. 
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -47,12 +68,11 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph}
+\includegraphics[width=301pt]{classLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph}
 \end{center}
 \end{figure}
 

@@ -69,24 +69,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar dans une hashmap. Un fichier 3d et de configuration de lidar n'est donc chargé qu'une fois.  
+ <a href="classAssetManager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="asset__manager_8h_source.html">asset_manager.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for AssetManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAssetManager__coll__graph.png" border="0" usemap="#aAssetManager_coll__map" alt="Collaboration graph"/></div>
 <map name="aAssetManager_coll__map" id="aAssetManager_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,156,97"/>
+<area shape="rect" title="Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar da..." alt="" coords="5,5,156,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a818bd2f4278e56d1b5b94c159cfbfa1c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c">get_mesh</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a818bd2f4278e56d1b5b94c159cfbfa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le mesh pour un path donné (charge si nécessaire).  <a href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c">More...</a><br /></td></tr>
 <tr class="separator:a818bd2f4278e56d1b5b94c159cfbfa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acce60cf48fda9c902653f1b434ef3a29"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29">get_lidar_config</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:acce60cf48fda9c902653f1b434ef3a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la config lidar pour un path donné (charge si nécessaire).  <a href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29">More...</a><br /></td></tr>
 <tr class="separator:acce60cf48fda9c902653f1b434ef3a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar dans une hashmap. Un fichier 3d et de configuration de lidar n'est donc chargé qu'une fois. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="acce60cf48fda9c902653f1b434ef3a29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acce60cf48fda9c902653f1b434ef3a29">&#9670;&nbsp;</a></span>get_lidar_config()</h2>
 
@@ -102,16 +109,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retourne la config lidar pour un path donné (charge si nécessaire). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin vers le fichier json de config lidar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointeur partagé vers la configuration lidar chargée. <br  />
+ </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAssetManager_acce60cf48fda9c902653f1b434ef3a29_icgraph.png" border="0" usemap="#aclassAssetManager_acce60cf48fda9c902653f1b434ef3a29_icgraph" alt=""/></div>
 <map name="aclassAssetManager_acce60cf48fda9c902653f1b434ef3a29_icgraph" id="aclassAssetManager_acce60cf48fda9c902653f1b434ef3a29_icgraph">
-<area shape="rect" title=" " alt="" coords="764,39,944,80"/>
-<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="529,39,716,80"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
+<area shape="rect" title="Retourne la config lidar pour un path donné (charge si nécessaire)." alt="" coords="733,5,913,47"/>
+<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="499,5,685,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -132,16 +148,24 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retourne le mesh pour un path donné (charge si nécessaire). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin vers le fichier mesh. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointeur partagé vers l'objet chargé. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAssetManager_a818bd2f4278e56d1b5b94c159cfbfa1c_icgraph.png" border="0" usemap="#aclassAssetManager_a818bd2f4278e56d1b5b94c159cfbfa1c_icgraph" alt=""/></div>
 <map name="aclassAssetManager_a818bd2f4278e56d1b5b94c159cfbfa1c_icgraph" id="aclassAssetManager_a818bd2f4278e56d1b5b94c159cfbfa1c_icgraph">
-<area shape="rect" title=" " alt="" coords="764,46,951,73"/>
-<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="529,39,716,80"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
+<area shape="rect" title="Retourne le mesh pour un path donné (charge si nécessaire)." alt="" coords="733,13,920,39"/>
+<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="499,5,685,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 

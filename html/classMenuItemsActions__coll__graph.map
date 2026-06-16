@@ -1,4 +1,4 @@
 <map id="MenuItemsActions" name="MenuItemsActions">
-<area shape="rect" id="node1" title=" " alt="" coords="5,160,195,413"/>
-<area shape="rect" id="node2" href="$classHandleFile.html" title=" " alt="" coords="27,5,173,97"/>
+<area shape="rect" id="node1" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="5,160,205,413"/>
+<area shape="rect" id="node2" href="$classHandleFile.html" title="Gestion de l&#39;ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins de..." alt="" coords="32,5,179,97"/>
 </map>

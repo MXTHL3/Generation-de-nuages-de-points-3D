@@ -101,21 +101,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="scene_8h__dep__incl.png" border="0" usemap="#ascene_8hdep" alt=""/></div>
 <map name="ascene_8hdep" id="ascene_8hdep">
-<area shape="rect" title=" " alt="" coords="400,5,472,32"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="131,80,178,107"/>
-<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="248,80,368,107"/>
-<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="393,80,479,107"/>
-<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="635,80,722,107"/>
-<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="504,80,611,107"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="5,155,67,181"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="63,304,145,331"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="160,229,283,256"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="351,155,521,181"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="169,304,308,331"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="344,229,528,256"/>
-<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="193,155,327,181"/>
-<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="569,155,671,181"/>
-<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="695,155,817,181"/>
+<area shape="rect" title=" " alt="" coords="385,5,457,32"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="210,155,257,181"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="271,229,377,256"/>
+<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="361,80,481,107"/>
+<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="543,80,630,107"/>
+<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="654,80,741,107"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="135,229,196,256"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,453,88,480"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="103,379,225,405"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="306,304,475,331"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="112,453,251,480"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="299,379,483,405"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="159,304,281,331"/>
+<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="453,155,587,181"/>
+<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="663,155,764,181"/>
 </map>
 </div>
 </div>
@@ -124,8 +124,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntersection.html">Intersection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Résultat d'une intersection rayon/triangle dans la scène. Retourné par <a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène.">Scene::intersect</a>, regroupe le point d'impact, la distance depuis l'origine du rayon et l'index de la face touchée.  <a href="structIntersection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html">Scene</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scène 3D : ensemble d'entités statiques et arbre AABB pour les intersections. Après ajout des entités, <a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en...">build()</a> triangule la scène et construit l'arbre CGAL AABB permettant des requêtes d'intersection rayon/maillage.  <a href="classScene.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>

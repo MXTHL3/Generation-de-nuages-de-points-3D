@@ -69,13 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Scène 3D : ensemble d'entités statiques et arbre AABB pour les intersections. Après ajout des entités, <a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en...">build()</a> triangule la scène et construit l'arbre CGAL AABB permettant des requêtes d'intersection rayon/maillage.  
+ <a href="classScene.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scene_8h_source.html">scene.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Scene:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene__coll__graph.png" border="0" usemap="#aScene_coll__map" alt="Collaboration graph"/></div>
 <map name="aScene_coll__map" id="aScene_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,164,200"/>
+<area shape="rect" title="Scène 3D : ensemble d&#39;entités statiques et arbre AABB pour les intersections. Après ajout des entités..." alt="" coords="5,5,164,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -84,23 +87,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a93ccc41b0a2f6c24e467d5d9de76ec0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a93ccc41b0a2f6c24e467d5d9de76ec0d">Scene</a> ()=default</td></tr>
 <tr class="separator:a93ccc41b0a2f6c24e467d5d9de76ec0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b8cec2e32546713915f8c6303c951f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a3b8cec2e32546713915f8c6303c951f1">~Scene</a> ()</td></tr>
+<tr class="memdesc:a3b8cec2e32546713915f8c6303c951f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit la scène en libérant les triangles et l'arbre AABB.  <a href="classScene.html#a3b8cec2e32546713915f8c6303c951f1">More...</a><br /></td></tr>
 <tr class="separator:a3b8cec2e32546713915f8c6303c951f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae99632f6bac1360a8c7463c9ab0f613"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#aae99632f6bac1360a8c7463c9ab0f613">Scene</a> (const <a class="el" href="classScene.html">Scene</a> &amp;scene)</td></tr>
+<tr class="memdesc:aae99632f6bac1360a8c7463c9ab0f613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de copie : clone toutes les entités statiques.  <a href="classScene.html#aae99632f6bac1360a8c7463c9ab0f613">More...</a><br /></td></tr>
 <tr class="separator:aae99632f6bac1360a8c7463c9ab0f613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3499787d60be4fc615816aa4ada9423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#ab3499787d60be4fc615816aa4ada9423">add_static_entity</a> (std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; ent)</td></tr>
+<tr class="memdesc:ab3499787d60be4fc615816aa4ada9423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une entité statique à la scène.  <a href="classScene.html#ab3499787d60be4fc615816aa4ada9423">More...</a><br /></td></tr>
 <tr class="separator:ab3499787d60be4fc615816aa4ada9423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f38f3e03adcbb1523bd528bcbb7b57c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a8f38f3e03adcbb1523bd528bcbb7b57c">scan</a> (size_t lidar_id=0, double parameter=0.0) const</td></tr>
 <tr class="separator:a8f38f3e03adcbb1523bd528bcbb7b57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e33abfb4027a9bc2a5bb944fe4c4c9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a">build</a> ()</td></tr>
+<tr class="memdesc:a6e33abfb4027a9bc2a5bb944fe4c4c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangule toutes les entités et construit l'arbre AABB. Doit être appelé après tous les add_static_entity et avant tout intersect.  <a href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a">More...</a><br /></td></tr>
 <tr class="separator:a6e33abfb4027a9bc2a5bb944fe4c4c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02db3e0311c490af05727af9f51f4b3a"><td class="memItemLeft" align="right" valign="top">boost::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a">intersect</a> (const <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;ray) const</td></tr>
+<tr class="memdesc:a02db3e0311c490af05727af9f51f4b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la première intersection d'un rayon avec la scène.  <a href="classScene.html#a02db3e0311c490af05727af9f51f4b3a">More...</a><br /></td></tr>
 <tr class="separator:a02db3e0311c490af05727af9f51f4b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a799db83d2c67e0f0d330bc02d6b28875"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875">entities</a> ()</td></tr>
+<tr class="memdesc:a799db83d2c67e0f0d330bc02d6b28875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les entités statiques de la scène (accès en écriture).  <a href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875">More...</a><br /></td></tr>
 <tr class="separator:a799db83d2c67e0f0d330bc02d6b28875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3091106c25c63131813668b22ac4f163"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classStaticEntity.html">StaticEntity</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html#a3091106c25c63131813668b22ac4f163">entities</a> () const</td></tr>
+<tr class="memdesc:a3091106c25c63131813668b22ac4f163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les entités statiques de la scène (accès en lecture).  <a href="classScene.html#a3091106c25c63131813668b22ac4f163">More...</a><br /></td></tr>
 <tr class="separator:a3091106c25c63131813668b22ac4f163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Scène 3D : ensemble d'entités statiques et arbre AABB pour les intersections. Après ajout des entités, <a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en...">build()</a> triangule la scène et construit l'arbre CGAL AABB permettant des requêtes d'intersection rayon/maillage. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a93ccc41b0a2f6c24e467d5d9de76ec0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93ccc41b0a2f6c24e467d5d9de76ec0d">&#9670;&nbsp;</a></span>Scene() <span class="overload">[1/2]</span></h2>
 
@@ -149,6 +161,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Détruit la scène en libérant les triangles et l'arbre AABB. </p>
+
 </div>
 </div>
 <a id="aae99632f6bac1360a8c7463c9ab0f613"></a>
@@ -166,6 +180,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructeur de copie : clone toutes les entités statiques. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td>Scène source à copier. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -185,17 +207,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Ajoute une entité statique à la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ent</td><td>Entité à ajouter (prend la propriété). </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_ab3499787d60be4fc615816aa4ada9423_icgraph.png" border="0" usemap="#aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph" alt=""/></div>
 <map name="aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph" id="aclassScene_ab3499787d60be4fc615816aa4ada9423_icgraph">
-<area shape="rect" title=" " alt="" coords="764,75,945,102"/>
-<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="529,39,716,80"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="571,105,674,131"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
+<area shape="rect" title="Ajoute une entité statique à la scène." alt="" coords="737,71,919,98"/>
+<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="503,5,689,47"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="545,71,647,98"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,93,455,135"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="274,17,453,59"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,69,224,95"/>
 </map>
 </div>
 
@@ -215,15 +245,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Triangule toutes les entités et construit l'arbre AABB. Doit être appelé après tous les add_static_entity et avant tout intersect. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph.png" border="0" usemap="#aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph" alt=""/></div>
 <map name="aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph" id="aclassScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph">
-<area shape="rect" title=" " alt="" coords="499,42,600,69"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="272,5,451,47"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="310,71,413,98"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="499,42,600,69"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="310,71,413,98"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -251,15 +283,18 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne les entités statiques de la scène (accès en écriture). </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph.png" border="0" usemap="#aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph" alt=""/></div>
 <map name="aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph" id="aclassScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph">
-<area shape="rect" title=" " alt="" coords="509,46,628,73"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="277,5,456,47"/>
-<area shape="rect" href="classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60" title=" " alt="" coords="272,71,461,112"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="740,46,859,73"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="274,5,453,47"/>
+<area shape="rect" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="503,68,692,109"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,46,224,73"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,71,455,112"/>
 </map>
 </div>
 
@@ -288,6 +323,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne les entités statiques de la scène (accès en lecture). </p>
+
 </div>
 </div>
 <a id="a02db3e0311c490af05727af9f51f4b3a"></a>
@@ -305,16 +342,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calcule la première intersection d'un rayon avec la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ray</td><td>Rayon à tester. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structIntersection.html" title="Résultat d&#39;une intersection rayon/triangle dans la scène. Retourné par Scene::intersect,...">Intersection</a> (point, distance, index de face) ou boost::none si aucune. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classScene_a02db3e0311c490af05727af9f51f4b3a_icgraph.png" border="0" usemap="#aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph" alt=""/></div>
 <map name="aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph" id="aclassScene_a02db3e0311c490af05727af9f51f4b3a_icgraph">
-<area shape="rect" title=" " alt="" coords="721,31,848,57"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="550,5,653,32"/>
-<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="529,56,673,83"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,49,481,90"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,56,224,83"/>
+<area shape="rect" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="348,5,475,32"/>
+<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="156,5,300,32"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
 </map>
 </div>
 

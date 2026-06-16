@@ -5,6 +5,7 @@
 {\ttfamily \#include $<$filesystem$>$}\newline
 {\ttfamily \#include $<$cstdlib$>$}\newline
 {\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include \char`\"{}menu\+\_\+items\+\_\+actions.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gl.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}handle\+\_\+file.\+h\char`\"{}}\newline
@@ -15,16 +16,14 @@
 {\ttfamily \#include \char`\"{}point\+\_\+cloud\+\_\+exporter.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}lidar\+\_\+scanner.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
-Include dependency graph for menu\+\_\+items\+\_\+actions.\+h\+:
-\nopagebreak
+Include dependency graph for menu\+\_\+items\+\_\+actions.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{menu__items__actions_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,4 +34,4 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classMenuItemsActions}{Menu\+Items\+Actions}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le signal activate d\textquotesingle{}un sous-\/menu (\+\_\+sub) à l\textquotesingle{}action correspondante. \mbox{\hyperlink{classMainWindow}{Main\+Window}} hérite de cette classe. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -2,11 +2,17 @@
 \label{classPlyExporter}\index{PlyExporter@{PlyExporter}}
 
 
+Export au format PLY ASCII.  
+
+
+
+
 {\ttfamily \#include $<$point\+\_\+cloud\+\_\+exporter.\+h$>$}
 
 
 
-Inheritance diagram for Ply\+Exporter\+:\nopagebreak
+Inheritance diagram for Ply\+Exporter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +21,8 @@ Inheritance diagram for Ply\+Exporter\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Ply\+Exporter\+:\nopagebreak
+Collaboration diagram for Ply\+Exporter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,8 +33,11 @@ Collaboration diagram for Ply\+Exporter\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classPlyExporter_ad95a65c24a12aa474436916e389424fb}{save}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \&points) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sauvegarde le nuage au format PLY ASCII (header + lignes X Y Z). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Export au format PLY ASCII. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPlyExporter_ad95a65c24a12aa474436916e389424fb}\label{classPlyExporter_ad95a65c24a12aa474436916e389424fb}} 
@@ -38,15 +48,19 @@ void \mbox{\hyperlink{classPlyExporter_ad95a65c24a12aa474436916e389424fb}{save}}
 
 
 
+Sauvegarde le nuage au format PLY ASCII (header + lignes X Y Z). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Chemin du fichier .ply de sortie. \\
+\hline
+{\em points} & Nuage de points à exporter. \\
+\hline
+\end{DoxyParams}
+
+
 Implements \mbox{\hyperlink{classIPointCloudExporter_ae07a92baf13257a344bbc06fafc22b26}{IPoint\+Cloud\+Exporter}}.
 
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classPlyExporter_ad95a65c24a12aa474436916e389424fb_icgraph}
-\end{center}
-\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

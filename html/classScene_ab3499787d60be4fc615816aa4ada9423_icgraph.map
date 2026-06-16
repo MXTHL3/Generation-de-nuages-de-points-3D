@@ -1,8 +1,8 @@
 <map id="Scene::add_static_entity" name="Scene::add_static_entity">
-<area shape="rect" id="node1" title=" " alt="" coords="764,75,945,102"/>
-<area shape="rect" id="node2" href="$classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="529,39,716,80"/>
-<area shape="rect" id="node6" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="571,105,674,131"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" id="node5" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
-<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
+<area shape="rect" id="node1" title="Ajoute une entité statique à la scène." alt="" coords="737,71,919,98"/>
+<area shape="rect" id="node2" href="$classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="503,5,689,47"/>
+<area shape="rect" id="node5" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="545,71,647,98"/>
+<area shape="rect" id="node6" href="$classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,93,455,135"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="274,17,453,59"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,69,224,95"/>
 </map>

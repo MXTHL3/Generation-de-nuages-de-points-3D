@@ -1,0 +1,5 @@
+<map id="SceneLoader::save_scene_to_json" name="SceneLoader::save_scene_to_json">
+<area shape="rect" id="node1" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="503,5,692,47"/>
+<area shape="rect" id="node2" href="$classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,5,455,47"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+</map>

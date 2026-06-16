@@ -2,16 +2,14 @@
 \label{pipeline_8h}\index{pipeline.h@{pipeline.h}}
 {\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}asset\+\_\+manager.\+h\char`\"{}}\newline
-Include dependency graph for pipeline.\+h\+:
-\nopagebreak
+Include dependency graph for pipeline.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{pipeline_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,16 +20,16 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}
-\item 
+\begin{DoxyCompactList}\small\item\em Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l\textquotesingle{}ensemble). Les étapes sont chaînées. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPositionLayoutAugmentation}{Position\+Layout\+Augmentation}}
-\item 
+\begin{DoxyCompactList}\small\item\em Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classRotationLayoutAugmentation}{Rotation\+Layout\+Augmentation}}
-\item 
+\begin{DoxyCompactList}\small\item\em Rotations uniforme d\textquotesingle{}une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structObjectAnimation}{Object\+Animation}}
-\item 
+\begin{DoxyCompactList}\small\item\em Animation d\textquotesingle{}un objet \+: liste des fichiers de ses \char`\"{}keyframes\char`\"{}. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}}
-\item 
+\begin{DoxyCompactList}\small\item\em Configurations\textquotesingle{}un scénario d\textquotesingle{}animation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}}
-\item 
+\begin{DoxyCompactList}\small\item\em Génération de scènes par substitution de meshes (keyframes d\textquotesingle{}animation). \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPipeline}{Pipeline}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Exécute une chaîne d\textquotesingle{}étapes d\textquotesingle{}augmentation sur une scène de base. Chaque étape (\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}) reçoit l\textquotesingle{}ensemble des scènes produites par l\textquotesingle{}étape précédente et retourne un ensemble plus grand. \end{DoxyCompactList}\end{DoxyCompactItemize}

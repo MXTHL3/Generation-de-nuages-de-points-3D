@@ -69,13 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Moteur de scan : intersection des rayons avec la scène et le noise Reçoit les rayons générés par l'entité Lidar, trouve les intersections avec l'arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat.  
+ <a href="classLidarScanner.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lidar__scanner_8h_source.html">lidar_scanner.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for LidarScanner:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarScanner__coll__graph.png" border="0" usemap="#aLidarScanner_coll__map" alt="Collaboration graph"/></div>
 <map name="aLidarScanner_coll__map" id="aLidarScanner_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,136,97"/>
+<area shape="rect" title="Moteur de scan : intersection des rayons avec la scène et le noise Reçoit les rayons générés par l&#39;en..." alt="" coords="5,5,136,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -84,9 +87,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a844abd4f8e8b273c21f61c926aca6f8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarScanner.html#a844abd4f8e8b273c21f61c926aca6f8d">LidarScanner</a> ()=default</td></tr>
 <tr class="separator:a844abd4f8e8b273c21f61c926aca6f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81a1deceea24915af9542567f8ad426a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a">scan</a> (const <a class="el" href="classLidarEntity.html">LidarEntity</a> &amp;lidar_ent, const <a class="el" href="classScene.html">Scene</a> &amp;scene) const</td></tr>
+<tr class="memdesc:a81a1deceea24915af9542567f8ad426a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue un scan.  <a href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a">More...</a><br /></td></tr>
 <tr class="separator:a81a1deceea24915af9542567f8ad426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Moteur de scan : intersection des rayons avec la scène et le noise Reçoit les rayons générés par l'entité Lidar, trouve les intersections avec l'arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a844abd4f8e8b273c21f61c926aca6f8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a844abd4f8e8b273c21f61c926aca6f8d">&#9670;&nbsp;</a></span>LidarScanner()</h2>
 
@@ -138,16 +144,26 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Effectue un scan. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lidar_ent</td><td>le lidar qui génère les rayons. </td></tr>
+    <tr><td class="paramname">scene</td><td>la scène construite. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nuage de points. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph.png" border="0" usemap="#aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph" alt=""/></div>
 <map name="aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph" id="aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,149,108"/>
+<area shape="rect" title="Effectue un scan." alt="" coords="5,81,149,108"/>
 <area shape="rect" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="224,5,363,32"/>
-<area shape="rect" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title=" " alt="" coords="197,56,389,83"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="230,107,357,133"/>
-<area shape="rect" href="classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title=" " alt="" coords="226,158,361,199"/>
+<area shape="rect" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title="Génère tous les rayons pour le scan." alt="" coords="197,56,389,83"/>
+<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="230,107,357,133"/>
+<area shape="rect" href="classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title="Applique le bruit à une mesure de distance." alt="" coords="226,158,361,199"/>
 <area shape="rect" href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="437,165,580,192"/>
 </map>
 </div>
@@ -156,9 +172,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph.png" border="0" usemap="#aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph" alt=""/></div>
 <map name="aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph" id="aclassLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph">
-<area shape="rect" title=" " alt="" coords="529,13,673,39"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Effectue un scan." alt="" coords="156,5,300,32"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
 </map>
 </div>
 

@@ -1,5 +1,5 @@
 <map id="MainWindow" name="MainWindow">
-<area shape="rect" id="node1" title=" " alt="" coords="67,321,219,413"/>
+<area shape="rect" id="node1" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é..." alt="" coords="70,321,222,413"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,101,111,178"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html" title=" " alt="" coords="135,5,325,273"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="134,5,334,273"/>
 </map>

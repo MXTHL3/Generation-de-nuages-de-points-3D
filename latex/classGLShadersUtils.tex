@@ -2,11 +2,17 @@
 \label{classGLShadersUtils}\index{GLShadersUtils@{GLShadersUtils}}
 
 
+Utilitaire de compilation et d\textquotesingle{}édition de liens des shaders Open\+GL. Compile les shaders vertex et fragment, les lie en un programme GLSL et rapporte les erreurs de compilation/liaison sur stdout.  
+
+
+
+
 {\ttfamily \#include $<$gl\+\_\+shaders\+\_\+utils.\+h$>$}
 
 
 
-Collaboration diagram for GLShaders\+Utils\+:\nopagebreak
+Collaboration diagram for GLShaders\+Utils\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,14 +25,17 @@ Collaboration diagram for GLShaders\+Utils\+:\nopagebreak
 \mbox{\hyperlink{classGLShadersUtils_ab74441d09764f88336e7409fb7b73825}{GLShaders\+Utils}} ()
 \item 
 void \mbox{\hyperlink{classGLShadersUtils_a8c24863a8376145e9355601b0802d594}{compile\+\_\+shader}} (GLuint shader, const char $\ast$name)
-\item 
+\begin{DoxyCompactList}\small\item\em Compile un shader Open\+GL et affiche les éventuelles erreurs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGLShadersUtils_a7cc218130fc5aded8a272367f79a1f66}{link\+\_\+program}} (GLuint program)
-\item 
+\begin{DoxyCompactList}\small\item\em Lie les shaders attachés en un programme exécutable. \end{DoxyCompactList}\item 
 GLuint \mbox{\hyperlink{classGLShadersUtils_af32e8841376f7613cb9f7b06c73ab115}{build\+\_\+program}} (const char $\ast$vert\+\_\+src, const char $\ast$frag\+\_\+src)
-\item 
+\begin{DoxyCompactList}\small\item\em Compile et lie un programme GLSL complet depuis les sources. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGLShadersUtils_ada05d34d25d6cab03dd3de4d8887fb18}{ok}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Indique si la dernière opération s\textquotesingle{}est terminée sans erreur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Utilitaire de compilation et d\textquotesingle{}édition de liens des shaders Open\+GL. Compile les shaders vertex et fragment, les lie en un programme GLSL et rapporte les erreurs de compilation/liaison sur stdout. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classGLShadersUtils_ab74441d09764f88336e7409fb7b73825}\label{classGLShadersUtils_ab74441d09764f88336e7409fb7b73825}} 
@@ -44,7 +53,22 @@ bool \mbox{\hyperlink{classGLShadersUtils_ada05d34d25d6cab03dd3de4d8887fb18}{ok}
 \doxysubsubsection{\texorpdfstring{build\_program()}{build\_program()}}
 {\footnotesize\ttfamily GLuint GLShaders\+Utils\+::build\+\_\+program (\begin{DoxyParamCaption}\item[{const char $\ast$}]{vert\+\_\+src,  }\item[{const char $\ast$}]{frag\+\_\+src }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+
+
+Compile et lie un programme GLSL complet depuis les sources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert\+\_\+src} & Code source GLSL du vertex shader. \\
+\hline
+{\em frag\+\_\+src} & Code source GLSL du fragment shader. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Handle du programme lié, 0 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -57,7 +81,19 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{compile\_shader()}{compile\_shader()}}
 {\footnotesize\ttfamily void GLShaders\+Utils\+::compile\+\_\+shader (\begin{DoxyParamCaption}\item[{GLuint}]{shader,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+
+
+Compile un shader Open\+GL et affiche les éventuelles erreurs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & Handle Open\+GL du shader à compiler. \\
+\hline
+{\em name} & Nom affiché dans les messages de log (ex. \char`\"{}vertex\char`\"{}). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -70,7 +106,17 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{link\_program()}{link\_program()}}
 {\footnotesize\ttfamily void GLShaders\+Utils\+::link\+\_\+program (\begin{DoxyParamCaption}\item[{GLuint}]{program }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+
+
+Lie les shaders attachés en un programme exécutable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program} & Handle du programme Open\+GL à lier. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -83,6 +129,13 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{ok()}{ok()}}
 {\footnotesize\ttfamily bool GLShaders\+Utils\+::ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Indique si la dernière opération s\textquotesingle{}est terminée sans erreur. 
+
+\begin{DoxyReturn}{Returns}
+true si compilation et liaison ont réussi. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

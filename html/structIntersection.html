@@ -69,26 +69,34 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Résultat d'une intersection rayon/triangle dans la scène. Retourné par <a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène.">Scene::intersect</a>, regroupe le point d'impact, la distance depuis l'origine du rayon et l'index de la face touchée.  
+ <a href="structIntersection.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scene_8h_source.html">scene.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Intersection:</div>
 <div class="dyncontent">
 <div class="center"><img src="structIntersection__coll__graph.png" border="0" usemap="#aIntersection_coll__map" alt="Collaboration graph"/></div>
 <map name="aIntersection_coll__map" id="aIntersection_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,113,112"/>
+<area shape="rect" title="Résultat d&#39;une intersection rayon/triangle dans la scène. Retourné par Scene::intersect,..." alt="" coords="5,5,113,112"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a72829cd51684d90e5571276078e6ea8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntersection.html#a72829cd51684d90e5571276078e6ea8f">point</a></td></tr>
+<tr class="memdesc:a72829cd51684d90e5571276078e6ea8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordonnées 3D du point d'impact.  <a href="structIntersection.html#a72829cd51684d90e5571276078e6ea8f">More...</a><br /></td></tr>
 <tr class="separator:a72829cd51684d90e5571276078e6ea8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65da854f067b6f08175a97d262a17f1e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntersection.html#a65da854f067b6f08175a97d262a17f1e">distance</a></td></tr>
+<tr class="memdesc:a65da854f067b6f08175a97d262a17f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distance entre l'origine du rayon et le point d'impact (mètres).  <a href="structIntersection.html#a65da854f067b6f08175a97d262a17f1e">More...</a><br /></td></tr>
 <tr class="separator:a65da854f067b6f08175a97d262a17f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d498f560fc2c5b86383f6e98778e7b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntersection.html#a64d498f560fc2c5b86383f6e98778e7b">face_index</a></td></tr>
+<tr class="memdesc:a64d498f560fc2c5b86383f6e98778e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du triangle intersecté dans le vecteur de triangles de la scène.  <a href="structIntersection.html#a64d498f560fc2c5b86383f6e98778e7b">More...</a><br /></td></tr>
 <tr class="separator:a64d498f560fc2c5b86383f6e98778e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Résultat d'une intersection rayon/triangle dans la scène. Retourné par <a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène.">Scene::intersect</a>, regroupe le point d'impact, la distance depuis l'origine du rayon et l'index de la face touchée. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a65da854f067b6f08175a97d262a17f1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65da854f067b6f08175a97d262a17f1e">&#9670;&nbsp;</a></span>distance</h2>
 
@@ -100,6 +108,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Distance entre l'origine du rayon et le point d'impact (mètres). </p>
 
 </div>
 </div>
@@ -115,6 +125,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Index du triangle intersecté dans le vecteur de triangles de la scène. </p>
+
 </div>
 </div>
 <a id="a72829cd51684d90e5571276078e6ea8f"></a>
@@ -128,6 +140,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Coordonnées 3D du point d'impact. </p>
 
 </div>
 </div>

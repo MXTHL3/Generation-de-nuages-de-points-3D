@@ -1,3 +1,3 @@
 <map id="Pipeline" name="Pipeline">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,112,97"/>
+<area shape="rect" id="node1" title="Exécute une chaîne d&#39;étapes d&#39;augmentation sur une scène de base. Chaque étape (PipelineStep) reçoit ..." alt="" coords="5,5,112,97"/>
 </map>

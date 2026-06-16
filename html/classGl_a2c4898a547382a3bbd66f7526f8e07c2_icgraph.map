@@ -1,0 +1,4 @@
+<map id="Gl::get_camera_world_position" name="Gl::get_camera_world_position">
+<area shape="rect" id="node1" title="Retourne la position de la caméra dans le repère monde." alt="" coords="156,5,320,47"/>
+<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,13,108,39"/>
+</map>

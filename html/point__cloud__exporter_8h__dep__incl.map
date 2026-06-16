@@ -1,11 +1,13 @@
 <map id="point_cloud_exporter.h" name="point_cloud_exporter.h">
-<area shape="rect" id="node1" title=" " alt="" coords="161,5,332,32"/>
-<area shape="rect" id="node2" href="$gl_8h.html" title=" " alt="" coords="131,80,178,107"/>
-<area shape="rect" id="node7" href="$menu__items__actions_8h.html" title=" " alt="" coords="193,155,362,181"/>
-<area shape="rect" id="node9" href="$point__cloud__exporter_8cpp.html" title=" " alt="" coords="285,80,470,107"/>
-<area shape="rect" id="node3" href="$gl_8cpp.html" title=" " alt="" coords="5,155,67,181"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="63,304,145,331"/>
-<area shape="rect" id="node5" href="$main__window_8h.html" title=" " alt="" coords="141,229,264,256"/>
-<area shape="rect" id="node6" href="$main__window_8cpp.html" title=" " alt="" coords="169,304,308,331"/>
-<area shape="rect" id="node8" href="$menu__items__actions_8cpp.html" title=" " alt="" coords="288,229,472,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="368,5,539,32"/>
+<area shape="rect" id="node2" href="$gl_8h.html" title=" " alt="" coords="250,80,297,107"/>
+<area shape="rect" id="node7" href="$menu__items__actions_8h.html" title=" " alt="" coords="172,229,341,256"/>
+<area shape="rect" id="node11" href="$point__cloud__exporter_8cpp.html" title=" " alt="" coords="492,80,677,107"/>
+<area shape="rect" id="node3" href="$gl_8cpp.html" title=" " alt="" coords="208,155,270,181"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="275,379,358,405"/>
+<area shape="rect" id="node5" href="$main__window_8h.html" title=" " alt="" coords="26,304,148,331"/>
+<area shape="rect" id="node9" href="$scene__utils_8h.html" title=" " alt="" coords="78,155,184,181"/>
+<area shape="rect" id="node6" href="$main__window_8cpp.html" title=" " alt="" coords="18,379,156,405"/>
+<area shape="rect" id="node8" href="$menu__items__actions_8cpp.html" title=" " alt="" coords="172,304,356,331"/>
+<area shape="rect" id="node10" href="$scene__utils_8cpp.html" title=" " alt="" coords="24,229,147,256"/>
 </map>

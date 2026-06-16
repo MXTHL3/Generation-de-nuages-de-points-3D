@@ -69,24 +69,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json.  
+ <a href="classSceneLoader.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scene__utils_8h_source.html">scene_utils.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for SceneLoader:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSceneLoader__coll__graph.png" border="0" usemap="#aSceneLoader_coll__map" alt="Collaboration graph"/></div>
 <map name="aSceneLoader_coll__map" id="aSceneLoader_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,197,97"/>
+<area shape="rect" title="Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json." alt="" coords="5,5,197,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afaf374902e6c3536fa8ffad6f69a0b7e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e">load_scene_from_json</a> (const std::string &amp;filepath, <a class="el" href="classScene.html">Scene</a> &amp;world, std::vector&lt; std::unique_ptr&lt; <a class="el" href="classLidarEntity.html">LidarEntity</a> &gt;&gt; &amp;lidars, <a class="el" href="classAssetManager.html">AssetManager</a> &amp;assets)</td></tr>
+<tr class="memdesc:afaf374902e6c3536fa8ffad6f69a0b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge une scène complète (objets + lidars) depuis un fichier json.  <a href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e">More...</a><br /></td></tr>
 <tr class="separator:afaf374902e6c3536fa8ffad6f69a0b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c7d9bce89b29a816808acf72600ab60"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60">save_scene_to_json</a> (const std::string &amp;filepath, <a class="el" href="classScene.html">Scene</a> &amp;world, const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classLidarEntity.html">LidarEntity</a> &gt;&gt; &amp;lidars)</td></tr>
-<tr class="separator:a2c7d9bce89b29a816808acf72600ab60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada11215dfcac40405d228125b1df6794"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794">save_scene_to_json</a> (const std::string &amp;filepath, <a class="el" href="classScene.html">Scene</a> &amp;world, const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classLidarEntity.html">LidarEntity</a> &gt;&gt; &amp;lidars, <a class="el" href="classGl.html">Gl</a> *gl)</td></tr>
+<tr class="memdesc:ada11215dfcac40405d228125b1df6794"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde d'une scène dans un fichier json.  <a href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794">More...</a><br /></td></tr>
+<tr class="separator:ada11215dfcac40405d228125b1df6794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afaf374902e6c3536fa8ffad6f69a0b7e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afaf374902e6c3536fa8ffad6f69a0b7e">&#9670;&nbsp;</a></span>load_scene_from_json()</h2>
 
@@ -132,15 +139,27 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Charge une scène complète (objets + lidars) depuis un fichier json. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Chemin vers le fichier json de scène. </td></tr>
+    <tr><td class="paramname">world</td><td><a class="el" href="classScene.html" title="Scène 3D : ensemble d&#39;entités statiques et arbre AABB pour les intersections. Après ajout des entités...">Scene</a> à remplir. </td></tr>
+    <tr><td class="paramname">lidars</td><td>Vecteur de lidar à remplir. </td></tr>
+    <tr><td class="paramname">assets</td><td>Gestionnaire de ressources. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vrai si le chargement à réussi, faux sinon. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_cgraph.png" border="0" usemap="#aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_cgraph" alt=""/></div>
 <map name="aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_cgraph" id="aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,57,192,98"/>
-<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="243,5,424,32"/>
-<area shape="rect" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title=" " alt="" coords="243,57,423,98"/>
-<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title=" " alt="" coords="240,123,427,149"/>
+<area shape="rect" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="5,57,192,98"/>
+<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="243,5,424,32"/>
+<area shape="rect" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title="Retourne la config lidar pour un path donné (charge si nécessaire)." alt="" coords="243,57,423,98"/>
+<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title="Retourne le mesh pour un path donné (charge si nécessaire)." alt="" coords="240,123,427,149"/>
 </map>
 </div>
 <div class="dynheader">
@@ -148,17 +167,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph.png" border="0" usemap="#aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph" alt=""/></div>
 <map name="aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph" id="aclassSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph">
-<area shape="rect" title=" " alt="" coords="529,39,716,80"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="287,71,466,112"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,46,224,73"/>
+<area shape="rect" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="499,5,685,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a2c7d9bce89b29a816808acf72600ab60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c7d9bce89b29a816808acf72600ab60">&#9670;&nbsp;</a></span>save_scene_to_json()</h2>
+<a id="ada11215dfcac40405d228125b1df6794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada11215dfcac40405d228125b1df6794">&#9670;&nbsp;</a></span>save_scene_to_json()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +200,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; std::unique_ptr&lt; <a class="el" href="classLidarEntity.html">LidarEntity</a> &gt;&gt; &amp;&#160;</td>
-          <td class="paramname"><em>lidars</em>&#160;</td>
+          <td class="paramname"><em>lidars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classGl.html">Gl</a> *&#160;</td>
+          <td class="paramname"><em>gl</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -196,15 +220,37 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sauvegarde d'une scène dans un fichier json. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>chemin du fichier json de scene. </td></tr>
+    <tr><td class="paramname">world</td><td>scene à écrire dans le fichier json. </td></tr>
+    <tr><td class="paramname">lidars_ent</td><td>entités lidar à écrire dans le json. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph.png" border="0" usemap="#aclassSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph" alt=""/></div>
-<map name="aclassSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph" id="aclassSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph">
-<area shape="rect" title=" " alt="" coords="5,23,195,65"/>
-<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title=" " alt="" coords="273,5,392,32"/>
-<area shape="rect" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title=" " alt="" coords="243,56,423,83"/>
-<area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="471,56,629,83"/>
+<div class="center"><img src="classSceneLoader_ada11215dfcac40405d228125b1df6794_cgraph.png" border="0" usemap="#aclassSceneLoader_ada11215dfcac40405d228125b1df6794_cgraph" alt=""/></div>
+<map name="aclassSceneLoader_ada11215dfcac40405d228125b1df6794_cgraph" id="aclassSceneLoader_ada11215dfcac40405d228125b1df6794_cgraph">
+<area shape="rect" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="5,49,195,90"/>
+<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="273,5,392,32"/>
+<area shape="rect" href="classGl.html#a282f1d04873290629695e206e9cd2fbe" title="Retourne le chemin du fichier de configuration lidar actif." alt="" coords="259,56,406,83"/>
+<area shape="rect" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="243,107,423,133"/>
+<area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="471,107,629,133"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSceneLoader_ada11215dfcac40405d228125b1df6794_icgraph.png" border="0" usemap="#aclassSceneLoader_ada11215dfcac40405d228125b1df6794_icgraph" alt=""/></div>
+<map name="aclassSceneLoader_ada11215dfcac40405d228125b1df6794_icgraph" id="aclassSceneLoader_ada11215dfcac40405d228125b1df6794_icgraph">
+<area shape="rect" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="503,5,692,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 

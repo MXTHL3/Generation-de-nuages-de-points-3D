@@ -1,9 +1,8 @@
 <map id="Pose::pos" name="Pose::pos">
-<area shape="rect" id="node1" title=" " alt="" coords="697,64,781,91"/>
-<area shape="rect" id="node2" href="$classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="423,5,649,32"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="447,57,625,98"/>
-<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="453,122,619,163"/>
-<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="156,64,375,91"/>
-<area shape="rect" id="node6" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="182,122,349,163"/>
-<area shape="rect" id="node7" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,129,108,156"/>
+<area shape="rect" id="node1" title=" " alt="" coords="547,64,631,91"/>
+<area shape="rect" id="node2" href="$classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="272,5,499,32"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="296,57,475,98"/>
+<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="302,122,469,163"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
+<area shape="rect" id="node6" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="31,122,198,163"/>
 </map>

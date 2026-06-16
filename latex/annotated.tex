@@ -1,52 +1,52 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
-\item\contentsline{section}{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} }{\pageref{classAssetManager}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classCgal}{Cgal}} }{\pageref{classCgal}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classCgalShape}{Cgal\+Shape}} }{\pageref{classCgalShape}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \\*Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar dans une hashmap. Un fichier 3d et de configuration de lidar n\textquotesingle{}est donc chargé qu\textquotesingle{}une fois }{\pageref{classAssetManager}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classCgal}{Cgal}} \\*Interface de base pour la construction et la manipulation d\textquotesingle{}un maillage CGAL. Fournit les opérations bas-\/niveau (ajout de sommets, de faces) et l\textquotesingle{}export des données de rendu. Les sous-\/classes implémentent les méthodes de construction }{\pageref{classCgal}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classCgalShape}{Cgal\+Shape}} \\*Implémentation concrète de \mbox{\hyperlink{classCgal}{Cgal}} pour la construction de maillages. Prend en charge la génération d\textquotesingle{}un cube procédural et le chargement de fichiers 3D (OBJ en natif, PLY/\+OFF/\+STL via CGAL I/O) }{\pageref{classCgalShape}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classColumnCountSource}{Column\+Count\+Source}} \\*Résolution à partir du nombre de colonnes par tour }{\pageref{classColumnCountSource}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classDirectResolutionSource}{Direct\+Resolution\+Source}} \\*Résolution angulaire donnée directmement (pas de calcul) }{\pageref{classDirectResolutionSource}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structFlashFovResolution}{Flash\+Fov\+Resolution}} }{\pageref{structFlashFovResolution}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structFlashFovResolution}{Flash\+Fov\+Resolution}} \\*Résolution dérivée pour un flash Lidar }{\pageref{structFlashFovResolution}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} \\*Configuration d\textquotesingle{}un lidar flash (sans balayage) }{\pageref{classFlashLidarConfig}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classFlashLidarEntity}{Flash\+Lidar\+Entity}} }{\pageref{classFlashLidarEntity}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classGl}{Gl}} }{\pageref{classGl}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classGLShadersUtils}{GLShaders\+Utils}} }{\pageref{classGLShadersUtils}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classHandleFile}{Handle\+File}} }{\pageref{classHandleFile}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classFlashLidarEntity}{Flash\+Lidar\+Entity}} \\*Capteur lidar flash solid-\/state (Continental HFL110) }{\pageref{classFlashLidarEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classGl}{Gl}} \\*Moteur de rendu Open\+GL/\+GTK \+: scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/\+VBO, les shaders, les marqueurs de transformation interactifs et l\textquotesingle{}interface avec le scanner lidar (run\+\_\+scan) }{\pageref{classGl}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classGLShadersUtils}{GLShaders\+Utils}} \\*Utilitaire de compilation et d\textquotesingle{}édition de liens des shaders Open\+GL. Compile les shaders vertex et fragment, les lie en un programme GLSL et rapporte les erreurs de compilation/liaison sur stdout }{\pageref{classGLShadersUtils}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classHandleFile}{Handle\+File}} \\*Gestion de l\textquotesingle{}ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins des modèles chargés dans la session }{\pageref{classHandleFile}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classHorizontalStepSource}{Horizontal\+Step\+Source}} \\*Interface pour le calcul de la résolution (horizontale) azimuth d\textquotesingle{}un Lidar\+Mecanique. Les fiches techniques des constructeurs donnent 3 résolution horizontale de manière différente }{\pageref{classHorizontalStepSource}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classIEntity}{IEntity}} }{\pageref{classIEntity}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structIntersection}{Intersection}} }{\pageref{structIntersection}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classIPointCloudExporter}{IPoint\+Cloud\+Exporter}} }{\pageref{classIPointCloudExporter}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}} }{\pageref{classKeyframeLayoutAugmentation}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}} }{\pageref{structKeyframesConfig}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classIEntity}{IEntity}} \\*Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène }{\pageref{classIEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structIntersection}{Intersection}} \\*Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Retourné par \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{Scene\+::intersect}}, regroupe le point d\textquotesingle{}impact, la distance depuis l\textquotesingle{}origine du rayon et l\textquotesingle{}index de la face touchée }{\pageref{structIntersection}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classIPointCloudExporter}{IPoint\+Cloud\+Exporter}} \\*Interface d\textquotesingle{}export de nuage de points vers un fichier }{\pageref{classIPointCloudExporter}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}} \\*Génération de scènes par substitution de meshes (keyframes d\textquotesingle{}animation) }{\pageref{classKeyframeLayoutAugmentation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}} \\*Configurations\textquotesingle{}un scénario d\textquotesingle{}animation }{\pageref{structKeyframesConfig}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structMechanicalLidarConfig_1_1Laser}{Mechanical\+Lidar\+Config\+::\+Laser}} \\*Structure 1 laser physique du capteur }{\pageref{structMechanicalLidarConfig_1_1Laser}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLasExporter}{Las\+Exporter}} }{\pageref{classLasExporter}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLasExporter}{Las\+Exporter}} \\*Export au format LAS via PDAL }{\pageref{classLasExporter}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \\*Configuration abstraite de base d\textquotesingle{}un lidar. Contient les paramètres communs de tout les types de lidars. Chaque sous classe ajoute les paramètres spécifiques à sa technologie }{\pageref{classLidarConfig}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} }{\pageref{classLidarEntity}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLidarFactory}{Lidar\+Factory}} }{\pageref{classLidarFactory}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} }{\pageref{classLidarScanner}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}} }{\pageref{structLissajouParams}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classLogger}{Logger}} }{\pageref{classLogger}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMainWindow}{Main\+Window}} }{\pageref{classMainWindow}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \\*Capteur Lidar abstrait dans la scène Gère la configuration d\textquotesingle{}un lidar \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}, son modèle de bruit et la génération des rayons à lancer pour le scan }{\pageref{classLidarEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLidarFactory}{Lidar\+Factory}} \\*Factory de création de configurations et sessions Lidar depuis des fichiers json }{\pageref{classLidarFactory}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \\*Moteur de scan \+: intersection des rayons avec la scène et le noise Reçoit les rayons générés par l\textquotesingle{}entité Lidar, trouve les intersections avec l\textquotesingle{}arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat }{\pageref{classLidarScanner}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}} \\*Paramètres de balayage en courbe de Lissajous pour un lidar à miroir. Les amplitudes et fréquences définissent la trajectoire sinusoïdale du miroir sur les deux axes }{\pageref{structLissajouParams}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classLogger}{Logger}} \\*Initialisation \mbox{\hyperlink{classLogger}{Logger}} spdlog globale Doit être appelé une seule fois au démarrage (dans main pour l\textquotesingle{}instant) Le niveau de log par défaut est \char`\"{}\+TRACE\char`\"{} $<$ \char`\"{}\+INFO\char`\"{} $<$ \char`\"{}\+DEBUG\char`\"{} $<$ .. }{\pageref{classLogger}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classMainWindow}{Main\+Window}} \\*Fenêtre principale de l\textquotesingle{}application. Intègre la vue 3D Open\+GL (\mbox{\hyperlink{classGl}{Gl}}), la barre de menus et le label d\textquotesingle{}état indiquant le mode de transformation actif (translation / rotation / échelle) }{\pageref{classMainWindow}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}} \\*Configuration d\textquotesingle{}un lidar mécanique rotatif }{\pageref{classMechanicalLidarConfig}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMechanicalLidarEntity}{Mechanical\+Lidar\+Entity}} }{\pageref{classMechanicalLidarEntity}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMenuItemsActions}{Menu\+Items\+Actions}} }{\pageref{classMenuItemsActions}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classMechanicalLidarEntity}{Mechanical\+Lidar\+Entity}} \\*Capteur lidar mécanique rotatif (Velodyne, Ouster) }{\pageref{classMechanicalLidarEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classMenuItemsActions}{Menu\+Items\+Actions}} \\*Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le signal activate d\textquotesingle{}un sous-\/menu (\+\_\+sub) à l\textquotesingle{}action correspondante. \mbox{\hyperlink{classMainWindow}{Main\+Window}} hérite de cette classe }{\pageref{classMenuItemsActions}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}} \\*Configuration d\textquotesingle{}un lidar à miroir (balayage de Lissajous) }{\pageref{classMirroredLidarConfig}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classMirroredLidarEntity}{Mirrored\+Lidar\+Entity}} }{\pageref{classMirroredLidarEntity}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classModelMarker}{Model\+Marker}} }{\pageref{classModelMarker}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structModelTransform}{Model\+Transform}} }{\pageref{structModelTransform}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classMirroredLidarEntity}{Mirrored\+Lidar\+Entity}} \\*Capteur lidar à Miroir oscillant (Livox) }{\pageref{classMirroredLidarEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classModelMarker}{Model\+Marker}} \\*Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d\textquotesingle{}un clic ou d\textquotesingle{}un drag pour piloter la transformation du modèle 3D associé }{\pageref{classModelMarker}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structModelTransform}{Model\+Transform}} \\*Transformation affine d\textquotesingle{}un modèle 3D dans la scène Open\+GL. Regroupe translation, rotation (Euler XYZ, radians) et échelle uniforme. Le flag use\+\_\+offset active un décalage automatique pour éviter la superposition des modèles chargés successivement }{\pageref{structModelTransform}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \\*Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil de bruit choisi. Le générateur aléatoire \char`\"{}mt19937\char`\"{} est déterministe \+: on peut générer des séquences bruités identiques avec la même seed ! }{\pageref{classNoiseModel}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structNoiseProfile}{Noise\+Profile}} \\*Profil du bruit d\textquotesingle{}un capteur lidar }{\pageref{structNoiseProfile}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structNoiseStep}{Noise\+Step}} \\*Palier du profil de bruit d\textquotesingle{}un capteur lidar }{\pageref{structNoiseStep}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classObject}{Object}} }{\pageref{classObject}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structObjectAnimation}{Object\+Animation}} }{\pageref{structObjectAnimation}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classPipeline}{Pipeline}} }{\pageref{classPipeline}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}} }{\pageref{classPipelineStep}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classPlyExporter}{Ply\+Exporter}} }{\pageref{classPlyExporter}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classObject}{Object}} \\*Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités }{\pageref{classObject}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structObjectAnimation}{Object\+Animation}} \\*Animation d\textquotesingle{}un objet \+: liste des fichiers de ses \char`\"{}keyframes\char`\"{} }{\pageref{structObjectAnimation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPipeline}{Pipeline}} \\*Exécute une chaîne d\textquotesingle{}étapes d\textquotesingle{}augmentation sur une scène de base. Chaque étape (\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}) reçoit l\textquotesingle{}ensemble des scènes produites par l\textquotesingle{}étape précédente et retourne un ensemble plus grand }{\pageref{classPipeline}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}} \\*Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l\textquotesingle{}ensemble). Les étapes sont chaînées }{\pageref{classPipelineStep}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPlyExporter}{Ply\+Exporter}} \\*Export au format PLY ASCII }{\pageref{classPlyExporter}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classPointsPerSecondSource}{Points\+Per\+Second\+Source}} \\*Résolution à partir du nombre de points par seconde }{\pageref{classPointsPerSecondSource}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classPose}{Pose}} }{\pageref{classPose}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classPositionLayoutAugmentation}{Position\+Layout\+Augmentation}} }{\pageref{classPositionLayoutAugmentation}}{}
-\item\contentsline{section}{\mbox{\hyperlink{structRasterParams}{Raster\+Params}} }{\pageref{structRasterParams}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classRotationLayoutAugmentation}{Rotation\+Layout\+Augmentation}} }{\pageref{classRotationLayoutAugmentation}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classScene}{Scene}} }{\pageref{classScene}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classSceneLoader}{Scene\+Loader}} }{\pageref{classSceneLoader}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classStaticEntity}{Static\+Entity}} }{\pageref{classStaticEntity}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPose}{Pose}} \\*Position et rotation d\textquotesingle{}un objet dans une scène 3D. Une position (x, y, z) et une rotation (x, y, z) avec angles en radians }{\pageref{classPose}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classPositionLayoutAugmentation}{Position\+Layout\+Augmentation}} \\*Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion }{\pageref{classPositionLayoutAugmentation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structRasterParams}{Raster\+Params}} \\*Paramètres de balayage en grille régulière (raster) pour un lidar à miroir }{\pageref{structRasterParams}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classRotationLayoutAugmentation}{Rotation\+Layout\+Augmentation}} \\*Rotations uniforme d\textquotesingle{}une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi }{\pageref{classRotationLayoutAugmentation}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classScene}{Scene}} \\*Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour les intersections. Après ajout des entités, \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build()}} triangule la scène et construit l\textquotesingle{}arbre CGAL AABB permettant des requêtes d\textquotesingle{}intersection rayon/maillage }{\pageref{classScene}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classSceneLoader}{Scene\+Loader}} \\*Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json }{\pageref{classSceneLoader}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classStaticEntity}{Static\+Entity}} \\*Objet statique de la scène (ne bouge pas !) }{\pageref{classStaticEntity}}{}
 \end{DoxyCompactList}

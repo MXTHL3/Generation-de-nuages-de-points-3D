@@ -99,6 +99,7 @@ Include dependency graph for entity.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd">generate_ray_grid</a> (const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;origin, const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;world_xf, double fov_h, double fov_v, int res_h, int res_v)</td></tr>
+<tr class="memdesc:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère une grille régulière de rayons (partagé entre Flash et Miroir raster).  <a href="entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd">More...</a><br /></td></tr>
 <tr class="separator:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -118,7 +119,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;&#160;</td>
-          <td class="paramname"><em>world_xf</em>, </td>
+          <td class="paramname"><em>wolrd_xf</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -151,13 +152,24 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Génère une grille régulière de rayons (partagé entre Flash et Miroir raster). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>Position du capteur. </td></tr>
+    <tr><td class="paramname">wolrd_xf</td><td>Transformation monde du capteur. </td></tr>
+    <tr><td class="paramname">res_h</td><td>///&lt; Nombre de colonnes. </td></tr>
+    <tr><td class="paramname">res_v</td><td>///&lt; Nombre de lignes. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph.png" border="0" usemap="#aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" alt=""/></div>
 <map name="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" id="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph">
-<area shape="rect" title=" " alt="" coords="280,5,420,32"/>
-<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="5,5,232,32"/>
+<area shape="rect" title="Génère une grille régulière de rayons (partagé entre Flash et Miroir raster)." alt="" coords="280,5,420,32"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="5,5,232,32"/>
 </map>
 </div>
 

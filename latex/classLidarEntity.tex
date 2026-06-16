@@ -2,12 +2,16 @@
 \label{classLidarEntity}\index{LidarEntity@{LidarEntity}}
 
 
+Capteur Lidar abstrait dans la scène Gère la configuration d\textquotesingle{}un lidar \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}, son modèle de bruit et la génération des rayons à lancer pour le scan.  
+
+
+
+
 {\ttfamily \#include $<$entity.\+h$>$}
 
 
 
-Inheritance diagram for Lidar\+Entity\+:
-\nopagebreak
+Inheritance diagram for Lidar\+Entity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +20,7 @@ Inheritance diagram for Lidar\+Entity\+:
 \end{figure}
 
 
-Collaboration diagram for Lidar\+Entity\+:
-\nopagebreak
+Collaboration diagram for Lidar\+Entity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,23 +35,26 @@ Collaboration diagram for Lidar\+Entity\+:
 virtual \mbox{\hyperlink{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}{$\sim$\+Lidar\+Entity}} ()=default
 \item 
 const std\+::string \& \mbox{\hyperlink{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec85e}{name}} () const override final
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \& \mbox{\hyperlink{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}{config}} () const
 \item 
 virtual std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{generate\+\_\+rays}} () const =0
-\item 
+\begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}{noise\+\_\+model}} (const \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \&model)
-\item 
+\begin{DoxyCompactList}\small\item\em Remplace le modèle de bruit. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}{noisy\+\_\+distance}} (double d) const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Applique le bruit à une mesure de distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarEntity_ac9a8bf8ad5fcecc4294e74f8e1bed0da}{m\+\_\+config}}
-\item 
+\begin{DoxyCompactList}\small\item\em La config partagée du lidar. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \mbox{\hyperlink{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}{m\+\_\+noise\+\_\+model}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em le profil de bruit du lidar \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Capteur Lidar abstrait dans la scène Gère la configuration d\textquotesingle{}un lidar \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}, son modèle de bruit et la génération des rayons à lancer pour le scan. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classLidarEntity_a48982d054651b1f7747c2709db01d9e3}\label{classLidarEntity_a48982d054651b1f7747c2709db01d9e3}} 
@@ -57,6 +63,13 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$
 \doxysubsubsection{\texorpdfstring{LidarEntity()}{LidarEntity()}}
 {\footnotesize\ttfamily Lidar\+Entity\+::\+Lidar\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$}]{config,  }\item[{\mbox{\hyperlink{classPose}{Pose}}}]{p }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Configuration d\textquotesingle{}un capteur Lidar partagée \\
+\hline
+{\em p} & Position et rotation du capteur dans la scène \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}\label{classLidarEntity_af3ba63c922daa439ebbba9dc60bd7411}} 
 \index{LidarEntity@{LidarEntity}!````~LidarEntity@{$\sim$LidarEntity}}
 \index{````~LidarEntity@{$\sim$LidarEntity}!LidarEntity@{LidarEntity}}
@@ -72,8 +85,7 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$
 \doxysubsubsection{\texorpdfstring{config()}{config()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}\& Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -88,10 +100,13 @@ Here is the caller graph for this function\+:
 
 
 
+Génère tous les rayons pour le scan. 
+
+
+
 Implemented in \mbox{\hyperlink{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}{Mirrored\+Lidar\+Entity}}, \mbox{\hyperlink{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}{Flash\+Lidar\+Entity}}, and \mbox{\hyperlink{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}{Mechanical\+Lidar\+Entity}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -106,6 +121,10 @@ Here is the caller graph for this function\+:
 
 
 
+Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. 
+
+
+
 Implements \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{IEntity}}.
 
 \mbox{\Hypertarget{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}\label{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}} 
@@ -114,30 +133,36 @@ Implements \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{IEnt
 \doxysubsubsection{\texorpdfstring{noise\_model()}{noise\_model()}}
 {\footnotesize\ttfamily void Lidar\+Entity\+::noise\+\_\+model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \&}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=294pt]{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569_icgraph}
-\end{center}
-\end{figure}
+
+
+Remplace le modèle de bruit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & nouveau modèle \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}\label{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad}} 
 \index{LidarEntity@{LidarEntity}!noisy\_distance@{noisy\_distance}}
 \index{noisy\_distance@{noisy\_distance}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{noisy\_distance()}{noisy\_distance()}}
 {\footnotesize\ttfamily double Lidar\+Entity\+::noisy\+\_\+distance (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+
+
+Applique le bruit à une mesure de distance. 
+
+\begin{DoxyReturn}{Returns}
+la distance bruitée 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=324pt]{classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -153,11 +178,19 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{m\_config}{m\_config}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}$>$ Lidar\+Entity\+::m\+\_\+config\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+La config partagée du lidar. 
+
 \mbox{\Hypertarget{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}\label{classLidarEntity_a5a95b2491deeb7f4acca7b030b2bfe65}} 
 \index{LidarEntity@{LidarEntity}!m\_noise\_model@{m\_noise\_model}}
 \index{m\_noise\_model@{m\_noise\_model}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{m\_noise\_model}{m\_noise\_model}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} Lidar\+Entity\+::m\+\_\+noise\+\_\+model\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+le profil de bruit du lidar 
 
 
 

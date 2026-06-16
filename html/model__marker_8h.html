@@ -89,15 +89,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="model__marker_8h__dep__incl.png" border="0" usemap="#amodel__marker_8hdep" alt=""/></div>
 <map name="amodel__marker_8hdep" id="amodel__marker_8hdep">
-<area shape="rect" title=" " alt="" coords="343,5,470,32"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="247,80,294,107"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="240,229,362,256"/>
-<area shape="rect" href="model__marker_8cpp.html" title=" " alt="" coords="444,80,587,107"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="308,155,369,181"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="40,304,122,331"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="39,155,208,181"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="232,304,370,331"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="32,229,216,256"/>
+<area shape="rect" title=" " alt="" coords="143,5,270,32"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="183,80,230,107"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="13,304,136,331"/>
+<area shape="rect" href="model__marker_8cpp.html" title=" " alt="" coords="254,80,397,107"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="329,155,391,181"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="308,379,391,405"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="113,229,282,256"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="199,155,305,181"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="5,379,144,405"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="160,304,344,331"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="331,229,453,256"/>
 </map>
 </div>
 </div>
@@ -106,6 +108,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelMarker.html">ModelMarker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d'un clic ou d'un drag pour piloter la transformation du modèle 3D associé.  <a href="classModelMarker.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -127,6 +130,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034">s</a>
 <br />
  }</td></tr>
+<tr class="memdesc:ade22213fff69cfb37d8238e8fd3073df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types de marqueurs de transformation interactifs. Les valeurs prefixées par "unabled" indiquent un marqueur désactivé/invisible.  <a href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">More...</a><br /></td></tr>
 <tr class="separator:ade22213fff69cfb37d8238e8fd3073df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -149,19 +153,26 @@ Enumerations</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Types de marqueurs de transformation interactifs. Les valeurs prefixées par "unabled" indiquent un marqueur désactivé/invisible. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa6f6405a641876e661604d09346d2804f"></a>unabledx&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfabfdc77491d15b41ed02e2df78820bfbc"></a>unabledy&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa012ad381e1936848ba8af9f259871d98"></a>unabledz&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa708ca8ec102c57aaeac45512ce262b19"></a>unableds&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667"></a>center&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa708ca8ec102c57aaeac45512ce262b19"></a>unableds&#160;</td><td class="fielddoc"><p>Marqueurs désactivés (cachés). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667"></a>center&#160;</td><td class="fielddoc"><p>Marqueur central (clic = cycle de mode). </p>
+</td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa7da685001e153f41a83eb6255069dc3d"></a>tx&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa36f3af6226e0b5303e19b824e7442272"></a>ty&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa73bb4387b3075739eacb9cd62ac4049c"></a>tz&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa73bb4387b3075739eacb9cd62ac4049c"></a>tz&#160;</td><td class="fielddoc"><p>Marqueurs de translation sur X, Y, Z. </p>
+</td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc"></a>rx&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa731a58830959369de78aac2501c6021a"></a>ry&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa80fcd632dc2558177aaf6f8f5cd57678"></a>rz&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034"></a>s&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa80fcd632dc2558177aaf6f8f5cd57678"></a>rz&#160;</td><td class="fielddoc"><p>Marqueurs de rotation autour de X, Y, Z. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034"></a>s&#160;</td><td class="fielddoc"><p>Marqueur d'échelle uniforme. </p>
+</td></tr>
 </table>
 
 </div>

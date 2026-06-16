@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classPipelineStep.html" title=" " alt="" coords="5,56,108,83"/>
-<area shape="rect" id="node2" href="$classKeyframeLayoutAugmentation.html" title=" " alt="" coords="156,5,377,32"/>
-<area shape="rect" id="node3" href="$classPositionLayoutAugmentation.html" title=" " alt="" coords="161,56,372,83"/>
-<area shape="rect" id="node4" href="$classRotationLayoutAugmentation.html" title=" " alt="" coords="160,107,373,133"/>
+<area shape="rect" id="node1" href="$classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="5,56,108,83"/>
+<area shape="rect" id="node2" href="$classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="156,5,377,32"/>
+<area shape="rect" id="node3" href="$classPositionLayoutAugmentation.html" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion." alt="" coords="161,56,372,83"/>
+<area shape="rect" id="node4" href="$classRotationLayoutAugmentation.html" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="160,107,373,133"/>
 </map>

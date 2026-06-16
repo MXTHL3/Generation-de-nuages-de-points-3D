@@ -1,18 +1,15 @@
 <map id="Gl::run_scan" name="Gl::run_scan">
-<area shape="rect" id="node1" title=" " alt="" coords="5,209,108,236"/>
-<area shape="rect" id="node2" href="$classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="159,5,341,32"/>
-<area shape="rect" id="node3" href="$classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title=" " alt="" coords="199,56,301,83"/>
-<area shape="rect" id="node4" href="$classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title=" " alt="" coords="159,107,341,149"/>
-<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="167,173,333,214"/>
-<area shape="rect" id="node13" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="187,239,313,265"/>
-<area shape="rect" id="node14" href="$classGl.html#a5bdcca5a28273112b61476cfe13a2674" title=" " alt="" coords="195,289,305,316"/>
-<area shape="rect" id="node15" href="$cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,340,344,367"/>
-<area shape="rect" id="node16" href="$classLidarEntity.html#ae08b8cea0223e9cf1d15a4451c363569" title=" " alt="" coords="183,391,317,433"/>
-<area shape="rect" id="node6" href="$classMechanicalLidarEntity.html#ab954c5169dbde3e408733b0cdda14d29" title=" " alt="" coords="609,121,776,162"/>
-<area shape="rect" id="node7" href="$classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="392,173,561,214"/>
-<area shape="rect" id="node8" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="393,238,560,279"/>
-<area shape="rect" id="node9" href="$classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="651,195,735,221"/>
-<area shape="rect" id="node10" href="$units_8h.html#ae19ff0d6b0a80415a531b6f3b43bc7bb" title=" " alt="" coords="647,245,738,272"/>
-<area shape="rect" id="node11" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="625,296,760,323"/>
-<area shape="rect" id="node12" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="824,296,949,323"/>
+<area shape="rect" id="node1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,180,108,207"/>
+<area shape="rect" id="node2" href="$classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="159,5,341,32"/>
+<area shape="rect" id="node3" href="$classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="199,56,301,83"/>
+<area shape="rect" id="node4" href="$classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title="Crée une configuration lidar depuis un fichier json." alt="" coords="159,107,341,149"/>
+<area shape="rect" id="node5" href="$classGl.html#a2c4898a547382a3bbd66f7526f8e07c2" title="Retourne la position de la caméra dans le repère monde." alt="" coords="168,173,332,214"/>
+<area shape="rect" id="node6" href="$classGl.html#a5bdcca5a28273112b61476cfe13a2674" title="Charge un nuage de points et l&#39;affiche." alt="" coords="195,239,305,265"/>
+<area shape="rect" id="node7" href="$cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,289,344,316"/>
+<area shape="rect" id="node8" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="178,340,322,367"/>
+<area shape="rect" id="node9" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="419,264,557,291"/>
+<area shape="rect" id="node10" href="$classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title="Génère tous les rayons pour le scan." alt="" coords="392,315,584,341"/>
+<area shape="rect" id="node11" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="425,365,551,392"/>
+<area shape="rect" id="node12" href="$classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title="Applique le bruit à une mesure de distance." alt="" coords="421,417,555,458"/>
+<area shape="rect" id="node13" href="$classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="632,424,775,451"/>
 </map>

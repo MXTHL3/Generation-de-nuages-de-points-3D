@@ -1,0 +1,4 @@
+<map id="MenuItemsActions::launch_one_scan_per_3d_model" name="MenuItemsActions::launch_one_scan_per_3d_model">
+<area shape="rect" id="node1" title="Lance un scan lidar individuel pour chaque modèle 3D de la scène." alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node2" href="$classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,5,415,47"/>
+</map>

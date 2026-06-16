@@ -3,6 +3,9 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+/// @brief initialisation Logger spdlog globale
+/// Doit être appelé une seule fois au démarrage (dans main pour l'instant)
+/// Le niveau de log par défaut est "TRACE" < "INFO" < "DEBUG" < ...
 class Logger{
 public:
     static void init(){

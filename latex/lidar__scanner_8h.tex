@@ -3,16 +3,14 @@
 {\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}entity.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-Include dependency graph for lidar\+\_\+scanner.\+h\+:
-\nopagebreak
+Include dependency graph for lidar\+\_\+scanner.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{lidar__scanner_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,4 +21,4 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Moteur de scan \+: intersection des rayons avec la scène et le noise Reçoit les rayons générés par l\textquotesingle{}entité Lidar, trouve les intersections avec l\textquotesingle{}arbre AABB de la scène, applique le modèle de bruit si demandé et retourne le nuage de points résultat. \end{DoxyCompactList}\end{DoxyCompactItemize}

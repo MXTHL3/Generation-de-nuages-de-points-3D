@@ -1,8 +1,8 @@
 <map id="LidarScanner::scan" name="LidarScanner::scan">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,149,108"/>
+<area shape="rect" id="node1" title="Effectue un scan." alt="" coords="5,81,149,108"/>
 <area shape="rect" id="node2" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="224,5,363,32"/>
-<area shape="rect" id="node3" href="$classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title=" " alt="" coords="197,56,389,83"/>
-<area shape="rect" id="node4" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="230,107,357,133"/>
-<area shape="rect" id="node5" href="$classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title=" " alt="" coords="226,158,361,199"/>
+<area shape="rect" id="node3" href="$classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title="Génère tous les rayons pour le scan." alt="" coords="197,56,389,83"/>
+<area shape="rect" id="node4" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="230,107,357,133"/>
+<area shape="rect" id="node5" href="$classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title="Applique le bruit à une mesure de distance." alt="" coords="226,158,361,199"/>
 <area shape="rect" id="node6" href="$classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="437,165,580,192"/>
 </map>

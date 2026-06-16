@@ -1,6 +1,5 @@
 <map id="LidarEntity::noisy_distance" name="LidarEntity::noisy_distance">
-<area shape="rect" id="node1" title=" " alt="" coords="721,5,856,47"/>
-<area shape="rect" id="node2" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="529,13,673,39"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title="Applique le bruit à une mesure de distance." alt="" coords="348,5,483,47"/>
+<area shape="rect" id="node2" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="156,13,300,39"/>
+<area shape="rect" id="node3" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,13,108,39"/>
 </map>

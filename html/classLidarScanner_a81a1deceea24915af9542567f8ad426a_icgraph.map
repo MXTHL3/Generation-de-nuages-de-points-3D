@@ -1,5 +1,4 @@
 <map id="LidarScanner::scan" name="LidarScanner::scan">
-<area shape="rect" id="node1" title=" " alt="" coords="529,13,673,39"/>
-<area shape="rect" id="node2" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title="Effectue un scan." alt="" coords="156,5,300,32"/>
+<area shape="rect" id="node2" href="$classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
 </map>

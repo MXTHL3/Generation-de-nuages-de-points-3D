@@ -1,4 +1,4 @@
 <map id="RotationLayoutAugmentation" name="RotationLayoutAugmentation">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,244,237"/>
-<area shape="rect" id="node2" href="$classPipelineStep.html" title=" " alt="" coords="55,5,194,97"/>
+<area shape="rect" id="node1" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="5,145,244,237"/>
+<area shape="rect" id="node2" href="$classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
 </map>

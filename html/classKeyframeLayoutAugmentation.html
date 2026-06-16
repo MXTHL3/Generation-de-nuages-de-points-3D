@@ -69,14 +69,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Génération de scènes par substitution de meshes (keyframes d'animation).  
+ <a href="classKeyframeLayoutAugmentation.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pipeline_8h_source.html">pipeline.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for KeyframeLayoutAugmentation:</div>
 <div class="dyncontent">
 <div class="center"><img src="classKeyframeLayoutAugmentation__inherit__graph.png" border="0" usemap="#aKeyframeLayoutAugmentation_inherit__map" alt="Inheritance graph"/></div>
 <map name="aKeyframeLayoutAugmentation_inherit__map" id="aKeyframeLayoutAugmentation_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,252,237"/>
-<area shape="rect" href="classPipelineStep.html" title=" " alt="" coords="59,5,198,97"/>
+<area shape="rect" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="5,145,252,237"/>
+<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="59,5,198,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -84,8 +87,8 @@ Collaboration diagram for KeyframeLayoutAugmentation:</div>
 <div class="dyncontent">
 <div class="center"><img src="classKeyframeLayoutAugmentation__coll__graph.png" border="0" usemap="#aKeyframeLayoutAugmentation_coll__map" alt="Collaboration graph"/></div>
 <map name="aKeyframeLayoutAugmentation_coll__map" id="aKeyframeLayoutAugmentation_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,252,237"/>
-<area shape="rect" href="classPipelineStep.html" title=" " alt="" coords="59,5,198,97"/>
+<area shape="rect" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="5,145,252,237"/>
+<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="59,5,198,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -94,12 +97,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a725558338f5e21833c6d8c13bcdc2191"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyframeLayoutAugmentation.html#a725558338f5e21833c6d8c13bcdc2191">KeyframeLayoutAugmentation</a> (std::vector&lt; <a class="el" href="structKeyframesConfig.html">KeyframesConfig</a> &gt; keyframes_configs)</td></tr>
 <tr class="separator:a725558338f5e21833c6d8c13bcdc2191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a488a82b9ebf044e73e973a51e43f3830"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyframeLayoutAugmentation.html#a488a82b9ebf044e73e973a51e43f3830">process</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt;&gt; input_scenes, <a class="el" href="classAssetManager.html">AssetManager</a> &amp;assets) override</td></tr>
+<tr class="memdesc:a488a82b9ebf044e73e973a51e43f3830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traite les scènes d'entrée et produit les scènes augmentées.  <a href="classKeyframeLayoutAugmentation.html#a488a82b9ebf044e73e973a51e43f3830">More...</a><br /></td></tr>
 <tr class="separator:a488a82b9ebf044e73e973a51e43f3830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPipelineStep"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPipelineStep')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPipelineStep.html">PipelineStep</a></td></tr>
 <tr class="memitem:a9d707b9a09c3a2ad60b671e1bc5d297f inherit pub_methods_classPipelineStep"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipelineStep.html#a9d707b9a09c3a2ad60b671e1bc5d297f">~PipelineStep</a> ()</td></tr>
 <tr class="separator:a9d707b9a09c3a2ad60b671e1bc5d297f inherit pub_methods_classPipelineStep"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Génération de scènes par substitution de meshes (keyframes d'animation). </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a725558338f5e21833c6d8c13bcdc2191"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a725558338f5e21833c6d8c13bcdc2191">&#9670;&nbsp;</a></span>KeyframeLayoutAugmentation()</h2>
 
@@ -123,6 +129,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyframes_configs</td><td>Liste de scénarios d'animation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -160,6 +172,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Traite les scènes d'entrée et produit les scènes augmentées. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_scenes</td><td>Scènes à transformer </td></tr>
+    <tr><td class="paramname">assets</td><td>Gestionnaire de ressources (meshes, configs) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scènes augmentées </dd></dl>
 
 <p>Implements <a class="el" href="classPipelineStep.html#aef178ca71fc7b7f3f43b64ad589ddf7d">PipelineStep</a>.</p>
 

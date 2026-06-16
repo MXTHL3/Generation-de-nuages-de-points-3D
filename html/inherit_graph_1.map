@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classCgal.html" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node2" href="$classCgalShape.html" title=" " alt="" coords="104,5,195,32"/>
+<area shape="rect" id="node1" href="$classCgal.html" title="Interface de base pour la construction et la manipulation d&#39;un maillage CGAL. Fournit les opérations ..." alt="" coords="5,5,56,32"/>
+<area shape="rect" id="node2" href="$classCgalShape.html" title="Implémentation concrète de Cgal pour la construction de maillages. Prend en charge la génération d&#39;un..." alt="" coords="104,5,195,32"/>
 </map>

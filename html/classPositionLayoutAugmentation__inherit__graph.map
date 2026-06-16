@@ -1,4 +1,4 @@
 <map id="PositionLayoutAugmentation" name="PositionLayoutAugmentation">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,240,237"/>
-<area shape="rect" id="node2" href="$classPipelineStep.html" title=" " alt="" coords="53,5,192,97"/>
+<area shape="rect" id="node1" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion." alt="" coords="5,145,240,237"/>
+<area shape="rect" id="node2" href="$classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="53,5,192,97"/>
 </map>

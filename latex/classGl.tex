@@ -2,12 +2,16 @@
 \label{classGl}\index{Gl@{Gl}}
 
 
+Moteur de rendu Open\+GL/\+GTK \+: scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/\+VBO, les shaders, les marqueurs de transformation interactifs et l\textquotesingle{}interface avec le scanner lidar (run\+\_\+scan).  
+
+
+
+
 {\ttfamily \#include $<$gl.\+h$>$}
 
 
 
-Collaboration diagram for Gl\+:
-\nopagebreak
+Collaboration diagram for Gl\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,55 +22,83 @@ Collaboration diagram for Gl\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classGl_a7f9e02f67520b23402061cb58420c70b}{Gl}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCgal}{Cgal}} $>$ default\+\_\+scene)
-\item 
+\begin{DoxyCompactList}\small\item\em Construit le contexte Open\+GL avec une scène CGAL par défaut (cube). \end{DoxyCompactList}\item 
 Gtk\+::\+Widget \& \mbox{\hyperlink{classGl_a92e2dc7d8d682a4597e6b36a7baff396}{widget}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne le widget GTK racine à intégrer dans la fenêtre. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a643d518702ab2e28f62b0414247f2137}{build\+\_\+grid}} (float size, float step)
-\item 
+\begin{DoxyCompactList}\small\item\em Construit le maillage de la grille de référence au sol. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a97e61d917cbe1e275e1fc872b4d656a6}{load\+\_\+file}} (const std\+::string \&path)
-\item 
+\begin{DoxyCompactList}\small\item\em Charge un fichier 3D et l\textquotesingle{}ajoute à la scène. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a5bdcca5a28273112b61476cfe13a2674}{load\+\_\+scan}} (const std\+::string \&path)
-\item 
+\begin{DoxyCompactList}\small\item\em Charge un nuage de points et l\textquotesingle{}affiche. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}{set\+\_\+transform}} (int idx, const \mbox{\hyperlink{structModelTransform}{Model\+Transform}} \&tr)
-\item 
+\begin{DoxyCompactList}\small\item\em Applique une transformation à un modèle de la scène. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}{set\+\_\+camera}} (float pos\+\_\+x, float pos\+\_\+y, float pos\+\_\+z, float \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc}{rx}}, float \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa731a58830959369de78aac2501c6021a}{ry}}, float zoom)
-\item 
+\begin{DoxyCompactList}\small\item\em Positionne la caméra dans la scène. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a7086ea1109c9b754e531fd3d1870c1f6}{capture\+\_\+image}} (const std\+::string \&path)
-\item 
+\begin{DoxyCompactList}\small\item\em Capture le rendu Open\+GL courant et l\textquotesingle{}enregistre en PNG. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_aa0687592e446cb744fcc588420821483}{add\+\_\+overlay\+\_\+widget}} (Gtk\+::\+Widget \&w)
-\item 
+\begin{DoxyCompactList}\small\item\em Ajoute un widget GTK en overlay sur la GLArea. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_ad7911c5da5492309af8bf125d26ecde1}{run\+\_\+scan}} (const std\+::string \&lidar\+\_\+config\+\_\+path, const std\+::string \&output\+\_\+path)
-\item 
+\begin{DoxyCompactList}\small\item\em Lance un scan lidar de la scène complète et exporte le nuage de points. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a06b6675f97657ca3b46bd3c9367aa972}{set\+\_\+lidar\+\_\+config}} (const std\+::string \&path)
-\item 
+\begin{DoxyCompactList}\small\item\em Définit le chemin du fichier de configuration lidar actif. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a7fb1c1b80b822442fe18e4749eda3e56}{set\+\_\+lidar\+\_\+override}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ lidar)
-\item 
+\begin{DoxyCompactList}\small\item\em Remplace la configuration lidar par une instance déjà créée. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}{clear\+\_\+lidar\+\_\+override}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Supprime la configuration lidar de remplacement (retour au fichier JSON). \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classGl_ab79f766b81ba1f6a86f38087c3db5e17}{get\+\_\+lidar\+\_\+override}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne la configuration lidar de remplacement courante. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a0bc6a9f921be20983abcbb10920bf685}{lidar\+\_\+override\+\_\+set\+\_\+min}} (double v)
-\item 
+\begin{DoxyCompactList}\small\item\em Modifie la distance minimale de détection du lidar de remplacement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_af66553210f98dd959603d828608ba59a}{lidar\+\_\+override\+\_\+set\+\_\+max}} (double v)
-\item 
-void \mbox{\hyperlink{classGl_a50c5eced263a4ea543046dced0db69df}{lidar\+\_\+override\+\_\+set\+\_\+hstep}} (size\+\_\+t idx, double v)
-\item 
+\begin{DoxyCompactList}\small\item\em Modifie la distance maximale de détection du lidar de remplacement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a10793c119b1c1ce2b05d5e5884beac72}{lidar\+\_\+override\+\_\+set\+\_\+hstep}} (size\+\_\+t, double v)
+\begin{DoxyCompactList}\small\item\em Modifie la résolution horizontale du lidar mécanique de remplacement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}{lidar\+\_\+override\+\_\+set\+\_\+accuracy}} (double v)
-\item 
+\begin{DoxyCompactList}\small\item\em Modifie la précision du lidar de remplacement. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classGl_a282f1d04873290629695e206e9cd2fbe}{get\+\_\+lidar\+\_\+config}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne le chemin du fichier de configuration lidar actif. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a39222fbea430ff6081ecc704ac39d7a6}{toggle\+\_\+point\+\_\+cloud}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Bascule l\textquotesingle{}affichage du nuage de points. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classModelMarker}{Model\+Marker}} $>$ $>$ \& \mbox{\hyperlink{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}{get\+\_\+markers}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne la liste des marqueurs de transformation interactifs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a622447c9e09b0491375e23ee1ab3debb}{reset\+\_\+scene}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Supprime tous les modèles chargés (conserve le cube par défaut). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a8ea113f1de89d38b932b6ac3562c0ce9}{reset\+\_\+scans}} ()
+\begin{DoxyCompactList}\small\item\em Supprime tous les nuages de points chargés. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classGl_adc25b914170d0b38ac93365435a7d00b}{model\+\_\+count}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de modèles présents dans la scène. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a9c5d77d25bda8aa7a8b14b58728896f6}{set\+\_\+model\+\_\+hidden}} (size\+\_\+t idx, bool hidden)
+\begin{DoxyCompactList}\small\item\em Masque ou affiche un modèle de la scène. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGl_aa632ac30a5aef65613cc217c8e1f9c0d}{is\+\_\+model\+\_\+hidden}} (size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Indique si un modèle est actuellement masqué. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classGl_a00b67ddd9b262dc9d58a901fbc5465e6}{get\+\_\+angle\+\_\+x}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}angle de tangage (pitch) courant de la caméra. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classGl_af313344849dd6bfd19251415945351e0}{get\+\_\+angle\+\_\+y}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}angle de lacet (yaw) courant de la caméra. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classGl_a564b724bd51f1c830f06ad8d847b4f6b}{model\+\_\+paths}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les chemins des fichiers 3D chargés. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{structModelTransform}{Model\+Transform}} $>$ \& \mbox{\hyperlink{classGl_a0f124759b5c53ddb0cac672639c0bfc9}{transforms}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les transformations appliquées à chaque modèle. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{classGl_a2c4898a547382a3bbd66f7526f8e07c2}{get\+\_\+camera\+\_\+world\+\_\+position}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la position de la caméra dans le repère monde. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ \mbox{\hyperlink{classGl_a8555c2fc90241017c1e7b1b35b06b286}{signal\+\_\+marker\+\_\+clicked}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal émis quand l\textquotesingle{}utilisateur clique sur un marqueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classGl_aa1035515a10925da382e719dea9b4464}{OFFSET\+\_\+\+STEP}} = 1.\+5f
+\begin{DoxyCompactList}\small\item\em Décalage entre modèles superposés. \end{DoxyCompactList}\item 
+static constexpr float \mbox{\hyperlink{classGl_a6f6b10a8613bb7048cf200cc104cb6a5}{DRAG\+\_\+\+SENSITIVITY}} = 0.\+02f
+\begin{DoxyCompactList}\small\item\em Sensibilité du drag des marqueurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Moteur de rendu Open\+GL/\+GTK \+: scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/\+VBO, les shaders, les marqueurs de transformation interactifs et l\textquotesingle{}interface avec le scanner lidar (run\+\_\+scan). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classGl_a7f9e02f67520b23402061cb58420c70b}\label{classGl_a7f9e02f67520b23402061cb58420c70b}} 
@@ -77,6 +109,15 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 
 
 
+Construit le contexte Open\+GL avec une scène CGAL par défaut (cube). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em default\+\_\+scene} & Scène CGAL initiale (prend la propriété). \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classGl_aa0687592e446cb744fcc588420821483}\label{classGl_aa0687592e446cb744fcc588420821483}} 
 \index{Gl@{Gl}!add\_overlay\_widget@{add\_overlay\_widget}}
@@ -84,78 +125,252 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{add\_overlay\_widget()}{add\_overlay\_widget()}}
 {\footnotesize\ttfamily void Gl\+::add\+\_\+overlay\+\_\+widget (\begin{DoxyParamCaption}\item[{Gtk\+::\+Widget \&}]{w }\end{DoxyParamCaption})}
 
+
+
+Ajoute un widget GTK en overlay sur la GLArea. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Widget à superposer. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a643d518702ab2e28f62b0414247f2137}\label{classGl_a643d518702ab2e28f62b0414247f2137}} 
 \index{Gl@{Gl}!build\_grid@{build\_grid}}
 \index{build\_grid@{build\_grid}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{build\_grid()}{build\_grid()}}
 {\footnotesize\ttfamily void Gl\+::build\+\_\+grid (\begin{DoxyParamCaption}\item[{float}]{size,  }\item[{float}]{step }\end{DoxyParamCaption})}
 
+
+
+Construit le maillage de la grille de référence au sol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Taille totale de la grille (en mètres). \\
+\hline
+{\em step} & Espacement entre les lignes (en mètres). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a7086ea1109c9b754e531fd3d1870c1f6}\label{classGl_a7086ea1109c9b754e531fd3d1870c1f6}} 
 \index{Gl@{Gl}!capture\_image@{capture\_image}}
 \index{capture\_image@{capture\_image}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{capture\_image()}{capture\_image()}}
 {\footnotesize\ttfamily void Gl\+::capture\+\_\+image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+
+
+Capture le rendu Open\+GL courant et l\textquotesingle{}enregistre en PNG. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin du fichier image de sortie. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}\label{classGl_ab3937e6ba83582d4dc825dbb4223aa2e}} 
 \index{Gl@{Gl}!clear\_lidar\_override@{clear\_lidar\_override}}
 \index{clear\_lidar\_override@{clear\_lidar\_override}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{clear\_lidar\_override()}{clear\_lidar\_override()}}
 {\footnotesize\ttfamily void Gl\+::clear\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Supprime la configuration lidar de remplacement (retour au fichier JSON). 
+
+\mbox{\Hypertarget{classGl_a00b67ddd9b262dc9d58a901fbc5465e6}\label{classGl_a00b67ddd9b262dc9d58a901fbc5465e6}} 
+\index{Gl@{Gl}!get\_angle\_x@{get\_angle\_x}}
+\index{get\_angle\_x@{get\_angle\_x}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_angle\_x()}{get\_angle\_x()}}
+{\footnotesize\ttfamily float Gl\+::get\+\_\+angle\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne l\textquotesingle{}angle de tangage (pitch) courant de la caméra. 
+
+\mbox{\Hypertarget{classGl_af313344849dd6bfd19251415945351e0}\label{classGl_af313344849dd6bfd19251415945351e0}} 
+\index{Gl@{Gl}!get\_angle\_y@{get\_angle\_y}}
+\index{get\_angle\_y@{get\_angle\_y}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_angle\_y()}{get\_angle\_y()}}
+{\footnotesize\ttfamily float Gl\+::get\+\_\+angle\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne l\textquotesingle{}angle de lacet (yaw) courant de la caméra. 
+
+\mbox{\Hypertarget{classGl_a2c4898a547382a3bbd66f7526f8e07c2}\label{classGl_a2c4898a547382a3bbd66f7526f8e07c2}} 
+\index{Gl@{Gl}!get\_camera\_world\_position@{get\_camera\_world\_position}}
+\index{get\_camera\_world\_position@{get\_camera\_world\_position}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_camera\_world\_position()}{get\_camera\_world\_position()}}
+{\footnotesize\ttfamily glm\+::vec3 Gl\+::get\+\_\+camera\+\_\+world\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la position de la caméra dans le repère monde. 
+
+\begin{DoxyReturn}{Returns}
+Vecteur 3D de la position de la caméra. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classGl_a2c4898a547382a3bbd66f7526f8e07c2_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classGl_a282f1d04873290629695e206e9cd2fbe}\label{classGl_a282f1d04873290629695e206e9cd2fbe}} 
 \index{Gl@{Gl}!get\_lidar\_config@{get\_lidar\_config}}
 \index{get\_lidar\_config@{get\_lidar\_config}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{get\_lidar\_config()}{get\_lidar\_config()}}
 {\footnotesize\ttfamily const std\+::string\& Gl\+::get\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne le chemin du fichier de configuration lidar actif. 
+
+\begin{DoxyReturn}{Returns}
+Chemin vers le fichier JSON de configuration. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGl_a282f1d04873290629695e206e9cd2fbe_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classGl_ab79f766b81ba1f6a86f38087c3db5e17}\label{classGl_ab79f766b81ba1f6a86f38087c3db5e17}} 
 \index{Gl@{Gl}!get\_lidar\_override@{get\_lidar\_override}}
 \index{get\_lidar\_override@{get\_lidar\_override}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{get\_lidar\_override()}{get\_lidar\_override()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}$>$ Gl\+::get\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne la configuration lidar de remplacement courante. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur partagé vers la configuration, nullptr si aucune. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}\label{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}} 
 \index{Gl@{Gl}!get\_markers@{get\_markers}}
 \index{get\_markers@{get\_markers}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{get\_markers()}{get\_markers()}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classModelMarker}{Model\+Marker}}$>$ $>$\& Gl\+::get\+\_\+markers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne la liste des marqueurs de transformation interactifs. 
+
+\begin{DoxyReturn}{Returns}
+Référence vers le vecteur de marqueurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_aa632ac30a5aef65613cc217c8e1f9c0d}\label{classGl_aa632ac30a5aef65613cc217c8e1f9c0d}} 
+\index{Gl@{Gl}!is\_model\_hidden@{is\_model\_hidden}}
+\index{is\_model\_hidden@{is\_model\_hidden}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{is\_model\_hidden()}{is\_model\_hidden()}}
+{\footnotesize\ttfamily bool Gl\+::is\+\_\+model\+\_\+hidden (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indique si un modèle est actuellement masqué. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index du modèle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le modèle est masqué. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}\label{classGl_a2fa14571b0bae4f2e48b5c91e4ae7cc6}} 
 \index{Gl@{Gl}!lidar\_override\_set\_accuracy@{lidar\_override\_set\_accuracy}}
 \index{lidar\_override\_set\_accuracy@{lidar\_override\_set\_accuracy}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{lidar\_override\_set\_accuracy()}{lidar\_override\_set\_accuracy()}}
 {\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+accuracy (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classGl_a50c5eced263a4ea543046dced0db69df}\label{classGl_a50c5eced263a4ea543046dced0db69df}} 
+
+
+Modifie la précision du lidar de remplacement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nouvelle précision (mètres). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_a10793c119b1c1ce2b05d5e5884beac72}\label{classGl_a10793c119b1c1ce2b05d5e5884beac72}} 
 \index{Gl@{Gl}!lidar\_override\_set\_hstep@{lidar\_override\_set\_hstep}}
 \index{lidar\_override\_set\_hstep@{lidar\_override\_set\_hstep}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{lidar\_override\_set\_hstep()}{lidar\_override\_set\_hstep()}}
-{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+hstep (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx,  }\item[{double}]{v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+hstep (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{,  }\item[{double}]{v }\end{DoxyParamCaption})}
 
+
+
+Modifie la résolution horizontale du lidar mécanique de remplacement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pas azimutal en degrés. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_af66553210f98dd959603d828608ba59a}\label{classGl_af66553210f98dd959603d828608ba59a}} 
 \index{Gl@{Gl}!lidar\_override\_set\_max@{lidar\_override\_set\_max}}
 \index{lidar\_override\_set\_max@{lidar\_override\_set\_max}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{lidar\_override\_set\_max()}{lidar\_override\_set\_max()}}
 {\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+max (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
 
+
+
+Modifie la distance maximale de détection du lidar de remplacement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nouvelle distance maximale (mètres). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a0bc6a9f921be20983abcbb10920bf685}\label{classGl_a0bc6a9f921be20983abcbb10920bf685}} 
 \index{Gl@{Gl}!lidar\_override\_set\_min@{lidar\_override\_set\_min}}
 \index{lidar\_override\_set\_min@{lidar\_override\_set\_min}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{lidar\_override\_set\_min()}{lidar\_override\_set\_min()}}
 {\footnotesize\ttfamily void Gl\+::lidar\+\_\+override\+\_\+set\+\_\+min (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})}
 
+
+
+Modifie la distance minimale de détection du lidar de remplacement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nouvelle distance minimale (mètres). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a97e61d917cbe1e275e1fc872b4d656a6}\label{classGl_a97e61d917cbe1e275e1fc872b4d656a6}} 
 \index{Gl@{Gl}!load\_file@{load\_file}}
 \index{load\_file@{load\_file}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{load\_file()}{load\_file()}}
 {\footnotesize\ttfamily void Gl\+::load\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+
+
+Charge un fichier 3D et l\textquotesingle{}ajoute à la scène. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin vers le fichier (OBJ, PLY, OFF, STL). \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a5bdcca5a28273112b61476cfe13a2674}\label{classGl_a5bdcca5a28273112b61476cfe13a2674}} 
 \index{Gl@{Gl}!load\_scan@{load\_scan}}
 \index{load\_scan@{load\_scan}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{load\_scan()}{load\_scan()}}
 {\footnotesize\ttfamily void Gl\+::load\+\_\+scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+
+
+Charge un nuage de points et l\textquotesingle{}affiche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin vers le fichier (PLY, LAS ou LAZ). \\
+\hline
+\end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -163,11 +378,48 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=275pt]{classGl_a5bdcca5a28273112b61476cfe13a2674_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classGl_adc25b914170d0b38ac93365435a7d00b}\label{classGl_adc25b914170d0b38ac93365435a7d00b}} 
+\index{Gl@{Gl}!model\_count@{model\_count}}
+\index{model\_count@{model\_count}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{model\_count()}{model\_count()}}
+{\footnotesize\ttfamily size\+\_\+t Gl\+::model\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nombre de modèles présents dans la scène. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de scènes CGAL (cube inclus). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_a564b724bd51f1c830f06ad8d847b4f6b}\label{classGl_a564b724bd51f1c830f06ad8d847b4f6b}} 
+\index{Gl@{Gl}!model\_paths@{model\_paths}}
+\index{model\_paths@{model\_paths}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{model\_paths()}{model\_paths()}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& Gl\+::model\+\_\+paths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne les chemins des fichiers 3D chargés. 
+
+\mbox{\Hypertarget{classGl_a8ea113f1de89d38b932b6ac3562c0ce9}\label{classGl_a8ea113f1de89d38b932b6ac3562c0ce9}} 
+\index{Gl@{Gl}!reset\_scans@{reset\_scans}}
+\index{reset\_scans@{reset\_scans}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{reset\_scans()}{reset\_scans()}}
+{\footnotesize\ttfamily void Gl\+::reset\+\_\+scans (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Supprime tous les nuages de points chargés. 
+
 \mbox{\Hypertarget{classGl_a622447c9e09b0491375e23ee1ab3debb}\label{classGl_a622447c9e09b0491375e23ee1ab3debb}} 
 \index{Gl@{Gl}!reset\_scene@{reset\_scene}}
 \index{reset\_scene@{reset\_scene}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{reset\_scene()}{reset\_scene()}}
 {\footnotesize\ttfamily void Gl\+::reset\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Supprime tous les modèles chargés (conserve le cube par défaut). 
 
 \mbox{\Hypertarget{classGl_ad7911c5da5492309af8bf125d26ecde1}\label{classGl_ad7911c5da5492309af8bf125d26ecde1}} 
 \index{Gl@{Gl}!run\_scan@{run\_scan}}
@@ -175,6 +427,17 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{run\_scan()}{run\_scan()}}
 {\footnotesize\ttfamily void Gl\+::run\+\_\+scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{lidar\+\_\+config\+\_\+path,  }\item[{const std\+::string \&}]{output\+\_\+path }\end{DoxyParamCaption})}
 
+
+
+Lance un scan lidar de la scène complète et exporte le nuage de points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lidar\+\_\+config\+\_\+path} & Chemin vers le fichier JSON de configuration lidar. \\
+\hline
+{\em output\+\_\+path} & Chemin du fichier de sortie (PLY ou LAS). \\
+\hline
+\end{DoxyParams}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -189,29 +452,108 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{set\_camera()}{set\_camera()}}
 {\footnotesize\ttfamily void Gl\+::set\+\_\+camera (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y,  }\item[{float}]{pos\+\_\+z,  }\item[{float}]{rx,  }\item[{float}]{ry,  }\item[{float}]{zoom }\end{DoxyParamCaption})}
 
+
+
+Positionne la caméra dans la scène. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+x} & Coordonnée X de la caméra. \\
+\hline
+{\em pos\+\_\+y} & Coordonnée Y de la caméra. \\
+\hline
+{\em pos\+\_\+z} & Coordonnée Z de la caméra. \\
+\hline
+{\em rx} & Angle de tangage (pitch) en radians. \\
+\hline
+{\em ry} & Angle de lacet (yaw) en radians. \\
+\hline
+{\em zoom} & Distance de la caméra à l\textquotesingle{}origine. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a06b6675f97657ca3b46bd3c9367aa972}\label{classGl_a06b6675f97657ca3b46bd3c9367aa972}} 
 \index{Gl@{Gl}!set\_lidar\_config@{set\_lidar\_config}}
 \index{set\_lidar\_config@{set\_lidar\_config}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{set\_lidar\_config()}{set\_lidar\_config()}}
 {\footnotesize\ttfamily void Gl\+::set\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Définit le chemin du fichier de configuration lidar actif. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin vers le fichier JSON de configuration. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a7fb1c1b80b822442fe18e4749eda3e56}\label{classGl_a7fb1c1b80b822442fe18e4749eda3e56}} 
 \index{Gl@{Gl}!set\_lidar\_override@{set\_lidar\_override}}
 \index{set\_lidar\_override@{set\_lidar\_override}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{set\_lidar\_override()}{set\_lidar\_override()}}
 {\footnotesize\ttfamily void Gl\+::set\+\_\+lidar\+\_\+override (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$}]{lidar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Remplace la configuration lidar par une instance déjà créée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lidar} & Configuration à utiliser à la place du fichier JSON. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_a9c5d77d25bda8aa7a8b14b58728896f6}\label{classGl_a9c5d77d25bda8aa7a8b14b58728896f6}} 
+\index{Gl@{Gl}!set\_model\_hidden@{set\_model\_hidden}}
+\index{set\_model\_hidden@{set\_model\_hidden}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_model\_hidden()}{set\_model\_hidden()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+model\+\_\+hidden (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx,  }\item[{bool}]{hidden }\end{DoxyParamCaption})}
+
+
+
+Masque ou affiche un modèle de la scène. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index du modèle. \\
+\hline
+{\em hidden} & true pour masquer, false pour afficher. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}\label{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}} 
 \index{Gl@{Gl}!set\_transform@{set\_transform}}
 \index{set\_transform@{set\_transform}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{set\_transform()}{set\_transform()}}
 {\footnotesize\ttfamily void Gl\+::set\+\_\+transform (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{const \mbox{\hyperlink{structModelTransform}{Model\+Transform}} \&}]{tr }\end{DoxyParamCaption})}
 
+
+
+Applique une transformation à un modèle de la scène. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Index du modèle (0 = cube par défaut). \\
+\hline
+{\em tr} & Transformation à appliquer. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a39222fbea430ff6081ecc704ac39d7a6}\label{classGl_a39222fbea430ff6081ecc704ac39d7a6}} 
 \index{Gl@{Gl}!toggle\_point\_cloud@{toggle\_point\_cloud}}
 \index{toggle\_point\_cloud@{toggle\_point\_cloud}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{toggle\_point\_cloud()}{toggle\_point\_cloud()}}
 {\footnotesize\ttfamily void Gl\+::toggle\+\_\+point\+\_\+cloud (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Bascule l\textquotesingle{}affichage du nuage de points. 
+
+\mbox{\Hypertarget{classGl_a0f124759b5c53ddb0cac672639c0bfc9}\label{classGl_a0f124759b5c53ddb0cac672639c0bfc9}} 
+\index{Gl@{Gl}!transforms@{transforms}}
+\index{transforms@{transforms}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{transforms()}{transforms()}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{structModelTransform}{Model\+Transform}}$>$\& Gl\+::transforms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne les transformations appliquées à chaque modèle. 
 
 \mbox{\Hypertarget{classGl_a92e2dc7d8d682a4597e6b36a7baff396}\label{classGl_a92e2dc7d8d682a4597e6b36a7baff396}} 
 \index{Gl@{Gl}!widget@{widget}}
@@ -221,12 +563,43 @@ Here is the call graph for this function\+:
 
 
 
+Retourne le widget GTK racine à intégrer dans la fenêtre. 
+
+\begin{DoxyReturn}{Returns}
+Référence vers l\textquotesingle{}Overlay contenant la GLArea. 
+\end{DoxyReturn}
+
+
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGl_a6f6b10a8613bb7048cf200cc104cb6a5}\label{classGl_a6f6b10a8613bb7048cf200cc104cb6a5}} 
+\index{Gl@{Gl}!DRAG\_SENSITIVITY@{DRAG\_SENSITIVITY}}
+\index{DRAG\_SENSITIVITY@{DRAG\_SENSITIVITY}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{DRAG\_SENSITIVITY}{DRAG\_SENSITIVITY}}
+{\footnotesize\ttfamily constexpr float Gl\+::\+DRAG\+\_\+\+SENSITIVITY = 0.\+02f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Sensibilité du drag des marqueurs. 
+
+\mbox{\Hypertarget{classGl_aa1035515a10925da382e719dea9b4464}\label{classGl_aa1035515a10925da382e719dea9b4464}} 
+\index{Gl@{Gl}!OFFSET\_STEP@{OFFSET\_STEP}}
+\index{OFFSET\_STEP@{OFFSET\_STEP}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{OFFSET\_STEP}{OFFSET\_STEP}}
+{\footnotesize\ttfamily constexpr float Gl\+::\+OFFSET\+\_\+\+STEP = 1.\+5f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Décalage entre modèles superposés. 
+
 \mbox{\Hypertarget{classGl_a8555c2fc90241017c1e7b1b35b06b286}\label{classGl_a8555c2fc90241017c1e7b1b35b06b286}} 
 \index{Gl@{Gl}!signal\_marker\_clicked@{signal\_marker\_clicked}}
 \index{signal\_marker\_clicked@{signal\_marker\_clicked}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{signal\_marker\_clicked}{signal\_marker\_clicked}}
 {\footnotesize\ttfamily sigc\+::signal$<$void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ Gl\+::signal\+\_\+marker\+\_\+clicked}
+
+
+
+Signal émis quand l\textquotesingle{}utilisateur clique sur un marqueur. 
 
 
 

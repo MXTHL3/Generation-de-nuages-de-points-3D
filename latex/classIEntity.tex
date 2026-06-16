@@ -2,12 +2,16 @@
 \label{classIEntity}\index{IEntity@{IEntity}}
 
 
+Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène.  
+
+
+
+
 {\ttfamily \#include $<$entity.\+h$>$}
 
 
 
-Inheritance diagram for IEntity\+:
-\nopagebreak
+Inheritance diagram for IEntity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +20,7 @@ Inheritance diagram for IEntity\+:
 \end{figure}
 
 
-Collaboration diagram for IEntity\+:
-\nopagebreak
+Collaboration diagram for IEntity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,11 +35,11 @@ Collaboration diagram for IEntity\+:
 virtual \mbox{\hyperlink{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}{$\sim$\+IEntity}} ()
 \item 
 virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{clone}} () const =0
-\item 
+\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classIEntity_a671f515548fe22ae05d97f32b24c0117}{transform}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Calcule la matrice de transformation pour placement dans la scène. \end{DoxyCompactList}\item 
 virtual const std\+::string \& \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{name}} () const =0
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classPose}{Pose}} \& \mbox{\hyperlink{classIEntity_ab5d6fafc26283ebe9a57bc642a8c70f7}{pose}} () const
 \item 
 void \mbox{\hyperlink{classIEntity_af2662f7e0ba099e481b502fa041f77b2}{pose}} (const \mbox{\hyperlink{classPose}{Pose}} \&pose)
@@ -45,8 +48,11 @@ void \mbox{\hyperlink{classIEntity_af2662f7e0ba099e481b502fa041f77b2}{pose}} (co
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPose}{Pose}} \mbox{\hyperlink{classIEntity_a0e7f2ce364a2e18a080d42dbd76d1e88}{m\+\_\+pose}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Position et rotation dans le repère global. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classIEntity_a7b7fe6e95576ede4260ec370b0eeb2ea}\label{classIEntity_a7b7fe6e95576ede4260ec370b0eeb2ea}} 
@@ -55,6 +61,11 @@ void \mbox{\hyperlink{classIEntity_af2662f7e0ba099e481b502fa041f77b2}{pose}} (co
 \doxysubsubsection{\texorpdfstring{IEntity()}{IEntity()}}
 {\footnotesize\ttfamily IEntity\+::\+IEntity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPose}{Pose}}}]{pose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+\begin{DoxyParams}{Parameters}
+{\em pose} & Position et Rotation initiale dans le repère global. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}\label{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}} 
 \index{IEntity@{IEntity}!````~IEntity@{$\sim$IEntity}}
 \index{````~IEntity@{$\sim$IEntity}!IEntity@{IEntity}}
@@ -72,6 +83,10 @@ void \mbox{\hyperlink{classIEntity_af2662f7e0ba099e481b502fa041f77b2}{pose}} (co
 
 
 
+Crée une copie de l\textquotesingle{}entité. 
+
+
+
 Implemented in \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}{Mirrored\+Lidar\+Entity}}, \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{Flash\+Lidar\+Entity}}, \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{Mechanical\+Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}{Static\+Entity}}.
 
 \mbox{\Hypertarget{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}\label{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}} 
@@ -79,6 +94,10 @@ Implemented in \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67
 \index{name@{name}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{name()}{name()}}
 {\footnotesize\ttfamily virtual const std\+::string\& IEntity\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. 
 
 
 
@@ -96,16 +115,14 @@ Implemented in \mbox{\hyperlink{classLidarEntity_a61de62aac33a6ebbdb1ed0aed3fec8
 \doxysubsubsection{\texorpdfstring{pose()}{pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void IEntity\+::pose (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{pose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=157pt]{classIEntity_af2662f7e0ba099e481b502fa041f77b2_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -118,16 +135,18 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} IEntity\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Here is the call graph for this function\+:
-\nopagebreak
+
+
+Calcule la matrice de transformation pour placement dans la scène. 
+
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=311pt]{classIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -142,6 +161,10 @@ Here is the caller graph for this function\+:
 \index{m\_pose@{m\_pose}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{m\_pose}{m\_pose}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classPose}{Pose}} IEntity\+::m\+\_\+pose\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Position et rotation dans le repère global. 
 
 
 

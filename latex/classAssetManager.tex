@@ -2,6 +2,11 @@
 \label{classAssetManager}\index{AssetManager@{AssetManager}}
 
 
+Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar dans une hashmap. Un fichier 3d et de configuration de lidar n\textquotesingle{}est donc chargé qu\textquotesingle{}une fois.  
+
+
+
+
 {\ttfamily \#include $<$asset\+\_\+manager.\+h$>$}
 
 
@@ -17,10 +22,13 @@ Collaboration diagram for Asset\+Manager\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ \mbox{\hyperlink{classAssetManager_a818bd2f4278e56d1b5b94c159cfbfa1c}{get\+\_\+mesh}} (const std\+::string \&path)
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne le mesh pour un path donné (charge si nécessaire). \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classAssetManager_acce60cf48fda9c902653f1b434ef3a29}{get\+\_\+lidar\+\_\+config}} (const std\+::string \&path)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retourne la config lidar pour un path donné (charge si nécessaire). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Gestionnaire de ressources avec cache Charge et met en cache les maillages 3D et les configs lidar dans une hashmap. Un fichier 3d et de configuration de lidar n\textquotesingle{}est donc chargé qu\textquotesingle{}une fois. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classAssetManager_acce60cf48fda9c902653f1b434ef3a29}\label{classAssetManager_acce60cf48fda9c902653f1b434ef3a29}} 
@@ -29,6 +37,19 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$
 \doxysubsubsection{\texorpdfstring{get\_lidar\_config()}{get\_lidar\_config()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ Asset\+Manager\+::get\+\_\+lidar\+\_\+config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+
+
+Retourne la config lidar pour un path donné (charge si nécessaire). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin vers le fichier json de config lidar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur partagé vers la configuration lidar chargée. ~\newline
+ 
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -43,6 +64,18 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{get\_mesh()}{get\_mesh()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ Asset\+Manager\+::get\+\_\+mesh (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
 
+
+
+Retourne le mesh pour un path donné (charge si nécessaire). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Chemin vers le fichier mesh. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur partagé vers l\textquotesingle{}objet chargé. 
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

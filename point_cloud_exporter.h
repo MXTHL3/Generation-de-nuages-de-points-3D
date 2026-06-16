@@ -10,19 +10,32 @@
 #include <vector>
 #include <string>
 
+/// @brief Interface d'export de nuage de points vers un fichier.
 class IPointCloudExporter {
 public:
     virtual ~IPointCloudExporter() {};
+
+    /// @brief Sauvegarde un nuage de points dans un fichier.
+    /// @param filename Chemin du fichier de sortie.
+    /// @param points   Nuage de points à exporter.
     virtual void save(const std::string& filename, const std::vector<Point3>& points) = 0;
 };
 
+/// @brief Export au format PLY ASCII.
 class PlyExporter : public IPointCloudExporter {
 public:
+    /// @brief Sauvegarde le nuage au format PLY ASCII (header + lignes X Y Z).
+    /// @param filename Chemin du fichier .ply de sortie.
+    /// @param points Nuage de points à exporter.
     void save(const std::string& filename, const std::vector<Point3>& points) override;
 };
 
+/// @brief Export au format LAS via PDAL.
 class LasExporter : public IPointCloudExporter {
 public:
+    /// @brief Sauvegarde le nuage au format LAS (LAS 1.4, format 0, échelle 1 mm) via PDAL.
+    /// @param filename Chemin du fichier .las de sortie.
+    /// @param points Nuage de points à exporter.
     void save(const std::string& filename, const std::vector<Point3>& points) override;
 };
 

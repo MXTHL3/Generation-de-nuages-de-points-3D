@@ -69,24 +69,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Factory de création de configurations et sessions Lidar depuis des fichiers json.  
+ <a href="classLidarFactory.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lidar__factory_8h_source.html">lidar_factory.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for LidarFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory__coll__graph.png" border="0" usemap="#aLidarFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aLidarFactory_coll__map" id="aLidarFactory_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,195,97"/>
+<area shape="rect" title="Factory de création de configurations et sessions Lidar depuis des fichiers json." alt="" coords="5,5,195,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">createFromJsonConfig</a> (const std::string &amp;configPath)</td></tr>
+<tr class="memdesc:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une configuration lidar depuis un fichier json.  <a href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">More...</a><br /></td></tr>
 <tr class="separator:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84e7ac0f70dd3080753f7858ece10466"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466">saveToJson</a> (const std::string &amp;configPath, const <a class="el" href="classLidarConfig.html">LidarConfig</a> &amp;lidar_config)</td></tr>
+<tr class="memdesc:a84e7ac0f70dd3080753f7858ece10466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde une configuration lidar dans un fichier json.  <a href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466">More...</a><br /></td></tr>
 <tr class="separator:a84e7ac0f70dd3080753f7858ece10466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Factory de création de configurations et sessions Lidar depuis des fichiers json. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69af7f5cd3f5f3adc901cb3c3f3cfaeb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">&#9670;&nbsp;</a></span>createFromJsonConfig()</h2>
 
@@ -110,13 +117,24 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Crée une configuration lidar depuis un fichier json. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configPath</td><td>chemin vers le fichier json </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Configuration de lidar Mécanique/Flash/Miroir, nullptr si erreur </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph.png" border="0" usemap="#aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph" alt=""/></div>
 <map name="aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph" id="aclassLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph">
-<area shape="rect" title=" " alt="" coords="156,5,339,47"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,13,108,39"/>
+<area shape="rect" title="Crée une configuration lidar depuis un fichier json." alt="" coords="503,27,685,69"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="312,5,415,32"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,57,455,98"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
 </map>
 </div>
 
@@ -155,12 +173,22 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sauvegarde une configuration lidar dans un fichier json. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">configPath</td><td>le fichier json de sortie </td></tr>
+    <tr><td class="paramname">lidar_config</td><td>la configuration de lidar à sauvegarder </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>"faux" si cela a échoué "vrai" sinon </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph.png" border="0" usemap="#aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph" alt=""/></div>
 <map name="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph" id="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,185,32"/>
+<area shape="rect" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="5,5,185,32"/>
 <area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="233,5,392,32"/>
 </map>
 </div>
@@ -169,8 +197,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph.png" border="0" usemap="#aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph" alt=""/></div>
 <map name="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph" id="aclassLidarFactory_a84e7ac0f70dd3080753f7858ece10466_icgraph">
-<area shape="rect" title=" " alt="" coords="243,13,423,39"/>
-<area shape="rect" href="classSceneLoader.html#a2c7d9bce89b29a816808acf72600ab60" title=" " alt="" coords="5,5,195,47"/>
+<area shape="rect" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="740,13,920,39"/>
+<area shape="rect" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="503,5,692,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 

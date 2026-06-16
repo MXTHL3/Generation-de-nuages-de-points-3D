@@ -69,24 +69,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Exécute une chaîne d'étapes d'augmentation sur une scène de base. Chaque étape (<a class="el" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s...">PipelineStep</a>) reçoit l'ensemble des scènes produites par l'étape précédente et retourne un ensemble plus grand.  
+ <a href="classPipeline.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pipeline_8h_source.html">pipeline.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Pipeline:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPipeline__coll__graph.png" border="0" usemap="#aPipeline_coll__map" alt="Collaboration graph"/></div>
 <map name="aPipeline_coll__map" id="aPipeline_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,112,97"/>
+<area shape="rect" title="Exécute une chaîne d&#39;étapes d&#39;augmentation sur une scène de base. Chaque étape (PipelineStep) reçoit ..." alt="" coords="5,5,112,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c3fa4ed68168b353a42e2196ed705d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0">add_step</a> (std::unique_ptr&lt; <a class="el" href="classPipelineStep.html">PipelineStep</a> &gt; step)</td></tr>
+<tr class="memdesc:a0c3fa4ed68168b353a42e2196ed705d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ajoute une nouvelle étape à la fin de la liste.  <a href="classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0">More...</a><br /></td></tr>
 <tr class="separator:a0c3fa4ed68168b353a42e2196ed705d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71057c03f4ceb9378424211d6d353956"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipeline.html#a71057c03f4ceb9378424211d6d353956">execute</a> (std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt; input_scene, <a class="el" href="classAssetManager.html">AssetManager</a> &amp;assets)</td></tr>
+<tr class="memdesc:a71057c03f4ceb9378424211d6d353956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute toutes les étapes du pipeline.  <a href="classPipeline.html#a71057c03f4ceb9378424211d6d353956">More...</a><br /></td></tr>
 <tr class="separator:a71057c03f4ceb9378424211d6d353956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Exécute une chaîne d'étapes d'augmentation sur une scène de base. Chaque étape (<a class="el" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s...">PipelineStep</a>) reçoit l'ensemble des scènes produites par l'étape précédente et retourne un ensemble plus grand. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0c3fa4ed68168b353a42e2196ed705d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c3fa4ed68168b353a42e2196ed705d0">&#9670;&nbsp;</a></span>add_step()</h2>
 
@@ -102,16 +109,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph.png" border="0" usemap="#aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph" alt=""/></div>
-<map name="aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph" id="aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph">
-<area shape="rect" title=" " alt="" coords="529,13,671,39"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
-</map>
-</div>
+
+<p>ajoute une nouvelle étape à la fin de la liste. </p>
 
 </div>
 </div>
@@ -140,16 +139,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classPipeline_a71057c03f4ceb9378424211d6d353956_icgraph.png" border="0" usemap="#aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph" alt=""/></div>
-<map name="aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph" id="aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph">
-<area shape="rect" title=" " alt="" coords="529,13,663,39"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
-</map>
-</div>
+
+<p>Execute toutes les étapes du pipeline. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_scene</td><td>Scène de base </td></tr>
+    <tr><td class="paramname">assets</td><td>Gestionnaire de ressources. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Toutes les scènes augmentées. </dd></dl>
 
 </div>
 </div>

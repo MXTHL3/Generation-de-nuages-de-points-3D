@@ -2,6 +2,11 @@
 \label{classMainWindow}\index{MainWindow@{MainWindow}}
 
 
+Fenêtre principale de l\textquotesingle{}application. Intègre la vue 3D Open\+GL (\mbox{\hyperlink{classGl}{Gl}}), la barre de menus et le label d\textquotesingle{}état indiquant le mode de transformation actif (translation / rotation / échelle).  
+
+
+
+
 {\ttfamily \#include $<$main\+\_\+window.\+h$>$}
 
 
@@ -11,7 +16,7 @@ Inheritance diagram for Main\+Window\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=320pt]{classMainWindow__inherit__graph}
+\includegraphics[width=327pt]{classMainWindow__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -21,18 +26,21 @@ Collaboration diagram for Main\+Window\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=334pt]{classMainWindow__coll__graph}
+\includegraphics[width=332pt]{classMainWindow__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classMainWindow_a0dbc7918b90e2d7372702abf033a9018}{Main\+Window}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classGl}{Gl}} $>$ gl)
-\item 
+\begin{DoxyCompactList}\small\item\em Construit la fenêtre et initialise tous les widgets. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMainWindow_a302bd3b05a435d07f74c8d24b9d4e052}{add\+\_\+menu\+\_\+item}} (const std\+::string \&menu\+\_\+item, const std\+::vector$<$ std\+::string $>$ \&sub\+\_\+menu\+\_\+items)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Ajoute un élément de menu avec ses sous-\/éléments et connecte les actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+Fenêtre principale de l\textquotesingle{}application. Intègre la vue 3D Open\+GL (\mbox{\hyperlink{classGl}{Gl}}), la barre de menus et le label d\textquotesingle{}état indiquant le mode de transformation actif (translation / rotation / échelle). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classMainWindow_a0dbc7918b90e2d7372702abf033a9018}\label{classMainWindow_a0dbc7918b90e2d7372702abf033a9018}} 
@@ -43,6 +51,15 @@ void \mbox{\hyperlink{classMainWindow_a302bd3b05a435d07f74c8d24b9d4e052}{add\+\_
 
 
 
+Construit la fenêtre et initialise tous les widgets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gl} & Contexte Open\+GL à intégrer (prend la propriété). \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classMainWindow_a302bd3b05a435d07f74c8d24b9d4e052}\label{classMainWindow_a302bd3b05a435d07f74c8d24b9d4e052}} 
 \index{MainWindow@{MainWindow}!add\_menu\_item@{add\_menu\_item}}
@@ -50,6 +67,17 @@ void \mbox{\hyperlink{classMainWindow_a302bd3b05a435d07f74c8d24b9d4e052}{add\+\_
 \doxysubsubsection{\texorpdfstring{add\_menu\_item()}{add\_menu\_item()}}
 {\footnotesize\ttfamily void Main\+Window\+::add\+\_\+menu\+\_\+item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{menu\+\_\+item,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{sub\+\_\+menu\+\_\+items }\end{DoxyParamCaption})}
 
+
+
+Ajoute un élément de menu avec ses sous-\/éléments et connecte les actions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+\_\+item} & Libellé du menu parent. \\
+\hline
+{\em sub\+\_\+menu\+\_\+items} & Libellés des entrées du sous-\/menu. \\
+\hline
+\end{DoxyParams}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

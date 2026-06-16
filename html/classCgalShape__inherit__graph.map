@@ -1,4 +1,4 @@
 <map id="CgalShape" name="CgalShape">
-<area shape="rect" id="node1" title=" " alt="" coords="5,219,192,311"/>
-<area shape="rect" id="node2" href="$classCgal.html" title=" " alt="" coords="5,5,192,171"/>
+<area shape="rect" id="node1" title="Implémentation concrète de Cgal pour la construction de maillages. Prend en charge la génération d&#39;un..." alt="" coords="5,219,192,311"/>
+<area shape="rect" id="node2" href="$classCgal.html" title="Interface de base pour la construction et la manipulation d&#39;un maillage CGAL. Fournit les opérations ..." alt="" coords="5,5,192,171"/>
 </map>

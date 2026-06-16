@@ -1,8 +1,8 @@
 <map id="FlashLidarEntity::generate_rays" name="FlashLidarEntity::generate_rays">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,232,108"/>
+<area shape="rect" id="node1" title="Génère tous les rayons pour le scan." alt="" coords="5,81,232,108"/>
 <area shape="rect" id="node2" href="$classFlashLidarEntity.html#a935dff840f2020590c2bc41ed3a60df9" title=" " alt="" coords="280,5,453,32"/>
-<area shape="rect" id="node3" href="$entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd" title=" " alt="" coords="297,56,437,83"/>
+<area shape="rect" id="node3" href="$entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd" title="Génère une grille régulière de rayons (partagé entre Flash et Miroir raster)." alt="" coords="297,56,437,83"/>
 <area shape="rect" id="node4" href="$classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="325,107,409,133"/>
-<area shape="rect" id="node5" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="299,157,434,184"/>
-<area shape="rect" id="node6" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="501,157,627,184"/>
+<area shape="rect" id="node5" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="299,157,434,184"/>
+<area shape="rect" id="node6" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="501,157,627,184"/>
 </map>

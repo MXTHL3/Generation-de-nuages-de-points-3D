@@ -69,13 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Utilitaire de compilation et d'édition de liens des shaders OpenGL. Compile les shaders vertex et fragment, les lie en un programme GLSL et rapporte les erreurs de compilation/liaison sur stdout.  
+ <a href="classGLShadersUtils.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gl__shaders__utils_8h_source.html">gl_shaders_utils.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for GLShadersUtils:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGLShadersUtils__coll__graph.png" border="0" usemap="#aGLShadersUtils_coll__map" alt="Collaboration graph"/></div>
 <map name="aGLShadersUtils_coll__map" id="aGLShadersUtils_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,156,141"/>
+<area shape="rect" title="Utilitaire de compilation et d&#39;édition de liens des shaders OpenGL. Compile les shaders vertex et fra..." alt="" coords="5,5,156,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -84,15 +87,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab74441d09764f88336e7409fb7b73825"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGLShadersUtils.html#ab74441d09764f88336e7409fb7b73825">GLShadersUtils</a> ()</td></tr>
 <tr class="separator:ab74441d09764f88336e7409fb7b73825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c24863a8376145e9355601b0802d594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594">compile_shader</a> (GLuint shader, const char *name)</td></tr>
+<tr class="memdesc:a8c24863a8376145e9355601b0802d594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile un shader OpenGL et affiche les éventuelles erreurs.  <a href="classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594">More...</a><br /></td></tr>
 <tr class="separator:a8c24863a8376145e9355601b0802d594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cc218130fc5aded8a272367f79a1f66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66">link_program</a> (GLuint program)</td></tr>
+<tr class="memdesc:a7cc218130fc5aded8a272367f79a1f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lie les shaders attachés en un programme exécutable.  <a href="classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66">More...</a><br /></td></tr>
 <tr class="separator:a7cc218130fc5aded8a272367f79a1f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af32e8841376f7613cb9f7b06c73ab115"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115">build_program</a> (const char *vert_src, const char *frag_src)</td></tr>
+<tr class="memdesc:af32e8841376f7613cb9f7b06c73ab115"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile et lie un programme GLSL complet depuis les sources.  <a href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115">More...</a><br /></td></tr>
 <tr class="separator:af32e8841376f7613cb9f7b06c73ab115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada05d34d25d6cab03dd3de4d8887fb18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGLShadersUtils.html#ada05d34d25d6cab03dd3de4d8887fb18">ok</a> () const</td></tr>
+<tr class="memdesc:ada05d34d25d6cab03dd3de4d8887fb18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si la dernière opération s'est terminée sans erreur.  <a href="classGLShadersUtils.html#ada05d34d25d6cab03dd3de4d8887fb18">More...</a><br /></td></tr>
 <tr class="separator:ada05d34d25d6cab03dd3de4d8887fb18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utilitaire de compilation et d'édition de liens des shaders OpenGL. Compile les shaders vertex et fragment, les lie en un programme GLSL et rapporte les erreurs de compilation/liaison sur stdout. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab74441d09764f88336e7409fb7b73825"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab74441d09764f88336e7409fb7b73825">&#9670;&nbsp;</a></span>GLShadersUtils()</h2>
 
@@ -136,14 +145,24 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compile et lie un programme GLSL complet depuis les sources. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vert_src</td><td>Code source GLSL du vertex shader. </td></tr>
+    <tr><td class="paramname">frag_src</td><td>Code source GLSL du fragment shader. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle du programme lié, 0 en cas d'erreur. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGLShadersUtils_af32e8841376f7613cb9f7b06c73ab115_cgraph.png" border="0" usemap="#aclassGLShadersUtils_af32e8841376f7613cb9f7b06c73ab115_cgraph" alt=""/></div>
 <map name="aclassGLShadersUtils_af32e8841376f7613cb9f7b06c73ab115_cgraph" id="aclassGLShadersUtils_af32e8841376f7613cb9f7b06c73ab115_cgraph">
-<area shape="rect" title=" " alt="" coords="5,39,167,80"/>
-<area shape="rect" href="classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594" title=" " alt="" coords="215,5,396,47"/>
-<area shape="rect" href="classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66" title=" " alt="" coords="229,71,382,112"/>
+<area shape="rect" title="Compile et lie un programme GLSL complet depuis les sources." alt="" coords="5,39,167,80"/>
+<area shape="rect" href="classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594" title="Compile un shader OpenGL et affiche les éventuelles erreurs." alt="" coords="215,5,396,47"/>
+<area shape="rect" href="classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66" title="Lie les shaders attachés en un programme exécutable." alt="" coords="229,71,382,112"/>
 </map>
 </div>
 
@@ -174,13 +193,22 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compile un shader OpenGL et affiche les éventuelles erreurs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td>Handle OpenGL du shader à compiler. </td></tr>
+    <tr><td class="paramname">name</td><td>Nom affiché dans les messages de log (ex. "vertex"). </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGLShadersUtils_a8c24863a8376145e9355601b0802d594_icgraph.png" border="0" usemap="#aclassGLShadersUtils_a8c24863a8376145e9355601b0802d594_icgraph" alt=""/></div>
 <map name="aclassGLShadersUtils_a8c24863a8376145e9355601b0802d594_icgraph" id="aclassGLShadersUtils_a8c24863a8376145e9355601b0802d594_icgraph">
-<area shape="rect" title=" " alt="" coords="215,5,396,47"/>
-<area shape="rect" href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" title="Compile un shader OpenGL et affiche les éventuelles erreurs." alt="" coords="215,5,396,47"/>
+<area shape="rect" href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title="Compile et lie un programme GLSL complet depuis les sources." alt="" coords="5,5,167,47"/>
 </map>
 </div>
 
@@ -201,13 +229,21 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Lie les shaders attachés en un programme exécutable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">program</td><td>Handle du programme OpenGL à lier. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGLShadersUtils_a7cc218130fc5aded8a272367f79a1f66_icgraph.png" border="0" usemap="#aclassGLShadersUtils_a7cc218130fc5aded8a272367f79a1f66_icgraph" alt=""/></div>
 <map name="aclassGLShadersUtils_a7cc218130fc5aded8a272367f79a1f66_icgraph" id="aclassGLShadersUtils_a7cc218130fc5aded8a272367f79a1f66_icgraph">
-<area shape="rect" title=" " alt="" coords="215,5,368,47"/>
-<area shape="rect" href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" title="Lie les shaders attachés en un programme exécutable." alt="" coords="215,5,368,47"/>
+<area shape="rect" href="classGLShadersUtils.html#af32e8841376f7613cb9f7b06c73ab115" title="Compile et lie un programme GLSL complet depuis les sources." alt="" coords="5,5,167,47"/>
 </map>
 </div>
 
@@ -235,6 +271,9 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indique si la dernière opération s'est terminée sans erreur. </p>
+<dl class="section return"><dt>Returns</dt><dd>true si compilation et liaison ont réussi. </dd></dl>
 
 </div>
 </div>

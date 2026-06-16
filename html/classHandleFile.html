@@ -69,24 +69,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Gestion de l'ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins des modèles chargés dans la session.  
+ <a href="classHandleFile.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="handle__file_8h_source.html">handle_file.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for HandleFile:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHandleFile__coll__graph.png" border="0" usemap="#aHandleFile_coll__map" alt="Collaboration graph"/></div>
 <map name="aHandleFile_coll__map" id="aHandleFile_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,152,97"/>
+<area shape="rect" title="Gestion de l&#39;ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins de..." alt="" coords="5,5,152,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a401d9e94440805417ca6b7bf2bc8f633"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandleFile.html#a401d9e94440805417ca6b7bf2bc8f633">open_model</a> (Gtk::Window &amp;parent, std::function&lt; void(const std::string &amp;)&gt; on_loaded)</td></tr>
+<tr class="memdesc:a401d9e94440805417ca6b7bf2bc8f633"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et appelle le callback.  <a href="classHandleFile.html#a401d9e94440805417ca6b7bf2bc8f633">More...</a><br /></td></tr>
 <tr class="separator:a401d9e94440805417ca6b7bf2bc8f633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a903c7d06ee445b392250ad04d20c704e"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandleFile.html#a903c7d06ee445b392250ad04d20c704e">loaded_models</a> () const</td></tr>
+<tr class="memdesc:a903c7d06ee445b392250ad04d20c704e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des chemins des modèles ouverts depuis le début de la session.  <a href="classHandleFile.html#a903c7d06ee445b392250ad04d20c704e">More...</a><br /></td></tr>
 <tr class="separator:a903c7d06ee445b392250ad04d20c704e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Gestion de l'ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins des modèles chargés dans la session. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a903c7d06ee445b392250ad04d20c704e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a903c7d06ee445b392250ad04d20c704e">&#9670;&nbsp;</a></span>loaded_models()</h2>
 
@@ -109,6 +116,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne la liste des chemins des modèles ouverts depuis le début de la session. </p>
+<dl class="section return"><dt>Returns</dt><dd>Référence constante vers le vecteur de chemins. </dd></dl>
 
 </div>
 </div>
@@ -137,14 +147,23 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et appelle le callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Fenêtre parente pour la boîte de dialogue modale. </td></tr>
+    <tr><td class="paramname">on_loaded</td><td>Callback appelé avec le chemin du fichier sélectionné. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHandleFile_a401d9e94440805417ca6b7bf2bc8f633_icgraph.png" border="0" usemap="#aclassHandleFile_a401d9e94440805417ca6b7bf2bc8f633_icgraph" alt=""/></div>
 <map name="aclassHandleFile_a401d9e94440805417ca6b7bf2bc8f633_icgraph" id="aclassHandleFile_a401d9e94440805417ca6b7bf2bc8f633_icgraph">
-<area shape="rect" title=" " alt="" coords="503,13,681,39"/>
-<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="272,5,455,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et a..." alt="" coords="503,13,681,39"/>
+<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 

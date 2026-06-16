@@ -70,14 +70,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le signal activate d'un sous-menu (_sub) à l'action correspondante. <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a> hérite de cette classe.  
+ <a href="classMenuItemsActions.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="menu__items__actions_8h_source.html">menu_items_actions.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MenuItemsActions:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions__inherit__graph.png" border="0" usemap="#aMenuItemsActions_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMenuItemsActions_inherit__map" id="aMenuItemsActions_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,195,273"/>
-<area shape="rect" href="classMainWindow.html" title=" " alt="" coords="24,321,176,413"/>
+<area shape="rect" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="5,5,205,273"/>
+<area shape="rect" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é..." alt="" coords="29,321,181,413"/>
 </map>
 </div>
 <div class="dynheader">
@@ -85,56 +88,84 @@ Collaboration diagram for MenuItemsActions:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions__coll__graph.png" border="0" usemap="#aMenuItemsActions_coll__map" alt="Collaboration graph"/></div>
 <map name="aMenuItemsActions_coll__map" id="aMenuItemsActions_coll__map">
-<area shape="rect" title=" " alt="" coords="5,160,195,413"/>
-<area shape="rect" href="classHandleFile.html" title=" " alt="" coords="27,5,173,97"/>
+<area shape="rect" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="5,160,205,413"/>
+<area shape="rect" href="classHandleFile.html" title="Gestion de l&#39;ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins de..." alt="" coords="32,5,179,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:adbd8e12c6f355ccc6e862ed9c30b314b"><td class="memItemLeft" align="right" valign="top">virtual Gtk::Window &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b">as_window</a> ()=0</td></tr>
+<tr class="memdesc:adbd8e12c6f355ccc6e862ed9c30b314b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la fenêtre GTK parente (implémenté par <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a>).  <a href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b">More...</a><br /></td></tr>
 <tr class="separator:adbd8e12c6f355ccc6e862ed9c30b314b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa5f616468bf3f24681bae701330a0d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d">update_markers</a> ()=0</td></tr>
+<tr class="memdesc:a8aa5f616468bf3f24681bae701330a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour les marqueurs de transformation (implémenté par <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a>).  <a href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d">More...</a><br /></td></tr>
 <tr class="separator:a8aa5f616468bf3f24681bae701330a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6366a56abe6d2125101267073a04595c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c">open_3d_model</a> ()</td></tr>
+<tr class="memdesc:a6366a56abe6d2125101267073a04595c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre un fichier 3D et le charge dans la scène.  <a href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c">More...</a><br /></td></tr>
 <tr class="separator:a6366a56abe6d2125101267073a04595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b19601e65d3ca3d13a5696427ccee47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47">load_scan</a> ()</td></tr>
+<tr class="memdesc:a9b19601e65d3ca3d13a5696427ccee47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre un fichier de nuage de points (PLY, LAS, LAZ) et l'affiche.  <a href="classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47">More...</a><br /></td></tr>
 <tr class="separator:a9b19601e65d3ca3d13a5696427ccee47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a735cedd1d996749b56d0a8a7c7904620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620">load_json_scene</a> ()</td></tr>
+<tr class="memdesc:a735cedd1d996749b56d0a8a7c7904620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge une scène complète depuis un fichier JSON.  <a href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620">More...</a><br /></td></tr>
 <tr class="separator:a735cedd1d996749b56d0a8a7c7904620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20c27afa80b4601809e602df07eddde0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0">save_json_scene</a> ()</td></tr>
+<tr class="memdesc:a20c27afa80b4601809e602df07eddde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporte la scène courante vers un fichier JSON.  <a href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0">More...</a><br /></td></tr>
+<tr class="separator:a20c27afa80b4601809e602df07eddde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade417250a4dea2671a85e53a4409f85b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b">capture_image</a> ()</td></tr>
+<tr class="memdesc:ade417250a4dea2671a85e53a4409f85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capture le rendu OpenGL et l'enregistre en PNG.  <a href="classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b">More...</a><br /></td></tr>
 <tr class="separator:ade417250a4dea2671a85e53a4409f85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4be452343fb5af356d0c85ec8034693e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a4be452343fb5af356d0c85ec8034693e">launch_scan</a> ()</td></tr>
-<tr class="separator:a4be452343fb5af356d0c85ec8034693e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875263704e785dc5e851b8948d7ed426"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a875263704e785dc5e851b8948d7ed426">launch_full_scene_scan</a> ()</td></tr>
+<tr class="memdesc:a875263704e785dc5e851b8948d7ed426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance un scan lidar de la scène complète et exporte le nuage.  <a href="classMenuItemsActions.html#a875263704e785dc5e851b8948d7ed426">More...</a><br /></td></tr>
+<tr class="separator:a875263704e785dc5e851b8948d7ed426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285eef6501adda213b87a20c003f1233"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a285eef6501adda213b87a20c003f1233">launch_one_scan_per_3d_model</a> ()</td></tr>
+<tr class="memdesc:a285eef6501adda213b87a20c003f1233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance un scan lidar individuel pour chaque modèle 3D de la scène.  <a href="classMenuItemsActions.html#a285eef6501adda213b87a20c003f1233">More...</a><br /></td></tr>
+<tr class="separator:a285eef6501adda213b87a20c003f1233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add899a6787d137623fd72d81df79eba8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#add899a6787d137623fd72d81df79eba8">display_cloud</a> ()</td></tr>
+<tr class="memdesc:add899a6787d137623fd72d81df79eba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule l'affichage du nuage de points.  <a href="classMenuItemsActions.html#add899a6787d137623fd72d81df79eba8">More...</a><br /></td></tr>
 <tr class="separator:add899a6787d137623fd72d81df79eba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b8a871fc63c41a49010e460636273e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9">generate_dataset</a> ()</td></tr>
+<tr class="memdesc:a9b8a871fc63c41a49010e460636273e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des scans à un dataset et propose l'entraînement de l'IA.  <a href="classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9">More...</a><br /></td></tr>
 <tr class="separator:a9b8a871fc63c41a49010e460636273e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab7d34a1c6d9e934b994b864e41b046d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d">generate_dataset_from_json</a> ()</td></tr>
-<tr class="separator:aab7d34a1c6d9e934b994b864e41b046d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad17e8468b01f24c6ad1dcb7ba3316034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#ad17e8468b01f24c6ad1dcb7ba3316034">launch_recognition</a> ()</td></tr>
+<tr class="memdesc:ad17e8468b01f24c6ad1dcb7ba3316034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance l'analyse de reconnaissance de silhouettes sur un fichier PLY.  <a href="classMenuItemsActions.html#ad17e8468b01f24c6ad1dcb7ba3316034">More...</a><br /></td></tr>
 <tr class="separator:ad17e8468b01f24c6ad1dcb7ba3316034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d4ca89cf57933315500eb704cd6d8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f">to_fullscreen</a> ()</td></tr>
+<tr class="memdesc:a96d4ca89cf57933315500eb704cd6d8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule le mode plein écran de la fenêtre.  <a href="classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f">More...</a><br /></td></tr>
 <tr class="separator:a96d4ca89cf57933315500eb704cd6d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc197ad285d78acb8d5ce9ed3c4a0901"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#adc197ad285d78acb8d5ce9ed3c4a0901">open_docs</a> ()</td></tr>
+<tr class="memdesc:adc197ad285d78acb8d5ce9ed3c4a0901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre la documentation HTML dans le navigateur.  <a href="classMenuItemsActions.html#adc197ad285d78acb8d5ce9ed3c4a0901">More...</a><br /></td></tr>
 <tr class="separator:adc197ad285d78acb8d5ce9ed3c4a0901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8537f18b516d866d52e98361e72001fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb">reset_scene</a> ()</td></tr>
+<tr class="memdesc:a8537f18b516d866d52e98361e72001fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les modèles chargés (conserve le cube par défaut).  <a href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb">More...</a><br /></td></tr>
 <tr class="separator:a8537f18b516d866d52e98361e72001fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72dc3b9d12fd2b89f32ffbbb60217f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#ab72dc3b9d12fd2b89f32ffbbb60217f6">reset_scans</a> ()</td></tr>
+<tr class="memdesc:ab72dc3b9d12fd2b89f32ffbbb60217f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les nuages de points chargés.  <a href="classMenuItemsActions.html#ab72dc3b9d12fd2b89f32ffbbb60217f6">More...</a><br /></td></tr>
+<tr class="separator:ab72dc3b9d12fd2b89f32ffbbb60217f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9552461209a130606302ce65ebb995d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1">scanner_settings</a> ()</td></tr>
+<tr class="memdesc:a9552461209a130606302ce65ebb995d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre la boîte de dialogue des paramètres du scanner lidar.  <a href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1">More...</a><br /></td></tr>
 <tr class="separator:a9552461209a130606302ce65ebb995d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7da1c205624193511d2b0cf659bc21d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4">exit_app</a> ()</td></tr>
+<tr class="memdesc:a7da1c205624193511d2b0cf659bc21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ferme la fenêtre principale et quitte l'application.  <a href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4">More...</a><br /></td></tr>
 <tr class="separator:a7da1c205624193511d2b0cf659bc21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a38f46ac67f3646b3cff1e833fe4fa63e"><td class="memItemLeft" align="right" valign="top">Gtk::MenuItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a38f46ac67f3646b3cff1e833fe4fa63e">_sub</a> = nullptr</td></tr>
+<tr class="memdesc:a38f46ac67f3646b3cff1e833fe4fa63e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur vers le sous-menu en cours de configuration. <br  />
+  <a href="classMenuItemsActions.html#a38f46ac67f3646b3cff1e833fe4fa63e">More...</a><br /></td></tr>
 <tr class="separator:a38f46ac67f3646b3cff1e833fe4fa63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcb59abecd9e7010ecd2891341b499d1"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classGl.html">Gl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#adcb59abecd9e7010ecd2891341b499d1">m_gl</a></td></tr>
+<tr class="memdesc:adcb59abecd9e7010ecd2891341b499d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contexte OpenGL partagé avec la fenêtre.  <a href="classMenuItemsActions.html#adcb59abecd9e7010ecd2891341b499d1">More...</a><br /></td></tr>
 <tr class="separator:adcb59abecd9e7010ecd2891341b499d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0651dd2afc9f5f3fd0bd267d392d7cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHandleFile.html">HandleFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#ad0651dd2afc9f5f3fd0bd267d392d7cb">m_handle_file</a></td></tr>
+<tr class="memdesc:ad0651dd2afc9f5f3fd0bd267d392d7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire d'ouverture de fichiers 3D.  <a href="classMenuItemsActions.html#ad0651dd2afc9f5f3fd0bd267d392d7cb">More...</a><br /></td></tr>
 <tr class="separator:ad0651dd2afc9f5f3fd0bd267d392d7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le signal activate d'un sous-menu (_sub) à l'action correspondante. <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a> hérite de cette classe. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adbd8e12c6f355ccc6e862ed9c30b314b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbd8e12c6f355ccc6e862ed9c30b314b">&#9670;&nbsp;</a></span>as_window()</h2>
 
@@ -157,25 +188,28 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne la fenêtre GTK parente (implémenté par <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a>). </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph.png" border="0" usemap="#aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph" id="aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph">
-<area shape="rect" title=" " alt="" coords="551,341,717,383"/>
-<area shape="rect" href="classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b" title=" " alt="" coords="287,5,487,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4" title=" " alt="" coords="284,71,491,98"/>
-<area shape="rect" href="classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9" title=" " alt="" coords="283,123,492,164"/>
-<area shape="rect" href="classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="283,188,492,229"/>
-<area shape="rect" href="classMenuItemsActions.html#ad17e8468b01f24c6ad1dcb7ba3316034" title=" " alt="" coords="290,253,485,295"/>
-<area shape="rect" href="classMenuItemsActions.html#a4be452343fb5af356d0c85ec8034693e" title=" " alt="" coords="272,319,503,346"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="298,371,477,412"/>
-<area shape="rect" href="classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47" title=" " alt="" coords="279,437,495,463"/>
-<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="296,488,479,529"/>
-<area shape="rect" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title=" " alt="" coords="295,553,479,595"/>
-<area shape="rect" href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1" title=" " alt="" coords="286,619,489,660"/>
-<area shape="rect" href="classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title=" " alt="" coords="305,684,469,725"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,349,224,375"/>
+<area shape="rect" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="536,384,703,425"/>
+<area shape="rect" href="classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b" title="Capture le rendu OpenGL et l&#39;enregistre en PNG." alt="" coords="280,5,480,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4" title="Ferme la fenêtre principale et quitte l&#39;application." alt="" coords="277,71,483,98"/>
+<area shape="rect" href="classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="275,123,485,164"/>
+<area shape="rect" href="classMenuItemsActions.html#a875263704e785dc5e851b8948d7ed426" title="Lance un scan lidar de la scène complète et exporte le nuage." alt="" coords="283,188,477,229"/>
+<area shape="rect" href="classMenuItemsActions.html#a285eef6501adda213b87a20c003f1233" title="Lance un scan lidar individuel pour chaque modèle 3D de la scène." alt="" coords="283,253,477,295"/>
+<area shape="rect" href="classMenuItemsActions.html#ad17e8468b01f24c6ad1dcb7ba3316034" title="Lance l&#39;analyse de reconnaissance de silhouettes sur un fichier PLY." alt="" coords="283,319,477,360"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="291,384,469,425"/>
+<area shape="rect" href="classMenuItemsActions.html#a9b19601e65d3ca3d13a5696427ccee47" title="Ouvre un fichier de nuage de points (PLY, LAS, LAZ) et l&#39;affiche." alt="" coords="272,450,488,477"/>
+<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="289,501,471,543"/>
+<area shape="rect" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="288,567,472,608"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="289,632,471,673"/>
+<area shape="rect" href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1" title="Ouvre la boîte de dialogue des paramètres du scanner lidar." alt="" coords="279,697,481,739"/>
+<area shape="rect" href="classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title="Bascule le mode plein écran de la fenêtre." alt="" coords="298,763,462,804"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,391,224,418"/>
 </map>
 </div>
 
@@ -203,13 +237,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Capture le rendu OpenGL et l'enregistre en PNG. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_cgraph.png" border="0" usemap="#aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_cgraph" id="aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,205,47"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="253,5,420,47"/>
+<area shape="rect" title="Capture le rendu OpenGL et l&#39;enregistre en PNG." alt="" coords="5,5,205,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="253,5,420,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -217,8 +253,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_icgraph.png" border="0" usemap="#aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_icgraph" id="aclassMenuItemsActions_ade417250a4dea2671a85e53a4409f85b_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,472,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Capture le rendu OpenGL et l&#39;enregistre en PNG." alt="" coords="272,5,472,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -246,13 +282,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Bascule l'affichage du nuage de points. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_add899a6787d137623fd72d81df79eba8_icgraph.png" border="0" usemap="#aclassMenuItemsActions_add899a6787d137623fd72d81df79eba8_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_add899a6787d137623fd72d81df79eba8_icgraph" id="aclassMenuItemsActions_add899a6787d137623fd72d81df79eba8_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,471,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Bascule l&#39;affichage du nuage de points." alt="" coords="272,5,471,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -280,13 +318,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ferme la fenêtre principale et quitte l'application. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_cgraph" id="aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,212,39"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="260,5,427,47"/>
+<area shape="rect" title="Ferme la fenêtre principale et quitte l&#39;application." alt="" coords="5,13,212,39"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="260,5,427,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -294,8 +334,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_icgraph" id="aclassMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,479,32"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" title="Ferme la fenêtre principale et quitte l&#39;application." alt="" coords="272,5,479,32"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,5,224,32"/>
 </map>
 </div>
 
@@ -323,13 +363,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ajoute des scans à un dataset et propose l'entraînement de l'IA. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_cgraph" id="aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,215,47"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="263,5,429,47"/>
+<area shape="rect" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="5,5,215,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="263,5,429,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -337,15 +379,15 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_icgraph" id="aclassMenuItemsActions_a9b8a871fc63c41a49010e460636273e9_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="272,5,481,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="aab7d34a1c6d9e934b994b864e41b046d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab7d34a1c6d9e934b994b864e41b046d">&#9670;&nbsp;</a></span>generate_dataset_from_json()</h2>
+<a id="a875263704e785dc5e851b8948d7ed426"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a875263704e785dc5e851b8948d7ed426">&#9670;&nbsp;</a></span>launch_full_scene_scan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -354,7 +396,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MenuItemsActions::generate_dataset_from_json </td>
+          <td class="memname">void MenuItemsActions::launch_full_scene_scan </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -366,35 +408,69 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Lance un scan lidar de la scène complète et exporte le nuage. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_cgraph.png" border="0" usemap="#aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_cgraph" alt=""/></div>
-<map name="aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_cgraph" id="aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,145,215,186"/>
-<area shape="rect" href="classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0" title=" " alt="" coords="285,5,427,32"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="273,57,439,98"/>
-<area shape="rect" href="classPipeline.html#a71057c03f4ceb9378424211d6d353956" title=" " alt="" coords="289,123,423,149"/>
-<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="263,174,449,215"/>
-<area shape="rect" href="classPlyExporter.html#ad95a65c24a12aa474436916e389424fb" title=" " alt="" coords="288,240,424,267"/>
-<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title=" " alt="" coords="284,316,428,343"/>
-<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="503,97,684,124"/>
-<area shape="rect" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title=" " alt="" coords="503,149,683,190"/>
-<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title=" " alt="" coords="500,215,687,241"/>
-<area shape="rect" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="524,265,663,292"/>
-<area shape="rect" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title=" " alt="" coords="497,316,689,343"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="530,367,657,393"/>
-<area shape="rect" href="classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title=" " alt="" coords="526,418,661,459"/>
-<area shape="rect" href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="737,425,880,452"/>
+<div class="center"><img src="classMenuItemsActions_a875263704e785dc5e851b8948d7ed426_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_cgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_cgraph" id="aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_cgraph">
+<area shape="rect" title="Lance un scan lidar de la scène complète et exporte le nuage." alt="" coords="5,5,200,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,5,415,47"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_icgraph.png" border="0" usemap="#aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_icgraph" alt=""/></div>
-<map name="aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_icgraph" id="aclassMenuItemsActions_aab7d34a1c6d9e934b994b864e41b046d_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<div class="center"><img src="classMenuItemsActions_a875263704e785dc5e851b8948d7ed426_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_icgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_icgraph" id="aclassMenuItemsActions_a875263704e785dc5e851b8948d7ed426_icgraph">
+<area shape="rect" title="Lance un scan lidar de la scène complète et exporte le nuage." alt="" coords="272,5,467,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a285eef6501adda213b87a20c003f1233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285eef6501adda213b87a20c003f1233">&#9670;&nbsp;</a></span>launch_one_scan_per_3d_model()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuItemsActions::launch_one_scan_per_3d_model </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lance un scan lidar individuel pour chaque modèle 3D de la scène. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a285eef6501adda213b87a20c003f1233_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_cgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_cgraph" id="aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_cgraph">
+<area shape="rect" title="Lance un scan lidar individuel pour chaque modèle 3D de la scène." alt="" coords="5,5,200,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,5,415,47"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a285eef6501adda213b87a20c003f1233_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_icgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_icgraph" id="aclassMenuItemsActions_a285eef6501adda213b87a20c003f1233_icgraph">
+<area shape="rect" title="Lance un scan lidar individuel pour chaque modèle 3D de la scène." alt="" coords="272,5,467,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -422,13 +498,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Lance l'analyse de reconnaissance de silhouettes sur un fichier PLY. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_cgraph.png" border="0" usemap="#aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_cgraph" id="aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,200,47"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="248,5,415,47"/>
+<area shape="rect" title="Lance l&#39;analyse de reconnaissance de silhouettes sur un fichier PLY." alt="" coords="5,5,200,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,5,415,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -436,51 +514,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_icgraph.png" border="0" usemap="#aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_icgraph" id="aclassMenuItemsActions_ad17e8468b01f24c6ad1dcb7ba3316034_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,467,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a4be452343fb5af356d0c85ec8034693e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4be452343fb5af356d0c85ec8034693e">&#9670;&nbsp;</a></span>launch_scan()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MenuItemsActions::launch_scan </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_cgraph" alt=""/></div>
-<map name="aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_cgraph" id="aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,236,39"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="284,5,451,47"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_icgraph" alt=""/></div>
-<map name="aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_icgraph" id="aclassMenuItemsActions_a4be452343fb5af356d0c85ec8034693e_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,503,32"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" title="Lance l&#39;analyse de reconnaissance de silhouettes sur un fichier PLY." alt="" coords="272,5,467,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -508,24 +543,26 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Charge une scène complète depuis un fichier JSON. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph" id="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph">
-<area shape="rect" title=" " alt="" coords="5,232,184,273"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="247,5,413,47"/>
-<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title=" " alt="" coords="279,71,381,98"/>
-<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title=" " alt="" coords="271,122,389,149"/>
-<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title=" " alt="" coords="237,173,423,215"/>
+<area shape="rect" title="Charge une scène complète depuis un fichier JSON." alt="" coords="5,232,184,273"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="247,5,413,47"/>
+<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="279,71,381,98"/>
+<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="271,122,389,149"/>
+<area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="237,173,423,215"/>
 <area shape="rect" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="288,239,372,266"/>
 <area shape="rect" href="classPose.html#af69e1ca12c440103c3657974b6c6f873" title=" " alt="" coords="293,290,367,317"/>
 <area shape="rect" href="classPose.html#a525262b2e0219f06f64a882a47913a4f" title=" " alt="" coords="293,341,367,367"/>
 <area shape="rect" href="classPose.html#ad9b2d5a2671e7be99e730a61ddd906d3" title=" " alt="" coords="293,391,367,418"/>
-<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title=" " alt="" coords="232,443,428,484"/>
-<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="479,122,660,149"/>
-<area shape="rect" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title=" " alt="" coords="479,173,659,215"/>
-<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title=" " alt="" coords="476,239,663,266"/>
+<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="232,443,428,484"/>
+<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="479,122,660,149"/>
+<area shape="rect" href="classAssetManager.html#acce60cf48fda9c902653f1b434ef3a29" title="Retourne la config lidar pour un path donné (charge si nécessaire)." alt="" coords="479,173,659,215"/>
+<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title="Retourne le mesh pour un path donné (charge si nécessaire)." alt="" coords="476,239,663,266"/>
 </map>
 </div>
 <div class="dynheader">
@@ -533,8 +570,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_icgraph" id="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,451,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -562,13 +599,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ouvre un fichier de nuage de points (PLY, LAS, LAZ) et l'affiche. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_cgraph" id="aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,221,39"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="269,5,436,47"/>
+<area shape="rect" title="Ouvre un fichier de nuage de points (PLY, LAS, LAZ) et l&#39;affiche." alt="" coords="5,13,221,39"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="269,5,436,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -576,8 +615,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_icgraph" id="aclassMenuItemsActions_a9b19601e65d3ca3d13a5696427ccee47_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,488,32"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" title="Ouvre un fichier de nuage de points (PLY, LAS, LAZ) et l&#39;affiche." alt="" coords="272,5,488,32"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,5,224,32"/>
 </map>
 </div>
 
@@ -605,15 +644,17 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ouvre un fichier 3D et le charge dans la scène. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a6366a56abe6d2125101267073a04595c_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_cgraph" id="aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,64,188,105"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="251,5,417,47"/>
-<area shape="rect" href="classHandleFile.html#a401d9e94440805417ca6b7bf2bc8f633" title=" " alt="" coords="245,71,423,98"/>
-<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title=" " alt="" coords="236,123,432,164"/>
+<area shape="rect" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="5,64,188,105"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="251,5,417,47"/>
+<area shape="rect" href="classHandleFile.html#a401d9e94440805417ca6b7bf2bc8f633" title="Ouvre une boîte de dialogue de sélection de fichier 3D. Ajoute le chemin choisi au cache interne et a..." alt="" coords="245,71,423,98"/>
+<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="236,123,432,164"/>
 </map>
 </div>
 <div class="dynheader">
@@ -621,8 +662,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a6366a56abe6d2125101267073a04595c_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_icgraph" id="aclassMenuItemsActions_a6366a56abe6d2125101267073a04595c_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,455,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -650,13 +691,51 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ouvre la documentation HTML dans le navigateur. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_adc197ad285d78acb8d5ce9ed3c4a0901_icgraph.png" border="0" usemap="#aclassMenuItemsActions_adc197ad285d78acb8d5ce9ed3c4a0901_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_adc197ad285d78acb8d5ce9ed3c4a0901_icgraph" id="aclassMenuItemsActions_adc197ad285d78acb8d5ce9ed3c4a0901_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,492,32"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" title="Ouvre la documentation HTML dans le navigateur." alt="" coords="272,5,492,32"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,5,224,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab72dc3b9d12fd2b89f32ffbbb60217f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72dc3b9d12fd2b89f32ffbbb60217f6">&#9670;&nbsp;</a></span>reset_scans()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuItemsActions::reset_scans </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Supprime tous les nuages de points chargés. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_ab72dc3b9d12fd2b89f32ffbbb60217f6_icgraph.png" border="0" usemap="#aclassMenuItemsActions_ab72dc3b9d12fd2b89f32ffbbb60217f6_icgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_ab72dc3b9d12fd2b89f32ffbbb60217f6_icgraph" id="aclassMenuItemsActions_ab72dc3b9d12fd2b89f32ffbbb60217f6_icgraph">
+<area shape="rect" title="Supprime tous les nuages de points chargés." alt="" coords="272,5,456,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -684,14 +763,16 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Supprime tous les modèles chargés (conserve le cube par défaut). </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a8537f18b516d866d52e98361e72001fb_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_cgraph" id="aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_cgraph">
-<area shape="rect" title=" " alt="" coords="5,39,189,80"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="252,5,419,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title=" " alt="" coords="237,71,433,112"/>
+<area shape="rect" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="5,39,189,80"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="252,5,419,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="237,71,433,112"/>
 </map>
 </div>
 <div class="dynheader">
@@ -699,8 +780,60 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a8537f18b516d866d52e98361e72001fb_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_icgraph" id="aclassMenuItemsActions_a8537f18b516d866d52e98361e72001fb_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,456,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="272,5,456,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a20c27afa80b4601809e602df07eddde0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c27afa80b4601809e602df07eddde0">&#9670;&nbsp;</a></span>save_json_scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuItemsActions::save_json_scene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exporte la scène courante vers un fichier JSON. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a20c27afa80b4601809e602df07eddde0_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_cgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_cgraph" id="aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_cgraph">
+<area shape="rect" title="Exporte la scène courante vers un fichier JSON." alt="" coords="5,90,188,131"/>
+<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="240,5,421,32"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="247,57,414,98"/>
+<area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title="Crée une configuration lidar depuis un fichier json." alt="" coords="239,122,422,163"/>
+<area shape="rect" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="236,187,425,229"/>
+<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="504,144,623,171"/>
+<area shape="rect" href="classGl.html#a282f1d04873290629695e206e9cd2fbe" title="Retourne le chemin du fichier de configuration lidar actif." alt="" coords="490,195,637,221"/>
+<area shape="rect" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="473,245,653,272"/>
+<area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="701,245,860,272"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a20c27afa80b4601809e602df07eddde0_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_icgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_icgraph" id="aclassMenuItemsActions_a20c27afa80b4601809e602df07eddde0_icgraph">
+<area shape="rect" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -728,13 +861,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Ouvre la boîte de dialogue des paramètres du scanner lidar. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9552461209a130606302ce65ebb995d1_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_cgraph" id="aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,208,47"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="256,5,423,47"/>
+<area shape="rect" title="Ouvre la boîte de dialogue des paramètres du scanner lidar." alt="" coords="5,5,208,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="256,5,423,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -742,8 +877,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a9552461209a130606302ce65ebb995d1_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_icgraph" id="aclassMenuItemsActions_a9552461209a130606302ce65ebb995d1_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,475,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Ouvre la boîte de dialogue des paramètres du scanner lidar." alt="" coords="272,5,475,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -771,13 +906,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Bascule le mode plein écran de la fenêtre. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_cgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_cgraph" id="aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,169,47"/>
-<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title=" " alt="" coords="217,5,384,47"/>
+<area shape="rect" title="Bascule le mode plein écran de la fenêtre." alt="" coords="5,5,169,47"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="217,5,384,47"/>
 </map>
 </div>
 <div class="dynheader">
@@ -785,8 +922,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_icgraph" id="aclassMenuItemsActions_a96d4ca89cf57933315500eb704cd6d8f_icgraph">
-<area shape="rect" title=" " alt="" coords="272,5,436,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" title="Bascule le mode plein écran de la fenêtre." alt="" coords="272,5,436,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -814,16 +951,18 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Met à jour les marqueurs de transformation (implémenté par <a class="el" href="classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é...">MainWindow</a>). </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph" id="aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph">
-<area shape="rect" title=" " alt="" coords="504,71,700,112"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="275,5,453,47"/>
-<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title=" " alt="" coords="273,71,455,112"/>
-<area shape="rect" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title=" " alt="" coords="272,136,456,177"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,78,224,105"/>
+<area shape="rect" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="504,71,700,112"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="275,5,453,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="273,71,455,112"/>
+<area shape="rect" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="272,136,456,177"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,78,224,105"/>
 </map>
 </div>
 
@@ -850,6 +989,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Pointeur vers le sous-menu en cours de configuration. <br  />
+ </p>
+
 </div>
 </div>
 <a id="adcb59abecd9e7010ecd2891341b499d1"></a>
@@ -872,6 +1014,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Contexte OpenGL partagé avec la fenêtre. </p>
+
 </div>
 </div>
 <a id="ad0651dd2afc9f5f3fd0bd267d392d7cb"></a>
@@ -893,6 +1037,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gestionnaire d'ouverture de fichiers 3D. </p>
 
 </div>
 </div>

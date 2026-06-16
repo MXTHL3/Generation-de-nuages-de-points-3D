@@ -1,4 +1,4 @@
 <map id="MenuItemsActions" name="MenuItemsActions">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,195,273"/>
-<area shape="rect" id="node2" href="$classMainWindow.html" title=" " alt="" coords="24,321,176,413"/>
+<area shape="rect" id="node1" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="5,5,205,273"/>
+<area shape="rect" id="node2" href="$classMainWindow.html" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é..." alt="" coords="29,321,181,413"/>
 </map>

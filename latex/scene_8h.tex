@@ -4,16 +4,14 @@
 {\ttfamily \#include $<$CGAL/\+AABB\+\_\+tree.\+h$>$}\newline
 {\ttfamily \#include $<$CGAL/\+AABB\+\_\+traits.\+h$>$}\newline
 {\ttfamily \#include $<$CGAL/\+AABB\+\_\+triangle\+\_\+primitive.\+h$>$}\newline
-Include dependency graph for scene.\+h\+:
-\nopagebreak
+Include dependency graph for scene.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{scene_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,9 +22,9 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structIntersection}{Intersection}}
-\item 
+\begin{DoxyCompactList}\small\item\em Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Retourné par \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{Scene\+::intersect}}, regroupe le point d\textquotesingle{}impact, la distance depuis l\textquotesingle{}origine du rayon et l\textquotesingle{}index de la face touchée. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classScene}{Scene}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour les intersections. Après ajout des entités, \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build()}} triangule la scène et construit l\textquotesingle{}arbre CGAL AABB permettant des requêtes d\textquotesingle{}intersection rayon/maillage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 

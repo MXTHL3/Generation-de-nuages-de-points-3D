@@ -2,6 +2,11 @@
 \label{structObjectAnimation}\index{ObjectAnimation@{ObjectAnimation}}
 
 
+Animation d\textquotesingle{}un objet \+: liste des fichiers de ses \char`\"{}keyframes\char`\"{}.  
+
+
+
+
 {\ttfamily \#include $<$pipeline.\+h$>$}
 
 
@@ -17,10 +22,13 @@ Collaboration diagram for Object\+Animation\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{structObjectAnimation_a155aefca31ef6ce6df328237bc3f463d}{object\+\_\+name}}
-\item 
+\begin{DoxyCompactList}\small\item\em Nom de l\textquotesingle{}entité dans la scène. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structObjectAnimation_ab46fa3081bf36cd277378fc4a2951929}{keyframes\+\_\+paths}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Animations à appliquer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Animation d\textquotesingle{}un objet \+: liste des fichiers de ses \char`\"{}keyframes\char`\"{}. 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{structObjectAnimation_ab46fa3081bf36cd277378fc4a2951929}\label{structObjectAnimation_ab46fa3081bf36cd277378fc4a2951929}} 
@@ -29,11 +37,19 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structObjectAnimation_ab46fa
 \doxysubsubsection{\texorpdfstring{keyframes\_paths}{keyframes\_paths}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Object\+Animation\+::keyframes\+\_\+paths}
 
+
+
+Animations à appliquer. 
+
 \mbox{\Hypertarget{structObjectAnimation_a155aefca31ef6ce6df328237bc3f463d}\label{structObjectAnimation_a155aefca31ef6ce6df328237bc3f463d}} 
 \index{ObjectAnimation@{ObjectAnimation}!object\_name@{object\_name}}
 \index{object\_name@{object\_name}!ObjectAnimation@{ObjectAnimation}}
 \doxysubsubsection{\texorpdfstring{object\_name}{object\_name}}
 {\footnotesize\ttfamily std\+::string Object\+Animation\+::object\+\_\+name}
+
+
+
+Nom de l\textquotesingle{}entité dans la scène. 
 
 
 

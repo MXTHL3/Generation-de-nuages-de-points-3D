@@ -1,4 +1,4 @@
 <map id="MenuItemsActions::generate_dataset" name="MenuItemsActions::generate_dataset">
-<area shape="rect" id="node1" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" id="node2" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="272,5,481,47"/>
+<area shape="rect" id="node2" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>

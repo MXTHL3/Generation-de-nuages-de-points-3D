@@ -2,6 +2,11 @@
 \label{classSceneLoader}\index{SceneLoader@{SceneLoader}}
 
 
+Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json.  
+
+
+
+
 {\ttfamily \#include $<$scene\+\_\+utils.\+h$>$}
 
 
@@ -17,10 +22,13 @@ Collaboration diagram for Scene\+Loader\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}{load\+\_\+scene\+\_\+from\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&lidars, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets)
-\item 
-static bool \mbox{\hyperlink{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}{save\+\_\+scene\+\_\+to\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&lidars)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Charge une scène complète (objets + lidars) depuis un fichier json. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classSceneLoader_ada11215dfcac40405d228125b1df6794}{save\+\_\+scene\+\_\+to\+\_\+json}} (const std\+::string \&filepath, \mbox{\hyperlink{classScene}{Scene}} \&world, const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&lidars, \mbox{\hyperlink{classGl}{Gl}} $\ast$gl)
+\begin{DoxyCompactList}\small\item\em Sauvegarde d\textquotesingle{}une scène dans un fichier json. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}\label{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e}} 
@@ -29,6 +37,24 @@ static bool \mbox{\hyperlink{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}
 \doxysubsubsection{\texorpdfstring{load\_scene\_from\_json()}{load\_scene\_from\_json()}}
 {\footnotesize\ttfamily bool Scene\+Loader\+::load\+\_\+scene\+\_\+from\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&}]{lidars,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Charge une scène complète (objets + lidars) depuis un fichier json. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Chemin vers le fichier json de scène. \\
+\hline
+{\em world} & \mbox{\hyperlink{classScene}{Scene}} à remplir. \\
+\hline
+{\em lidars} & Vecteur de lidar à remplir. \\
+\hline
+{\em assets} & Gestionnaire de ressources. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrai si le chargement à réussi, faux sinon. 
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -45,18 +71,40 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classSceneLoader_afaf374902e6c3536fa8ffad6f69a0b7e_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}\label{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60}} 
+\mbox{\Hypertarget{classSceneLoader_ada11215dfcac40405d228125b1df6794}\label{classSceneLoader_ada11215dfcac40405d228125b1df6794}} 
 \index{SceneLoader@{SceneLoader}!save\_scene\_to\_json@{save\_scene\_to\_json}}
 \index{save\_scene\_to\_json@{save\_scene\_to\_json}!SceneLoader@{SceneLoader}}
 \doxysubsubsection{\texorpdfstring{save\_scene\_to\_json()}{save\_scene\_to\_json()}}
-{\footnotesize\ttfamily bool Scene\+Loader\+::save\+\_\+scene\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&}]{lidars }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily bool Scene\+Loader\+::save\+\_\+scene\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{\mbox{\hyperlink{classScene}{Scene}} \&}]{world,  }\item[{const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} $>$$>$ \&}]{lidars,  }\item[{\mbox{\hyperlink{classGl}{Gl}} $\ast$}]{gl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Sauvegarde d\textquotesingle{}une scène dans un fichier json. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & chemin du fichier json de scene. \\
+\hline
+{\em world} & scene à écrire dans le fichier json. \\
+\hline
+{\em lidars\+\_\+ent} & entités lidar à écrire dans le json. ~\newline
+ \\
+\hline
+\end{DoxyParams}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classSceneLoader_a2c7d9bce89b29a816808acf72600ab60_cgraph}
+\includegraphics[width=350pt]{classSceneLoader_ada11215dfcac40405d228125b1df6794_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSceneLoader_ada11215dfcac40405d228125b1df6794_icgraph}
 \end{center}
 \end{figure}
 

@@ -2,12 +2,16 @@
 \label{classPose}\index{Pose@{Pose}}
 
 
+Position et rotation d\textquotesingle{}un objet dans une scène 3D. Une position (x, y, z) et une rotation (x, y, z) avec angles en radians.  
+
+
+
+
 {\ttfamily \#include $<$pose.\+h$>$}
 
 
 
-Collaboration diagram for Pose\+:
-\nopagebreak
+Collaboration diagram for Pose\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +24,7 @@ Collaboration diagram for Pose\+:
 \mbox{\hyperlink{classPose_a003946d312cf765f56b70f620b58337d}{Pose}} (\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} p=\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}(0, 0, 0), double \mbox{\hyperlink{classPose_af69e1ca12c440103c3657974b6c6f873}{rx}}=0.\+0, double \mbox{\hyperlink{classPose_a525262b2e0219f06f64a882a47913a4f}{ry}}=0.\+0, double \mbox{\hyperlink{classPose_ad9b2d5a2671e7be99e730a61ddd906d3}{rz}}=0.\+0)
 \item 
 \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classPose_aec890b33cbf23751f0ffa443adbf5b92}{transform}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Calcule la matrice de transformation (translation + rotation) \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classPose_af69e1ca12c440103c3657974b6c6f873}{rx}} () const
 \item 
 double \mbox{\hyperlink{classPose_a525262b2e0219f06f64a882a47913a4f}{ry}} () const
@@ -31,6 +35,9 @@ const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \& \m
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Position et rotation d\textquotesingle{}un objet dans une scène 3D. Une position (x, y, z) et une rotation (x, y, z) avec angles en radians. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPose_a003946d312cf765f56b70f620b58337d}\label{classPose_a003946d312cf765f56b70f620b58337d}} 
 \index{Pose@{Pose}!Pose@{Pose}}
@@ -38,6 +45,17 @@ const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \& \m
 \doxysubsubsection{\texorpdfstring{Pose()}{Pose()}}
 {\footnotesize\ttfamily Pose\+::\+Pose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}}]{p = {\ttfamily \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}(0,~0,~0)},  }\item[{double}]{rx = {\ttfamily 0.0},  }\item[{double}]{ry = {\ttfamily 0.0},  }\item[{double}]{rz = {\ttfamily 0.0} }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Position (x, y, z) en mètres dans le repère global \\
+\hline
+{\em rx} & Rotation autour de x (en degrés converti en radians) \\
+\hline
+{\em ry} & Rotation autour de y (en degrés converti en radians) \\
+\hline
+{\em rz} & Rotation autour de z (en degrés converti en radians) \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -103,8 +121,11 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} Pose\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+
+
+Calcule la matrice de transformation (translation + rotation) 
+
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

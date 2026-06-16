@@ -1,4 +1,4 @@
 <map id="MirroredLidarEntity::generate_rays" name="MirroredLidarEntity::generate_rays">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node1" title="Génère tous les rayons pour le scan." alt="" coords="5,5,152,47"/>
 <area shape="rect" id="node2" href="$classMirroredLidarEntity.html#aee5cb437df0a6cb29f24cdd98c95e139" title=" " alt="" coords="200,5,347,47"/>
 </map>

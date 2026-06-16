@@ -70,18 +70,21 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène.  
+ <a href="classIEntity.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="entity_8h_source.html">entity.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIEntity__inherit__graph.png" border="0" usemap="#aIEntity_inherit__map" alt="Inheritance graph"/></div>
 <map name="aIEntity_inherit__map" id="aIEntity_inherit__map">
-<area shape="rect" title=" " alt="" coords="305,5,415,171"/>
-<area shape="rect" href="classLidarEntity.html" title=" " alt="" coords="205,219,349,399"/>
-<area shape="rect" href="classStaticEntity.html" title=" " alt="" coords="373,233,515,384"/>
-<area shape="rect" href="classFlashLidarEntity.html" title=" " alt="" coords="5,454,157,575"/>
-<area shape="rect" href="classMechanicalLidarEntity.html" title=" " alt="" coords="182,447,373,583"/>
-<area shape="rect" href="classMirroredLidarEntity.html" title=" " alt="" coords="397,454,569,575"/>
+<area shape="rect" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="305,5,415,171"/>
+<area shape="rect" href="classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="205,219,349,399"/>
+<area shape="rect" href="classStaticEntity.html" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="373,233,515,384"/>
+<area shape="rect" href="classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,454,157,575"/>
+<area shape="rect" href="classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="182,447,373,583"/>
+<area shape="rect" href="classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="397,454,569,575"/>
 </map>
 </div>
 <div class="dynheader">
@@ -89,8 +92,8 @@ Collaboration diagram for IEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIEntity__coll__graph.png" border="0" usemap="#aIEntity_coll__map" alt="Collaboration graph"/></div>
 <map name="aIEntity_coll__map" id="aIEntity_coll__map">
-<area shape="rect" title=" " alt="" coords="5,219,116,384"/>
-<area shape="rect" href="classPose.html" title=" " alt="" coords="5,5,116,156"/>
+<area shape="rect" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="5,219,116,384"/>
+<area shape="rect" href="classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="5,5,116,156"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -101,10 +104,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8aea4fbca51d17a0ce314aaa4633f28e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a8aea4fbca51d17a0ce314aaa4633f28e">~IEntity</a> ()</td></tr>
 <tr class="separator:a8aea4fbca51d17a0ce314aaa4633f28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb7b837f65889d824108ef63943ff066"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#aeb7b837f65889d824108ef63943ff066">clone</a> () const =0</td></tr>
+<tr class="memdesc:aeb7b837f65889d824108ef63943ff066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une copie de l'entité.  <a href="classIEntity.html#aeb7b837f65889d824108ef63943ff066">More...</a><br /></td></tr>
 <tr class="separator:aeb7b837f65889d824108ef63943ff066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a671f515548fe22ae05d97f32b24c0117"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117">transform</a> () const</td></tr>
+<tr class="memdesc:a671f515548fe22ae05d97f32b24c0117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la matrice de transformation pour placement dans la scène.  <a href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117">More...</a><br /></td></tr>
 <tr class="separator:a671f515548fe22ae05d97f32b24c0117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cbdf9ca045189bc9132157fa020ae26"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a2cbdf9ca045189bc9132157fa020ae26">name</a> () const =0</td></tr>
+<tr class="memdesc:a2cbdf9ca045189bc9132157fa020ae26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant de l'entité.  <a href="classIEntity.html#a2cbdf9ca045189bc9132157fa020ae26">More...</a><br /></td></tr>
 <tr class="separator:a2cbdf9ca045189bc9132157fa020ae26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5d6fafc26283ebe9a57bc642a8c70f7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPose.html">Pose</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#ab5d6fafc26283ebe9a57bc642a8c70f7">pose</a> () const</td></tr>
 <tr class="separator:ab5d6fafc26283ebe9a57bc642a8c70f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,9 +120,12 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a0e7f2ce364a2e18a080d42dbd76d1e88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPose.html">Pose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a0e7f2ce364a2e18a080d42dbd76d1e88">m_pose</a></td></tr>
+<tr class="memdesc:a0e7f2ce364a2e18a080d42dbd76d1e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position et rotation dans le repère global.  <a href="classIEntity.html#a0e7f2ce364a2e18a080d42dbd76d1e88">More...</a><br /></td></tr>
 <tr class="separator:a0e7f2ce364a2e18a080d42dbd76d1e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b7fe6e95576ede4260ec370b0eeb2ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b7fe6e95576ede4260ec370b0eeb2ea">&#9670;&nbsp;</a></span>IEntity()</h2>
 
@@ -140,6 +149,12 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pose</td><td>Position et Rotation initiale dans le repère global. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -192,6 +207,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Crée une copie de l'entité. </p>
+
 <p>Implemented in <a class="el" href="classMirroredLidarEntity.html#acee3395890d416956e6c67083be3363d">MirroredLidarEntity</a>, <a class="el" href="classFlashLidarEntity.html#a8be7011702b118fd8142d8793d3d1810">FlashLidarEntity</a>, <a class="el" href="classMechanicalLidarEntity.html#aca93cc43978b05c8bf6e6d9d11ec620f">MechanicalLidarEntity</a>, and <a class="el" href="classStaticEntity.html#a1b5699d6f6cf5539cca88e61fcb476b5">StaticEntity</a>.</p>
 
 </div>
@@ -218,6 +235,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne l'identifiant de l'entité. </p>
 
 <p>Implemented in <a class="el" href="classLidarEntity.html#a61de62aac33a6ebbdb1ed0aed3fec85e">LidarEntity</a>, and <a class="el" href="classStaticEntity.html#ae44708dfd2c0abe9da6b1ceef2ee02fe">StaticEntity</a>.</p>
 
@@ -304,13 +323,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calcule la matrice de transformation pour placement dans la scène. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph.png" border="0" usemap="#aclassIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph" alt=""/></div>
 <map name="aclassIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph" id="aclassIEntity_a671f515548fe22ae05d97f32b24c0117_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,140,32"/>
-<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="188,5,313,32"/>
+<area shape="rect" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="5,5,140,32"/>
+<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="188,5,313,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -318,11 +339,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classIEntity_a671f515548fe22ae05d97f32b24c0117_icgraph.png" border="0" usemap="#aclassIEntity_a671f515548fe22ae05d97f32b24c0117_icgraph" alt=""/></div>
 <map name="aclassIEntity_a671f515548fe22ae05d97f32b24c0117_icgraph" id="aclassIEntity_a671f515548fe22ae05d97f32b24c0117_icgraph">
-<area shape="rect" title=" " alt="" coords="645,35,780,61"/>
-<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="371,5,597,32"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="401,57,567,98"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="156,57,323,98"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,64,108,91"/>
+<area shape="rect" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="495,35,629,61"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="220,5,447,32"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="250,57,417,98"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="5,57,172,98"/>
 </map>
 </div>
 
@@ -348,6 +368,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Position et rotation dans le repère global. </p>
 
 </div>
 </div>

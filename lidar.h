@@ -83,6 +83,9 @@ public:
     std::string to_string() const override;
 };
 
+/// @brief Paramètres de balayage en courbe de Lissajous pour un lidar à miroir.
+/// Les amplitudes et fréquences définissent la trajectoire sinusoïdale
+/// du miroir sur les deux axes.
 struct LissajouParams {
     double m_amplitude_h;           ///< Amplitude de balayage horizontal (radians)
     double m_amplitude_v;           ///< Amplitude de balayage vertical (radians)  
@@ -91,9 +94,10 @@ struct LissajouParams {
     double m_phase_diff;            ///< "Déphasage" entre 2 axes (radians)
 };
 
+/// @brief Paramètres de balayage en grille régulière (raster) pour un lidar à miroir.
 struct RasterParams {
-    int resolution_h = 0;           ///< Nombre de colonnes
-    int resolution_v = 0;           ///< Nombre de lignes
+    int resolution_h = 0;           ///< Nombre de colonnes (résolution horizontale)
+    int resolution_v = 0;           ///< Nombre de lignes (résolution verticale)
 };
 
 /// @brief Configuration d'un lidar à miroir (balayage de Lissajous)

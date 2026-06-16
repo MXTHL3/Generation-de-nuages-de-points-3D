@@ -2,12 +2,16 @@
 \label{classMechanicalLidarEntity}\index{MechanicalLidarEntity@{MechanicalLidarEntity}}
 
 
+Capteur lidar mécanique rotatif (Velodyne, Ouster).  
+
+
+
+
 {\ttfamily \#include $<$entity.\+h$>$}
 
 
 
-Inheritance diagram for Mechanical\+Lidar\+Entity\+:
-\nopagebreak
+Inheritance diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +20,7 @@ Inheritance diagram for Mechanical\+Lidar\+Entity\+:
 \end{figure}
 
 
-Collaboration diagram for Mechanical\+Lidar\+Entity\+:
-\nopagebreak
+Collaboration diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,15 +33,18 @@ Collaboration diagram for Mechanical\+Lidar\+Entity\+:
 \mbox{\hyperlink{classMechanicalLidarEntity_afcf617678dc006052be54db3471ce7ce}{Mechanical\+Lidar\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}{config}}, \mbox{\hyperlink{classPose}{Pose}} p)
 \item 
 const \mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}} \& \mbox{\hyperlink{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}{config}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Accès typé à la config mécanique. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{clone}} () const override
-\item 
+\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}{scan}} (double parameter) const
-\item 
+\begin{DoxyCompactList}\small\item\em Génère les rayons pour un angle azimutal (horizontal) donné \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}{generate\+\_\+rays}} () const override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+Capteur lidar mécanique rotatif (Velodyne, Ouster). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classMechanicalLidarEntity_afcf617678dc006052be54db3471ce7ce}\label{classMechanicalLidarEntity_afcf617678dc006052be54db3471ce7ce}} 
@@ -58,6 +64,10 @@ std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{R
 
 
 
+Crée une copie de l\textquotesingle{}entité. 
+
+
+
 Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
 
 \mbox{\Hypertarget{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}\label{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}} 
@@ -66,8 +76,11 @@ Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEnt
 \doxysubsubsection{\texorpdfstring{config()}{config()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}}\& Mechanical\+Lidar\+Entity\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+
+
+Accès typé à la config mécanique. 
+
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -82,22 +95,17 @@ Here is the caller graph for this function\+:
 
 
 
+Génère tous les rayons pour le scan. 
+
+
+
 Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}\label{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}} 
@@ -106,16 +114,18 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
 {\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{parameter }\end{DoxyParamCaption}) const}
 
-Here is the call graph for this function\+:
-\nopagebreak
+
+
+Génère les rayons pour un angle azimutal (horizontal) donné 
+
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

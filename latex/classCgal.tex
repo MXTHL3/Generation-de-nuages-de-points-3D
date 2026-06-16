@@ -2,6 +2,11 @@
 \label{classCgal}\index{Cgal@{Cgal}}
 
 
+Interface de base pour la construction et la manipulation d\textquotesingle{}un maillage CGAL. Fournit les opérations bas-\/niveau (ajout de sommets, de faces) et l\textquotesingle{}export des données de rendu. Les sous-\/classes implémentent les méthodes de construction.  
+
+
+
+
 {\ttfamily \#include $<$cgal.\+h$>$}
 
 
@@ -28,26 +33,29 @@ Collaboration diagram for Cgal\+:\nopagebreak
 virtual \mbox{\hyperlink{classCgal_a4320e3bda6d290340a27812e3d8955d0}{$\sim$\+Cgal}} ()=default
 \item 
 virtual void \mbox{\hyperlink{classCgal_a8c8dee21b90918c15bf38fd378c271d9}{build\+\_\+cube\+\_\+mesh}} ()=0
-\item 
+\begin{DoxyCompactList}\small\item\em Construit un maillage cubique unitaire. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classCgal_a582f120c6f9545cf82c51bc747712b07}{build\+\_\+mesh\+\_\+from\+\_\+file}} (const std\+::string \&filename)=0
-\item 
+\begin{DoxyCompactList}\small\item\em Construit un maillage à partir d\textquotesingle{}un fichier 3D. \end{DoxyCompactList}\item 
 std\+::vector$<$ float $>$ \mbox{\hyperlink{classCgal_a52114aa511fcf4dbea848db6f7d9d666}{to\+\_\+vertex\+\_\+data}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Convertit le maillage en tableau de flottants (positions XYZ par triangle). \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} \& \mbox{\hyperlink{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}{mesh}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Accès en lecture au maillage CGAL sous-\/jacent. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 Surface\+Mesh\+::\+Vertex\+\_\+index \mbox{\hyperlink{classCgal_a154e737d7f475f585d9b4136661609bc}{add\+\_\+vertex}} (double x, double y, double z)
-\item 
+\begin{DoxyCompactList}\small\item\em Ajoute un sommet au maillage. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCgal_acd43ae6dde0c8c9f378e65992026de6a}{add\+\_\+triangle}} (Surface\+Mesh\+::\+Vertex\+\_\+index a, Surface\+Mesh\+::\+Vertex\+\_\+index b, Surface\+Mesh\+::\+Vertex\+\_\+index c)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Ajoute une face triangulaire au maillage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} \mbox{\hyperlink{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}{m\+\_\+mesh}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maillage CGAL interne. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Interface de base pour la construction et la manipulation d\textquotesingle{}un maillage CGAL. Fournit les opérations bas-\/niveau (ajout de sommets, de faces) et l\textquotesingle{}export des données de rendu. Les sous-\/classes implémentent les méthodes de construction. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classCgal_a4320e3bda6d290340a27812e3d8955d0}\label{classCgal_a4320e3bda6d290340a27812e3d8955d0}} 
@@ -65,6 +73,19 @@ void \mbox{\hyperlink{classCgal_acd43ae6dde0c8c9f378e65992026de6a}{add\+\_\+tria
 \doxysubsubsection{\texorpdfstring{add\_triangle()}{add\_triangle()}}
 {\footnotesize\ttfamily void Cgal\+::add\+\_\+triangle (\begin{DoxyParamCaption}\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{a,  }\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{b,  }\item[{Surface\+Mesh\+::\+Vertex\+\_\+index}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Ajoute une face triangulaire au maillage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Index du premier sommet. \\
+\hline
+{\em b} & Index du deuxième sommet. \\
+\hline
+{\em c} & Index du troisième sommet. \\
+\hline
+\end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -78,6 +99,22 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{add\_vertex()}{add\_vertex()}}
 {\footnotesize\ttfamily Surface\+Mesh\+::\+Vertex\+\_\+index Cgal\+::add\+\_\+vertex (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Ajoute un sommet au maillage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X. \\
+\hline
+{\em y} & Coordonnée Y. \\
+\hline
+{\em z} & Coordonnée Z. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index du sommet créé. 
+\end{DoxyReturn}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -93,6 +130,10 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+Construit un maillage cubique unitaire. 
+
+
+
 Implemented in \mbox{\hyperlink{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb}{Cgal\+Shape}}.
 
 \mbox{\Hypertarget{classCgal_a582f120c6f9545cf82c51bc747712b07}\label{classCgal_a582f120c6f9545cf82c51bc747712b07}} 
@@ -103,6 +144,15 @@ Implemented in \mbox{\hyperlink{classCgalShape_a589f7390ac7fb9a99d21cc0cb7f92afb
 
 
 
+Construit un maillage à partir d\textquotesingle{}un fichier 3D. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Chemin vers le fichier source (OBJ, PLY, OFF, STL…). \\
+\hline
+\end{DoxyParams}
+
+
 Implemented in \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86}{Cgal\+Shape}}.
 
 \mbox{\Hypertarget{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}\label{classCgal_a3c1294f7adbe211f2a248646e2fda6cc}} 
@@ -111,6 +161,13 @@ Implemented in \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86
 \doxysubsubsection{\texorpdfstring{mesh()}{mesh()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}}\& Cgal\+::mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Accès en lecture au maillage CGAL sous-\/jacent. 
+
+\begin{DoxyReturn}{Returns}
+Référence constante vers le Surface\+Mesh interne. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classCgal_a52114aa511fcf4dbea848db6f7d9d666}\label{classCgal_a52114aa511fcf4dbea848db6f7d9d666}} 
 \index{Cgal@{Cgal}!to\_vertex\_data@{to\_vertex\_data}}
 \index{to\_vertex\_data@{to\_vertex\_data}!Cgal@{Cgal}}
@@ -119,12 +176,23 @@ Implemented in \mbox{\hyperlink{classCgalShape_ab031b5370d1d46046e1221f04eaeeb86
 
 
 
+Convertit le maillage en tableau de flottants (positions XYZ par triangle). 
+
+\begin{DoxyReturn}{Returns}
+Vecteur de flottants, 9 valeurs par face (3 sommets × 3 coordonnées). 
+\end{DoxyReturn}
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}\label{classCgal_a1f0ce4c738793d5761cf2c961ad0ec54}} 
 \index{Cgal@{Cgal}!m\_mesh@{m\_mesh}}
 \index{m\_mesh@{m\_mesh}!Cgal@{Cgal}}
 \doxysubsubsection{\texorpdfstring{m\_mesh}{m\_mesh}}
 {\footnotesize\ttfamily \mbox{\hyperlink{cgal_8h_af6b0ec2c57113662b021361902ef4cab}{Surface\+Mesh}} Cgal\+::m\+\_\+mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Maillage CGAL interne. 
 
 
 

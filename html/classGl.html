@@ -64,11 +64,15 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classGl-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Gl Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Moteur de rendu OpenGL/GTK : scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/VBO, les shaders, les marqueurs de transformation interactifs et l'interface avec le scanner lidar (run_scan).  
+ <a href="classGl.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gl_8h_source.html">gl.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -76,63 +80,124 @@ Collaboration diagram for Gl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGl__coll__graph.png" border="0" usemap="#aGl_coll__map" alt="Collaboration graph"/></div>
 <map name="aGl_coll__map" id="aGl_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,187,229"/>
+<area shape="rect" title="Moteur de rendu OpenGL/GTK : scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/VBO,..." alt="" coords="5,5,187,259"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7f9e02f67520b23402061cb58420c70b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a7f9e02f67520b23402061cb58420c70b">Gl</a> (std::unique_ptr&lt; <a class="el" href="classCgal.html">Cgal</a> &gt; default_scene)</td></tr>
+<tr class="memdesc:a7f9e02f67520b23402061cb58420c70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le contexte OpenGL avec une scène CGAL par défaut (cube).  <a href="classGl.html#a7f9e02f67520b23402061cb58420c70b">More...</a><br /></td></tr>
 <tr class="separator:a7f9e02f67520b23402061cb58420c70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92e2dc7d8d682a4597e6b36a7baff396"><td class="memItemLeft" align="right" valign="top">Gtk::Widget &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a92e2dc7d8d682a4597e6b36a7baff396">widget</a> ()</td></tr>
+<tr class="memdesc:a92e2dc7d8d682a4597e6b36a7baff396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le widget GTK racine à intégrer dans la fenêtre.  <a href="classGl.html#a92e2dc7d8d682a4597e6b36a7baff396">More...</a><br /></td></tr>
 <tr class="separator:a92e2dc7d8d682a4597e6b36a7baff396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643d518702ab2e28f62b0414247f2137"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a643d518702ab2e28f62b0414247f2137">build_grid</a> (float size, float step)</td></tr>
+<tr class="memdesc:a643d518702ab2e28f62b0414247f2137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le maillage de la grille de référence au sol.  <a href="classGl.html#a643d518702ab2e28f62b0414247f2137">More...</a><br /></td></tr>
 <tr class="separator:a643d518702ab2e28f62b0414247f2137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97e61d917cbe1e275e1fc872b4d656a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a97e61d917cbe1e275e1fc872b4d656a6">load_file</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a97e61d917cbe1e275e1fc872b4d656a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un fichier 3D et l'ajoute à la scène.  <a href="classGl.html#a97e61d917cbe1e275e1fc872b4d656a6">More...</a><br /></td></tr>
 <tr class="separator:a97e61d917cbe1e275e1fc872b4d656a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bdcca5a28273112b61476cfe13a2674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674">load_scan</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a5bdcca5a28273112b61476cfe13a2674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un nuage de points et l'affiche.  <a href="classGl.html#a5bdcca5a28273112b61476cfe13a2674">More...</a><br /></td></tr>
 <tr class="separator:a5bdcca5a28273112b61476cfe13a2674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aba28ffa3a514e9973feb0a64f5b65b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a8aba28ffa3a514e9973feb0a64f5b65b">set_transform</a> (int idx, const <a class="el" href="structModelTransform.html">ModelTransform</a> &amp;tr)</td></tr>
+<tr class="memdesc:a8aba28ffa3a514e9973feb0a64f5b65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique une transformation à un modèle de la scène.  <a href="classGl.html#a8aba28ffa3a514e9973feb0a64f5b65b">More...</a><br /></td></tr>
 <tr class="separator:a8aba28ffa3a514e9973feb0a64f5b65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a712f8cc3dd980b97a4d0fecee53b5af3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a712f8cc3dd980b97a4d0fecee53b5af3">set_camera</a> (float pos_x, float pos_y, float pos_z, float <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfa22770fbdd1177351a869401a0e1427bc">rx</a>, float <a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073dfa731a58830959369de78aac2501c6021a">ry</a>, float zoom)</td></tr>
+<tr class="memdesc:a712f8cc3dd980b97a4d0fecee53b5af3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positionne la caméra dans la scène.  <a href="classGl.html#a712f8cc3dd980b97a4d0fecee53b5af3">More...</a><br /></td></tr>
 <tr class="separator:a712f8cc3dd980b97a4d0fecee53b5af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7086ea1109c9b754e531fd3d1870c1f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a7086ea1109c9b754e531fd3d1870c1f6">capture_image</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a7086ea1109c9b754e531fd3d1870c1f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capture le rendu OpenGL courant et l'enregistre en PNG.  <a href="classGl.html#a7086ea1109c9b754e531fd3d1870c1f6">More...</a><br /></td></tr>
 <tr class="separator:a7086ea1109c9b754e531fd3d1870c1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0687592e446cb744fcc588420821483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#aa0687592e446cb744fcc588420821483">add_overlay_widget</a> (Gtk::Widget &amp;w)</td></tr>
+<tr class="memdesc:aa0687592e446cb744fcc588420821483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un widget GTK en overlay sur la GLArea.  <a href="classGl.html#aa0687592e446cb744fcc588420821483">More...</a><br /></td></tr>
 <tr class="separator:aa0687592e446cb744fcc588420821483"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7911c5da5492309af8bf125d26ecde1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1">run_scan</a> (const std::string &amp;lidar_config_path, const std::string &amp;output_path)</td></tr>
+<tr class="memdesc:ad7911c5da5492309af8bf125d26ecde1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance un scan lidar de la scène complète et exporte le nuage de points.  <a href="classGl.html#ad7911c5da5492309af8bf125d26ecde1">More...</a><br /></td></tr>
 <tr class="separator:ad7911c5da5492309af8bf125d26ecde1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06b6675f97657ca3b46bd3c9367aa972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a06b6675f97657ca3b46bd3c9367aa972">set_lidar_config</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a06b6675f97657ca3b46bd3c9367aa972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le chemin du fichier de configuration lidar actif.  <a href="classGl.html#a06b6675f97657ca3b46bd3c9367aa972">More...</a><br /></td></tr>
 <tr class="separator:a06b6675f97657ca3b46bd3c9367aa972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fb1c1b80b822442fe18e4749eda3e56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a7fb1c1b80b822442fe18e4749eda3e56">set_lidar_override</a> (std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt; lidar)</td></tr>
+<tr class="memdesc:a7fb1c1b80b822442fe18e4749eda3e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace la configuration lidar par une instance déjà créée.  <a href="classGl.html#a7fb1c1b80b822442fe18e4749eda3e56">More...</a><br /></td></tr>
 <tr class="separator:a7fb1c1b80b822442fe18e4749eda3e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3937e6ba83582d4dc825dbb4223aa2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#ab3937e6ba83582d4dc825dbb4223aa2e">clear_lidar_override</a> ()</td></tr>
+<tr class="memdesc:ab3937e6ba83582d4dc825dbb4223aa2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime la configuration lidar de remplacement (retour au fichier JSON).  <a href="classGl.html#ab3937e6ba83582d4dc825dbb4223aa2e">More...</a><br /></td></tr>
 <tr class="separator:ab3937e6ba83582d4dc825dbb4223aa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab79f766b81ba1f6a86f38087c3db5e17"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#ab79f766b81ba1f6a86f38087c3db5e17">get_lidar_override</a> () const</td></tr>
+<tr class="memdesc:ab79f766b81ba1f6a86f38087c3db5e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la configuration lidar de remplacement courante.  <a href="classGl.html#ab79f766b81ba1f6a86f38087c3db5e17">More...</a><br /></td></tr>
 <tr class="separator:ab79f766b81ba1f6a86f38087c3db5e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bc6a9f921be20983abcbb10920bf685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a0bc6a9f921be20983abcbb10920bf685">lidar_override_set_min</a> (double v)</td></tr>
+<tr class="memdesc:a0bc6a9f921be20983abcbb10920bf685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la distance minimale de détection du lidar de remplacement.  <a href="classGl.html#a0bc6a9f921be20983abcbb10920bf685">More...</a><br /></td></tr>
 <tr class="separator:a0bc6a9f921be20983abcbb10920bf685"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af66553210f98dd959603d828608ba59a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#af66553210f98dd959603d828608ba59a">lidar_override_set_max</a> (double v)</td></tr>
+<tr class="memdesc:af66553210f98dd959603d828608ba59a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la distance maximale de détection du lidar de remplacement.  <a href="classGl.html#af66553210f98dd959603d828608ba59a">More...</a><br /></td></tr>
 <tr class="separator:af66553210f98dd959603d828608ba59a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50c5eced263a4ea543046dced0db69df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a50c5eced263a4ea543046dced0db69df">lidar_override_set_hstep</a> (size_t idx, double v)</td></tr>
-<tr class="separator:a50c5eced263a4ea543046dced0db69df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10793c119b1c1ce2b05d5e5884beac72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a10793c119b1c1ce2b05d5e5884beac72">lidar_override_set_hstep</a> (size_t, double v)</td></tr>
+<tr class="memdesc:a10793c119b1c1ce2b05d5e5884beac72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la résolution horizontale du lidar mécanique de remplacement.  <a href="classGl.html#a10793c119b1c1ce2b05d5e5884beac72">More...</a><br /></td></tr>
+<tr class="separator:a10793c119b1c1ce2b05d5e5884beac72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fa14571b0bae4f2e48b5c91e4ae7cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a2fa14571b0bae4f2e48b5c91e4ae7cc6">lidar_override_set_accuracy</a> (double v)</td></tr>
+<tr class="memdesc:a2fa14571b0bae4f2e48b5c91e4ae7cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la précision du lidar de remplacement.  <a href="classGl.html#a2fa14571b0bae4f2e48b5c91e4ae7cc6">More...</a><br /></td></tr>
 <tr class="separator:a2fa14571b0bae4f2e48b5c91e4ae7cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a282f1d04873290629695e206e9cd2fbe"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a282f1d04873290629695e206e9cd2fbe">get_lidar_config</a> () const</td></tr>
+<tr class="memdesc:a282f1d04873290629695e206e9cd2fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le chemin du fichier de configuration lidar actif.  <a href="classGl.html#a282f1d04873290629695e206e9cd2fbe">More...</a><br /></td></tr>
 <tr class="separator:a282f1d04873290629695e206e9cd2fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39222fbea430ff6081ecc704ac39d7a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a39222fbea430ff6081ecc704ac39d7a6">toggle_point_cloud</a> ()</td></tr>
+<tr class="memdesc:a39222fbea430ff6081ecc704ac39d7a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule l'affichage du nuage de points.  <a href="classGl.html#a39222fbea430ff6081ecc704ac39d7a6">More...</a><br /></td></tr>
 <tr class="separator:a39222fbea430ff6081ecc704ac39d7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classModelMarker.html">ModelMarker</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a5e8b7a9c67a4a530cd18b31756091d4d">get_markers</a> ()</td></tr>
+<tr class="memdesc:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des marqueurs de transformation interactifs.  <a href="classGl.html#a5e8b7a9c67a4a530cd18b31756091d4d">More...</a><br /></td></tr>
 <tr class="separator:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622447c9e09b0491375e23ee1ab3debb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a622447c9e09b0491375e23ee1ab3debb">reset_scene</a> ()</td></tr>
+<tr class="memdesc:a622447c9e09b0491375e23ee1ab3debb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les modèles chargés (conserve le cube par défaut).  <a href="classGl.html#a622447c9e09b0491375e23ee1ab3debb">More...</a><br /></td></tr>
 <tr class="separator:a622447c9e09b0491375e23ee1ab3debb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a8ea113f1de89d38b932b6ac3562c0ce9">reset_scans</a> ()</td></tr>
+<tr class="memdesc:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les nuages de points chargés.  <a href="classGl.html#a8ea113f1de89d38b932b6ac3562c0ce9">More...</a><br /></td></tr>
+<tr class="separator:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc25b914170d0b38ac93365435a7d00b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#adc25b914170d0b38ac93365435a7d00b">model_count</a> () const</td></tr>
+<tr class="memdesc:adc25b914170d0b38ac93365435a7d00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre de modèles présents dans la scène.  <a href="classGl.html#adc25b914170d0b38ac93365435a7d00b">More...</a><br /></td></tr>
+<tr class="separator:adc25b914170d0b38ac93365435a7d00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5d77d25bda8aa7a8b14b58728896f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a9c5d77d25bda8aa7a8b14b58728896f6">set_model_hidden</a> (size_t idx, bool hidden)</td></tr>
+<tr class="memdesc:a9c5d77d25bda8aa7a8b14b58728896f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque ou affiche un modèle de la scène.  <a href="classGl.html#a9c5d77d25bda8aa7a8b14b58728896f6">More...</a><br /></td></tr>
+<tr class="separator:a9c5d77d25bda8aa7a8b14b58728896f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa632ac30a5aef65613cc217c8e1f9c0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#aa632ac30a5aef65613cc217c8e1f9c0d">is_model_hidden</a> (size_t idx) const</td></tr>
+<tr class="memdesc:aa632ac30a5aef65613cc217c8e1f9c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si un modèle est actuellement masqué.  <a href="classGl.html#aa632ac30a5aef65613cc217c8e1f9c0d">More...</a><br /></td></tr>
+<tr class="separator:aa632ac30a5aef65613cc217c8e1f9c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b67ddd9b262dc9d58a901fbc5465e6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a00b67ddd9b262dc9d58a901fbc5465e6">get_angle_x</a> () const</td></tr>
+<tr class="memdesc:a00b67ddd9b262dc9d58a901fbc5465e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'angle de tangage (pitch) courant de la caméra.  <a href="classGl.html#a00b67ddd9b262dc9d58a901fbc5465e6">More...</a><br /></td></tr>
+<tr class="separator:a00b67ddd9b262dc9d58a901fbc5465e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af313344849dd6bfd19251415945351e0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#af313344849dd6bfd19251415945351e0">get_angle_y</a> () const</td></tr>
+<tr class="memdesc:af313344849dd6bfd19251415945351e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'angle de lacet (yaw) courant de la caméra.  <a href="classGl.html#af313344849dd6bfd19251415945351e0">More...</a><br /></td></tr>
+<tr class="separator:af313344849dd6bfd19251415945351e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564b724bd51f1c830f06ad8d847b4f6b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a564b724bd51f1c830f06ad8d847b4f6b">model_paths</a> () const</td></tr>
+<tr class="memdesc:a564b724bd51f1c830f06ad8d847b4f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les chemins des fichiers 3D chargés.  <a href="classGl.html#a564b724bd51f1c830f06ad8d847b4f6b">More...</a><br /></td></tr>
+<tr class="separator:a564b724bd51f1c830f06ad8d847b4f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f124759b5c53ddb0cac672639c0bfc9"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structModelTransform.html">ModelTransform</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a0f124759b5c53ddb0cac672639c0bfc9">transforms</a> () const</td></tr>
+<tr class="memdesc:a0f124759b5c53ddb0cac672639c0bfc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les transformations appliquées à chaque modèle.  <a href="classGl.html#a0f124759b5c53ddb0cac672639c0bfc9">More...</a><br /></td></tr>
+<tr class="separator:a0f124759b5c53ddb0cac672639c0bfc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4898a547382a3bbd66f7526f8e07c2"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a2c4898a547382a3bbd66f7526f8e07c2">get_camera_world_position</a> () const</td></tr>
+<tr class="memdesc:a2c4898a547382a3bbd66f7526f8e07c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la position de la caméra dans le repère monde.  <a href="classGl.html#a2c4898a547382a3bbd66f7526f8e07c2">More...</a><br /></td></tr>
+<tr class="separator:a2c4898a547382a3bbd66f7526f8e07c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8555c2fc90241017c1e7b1b35b06b286"><td class="memItemLeft" align="right" valign="top">sigc::signal&lt; void(<a class="el" href="model__marker_8h.html#ade22213fff69cfb37d8238e8fd3073df">MarkerType</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a8555c2fc90241017c1e7b1b35b06b286">signal_marker_clicked</a></td></tr>
+<tr class="memdesc:a8555c2fc90241017c1e7b1b35b06b286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal émis quand l'utilisateur clique sur un marqueur.  <a href="classGl.html#a8555c2fc90241017c1e7b1b35b06b286">More...</a><br /></td></tr>
 <tr class="separator:a8555c2fc90241017c1e7b1b35b06b286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aa1035515a10925da382e719dea9b4464"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#aa1035515a10925da382e719dea9b4464">OFFSET_STEP</a> = 1.5f</td></tr>
+<tr class="memdesc:aa1035515a10925da382e719dea9b4464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décalage entre modèles superposés.  <a href="classGl.html#aa1035515a10925da382e719dea9b4464">More...</a><br /></td></tr>
+<tr class="separator:aa1035515a10925da382e719dea9b4464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6b10a8613bb7048cf200cc104cb6a5"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a6f6b10a8613bb7048cf200cc104cb6a5">DRAG_SENSITIVITY</a> = 0.02f</td></tr>
+<tr class="memdesc:a6f6b10a8613bb7048cf200cc104cb6a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sensibilité du drag des marqueurs.  <a href="classGl.html#a6f6b10a8613bb7048cf200cc104cb6a5">More...</a><br /></td></tr>
+<tr class="separator:a6f6b10a8613bb7048cf200cc104cb6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Moteur de rendu OpenGL/GTK : scène 3D, caméra, scan lidar et nuage de points. Gère les VAO/VBO, les shaders, les marqueurs de transformation interactifs et l'interface avec le scanner lidar (run_scan). </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7f9e02f67520b23402061cb58420c70b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f9e02f67520b23402061cb58420c70b">&#9670;&nbsp;</a></span>Gl()</h2>
 
@@ -157,6 +222,14 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Construit le contexte OpenGL avec une scène CGAL par défaut (cube). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">default_scene</td><td>Scène CGAL initiale (prend la propriété). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -175,6 +248,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Ajoute un widget GTK en overlay sur la GLArea. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Widget à superposer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -204,6 +285,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Construit le maillage de la grille de référence au sol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Taille totale de la grille (en mètres). </td></tr>
+    <tr><td class="paramname">step</td><td>Espacement entre les lignes (en mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7086ea1109c9b754e531fd3d1870c1f6"></a>
@@ -221,6 +311,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Capture le rendu OpenGL courant et l'enregistre en PNG. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin du fichier image de sortie. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -247,6 +345,91 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Supprime la configuration lidar de remplacement (retour au fichier JSON). </p>
+
+</div>
+</div>
+<a id="a00b67ddd9b262dc9d58a901fbc5465e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b67ddd9b262dc9d58a901fbc5465e6">&#9670;&nbsp;</a></span>get_angle_x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Gl::get_angle_x </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne l'angle de tangage (pitch) courant de la caméra. </p>
+
+</div>
+</div>
+<a id="af313344849dd6bfd19251415945351e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af313344849dd6bfd19251415945351e0">&#9670;&nbsp;</a></span>get_angle_y()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Gl::get_angle_y </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne l'angle de lacet (yaw) courant de la caméra. </p>
+
+</div>
+</div>
+<a id="a2c4898a547382a3bbd66f7526f8e07c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4898a547382a3bbd66f7526f8e07c2">&#9670;&nbsp;</a></span>get_camera_world_position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Gl::get_camera_world_position </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la position de la caméra dans le repère monde. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vecteur 3D de la position de la caméra. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGl_a2c4898a547382a3bbd66f7526f8e07c2_icgraph.png" border="0" usemap="#aclassGl_a2c4898a547382a3bbd66f7526f8e07c2_icgraph" alt=""/></div>
+<map name="aclassGl_a2c4898a547382a3bbd66f7526f8e07c2_icgraph" id="aclassGl_a2c4898a547382a3bbd66f7526f8e07c2_icgraph">
+<area shape="rect" title="Retourne la position de la caméra dans le repère monde." alt="" coords="156,5,320,47"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,13,108,39"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a282f1d04873290629695e206e9cd2fbe"></a>
@@ -271,6 +454,20 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retourne le chemin du fichier de configuration lidar actif. </p>
+<dl class="section return"><dt>Returns</dt><dd>Chemin vers le fichier JSON de configuration. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classGl_a282f1d04873290629695e206e9cd2fbe_icgraph.png" border="0" usemap="#aclassGl_a282f1d04873290629695e206e9cd2fbe_icgraph" alt=""/></div>
+<map name="aclassGl_a282f1d04873290629695e206e9cd2fbe_icgraph" id="aclassGl_a282f1d04873290629695e206e9cd2fbe_icgraph">
+<area shape="rect" title="Retourne le chemin du fichier de configuration lidar actif." alt="" coords="740,13,887,39"/>
+<area shape="rect" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="503,5,692,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="272,5,455,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -297,6 +494,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne la configuration lidar de remplacement courante. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointeur partagé vers la configuration, nullptr si aucune. </dd></dl>
+
 </div>
 </div>
 <a id="a5e8b7a9c67a4a530cd18b31756091d4d"></a>
@@ -322,6 +522,44 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne la liste des marqueurs de transformation interactifs. </p>
+<dl class="section return"><dt>Returns</dt><dd>Référence vers le vecteur de marqueurs. </dd></dl>
+
+</div>
+</div>
+<a id="aa632ac30a5aef65613cc217c8e1f9c0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa632ac30a5aef65613cc217c8e1f9c0d">&#9670;&nbsp;</a></span>is_model_hidden()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Gl::is_model_hidden </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique si un modèle est actuellement masqué. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Index du modèle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true si le modèle est masqué. </dd></dl>
+
 </div>
 </div>
 <a id="a2fa14571b0bae4f2e48b5c91e4ae7cc6"></a>
@@ -340,10 +578,18 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Modifie la précision du lidar de remplacement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Nouvelle précision (mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a50c5eced263a4ea543046dced0db69df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50c5eced263a4ea543046dced0db69df">&#9670;&nbsp;</a></span>lidar_override_set_hstep()</h2>
+<a id="a10793c119b1c1ce2b05d5e5884beac72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10793c119b1c1ce2b05d5e5884beac72">&#9670;&nbsp;</a></span>lidar_override_set_hstep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -352,7 +598,7 @@ Public Attributes</h2></td></tr>
           <td class="memname">void Gl::lidar_override_set_hstep </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>idx</em>, </td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -367,6 +613,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Modifie la résolution horizontale du lidar mécanique de remplacement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pas azimutal en degrés. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -386,6 +640,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Modifie la distance maximale de détection du lidar de remplacement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Nouvelle distance maximale (mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0bc6a9f921be20983abcbb10920bf685"></a>
@@ -403,6 +665,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Modifie la distance minimale de détection du lidar de remplacement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Nouvelle distance minimale (mètres). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -422,6 +692,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Charge un fichier 3D et l'ajoute à la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin vers le fichier (OBJ, PLY, OFF, STL). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a5bdcca5a28273112b61476cfe13a2674"></a>
@@ -439,15 +717,97 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Charge un nuage de points et l'affiche. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin vers le fichier (PLY, LAS ou LAZ). </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGl_a5bdcca5a28273112b61476cfe13a2674_icgraph.png" border="0" usemap="#aclassGl_a5bdcca5a28273112b61476cfe13a2674_icgraph" alt=""/></div>
 <map name="aclassGl_a5bdcca5a28273112b61476cfe13a2674_icgraph" id="aclassGl_a5bdcca5a28273112b61476cfe13a2674_icgraph">
-<area shape="rect" title=" " alt="" coords="156,5,265,32"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" title="Charge un nuage de points et l&#39;affiche." alt="" coords="156,5,265,32"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="adc25b914170d0b38ac93365435a7d00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc25b914170d0b38ac93365435a7d00b">&#9670;&nbsp;</a></span>model_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Gl::model_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne le nombre de modèles présents dans la scène. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nombre de scènes CGAL (cube inclus). </dd></dl>
+
+</div>
+</div>
+<a id="a564b724bd51f1c830f06ad8d847b4f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a564b724bd51f1c830f06ad8d847b4f6b">&#9670;&nbsp;</a></span>model_paths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::string&gt;&amp; Gl::model_paths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne les chemins des fichiers 3D chargés. </p>
+
+</div>
+</div>
+<a id="a8ea113f1de89d38b932b6ac3562c0ce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea113f1de89d38b932b6ac3562c0ce9">&#9670;&nbsp;</a></span>reset_scans()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::reset_scans </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Supprime tous les nuages de points chargés. </p>
 
 </div>
 </div>
@@ -465,6 +825,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Supprime tous les modèles chargés (conserve le cube par défaut). </p>
 
 </div>
 </div>
@@ -493,27 +855,33 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Lance un scan lidar de la scène complète et exporte le nuage de points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lidar_config_path</td><td>Chemin vers le fichier JSON de configuration lidar. </td></tr>
+    <tr><td class="paramname">output_path</td><td>Chemin du fichier de sortie (PLY ou LAS). </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGl_ad7911c5da5492309af8bf125d26ecde1_cgraph.png" border="0" usemap="#aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph" alt=""/></div>
 <map name="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph" id="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,209,108,236"/>
-<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title=" " alt="" coords="159,5,341,32"/>
-<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title=" " alt="" coords="199,56,301,83"/>
-<area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title=" " alt="" coords="159,107,341,149"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="167,173,333,214"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title=" " alt="" coords="187,239,313,265"/>
-<area shape="rect" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674" title=" " alt="" coords="195,289,305,316"/>
-<area shape="rect" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,340,344,367"/>
-<area shape="rect" href="classLidarEntity.html#ae08b8cea0223e9cf1d15a4451c363569" title=" " alt="" coords="183,391,317,433"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#ab954c5169dbde3e408733b0cdda14d29" title=" " alt="" coords="609,121,776,162"/>
-<area shape="rect" href="classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="392,173,561,214"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="393,238,560,279"/>
-<area shape="rect" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="651,195,735,221"/>
-<area shape="rect" href="units_8h.html#ae19ff0d6b0a80415a531b6f3b43bc7bb" title=" " alt="" coords="647,245,738,272"/>
-<area shape="rect" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="625,296,760,323"/>
-<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="824,296,949,323"/>
+<area shape="rect" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,180,108,207"/>
+<area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="159,5,341,32"/>
+<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="199,56,301,83"/>
+<area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title="Crée une configuration lidar depuis un fichier json." alt="" coords="159,107,341,149"/>
+<area shape="rect" href="classGl.html#a2c4898a547382a3bbd66f7526f8e07c2" title="Retourne la position de la caméra dans le repère monde." alt="" coords="168,173,332,214"/>
+<area shape="rect" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674" title="Charge un nuage de points et l&#39;affiche." alt="" coords="195,239,305,265"/>
+<area shape="rect" href="cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,289,344,316"/>
+<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="178,340,322,367"/>
+<area shape="rect" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="419,264,557,291"/>
+<area shape="rect" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title="Génère tous les rayons pour le scan." alt="" coords="392,315,584,341"/>
+<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="425,365,551,392"/>
+<area shape="rect" href="classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title="Applique le bruit à une mesure de distance." alt="" coords="421,417,555,458"/>
+<area shape="rect" href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="632,424,775,451"/>
 </map>
 </div>
 
@@ -569,6 +937,19 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Positionne la caméra dans la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos_x</td><td>Coordonnée X de la caméra. </td></tr>
+    <tr><td class="paramname">pos_y</td><td>Coordonnée Y de la caméra. </td></tr>
+    <tr><td class="paramname">pos_z</td><td>Coordonnée Z de la caméra. </td></tr>
+    <tr><td class="paramname">rx</td><td>Angle de tangage (pitch) en radians. </td></tr>
+    <tr><td class="paramname">ry</td><td>Angle de lacet (yaw) en radians. </td></tr>
+    <tr><td class="paramname">zoom</td><td>Distance de la caméra à l'origine. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a06b6675f97657ca3b46bd3c9367aa972"></a>
@@ -595,6 +976,14 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Définit le chemin du fichier de configuration lidar actif. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Chemin vers le fichier JSON de configuration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7fb1c1b80b822442fe18e4749eda3e56"></a>
@@ -620,6 +1009,51 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Remplace la configuration lidar par une instance déjà créée. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lidar</td><td>Configuration à utiliser à la place du fichier JSON. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c5d77d25bda8aa7a8b14b58728896f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c5d77d25bda8aa7a8b14b58728896f6">&#9670;&nbsp;</a></span>set_model_hidden()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gl::set_model_hidden </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hidden</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Masque ou affiche un modèle de la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Index du modèle. </td></tr>
+    <tr><td class="paramname">hidden</td><td>true pour masquer, false pour afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -649,6 +1083,15 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Applique une transformation à un modèle de la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>Index du modèle (0 = cube par défaut). </td></tr>
+    <tr><td class="paramname">tr</td><td>Transformation à appliquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a39222fbea430ff6081ecc704ac39d7a6"></a>
@@ -673,6 +1116,35 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Bascule l'affichage du nuage de points. </p>
+
+</div>
+</div>
+<a id="a0f124759b5c53ddb0cac672639c0bfc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f124759b5c53ddb0cac672639c0bfc9">&#9670;&nbsp;</a></span>transforms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="structModelTransform.html">ModelTransform</a>&gt;&amp; Gl::transforms </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retourne les transformations appliquées à chaque modèle. </p>
 
 </div>
 </div>
@@ -699,9 +1171,60 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Retourne le widget GTK racine à intégrer dans la fenêtre. </p>
+<dl class="section return"><dt>Returns</dt><dd>Référence vers l'Overlay contenant la GLArea. </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6f6b10a8613bb7048cf200cc104cb6a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6b10a8613bb7048cf200cc104cb6a5">&#9670;&nbsp;</a></span>DRAG_SENSITIVITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float Gl::DRAG_SENSITIVITY = 0.02f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sensibilité du drag des marqueurs. </p>
+
+</div>
+</div>
+<a id="aa1035515a10925da382e719dea9b4464"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1035515a10925da382e719dea9b4464">&#9670;&nbsp;</a></span>OFFSET_STEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float Gl::OFFSET_STEP = 1.5f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Décalage entre modèles superposés. </p>
+
+</div>
+</div>
 <a id="a8555c2fc90241017c1e7b1b35b06b286"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8555c2fc90241017c1e7b1b35b06b286">&#9670;&nbsp;</a></span>signal_marker_clicked</h2>
 
@@ -713,6 +1236,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Signal émis quand l'utilisateur clique sur un marqueur. </p>
 
 </div>
 </div>

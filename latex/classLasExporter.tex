@@ -2,11 +2,17 @@
 \label{classLasExporter}\index{LasExporter@{LasExporter}}
 
 
+Export au format LAS via PDAL.  
+
+
+
+
 {\ttfamily \#include $<$point\+\_\+cloud\+\_\+exporter.\+h$>$}
 
 
 
-Inheritance diagram for Las\+Exporter\+:\nopagebreak
+Inheritance diagram for Las\+Exporter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +21,8 @@ Inheritance diagram for Las\+Exporter\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Las\+Exporter\+:\nopagebreak
+Collaboration diagram for Las\+Exporter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,8 +33,11 @@ Collaboration diagram for Las\+Exporter\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classLasExporter_a9691ea9d46dfde914188ace255b62409}{save}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \&points) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sauvegarde le nuage au format LAS (LAS 1.\+4, format 0, échelle 1 mm) via PDAL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Export au format LAS via PDAL. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classLasExporter_a9691ea9d46dfde914188ace255b62409}\label{classLasExporter_a9691ea9d46dfde914188ace255b62409}} 
@@ -36,6 +46,17 @@ void \mbox{\hyperlink{classLasExporter_a9691ea9d46dfde914188ace255b62409}{save}}
 \doxysubsubsection{\texorpdfstring{save()}{save()}}
 {\footnotesize\ttfamily void Las\+Exporter\+::save (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \&}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+
+
+Sauvegarde le nuage au format LAS (LAS 1.\+4, format 0, échelle 1 mm) via PDAL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Chemin du fichier .las de sortie. \\
+\hline
+{\em points} & Nuage de points à exporter. \\
+\hline
+\end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classIPointCloudExporter_ae07a92baf13257a344bbc06fafc22b26}{IPoint\+Cloud\+Exporter}}.

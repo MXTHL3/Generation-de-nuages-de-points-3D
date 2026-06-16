@@ -2,6 +2,11 @@
 \label{classPositionLayoutAugmentation}\index{PositionLayoutAugmentation@{PositionLayoutAugmentation}}
 
 
+Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion.  
+
+
+
+
 {\ttfamily \#include $<$pipeline.\+h$>$}
 
 
@@ -28,8 +33,11 @@ Collaboration diagram for Position\+Layout\+Augmentation\+:\nopagebreak
 \mbox{\hyperlink{classPositionLayoutAugmentation_a3fce31847753105a065bd3b155a853e2}{Position\+Layout\+Augmentation}} (size\+\_\+t number\+\_\+of\+\_\+variations, unsigned int seed=42)
 \item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classPositionLayoutAugmentation_ade02783b47885767566ad4d18768481c}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPositionLayoutAugmentation_a3fce31847753105a065bd3b155a853e2}\label{classPositionLayoutAugmentation_a3fce31847753105a065bd3b155a853e2}} 
@@ -39,6 +47,13 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 {\footnotesize\ttfamily Position\+Layout\+Augmentation\+::\+Position\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{number\+\_\+of\+\_\+variations,  }\item[{unsigned int}]{seed = {\ttfamily 42} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+of\+\_\+variations} & Nombre de variantes par scène d\textquotesingle{}entrée. \\
+\hline
+{\em seed} & Graine du générateur aléatoire. \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPositionLayoutAugmentation_ade02783b47885767566ad4d18768481c}\label{classPositionLayoutAugmentation_ade02783b47885767566ad4d18768481c}} 
@@ -47,6 +62,20 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 \doxysubsubsection{\texorpdfstring{process()}{process()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ Position\+Layout\+Augmentation\+::process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$}]{input\+\_\+scenes,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+
+
+Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+scenes} & Scènes à transformer \\
+\hline
+{\em assets} & Gestionnaire de ressources (meshes, configs) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scènes augmentées 
+\end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{Pipeline\+Step}}.

@@ -2,11 +2,17 @@
 \label{classModelMarker}\index{ModelMarker@{ModelMarker}}
 
 
+Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d\textquotesingle{}un clic ou d\textquotesingle{}un drag pour piloter la transformation du modèle 3D associé.  
+
+
+
+
 {\ttfamily \#include $<$model\+\_\+marker.\+h$>$}
 
 
 
-Inheritance diagram for Model\+Marker\+:\nopagebreak
+Inheritance diagram for Model\+Marker\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +21,8 @@ Inheritance diagram for Model\+Marker\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Model\+Marker\+:\nopagebreak
+Collaboration diagram for Model\+Marker\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,35 +33,38 @@ Collaboration diagram for Model\+Marker\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classModelMarker_a7b13b1e776240afc2107fe8c9c1778eb}{Model\+Marker}} (Gtk\+::\+Fixed $\ast$parent, const glm\+::vec3 \&local\+\_\+pos, float zoom, \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}} type, const glm\+::vec3 \&color, int \mbox{\hyperlink{classModelMarker_a8bf3ea5b5b764ab941f377f819079d7c}{model\+\_\+index}}=0)
-\item 
+\begin{DoxyCompactList}\small\item\em Construit un marqueur et l\textquotesingle{}attache au conteneur fixe parent. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classModelMarker_a3f82987a8a60fe1c6b1dc20b6ee14c72}{set\+\_\+position}} (double x, double y)
-\item 
+\begin{DoxyCompactList}\small\item\em Déplace le marqueur à une position écran donnée. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}} \mbox{\hyperlink{classModelMarker_a19691a0a72cfcecd7d19644790e94959}{get\+\_\+marker\+\_\+type}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne le type courant du marqueur. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classModelMarker_a1ebbcaa32109fefd7a3b9b08fe6d3618}{set\+\_\+marker\+\_\+type}} (\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}} mt)
-\item 
+\begin{DoxyCompactList}\small\item\em Remplace le type du marqueur et met à jour sa visibilité. \end{DoxyCompactList}\item 
 const glm\+::vec3 \& \mbox{\hyperlink{classModelMarker_a827396fccee2d8331d8b62ac84e9e5ec}{local\+\_\+position}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne la position locale 3D du marqueur (coordonnées objet). \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classModelMarker_a8bf3ea5b5b764ab941f377f819079d7c}{model\+\_\+index}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}index du modèle 3D auquel ce marqueur est rattaché. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classModelMarker_a2711585b03c0409e5cb01dd9de2e4935}{set\+\_\+center\+\_\+marker}} (\mbox{\hyperlink{classModelMarker}{Model\+Marker}} $\ast$\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfaadb115059e28d960fa8badfac5516667}{center}})
-\item 
+\begin{DoxyCompactList}\small\item\em Associe un marqueur central à ce marqueur (pour le dessin du trait). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classModelMarker}{Model\+Marker}} $\ast$ \mbox{\hyperlink{classModelMarker_a19c83c95a27b1de9bf8d4f2ac96d103a}{get\+\_\+center\+\_\+marker}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne le marqueur central associé. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classModelMarker_a2703eacefdf61a885887de1c53911e8d}{screen\+\_\+x}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée X écran courante du marqueur (pixels). \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classModelMarker_ade4d5424505ecc2493445f49916a571d}{screen\+\_\+y}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée Y écran courante du marqueur (pixels). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ \mbox{\hyperlink{classModelMarker_aa9fe141915e403914a8640f6ee00ed16}{signal\+\_\+clicked}}
-\item 
+\begin{DoxyCompactList}\small\item\em Signal émis lors d\textquotesingle{}un clic sur le marqueur. \end{DoxyCompactList}\item 
 sigc\+::signal$<$ void()$>$ \mbox{\hyperlink{classModelMarker_a32a468119f357ff2d640b61ef3bb810a}{signal\+\_\+request\+\_\+focus}}
-\item 
+\begin{DoxyCompactList}\small\item\em Signal émis pour redonner le focus clavier à la GLArea. \end{DoxyCompactList}\item 
 sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}}, int, double, double)$>$ \mbox{\hyperlink{classModelMarker_abad7780df03967ae4cf6832373459a30}{signal\+\_\+dragged}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Signal émis lors d\textquotesingle{}un drag, avec le déplacement en pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Marqueur de transformation interactif affiché en overlay sur la GLArea. Dessiné en Cairo, il émet des signaux lors d\textquotesingle{}un clic ou d\textquotesingle{}un drag pour piloter la transformation du modèle 3D associé. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classModelMarker_a7b13b1e776240afc2107fe8c9c1778eb}\label{classModelMarker_a7b13b1e776240afc2107fe8c9c1778eb}} 
@@ -65,6 +75,25 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 
 
 
+Construit un marqueur et l\textquotesingle{}attache au conteneur fixe parent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Conteneur GTK fixe dans lequel le marqueur est positionné. \\
+\hline
+{\em local\+\_\+pos} & Position locale 3D du marqueur (en coordonnées objet). \\
+\hline
+{\em zoom} & Zoom courant de la caméra (utilisé à la création). \\
+\hline
+{\em type} & Type du marqueur (translation, rotation, échelle, centre…). \\
+\hline
+{\em color} & Couleur RGB du marqueur. \\
+\hline
+{\em model\+\_\+index} & Index du modèle 3D auquel ce marqueur est rattaché. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classModelMarker_a19c83c95a27b1de9bf8d4f2ac96d103a}\label{classModelMarker_a19c83c95a27b1de9bf8d4f2ac96d103a}} 
 \index{ModelMarker@{ModelMarker}!get\_center\_marker@{get\_center\_marker}}
@@ -72,11 +101,22 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{get\_center\_marker()}{get\_center\_marker()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classModelMarker}{Model\+Marker}}$\ast$ Model\+Marker\+::get\+\_\+center\+\_\+marker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne le marqueur central associé. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur vers le marqueur central, nullptr si non défini. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classModelMarker_a19691a0a72cfcecd7d19644790e94959}\label{classModelMarker_a19691a0a72cfcecd7d19644790e94959}} 
 \index{ModelMarker@{ModelMarker}!get\_marker\_type@{get\_marker\_type}}
 \index{get\_marker\_type@{get\_marker\_type}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{get\_marker\_type()}{get\_marker\_type()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}} Model\+Marker\+::get\+\_\+marker\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le type courant du marqueur. 
 
 \mbox{\Hypertarget{classModelMarker_a827396fccee2d8331d8b62ac84e9e5ec}\label{classModelMarker_a827396fccee2d8331d8b62ac84e9e5ec}} 
 \index{ModelMarker@{ModelMarker}!local\_position@{local\_position}}
@@ -84,11 +124,19 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{local\_position()}{local\_position()}}
 {\footnotesize\ttfamily const glm\+::vec3\& Model\+Marker\+::local\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne la position locale 3D du marqueur (coordonnées objet). 
+
 \mbox{\Hypertarget{classModelMarker_a8bf3ea5b5b764ab941f377f819079d7c}\label{classModelMarker_a8bf3ea5b5b764ab941f377f819079d7c}} 
 \index{ModelMarker@{ModelMarker}!model\_index@{model\_index}}
 \index{model\_index@{model\_index}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{model\_index()}{model\_index()}}
 {\footnotesize\ttfamily int Model\+Marker\+::model\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne l\textquotesingle{}index du modèle 3D auquel ce marqueur est rattaché. 
 
 \mbox{\Hypertarget{classModelMarker_a2703eacefdf61a885887de1c53911e8d}\label{classModelMarker_a2703eacefdf61a885887de1c53911e8d}} 
 \index{ModelMarker@{ModelMarker}!screen\_x@{screen\_x}}
@@ -96,11 +144,19 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{screen\_x()}{screen\_x()}}
 {\footnotesize\ttfamily double Model\+Marker\+::screen\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Retourne la coordonnée X écran courante du marqueur (pixels). 
+
 \mbox{\Hypertarget{classModelMarker_ade4d5424505ecc2493445f49916a571d}\label{classModelMarker_ade4d5424505ecc2493445f49916a571d}} 
 \index{ModelMarker@{ModelMarker}!screen\_y@{screen\_y}}
 \index{screen\_y@{screen\_y}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{screen\_y()}{screen\_y()}}
 {\footnotesize\ttfamily double Model\+Marker\+::screen\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne la coordonnée Y écran courante du marqueur (pixels). 
 
 \mbox{\Hypertarget{classModelMarker_a2711585b03c0409e5cb01dd9de2e4935}\label{classModelMarker_a2711585b03c0409e5cb01dd9de2e4935}} 
 \index{ModelMarker@{ModelMarker}!set\_center\_marker@{set\_center\_marker}}
@@ -108,18 +164,48 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{set\_center\_marker()}{set\_center\_marker()}}
 {\footnotesize\ttfamily void Model\+Marker\+::set\+\_\+center\+\_\+marker (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classModelMarker}{Model\+Marker}} $\ast$}]{center }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Associe un marqueur central à ce marqueur (pour le dessin du trait). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & Pointeur vers le marqueur central du même modèle. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classModelMarker_a1ebbcaa32109fefd7a3b9b08fe6d3618}\label{classModelMarker_a1ebbcaa32109fefd7a3b9b08fe6d3618}} 
 \index{ModelMarker@{ModelMarker}!set\_marker\_type@{set\_marker\_type}}
 \index{set\_marker\_type@{set\_marker\_type}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{set\_marker\_type()}{set\_marker\_type()}}
 {\footnotesize\ttfamily void Model\+Marker\+::set\+\_\+marker\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}}}]{mt }\end{DoxyParamCaption})}
 
+
+
+Remplace le type du marqueur et met à jour sa visibilité. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mt} & Nouveau type à appliquer. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classModelMarker_a3f82987a8a60fe1c6b1dc20b6ee14c72}\label{classModelMarker_a3f82987a8a60fe1c6b1dc20b6ee14c72}} 
 \index{ModelMarker@{ModelMarker}!set\_position@{set\_position}}
 \index{set\_position@{set\_position}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{set\_position()}{set\_position()}}
 {\footnotesize\ttfamily void Model\+Marker\+::set\+\_\+position (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
 
+
+
+Déplace le marqueur à une position écran donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X en pixels dans le widget. \\
+\hline
+{\em y} & Coordonnée Y en pixels dans le widget. ~\newline
+ \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
@@ -129,17 +215,29 @@ sigc\+::signal$<$ void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238
 \doxysubsubsection{\texorpdfstring{signal\_clicked}{signal\_clicked}}
 {\footnotesize\ttfamily sigc\+::signal$<$void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}})$>$ Model\+Marker\+::signal\+\_\+clicked}
 
+
+
+Signal émis lors d\textquotesingle{}un clic sur le marqueur. 
+
 \mbox{\Hypertarget{classModelMarker_abad7780df03967ae4cf6832373459a30}\label{classModelMarker_abad7780df03967ae4cf6832373459a30}} 
 \index{ModelMarker@{ModelMarker}!signal\_dragged@{signal\_dragged}}
 \index{signal\_dragged@{signal\_dragged}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{signal\_dragged}{signal\_dragged}}
 {\footnotesize\ttfamily sigc\+::signal$<$void(\mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073df}{Marker\+Type}}, int, double, double)$>$ Model\+Marker\+::signal\+\_\+dragged}
 
-\mbox{\Hypertarget{classModelMarker_a32a468119f357ff2d640b61ef3bb810a}\label{classModelMarker_a32a468119f357ff2d640b61ef3bb810a}} 
+
+
+Signal émis lors d\textquotesingle{}un drag, avec le déplacement en pixels. 
+
+Paramètres \+: type du marqueur, index du modèle, dx, dy. \mbox{\Hypertarget{classModelMarker_a32a468119f357ff2d640b61ef3bb810a}\label{classModelMarker_a32a468119f357ff2d640b61ef3bb810a}} 
 \index{ModelMarker@{ModelMarker}!signal\_request\_focus@{signal\_request\_focus}}
 \index{signal\_request\_focus@{signal\_request\_focus}!ModelMarker@{ModelMarker}}
 \doxysubsubsection{\texorpdfstring{signal\_request\_focus}{signal\_request\_focus}}
 {\footnotesize\ttfamily sigc\+::signal$<$void()$>$ Model\+Marker\+::signal\+\_\+request\+\_\+focus}
+
+
+
+Signal émis pour redonner le focus clavier à la GLArea. 
 
 
 

@@ -69,13 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Transformation affine d'un modèle 3D dans la scène OpenGL. Regroupe translation, rotation (Euler XYZ, radians) et échelle uniforme. Le flag use_offset active un décalage automatique pour éviter la superposition des modèles chargés successivement.  
+ <a href="structModelTransform.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gl_8h_source.html">gl.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ModelTransform:</div>
 <div class="dyncontent">
 <div class="center"><img src="structModelTransform__coll__graph.png" border="0" usemap="#aModelTransform_coll__map" alt="Collaboration graph"/></div>
 <map name="aModelTransform_coll__map" id="aModelTransform_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,132,185"/>
+<area shape="rect" title="Transformation affine d&#39;un modèle 3D dans la scène OpenGL. Regroupe translation, rotation (Euler XYZ,..." alt="" coords="5,5,132,185"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -86,19 +89,25 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adfc2c5377a3a440fc521defc9047b140"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#adfc2c5377a3a440fc521defc9047b140">pos_y</a> = 0.0f</td></tr>
 <tr class="separator:adfc2c5377a3a440fc521defc9047b140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c4bb9e46745580cf349c9a03f624e3d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#a0c4bb9e46745580cf349c9a03f624e3d">pos_z</a> = 0.0f</td></tr>
+<tr class="memdesc:a0c4bb9e46745580cf349c9a03f624e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translation.  <a href="structModelTransform.html#a0c4bb9e46745580cf349c9a03f624e3d">More...</a><br /></td></tr>
 <tr class="separator:a0c4bb9e46745580cf349c9a03f624e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6790a72b3e724fbf810efa2d4affe7d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#ac6790a72b3e724fbf810efa2d4affe7d">angle_x</a> = 0.0f</td></tr>
 <tr class="separator:ac6790a72b3e724fbf810efa2d4affe7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a863bfe353498833899280f8e2d39f16a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#a863bfe353498833899280f8e2d39f16a">angle_y</a> = 0.0f</td></tr>
 <tr class="separator:a863bfe353498833899280f8e2d39f16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0891065d7c2f2c545cb8c3135035ee1f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#a0891065d7c2f2c545cb8c3135035ee1f">angle_z</a> = 0.0f</td></tr>
+<tr class="memdesc:a0891065d7c2f2c545cb8c3135035ee1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotation.  <a href="structModelTransform.html#a0891065d7c2f2c545cb8c3135035ee1f">More...</a><br /></td></tr>
 <tr class="separator:a0891065d7c2f2c545cb8c3135035ee1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2b822aa3648f7fd1933970a06b52244"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#af2b822aa3648f7fd1933970a06b52244">scale</a> = 1.0f</td></tr>
+<tr class="memdesc:af2b822aa3648f7fd1933970a06b52244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Facteur d'échelle.  <a href="structModelTransform.html#af2b822aa3648f7fd1933970a06b52244">More...</a><br /></td></tr>
 <tr class="separator:af2b822aa3648f7fd1933970a06b52244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c992b53727af0bd56ec19f10455e28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelTransform.html#a75c992b53727af0bd56ec19f10455e28">use_offset</a> = true</td></tr>
+<tr class="memdesc:a75c992b53727af0bd56ec19f10455e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active le décalage automatique entre modèles (OFFSET_STEP).  <a href="structModelTransform.html#a75c992b53727af0bd56ec19f10455e28">More...</a><br /></td></tr>
 <tr class="separator:a75c992b53727af0bd56ec19f10455e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Transformation affine d'un modèle 3D dans la scène OpenGL. Regroupe translation, rotation (Euler XYZ, radians) et échelle uniforme. Le flag use_offset active un décalage automatique pour éviter la superposition des modèles chargés successivement. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ac6790a72b3e724fbf810efa2d4affe7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6790a72b3e724fbf810efa2d4affe7d">&#9670;&nbsp;</a></span>angle_x</h2>
 
@@ -138,6 +147,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rotation. </p>
 
 </div>
 </div>
@@ -181,6 +192,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Translation. </p>
+
 </div>
 </div>
 <a id="af2b822aa3648f7fd1933970a06b52244"></a>
@@ -195,6 +208,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Facteur d'échelle. </p>
+
 </div>
 </div>
 <a id="a75c992b53727af0bd56ec19f10455e28"></a>
@@ -208,6 +223,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Active le décalage automatique entre modèles (OFFSET_STEP). </p>
 
 </div>
 </div>

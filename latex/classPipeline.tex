@@ -2,11 +2,17 @@
 \label{classPipeline}\index{Pipeline@{Pipeline}}
 
 
+Exécute une chaîne d\textquotesingle{}étapes d\textquotesingle{}augmentation sur une scène de base. Chaque étape (\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}) reçoit l\textquotesingle{}ensemble des scènes produites par l\textquotesingle{}étape précédente et retourne un ensemble plus grand.  
+
+
+
+
 {\ttfamily \#include $<$pipeline.\+h$>$}
 
 
 
-Collaboration diagram for Pipeline\+:\nopagebreak
+Collaboration diagram for Pipeline\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,10 +23,13 @@ Collaboration diagram for Pipeline\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classPipeline_a0c3fa4ed68168b353a42e2196ed705d0}{add\+\_\+step}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}} $>$ step)
-\item 
+\begin{DoxyCompactList}\small\item\em ajoute une nouvelle étape à la fin de la liste. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classPipeline_a71057c03f4ceb9378424211d6d353956}{execute}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ input\+\_\+scene, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Execute toutes les étapes du pipeline. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Exécute une chaîne d\textquotesingle{}étapes d\textquotesingle{}augmentation sur une scène de base. Chaque étape (\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}) reçoit l\textquotesingle{}ensemble des scènes produites par l\textquotesingle{}étape précédente et retourne un ensemble plus grand. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPipeline_a0c3fa4ed68168b353a42e2196ed705d0}\label{classPipeline_a0c3fa4ed68168b353a42e2196ed705d0}} 
@@ -29,26 +38,30 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 \doxysubsubsection{\texorpdfstring{add\_step()}{add\_step()}}
 {\footnotesize\ttfamily void Pipeline\+::add\+\_\+step (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}} $>$}]{step }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph}
-\end{center}
-\end{figure}
+
+
+ajoute une nouvelle étape à la fin de la liste. 
+
 \mbox{\Hypertarget{classPipeline_a71057c03f4ceb9378424211d6d353956}\label{classPipeline_a71057c03f4ceb9378424211d6d353956}} 
 \index{Pipeline@{Pipeline}!execute@{execute}}
 \index{execute@{execute}!Pipeline@{Pipeline}}
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ Pipeline\+::execute (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$}]{input\+\_\+scene,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classPipeline_a71057c03f4ceb9378424211d6d353956_icgraph}
-\end{center}
-\end{figure}
+
+
+Execute toutes les étapes du pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+scene} & Scène de base \\
+\hline
+{\em assets} & Gestionnaire de ressources. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Toutes les scènes augmentées. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

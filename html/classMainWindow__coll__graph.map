@@ -1,6 +1,6 @@
 <map id="MainWindow" name="MainWindow">
-<area shape="rect" id="node1" title=" " alt="" coords="5,463,157,555"/>
-<area shape="rect" id="node2" title=" " alt="" coords="13,248,118,325"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html" title=" " alt="" coords="143,160,332,413"/>
-<area shape="rect" id="node4" href="$classHandleFile.html" title=" " alt="" coords="164,5,311,97"/>
+<area shape="rect" id="node1" title="Fenêtre principale de l&#39;application. Intègre la vue 3D OpenGL (Gl), la barre de menus et le label d&#39;é..." alt="" coords="34,463,186,555"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,248,111,325"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html" title="Classe de base regroupant les actions des entrées de la barre de menus. Chaque méthode connecte le si..." alt="" coords="134,160,334,413"/>
+<area shape="rect" id="node4" href="$classHandleFile.html" title="Gestion de l&#39;ouverture de fichiers 3D via une boîte de dialogue GTK. Conserve la liste des chemins de..." alt="" coords="161,5,307,97"/>
 </map>

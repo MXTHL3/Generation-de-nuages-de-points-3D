@@ -2,12 +2,16 @@
 \label{classLidarFactory}\index{LidarFactory@{LidarFactory}}
 
 
+Factory de création de configurations et sessions Lidar depuis des fichiers json.  
+
+
+
+
 {\ttfamily \#include $<$lidar\+\_\+factory.\+h$>$}
 
 
 
-Collaboration diagram for Lidar\+Factory\+:
-\nopagebreak
+Collaboration diagram for Lidar\+Factory\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,10 +22,13 @@ Collaboration diagram for Lidar\+Factory\+:
 \begin{DoxyCompactItemize}
 \item 
 static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}{create\+From\+Json\+Config}} (const std\+::string \&config\+Path)
-\item 
+\begin{DoxyCompactList}\small\item\em Crée une configuration lidar depuis un fichier json. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}{save\+To\+Json}} (const std\+::string \&config\+Path, const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \&lidar\+\_\+config)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sauvegarde une configuration lidar dans un fichier json. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Factory de création de configurations et sessions Lidar depuis des fichiers json. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}\label{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}} 
@@ -30,12 +37,24 @@ static bool \mbox{\hyperlink{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466
 \doxysubsubsection{\texorpdfstring{createFromJsonConfig()}{createFromJsonConfig()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ Lidar\+Factory\+::create\+From\+Json\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+
+
+Crée une configuration lidar depuis un fichier json. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+Path} & chemin vers le fichier json \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Configuration de lidar Mécanique/\+Flash/\+Miroir, nullptr si erreur 
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph}
+\includegraphics[width=350pt]{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}\label{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}} 
@@ -44,8 +63,21 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{saveToJson()}{saveToJson()}}
 {\footnotesize\ttfamily bool Lidar\+Factory\+::save\+To\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+Path,  }\item[{const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \&}]{lidar\+\_\+config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+
+
+Sauvegarde une configuration lidar dans un fichier json. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+Path} & le fichier json de sortie \\
+\hline
+{\em lidar\+\_\+config} & la configuration de lidar à sauvegarder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}faux\char`\"{} si cela a échoué \char`\"{}vrai\char`\"{} sinon 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

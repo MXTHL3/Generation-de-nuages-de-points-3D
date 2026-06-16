@@ -1,5 +1,5 @@
 <map id="IPointCloudExporter" name="IPointCloudExporter">
-<area shape="rect" id="node1" title=" " alt="" coords="23,5,209,97"/>
-<area shape="rect" id="node2" href="$classLasExporter.html" title=" " alt="" coords="5,145,104,223"/>
-<area shape="rect" id="node3" href="$classPlyExporter.html" title=" " alt="" coords="129,145,226,223"/>
+<area shape="rect" id="node1" title="Interface d&#39;export de nuage de points vers un fichier." alt="" coords="23,5,209,97"/>
+<area shape="rect" id="node2" href="$classLasExporter.html" title="Export au format LAS via PDAL." alt="" coords="5,145,104,223"/>
+<area shape="rect" id="node3" href="$classPlyExporter.html" title="Export au format PLY ASCII." alt="" coords="129,145,226,223"/>
 </map>

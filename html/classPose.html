@@ -69,13 +69,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Position et rotation d'un objet dans une scène 3D. Une position (x, y, z) et une rotation (x, y, z) avec angles en radians.  
+ <a href="classPose.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pose_8h_source.html">pose.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Pose:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPose__coll__graph.png" border="0" usemap="#aPose_coll__map" alt="Collaboration graph"/></div>
 <map name="aPose_coll__map" id="aPose_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,116,156"/>
+<area shape="rect" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="5,5,116,156"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -84,6 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a003946d312cf765f56b70f620b58337d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPose.html#a003946d312cf765f56b70f620b58337d">Pose</a> (<a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> p=<a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a>(0, 0, 0), double <a class="el" href="classPose.html#af69e1ca12c440103c3657974b6c6f873">rx</a>=0.0, double <a class="el" href="classPose.html#a525262b2e0219f06f64a882a47913a4f">ry</a>=0.0, double <a class="el" href="classPose.html#ad9b2d5a2671e7be99e730a61ddd906d3">rz</a>=0.0)</td></tr>
 <tr class="separator:a003946d312cf765f56b70f620b58337d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec890b33cbf23751f0ffa443adbf5b92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92">transform</a> () const</td></tr>
+<tr class="memdesc:aec890b33cbf23751f0ffa443adbf5b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la matrice de transformation (translation + rotation)  <a href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92">More...</a><br /></td></tr>
 <tr class="separator:aec890b33cbf23751f0ffa443adbf5b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af69e1ca12c440103c3657974b6c6f873"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPose.html#af69e1ca12c440103c3657974b6c6f873">rx</a> () const</td></tr>
 <tr class="separator:af69e1ca12c440103c3657974b6c6f873"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,7 +98,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae157bfbdb804365e7e2fea1c08facc7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7">pos</a> () const</td></tr>
 <tr class="separator:aae157bfbdb804365e7e2fea1c08facc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Position et rotation d'un objet dans une scène 3D. Une position (x, y, z) et une rotation (x, y, z) avec angles en radians. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a003946d312cf765f56b70f620b58337d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a003946d312cf765f56b70f620b58337d">&#9670;&nbsp;</a></span>Pose()</h2>
 
@@ -132,6 +138,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Position (x, y, z) en mètres dans le repère global </td></tr>
+    <tr><td class="paramname">rx</td><td>Rotation autour de x (en degrés converti en radians) </td></tr>
+    <tr><td class="paramname">ry</td><td>Rotation autour de y (en degrés converti en radians) </td></tr>
+    <tr><td class="paramname">rz</td><td>Rotation autour de z (en degrés converti en radians) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -163,13 +178,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPose_aae157bfbdb804365e7e2fea1c08facc7_icgraph.png" border="0" usemap="#aclassPose_aae157bfbdb804365e7e2fea1c08facc7_icgraph" alt=""/></div>
 <map name="aclassPose_aae157bfbdb804365e7e2fea1c08facc7_icgraph" id="aclassPose_aae157bfbdb804365e7e2fea1c08facc7_icgraph">
-<area shape="rect" title=" " alt="" coords="697,64,781,91"/>
-<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="423,5,649,32"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="447,57,625,98"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="453,122,619,163"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="156,64,375,91"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="182,122,349,163"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,129,108,156"/>
+<area shape="rect" title=" " alt="" coords="547,64,631,91"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="272,5,499,32"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="296,57,475,98"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="302,122,469,163"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="31,122,198,163"/>
 </map>
 </div>
 
@@ -203,8 +217,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classPose_af69e1ca12c440103c3657974b6c6f873_icgraph.png" border="0" usemap="#aclassPose_af69e1ca12c440103c3657974b6c6f873_icgraph" alt=""/></div>
 <map name="aclassPose_af69e1ca12c440103c3657974b6c6f873_icgraph" id="aclassPose_af69e1ca12c440103c3657974b6c6f873_icgraph">
 <area shape="rect" title=" " alt="" coords="499,13,573,39"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="272,5,451,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -238,8 +252,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classPose_a525262b2e0219f06f64a882a47913a4f_icgraph.png" border="0" usemap="#aclassPose_a525262b2e0219f06f64a882a47913a4f_icgraph" alt=""/></div>
 <map name="aclassPose_a525262b2e0219f06f64a882a47913a4f_icgraph" id="aclassPose_a525262b2e0219f06f64a882a47913a4f_icgraph">
 <area shape="rect" title=" " alt="" coords="499,13,573,39"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="272,5,451,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -273,8 +287,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classPose_ad9b2d5a2671e7be99e730a61ddd906d3_icgraph.png" border="0" usemap="#aclassPose_ad9b2d5a2671e7be99e730a61ddd906d3_icgraph" alt=""/></div>
 <map name="aclassPose_ad9b2d5a2671e7be99e730a61ddd906d3_icgraph" id="aclassPose_ad9b2d5a2671e7be99e730a61ddd906d3_icgraph">
 <area shape="rect" title=" " alt="" coords="499,13,572,39"/>
-<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title=" " alt="" coords="272,5,451,47"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
@@ -294,17 +308,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calcule la matrice de transformation (translation + rotation) </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPose_aec890b33cbf23751f0ffa443adbf5b92_icgraph.png" border="0" usemap="#aclassPose_aec890b33cbf23751f0ffa443adbf5b92_icgraph" alt=""/></div>
 <map name="aclassPose_aec890b33cbf23751f0ffa443adbf5b92_icgraph" id="aclassPose_aec890b33cbf23751f0ffa443adbf5b92_icgraph">
-<area shape="rect" title=" " alt="" coords="828,35,953,61"/>
-<area shape="rect" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="645,35,780,61"/>
-<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title=" " alt="" coords="371,5,597,32"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="401,57,567,98"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title=" " alt="" coords="156,57,323,98"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title=" " alt="" coords="5,64,108,91"/>
+<area shape="rect" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="677,35,803,61"/>
+<area shape="rect" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="495,35,629,61"/>
+<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="220,5,447,32"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="250,57,417,98"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="5,57,172,98"/>
 </map>
 </div>
 

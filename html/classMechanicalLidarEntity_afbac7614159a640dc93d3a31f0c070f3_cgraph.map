@@ -1,10 +1,10 @@
 <map id="MechanicalLidarEntity::generate_rays" name="MechanicalLidarEntity::generate_rays">
-<area shape="rect" id="node1" title=" " alt="" coords="5,57,172,99"/>
-<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#ab954c5169dbde3e408733b0cdda14d29" title=" " alt="" coords="437,5,604,47"/>
+<area shape="rect" id="node1" title="Génère tous les rayons pour le scan." alt="" coords="5,57,172,99"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#ab954c5169dbde3e408733b0cdda14d29" title="Accès typé à la config mécanique." alt="" coords="437,5,604,47"/>
 <area shape="rect" id="node3" href="$classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="220,57,389,99"/>
-<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title=" " alt="" coords="221,123,388,164"/>
+<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="221,123,388,164"/>
 <area shape="rect" id="node5" href="$classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="479,79,563,106"/>
 <area shape="rect" id="node6" href="$units_8h.html#ae19ff0d6b0a80415a531b6f3b43bc7bb" title=" " alt="" coords="475,130,566,157"/>
-<area shape="rect" id="node7" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title=" " alt="" coords="453,181,588,207"/>
-<area shape="rect" id="node8" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title=" " alt="" coords="652,181,777,207"/>
+<area shape="rect" id="node7" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="453,181,588,207"/>
+<area shape="rect" id="node8" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="652,181,777,207"/>
 </map>

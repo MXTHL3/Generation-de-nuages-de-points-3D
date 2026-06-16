@@ -1,5 +1,5 @@
 <map id="GLShadersUtils::build_program" name="GLShadersUtils::build_program">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,167,80"/>
-<area shape="rect" id="node2" href="$classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594" title=" " alt="" coords="215,5,396,47"/>
-<area shape="rect" id="node3" href="$classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66" title=" " alt="" coords="229,71,382,112"/>
+<area shape="rect" id="node1" title="Compile et lie un programme GLSL complet depuis les sources." alt="" coords="5,39,167,80"/>
+<area shape="rect" id="node2" href="$classGLShadersUtils.html#a8c24863a8376145e9355601b0802d594" title="Compile un shader OpenGL et affiche les éventuelles erreurs." alt="" coords="215,5,396,47"/>
+<area shape="rect" id="node3" href="$classGLShadersUtils.html#a7cc218130fc5aded8a272367f79a1f66" title="Lie les shaders attachés en un programme exécutable." alt="" coords="229,71,382,112"/>
 </map>

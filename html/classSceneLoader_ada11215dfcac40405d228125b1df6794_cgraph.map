@@ -1,0 +1,7 @@
+<map id="SceneLoader::save_scene_to_json" name="SceneLoader::save_scene_to_json">
+<area shape="rect" id="node1" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="5,49,195,90"/>
+<area shape="rect" id="node2" href="$classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="273,5,392,32"/>
+<area shape="rect" id="node3" href="$classGl.html#a282f1d04873290629695e206e9cd2fbe" title="Retourne le chemin du fichier de configuration lidar actif." alt="" coords="259,56,406,83"/>
+<area shape="rect" id="node4" href="$classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="243,107,423,133"/>
+<area shape="rect" id="node5" href="$classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="471,107,629,133"/>
+</map>

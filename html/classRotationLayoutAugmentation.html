@@ -69,14 +69,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Rotations uniforme d'une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi.  
+ <a href="classRotationLayoutAugmentation.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pipeline_8h_source.html">pipeline.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RotationLayoutAugmentation:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRotationLayoutAugmentation__inherit__graph.png" border="0" usemap="#aRotationLayoutAugmentation_inherit__map" alt="Inheritance graph"/></div>
 <map name="aRotationLayoutAugmentation_inherit__map" id="aRotationLayoutAugmentation_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,244,237"/>
-<area shape="rect" href="classPipelineStep.html" title=" " alt="" coords="55,5,194,97"/>
+<area shape="rect" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="5,145,244,237"/>
+<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -84,8 +87,8 @@ Collaboration diagram for RotationLayoutAugmentation:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRotationLayoutAugmentation__coll__graph.png" border="0" usemap="#aRotationLayoutAugmentation_coll__map" alt="Collaboration graph"/></div>
 <map name="aRotationLayoutAugmentation_coll__map" id="aRotationLayoutAugmentation_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,244,237"/>
-<area shape="rect" href="classPipelineStep.html" title=" " alt="" coords="55,5,194,97"/>
+<area shape="rect" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="5,145,244,237"/>
+<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -94,12 +97,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a952550eed3955ff232f7b72bebef1933"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html#a952550eed3955ff232f7b72bebef1933">RotationLayoutAugmentation</a> (size_t number_of_variations, double start_angle, double end_angle, unsigned int seed=42)</td></tr>
 <tr class="separator:a952550eed3955ff232f7b72bebef1933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefacdf5d4f6b2b74450defcb0150400d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">process</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt;&gt; input_scenes, <a class="el" href="classAssetManager.html">AssetManager</a> &amp;assets) override</td></tr>
+<tr class="memdesc:aefacdf5d4f6b2b74450defcb0150400d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traite les scènes d'entrée et produit les scènes augmentées.  <a href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">More...</a><br /></td></tr>
 <tr class="separator:aefacdf5d4f6b2b74450defcb0150400d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPipelineStep"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPipelineStep')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPipelineStep.html">PipelineStep</a></td></tr>
 <tr class="memitem:a9d707b9a09c3a2ad60b671e1bc5d297f inherit pub_methods_classPipelineStep"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipelineStep.html#a9d707b9a09c3a2ad60b671e1bc5d297f">~PipelineStep</a> ()</td></tr>
 <tr class="separator:a9d707b9a09c3a2ad60b671e1bc5d297f inherit pub_methods_classPipelineStep"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Rotations uniforme d'une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a952550eed3955ff232f7b72bebef1933"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a952550eed3955ff232f7b72bebef1933">&#9670;&nbsp;</a></span>RotationLayoutAugmentation()</h2>
 
@@ -145,6 +151,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number_of_variations</td><td>Nombre de variantes de rotation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -182,6 +194,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Traite les scènes d'entrée et produit les scènes augmentées. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_scenes</td><td>Scènes à transformer </td></tr>
+    <tr><td class="paramname">assets</td><td>Gestionnaire de ressources (meshes, configs) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scènes augmentées </dd></dl>
 
 <p>Implements <a class="el" href="classPipelineStep.html#aef178ca71fc7b7f3f43b64ad589ddf7d">PipelineStep</a>.</p>
 

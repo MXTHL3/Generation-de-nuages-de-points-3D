@@ -1,7 +1,7 @@
 <map id="MechanicalLidarEntity" name="MechanicalLidarEntity">
-<area shape="rect" id="node1" title=" " alt="" coords="75,661,265,797"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html" title=" " alt="" coords="98,447,242,612"/>
-<area shape="rect" id="node3" href="$classIEntity.html" title=" " alt="" coords="5,219,116,384"/>
-<area shape="rect" id="node4" href="$classPose.html" title=" " alt="" coords="5,5,116,156"/>
+<area shape="rect" id="node1" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="75,661,265,797"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="98,447,242,612"/>
+<area shape="rect" id="node3" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="5,219,116,384"/>
+<area shape="rect" id="node4" href="$classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="5,5,116,156"/>
 <area shape="rect" id="node5" href="$classNoiseModel.html" title="Modèle de bruit pour capteur lidar Applique un bruit gaussien dépendant de la distance et du profil d..." alt="" coords="140,226,275,377"/>
 </map>

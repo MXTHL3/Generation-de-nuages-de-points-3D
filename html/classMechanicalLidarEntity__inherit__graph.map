@@ -1,5 +1,5 @@
 <map id="MechanicalLidarEntity" name="MechanicalLidarEntity">
-<area shape="rect" id="node1" title=" " alt="" coords="5,447,196,583"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html" title=" " alt="" coords="29,219,173,399"/>
-<area shape="rect" id="node3" href="$classIEntity.html" title=" " alt="" coords="45,5,156,171"/>
+<area shape="rect" id="node1" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="5,447,196,583"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="29,219,173,399"/>
+<area shape="rect" id="node3" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="45,5,156,171"/>
 </map>
