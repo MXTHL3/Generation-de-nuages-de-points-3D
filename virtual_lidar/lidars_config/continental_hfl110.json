@@ -6,8 +6,10 @@
     "accuracy": 0.05,
     "resolution_h": 128,
     "resolution_v": 32,
-    "fov_h": 120.0,
-    "fov_v": 30.0,
+    "fov_h_min": -60.0,
+    "fov_h_max": 60.0,
+    "fov_v_min": -15.0,
+    "fov_v_max": 15.0,
     "noise_profile": [
         {"max_distance": 50.0, "sigma": 0.05 }
     ],
