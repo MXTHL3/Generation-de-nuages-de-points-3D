@@ -24,9 +24,6 @@ static const char* FRAGMENT_SHADER_SRC = R"glsl(
     }
 )glsl";
 
-static constexpr float OFFSET_STEP      = 1.5f;
-static constexpr float DRAG_SENSITIVITY = 0.02f;
-
 static void wire_markers_to_center(
     std::vector<std::unique_ptr<ModelMarker>>& markers,
     ModelMarker* center,
@@ -204,6 +201,7 @@ void Gl::load_file(const std::string& path) {
     m_scenes.push_back(std::move(scene));
     m_transforms.push_back({});
     m_model_hidden.push_back(false);
+    m_model_paths.push_back(path);
 
     add_center_marker(midx);
     ModelMarker* centerN = m_markers.back().get();
@@ -833,9 +831,11 @@ static std::shared_ptr<LidarConfig> ensure_override(std::shared_ptr<LidarConfig>
 void Gl::lidar_override_set_min(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_min_dist = v;
 }
+
 void Gl::lidar_override_set_max(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_max_dist = v;
 }
+
 void Gl::lidar_override_set_hstep(size_t /*idx*/, double v) {
     auto cfg = std::dynamic_pointer_cast<MechanicalLidarConfig>(ensure_override(m_lidar_override, m_lidar_config));
     if (!cfg) {
@@ -844,6 +844,7 @@ void Gl::lidar_override_set_hstep(size_t /*idx*/, double v) {
     }
     cfg->m_h_step = std::make_unique<DirectResolutionSource>(v);
 }
+
 void Gl::lidar_override_set_accuracy(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_accuracy = v;
 }
@@ -856,6 +857,9 @@ void Gl::reset_scene() {
 
     if (m_transforms.size() > 1)
         m_transforms.erase(m_transforms.begin() + 1, m_transforms.end());
+
+    if (m_model_paths.size() > 1)
+        m_model_paths.erase(m_model_paths.begin() + 1, m_model_paths.end());
 
     if (m_model_hidden.size() > 1)
         m_model_hidden.erase(m_model_hidden.begin() + 1, m_model_hidden.end());    

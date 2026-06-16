@@ -29,7 +29,7 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
 
     menu_bar_data = {
         {"Fichier",
-            "Ouvrir modèle 3D", "Charger scène (JSON)", "Charger scan (PLY/LAS)",
+            "Ouvrir modèle 3D", "Charger scène (JSON)", "Exporter scène (JSON)", "Charger scan (PLY/LAS)",
             "Capturer image", "Quitter"},
         {"Scène",
             "Supprimer sélection", "Réinitialiser scène"},
@@ -114,6 +114,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         if (label == "Ouvrir modèle 3D") { open_3d_model(); }
         else if (label == "Charger scan (PLY/LAS)") { load_scan(); }
         else if (label == "Charger scène (JSON)") { load_json_scene(); }
+        else if (label == "Exporter scène (JSON)") { save_json_scene(); }
         else if (label == "Capturer image") { capture_image(); }
         else if (label == "Réinitialiser scène") { reset_scene(); }
         else if (label == "Paramètres scanner") { scanner_settings(); }

@@ -34,6 +34,9 @@ struct ModelTransform {
 
 class Gl {
 public:
+    static constexpr float OFFSET_STEP = 1.5f;
+    static constexpr float DRAG_SENSITIVITY = 0.02f;
+    
     explicit Gl(std::unique_ptr<Cgal> default_scene);
     Gtk::Widget& widget() { return m_overlay; }
     void build_grid(float size, float step);
@@ -63,6 +66,11 @@ public:
     bool is_model_hidden(size_t idx) const {
         return idx < m_model_hidden.size() ? m_model_hidden[idx] : false;
     }
+    float get_angle_x() const { return angle_x; }
+    float get_angle_y() const { return angle_y; }
+    const std::vector<std::string>& model_paths() const { return m_model_paths; }
+    const std::vector<ModelTransform>& transforms() const { return m_transforms; }
+    glm::vec3 get_camera_world_position() const;
 
 private:
     Gtk::Overlay m_overlay;
@@ -82,6 +90,7 @@ private:
     GLuint shader_program = 0;
     std::vector<float> vertex_data;
     std::vector<std::unique_ptr<Cgal>> m_scenes;
+    std::vector<std::string> m_model_paths;
     std::vector<std::unique_ptr<ModelMarker>> m_markers;
     std::vector<ModelTransform> m_transforms;
     std::shared_ptr<LidarConfig> m_lidar_override;  
@@ -113,5 +122,4 @@ private:
     bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
     void on_marker_dragged(MarkerType type, int model_index, double dx, double dy);
     void connect_marker_signals(ModelMarker* marker);
-    glm::vec3 get_camera_world_position() const;
 };

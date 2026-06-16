@@ -87,34 +87,32 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
 }
 
 bool SceneLoader::save_scene_to_json(const std::string& filepath, Scene& world,
-    const std::vector<std::unique_ptr<LidarEntity>>& lidars){
+    const std::vector<std::unique_ptr<LidarEntity>>& lidars, Gl* gl) {
 
     nlohmann::json j;
     j["static_entities"] = nlohmann::json::array();
-    j["lidar_entities"]  = nlohmann::json::array();
+    j["lidar_entities"] = nlohmann::json::array();
 
-    for(const auto& ent : world.entities()){   
+    for(const auto& ent : world.entities()) {   
+        if (ent->mesh_path().empty()) continue;
         nlohmann::json item;
-        item["name"]      = ent->name();
+        item["name"] = ent->name();
         item["mesh_path"] = ent->mesh_path();
-        item["pose"]      = pose_to_json(ent->pose());
+        item["pose"] = pose_to_json(ent->pose());
         j["static_entities"].push_back(item);
     }
 
-    std::filesystem::create_directories("lidars_config/scene_generated");
-
-    int idx = 0;
     for(const auto& lidar_ent : lidars){       
-        std::string config_path = "lidars_config/scene_generated/lidar_" + std::to_string(idx++) + ".json";
+        std::string config_path = gl->get_lidar_config();
 
-        if(!LidarFactory::saveToJson(config_path, lidar_ent->config())){
+        if (!LidarFactory::saveToJson(config_path, lidar_ent->config())){
             SIM_WARNING("Impossible de sauvegarder la configuration du lidar {}", lidar_ent->config().m_name);
             continue;
         }
 
         nlohmann::json item;
         item["lidar_config"] = config_path;
-        item["pose"]         = pose_to_json(lidar_ent->pose());
+        item["pose"] = pose_to_json(lidar_ent->pose());
         j["lidar_entities"].push_back(item);
     }
 

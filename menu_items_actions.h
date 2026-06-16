@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <cstdlib>
 #include <thread>
+#include <iostream>
 #include "menu_items_actions.h"
 #include "gl.h"
 #include "handle_file.h"
@@ -28,6 +29,7 @@ protected:
     void open_3d_model();
     void load_scan();
     void load_json_scene();
+    void save_json_scene();
     void capture_image();
     void launch_full_scene_scan();
     void launch_one_scan_per_3d_model();

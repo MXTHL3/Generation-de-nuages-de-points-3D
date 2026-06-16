@@ -149,6 +149,125 @@ void MenuItemsActions::load_json_scene() {
     });
 }
 
+void MenuItemsActions::save_json_scene() {
+    _sub->signal_activate().connect([this]() {
+
+        Gtk::FileChooserDialog dialog(
+            "Exporter la scène JSON",
+            Gtk::FILE_CHOOSER_ACTION_SAVE);
+
+        dialog.set_transient_for(as_window());
+        dialog.set_do_overwrite_confirmation(true);
+        dialog.set_current_name("scene.json");
+
+        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        dialog.add_button("Enregistrer", Gtk::RESPONSE_OK);
+
+        auto filter_json = Gtk::FileFilter::create();
+        filter_json->set_name("Scènes JSON (*.json)");
+        filter_json->add_pattern("*.json");
+        dialog.add_filter(filter_json);
+
+        auto filter_all = Gtk::FileFilter::create();
+        filter_all->set_name("Tous les fichiers");
+        filter_all->add_pattern("*");
+        dialog.add_filter(filter_all);
+
+        if (dialog.run() != Gtk::RESPONSE_OK)
+            return;
+
+        const std::string filepath = dialog.get_filename();
+        std::filesystem::path base_dir = std::filesystem::canonical("/proc/self/exe").parent_path();
+
+        Scene world;
+        AssetManager assets;
+
+        const auto& paths = m_gl->model_paths();
+        const auto& transforms = m_gl->transforms(); 
+
+        for (size_t i = 0; i < paths.size(); ++i) {
+            const ModelTransform& tr = transforms[i + 1];
+            float off = m_gl->OFFSET_STEP * static_cast<float>(i + 1);
+            std::cout << "off : " << off << std::endl;
+            std::cout << "posXYZ : " << tr.pos_x + off << " " << tr.pos_y + off << " " << tr.pos_z + off << std::endl;
+            std::cout << "angleXYZ : " << tr.angle_x << " " << tr.angle_y << " " << tr.angle_z << std::endl;
+
+            Pose pose(
+                Point3(tr.pos_x + off, tr.pos_y + off, tr.pos_z + off),
+                glm::degrees(tr.angle_x),
+                glm::degrees(tr.angle_y),
+                glm::degrees(tr.angle_z)
+            );
+
+            std::string rel_path = std::filesystem::relative(paths[i], base_dir).string();
+
+            world.add_static_entity(std::make_unique<StaticEntity>("model_" + std::to_string(i), nullptr, pose, rel_path));
+        }
+
+        glm::vec3 cam_glm = m_gl->get_camera_world_position();
+        double angle_y_deg = std::fmod(static_cast<double>(glm::degrees(m_gl->get_angle_y())), 360.0);
+        float sign = (angle_y_deg >= 90.0 && angle_y_deg <= 270.0) ? 1.0f : -1.0f;
+
+        float lidar_x = sign * cam_glm.x;
+        float lidar_y = sign * cam_glm.y;
+        float lidar_z = cam_glm.z;
+
+        Pose lidar_pose(
+            Point3(lidar_x, lidar_y, lidar_z),
+            glm::degrees(m_gl->get_angle_x()),
+            glm::degrees(m_gl->get_angle_y()),
+            0.0
+        );
+
+        std::shared_ptr<LidarConfig> lidar_cfg;
+        try {
+            lidar_cfg = LidarFactory::createFromJsonConfig(m_gl->get_lidar_config());
+        } catch (...) {
+            lidar_cfg = nullptr;
+        }
+
+        std::vector<std::unique_ptr<LidarEntity>> lidars;
+        if (lidar_cfg) {
+            std::unique_ptr<LidarEntity> lidar_ent;
+            if (auto mech = std::dynamic_pointer_cast<MechanicalLidarConfig>(lidar_cfg))
+                lidar_ent = std::make_unique<MechanicalLidarEntity>(mech, lidar_pose);
+            else if (auto flash = std::dynamic_pointer_cast<FlashLidarConfig>(lidar_cfg))
+                lidar_ent = std::make_unique<FlashLidarEntity>(flash, lidar_pose);
+            else if (auto mir = std::dynamic_pointer_cast<MirroredLidarConfig>(lidar_cfg))
+                lidar_ent = std::make_unique<MirroredLidarEntity>(mir, lidar_pose);
+
+            if (lidar_ent)
+                lidars.push_back(std::move(lidar_ent));
+        }
+
+        bool ok = SceneLoader::save_scene_to_json(filepath, world, lidars, m_gl.get());
+
+        if (ok) {
+            try {
+                std::ifstream fin(filepath);
+                nlohmann::json j;
+                fin >> j;
+                fin.close();
+                if (j.contains("lidar_entities") && !j["lidar_entities"].empty())
+                    j["lidar_entities"][0]["step_index"] = 2;
+                std::ofstream fout(filepath);
+                fout << j.dump(4);
+            } catch (...) {}
+        }
+
+        Gtk::MessageDialog msg(
+            as_window(),
+            ok ? "Scène exportée :\n" + filepath
+               : "Erreur lors de l'export de la scène.",
+            false,
+            ok ? Gtk::MESSAGE_INFO : Gtk::MESSAGE_ERROR,
+            Gtk::BUTTONS_OK,
+            true);
+
+        msg.run();
+    });
+}
+
 void MenuItemsActions::capture_image() {
     _sub->signal_activate().connect([this]() {
         Gtk::FileChooserDialog dialog("Enregistrer l'image", Gtk::FILE_CHOOSER_ACTION_SAVE);

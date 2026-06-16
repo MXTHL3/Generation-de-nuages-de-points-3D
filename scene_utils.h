@@ -5,6 +5,7 @@
 #include "scene.h"
 #include "entity.h"
 #include "asset_manager.h"
+#include "gl.h"
 
 #include <CGAL/Polygon_mesh_processing/triangulate_faces.h>
 
@@ -14,7 +15,7 @@ public:
         std::vector<std::unique_ptr<LidarEntity>>& lidars, AssetManager& assets);
 
     static bool save_scene_to_json(const std::string& filepath, Scene& world,
-        const std::vector<std::unique_ptr<LidarEntity>>& lidars);
+        const std::vector<std::unique_ptr<LidarEntity>>& lidars, Gl* gl);
 
 private:
     static Pose parse_pose_from_json(const nlohmann::json& j);
