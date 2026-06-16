@@ -7,22 +7,10 @@
 Scene::Scene(const Scene& scene){
     for(const auto& entity : scene.m_entities){
         if(entity){
-            // TODO:: a virer rapidement
-            auto cloned_entity = entity->clone();
-
-            if(!cloned_entity){
-                SIM_WARNING("Echec du clonage d'une entité !");
-            }else{
-                auto static_entity = std::unique_ptr<StaticEntity>(dynamic_cast<StaticEntity*>(cloned_entity.release()));
-                if(!static_entity){
-                    SIM_WARNING("dynamic cast de static_entity echoué !");
-                }else{
-                    m_entities.push_back(std::move(static_entity));
-                }
-            }
+            m_entities.push_back(std::make_unique<StaticEntity>(*entity));
         }
     }
-            SIM_DEBUG("Scene Copiée ! {} entités", m_entities.size());
+    SIM_DEBUG("Scene Copiée ! {} entités", m_entities.size());
 }
 
 
