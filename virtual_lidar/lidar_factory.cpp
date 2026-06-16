@@ -68,11 +68,16 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
     }
 
     auto lidar_config = std::make_shared<MechanicalLidarConfig>(
-        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(), rotation_rate
+        data.at("model").get<std::string>(), 
+        data.at("min_range").get<double>(), 
+        data.at("max_range").get<double>(), 
+        data.at("accuracy").get<double>(), 
+        rotation_rate
     );
 
     for(const auto& laser : data.at("lasers")){
-        lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
+        lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), 
+        to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
     }
 
     // resolution horizontale azimuth
@@ -141,7 +146,7 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
     
     auto lidar_config = std::make_shared<FlashLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), 
-        data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(),
+        data.at("max_range").get<double>(), data.at("accuracy").get<double>(),
         params.res_h, params.res_v,
         to_radians(params.fov_h_min), to_radians(params.fov_h_max),
         to_radians(params.fov_v_min), to_radians(params.fov_v_max)
@@ -154,8 +159,9 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
 
 std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
     auto lidar_config = std::make_shared<MirroredLidarConfig>(
-        data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(),
-        data.at("noise_resolution").get<double>(), data.at("points_per_second").get<int>(), 
+        data.at("model").get<std::string>(), 
+        data.at("min_range").get<double>(), data.at("max_range").get<double>(),
+        data.at("accuracy").get<double>(), data.at("points_per_second").get<int>(), 
         data.at("fov_h_min").get<double>(), data.at("fov_h_max").get<double>(),
         data.at("fov_v_min").get<double>(), data.at("fov_v_max").get<double>(),
         data.at("integration_time").get<double>() 
