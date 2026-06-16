@@ -24,12 +24,18 @@ std::unique_ptr<IEntity> MechanicalLidarEntity::clone() const {
     return std::make_unique<MechanicalLidarEntity>(*this);
 }
 
-std::vector<Ray3> MechanicalLidarEntity::generate_rays() const{
+std::vector<Ray3> MechanicalLidarEntity::generate_rays(double duration) const{
     std::vector<Ray3> all_rays;
+    double total_angle = 360.0;
+
+    if(duration > 0.0){
+        total_angle = duration * config().m_rotation_rate * 360.0;
+        SIM_DEBUG("Angle total : {}", total_angle);
+    }
 
     double h_step = config().horizontal_step();
 
-    for(double hr = 0.0; hr < 360.0; hr += h_step){
+    for(double hr = 0.0; hr < total_angle; hr += h_step){
         auto rays = scan(hr);
         all_rays.insert(all_rays.end(), rays.begin(), rays.end());
     }
@@ -110,18 +116,18 @@ std::unique_ptr<IEntity> MirroredLidarEntity::clone() const{
     return std::make_unique<MirroredLidarEntity>(*this);
 }
 
-std::vector<Ray3> MirroredLidarEntity::generate_rays() const {
+std::vector<Ray3> MirroredLidarEntity::generate_rays(double duration) const {
     if(config().is_lissajou()){
-        return generate_lissajou();
+        return generate_lissajou(duration);
     }
     if(config().is_raster()){
         return generate_raster();
     }
     SIM_ERROR("Erreur lors de la generation des rayons du mirrored lidar {} : mode de scan inconnu !", m_config->m_name);
-    throw;
+    throw std::runtime_error("Mode de scan inconnu pour " + m_config->m_name);
 }
 
-std::vector<Ray3> MirroredLidarEntity::generate_lissajou() const {
+std::vector<Ray3> MirroredLidarEntity::generate_lissajou(double duration) const {
     Transform3 world_xf = transform();
     std::vector<Ray3> rays;
     const auto& cfg = config();
@@ -129,10 +135,10 @@ std::vector<Ray3> MirroredLidarEntity::generate_lissajou() const {
 
     Vector3 translation_effect = world_xf.transform(Vector3(0, 0, 0));
 
-    int n_points = static_cast<int>(cfg.m_points_per_second * cfg.m_integration_time);
-    double dt = cfg.m_integration_time / static_cast<double>(n_points);
-    double half_fov_h = cfg.m_fov_h / 2.0;
-    double half_fov_v = cfg.m_fov_v / 2.0;
+    double time = (duration > 0.0) ? duration : cfg.m_integration_time;
+
+    int n_points = static_cast<int>(cfg.m_points_per_second * time);
+    double dt = time / static_cast<double>(n_points);
 
     for(int i = 0; i < n_points; i++){
         double t = i * dt;

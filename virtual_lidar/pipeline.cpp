@@ -2,40 +2,6 @@
 #include "pose.hpp"
 #include "logger.hpp"
 
-/*std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets)
-{
-    std::vector<std::unique_ptr<Scene>> output_scenes;
-
-    SIM_INFO("Lancement de la génération des variations de scènes en fonction de rotations aléatoires sur [{}, {}]", m_start_angle, m_end_angle);
-    SIM_INFO("Traitement de {} scènes sources ", input_scenes.size());
-
-    std::uniform_real_distribution<double> rot_z(m_start_angle, m_end_angle);
-
-
-    size_t scene_index = 0;
-    for(const auto& base_scene : input_scenes){
-        for(size_t i = 0; i < m_number_of_variations; i++){
-            SIM_DEBUG("Génération d'une variation spatiale pour la scène n° {} :", scene_index++);
-            
-            auto current_spatial_variation = std::make_unique<Scene>(*base_scene);
-
-            size_t ent_index = 0;
-            for(const auto& entity : current_spatial_variation->entities()){
-                double r_z = rot_z(m_gen);
-
-                Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
-                entity->pose(random_pose);
-                SIM_DEBUG("Entité copié : {} et oritentée en Z: {:.2f}", entity->name(), random_pose.rz());
-                ent_index++;
-            }
-        
-            SIM_INFO("Reconstruction de l'arbre pour la variation {}", ent_index);
-            output_scenes.push_back(std::move(current_spatial_variation));
-        }
-    }
-    return output_scenes;
-}*/
-
 std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets){
     std::vector<std::unique_ptr<Scene>> output_scenes;
     double step = 360.0 / static_cast<double>(m_number_of_variations);
@@ -49,8 +15,10 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
             auto current_variation = std::make_unique<Scene>(*base_scene);
 
             for(const auto& entity : current_variation->entities()){
-                Pose rotated_pose(entity->pose().pos(), 0.0, 0.0, r_z);
-                entity->pose(rotated_pose);
+                if(entity->name() == m_object_name){
+                    Pose rotated_pose(entity->pose().pos(), 0.0, 0.0, r_z);
+                    entity->pose(rotated_pose);
+                }
             }
 
             output_scenes.push_back(std::move(current_variation));
@@ -196,4 +164,124 @@ std::vector<std::unique_ptr<Scene>> Pipeline::execute(std::unique_ptr<Scene> inp
     }
         
     return output_scenes;
+}
+
+Pipeline PipelineFactory::create_from_json(const nlohmann::json& data){
+    SIM_INFO("Chargement d'un Pipeline");
+    
+    Pipeline pipeline;
+
+    if(!data.contains("pipeline")){
+        SIM_WARNING("Pas de pipeline défini dans le json !");
+        return pipeline;
+    }
+
+    for(const auto& step_json : data["pipeline"]){
+        auto step = parse_step(step_json);
+        if(step){
+            pipeline.add_step(std::move(step));
+        }else{
+            SIM_WARNING("step de pipeline trouvée mais illisible ! : {}", step_json.dump(4));
+        }
+    }
+
+    SIM_INFO("Pipeline chargé : {} étapes", data["pipeline"].size());
+    return pipeline;
+}
+
+std::unique_ptr<PipelineStep> PipelineFactory::parse_step(const nlohmann::json& step){
+    std::string type = step.at("type").get<std::string>();
+
+    if(type == "rotation")          return parse_rotation(step);
+    if(type == "grid_position")     return parse_grid_position(step);
+    if(type == "keyframe")          return parse_keyframe(step); 
+
+    SIM_ERROR("Type d'étape de pipeline inconnu ! {}", type);
+    return nullptr;
+}
+
+std::unique_ptr<PipelineStep> PipelineFactory::parse_rotation(const nlohmann::json& rotation_step){
+    size_t n = rotation_step.at("n_variations").get<size_t>();
+    std::string object_name = rotation_step.at("entity_name").get<std::string>();
+    SIM_DEBUG("Etape rotation : {} instances (pas de {:.2f}°)", n, 360.0 /n);
+    return std::make_unique<RotationLayoutAugmentation>(object_name, n);
+}
+
+std::unique_ptr<PipelineStep> PipelineFactory::parse_grid_position(const nlohmann::json& grid_position_step){
+    return std::make_unique<GridPositionLayoutAugmentation>(
+        grid_position_step.at("entity_name").get<std::string>(),
+        grid_position_step.at("min_x").get<double>(),
+        grid_position_step.at("max_x").get<double>(),
+        grid_position_step.at("step_x").get<double>(),
+        grid_position_step.at("min_y").get<double>(),
+        grid_position_step.at("max_y").get<double>(),
+        grid_position_step.at("step_y").get<double>(),
+        grid_position_step.value("exclusion_radius", 0.0)
+    );
+}
+
+std::unique_ptr<PipelineStep> PipelineFactory::parse_keyframe(const nlohmann::json& keyframe_step){
+    std::vector<KeyframesConfig> configs;
+
+    for(const auto& scenario : keyframe_step.at("scenarios")){
+        KeyframesConfig kc;
+        kc.scenario_name = scenario.at("scenario_name").get<std::string>();
+
+        for(const auto& obj : scenario.at("objects")){
+            ObjectAnimation anim;
+            anim.object_name = obj.at("entity_name").get<std::string>();
+
+            std::string dir = obj.at("keyframes_directory").get<std::string>();
+            std::string ext_ply = obj.value("extension", ".ply");
+
+            for(const auto& file : std::filesystem::directory_iterator(dir)){
+                if(file.is_regular_file() && file.path().extension() == ext_ply){
+                    anim.keyframes_paths.push_back(file.path().string());
+                }
+            }
+
+            SIM_DEBUG(" {} : {} keyframes trouvées depuis {}", anim.object_name, anim.keyframes_paths.size(), dir);
+            kc.objects_animation.push_back(anim);
+        }
+        configs.push_back(kc);
+    }
+
+    return std::make_unique<KeyframeLayoutAugmentation>(configs);
+}
+
+GridPositionLayoutAugmentation::GridPositionLayoutAugmentation(std::string object_name, 
+    double min_x, double max_x, double step_x, 
+    double min_y, double max_y, double step_y, 
+    double exclusion_radius)
+    : m_object_name(object_name), m_min_x(min_x), m_max_x(max_x), m_step_x(step_x),
+    m_min_y(min_y), m_max_y(max_y), m_step_y(step_y), m_exclusion_radius(exclusion_radius){}
+
+std::vector<std::unique_ptr<Scene>> GridPositionLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager &assets)
+{
+    // les points sur la grille
+    std::vector<std::pair<double, double>> grid_points;
+
+    for(double x = m_min_x; x <= m_max_x; x += m_step_x){
+        for(double y = m_min_y; y <= m_max_y; y += m_step_y){
+            if(m_exclusion_radius > 0.0 && std::sqrt(x*x + y*y) < m_exclusion_radius){
+                continue;
+            }
+            grid_points.push_back({x, y});
+        }
+    }
+
+    std::vector<std::unique_ptr<Scene>> output;
+    for(const auto& base_scene : input_scenes){
+        for(size_t i = 0; i < grid_points.size(); i++){
+            const std::pair<double, double>& current_object_pose = grid_points[i];
+            auto variation_scene = std::make_unique<Scene>(*base_scene);
+            for(const auto& entity : variation_scene->entities()){
+                Pose grid_pos({{current_object_pose.first, current_object_pose.second, 0},
+                                0, 0,entity->pose().pos().z()});
+                entity->pose(grid_pos);    
+            }
+            output.push_back(std::move(variation_scene));
+        }
+    }
+    return output;
 }

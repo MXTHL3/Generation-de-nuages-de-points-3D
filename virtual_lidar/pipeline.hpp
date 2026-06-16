@@ -31,8 +31,10 @@ private:
     size_t m_number_of_variations; // nombre de variations (de scène généré par augmentations) par scènes
 
 public:    
-    RotationLayoutAugmentation(size_t number_of_variations)
-        :m_number_of_variations(number_of_variations){}
+    /// @param object_name Nom de l'entité à tourner.
+    /// @param number_of_variations Nombre de variantes de rotation.
+    RotationLayoutAugmentation(const std::string& object_name, size_t number_of_variations)
+        :m_object_name(std::move(object_name)), m_number_of_variations(number_of_variations){}
 
     // TODO:: A voir pour le domaine d'exclusion si c'est une radius ou une zone rectangulaire pour l'instant en dur
     std::vector<std::unique_ptr<Scene>> process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets) override;

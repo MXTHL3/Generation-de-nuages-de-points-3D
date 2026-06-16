@@ -71,6 +71,10 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.at("noise_resolution").get<double>(), rotation_rate
     );
 
+    for(const auto& laser : data.at("lasers")){
+        lidar_config->addLaser(to_radians(laser.at("v_angle").get<double>()), to_radians(laser.at("h_offset").get<double>()), laser.at("d_offset").get<double>());
+    }
+
     // resolution horizontale azimuth
     if(data.contains("horizontal_columns")){
         lidar_config->m_h_step = std::make_unique<ColumnCountSource>(data.at("horizontal_columns").get<unsigned int>());
@@ -80,7 +84,7 @@ std::shared_ptr<MechanicalLidarConfig> LidarFactory::parseMechanicalLidar(const 
         lidar_config->m_h_step = std::make_unique<PointsPerSecondSource>(data.at("points_per_second").get<unsigned int>(), lidar_config->m_rotation_rate, lidar_config->m_lasers.size());
     }else{
         SIM_ERROR("Pas de résolution horizontale trouvée dans {}!", lidar_config->m_name);
-        throw new std::runtime_error("Pas de résolution horizontale (azimuth) trouvé");
+        throw std::runtime_error("Pas de résolution horizontale (azimuth) trouvé");
     }
 
     SIM_DEBUG("Resolution horizontale calculée : {:.2f} degrés", lidar_config->horizontal_step());
@@ -163,7 +167,7 @@ std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nloh
         };
     }else{
         SIM_ERROR("Paramètre non reconnu pour le mode (il doit être soit 'raster' soit 'lissajou' dans la config du lidar Miroir : {}", lidar_config->m_name);
-        throw;
+        throw std::runtime_error("Mode de Scan inconnu pour "+ lidar_config->m_name);
     }
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
@@ -192,4 +196,27 @@ bool LidarFactory::saveToJson(const std::string& configPath, const LidarConfig& 
         SIM_ERROR("Erreur lors de la save du lidar {} dans {} : {}", lidar_config.m_name, configPath, e.what());
         return false;
     }
+}
+
+std::unique_ptr<SessionScan> LidarFactory::parseScanSession(const nlohmann::json& data){
+    if(!data.contains("scan_session")){
+        // par défaut
+        return std::make_unique<SessionScan>(std::make_unique<ScanThreeSixty>());
+    }
+
+    const auto& session = data["scan_session"];
+    std::string strategy = session.at("strategy").get<std::string>();
+
+    if(strategy == "timed"){
+        double time = session.at("duration").get<double>();
+        return std::make_unique<SessionScan>(std::make_unique<ScanTimed>(time));
+    }
+
+    if(strategy == "multi"){
+        int n = session.at("n_scans").get<int>();
+        return std::make_unique<SessionScan>(std::make_unique<ScanMultiple>(n));
+    }
+
+    SIM_WARNING("Strategie de scan inconnue : {}", strategy);
+    return std::make_unique<SessionScan>(std::make_unique<ScanThreeSixty>());
 }
