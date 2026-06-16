@@ -34,6 +34,10 @@ protected:
 
     /// @brief Serialise le profil de bruit.
     void serialize_noise_profile(nlohmann::json& data) const;
+
+    /// @brief Serialise les paramètres communs aux configs.
+    void serialize_base(nlohmann::json& data) const;
+
     std::string noise_to_string() const;
 };
 
