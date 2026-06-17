@@ -3,7 +3,7 @@
 
 std::vector<Point3> ScanThreeSixty::execute(const LidarScanner &scanner, const LidarEntity &lidar_ent, const Scene &scene) const
 {
-    return scanner.scan(lidar_ent, scene, true);
+    return scanner.scan(lidar_ent, scene, true, -1.0, 4);
 }
 
 ScanTimed::ScanTimed(double duration_in_seconds): m_time(duration_in_seconds){}
@@ -11,7 +11,7 @@ ScanTimed::ScanTimed(double duration_in_seconds): m_time(duration_in_seconds){}
 std::vector<Point3> ScanTimed::execute(const LidarScanner &scanner, const LidarEntity &lidar_ent, const Scene &scene) const
 {
 
-    std::vector<Point3> cloud = scanner.scan(lidar_ent, scene, true, m_time);
+    std::vector<Point3> cloud = scanner.scan(lidar_ent, scene, true, m_time, 6);
 
     SIM_DEBUG("ScanTimed : {:.3f}s", m_time);
     return cloud;
@@ -25,7 +25,7 @@ std::vector<Point3> ScanMultiple::execute(const LidarScanner &scanner, const Lid
     std::vector<Point3> multi_scans;
 
     for(int i = 0; i < m_n_scans; i++){
-        auto cloud = scanner.scan(lidar_ent, scene, true);
+        auto cloud = scanner.scan(lidar_ent, scene, true, -1.0, 6);
         multi_scans.insert(multi_scans.end(), cloud.begin(), cloud.end());        
     }
 
