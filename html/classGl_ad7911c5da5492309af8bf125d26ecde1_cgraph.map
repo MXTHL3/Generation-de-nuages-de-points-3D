@@ -6,10 +6,8 @@
 <area shape="rect" id="node5" href="$classGl.html#a2c4898a547382a3bbd66f7526f8e07c2" title="Retourne la position de la caméra dans le repère monde." alt="" coords="168,173,332,214"/>
 <area shape="rect" id="node6" href="$classGl.html#a5bdcca5a28273112b61476cfe13a2674" title="Charge un nuage de points et l&#39;affiche." alt="" coords="195,239,305,265"/>
 <area shape="rect" id="node7" href="$cgal__glm__utils_8h.html#a286c8c052904ce194c4d6d8b69698a75" title=" " alt="" coords="156,289,344,316"/>
-<area shape="rect" id="node8" href="$classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="178,340,322,367"/>
-<area shape="rect" id="node9" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="419,264,557,291"/>
-<area shape="rect" id="node10" href="$classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235" title="Génère tous les rayons pour le scan." alt="" coords="392,315,584,341"/>
-<area shape="rect" id="node11" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="425,365,551,392"/>
-<area shape="rect" id="node12" href="$classLidarEntity.html#a4233ca90108f96bd7e4bed3a9b06c1ad" title="Applique le bruit à une mesure de distance." alt="" coords="421,417,555,458"/>
-<area shape="rect" id="node13" href="$classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="632,424,775,451"/>
+<area shape="rect" id="node8" href="$classLidarScanner.html#a6735af09536d112d8c2aadc890ed999c" title="Effectue un scan." alt="" coords="178,340,322,367"/>
+<area shape="rect" id="node9" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="419,289,557,316"/>
+<area shape="rect" id="node10" href="$classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8" title="Génère tous les rayons pour le scan." alt="" coords="392,340,584,367"/>
+<area shape="rect" id="node11" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="425,391,551,417"/>
 </map>

@@ -36,7 +36,7 @@ const \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} \& \mbox{\h
 \item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}{generate\+\_\+rays}} () const override
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -81,25 +81,30 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}\label{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86}} 
+\mbox{\Hypertarget{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31}\label{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31}} 
 \index{FlashLidarEntity@{FlashLidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!FlashLidarEntity@{FlashLidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Flash\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Flash\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
 Génère tous les rayons pour le scan. 
 
 
+\begin{DoxyParams}{Parameters}
+{\em duration} & durée du scan (secondes). Mécanique \+: angle total = duration $\ast$ rotation\+\_\+rate $\ast$ 360° Miroir lissajou \+: n\+\_\+points = n\+\_\+points\+\_\+per\+\_\+second $\ast$ duration Flash \+: ignoré car capture instantanée \\
+\hline
+\end{DoxyParams}
 
-Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
+
+Implements \mbox{\hyperlink{classLidarEntity_a1429a6e6844c7733f29973535576bbd8}{Lidar\+Entity}}.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classFlashLidarEntity_a9920e949ce9ffde09dddccd29a20cf86_cgraph}
+\includegraphics[width=350pt]{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31_cgraph}
 \end{center}
 \end{figure}
 

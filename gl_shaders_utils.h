@@ -6,6 +6,7 @@
 /// @brief Utilitaire de compilation et d'édition de liens des shaders OpenGL.
 /// Compile les shaders vertex et fragment, les lie en un programme GLSL
 /// et rapporte les erreurs de compilation/liaison sur stdout.
+/// Source : https://pageperso.lis-lab.fr/~edouard.thiel/ens/prog-gra/pgra02-cm/
 class GLShadersUtils {
 public:
     GLShadersUtils();

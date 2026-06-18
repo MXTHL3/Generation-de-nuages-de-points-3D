@@ -1,0 +1,6 @@
+<map id="LidarConfig::noise_to_string" name="LidarConfig::noise_to_string">
+<area shape="rect" id="node1" title=" " alt="" coords="223,71,361,112"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarConfig.html#a31af5f337bc69feb6b76efb1d8575d70" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node3" href="$classFlashLidarConfig.html#a9d3e69337334e656f8b19f42012762f4" title=" " alt="" coords="15,71,165,112"/>
+<area shape="rect" id="node4" href="$classMirroredLidarConfig.html#a88302304b582ee2b42f5849522e28299" title=" " alt="" coords="15,136,165,177"/>
+</map>

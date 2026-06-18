@@ -1,0 +1,6 @@
+<map id="ScanStrategy" name="ScanStrategy">
+<area shape="rect" id="node1" title="Interface de stratégie de scan." alt="" coords="149,5,293,97"/>
+<area shape="rect" id="node2" href="$classScanMultiple.html" title="N scans complets concaténés." alt="" coords="5,145,136,237"/>
+<area shape="rect" id="node3" href="$classScanThreeSixty.html" title="Scan complet : 1 tour lidar mécanique, 1 frame flash/miroir." alt="" coords="160,153,283,230"/>
+<area shape="rect" id="node4" href="$classScanTimed.html" title="Scan sur une durée paramétrable en secondes." alt="" coords="307,145,426,237"/>
+</map>

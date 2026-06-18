@@ -13,16 +13,16 @@ Include dependency graph for entity.\+cpp\+:\nopagebreak
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&world\+\_\+xf, double fov\+\_\+h, double fov\+\_\+v, int res\+\_\+h, int res\+\_\+v)
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8cpp_a556ee0dc3b72585b00b1547e68961e5b}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&world\+\_\+xf, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max, int res\+\_\+h, int res\+\_\+v)
 \begin{DoxyCompactList}\small\item\em Génère une grille régulière de rayons (partagé entre Flash et Miroir raster). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd}\label{entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd}} 
+\mbox{\Hypertarget{entity_8cpp_a556ee0dc3b72585b00b1547e68961e5b}\label{entity_8cpp_a556ee0dc3b72585b00b1547e68961e5b}} 
 \index{entity.cpp@{entity.cpp}!generate\_ray\_grid@{generate\_ray\_grid}}
 \index{generate\_ray\_grid@{generate\_ray\_grid}!entity.cpp@{entity.cpp}}
 \doxysubsubsection{\texorpdfstring{generate\_ray\_grid()}{generate\_ray\_grid()}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
 
 
 
@@ -34,6 +34,14 @@ Génère une grille régulière de rayons (partagé entre Flash et Miroir raster
 \hline
 {\em wolrd\+\_\+xf} & Transformation monde du capteur. \\
 \hline
+{\em fov\+\_\+h\+\_\+min} & ///$<$ Borne inférieure champ de vision horizontal (radians). \\
+\hline
+{\em fov\+\_\+h\+\_\+max} & ///$<$ Borne supérieure champ de vision horizontal (radians). \\
+\hline
+{\em fov\+\_\+v\+\_\+min} & ///$<$ Borne inférieure champ de vision vertical (radians). \\
+\hline
+{\em fov\+\_\+v\+\_\+max} & ///$<$ Borne inférieure champ de vision vertical (radians). \\
+\hline
 {\em res\+\_\+h} & ///$<$ Nombre de colonnes. \\
 \hline
 {\em res\+\_\+v} & ///$<$ Nombre de lignes. \\
@@ -43,6 +51,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph}
+\includegraphics[width=350pt]{entity_8cpp_a556ee0dc3b72585b00b1547e68961e5b_icgraph}
 \end{center}
 \end{figure}

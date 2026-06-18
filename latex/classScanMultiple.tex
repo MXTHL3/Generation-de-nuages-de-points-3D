@@ -1,0 +1,95 @@
+\hypertarget{classScanMultiple}{}\doxysection{Scan\+Multiple Class Reference}
+\label{classScanMultiple}\index{ScanMultiple@{ScanMultiple}}
+
+
+N scans complets concaténés.  
+
+
+
+
+{\ttfamily \#include $<$scan\+\_\+strategy.\+h$>$}
+
+
+
+Inheritance diagram for Scan\+Multiple\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classScanMultiple__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scan\+Multiple\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classScanMultiple__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScanMultiple_ad506bf19f86edc2f9d62fab94d1894b4}{Scan\+Multiple}} (int n\+\_\+scans)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classScanMultiple_ad76ccdbefde889a4d95570de79c9d5f8}{execute}} (const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&scanner, const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene) const override
+\begin{DoxyCompactList}\small\item\em Execute le scan selon la stratégie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+N scans complets concaténés. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScanMultiple_ad506bf19f86edc2f9d62fab94d1894b4}\label{classScanMultiple_ad506bf19f86edc2f9d62fab94d1894b4}} 
+\index{ScanMultiple@{ScanMultiple}!ScanMultiple@{ScanMultiple}}
+\index{ScanMultiple@{ScanMultiple}!ScanMultiple@{ScanMultiple}}
+\doxysubsubsection{\texorpdfstring{ScanMultiple()}{ScanMultiple()}}
+{\footnotesize\ttfamily Scan\+Multiple\+::\+Scan\+Multiple (\begin{DoxyParamCaption}\item[{int}]{n\+\_\+scans }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+scans} & Nombre de scans à générer et concaténer. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScanMultiple_ad76ccdbefde889a4d95570de79c9d5f8}\label{classScanMultiple_ad76ccdbefde889a4d95570de79c9d5f8}} 
+\index{ScanMultiple@{ScanMultiple}!execute@{execute}}
+\index{execute@{execute}!ScanMultiple@{ScanMultiple}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ Scan\+Multiple\+::execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&}]{scanner,  }\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execute le scan selon la stratégie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Le scanner qui réalise le scan. \\
+\hline
+{\em lidar\+\_\+ent} & Le capteur Lidar. \\
+\hline
+{\em scene} & La scène construite (build() appelé avant). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nuage de points résultat. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classScanStrategy_acd1db6211ab4660692c5ce276c55c1aa}{Scan\+Strategy}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classScanMultiple_ad76ccdbefde889a4d95570de79c9d5f8_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scan__strategy_8h}{scan\+\_\+strategy.\+h}}\item 
+\mbox{\hyperlink{scan__strategy_8cpp}{scan\+\_\+strategy.\+cpp}}\end{DoxyCompactItemize}

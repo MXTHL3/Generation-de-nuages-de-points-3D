@@ -2,7 +2,7 @@
 \label{classMechanicalLidarEntity}\index{MechanicalLidarEntity@{MechanicalLidarEntity}}
 
 
-Capteur lidar mécanique rotatif (Velodyne, Ouster).  
+Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai).  
 
 
 
@@ -36,15 +36,15 @@ const \mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}} \
 \begin{DoxyCompactList}\small\item\em Accès typé à la config mécanique. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}{scan}} (double parameter) const
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657}{scan}} (double h\+\_\+angle\+\_\+deg) const
 \begin{DoxyCompactList}\small\item\em Génère les rayons pour un angle azimutal (horizontal) donné \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}{generate\+\_\+rays}} () const override
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
-Capteur lidar mécanique rotatif (Velodyne, Ouster). 
+Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classMechanicalLidarEntity_afcf617678dc006052be54db3471ce7ce}\label{classMechanicalLidarEntity_afcf617678dc006052be54db3471ce7ce}} 
@@ -87,32 +87,37 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}\label{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3}} 
+\mbox{\Hypertarget{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50}\label{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50}} 
 \index{MechanicalLidarEntity@{MechanicalLidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!MechanicalLidarEntity@{MechanicalLidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
 Génère tous les rayons pour le scan. 
 
 
+\begin{DoxyParams}{Parameters}
+{\em duration} & durée du scan (secondes). Mécanique \+: angle total = duration $\ast$ rotation\+\_\+rate $\ast$ 360° Miroir lissajou \+: n\+\_\+points = n\+\_\+points\+\_\+per\+\_\+second $\ast$ duration Flash \+: ignoré car capture instantanée \\
+\hline
+\end{DoxyParams}
 
-Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
+
+Implements \mbox{\hyperlink{classLidarEntity_a1429a6e6844c7733f29973535576bbd8}{Lidar\+Entity}}.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classMechanicalLidarEntity_afbac7614159a640dc93d3a31f0c070f3_cgraph}
+\includegraphics[width=350pt]{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}\label{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b}} 
+\mbox{\Hypertarget{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657}\label{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657}} 
 \index{MechanicalLidarEntity@{MechanicalLidarEntity}!scan@{scan}}
 \index{scan@{scan}!MechanicalLidarEntity@{MechanicalLidarEntity}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{parameter }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{h\+\_\+angle\+\_\+deg }\end{DoxyParamCaption}) const}
 
 
 
@@ -122,14 +127,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b_cgraph}
+\includegraphics[width=350pt]{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classMechanicalLidarEntity_a78f0340d9bccc111af65f8c43e26ce6b_icgraph}
+\includegraphics[width=350pt]{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657_icgraph}
 \end{center}
 \end{figure}
 

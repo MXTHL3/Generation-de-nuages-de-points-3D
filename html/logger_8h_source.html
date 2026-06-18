@@ -76,17 +76,18 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">auto</span> console_sink = std::make_shared&lt;spdlog::sinks::stdout_color_sink_mt&gt;();</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">auto</span> logger = std::make_shared&lt;spdlog::logger&gt;(<span class="stringliteral">&quot;LOGGER&quot;</span>, console_sink);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        logger-&gt;set_pattern(<span class="stringliteral">&quot;[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v&quot;</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        logger-&gt;set_level(spdlog::level::info);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        logger-&gt;set_level(spdlog::level::debug);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        spdlog::set_default_logger(logger);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        logger-&gt;set_level(spdlog::level::trace);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">//logger-&gt;set_level(spdlog::level::info);</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        logger-&gt;set_level(spdlog::level::debug);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        spdlog::set_default_logger(logger);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="logger_8h.html#aa1450e9963261c80708598480b677370">   22</a></span>&#160;<span class="preprocessor">#define SIM_INFO(...) spdlog::info(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="logger_8h.html#ac67326162d3b1dbc070fae7e58eff8b1">   23</a></span>&#160;<span class="preprocessor">#define SIM_DEBUG(...) spdlog::debug(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="logger_8h.html#ac80f41a6fb08229375c3271eec9688f0">   24</a></span>&#160;<span class="preprocessor">#define SIM_WARNING(...) spdlog::warn(__VA_ARGS__)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="asset__manager_8cpp.html#a45d32ff06499b3d3bb8a37719b33008b">   25</a></span>&#160;<span class="preprocessor">#define SIM_ERROR(...) spdlog::error(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="logger_8h.html#aa1450e9963261c80708598480b677370">   23</a></span>&#160;<span class="preprocessor">#define SIM_INFO(...) spdlog::info(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="logger_8h.html#ac67326162d3b1dbc070fae7e58eff8b1">   24</a></span>&#160;<span class="preprocessor">#define SIM_DEBUG(...) spdlog::debug(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="logger_8h.html#ac80f41a6fb08229375c3271eec9688f0">   25</a></span>&#160;<span class="preprocessor">#define SIM_WARNING(...) spdlog::warn(__VA_ARGS__)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="asset__manager_8cpp.html#a45d32ff06499b3d3bb8a37719b33008b">   26</a></span>&#160;<span class="preprocessor">#define SIM_ERROR(...) spdlog::error(__VA_ARGS__)</span></div>
 <div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdoc">initialisation Logger spdlog globale Doit être appelé une seule fois au démarrage (dans main pour l'i...</div><div class="ttdef"><b>Definition:</b> logger.h:9</div></div>
 <div class="ttc" id="aclassLogger_html_ae1b45a6a18cdd0ab328cd2133477f212"><div class="ttname"><a href="classLogger.html#ae1b45a6a18cdd0ab328cd2133477f212">Logger::init</a></div><div class="ttdeci">static void init()</div><div class="ttdef"><b>Definition:</b> logger.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->

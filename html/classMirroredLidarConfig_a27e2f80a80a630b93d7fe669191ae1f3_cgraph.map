@@ -1,7 +1,8 @@
 <map id="MirroredLidarConfig::serialize" name="MirroredLidarConfig::serialize">
-<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="5,104,156,145"/>
-<area shape="rect" id="node2" href="$classMirroredLidarConfig.html#a52e459ad1a315ab476eea953a9620fbb" title=" " alt="" coords="208,5,359,47"/>
-<area shape="rect" id="node3" href="$classMirroredLidarConfig.html#ac6904b2378b42bba1cf3564cd6aa83bd" title=" " alt="" coords="208,71,359,112"/>
-<area shape="rect" id="node4" href="$classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="204,136,363,177"/>
-<area shape="rect" id="node5" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="236,202,331,229"/>
+<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="5,100,156,141"/>
+<area shape="rect" id="node2" href="$classMirroredLidarConfig.html#a52e459ad1a315ab476eea953a9620fbb" title=" " alt="" coords="227,5,377,47"/>
+<area shape="rect" id="node3" href="$classMirroredLidarConfig.html#ac6904b2378b42bba1cf3564cd6aa83bd" title=" " alt="" coords="227,71,377,112"/>
+<area shape="rect" id="node4" href="$classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b" title="Serialise les paramètres communs aux configs." alt="" coords="204,137,400,163"/>
+<area shape="rect" id="node6" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="255,187,349,214"/>
+<area shape="rect" id="node5" href="$classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="448,129,607,171"/>
 </map>

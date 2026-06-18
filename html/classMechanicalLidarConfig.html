@@ -80,8 +80,8 @@ Inheritance diagram for MechanicalLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMechanicalLidarConfig__inherit__graph.png" border="0" usemap="#aMechanicalLidarConfig_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMechanicalLidarConfig_inherit__map" id="aMechanicalLidarConfig_inherit__map">
-<area shape="rect" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,248,200,413"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,5,199,200"/>
+<area shape="rect" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,277,200,443"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,5,199,229"/>
 </map>
 </div>
 <div class="dynheader">
@@ -89,8 +89,8 @@ Collaboration diagram for MechanicalLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMechanicalLidarConfig__coll__graph.png" border="0" usemap="#aMechanicalLidarConfig_coll__map" alt="Collaboration graph"/></div>
 <map name="aMechanicalLidarConfig_coll__map" id="aMechanicalLidarConfig_coll__map">
-<area shape="rect" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,389,200,555"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,160,199,340"/>
+<area shape="rect" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,419,200,584"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,160,199,369"/>
 <area shape="rect" href="structNoiseProfile.html" title="Profil du bruit d&#39;un capteur lidar." alt="" coords="51,5,154,97"/>
 </map>
 </div>
@@ -155,6 +155,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">serialize_noise_profile</a> (nlohmann::json &amp;data) const</td></tr>
 <tr class="memdesc:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise le profil de bruit.  <a href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">More...</a><br /></td></tr>
 <tr class="separator:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">serialize_base</a> (nlohmann::json &amp;data) const</td></tr>
+<tr class="memdesc:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise les paramètres communs aux configs.  <a href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">More...</a><br /></td></tr>
+<tr class="separator:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d">noise_to_string</a> () const</td></tr>
+<tr class="separator:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration d'un lidar mécanique rotatif. </p>
@@ -272,7 +277,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50_icgraph.png" border="0" usemap="#aclassMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50_icgraph" alt=""/></div>
 <map name="aclassMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50_icgraph" id="aclassMechanicalLidarConfig_a3e62e530aaeb33655695698c675bca50_icgraph">
 <area shape="rect" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="223,39,392,80"/>
-<area shape="rect" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="7,5,173,47"/>
+<area shape="rect" href="classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="7,5,173,47"/>
 <area shape="rect" href="classMechanicalLidarConfig.html#a31af5f337bc69feb6b76efb1d8575d70" title=" " alt="" coords="5,71,175,112"/>
 </map>
 </div>
@@ -311,9 +316,10 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3_cgraph.png" border="0" usemap="#aclassMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3_cgraph" alt=""/></div>
 <map name="aclassMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3_cgraph" id="aclassMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3_cgraph">
-<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,35,175,76"/>
-<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="223,5,381,47"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="255,71,349,98"/>
+<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,31,175,72"/>
+<area shape="rect" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b" title="Serialise les paramètres communs aux configs." alt="" coords="223,13,419,39"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="273,63,368,90"/>
+<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="467,5,625,47"/>
 </map>
 </div>
 
@@ -348,9 +354,10 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70_cgraph.png" border="0" usemap="#aclassMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70_cgraph" alt=""/></div>
 <map name="aclassMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70_cgraph" id="aclassMechanicalLidarConfig_a31af5f337bc69feb6b76efb1d8575d70_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,175,76"/>
+<area shape="rect" title=" " alt="" coords="5,71,175,112"/>
 <area shape="rect" href="classMechanicalLidarConfig.html#a3e62e530aaeb33655695698c675bca50" title="Retourne la résolution verticale/azimutale en degrés à partir de &quot;m_h_step&quot;." alt="" coords="223,5,392,47"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="260,71,355,98"/>
+<area shape="rect" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d" title=" " alt="" coords="238,71,377,112"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="260,137,355,163"/>
 </map>
 </div>
 

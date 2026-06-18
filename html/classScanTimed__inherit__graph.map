@@ -1,0 +1,4 @@
+<map id="ScanTimed" name="ScanTimed">
+<area shape="rect" id="node1" title="Scan sur une durée paramétrable en secondes." alt="" coords="18,145,137,237"/>
+<area shape="rect" id="node2" href="$classScanStrategy.html" title="Interface de stratégie de scan." alt="" coords="5,5,149,97"/>
+</map>

@@ -22,11 +22,10 @@ public:
     virtual std::unique_ptr<IEntity> clone() const = 0;
 
     /// @brief Calcule la matrice de transformation pour placement dans la scène.
-    Transform3 transform() const;    // Récupère la position dans la scene
-
+    Transform3 transform() const;    // Récupère la position dans la scene.
     /// @brief Retourne l'identifiant de l'entité.
     virtual const std::string& name() const = 0;
-
+    
     const Pose& pose() const { return m_pose; }
     void pose(const Pose& pose) { m_pose = pose; }
 
@@ -50,19 +49,18 @@ class StaticEntity : public IEntity {
 public:
     /// @param name ///< Identifiant unique dans la scène.
     /// @param obj ///< Maillage partagé.
-    /// @param p ///< Position et rotation initiale.
+    /// @param p ///< Position et rotation initale.
     StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path = "");
-    
     std::unique_ptr<IEntity> clone() const override; 
     const std::string& name() const override final {return m_name;};
 
     /// @brief Retourne un accès en lecture aux triangles du maillage
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
     
-    const std::string& mesh_path() const { return m_mesh_path; }
-
     /// @brief Remplace le maillage par un nouveau (utilisé dans KeyframeLayoutAugmentation !)
     void update_mesh(std::shared_ptr<Object> new_obj) { m_object = new_obj; }
+
+    const std::string& mesh_path() const { return m_mesh_path; }
 
 private:
     std::string m_name; ///< Identifiant unique dans la scène.
@@ -77,15 +75,17 @@ public:
     /// @param config Configuration d'un capteur Lidar partagée 
     /// @param p Position et rotation du capteur dans la scène
     LidarEntity(std::shared_ptr<LidarConfig> config, Pose p);
-
     virtual ~LidarEntity() = default;
     
     const std::string& name() const override final { return m_config->m_name; };
-
     const LidarConfig& config() const { return *m_config; };
 
     /// @brief Génère tous les rayons pour le scan.
-    virtual std::vector<Ray3> generate_rays() const = 0;
+    /// @param duration durée du scan (secondes).
+    /// Mécanique : angle total = duration * rotation_rate * 360°
+    /// Miroir lissajou : n_points = n_points_per_second * duration
+    /// Flash : ignoré car capture instantanée
+    virtual std::vector<Ray3> generate_rays(double duration = -1.0) const = 0;
 
     /// @brief Remplace le modèle de bruit
     /// @param model nouveau modèle
@@ -102,31 +102,35 @@ protected:
     NoiseModel m_noise_model; ///< le profil de bruit du lidar
 };
 
-/// @brief Capteur lidar mécanique rotatif (Velodyne, Ouster).
+/// @brief Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai).
 class MechanicalLidarEntity : public LidarEntity {
 public:
     MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p);
 
     /// @brief Accès typé à la config mécanique.
     const MechanicalLidarConfig& config() const{ return static_cast<const MechanicalLidarConfig&>(*m_config); }
-    
     std::unique_ptr<IEntity> clone() const override;
 
     /// @brief Génère les rayons pour un angle azimutal (horizontal) donné
-    std::vector<Ray3> scan(double parameter) const;
+    std::vector<Ray3> scan(double h_angle_deg) const;
 
-    std::vector<Ray3> generate_rays() const override;
+    std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 };
 
 /// @brief Génère une grille régulière de rayons (partagé entre Flash et Miroir raster).
 /// @param origin Position du capteur.
 /// @param wolrd_xf Transformation monde du capteur.
+/// @param fov_h_min ///< Borne inférieure champ de vision horizontal (radians).
+/// @param fov_h_max ///< Borne supérieure champ de vision horizontal (radians).
+/// @param fov_v_min ///< Borne inférieure champ de vision vertical (radians).
+/// @param fov_v_max ///< Borne inférieure champ de vision vertical (radians).
 /// @param res_h ///< Nombre de colonnes.
 /// @param res_v ///< Nombre de lignes.
 std::vector<Ray3> generate_ray_grid(
     const Point3& origin,
     const Transform3& wolrd_xf,
-    double fov_h, double fov_v,
+    double fov_h_min, double fov_h_max,
+    double fov_v_min, double fov_v_max,
     int res_h, int res_v
 );
 
@@ -139,10 +143,9 @@ public:
 
     std::unique_ptr<IEntity> clone() const override;
 
-    std::vector<Ray3> generate_rays() const override;
+    std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 };
-
-/// @brief Capteur lidar à Miroir oscillant (Livox)
+/// @brief Capteur lidar à Miroir oscillant (Livox, Robosense)
 class MirroredLidarEntity : public LidarEntity {
 public:
     MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p);
@@ -151,9 +154,11 @@ public:
 
     std::unique_ptr<IEntity> clone() const override;
     
-    std::vector<Ray3> generate_rays() const override;
+    std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 
 private:
-    std::vector<Ray3> generate_lissajou() const;
+    /// @brief Génère les points le long d'une courbe de Lissajous.
+    std::vector<Ray3> generate_lissajou(double duration = -1.0) const;
+    /// @brief Génère une grille régulière (comme le Flash lidar) en déléguant à generate_ray_grid 
     std::vector<Ray3> generate_raster() const;
 };

@@ -1,8 +1,6 @@
 #include "gl_shaders_utils.h"
 #include <iostream>
 
-// Source : https://pageperso.lis-lab.fr/~edouard.thiel/ens/prog-gra/pgra02-cm/
-
 GLShadersUtils::GLShadersUtils() {}
 
 void GLShadersUtils::compile_shader(GLuint shader, const char* name)

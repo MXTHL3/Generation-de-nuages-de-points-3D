@@ -1,0 +1,6 @@
+<map id="LidarConfig::serialize_base" name="LidarConfig::serialize_base">
+<area shape="rect" id="node1" title="Serialise les paramètres communs aux configs." alt="" coords="247,71,443,98"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarConfig.html#abdea4ba942bb9732b7527926be5bc5a3" title="Serialise le configuration complète en JSON." alt="" coords="17,5,187,47"/>
+<area shape="rect" id="node3" href="$classFlashLidarConfig.html#a588ddea2bde4c9418743522aad55df16" title="Serialise le configuration complète en JSON." alt="" coords="5,71,199,98"/>
+<area shape="rect" id="node4" href="$classMirroredLidarConfig.html#a27e2f80a80a630b93d7fe669191ae1f3" title="Serialise le configuration complète en JSON." alt="" coords="27,123,177,164"/>
+</map>

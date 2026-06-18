@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classScene.html" title="Scène 3D : ensemble d&#39;entités statiques et arbre AABB pour les intersections. Après ajout des entités..." alt="" coords="5,5,67,32"/>
+<area shape="rect" id="node1" href="$classScanStrategy.html" title="Interface de stratégie de scan." alt="" coords="5,56,113,83"/>
+<area shape="rect" id="node2" href="$classScanMultiple.html" title="N scans complets concaténés." alt="" coords="169,5,276,32"/>
+<area shape="rect" id="node3" href="$classScanThreeSixty.html" title="Scan complet : 1 tour lidar mécanique, 1 frame flash/miroir." alt="" coords="161,56,284,83"/>
+<area shape="rect" id="node4" href="$classScanTimed.html" title="Scan sur une durée paramétrable en secondes." alt="" coords="175,107,270,133"/>
 </map>

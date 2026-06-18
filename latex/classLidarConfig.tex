@@ -55,7 +55,11 @@ double \mbox{\hyperlink{classLidarConfig_a5715b4c8fb47e1574f3facbc5fbd3202}{m\+\
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}{serialize\+\_\+noise\+\_\+profile}} (nlohmann\+::json \&data) const
-\begin{DoxyCompactList}\small\item\em Serialise le profil de bruit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Serialise le profil de bruit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLidarConfig_a2fa6737add51940ad59b42ec33a6666b}{serialize\+\_\+base}} (nlohmann\+::json \&data) const
+\begin{DoxyCompactList}\small\item\em Serialise les paramètres communs aux configs. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLidarConfig_a778006bee5980f292dfc339b19b5547d}{noise\+\_\+to\+\_\+string}} () const
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,6 +81,19 @@ Configuration abstraite de base d\textquotesingle{}un lidar. Contient les param�
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLidarConfig_a778006bee5980f292dfc339b19b5547d}\label{classLidarConfig_a778006bee5980f292dfc339b19b5547d}} 
+\index{LidarConfig@{LidarConfig}!noise\_to\_string@{noise\_to\_string}}
+\index{noise\_to\_string@{noise\_to\_string}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{noise\_to\_string()}{noise\_to\_string()}}
+{\footnotesize\ttfamily std\+::string Lidar\+Config\+::noise\+\_\+to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classLidarConfig_a778006bee5980f292dfc339b19b5547d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}\label{classLidarConfig_a02b3411e3e2c8052b197bab919344d03}} 
 \index{LidarConfig@{LidarConfig}!serialize@{serialize}}
 \index{serialize@{serialize}!LidarConfig@{LidarConfig}}
@@ -91,12 +108,35 @@ Serialise le configuration complète en JSON.
 
 Implemented in \mbox{\hyperlink{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}{Mirrored\+Lidar\+Config}}, \mbox{\hyperlink{classFlashLidarConfig_a588ddea2bde4c9418743522aad55df16}{Flash\+Lidar\+Config}}, and \mbox{\hyperlink{classMechanicalLidarConfig_abdea4ba942bb9732b7527926be5bc5a3}{Mechanical\+Lidar\+Config}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classLidarConfig_a02b3411e3e2c8052b197bab919344d03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLidarConfig_a2fa6737add51940ad59b42ec33a6666b}\label{classLidarConfig_a2fa6737add51940ad59b42ec33a6666b}} 
+\index{LidarConfig@{LidarConfig}!serialize\_base@{serialize\_base}}
+\index{serialize\_base@{serialize\_base}!LidarConfig@{LidarConfig}}
+\doxysubsubsection{\texorpdfstring{serialize\_base()}{serialize\_base()}}
+{\footnotesize\ttfamily void Lidar\+Config\+::serialize\+\_\+base (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Serialise les paramètres communs aux configs. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarConfig_a2fa6737add51940ad59b42ec33a6666b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLidarConfig_a2fa6737add51940ad59b42ec33a6666b_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}\label{classLidarConfig_afd66aff351b8315f454f29a79c70caa3}} 

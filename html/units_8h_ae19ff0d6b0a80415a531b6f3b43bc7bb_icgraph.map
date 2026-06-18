@@ -1,5 +1,5 @@
 <map id="to_radians" name="to_radians">
 <area shape="rect" id="node1" title=" " alt="" coords="435,13,525,39"/>
-<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="220,5,387,47"/>
-<area shape="rect" id="node3" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#a3649f85abd4cf73045891e02fe40d657" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="220,5,387,47"/>
+<area shape="rect" id="node3" href="$classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="5,5,172,47"/>
 </map>

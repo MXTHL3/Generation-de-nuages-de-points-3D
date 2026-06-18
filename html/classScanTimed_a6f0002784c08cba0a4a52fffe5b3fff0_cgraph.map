@@ -1,0 +1,7 @@
+<map id="ScanTimed::execute" name="ScanTimed::execute">
+<area shape="rect" id="node1" title="Execute le scan selon la stratégie." alt="" coords="5,56,159,83"/>
+<area shape="rect" id="node2" href="$classLidarScanner.html#a6735af09536d112d8c2aadc890ed999c" title="Effectue un scan." alt="" coords="207,56,351,83"/>
+<area shape="rect" id="node3" href="$classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="425,5,564,32"/>
+<area shape="rect" id="node4" href="$classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8" title="Génère tous les rayons pour le scan." alt="" coords="399,56,591,83"/>
+<area shape="rect" id="node5" href="$classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="431,107,558,133"/>
+</map>

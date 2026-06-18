@@ -26,7 +26,8 @@ SRCS := main.cpp \
         scene_utils.cpp \
         pipeline.cpp \
         horizontal_step.cpp \
-        lidar_scanner.cpp
+        lidar_scanner.cpp \
+        scan_strategy.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 

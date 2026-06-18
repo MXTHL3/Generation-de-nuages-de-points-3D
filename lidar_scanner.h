@@ -3,6 +3,7 @@
 #include "scene.h"
 #include "entity.h"
 #include <vector>
+#include <future>
 
 /// @brief Moteur de scan : intersection des rayons avec la scène et le noise
 /// Reçoit les rayons générés par l'entité Lidar, 
@@ -16,5 +17,6 @@ public:
     /// @param lidar_ent le lidar qui génère les rayons.
     /// @param scene la scène construite.
     /// @return Nuage de points.
-    std::vector<Point3> scan(const LidarEntity& lidar_ent, const Scene& scene) const;
+    std::vector<Point3> scan(const LidarEntity& lidar_ent, const Scene& scene,
+        bool apply_noise = true, double duration = -1.0, unsigned int number_of_thread = 4) const;
 };

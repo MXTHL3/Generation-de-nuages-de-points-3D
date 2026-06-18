@@ -34,6 +34,8 @@ struct ModelTransform {
     bool use_offset = true; ///< Active le décalage automatique entre modèles (OFFSET_STEP).
 };
 
+enum class ScanStrategyType { ThreeSixty, Timed, Multiple };
+
 #include "cgal_glm_utils.h"
 
 /// @brief Moteur de rendu OpenGL/GTK : scène 3D, caméra, scan lidar et nuage de points.
@@ -175,54 +177,154 @@ public:
     /// @return Vecteur 3D de la position de la caméra.
     glm::vec3 get_camera_world_position() const;
 
+    /// @brief Active ou désactive l'application du modèle de bruit sur les mesures lidar.
+    /// @param v true pour ajouter du bruit simulé, false pour utiliser des mesures idéales.
+    void set_apply_noise(bool v) { m_apply_noise = v; }
+
+    /// @brief Indique si le modèle de bruit est appliqué aux mesures lidar.
+    /// @return true si le bruit est activé, false sinon.
+    bool get_apply_noise() const { return m_apply_noise; }
+
+    /// @brief Définit la stratégie de scan utilisée pour la simulation lidar.
+    /// @param s Type de stratégie à utiliser (360°, temporisée ou multiple).
+    void set_scan_strategy(ScanStrategyType s) { m_scan_strategy = s; }
+
+    /// @brief Retourne la stratégie de scan actuellement sélectionnée.
+    /// @return Type de stratégie de scan active.
+    ScanStrategyType get_scan_strategy() const { return m_scan_strategy; }
+
+    /// @brief Définit la durée d'un scan temporisé.
+    /// @param v Durée du scan en secondes.
+    void set_scan_duration(double v) { m_scan_duration = v; }
+
+    /// @brief Retourne la durée configurée pour un scan temporisé.
+    /// @return Durée du scan en secondes.
+    double get_scan_duration() const { return m_scan_duration; }
+
+    /// @brief Définit le nombre de scans à effectuer avec la stratégie multiple.
+    /// @param v Nombre de scans successifs à réaliser.
+    void set_scan_n_scans(int v) { m_scan_n_scans = v; }
+
+    /// @brief Retourne le nombre de scans configurés pour la stratégie multiple.
+    /// @return Nombre de scans successifs.
+    int get_scan_n_scans() const { return m_scan_n_scans; }
+
+    /// @brief Définit le nombre de threads utilisés pour le lancer de rayons parallèle.
+    /// @param v Nombre de threads à utiliser pour la simulation.
+    void set_scan_threads(int v) { m_scan_threads = v; }
+
+    /// @brief Retourne le nombre de threads utilisés pour la simulation lidar.
+    /// @return Nombre de threads de calcul.
+    int get_scan_threads() const { return m_scan_threads; }
+
 private:
-    Gtk::Overlay m_overlay;
-    Gtk::GLArea gl_area;
-    Gtk::Fixed m_fixed;
-    GLuint vao = 0;
-    GLuint vbo = 0;
-    GLuint vao_cloud = 0;
-    GLuint vbo_cloud = 0;
-    int m_cloud_point_count = 0;
-    bool m_show_point_cloud  = false;
-    std::vector<float> m_cloud_data;
-    GLuint vao_grid = 0;
-    GLuint vbo_grid = 0;
-    GLsizei grid_vertex_count = 0;
-    std::string m_lidar_config = "lidars_config/ouster_os1_64.json";
-    GLuint shader_program = 0;
-    std::vector<float> vertex_data;
-    std::vector<std::unique_ptr<Cgal>> m_scenes;
-    std::vector<std::string> m_model_paths;
-    std::vector<std::unique_ptr<ModelMarker>> m_markers;
-    std::vector<ModelTransform> m_transforms;
-    std::shared_ptr<LidarConfig> m_lidar_override;  
-    std::vector<bool> m_model_hidden; 
+    Gtk::Overlay m_overlay; ///< Conteneur overlay racine (GLArea + widgets superposés).
+    Gtk::GLArea gl_area; ///< Zone de rendu OpenGL.
+    Gtk::Fixed m_fixed; ///< Conteneur fixe pour les marqueurs interactifs.
 
-    int m_load_count = 0;
-    float angle_x = 0.0f;
-    float angle_y = 0.0f;
-    bool m_dragging = false;
-    double m_last_x = 0.0;
-    double m_last_y = 0.0;
-    float m_zoom = 5.0f;
+    GLuint vao = 0; ///< Vertex Array Object des maillages 3D.
+    GLuint vbo = 0; ///< Vertex Buffer Object des maillages 3D.
+    GLuint vao_cloud = 0; ///< VAO du nuage de points.
+    GLuint vbo_cloud = 0; ///< VBO du nuage de points.
+    int m_cloud_point_count = 0; ///< Nombre de points dans le VBO nuage courant.
+    bool m_show_point_cloud = false; ///< true si le nuage de points est affiché.
+    std::vector<float> m_cloud_data; ///< Données brutes du nuage (XYZ interleaved).
 
+    GLuint vao_grid = 0; ///< VAO de la grille de référence au sol.
+    GLuint vbo_grid = 0; ///< VBO de la grille de référence au sol.
+    GLsizei grid_vertex_count = 0; ///< Nombre de sommets de la grille.
+
+    std::string m_lidar_config = "lidars_config/ouster_os1_64.json"; ///< Chemin JSON du capteur actif.
+    GLuint shader_program = 0; ///< Handle du programme GLSL compilé.
+    std::vector<float> vertex_data; ///< Données de tous les maillages concaténées (XYZ par triangle).
+
+    std::vector<std::unique_ptr<Cgal>> m_scenes; ///< Maillages CGAL de la scène (index 0 = cube par défaut).
+    std::vector<std::string> m_model_paths; ///< Chemins des fichiers 3D chargés (même ordre que m_scenes).
+    std::vector<std::unique_ptr<ModelMarker>> m_markers; ///< Marqueurs de transformation interactifs.
+    std::vector<ModelTransform> m_transforms; ///< Transformations appliquées à chaque modèle.
+    std::shared_ptr<LidarConfig> m_lidar_override; ///< Config lidar de remplacement (nullptr = utiliser m_lidar_config).
+    std::vector<bool> m_model_hidden; ///< Masquage par modèle (même index que m_scenes).
+
+    int m_load_count = 0; ///< Nombre de modèles chargés depuis le début de la session (sert au calcul d'offset).
+    float angle_x = 0.0f; ///< Angle de tangage (pitch) de la caméra orbitale (radians).
+    float angle_y = 0.0f; ///< Angle de lacet (yaw) de la caméra orbitale (radians).
+    bool m_dragging = false; ///< true pendant un drag caméra actif.
+    double m_last_x = 0.0; ///< Dernière position X de la souris lors du drag caméra.
+    double m_last_y = 0.0; ///< Dernière position Y de la souris lors du drag caméra.
+    float m_zoom = 5.0f; ///< Distance de la caméra à l'origine (zoom orbital).
+
+    bool m_apply_noise = true; ///< Active le modèle de bruit lors du scan.
+    ScanStrategyType m_scan_strategy = ScanStrategyType::ThreeSixty; ///< Stratégie de scan active.
+    double m_scan_duration = 1.0; ///< Durée du scan en secondes (utilisée par ScanTimed).
+    int m_scan_n_scans = 3; ///< Nombre de scans (utilisé par ScanMultiple).
+    int m_scan_threads = 4; ///< Nombre de threads pour le lancer de rayons parallèle.
+
+    /// @brief Reconstruit vertex_data à partir de tous les maillages de m_scenes.
     void rebuild_vertex_data();
+
+    /// @brief Uploade vertex_data dans le VBO OpenGL.
     void upload_vertex_data();
+
+    /// @brief Callback GTK appelé à l'initialisation du contexte OpenGL.
     void on_realize();
+
+    /// @brief Callback GTK appelé à chaque frame de rendu.
+    /// @param context Contexte OpenGL GTK courant.
+    /// @return true pour indiquer que le rendu a été pris en charge.
     bool on_render(const Glib::RefPtr<Gdk::GLContext>& context);
+
+    /// @brief Callback GTK appelé à la destruction du contexte OpenGL.
     void on_unrealize();
+
+    /// @brief Callback GTK appelé lors d'un appui sur un bouton de la souris.
     bool on_button_press(GdkEventButton* e);
+
+    /// @brief Callback GTK appelé lors du relâchement d'un bouton de la souris.
     bool on_button_release(GdkEventButton* e);
+
+    /// @brief Callback GTK appelé lors d'un mouvement de la souris.
     bool on_motion(GdkEventMotion* e);
+
+    /// @brief Callback GTK appelé lors d'un appui sur une touche clavier.
     bool on_key_press(GdkEventKey* e);
+
+    /// @brief Recalcule et met à jour la position écran de tous les marqueurs.
     void update_markers_positions();
+
+    /// @brief Redonne le focus clavier à la GLArea.
     void focus_gl_area();
+
+    /// @brief Projette un point 3D monde vers les coordonnées écran 2D.
+    /// @param point_3d Point en coordonnées monde.
+    /// @return Paire (x, y) en pixels dans le widget.
     std::pair<double, double> project_to_2d(const glm::vec3& point_3d);
+
+    /// @brief Projette un point local 3D d'un modèle vers les coordonnées écran 2D.
+    /// @param local_pos Position locale du point (coordonnées objet).
+    /// @param tr Transformation du modèle.
+    /// @return Paire (x, y) en pixels dans le widget.
     std::pair<double, double> project_to_2d(const glm::vec3& local_pos, const ModelTransform& tr);
+
+    /// @brief Construit la matrice modèle GLM à partir d'une ModelTransform.
+    /// @param tr Transformation source.
+    /// @return Matrice 4x4 TRS (Translation × Rotation × Scale).
     glm::mat4 make_model_matrix(const ModelTransform& tr) const;
+
+    /// @brief Crée et ajoute le marqueur central pour un modèle donné.
+    /// @param model_index Index du modèle dans m_scenes.
     void add_center_marker(int model_index);
+
+    /// @brief Callback Cairo de dessin du conteneur fixe (traits entre marqueurs).
     bool on_fixed_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+
+    /// @brief Callback appelé lors d'un drag sur un marqueur.
+    /// @param type Type du marqueur dragué.
+    /// @param model_index Index du modèle concerné.
+    /// @param dx Déplacement horizontal en pixels.
+    /// @param dy Déplacement vertical en pixels.
     void on_marker_dragged(MarkerType type, int model_index, double dx, double dy);
+
+    /// @brief Connecte les signaux GTK d'un marqueur aux callbacks de Gl.
+    /// @param marker Marqueur à connecter.
     void connect_marker_signals(ModelMarker* marker);
 };

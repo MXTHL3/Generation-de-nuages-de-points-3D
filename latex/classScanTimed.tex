@@ -1,0 +1,95 @@
+\hypertarget{classScanTimed}{}\doxysection{Scan\+Timed Class Reference}
+\label{classScanTimed}\index{ScanTimed@{ScanTimed}}
+
+
+Scan sur une durée paramétrable en secondes.  
+
+
+
+
+{\ttfamily \#include $<$scan\+\_\+strategy.\+h$>$}
+
+
+
+Inheritance diagram for Scan\+Timed\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classScanTimed__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scan\+Timed\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classScanTimed__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScanTimed_a4ba437223fb2320a1cf265b7ceddaf15}{Scan\+Timed}} (double duration\+\_\+in\+\_\+seconds)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classScanTimed_a6f0002784c08cba0a4a52fffe5b3fff0}{execute}} (const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&scanner, const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene) const override
+\begin{DoxyCompactList}\small\item\em Execute le scan selon la stratégie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Scan sur une durée paramétrable en secondes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScanTimed_a4ba437223fb2320a1cf265b7ceddaf15}\label{classScanTimed_a4ba437223fb2320a1cf265b7ceddaf15}} 
+\index{ScanTimed@{ScanTimed}!ScanTimed@{ScanTimed}}
+\index{ScanTimed@{ScanTimed}!ScanTimed@{ScanTimed}}
+\doxysubsubsection{\texorpdfstring{ScanTimed()}{ScanTimed()}}
+{\footnotesize\ttfamily Scan\+Timed\+::\+Scan\+Timed (\begin{DoxyParamCaption}\item[{double}]{duration\+\_\+in\+\_\+seconds }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration\+\_\+in\+\_\+seconds} & Durée du scan en secondes. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScanTimed_a6f0002784c08cba0a4a52fffe5b3fff0}\label{classScanTimed_a6f0002784c08cba0a4a52fffe5b3fff0}} 
+\index{ScanTimed@{ScanTimed}!execute@{execute}}
+\index{execute@{execute}!ScanTimed@{ScanTimed}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ Scan\+Timed\+::execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&}]{scanner,  }\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execute le scan selon la stratégie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Le scanner qui réalise le scan. \\
+\hline
+{\em lidar\+\_\+ent} & Le capteur Lidar. \\
+\hline
+{\em scene} & La scène construite (build() appelé avant). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nuage de points résultat. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classScanStrategy_acd1db6211ab4660692c5ce276c55c1aa}{Scan\+Strategy}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classScanTimed_a6f0002784c08cba0a4a52fffe5b3fff0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scan__strategy_8h}{scan\+\_\+strategy.\+h}}\item 
+\mbox{\hyperlink{scan__strategy_8cpp}{scan\+\_\+strategy.\+cpp}}\end{DoxyCompactItemize}

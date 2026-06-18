@@ -23,7 +23,7 @@ Collaboration diagram for Lidar\+Scanner\+:\nopagebreak
 \item 
 \mbox{\hyperlink{classLidarScanner_a844abd4f8e8b273c21f61c926aca6f8d}{Lidar\+Scanner}} ()=default
 \item 
-std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classLidarScanner_a81a1deceea24915af9542567f8ad426a}{scan}} (const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene) const
+std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classLidarScanner_a6735af09536d112d8c2aadc890ed999c}{scan}} (const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene, bool apply\+\_\+noise=true, double duration=-\/1.\+0, unsigned int number\+\_\+of\+\_\+thread=4) const
 \begin{DoxyCompactList}\small\item\em Effectue un scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -40,11 +40,11 @@ Moteur de scan \+: intersection des rayons avec la scène et le noise Reçoit le
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLidarScanner_a81a1deceea24915af9542567f8ad426a}\label{classLidarScanner_a81a1deceea24915af9542567f8ad426a}} 
+\mbox{\Hypertarget{classLidarScanner_a6735af09536d112d8c2aadc890ed999c}\label{classLidarScanner_a6735af09536d112d8c2aadc890ed999c}} 
 \index{LidarScanner@{LidarScanner}!scan@{scan}}
 \index{scan@{scan}!LidarScanner@{LidarScanner}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ Lidar\+Scanner\+::scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ Lidar\+Scanner\+::scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene,  }\item[{bool}]{apply\+\_\+noise = {\ttfamily true},  }\item[{double}]{duration = {\ttfamily -\/1.0},  }\item[{unsigned int}]{number\+\_\+of\+\_\+thread = {\ttfamily 4} }\end{DoxyParamCaption}) const}
 
 
 
@@ -60,19 +60,18 @@ Effectue un scan.
 \begin{DoxyReturn}{Returns}
 Nuage de points. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLidarScanner_a81a1deceea24915af9542567f8ad426a_cgraph}
+\includegraphics[width=350pt]{classLidarScanner_a6735af09536d112d8c2aadc890ed999c_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=301pt]{classLidarScanner_a81a1deceea24915af9542567f8ad426a_icgraph}
+\includegraphics[width=350pt]{classLidarScanner_a6735af09536d112d8c2aadc890ed999c_icgraph}
 \end{center}
 \end{figure}
 

@@ -98,13 +98,13 @@ Include dependency graph for entity.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd">generate_ray_grid</a> (const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;origin, const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;world_xf, double fov_h, double fov_v, int res_h, int res_v)</td></tr>
-<tr class="memdesc:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère une grille régulière de rayons (partagé entre Flash et Miroir raster).  <a href="entity_8cpp.html#a71418d6a5291ec99a1c2399d6e0f27bd">More...</a><br /></td></tr>
-<tr class="separator:a71418d6a5291ec99a1c2399d6e0f27bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556ee0dc3b72585b00b1547e68961e5b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entity_8cpp.html#a556ee0dc3b72585b00b1547e68961e5b">generate_ray_grid</a> (const <a class="el" href="pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9">Point3</a> &amp;origin, const <a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a> &amp;world_xf, double fov_h_min, double fov_h_max, double fov_v_min, double fov_v_max, int res_h, int res_v)</td></tr>
+<tr class="memdesc:a556ee0dc3b72585b00b1547e68961e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère une grille régulière de rayons (partagé entre Flash et Miroir raster).  <a href="entity_8cpp.html#a556ee0dc3b72585b00b1547e68961e5b">More...</a><br /></td></tr>
+<tr class="separator:a556ee0dc3b72585b00b1547e68961e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a71418d6a5291ec99a1c2399d6e0f27bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71418d6a5291ec99a1c2399d6e0f27bd">&#9670;&nbsp;</a></span>generate_ray_grid()</h2>
+<a id="a556ee0dc3b72585b00b1547e68961e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556ee0dc3b72585b00b1547e68961e5b">&#9670;&nbsp;</a></span>generate_ray_grid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,13 +125,25 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_h</em>, </td>
+          <td class="paramname"><em>fov_h_min</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_v</em>, </td>
+          <td class="paramname"><em>fov_h_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_max</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -158,6 +170,10 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">origin</td><td>Position du capteur. </td></tr>
     <tr><td class="paramname">wolrd_xf</td><td>Transformation monde du capteur. </td></tr>
+    <tr><td class="paramname">fov_h_min</td><td>///&lt; Borne inférieure champ de vision horizontal (radians). </td></tr>
+    <tr><td class="paramname">fov_h_max</td><td>///&lt; Borne supérieure champ de vision horizontal (radians). </td></tr>
+    <tr><td class="paramname">fov_v_min</td><td>///&lt; Borne inférieure champ de vision vertical (radians). </td></tr>
+    <tr><td class="paramname">fov_v_max</td><td>///&lt; Borne inférieure champ de vision vertical (radians). </td></tr>
     <tr><td class="paramname">res_h</td><td>///&lt; Nombre de colonnes. </td></tr>
     <tr><td class="paramname">res_v</td><td>///&lt; Nombre de lignes. </td></tr>
   </table>
@@ -166,10 +182,10 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="entity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph.png" border="0" usemap="#aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" alt=""/></div>
-<map name="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph" id="aentity_8cpp_a71418d6a5291ec99a1c2399d6e0f27bd_icgraph">
+<div class="center"><img src="entity_8cpp_a556ee0dc3b72585b00b1547e68961e5b_icgraph.png" border="0" usemap="#aentity_8cpp_a556ee0dc3b72585b00b1547e68961e5b_icgraph" alt=""/></div>
+<map name="aentity_8cpp_a556ee0dc3b72585b00b1547e68961e5b_icgraph" id="aentity_8cpp_a556ee0dc3b72585b00b1547e68961e5b_icgraph">
 <area shape="rect" title="Génère une grille régulière de rayons (partagé entre Flash et Miroir raster)." alt="" coords="280,5,420,32"/>
-<area shape="rect" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="5,5,232,32"/>
+<area shape="rect" href="classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31" title="Génère tous les rayons pour le scan." alt="" coords="5,5,232,32"/>
 </map>
 </div>
 

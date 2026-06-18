@@ -79,8 +79,8 @@ Inheritance diagram for MirroredLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarConfig__inherit__graph.png" border="0" usemap="#aMirroredLidarConfig_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMirroredLidarConfig_inherit__map" id="aMirroredLidarConfig_inherit__map">
-<area shape="rect" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="5,248,212,443"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="13,5,205,200"/>
+<area shape="rect" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="5,277,212,501"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="13,5,205,229"/>
 </map>
 </div>
 <div class="dynheader">
@@ -88,8 +88,8 @@ Collaboration diagram for MirroredLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarConfig__coll__graph.png" border="0" usemap="#aMirroredLidarConfig_coll__map" alt="Collaboration graph"/></div>
 <map name="aMirroredLidarConfig_coll__map" id="aMirroredLidarConfig_coll__map">
-<area shape="rect" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="5,389,212,584"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="13,160,205,340"/>
+<area shape="rect" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="5,419,212,643"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="13,160,205,369"/>
 <area shape="rect" href="structNoiseProfile.html" title="Profil du bruit d&#39;un capteur lidar." alt="" coords="57,5,160,97"/>
 </map>
 </div>
@@ -100,8 +100,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a52e459ad1a315ab476eea953a9620fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6904b2378b42bba1cf3564cd6aa83bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#ac6904b2378b42bba1cf3564cd6aa83bd">is_raster</a> () const</td></tr>
 <tr class="separator:ac6904b2378b42bba1cf3564cd6aa83bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57b8886a05d71052b3c76696fe7ad290"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a57b8886a05d71052b3c76696fe7ad290">MirroredLidarConfig</a> (std::string name, double min_dist, double max_dist, double accuracy, int points_per_second, double fov_h, double fov_v, double integration_time)</td></tr>
-<tr class="separator:a57b8886a05d71052b3c76696fe7ad290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2156199b9b1e93db6be02dc4de52bc56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a2156199b9b1e93db6be02dc4de52bc56">MirroredLidarConfig</a> (std::string name, double min_dist, double max_dist, double accuracy, int points_per_second, double fov_h_min, double fov_h_max, double fov_v_min, double fov_v_max, double integration_time)</td></tr>
+<tr class="separator:a2156199b9b1e93db6be02dc4de52bc56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27e2f80a80a630b93d7fe669191ae1f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a27e2f80a80a630b93d7fe669191ae1f3">serialize</a> (nlohmann::json &amp;data) const override</td></tr>
 <tr class="memdesc:a27e2f80a80a630b93d7fe669191ae1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise le configuration complète en JSON.  <a href="classMirroredLidarConfig.html#a27e2f80a80a630b93d7fe669191ae1f3">More...</a><br /></td></tr>
 <tr class="separator:a27e2f80a80a630b93d7fe669191ae1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,12 +118,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9eee5757f700c9bd9ab921060ccf4b76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a9eee5757f700c9bd9ab921060ccf4b76">m_points_per_second</a></td></tr>
 <tr class="memdesc:a9eee5757f700c9bd9ab921060ccf4b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tir par secondes.  <a href="classMirroredLidarConfig.html#a9eee5757f700c9bd9ab921060ccf4b76">More...</a><br /></td></tr>
 <tr class="separator:a9eee5757f700c9bd9ab921060ccf4b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4612d77ab351ce4cb4d4755184fcf0ba"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a4612d77ab351ce4cb4d4755184fcf0ba">m_fov_h</a></td></tr>
-<tr class="memdesc:a4612d77ab351ce4cb4d4755184fcf0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fov horizontal maximal (radians)  <a href="classMirroredLidarConfig.html#a4612d77ab351ce4cb4d4755184fcf0ba">More...</a><br /></td></tr>
-<tr class="separator:a4612d77ab351ce4cb4d4755184fcf0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d9d8f7766900e47f6cebb08fbea472"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a31d9d8f7766900e47f6cebb08fbea472">m_fov_v</a></td></tr>
-<tr class="memdesc:a31d9d8f7766900e47f6cebb08fbea472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fov vertical maximal (radians)  <a href="classMirroredLidarConfig.html#a31d9d8f7766900e47f6cebb08fbea472">More...</a><br /></td></tr>
-<tr class="separator:a31d9d8f7766900e47f6cebb08fbea472"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8876b8fb5d0d5f6dbfddcf7109a1f0aa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#a8876b8fb5d0d5f6dbfddcf7109a1f0aa">m_fov_h_min</a></td></tr>
+<tr class="memdesc:a8876b8fb5d0d5f6dbfddcf7109a1f0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision horizontal (radians).  <a href="classMirroredLidarConfig.html#a8876b8fb5d0d5f6dbfddcf7109a1f0aa">More...</a><br /></td></tr>
+<tr class="separator:a8876b8fb5d0d5f6dbfddcf7109a1f0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3098efc7d7566c593484038698dce4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#aa3098efc7d7566c593484038698dce4a">m_fov_h_max</a></td></tr>
+<tr class="memdesc:aa3098efc7d7566c593484038698dce4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne supérieure champ de vision horizontal (radians).  <a href="classMirroredLidarConfig.html#aa3098efc7d7566c593484038698dce4a">More...</a><br /></td></tr>
+<tr class="separator:aa3098efc7d7566c593484038698dce4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99d747e4c8e5ed265b4d96c6d03d2e7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#ae99d747e4c8e5ed265b4d96c6d03d2e7">m_fov_v_min</a></td></tr>
+<tr class="memdesc:ae99d747e4c8e5ed265b4d96c6d03d2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision vertical (radians).  <a href="classMirroredLidarConfig.html#ae99d747e4c8e5ed265b4d96c6d03d2e7">More...</a><br /></td></tr>
+<tr class="separator:ae99d747e4c8e5ed265b4d96c6d03d2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f4d1f470fa5a6e28776426d196b142"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#ad7f4d1f470fa5a6e28776426d196b142">m_fov_v_max</a></td></tr>
+<tr class="memdesc:ad7f4d1f470fa5a6e28776426d196b142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision vertical (radians).  <a href="classMirroredLidarConfig.html#ad7f4d1f470fa5a6e28776426d196b142">More...</a><br /></td></tr>
+<tr class="separator:ad7f4d1f470fa5a6e28776426d196b142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adae3ae06537b27382ca014f5006de678"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarConfig.html#adae3ae06537b27382ca014f5006de678">m_integration_time</a></td></tr>
 <tr class="memdesc:adae3ae06537b27382ca014f5006de678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'acumulation d'une frame (secondes)  <a href="classMirroredLidarConfig.html#adae3ae06537b27382ca014f5006de678">More...</a><br /></td></tr>
 <tr class="separator:adae3ae06537b27382ca014f5006de678"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,12 +159,17 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">serialize_noise_profile</a> (nlohmann::json &amp;data) const</td></tr>
 <tr class="memdesc:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise le profil de bruit.  <a href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">More...</a><br /></td></tr>
 <tr class="separator:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">serialize_base</a> (nlohmann::json &amp;data) const</td></tr>
+<tr class="memdesc:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise les paramètres communs aux configs.  <a href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">More...</a><br /></td></tr>
+<tr class="separator:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d">noise_to_string</a> () const</td></tr>
+<tr class="separator:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration d'un lidar à miroir (balayage de Lissajous) </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a57b8886a05d71052b3c76696fe7ad290"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57b8886a05d71052b3c76696fe7ad290">&#9670;&nbsp;</a></span>MirroredLidarConfig()</h2>
+<a id="a2156199b9b1e93db6be02dc4de52bc56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2156199b9b1e93db6be02dc4de52bc56">&#9670;&nbsp;</a></span>MirroredLidarConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,13 +208,25 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_h</em>, </td>
+          <td class="paramname"><em>fov_h_min</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_v</em>, </td>
+          <td class="paramname"><em>fov_h_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_max</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -306,11 +329,12 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph.png" border="0" usemap="#aclassMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph" alt=""/></div>
 <map name="aclassMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph" id="aclassMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph">
-<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,104,156,145"/>
-<area shape="rect" href="classMirroredLidarConfig.html#a52e459ad1a315ab476eea953a9620fbb" title=" " alt="" coords="208,5,359,47"/>
-<area shape="rect" href="classMirroredLidarConfig.html#ac6904b2378b42bba1cf3564cd6aa83bd" title=" " alt="" coords="208,71,359,112"/>
-<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="204,136,363,177"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="236,202,331,229"/>
+<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,100,156,141"/>
+<area shape="rect" href="classMirroredLidarConfig.html#a52e459ad1a315ab476eea953a9620fbb" title=" " alt="" coords="227,5,377,47"/>
+<area shape="rect" href="classMirroredLidarConfig.html#ac6904b2378b42bba1cf3564cd6aa83bd" title=" " alt="" coords="227,71,377,112"/>
+<area shape="rect" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b" title="Serialise les paramètres communs aux configs." alt="" coords="204,137,400,163"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="255,187,349,214"/>
+<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="448,129,607,171"/>
 </map>
 </div>
 
@@ -345,43 +369,76 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph.png" border="0" usemap="#aclassMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph" alt=""/></div>
 <map name="aclassMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph" id="aclassMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,156,47"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="204,13,299,39"/>
+<area shape="rect" title=" " alt="" coords="5,35,156,76"/>
+<area shape="rect" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d" title=" " alt="" coords="204,5,343,47"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="226,71,321,98"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4612d77ab351ce4cb4d4755184fcf0ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4612d77ab351ce4cb4d4755184fcf0ba">&#9670;&nbsp;</a></span>m_fov_h</h2>
+<a id="aa3098efc7d7566c593484038698dce4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3098efc7d7566c593484038698dce4a">&#9670;&nbsp;</a></span>m_fov_h_max</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double MirroredLidarConfig::m_fov_h</td>
+          <td class="memname">double MirroredLidarConfig::m_fov_h_max</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fov horizontal maximal (radians) </p>
+<p>Borne supérieure champ de vision horizontal (radians). </p>
 
 </div>
 </div>
-<a id="a31d9d8f7766900e47f6cebb08fbea472"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31d9d8f7766900e47f6cebb08fbea472">&#9670;&nbsp;</a></span>m_fov_v</h2>
+<a id="a8876b8fb5d0d5f6dbfddcf7109a1f0aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8876b8fb5d0d5f6dbfddcf7109a1f0aa">&#9670;&nbsp;</a></span>m_fov_h_min</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double MirroredLidarConfig::m_fov_v</td>
+          <td class="memname">double MirroredLidarConfig::m_fov_h_min</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fov vertical maximal (radians) </p>
+<p>Borne inférieure champ de vision horizontal (radians). </p>
+
+</div>
+</div>
+<a id="ad7f4d1f470fa5a6e28776426d196b142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f4d1f470fa5a6e28776426d196b142">&#9670;&nbsp;</a></span>m_fov_v_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MirroredLidarConfig::m_fov_v_max</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Borne inférieure champ de vision vertical (radians). </p>
+
+</div>
+</div>
+<a id="ae99d747e4c8e5ed265b4d96c6d03d2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae99d747e4c8e5ed265b4d96c6d03d2e7">&#9670;&nbsp;</a></span>m_fov_v_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MirroredLidarConfig::m_fov_v_min</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Borne inférieure champ de vision vertical (radians). </p>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
 <map id="Pose::transform" name="Pose::transform">
 <area shape="rect" id="node1" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="677,35,803,61"/>
 <area shape="rect" id="node2" href="$classIEntity.html#a671f515548fe22ae05d97f32b24c0117" title="Calcule la matrice de transformation pour placement dans la scène." alt="" coords="495,35,629,61"/>
-<area shape="rect" id="node3" href="$classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86" title="Génère tous les rayons pour le scan." alt="" coords="220,5,447,32"/>
-<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html#a78f0340d9bccc111af65f8c43e26ce6b" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="250,57,417,98"/>
-<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3" title="Génère tous les rayons pour le scan." alt="" coords="5,57,172,98"/>
+<area shape="rect" id="node3" href="$classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31" title="Génère tous les rayons pour le scan." alt="" coords="220,5,447,32"/>
+<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html#a3649f85abd4cf73045891e02fe40d657" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="250,57,417,98"/>
+<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="5,57,172,98"/>
 </map>

@@ -24,7 +24,7 @@ Collaboration diagram for Mirrored\+Lidar\+Config\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=247pt]{classMirroredLidarConfig__coll__graph}
+\includegraphics[height=550pt]{classMirroredLidarConfig__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -34,7 +34,7 @@ bool \mbox{\hyperlink{classMirroredLidarConfig_a52e459ad1a315ab476eea953a9620fbb
 \item 
 bool \mbox{\hyperlink{classMirroredLidarConfig_ac6904b2378b42bba1cf3564cd6aa83bd}{is\+\_\+raster}} () const
 \item 
-\mbox{\hyperlink{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}{Mirrored\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, int points\+\_\+per\+\_\+second, double fov\+\_\+h, double fov\+\_\+v, double integration\+\_\+time)
+\mbox{\hyperlink{classMirroredLidarConfig_a2156199b9b1e93db6be02dc4de52bc56}{Mirrored\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, int points\+\_\+per\+\_\+second, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max, double integration\+\_\+time)
 \item 
 void \mbox{\hyperlink{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3}{serialize}} (nlohmann\+::json \&data) const override
 \begin{DoxyCompactList}\small\item\em Serialise le configuration complète en JSON. \end{DoxyCompactList}\item 
@@ -45,10 +45,14 @@ std\+::string \mbox{\hyperlink{classMirroredLidarConfig_a88302304b582ee2b42f5849
 \item 
 int \mbox{\hyperlink{classMirroredLidarConfig_a9eee5757f700c9bd9ab921060ccf4b76}{m\+\_\+points\+\_\+per\+\_\+second}}
 \begin{DoxyCompactList}\small\item\em Tir par secondes. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}{m\+\_\+fov\+\_\+h}}
-\begin{DoxyCompactList}\small\item\em Fov horizontal maximal (radians) \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}{m\+\_\+fov\+\_\+v}}
-\begin{DoxyCompactList}\small\item\em Fov vertical maximal (radians) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_a8876b8fb5d0d5f6dbfddcf7109a1f0aa}{m\+\_\+fov\+\_\+h\+\_\+min}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision horizontal (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_aa3098efc7d7566c593484038698dce4a}{m\+\_\+fov\+\_\+h\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em Borne supérieure champ de vision horizontal (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_ae99d747e4c8e5ed265b4d96c6d03d2e7}{m\+\_\+fov\+\_\+v\+\_\+min}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision vertical (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMirroredLidarConfig_ad7f4d1f470fa5a6e28776426d196b142}{m\+\_\+fov\+\_\+v\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision vertical (radians). \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}{m\+\_\+integration\+\_\+time}}
 \begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}acumulation d\textquotesingle{}une frame (secondes) \end{DoxyCompactList}\item 
 std\+::variant$<$ \mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}}, \mbox{\hyperlink{structRasterParams}{Raster\+Params}} $>$ \mbox{\hyperlink{classMirroredLidarConfig_a028154e385f9c40dd4c718105e3c497e}{m\+\_\+mirrored\+\_\+scan\+\_\+params}}
@@ -60,11 +64,11 @@ std\+::variant$<$ \mbox{\hyperlink{structLissajouParams}{Lissajou\+Params}}, \mb
 Configuration d\textquotesingle{}un lidar à miroir (balayage de Lissajous) 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}\label{classMirroredLidarConfig_a57b8886a05d71052b3c76696fe7ad290}} 
+\mbox{\Hypertarget{classMirroredLidarConfig_a2156199b9b1e93db6be02dc4de52bc56}\label{classMirroredLidarConfig_a2156199b9b1e93db6be02dc4de52bc56}} 
 \index{MirroredLidarConfig@{MirroredLidarConfig}!MirroredLidarConfig@{MirroredLidarConfig}}
 \index{MirroredLidarConfig@{MirroredLidarConfig}!MirroredLidarConfig@{MirroredLidarConfig}}
 \doxysubsubsection{\texorpdfstring{MirroredLidarConfig()}{MirroredLidarConfig()}}
-{\footnotesize\ttfamily Mirrored\+Lidar\+Config\+::\+Mirrored\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{int}]{points\+\_\+per\+\_\+second,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v,  }\item[{double}]{integration\+\_\+time }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Mirrored\+Lidar\+Config\+::\+Mirrored\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{int}]{points\+\_\+per\+\_\+second,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max,  }\item[{double}]{integration\+\_\+time }\end{DoxyParamCaption})}
 
 
 
@@ -113,7 +117,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=348pt]{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph}
+\includegraphics[width=350pt]{classMirroredLidarConfig_a27e2f80a80a630b93d7fe669191ae1f3_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}\label{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299}} 
@@ -130,31 +134,51 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph}
+\includegraphics[width=333pt]{classMirroredLidarConfig_a88302304b582ee2b42f5849522e28299_cgraph}
 \end{center}
 \end{figure}
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}\label{classMirroredLidarConfig_a4612d77ab351ce4cb4d4755184fcf0ba}} 
-\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_h@{m\_fov\_h}}
-\index{m\_fov\_h@{m\_fov\_h}!MirroredLidarConfig@{MirroredLidarConfig}}
-\doxysubsubsection{\texorpdfstring{m\_fov\_h}{m\_fov\_h}}
-{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+h}
+\mbox{\Hypertarget{classMirroredLidarConfig_aa3098efc7d7566c593484038698dce4a}\label{classMirroredLidarConfig_aa3098efc7d7566c593484038698dce4a}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_h\_max@{m\_fov\_h\_max}}
+\index{m\_fov\_h\_max@{m\_fov\_h\_max}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_h\_max}{m\_fov\_h\_max}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+h\+\_\+max}
 
 
 
-Fov horizontal maximal (radians) 
+Borne supérieure champ de vision horizontal (radians). 
 
-\mbox{\Hypertarget{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}\label{classMirroredLidarConfig_a31d9d8f7766900e47f6cebb08fbea472}} 
-\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_v@{m\_fov\_v}}
-\index{m\_fov\_v@{m\_fov\_v}!MirroredLidarConfig@{MirroredLidarConfig}}
-\doxysubsubsection{\texorpdfstring{m\_fov\_v}{m\_fov\_v}}
-{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+v}
+\mbox{\Hypertarget{classMirroredLidarConfig_a8876b8fb5d0d5f6dbfddcf7109a1f0aa}\label{classMirroredLidarConfig_a8876b8fb5d0d5f6dbfddcf7109a1f0aa}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_h\_min@{m\_fov\_h\_min}}
+\index{m\_fov\_h\_min@{m\_fov\_h\_min}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_h\_min}{m\_fov\_h\_min}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+h\+\_\+min}
 
 
 
-Fov vertical maximal (radians) 
+Borne inférieure champ de vision horizontal (radians). 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_ad7f4d1f470fa5a6e28776426d196b142}\label{classMirroredLidarConfig_ad7f4d1f470fa5a6e28776426d196b142}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_v\_max@{m\_fov\_v\_max}}
+\index{m\_fov\_v\_max@{m\_fov\_v\_max}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_v\_max}{m\_fov\_v\_max}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+v\+\_\+max}
+
+
+
+Borne inférieure champ de vision vertical (radians). 
+
+\mbox{\Hypertarget{classMirroredLidarConfig_ae99d747e4c8e5ed265b4d96c6d03d2e7}\label{classMirroredLidarConfig_ae99d747e4c8e5ed265b4d96c6d03d2e7}} 
+\index{MirroredLidarConfig@{MirroredLidarConfig}!m\_fov\_v\_min@{m\_fov\_v\_min}}
+\index{m\_fov\_v\_min@{m\_fov\_v\_min}!MirroredLidarConfig@{MirroredLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_v\_min}{m\_fov\_v\_min}}
+{\footnotesize\ttfamily double Mirrored\+Lidar\+Config\+::m\+\_\+fov\+\_\+v\+\_\+min}
+
+
+
+Borne inférieure champ de vision vertical (radians). 
 
 \mbox{\Hypertarget{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}\label{classMirroredLidarConfig_adae3ae06537b27382ca014f5006de678}} 
 \index{MirroredLidarConfig@{MirroredLidarConfig}!m\_integration\_time@{m\_integration\_time}}

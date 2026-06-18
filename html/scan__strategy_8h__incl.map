@@ -1,0 +1,22 @@
+<map id="scan_strategy.h" name="scan_strategy.h">
+<area shape="rect" id="node1" title=" " alt="" coords="497,5,620,32"/>
+<area shape="rect" id="node2" href="$lidar__scanner_8h.html" title=" " alt="" coords="548,80,668,107"/>
+<area shape="rect" id="node3" href="$scene_8h.html" title=" " alt="" coords="396,155,468,181"/>
+<area shape="rect" id="node4" href="$entity_8h.html" title=" " alt="" coords="526,237,597,263"/>
+<area shape="rect" id="node8" title=" " alt="" coords="711,393,774,420"/>
+<area shape="rect" id="node20" title=" " alt="" coords="599,155,660,181"/>
+<area shape="rect" id="node17" title=" " alt="" coords="185,237,327,263"/>
+<area shape="rect" id="node18" title=" " alt="" coords="351,237,502,263"/>
+<area shape="rect" id="node19" title=" " alt="" coords="5,229,160,271"/>
+<area shape="rect" id="node5" href="$pose_8h.html" title=" " alt="" coords="185,319,250,345"/>
+<area shape="rect" id="node7" href="$lidar_8h.html" title=" " alt="" coords="445,319,507,345"/>
+<area shape="rect" id="node12" href="$noise__model_8h.html" title=" " alt="" coords="216,393,333,420"/>
+<area shape="rect" id="node16" title=" " alt="" coords="532,319,609,345"/>
+<area shape="rect" id="node6" title=" " alt="" coords="6,393,191,420"/>
+<area shape="rect" id="node9" title=" " alt="" coords="572,468,631,495"/>
+<area shape="rect" id="node10" title=" " alt="" coords="567,393,635,420"/>
+<area shape="rect" id="node11" title=" " alt="" coords="331,468,477,495"/>
+<area shape="rect" id="node15" href="$horizontal__step_8h.html" title=" " alt="" coords="409,393,543,420"/>
+<area shape="rect" id="node13" title=" " alt="" coords="147,468,219,495"/>
+<area shape="rect" id="node14" title=" " alt="" coords="243,468,306,495"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ScanThreeSixty" name="ScanThreeSixty">
+<area shape="rect" id="node1" title="Scan complet : 1 tour lidar mécanique, 1 frame flash/miroir." alt="" coords="16,145,139,223"/>
+<area shape="rect" id="node2" href="$classScanStrategy.html" title="Interface de stratégie de scan." alt="" coords="5,5,149,97"/>
+</map>

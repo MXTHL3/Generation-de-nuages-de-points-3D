@@ -1,4 +1,5 @@
 <map id="FlashLidarConfig::to_string" name="FlashLidarConfig::to_string">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,156,47"/>
-<area shape="rect" id="node2" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="204,13,299,39"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,35,156,76"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html#a778006bee5980f292dfc339b19b5547d" title=" " alt="" coords="204,5,343,47"/>
+<area shape="rect" id="node3" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="226,71,321,98"/>
 </map>

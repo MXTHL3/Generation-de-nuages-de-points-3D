@@ -31,11 +31,11 @@ class \mbox{\hyperlink{classStaticEntity}{Static\+Entity}}
 class \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}}
 \begin{DoxyCompactList}\small\item\em Capteur Lidar abstrait dans la scène Gère la configuration d\textquotesingle{}un lidar \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}}, son modèle de bruit et la génération des rayons à lancer pour le scan. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classMechanicalLidarEntity}{Mechanical\+Lidar\+Entity}}
-\begin{DoxyCompactList}\small\item\em Capteur lidar mécanique rotatif (Velodyne, Ouster). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai). \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classFlashLidarEntity}{Flash\+Lidar\+Entity}}
 \begin{DoxyCompactList}\small\item\em Capteur lidar flash solid-\/state (Continental HFL110) \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classMirroredLidarEntity}{Mirrored\+Lidar\+Entity}}
-\begin{DoxyCompactList}\small\item\em Capteur lidar à Miroir oscillant (Livox) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Capteur lidar à Miroir oscillant (Livox, Robosense) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,7 +46,7 @@ typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da6
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&wolrd\+\_\+xf, double fov\+\_\+h, double fov\+\_\+v, int res\+\_\+h, int res\+\_\+v)
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8h_ac7188ded18d9c338bae449fe9a08262a}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&wolrd\+\_\+xf, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max, int res\+\_\+h, int res\+\_\+v)
 \begin{DoxyCompactList}\small\item\em Génère une grille régulière de rayons (partagé entre Flash et Miroir raster). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -66,11 +66,11 @@ std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{R
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}\label{entity_8h_afefd8b045a25954cd8c383a3f81d44ea}} 
+\mbox{\Hypertarget{entity_8h_ac7188ded18d9c338bae449fe9a08262a}\label{entity_8h_ac7188ded18d9c338bae449fe9a08262a}} 
 \index{entity.h@{entity.h}!generate\_ray\_grid@{generate\_ray\_grid}}
 \index{generate\_ray\_grid@{generate\_ray\_grid}!entity.h@{entity.h}}
 \doxysubsubsection{\texorpdfstring{generate\_ray\_grid()}{generate\_ray\_grid()}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
 
 
 
@@ -82,6 +82,14 @@ Génère une grille régulière de rayons (partagé entre Flash et Miroir raster
 \hline
 {\em wolrd\+\_\+xf} & Transformation monde du capteur. \\
 \hline
+{\em fov\+\_\+h\+\_\+min} & ///$<$ Borne inférieure champ de vision horizontal (radians). \\
+\hline
+{\em fov\+\_\+h\+\_\+max} & ///$<$ Borne supérieure champ de vision horizontal (radians). \\
+\hline
+{\em fov\+\_\+v\+\_\+min} & ///$<$ Borne inférieure champ de vision vertical (radians). \\
+\hline
+{\em fov\+\_\+v\+\_\+max} & ///$<$ Borne inférieure champ de vision vertical (radians). \\
+\hline
 {\em res\+\_\+h} & ///$<$ Nombre de colonnes. \\
 \hline
 {\em res\+\_\+v} & ///$<$ Nombre de lignes. \\
@@ -91,6 +99,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{entity_8h_afefd8b045a25954cd8c383a3f81d44ea_icgraph}
+\includegraphics[width=350pt]{entity_8h_ac7188ded18d9c338bae449fe9a08262a_icgraph}
 \end{center}
 \end{figure}

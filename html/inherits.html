@@ -113,8 +113,8 @@ $(function() {
 <area shape="rect" href="classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="120,56,212,83"/>
 <area shape="rect" href="classStaticEntity.html" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="117,107,215,133"/>
 <area shape="rect" href="classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="283,5,409,32"/>
-<area shape="rect" href="classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="263,56,429,83"/>
-<area shape="rect" href="classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="273,107,419,133"/>
+<area shape="rect" href="classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai)." alt="" coords="263,56,429,83"/>
+<area shape="rect" href="classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="273,107,419,133"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_8.png" border="0" usemap="#aIntersection" alt=""/>
@@ -154,7 +154,7 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_14.png" border="0" usemap="#aLissajouParams" alt=""/>
 <map name="aLissajouParams" id="aLissajouParams">
-<area shape="rect" href="structLissajouParams.html" title="Paramètres de balayage en courbe de Lissajous pour un lidar à miroir. Les amplitudes et fréquences dé..." alt="" coords="5,5,128,32"/>
+<area shape="rect" href="structLissajouParams.html" title=" " alt="" coords="5,5,128,32"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_15.png" border="0" usemap="#aLogger" alt=""/>
@@ -230,17 +230,30 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_28.png" border="0" usemap="#aRasterParams" alt=""/>
 <map name="aRasterParams" id="aRasterParams">
-<area shape="rect" href="structRasterParams.html" title="Paramètres de balayage en grille régulière (raster) pour un lidar à miroir." alt="" coords="5,5,117,32"/>
+<area shape="rect" href="structRasterParams.html" title=" " alt="" coords="5,5,117,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_29.png" border="0" usemap="#aScene" alt=""/>
+<tr><td><img src="inherit_graph_29.png" border="0" usemap="#aScanStrategy" alt=""/>
+<map name="aScanStrategy" id="aScanStrategy">
+<area shape="rect" href="classScanStrategy.html" title="Interface de stratégie de scan." alt="" coords="5,56,113,83"/>
+<area shape="rect" href="classScanMultiple.html" title="N scans complets concaténés." alt="" coords="169,5,276,32"/>
+<area shape="rect" href="classScanThreeSixty.html" title="Scan complet : 1 tour lidar mécanique, 1 frame flash/miroir." alt="" coords="161,56,284,83"/>
+<area shape="rect" href="classScanTimed.html" title="Scan sur une durée paramétrable en secondes." alt="" coords="175,107,270,133"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_30.png" border="0" usemap="#aScene" alt=""/>
 <map name="aScene" id="aScene">
 <area shape="rect" href="classScene.html" title="Scène 3D : ensemble d&#39;entités statiques et arbre AABB pour les intersections. Après ajout des entités..." alt="" coords="5,5,67,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_30.png" border="0" usemap="#aSceneLoader" alt=""/>
+<tr><td><img src="inherit_graph_31.png" border="0" usemap="#aSceneLoader" alt=""/>
 <map name="aSceneLoader" id="aSceneLoader">
 <area shape="rect" href="classSceneLoader.html" title="Chargement et sauvegarde de scènes 3D depuis/vers des fichiers json." alt="" coords="5,5,111,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_32.png" border="0" usemap="#aSessionScan" alt=""/>
+<map name="aSessionScan" id="aSessionScan">
+<area shape="rect" href="classSessionScan.html" title="Exécute un scan avec une stratégie choisie." alt="" coords="5,5,108,32"/>
 </map>
 </td></tr>
 </table>

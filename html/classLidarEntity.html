@@ -81,8 +81,8 @@ Inheritance diagram for LidarEntity:</div>
 <map name="aLidarEntity_inherit__map" id="aLidarEntity_inherit__map">
 <area shape="rect" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="205,219,349,399"/>
 <area shape="rect" href="classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,454,157,575"/>
-<area shape="rect" href="classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster)." alt="" coords="182,447,373,583"/>
-<area shape="rect" href="classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="397,454,569,575"/>
+<area shape="rect" href="classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai)." alt="" coords="182,447,373,583"/>
+<area shape="rect" href="classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="397,454,569,575"/>
 <area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="222,5,333,171"/>
 </map>
 </div>
@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a61de62aac33a6ebbdb1ed0aed3fec85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71631b7b04a8d72242322a32135f43f4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classLidarConfig.html">LidarConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4">config</a> () const</td></tr>
 <tr class="separator:a71631b7b04a8d72242322a32135f43f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a869b0d4ce82488f1daab22b3a77e0235"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235">generate_rays</a> () const =0</td></tr>
-<tr class="memdesc:a869b0d4ce82488f1daab22b3a77e0235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère tous les rayons pour le scan.  <a href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235">More...</a><br /></td></tr>
-<tr class="separator:a869b0d4ce82488f1daab22b3a77e0235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1429a6e6844c7733f29973535576bbd8"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8">generate_rays</a> (double duration=-1.0) const =0</td></tr>
+<tr class="memdesc:a1429a6e6844c7733f29973535576bbd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère tous les rayons pour le scan.  <a href="classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8">More...</a><br /></td></tr>
+<tr class="separator:a1429a6e6844c7733f29973535576bbd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae08b8cea0223e9cf1d15a4451c363569"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html#ae08b8cea0223e9cf1d15a4451c363569">noise_model</a> (const <a class="el" href="classNoiseModel.html">NoiseModel</a> &amp;model)</td></tr>
 <tr class="memdesc:ae08b8cea0223e9cf1d15a4451c363569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace le modèle de bruit.  <a href="classLidarEntity.html#ae08b8cea0223e9cf1d15a4451c363569">More...</a><br /></td></tr>
 <tr class="separator:ae08b8cea0223e9cf1d15a4451c363569"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,16 +238,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarEntity_a71631b7b04a8d72242322a32135f43f4_icgraph.png" border="0" usemap="#aclassLidarEntity_a71631b7b04a8d72242322a32135f43f4_icgraph" alt=""/></div>
 <map name="aclassLidarEntity_a71631b7b04a8d72242322a32135f43f4_icgraph" id="aclassLidarEntity_a71631b7b04a8d72242322a32135f43f4_icgraph">
-<area shape="rect" title=" " alt="" coords="348,5,487,32"/>
-<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="156,5,300,32"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
+<area shape="rect" title=" " alt="" coords="427,81,565,108"/>
+<area shape="rect" href="classLidarScanner.html#a6735af09536d112d8c2aadc890ed999c" title="Effectue un scan." alt="" coords="235,81,379,108"/>
+<area shape="rect" href="classScanThreeSixty.html#a4c9305bfa42b9a53bcf1b04bda7844ca" title="Execute le scan selon la stratégie." alt="" coords="5,5,187,32"/>
+<area shape="rect" href="classScanTimed.html#a6f0002784c08cba0a4a52fffe5b3fff0" title="Execute le scan selon la stratégie." alt="" coords="19,56,173,83"/>
+<area shape="rect" href="classScanMultiple.html#ad76ccdbefde889a4d95570de79c9d5f8" title="Execute le scan selon la stratégie." alt="" coords="13,107,179,133"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="45,157,147,184"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a869b0d4ce82488f1daab22b3a77e0235"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a869b0d4ce82488f1daab22b3a77e0235">&#9670;&nbsp;</a></span>generate_rays()</h2>
+<a id="a1429a6e6844c7733f29973535576bbd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1429a6e6844c7733f29973535576bbd8">&#9670;&nbsp;</a></span>generate_rays()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,7 +261,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">virtual std::vector&lt;<a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a>&gt; LidarEntity::generate_rays </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>duration</em> = <code>-1.0</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -270,16 +274,25 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Génère tous les rayons pour le scan. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>durée du scan (secondes). Mécanique : angle total = duration * rotation_rate * 360° Miroir lissajou : n_points = n_points_per_second * duration Flash : ignoré car capture instantanée </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implemented in <a class="el" href="classMirroredLidarEntity.html#abc1358b5d26aa77071f0ca17f0b2c672">MirroredLidarEntity</a>, <a class="el" href="classFlashLidarEntity.html#a9920e949ce9ffde09dddccd29a20cf86">FlashLidarEntity</a>, and <a class="el" href="classMechanicalLidarEntity.html#afbac7614159a640dc93d3a31f0c070f3">MechanicalLidarEntity</a>.</p>
+<p>Implemented in <a class="el" href="classMirroredLidarEntity.html#ae789ab8e66bd52516ffe376fdddc7393">MirroredLidarEntity</a>, <a class="el" href="classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31">FlashLidarEntity</a>, and <a class="el" href="classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50">MechanicalLidarEntity</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235_icgraph.png" border="0" usemap="#aclassLidarEntity_a869b0d4ce82488f1daab22b3a77e0235_icgraph" alt=""/></div>
-<map name="aclassLidarEntity_a869b0d4ce82488f1daab22b3a77e0235_icgraph" id="aclassLidarEntity_a869b0d4ce82488f1daab22b3a77e0235_icgraph">
-<area shape="rect" title="Génère tous les rayons pour le scan." alt="" coords="348,5,540,32"/>
-<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="156,5,300,32"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,5,108,32"/>
+<div class="center"><img src="classLidarEntity_a1429a6e6844c7733f29973535576bbd8_icgraph.png" border="0" usemap="#aclassLidarEntity_a1429a6e6844c7733f29973535576bbd8_icgraph" alt=""/></div>
+<map name="aclassLidarEntity_a1429a6e6844c7733f29973535576bbd8_icgraph" id="aclassLidarEntity_a1429a6e6844c7733f29973535576bbd8_icgraph">
+<area shape="rect" title="Génère tous les rayons pour le scan." alt="" coords="427,81,619,108"/>
+<area shape="rect" href="classLidarScanner.html#a6735af09536d112d8c2aadc890ed999c" title="Effectue un scan." alt="" coords="235,81,379,108"/>
+<area shape="rect" href="classScanThreeSixty.html#a4c9305bfa42b9a53bcf1b04bda7844ca" title="Execute le scan selon la stratégie." alt="" coords="5,5,187,32"/>
+<area shape="rect" href="classScanTimed.html#a6f0002784c08cba0a4a52fffe5b3fff0" title="Execute le scan selon la stratégie." alt="" coords="19,56,173,83"/>
+<area shape="rect" href="classScanMultiple.html#ad76ccdbefde889a4d95570de79c9d5f8" title="Execute le scan selon la stratégie." alt="" coords="13,107,179,133"/>
+<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="45,157,147,184"/>
 </map>
 </div>
 
@@ -381,16 +394,6 @@ Here is the call graph for this function:</div>
 <map name="aclassLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_cgraph" id="aclassLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_cgraph">
 <area shape="rect" title="Applique le bruit à une mesure de distance." alt="" coords="5,5,140,47"/>
 <area shape="rect" href="classNoiseModel.html#a9d03275e709b72a5a4d43c7cd6b8d3a0" title="Applique le bruit à une mesure de distance." alt="" coords="188,13,331,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_icgraph.png" border="0" usemap="#aclassLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_icgraph" alt=""/></div>
-<map name="aclassLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_icgraph" id="aclassLidarEntity_a4233ca90108f96bd7e4bed3a9b06c1ad_icgraph">
-<area shape="rect" title="Applique le bruit à une mesure de distance." alt="" coords="348,5,483,47"/>
-<area shape="rect" href="classLidarScanner.html#a81a1deceea24915af9542567f8ad426a" title="Effectue un scan." alt="" coords="156,13,300,39"/>
-<area shape="rect" href="classGl.html#ad7911c5da5492309af8bf125d26ecde1" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,13,108,39"/>
 </map>
 </div>
 

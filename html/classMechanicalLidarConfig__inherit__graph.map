@@ -1,4 +1,4 @@
 <map id="MechanicalLidarConfig" name="MechanicalLidarConfig">
-<area shape="rect" id="node1" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,248,200,413"/>
-<area shape="rect" id="node2" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,5,199,200"/>
+<area shape="rect" id="node1" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="5,277,200,443"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="7,5,199,229"/>
 </map>

@@ -1,0 +1,4 @@
+<map id="MechanicalLidarEntity::scan" name="MechanicalLidarEntity::scan">
+<area shape="rect" id="node1" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="220,5,387,47"/>
+<area shape="rect" id="node2" href="$classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="5,5,172,47"/>
+</map>

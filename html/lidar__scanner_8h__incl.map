@@ -1,8 +1,9 @@
 <map id="lidar_scanner.h" name="lidar_scanner.h">
-<area shape="rect" id="node1" title=" " alt="" coords="215,5,335,32"/>
-<area shape="rect" id="node2" href="$scene_8h.html" title=" " alt="" coords="377,80,449,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="267,5,387,32"/>
+<area shape="rect" id="node2" href="$scene_8h.html" title=" " alt="" coords="361,80,433,107"/>
 <area shape="rect" id="node3" href="$entity_8h.html" title=" " alt="" coords="240,162,311,189"/>
 <area shape="rect" id="node7" title=" " alt="" coords="5,319,68,345"/>
+<area shape="rect" id="node19" title=" " alt="" coords="457,80,518,107"/>
 <area shape="rect" id="node16" title=" " alt="" coords="515,162,657,189"/>
 <area shape="rect" id="node17" title=" " alt="" coords="681,162,832,189"/>
 <area shape="rect" id="node18" title=" " alt="" coords="335,155,490,196"/>

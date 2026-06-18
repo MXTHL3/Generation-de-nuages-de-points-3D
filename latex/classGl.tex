@@ -82,7 +82,27 @@ const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classGl_a564b724bd5
 const std\+::vector$<$ \mbox{\hyperlink{structModelTransform}{Model\+Transform}} $>$ \& \mbox{\hyperlink{classGl_a0f124759b5c53ddb0cac672639c0bfc9}{transforms}} () const
 \begin{DoxyCompactList}\small\item\em Retourne les transformations appliquées à chaque modèle. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{classGl_a2c4898a547382a3bbd66f7526f8e07c2}{get\+\_\+camera\+\_\+world\+\_\+position}} () const
-\begin{DoxyCompactList}\small\item\em Retourne la position de la caméra dans le repère monde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retourne la position de la caméra dans le repère monde. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a66661167c19f3d373a6b8bc8d1c24cef}{set\+\_\+apply\+\_\+noise}} (bool v)
+\begin{DoxyCompactList}\small\item\em Active ou désactive l\textquotesingle{}application du modèle de bruit sur les mesures lidar. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGl_aacb61f1418226d426d363489f95ec4c8}{get\+\_\+apply\+\_\+noise}} () const
+\begin{DoxyCompactList}\small\item\em Indique si le modèle de bruit est appliqué aux mesures lidar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a9ee565ea2cdada9ea3a0dc3789387476}{set\+\_\+scan\+\_\+strategy}} (\mbox{\hyperlink{gl_8h_ae3de7d219b725cec47f693036ab8e2a8}{Scan\+Strategy\+Type}} \mbox{\hyperlink{model__marker_8h_ade22213fff69cfb37d8238e8fd3073dfa03c7c0ace395d80182db07ae2c30f034}{s}})
+\begin{DoxyCompactList}\small\item\em Définit la stratégie de scan utilisée pour la simulation lidar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{gl_8h_ae3de7d219b725cec47f693036ab8e2a8}{Scan\+Strategy\+Type}} \mbox{\hyperlink{classGl_a04cca96d2c2a7b9894a280df05c2f1b7}{get\+\_\+scan\+\_\+strategy}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la stratégie de scan actuellement sélectionnée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a9e5975c80ac8574dea5bfebadf382d3b}{set\+\_\+scan\+\_\+duration}} (double v)
+\begin{DoxyCompactList}\small\item\em Définit la durée d\textquotesingle{}un scan temporisé. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classGl_a6a58c81eb2afc394f7e9081de622aec3}{get\+\_\+scan\+\_\+duration}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la durée configurée pour un scan temporisé. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_ac63ccbb7e1a7502f0976a28c216dea2c}{set\+\_\+scan\+\_\+n\+\_\+scans}} (int v)
+\begin{DoxyCompactList}\small\item\em Définit le nombre de scans à effectuer avec la stratégie multiple. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGl_a17b322fcc1dca4c3156e2e70aba38f23}{get\+\_\+scan\+\_\+n\+\_\+scans}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de scans configurés pour la stratégie multiple. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGl_a5f653088e016fd943e8958c07aee9052}{set\+\_\+scan\+\_\+threads}} (int v)
+\begin{DoxyCompactList}\small\item\em Définit le nombre de threads utilisés pour le lancer de rayons parallèle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGl_ac629840a67e0645a6f1bbccc69b8b2b2}{get\+\_\+scan\+\_\+threads}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de threads utilisés pour la simulation lidar. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -196,6 +216,19 @@ Retourne l\textquotesingle{}angle de tangage (pitch) courant de la caméra.
 
 Retourne l\textquotesingle{}angle de lacet (yaw) courant de la caméra. 
 
+\mbox{\Hypertarget{classGl_aacb61f1418226d426d363489f95ec4c8}\label{classGl_aacb61f1418226d426d363489f95ec4c8}} 
+\index{Gl@{Gl}!get\_apply\_noise@{get\_apply\_noise}}
+\index{get\_apply\_noise@{get\_apply\_noise}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_apply\_noise()}{get\_apply\_noise()}}
+{\footnotesize\ttfamily bool Gl\+::get\+\_\+apply\+\_\+noise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indique si le modèle de bruit est appliqué aux mesures lidar. 
+
+\begin{DoxyReturn}{Returns}
+true si le bruit est activé, false sinon. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classGl_a2c4898a547382a3bbd66f7526f8e07c2}\label{classGl_a2c4898a547382a3bbd66f7526f8e07c2}} 
 \index{Gl@{Gl}!get\_camera\_world\_position@{get\_camera\_world\_position}}
 \index{get\_camera\_world\_position@{get\_camera\_world\_position}!Gl@{Gl}}
@@ -229,8 +262,7 @@ Retourne le chemin du fichier de configuration lidar actif.
 \begin{DoxyReturn}{Returns}
 Chemin vers le fichier JSON de configuration. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -262,6 +294,58 @@ Retourne la liste des marqueurs de transformation interactifs.
 
 \begin{DoxyReturn}{Returns}
 Référence vers le vecteur de marqueurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_a6a58c81eb2afc394f7e9081de622aec3}\label{classGl_a6a58c81eb2afc394f7e9081de622aec3}} 
+\index{Gl@{Gl}!get\_scan\_duration@{get\_scan\_duration}}
+\index{get\_scan\_duration@{get\_scan\_duration}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_scan\_duration()}{get\_scan\_duration()}}
+{\footnotesize\ttfamily double Gl\+::get\+\_\+scan\+\_\+duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne la durée configurée pour un scan temporisé. 
+
+\begin{DoxyReturn}{Returns}
+Durée du scan en secondes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_a17b322fcc1dca4c3156e2e70aba38f23}\label{classGl_a17b322fcc1dca4c3156e2e70aba38f23}} 
+\index{Gl@{Gl}!get\_scan\_n\_scans@{get\_scan\_n\_scans}}
+\index{get\_scan\_n\_scans@{get\_scan\_n\_scans}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_scan\_n\_scans()}{get\_scan\_n\_scans()}}
+{\footnotesize\ttfamily int Gl\+::get\+\_\+scan\+\_\+n\+\_\+scans (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nombre de scans configurés pour la stratégie multiple. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de scans successifs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_a04cca96d2c2a7b9894a280df05c2f1b7}\label{classGl_a04cca96d2c2a7b9894a280df05c2f1b7}} 
+\index{Gl@{Gl}!get\_scan\_strategy@{get\_scan\_strategy}}
+\index{get\_scan\_strategy@{get\_scan\_strategy}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_scan\_strategy()}{get\_scan\_strategy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gl_8h_ae3de7d219b725cec47f693036ab8e2a8}{Scan\+Strategy\+Type}} Gl\+::get\+\_\+scan\+\_\+strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne la stratégie de scan actuellement sélectionnée. 
+
+\begin{DoxyReturn}{Returns}
+Type de stratégie de scan active. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGl_ac629840a67e0645a6f1bbccc69b8b2b2}\label{classGl_ac629840a67e0645a6f1bbccc69b8b2b2}} 
+\index{Gl@{Gl}!get\_scan\_threads@{get\_scan\_threads}}
+\index{get\_scan\_threads@{get\_scan\_threads}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{get\_scan\_threads()}{get\_scan\_threads()}}
+{\footnotesize\ttfamily int Gl\+::get\+\_\+scan\+\_\+threads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nombre de threads utilisés pour la simulation lidar. 
+
+\begin{DoxyReturn}{Returns}
+Nombre de threads de calcul. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGl_aa632ac30a5aef65613cc217c8e1f9c0d}\label{classGl_aa632ac30a5aef65613cc217c8e1f9c0d}} 
 \index{Gl@{Gl}!is\_model\_hidden@{is\_model\_hidden}}
@@ -438,14 +522,28 @@ Lance un scan lidar de la scène complète et exporte le nuage de points.
 {\em output\+\_\+path} & Chemin du fichier de sortie (PLY ou LAS). \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classGl_ad7911c5da5492309af8bf125d26ecde1_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classGl_a66661167c19f3d373a6b8bc8d1c24cef}\label{classGl_a66661167c19f3d373a6b8bc8d1c24cef}} 
+\index{Gl@{Gl}!set\_apply\_noise@{set\_apply\_noise}}
+\index{set\_apply\_noise@{set\_apply\_noise}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_apply\_noise()}{set\_apply\_noise()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+apply\+\_\+noise (\begin{DoxyParamCaption}\item[{bool}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Active ou désactive l\textquotesingle{}application du modèle de bruit sur les mesures lidar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & true pour ajouter du bruit simulé, false pour utiliser des mesures idéales. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}\label{classGl_a712f8cc3dd980b97a4d0fecee53b5af3}} 
 \index{Gl@{Gl}!set\_camera@{set\_camera}}
 \index{set\_camera@{set\_camera}!Gl@{Gl}}
@@ -516,6 +614,66 @@ Masque ou affiche un modèle de la scène.
 {\em idx} & Index du modèle. \\
 \hline
 {\em hidden} & true pour masquer, false pour afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_a9e5975c80ac8574dea5bfebadf382d3b}\label{classGl_a9e5975c80ac8574dea5bfebadf382d3b}} 
+\index{Gl@{Gl}!set\_scan\_duration@{set\_scan\_duration}}
+\index{set\_scan\_duration@{set\_scan\_duration}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_scan\_duration()}{set\_scan\_duration()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+scan\+\_\+duration (\begin{DoxyParamCaption}\item[{double}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Définit la durée d\textquotesingle{}un scan temporisé. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Durée du scan en secondes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_ac63ccbb7e1a7502f0976a28c216dea2c}\label{classGl_ac63ccbb7e1a7502f0976a28c216dea2c}} 
+\index{Gl@{Gl}!set\_scan\_n\_scans@{set\_scan\_n\_scans}}
+\index{set\_scan\_n\_scans@{set\_scan\_n\_scans}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_scan\_n\_scans()}{set\_scan\_n\_scans()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+scan\+\_\+n\+\_\+scans (\begin{DoxyParamCaption}\item[{int}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Définit le nombre de scans à effectuer avec la stratégie multiple. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nombre de scans successifs à réaliser. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_a9ee565ea2cdada9ea3a0dc3789387476}\label{classGl_a9ee565ea2cdada9ea3a0dc3789387476}} 
+\index{Gl@{Gl}!set\_scan\_strategy@{set\_scan\_strategy}}
+\index{set\_scan\_strategy@{set\_scan\_strategy}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_scan\_strategy()}{set\_scan\_strategy()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+scan\+\_\+strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gl_8h_ae3de7d219b725cec47f693036ab8e2a8}{Scan\+Strategy\+Type}}}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Définit la stratégie de scan utilisée pour la simulation lidar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Type de stratégie à utiliser (360°, temporisée ou multiple). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGl_a5f653088e016fd943e8958c07aee9052}\label{classGl_a5f653088e016fd943e8958c07aee9052}} 
+\index{Gl@{Gl}!set\_scan\_threads@{set\_scan\_threads}}
+\index{set\_scan\_threads@{set\_scan\_threads}!Gl@{Gl}}
+\doxysubsubsection{\texorpdfstring{set\_scan\_threads()}{set\_scan\_threads()}}
+{\footnotesize\ttfamily void Gl\+::set\+\_\+scan\+\_\+threads (\begin{DoxyParamCaption}\item[{int}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Définit le nombre de threads utilisés pour le lancer de rayons parallèle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nombre de threads à utiliser pour la simulation. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}\label{classGl_a8aba28ffa3a514e9973feb0a64f5b65b}} 

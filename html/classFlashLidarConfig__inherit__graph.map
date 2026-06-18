@@ -1,4 +1,4 @@
 <map id="FlashLidarConfig" name="FlashLidarConfig">
-<area shape="rect" id="node1" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,248,179,399"/>
-<area shape="rect" id="node2" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,5,197,200"/>
+<area shape="rect" id="node1" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,277,179,457"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,5,197,229"/>
 </map>

@@ -79,8 +79,8 @@ Inheritance diagram for FlashLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFlashLidarConfig__inherit__graph.png" border="0" usemap="#aFlashLidarConfig_inherit__map" alt="Inheritance graph"/></div>
 <map name="aFlashLidarConfig_inherit__map" id="aFlashLidarConfig_inherit__map">
-<area shape="rect" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,248,179,399"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,5,197,200"/>
+<area shape="rect" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,277,179,457"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,5,197,229"/>
 </map>
 </div>
 <div class="dynheader">
@@ -88,16 +88,16 @@ Collaboration diagram for FlashLidarConfig:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFlashLidarConfig__coll__graph.png" border="0" usemap="#aFlashLidarConfig_coll__map" alt="Collaboration graph"/></div>
 <map name="aFlashLidarConfig_coll__map" id="aFlashLidarConfig_coll__map">
-<area shape="rect" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,389,179,540"/>
-<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,160,197,340"/>
+<area shape="rect" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="24,419,179,599"/>
+<area shape="rect" href="classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,160,197,369"/>
 <area shape="rect" href="structNoiseProfile.html" title="Profil du bruit d&#39;un capteur lidar." alt="" coords="50,5,153,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af6ea60a3dacf829e28cfff11f49345fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#af6ea60a3dacf829e28cfff11f49345fc">FlashLidarConfig</a> (std::string name, double min_dist, double max_dist, double accuracy, int res_h, int res_v, double fov_h, double fov_v)</td></tr>
-<tr class="separator:af6ea60a3dacf829e28cfff11f49345fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a290848f9055e24a6a6453ed8c050e932"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a290848f9055e24a6a6453ed8c050e932">FlashLidarConfig</a> (std::string name, double min_dist, double max_dist, double accuracy, int res_h, int res_v, double fov_h_min, double fov_h_max, double fov_v_min, double fov_v_max)</td></tr>
+<tr class="separator:a290848f9055e24a6a6453ed8c050e932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a588ddea2bde4c9418743522aad55df16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a588ddea2bde4c9418743522aad55df16">serialize</a> (nlohmann::json &amp;data) const override</td></tr>
 <tr class="memdesc:a588ddea2bde4c9418743522aad55df16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise le configuration complète en JSON.  <a href="classFlashLidarConfig.html#a588ddea2bde4c9418743522aad55df16">More...</a><br /></td></tr>
 <tr class="separator:a588ddea2bde4c9418743522aad55df16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,12 +117,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adde78015715a75687b923b1e393ce8cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#adde78015715a75687b923b1e393ce8cd">m_resolution_v</a></td></tr>
 <tr class="memdesc:adde78015715a75687b923b1e393ce8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de pixels verticaux.  <a href="classFlashLidarConfig.html#adde78015715a75687b923b1e393ce8cd">More...</a><br /></td></tr>
 <tr class="separator:adde78015715a75687b923b1e393ce8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dc5eea1cc869469b49fd6386f97660d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a6dc5eea1cc869469b49fd6386f97660d">m_fov_h</a></td></tr>
-<tr class="memdesc:a6dc5eea1cc869469b49fd6386f97660d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Champ de vision horizontal (radians).  <a href="classFlashLidarConfig.html#a6dc5eea1cc869469b49fd6386f97660d">More...</a><br /></td></tr>
-<tr class="separator:a6dc5eea1cc869469b49fd6386f97660d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2baec376986b2fbfa631e162ca63b225"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a2baec376986b2fbfa631e162ca63b225">m_fov_v</a></td></tr>
-<tr class="memdesc:a2baec376986b2fbfa631e162ca63b225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Champ de vision vertical (radians).  <a href="classFlashLidarConfig.html#a2baec376986b2fbfa631e162ca63b225">More...</a><br /></td></tr>
-<tr class="separator:a2baec376986b2fbfa631e162ca63b225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73043f8497fd99c33faf858cc8fc5763"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a73043f8497fd99c33faf858cc8fc5763">m_fov_h_min</a></td></tr>
+<tr class="memdesc:a73043f8497fd99c33faf858cc8fc5763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision horizontal (radians).  <a href="classFlashLidarConfig.html#a73043f8497fd99c33faf858cc8fc5763">More...</a><br /></td></tr>
+<tr class="separator:a73043f8497fd99c33faf858cc8fc5763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5463c6f2ab977a4ab3d80d2e4380e55c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a5463c6f2ab977a4ab3d80d2e4380e55c">m_fov_h_max</a></td></tr>
+<tr class="memdesc:a5463c6f2ab977a4ab3d80d2e4380e55c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne supérieure champ de vision horizontal (radians).  <a href="classFlashLidarConfig.html#a5463c6f2ab977a4ab3d80d2e4380e55c">More...</a><br /></td></tr>
+<tr class="separator:a5463c6f2ab977a4ab3d80d2e4380e55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a452dcf755e2d571aadb8d8c26198ff6e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a452dcf755e2d571aadb8d8c26198ff6e">m_fov_v_min</a></td></tr>
+<tr class="memdesc:a452dcf755e2d571aadb8d8c26198ff6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision vertical (radians).  <a href="classFlashLidarConfig.html#a452dcf755e2d571aadb8d8c26198ff6e">More...</a><br /></td></tr>
+<tr class="separator:a452dcf755e2d571aadb8d8c26198ff6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06764b935b777202232087f697cbe8b3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashLidarConfig.html#a06764b935b777202232087f697cbe8b3">m_fov_v_max</a></td></tr>
+<tr class="memdesc:a06764b935b777202232087f697cbe8b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borne inférieure champ de vision vertical (radians).  <a href="classFlashLidarConfig.html#a06764b935b777202232087f697cbe8b3">More...</a><br /></td></tr>
+<tr class="separator:a06764b935b777202232087f697cbe8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classLidarConfig"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classLidarConfig')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classLidarConfig.html">LidarConfig</a></td></tr>
 <tr class="memitem:a9d4f6adb894ccdc4209295f7a01adbef inherit pub_attribs_classLidarConfig"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a9d4f6adb894ccdc4209295f7a01adbef">m_name</a></td></tr>
 <tr class="memdesc:a9d4f6adb894ccdc4209295f7a01adbef inherit pub_attribs_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiant/nom du modèle.  <a href="classLidarConfig.html#a9d4f6adb894ccdc4209295f7a01adbef">More...</a><br /></td></tr>
@@ -146,12 +152,17 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">serialize_noise_profile</a> (nlohmann::json &amp;data) const</td></tr>
 <tr class="memdesc:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise le profil de bruit.  <a href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3">More...</a><br /></td></tr>
 <tr class="separator:afd66aff351b8315f454f29a79c70caa3 inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">serialize_base</a> (nlohmann::json &amp;data) const</td></tr>
+<tr class="memdesc:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialise les paramètres communs aux configs.  <a href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b">More...</a><br /></td></tr>
+<tr class="separator:a2fa6737add51940ad59b42ec33a6666b inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d">noise_to_string</a> () const</td></tr>
+<tr class="separator:a778006bee5980f292dfc339b19b5547d inherit pro_methods_classLidarConfig"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration d'un lidar flash (sans balayage). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af6ea60a3dacf829e28cfff11f49345fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6ea60a3dacf829e28cfff11f49345fc">&#9670;&nbsp;</a></span>FlashLidarConfig()</h2>
+<a id="a290848f9055e24a6a6453ed8c050e932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a290848f9055e24a6a6453ed8c050e932">&#9670;&nbsp;</a></span>FlashLidarConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,13 +207,25 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_h</em>, </td>
+          <td class="paramname"><em>fov_h_min</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fov_v</em>&#160;</td>
+          <td class="paramname"><em>fov_h_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fov_v_max</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -247,9 +270,10 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFlashLidarConfig_a588ddea2bde4c9418743522aad55df16_cgraph.png" border="0" usemap="#aclassFlashLidarConfig_a588ddea2bde4c9418743522aad55df16_cgraph" alt=""/></div>
 <map name="aclassFlashLidarConfig_a588ddea2bde4c9418743522aad55df16_cgraph" id="aclassFlashLidarConfig_a588ddea2bde4c9418743522aad55df16_cgraph">
-<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,42,199,69"/>
-<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="247,5,405,47"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="279,71,373,98"/>
+<area shape="rect" title="Serialise le configuration complète en JSON." alt="" coords="5,38,199,65"/>
+<area shape="rect" href="classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b" title="Serialise les paramètres communs aux configs." alt="" coords="247,13,443,39"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="297,63,392,90"/>
+<area shape="rect" href="classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="491,5,649,47"/>
 </map>
 </div>
 
@@ -284,43 +308,76 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph.png" border="0" usemap="#aclassFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph" alt=""/></div>
 <map name="aclassFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph" id="aclassFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,156,47"/>
-<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="204,13,299,39"/>
+<area shape="rect" title=" " alt="" coords="5,35,156,76"/>
+<area shape="rect" href="classLidarConfig.html#a778006bee5980f292dfc339b19b5547d" title=" " alt="" coords="204,5,343,47"/>
+<area shape="rect" href="units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="226,71,321,98"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6dc5eea1cc869469b49fd6386f97660d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dc5eea1cc869469b49fd6386f97660d">&#9670;&nbsp;</a></span>m_fov_h</h2>
+<a id="a5463c6f2ab977a4ab3d80d2e4380e55c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5463c6f2ab977a4ab3d80d2e4380e55c">&#9670;&nbsp;</a></span>m_fov_h_max</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double FlashLidarConfig::m_fov_h</td>
+          <td class="memname">double FlashLidarConfig::m_fov_h_max</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Champ de vision horizontal (radians). </p>
+<p>Borne supérieure champ de vision horizontal (radians). </p>
 
 </div>
 </div>
-<a id="a2baec376986b2fbfa631e162ca63b225"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2baec376986b2fbfa631e162ca63b225">&#9670;&nbsp;</a></span>m_fov_v</h2>
+<a id="a73043f8497fd99c33faf858cc8fc5763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73043f8497fd99c33faf858cc8fc5763">&#9670;&nbsp;</a></span>m_fov_h_min</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double FlashLidarConfig::m_fov_v</td>
+          <td class="memname">double FlashLidarConfig::m_fov_h_min</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Champ de vision vertical (radians). </p>
+<p>Borne inférieure champ de vision horizontal (radians). </p>
+
+</div>
+</div>
+<a id="a06764b935b777202232087f697cbe8b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06764b935b777202232087f697cbe8b3">&#9670;&nbsp;</a></span>m_fov_v_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FlashLidarConfig::m_fov_v_max</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Borne inférieure champ de vision vertical (radians). </p>
+
+</div>
+</div>
+<a id="a452dcf755e2d571aadb8d8c26198ff6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452dcf755e2d571aadb8d8c26198ff6e">&#9670;&nbsp;</a></span>m_fov_v_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FlashLidarConfig::m_fov_v_min</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Borne inférieure champ de vision vertical (radians). </p>
 
 </div>
 </div>

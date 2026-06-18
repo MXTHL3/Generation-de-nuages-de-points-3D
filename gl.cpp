@@ -495,7 +495,7 @@ bool Gl::on_render(const Glib::RefPtr<Gdk::GLContext>&) {
         if (!hidden) {
             float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(i) : 0.0f;
             glm::mat4 model = cam;
-            model = glm::translate(model, glm::vec3(off, off, off));
+            model = glm::translate(model, glm::vec3(off, 0, 0));
             model = model * make_model_matrix(tr);
 
             glUniformMatrix4fv(model_loc, 1, GL_FALSE, glm::value_ptr(model));
@@ -659,7 +659,7 @@ void Gl::update_markers_positions() {
 
         float off = tr.use_offset ? OFFSET_STEP * static_cast<float>(midx) : 0.0f;                            
         glm::mat4 model = cam;
-        model = glm::translate(model, glm::vec3(off, off, off));
+        model = glm::translate(model, glm::vec3(off, 0, 0));
         model = model * make_model_matrix(tr);
 
         glm::vec4 clip = proj * view * model * glm::vec4(marker->local_position(), 1.0f);
@@ -740,9 +740,9 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
 
             if (pts.size() == 3) {
                 obj->m_triangles.push_back(Triangle3(
-                    cgal_tr.transform(pts[0]) + Vector3(off, off, off),
-                    cgal_tr.transform(pts[1]) + Vector3(off, off, off),
-                    cgal_tr.transform(pts[2]) + Vector3(off, off, off)));
+                    cgal_tr.transform(pts[0]) + Vector3(off, 0, 0),
+                    cgal_tr.transform(pts[1]) + Vector3(off, 0, 0),
+                    cgal_tr.transform(pts[2]) + Vector3(off, 0, 0)));
                 total_tris++;
             }
         }
@@ -784,7 +784,7 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
 
         scanner_ent->noise_model(NoiseModel(lidar->m_noise_profile));
 
-        auto pts = scanner.scan(*scanner_ent, scene);
+        auto pts = scanner.scan(*scanner_ent, scene, true, -1.0, 4);
         cloud.insert(cloud.end(), pts.begin(), pts.end());
         ray_count += static_cast<int>(scanner_ent->generate_rays().size());
     }

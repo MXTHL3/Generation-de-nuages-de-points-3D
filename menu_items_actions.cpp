@@ -192,11 +192,11 @@ void MenuItemsActions::save_json_scene() {
             const ModelTransform& tr = transforms[i + 1];
             float off = m_gl->OFFSET_STEP * static_cast<float>(i + 1);
             std::cout << "off : " << off << std::endl;
-            std::cout << "posXYZ : " << tr.pos_x + off << " " << tr.pos_y + off << " " << tr.pos_z + off << std::endl;
+            std::cout << "posXYZ : " << tr.pos_x + off << " " << tr.pos_y << " " << tr.pos_z << std::endl;
             std::cout << "angleXYZ : " << tr.angle_x << " " << tr.angle_y << " " << tr.angle_z << std::endl;
 
             Pose pose(
-                Point3(tr.pos_x + off, tr.pos_y + off, tr.pos_z + off),
+                Point3(tr.pos_x + off, tr.pos_y, tr.pos_z),
                 glm::degrees(tr.angle_x),
                 glm::degrees(tr.angle_y),
                 glm::degrees(tr.angle_z)
@@ -729,8 +729,11 @@ void MenuItemsActions::scanner_settings() {
         struct Defaults {
             double min_range = 1.0;
             double max_range = 1000.0;
-            double h_step    = 0.3515625;
-            double accuracy  = 0.01;
+            double h_step = 0.3515625;
+            double accuracy = 0.01;
+            double duration = 1.0;
+            int n_scans = 3;
+            int n_threads = 4;
         };
         static const Defaults DEF;
 
@@ -757,7 +760,7 @@ void MenuItemsActions::scanner_settings() {
             combo->append("lidars_config/vedolyne_vlp16.json", "Velodyne VLP-16");
             combo->append("lidars_config/velodyne_vlp32c.json", "Velodyne VLP-32C");
             combo->append("lidars_config/continental_hfl110.json", "Continental HFL110 (flash)");
-            combo->append("lidars_config/livox_mid_360.json", "Livox Mid-360 (mirroir)");
+            combo->append("lidars_config/livox_mid_360.json", "Livox Mid-360 (miroir)");
             combo->set_active_id(m_gl->get_lidar_config());
             if (combo->get_active_row_number() < 0) combo->set_active(0);
 
@@ -765,13 +768,13 @@ void MenuItemsActions::scanner_settings() {
             vbox->pack_start(*row, Gtk::PACK_SHRINK);
         }
 
-        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL),
-                         Gtk::PACK_SHRINK);
+        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
 
-        auto make_slider = [&](const std::string& label, double vmin, double vmax, double step, double value,
-            int decimals, std::function<void(double)> on_change) {
-            auto* row  = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
-            auto* lbl  = Gtk::make_managed<Gtk::Label>(label + " :");
+        auto make_slider = [&](const std::string& label, double vmin, double vmax,
+            double step, double value, int decimals,
+            std::function<void(double)> on_change) {
+            auto* row = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 8);
+            auto* lbl = Gtk::make_managed<Gtk::Label>(label + " :");
             lbl->set_xalign(0.0f);
             lbl->set_size_request(140, -1);
 
@@ -788,9 +791,9 @@ void MenuItemsActions::scanner_settings() {
                 on_change(scale->get_value());
             });
 
-            row->pack_start(*lbl,   Gtk::PACK_SHRINK);
+            row->pack_start(*lbl, Gtk::PACK_SHRINK);
             row->pack_start(*scale, Gtk::PACK_EXPAND_WIDGET);
-            vbox->pack_start(*row,  Gtk::PACK_SHRINK);
+            vbox->pack_start(*row, Gtk::PACK_SHRINK);
             return scale;
         };
 
@@ -799,22 +802,79 @@ void MenuItemsActions::scanner_settings() {
 
         double init_min = cur ? cur->m_min_dist : DEF.min_range;
         double init_max = cur ? cur->m_max_dist : DEF.max_range;
-        double init_hs  = (cur_mech && cur_mech->m_h_step) ? cur_mech->horizontal_step() : DEF.h_step;
-        double init_acc = cur ? cur->m_accuracy : DEF.accuracy;
+        double init_hs = (cur_mech && cur_mech->m_h_step) ? cur_mech->horizontal_step() : DEF.h_step;
+        double init_acc  = cur ? cur->m_accuracy : DEF.accuracy;
 
         auto* s_min = make_slider("Min range (m)", 0.1, 50.0, 0.1, init_min, 1, [this](double v){ m_gl->lidar_override_set_min(v); });
         auto* s_max = make_slider("Max range (m)", 10.0, 2000.0, 5.0, init_max, 0, [this](double v){ m_gl->lidar_override_set_max(v); });
-        auto* s_hs  = make_slider("H-step (°)", 0.05, 5.0, 0.01, init_hs, 3, [this](double v){ m_gl->lidar_override_set_hstep(0, v); });
+        auto* s_hs = make_slider("H-step (°)", 0.05, 5.0, 0.01, init_hs, 3, [this](double v){ m_gl->lidar_override_set_hstep(0, v); });
         auto* s_acc = make_slider("Précision (m)", 0.001, 0.5, 0.001, init_acc, 3, [this](double v){ m_gl->lidar_override_set_accuracy(v); });
 
         s_hs->set_sensitive(cur_mech != nullptr);
+
+        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
+
+        auto* check_noise = Gtk::make_managed<Gtk::CheckButton>("Appliquer le bruit");
+        check_noise->set_active(m_gl->get_apply_noise());
+        check_noise->signal_toggled().connect([this, check_noise]() {
+            m_gl->set_apply_noise(check_noise->get_active());
+        });
+        vbox->pack_start(*check_noise, Gtk::PACK_SHRINK);
+
+        vbox->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
+
+        auto* lbl_strat = Gtk::make_managed<Gtk::Label>("Stratégie de scan :");
+        lbl_strat->set_xalign(0.0f);
+        vbox->pack_start(*lbl_strat, Gtk::PACK_SHRINK);
+
+        Gtk::RadioButton::Group group_strat;
+        auto* radio_360 = Gtk::make_managed<Gtk::RadioButton>(group_strat, "Scan complet (360°)");
+        auto* radio_timed = Gtk::make_managed<Gtk::RadioButton>(group_strat, "Scan minuté");
+        auto* radio_multiple = Gtk::make_managed<Gtk::RadioButton>(group_strat, "Scans multiples");
+
+        ScanStrategyType cur_strat = m_gl->get_scan_strategy();
+        if (cur_strat == ScanStrategyType::Timed) radio_timed->set_active(true);
+        else if (cur_strat == ScanStrategyType::Multiple) radio_multiple->set_active(true);
+        else radio_360->set_active(true);
+
+        vbox->pack_start(*radio_360, Gtk::PACK_SHRINK);
+        vbox->pack_start(*radio_timed, Gtk::PACK_SHRINK);
+        vbox->pack_start(*radio_multiple, Gtk::PACK_SHRINK);
+
+        auto* s_duration = make_slider("Durée (s)", 0.1, 10.0, 0.1, m_gl->get_scan_duration(), 1,
+            [this](double v){ m_gl->set_scan_duration(v); });
+        auto* s_nscans   = make_slider("Nombre de scans", 1.0, 20.0, 1.0, m_gl->get_scan_n_scans(),  0,
+            [this](double v){ m_gl->set_scan_n_scans(static_cast<int>(v)); });
+        auto* s_threads  = make_slider("Threads", 1.0, 16.0, 1.0, m_gl->get_scan_threads(),  0,
+            [this](double v){ m_gl->set_scan_threads(static_cast<int>(v)); });
+
+        s_duration->set_sensitive(cur_strat == ScanStrategyType::Timed);
+        s_nscans->set_sensitive(cur_strat == ScanStrategyType::Multiple);
+
+        radio_360->signal_toggled().connect([=]() {
+            if (!radio_360->get_active()) return;
+            m_gl->set_scan_strategy(ScanStrategyType::ThreeSixty);
+            s_duration->set_sensitive(false);
+            s_nscans->set_sensitive(false);
+        });
+        radio_timed->signal_toggled().connect([=]() {
+            if (!radio_timed->get_active()) return;
+            m_gl->set_scan_strategy(ScanStrategyType::Timed);
+            s_duration->set_sensitive(true);
+            s_nscans->set_sensitive(false);
+        });
+        radio_multiple->signal_toggled().connect([=]() {
+            if (!radio_multiple->get_active()) return;
+            m_gl->set_scan_strategy(ScanStrategyType::Multiple);
+            s_duration->set_sensitive(false);
+            s_nscans->set_sensitive(true);
+        });
 
         combo->signal_changed().connect([this, combo, s_hs]() {
             std::string chosen = combo->get_active_id();
             if (!chosen.empty()) {
                 m_gl->set_lidar_config(chosen);
                 m_gl->clear_lidar_override();
-
                 try {
                     auto fresh_cfg = LidarFactory::createFromJsonConfig(chosen);
                     bool is_mech = std::dynamic_pointer_cast<MechanicalLidarConfig>(fresh_cfg) != nullptr;
@@ -833,6 +893,11 @@ void MenuItemsActions::scanner_settings() {
             s_max->set_value(DEF.max_range);
             s_hs->set_value(DEF.h_step);
             s_acc->set_value(DEF.accuracy);
+            s_duration->set_value(DEF.duration);
+            s_nscans->set_value(DEF.n_scans);
+            s_threads->set_value(DEF.n_threads);
+            check_noise->set_active(true);
+            radio_360->set_active(true);
         });
 
         auto* btn_box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL);

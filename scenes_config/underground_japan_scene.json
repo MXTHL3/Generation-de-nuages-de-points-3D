@@ -1,0 +1,58 @@
+{
+    "lidar_entities": [
+        {
+            "lidar_config": "lidars_config/livox_mid_360.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    300.0,
+                    2.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    180.0
+                ]
+            },
+            "step_index": 2
+        }
+    ],
+    "static_entities": [
+        {
+            "name": "human_1",
+            "mesh_path": "ply_models/human_base.ply",
+            "pose": {
+                "position": [
+                    0.0,
+                    5.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "name": "underground",
+            "mesh_path": "ply_models/japan_underground.ply",
+            "pose": {
+                "position": [
+                0.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        }
+    ],
+    "scan_session":{
+        "strategy": "timed",
+        "duration": 0.5
+    }
+}

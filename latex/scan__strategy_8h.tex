@@ -1,0 +1,33 @@
+\hypertarget{scan__strategy_8h}{}\doxysection{scan\+\_\+strategy.\+h File Reference}
+\label{scan__strategy_8h}\index{scan\_strategy.h@{scan\_strategy.h}}
+{\ttfamily \#include \char`\"{}lidar\+\_\+scanner.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entity.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for scan\+\_\+strategy.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scan__strategy_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{scan__strategy_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classScanStrategy}{Scan\+Strategy}}
+\begin{DoxyCompactList}\small\item\em Interface de stratégie de scan. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classScanThreeSixty}{Scan\+Three\+Sixty}}
+\begin{DoxyCompactList}\small\item\em Scan complet \+: 1 tour lidar mécanique, 1 frame flash/miroir. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classScanTimed}{Scan\+Timed}}
+\begin{DoxyCompactList}\small\item\em Scan sur une durée paramétrable en secondes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classScanMultiple}{Scan\+Multiple}}
+\begin{DoxyCompactList}\small\item\em N scans complets concaténés. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classSessionScan}{Session\+Scan}}
+\begin{DoxyCompactList}\small\item\em Exécute un scan avec une stratégie choisie. \end{DoxyCompactList}\end{DoxyCompactItemize}

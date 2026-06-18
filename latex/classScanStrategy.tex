@@ -1,0 +1,82 @@
+\hypertarget{classScanStrategy}{}\doxysection{Scan\+Strategy Class Reference}
+\label{classScanStrategy}\index{ScanStrategy@{ScanStrategy}}
+
+
+Interface de stratégie de scan.  
+
+
+
+
+{\ttfamily \#include $<$scan\+\_\+strategy.\+h$>$}
+
+
+
+Inheritance diagram for Scan\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classScanStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Scan\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classScanStrategy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classScanStrategy_a337dff3c42cb99ca4683995a06df81ae}{$\sim$\+Scan\+Strategy}} ()=default
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classScanStrategy_acd1db6211ab4660692c5ce276c55c1aa}{execute}} (const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&scanner, const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&lidar\+\_\+ent, const \mbox{\hyperlink{classScene}{Scene}} \&scene) const =0
+\begin{DoxyCompactList}\small\item\em Execute le scan selon la stratégie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface de stratégie de scan. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScanStrategy_a337dff3c42cb99ca4683995a06df81ae}\label{classScanStrategy_a337dff3c42cb99ca4683995a06df81ae}} 
+\index{ScanStrategy@{ScanStrategy}!````~ScanStrategy@{$\sim$ScanStrategy}}
+\index{````~ScanStrategy@{$\sim$ScanStrategy}!ScanStrategy@{ScanStrategy}}
+\doxysubsubsection{\texorpdfstring{$\sim$ScanStrategy()}{~ScanStrategy()}}
+{\footnotesize\ttfamily virtual Scan\+Strategy\+::$\sim$\+Scan\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScanStrategy_acd1db6211ab4660692c5ce276c55c1aa}\label{classScanStrategy_acd1db6211ab4660692c5ce276c55c1aa}} 
+\index{ScanStrategy@{ScanStrategy}!execute@{execute}}
+\index{execute@{execute}!ScanStrategy@{ScanStrategy}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}$>$ Scan\+Strategy\+::execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLidarScanner}{Lidar\+Scanner}} \&}]{scanner,  }\item[{const \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}} \&}]{lidar\+\_\+ent,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Execute le scan selon la stratégie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Le scanner qui réalise le scan. \\
+\hline
+{\em lidar\+\_\+ent} & Le capteur Lidar. \\
+\hline
+{\em scene} & La scène construite (build() appelé avant). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nuage de points résultat. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classScanMultiple_ad76ccdbefde889a4d95570de79c9d5f8}{Scan\+Multiple}}, \mbox{\hyperlink{classScanTimed_a6f0002784c08cba0a4a52fffe5b3fff0}{Scan\+Timed}}, and \mbox{\hyperlink{classScanThreeSixty_a4c9305bfa42b9a53bcf1b04bda7844ca}{Scan\+Three\+Sixty}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{scan__strategy_8h}{scan\+\_\+strategy.\+h}}\end{DoxyCompactItemize}

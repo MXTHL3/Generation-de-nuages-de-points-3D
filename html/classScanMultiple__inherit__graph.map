@@ -1,0 +1,4 @@
+<map id="ScanMultiple" name="ScanMultiple">
+<area shape="rect" id="node1" title="N scans complets concaténés." alt="" coords="12,145,143,237"/>
+<area shape="rect" id="node2" href="$classScanStrategy.html" title="Interface de stratégie de scan." alt="" coords="5,5,149,97"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="generate_ray_grid" name="generate_ray_grid">
+<area shape="rect" id="node1" title="Génère une grille régulière de rayons (partagé entre Flash et Miroir raster)." alt="" coords="280,5,420,32"/>
+<area shape="rect" id="node2" href="$classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31" title="Génère tous les rayons pour le scan." alt="" coords="5,5,232,32"/>
+</map>

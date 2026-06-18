@@ -131,7 +131,8 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), 
         data.at("max_range").get<double>(), data.value("noise_resolution", 0.0),
         params.res_h, params.res_v,
-        to_radians(params.fov_h), to_radians(params.fov_v)
+        -to_radians(params.fov_h / 2.0), to_radians(params.fov_h / 2.0),
+        -to_radians(params.fov_v / 2.0), to_radians(params.fov_v / 2.0)
     );
 
     lidar_config->m_noise_profile = parseNoiseProfile(data);
@@ -142,7 +143,9 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
 std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nlohmann::json &data){
     auto lidar_config = std::make_shared<MirroredLidarConfig>(
         data.at("model").get<std::string>(), data.at("min_range").get<double>(), data.at("max_range").get<double>(), data.value("noise_resolution", 0.0),
-        data.at("points_per_second").get<int>(), data.at("fov_h").get<double>(), data.at("fov_v").get<double>(), data.at("integration_time").get<double>() 
+        data.at("points_per_second").get<int>(), -data.at("fov_h").get<double>() / 2.0,
+        data.at("fov_h").get<double>() / 2.0, -data.at("fov_v").get<double>() / 2.0,
+        data.at("fov_v").get<double>() / 2.0, data.at("integration_time").get<double>() 
     );
 
     std::string mode = data.value("scan_mode", "lissajou");

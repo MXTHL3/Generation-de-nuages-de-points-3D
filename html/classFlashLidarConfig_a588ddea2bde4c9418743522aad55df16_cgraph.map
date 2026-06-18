@@ -1,5 +1,6 @@
 <map id="FlashLidarConfig::serialize" name="FlashLidarConfig::serialize">
-<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="5,42,199,69"/>
-<area shape="rect" id="node2" href="$classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="247,5,405,47"/>
-<area shape="rect" id="node3" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="279,71,373,98"/>
+<area shape="rect" id="node1" title="Serialise le configuration complète en JSON." alt="" coords="5,38,199,65"/>
+<area shape="rect" id="node2" href="$classLidarConfig.html#a2fa6737add51940ad59b42ec33a6666b" title="Serialise les paramètres communs aux configs." alt="" coords="247,13,443,39"/>
+<area shape="rect" id="node4" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="297,63,392,90"/>
+<area shape="rect" id="node3" href="$classLidarConfig.html#afd66aff351b8315f454f29a79c70caa3" title="Serialise le profil de bruit." alt="" coords="491,5,649,47"/>
 </map>

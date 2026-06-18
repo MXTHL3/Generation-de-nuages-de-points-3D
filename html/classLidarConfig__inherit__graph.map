@@ -1,6 +1,6 @@
 <map id="LidarConfig" name="LidarConfig">
-<area shape="rect" id="node1" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="185,5,377,200"/>
-<area shape="rect" id="node2" href="$classFlashLidarConfig.html" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="5,270,160,421"/>
-<area shape="rect" id="node3" href="$classMechanicalLidarConfig.html" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="184,263,379,428"/>
-<area shape="rect" id="node4" href="$classMirroredLidarConfig.html" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="403,248,610,443"/>
+<area shape="rect" id="node1" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="185,5,377,229"/>
+<area shape="rect" id="node2" href="$classFlashLidarConfig.html" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="5,299,160,479"/>
+<area shape="rect" id="node3" href="$classMechanicalLidarConfig.html" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="184,307,379,472"/>
+<area shape="rect" id="node4" href="$classMirroredLidarConfig.html" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="403,277,610,501"/>
 </map>

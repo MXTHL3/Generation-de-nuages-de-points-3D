@@ -30,7 +30,7 @@ Collaboration diagram for Flash\+Lidar\+Config\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classFlashLidarConfig_af6ea60a3dacf829e28cfff11f49345fc}{Flash\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, int res\+\_\+h, int res\+\_\+v, double fov\+\_\+h, double fov\+\_\+v)
+\mbox{\hyperlink{classFlashLidarConfig_a290848f9055e24a6a6453ed8c050e932}{Flash\+Lidar\+Config}} (std\+::string name, double min\+\_\+dist, double max\+\_\+dist, double accuracy, int res\+\_\+h, int res\+\_\+v, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max)
 \item 
 void \mbox{\hyperlink{classFlashLidarConfig_a588ddea2bde4c9418743522aad55df16}{serialize}} (nlohmann\+::json \&data) const override
 \begin{DoxyCompactList}\small\item\em Serialise le configuration complète en JSON. \end{DoxyCompactList}\item 
@@ -43,10 +43,14 @@ int \mbox{\hyperlink{classFlashLidarConfig_acc32c889386fe1ffcb10c0861502d442}{m\
 \begin{DoxyCompactList}\small\item\em Nombre de pixels horizontaux. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classFlashLidarConfig_adde78015715a75687b923b1e393ce8cd}{m\+\_\+resolution\+\_\+v}}
 \begin{DoxyCompactList}\small\item\em Nombre de pixels verticaux. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classFlashLidarConfig_a6dc5eea1cc869469b49fd6386f97660d}{m\+\_\+fov\+\_\+h}}
-\begin{DoxyCompactList}\small\item\em Champ de vision horizontal (radians). \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classFlashLidarConfig_a2baec376986b2fbfa631e162ca63b225}{m\+\_\+fov\+\_\+v}}
-\begin{DoxyCompactList}\small\item\em Champ de vision vertical (radians). \end{DoxyCompactList}\end{DoxyCompactItemize}
+double \mbox{\hyperlink{classFlashLidarConfig_a73043f8497fd99c33faf858cc8fc5763}{m\+\_\+fov\+\_\+h\+\_\+min}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision horizontal (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFlashLidarConfig_a5463c6f2ab977a4ab3d80d2e4380e55c}{m\+\_\+fov\+\_\+h\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em Borne supérieure champ de vision horizontal (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFlashLidarConfig_a452dcf755e2d571aadb8d8c26198ff6e}{m\+\_\+fov\+\_\+v\+\_\+min}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision vertical (radians). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classFlashLidarConfig_a06764b935b777202232087f697cbe8b3}{m\+\_\+fov\+\_\+v\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em Borne inférieure champ de vision vertical (radians). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -54,11 +58,11 @@ double \mbox{\hyperlink{classFlashLidarConfig_a2baec376986b2fbfa631e162ca63b225}
 Configuration d\textquotesingle{}un lidar flash (sans balayage). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classFlashLidarConfig_af6ea60a3dacf829e28cfff11f49345fc}\label{classFlashLidarConfig_af6ea60a3dacf829e28cfff11f49345fc}} 
+\mbox{\Hypertarget{classFlashLidarConfig_a290848f9055e24a6a6453ed8c050e932}\label{classFlashLidarConfig_a290848f9055e24a6a6453ed8c050e932}} 
 \index{FlashLidarConfig@{FlashLidarConfig}!FlashLidarConfig@{FlashLidarConfig}}
 \index{FlashLidarConfig@{FlashLidarConfig}!FlashLidarConfig@{FlashLidarConfig}}
 \doxysubsubsection{\texorpdfstring{FlashLidarConfig()}{FlashLidarConfig()}}
-{\footnotesize\ttfamily Flash\+Lidar\+Config\+::\+Flash\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v,  }\item[{double}]{fov\+\_\+h,  }\item[{double}]{fov\+\_\+v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Flash\+Lidar\+Config\+::\+Flash\+Lidar\+Config (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{double}]{min\+\_\+dist,  }\item[{double}]{max\+\_\+dist,  }\item[{double}]{accuracy,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max }\end{DoxyParamCaption})}
 
 
 
@@ -98,31 +102,51 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{classFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph}
+\includegraphics[width=333pt]{classFlashLidarConfig_a9d3e69337334e656f8b19f42012762f4_cgraph}
 \end{center}
 \end{figure}
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classFlashLidarConfig_a6dc5eea1cc869469b49fd6386f97660d}\label{classFlashLidarConfig_a6dc5eea1cc869469b49fd6386f97660d}} 
-\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_h@{m\_fov\_h}}
-\index{m\_fov\_h@{m\_fov\_h}!FlashLidarConfig@{FlashLidarConfig}}
-\doxysubsubsection{\texorpdfstring{m\_fov\_h}{m\_fov\_h}}
-{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+h}
+\mbox{\Hypertarget{classFlashLidarConfig_a5463c6f2ab977a4ab3d80d2e4380e55c}\label{classFlashLidarConfig_a5463c6f2ab977a4ab3d80d2e4380e55c}} 
+\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_h\_max@{m\_fov\_h\_max}}
+\index{m\_fov\_h\_max@{m\_fov\_h\_max}!FlashLidarConfig@{FlashLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_h\_max}{m\_fov\_h\_max}}
+{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+h\+\_\+max}
 
 
 
-Champ de vision horizontal (radians). 
+Borne supérieure champ de vision horizontal (radians). 
 
-\mbox{\Hypertarget{classFlashLidarConfig_a2baec376986b2fbfa631e162ca63b225}\label{classFlashLidarConfig_a2baec376986b2fbfa631e162ca63b225}} 
-\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_v@{m\_fov\_v}}
-\index{m\_fov\_v@{m\_fov\_v}!FlashLidarConfig@{FlashLidarConfig}}
-\doxysubsubsection{\texorpdfstring{m\_fov\_v}{m\_fov\_v}}
-{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+v}
+\mbox{\Hypertarget{classFlashLidarConfig_a73043f8497fd99c33faf858cc8fc5763}\label{classFlashLidarConfig_a73043f8497fd99c33faf858cc8fc5763}} 
+\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_h\_min@{m\_fov\_h\_min}}
+\index{m\_fov\_h\_min@{m\_fov\_h\_min}!FlashLidarConfig@{FlashLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_h\_min}{m\_fov\_h\_min}}
+{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+h\+\_\+min}
 
 
 
-Champ de vision vertical (radians). 
+Borne inférieure champ de vision horizontal (radians). 
+
+\mbox{\Hypertarget{classFlashLidarConfig_a06764b935b777202232087f697cbe8b3}\label{classFlashLidarConfig_a06764b935b777202232087f697cbe8b3}} 
+\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_v\_max@{m\_fov\_v\_max}}
+\index{m\_fov\_v\_max@{m\_fov\_v\_max}!FlashLidarConfig@{FlashLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_v\_max}{m\_fov\_v\_max}}
+{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+v\+\_\+max}
+
+
+
+Borne inférieure champ de vision vertical (radians). 
+
+\mbox{\Hypertarget{classFlashLidarConfig_a452dcf755e2d571aadb8d8c26198ff6e}\label{classFlashLidarConfig_a452dcf755e2d571aadb8d8c26198ff6e}} 
+\index{FlashLidarConfig@{FlashLidarConfig}!m\_fov\_v\_min@{m\_fov\_v\_min}}
+\index{m\_fov\_v\_min@{m\_fov\_v\_min}!FlashLidarConfig@{FlashLidarConfig}}
+\doxysubsubsection{\texorpdfstring{m\_fov\_v\_min}{m\_fov\_v\_min}}
+{\footnotesize\ttfamily double Flash\+Lidar\+Config\+::m\+\_\+fov\+\_\+v\+\_\+min}
+
+
+
+Borne inférieure champ de vision vertical (radians). 
 
 \mbox{\Hypertarget{classFlashLidarConfig_acc32c889386fe1ffcb10c0861502d442}\label{classFlashLidarConfig_acc32c889386fe1ffcb10c0861502d442}} 
 \index{FlashLidarConfig@{FlashLidarConfig}!m\_resolution\_h@{m\_resolution\_h}}

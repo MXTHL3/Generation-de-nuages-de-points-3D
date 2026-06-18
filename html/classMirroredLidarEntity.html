@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Capteur lidar à Miroir oscillant (Livox)  
+<p>Capteur lidar à Miroir oscillant (Livox, Robosense)  
  <a href="classMirroredLidarEntity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="entity_8h_source.html">entity.h</a>&gt;</code></p>
@@ -78,7 +78,7 @@ Inheritance diagram for MirroredLidarEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarEntity__inherit__graph.png" border="0" usemap="#aMirroredLidarEntity_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMirroredLidarEntity_inherit__map" id="aMirroredLidarEntity_inherit__map">
-<area shape="rect" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="5,447,177,568"/>
+<area shape="rect" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="5,447,177,568"/>
 <area shape="rect" href="classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="19,219,163,399"/>
 <area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="36,5,147,171"/>
 </map>
@@ -88,7 +88,7 @@ Collaboration diagram for MirroredLidarEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMirroredLidarEntity__coll__graph.png" border="0" usemap="#aMirroredLidarEntity_coll__map" alt="Collaboration graph"/></div>
 <map name="aMirroredLidarEntity_coll__map" id="aMirroredLidarEntity_coll__map">
-<area shape="rect" title="Capteur lidar à Miroir oscillant (Livox)" alt="" coords="84,661,256,783"/>
+<area shape="rect" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="84,661,256,783"/>
 <area shape="rect" href="classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="98,447,242,612"/>
 <area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="5,219,116,384"/>
 <area shape="rect" href="classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="5,5,116,156"/>
@@ -105,9 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acee3395890d416956e6c67083be3363d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarEntity.html#acee3395890d416956e6c67083be3363d">clone</a> () const override</td></tr>
 <tr class="memdesc:acee3395890d416956e6c67083be3363d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une copie de l'entité.  <a href="classMirroredLidarEntity.html#acee3395890d416956e6c67083be3363d">More...</a><br /></td></tr>
 <tr class="separator:acee3395890d416956e6c67083be3363d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc1358b5d26aa77071f0ca17f0b2c672"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarEntity.html#abc1358b5d26aa77071f0ca17f0b2c672">generate_rays</a> () const override</td></tr>
-<tr class="memdesc:abc1358b5d26aa77071f0ca17f0b2c672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère tous les rayons pour le scan.  <a href="classMirroredLidarEntity.html#abc1358b5d26aa77071f0ca17f0b2c672">More...</a><br /></td></tr>
-<tr class="separator:abc1358b5d26aa77071f0ca17f0b2c672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae789ab8e66bd52516ffe376fdddc7393"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMirroredLidarEntity.html#ae789ab8e66bd52516ffe376fdddc7393">generate_rays</a> (double duration=-1.0) const override</td></tr>
+<tr class="memdesc:ae789ab8e66bd52516ffe376fdddc7393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère tous les rayons pour le scan.  <a href="classMirroredLidarEntity.html#ae789ab8e66bd52516ffe376fdddc7393">More...</a><br /></td></tr>
+<tr class="separator:ae789ab8e66bd52516ffe376fdddc7393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLidarEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLidarEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLidarEntity.html">LidarEntity</a></td></tr>
 <tr class="memitem:a48982d054651b1f7747c2709db01d9e3 inherit pub_methods_classLidarEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarEntity.html#a48982d054651b1f7747c2709db01d9e3">LidarEntity</a> (std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt; <a class="el" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4">config</a>, <a class="el" href="classPose.html">Pose</a> p)</td></tr>
 <tr class="separator:a48982d054651b1f7747c2709db01d9e3 inherit pub_methods_classLidarEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,7 +152,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a0e7f2ce364a2e18a080d42dbd76d1e88 inherit pro_attribs_classIEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Capteur lidar à Miroir oscillant (Livox) </p>
+<div class="textblock"><p>Capteur lidar à Miroir oscillant (Livox, Robosense) </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a46acaeffc0bdcbd4cdccde20ffad1b2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46acaeffc0bdcbd4cdccde20ffad1b2c">&#9670;&nbsp;</a></span>MirroredLidarEntity()</h2>
@@ -240,14 +240,14 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph.png" border="0" usemap="#aclassMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph" alt=""/></div>
 <map name="aclassMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph" id="aclassMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph">
 <area shape="rect" title=" " alt="" coords="200,5,347,47"/>
-<area shape="rect" href="classMirroredLidarEntity.html#abc1358b5d26aa77071f0ca17f0b2c672" title="Génère tous les rayons pour le scan." alt="" coords="5,5,152,47"/>
+<area shape="rect" href="classMirroredLidarEntity.html#ae789ab8e66bd52516ffe376fdddc7393" title="Génère tous les rayons pour le scan." alt="" coords="5,5,152,47"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="abc1358b5d26aa77071f0ca17f0b2c672"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc1358b5d26aa77071f0ca17f0b2c672">&#9670;&nbsp;</a></span>generate_rays()</h2>
+<a id="ae789ab8e66bd52516ffe376fdddc7393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae789ab8e66bd52516ffe376fdddc7393">&#9670;&nbsp;</a></span>generate_rays()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,7 +258,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">std::vector&lt; <a class="el" href="entity_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &gt; MirroredLidarEntity::generate_rays </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>duration</em> = <code>-1.0</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -270,13 +271,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Génère tous les rayons pour le scan. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>durée du scan (secondes). Mécanique : angle total = duration * rotation_rate * 360° Miroir lissajou : n_points = n_points_per_second * duration Flash : ignoré car capture instantanée </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implements <a class="el" href="classLidarEntity.html#a869b0d4ce82488f1daab22b3a77e0235">LidarEntity</a>.</p>
+<p>Implements <a class="el" href="classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8">LidarEntity</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph.png" border="0" usemap="#aclassMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph" alt=""/></div>
-<map name="aclassMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph" id="aclassMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph">
+<div class="center"><img src="classMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393_cgraph.png" border="0" usemap="#aclassMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393_cgraph" alt=""/></div>
+<map name="aclassMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393_cgraph" id="aclassMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393_cgraph">
 <area shape="rect" title="Génère tous les rayons pour le scan." alt="" coords="5,5,152,47"/>
 <area shape="rect" href="classMirroredLidarEntity.html#aee5cb437df0a6cb29f24cdd98c95e139" title=" " alt="" coords="200,5,347,47"/>
 </map>

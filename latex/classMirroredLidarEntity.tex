@@ -2,7 +2,7 @@
 \label{classMirroredLidarEntity}\index{MirroredLidarEntity@{MirroredLidarEntity}}
 
 
-Capteur lidar à Miroir oscillant (Livox)  
+Capteur lidar à Miroir oscillant (Livox, Robosense)  
 
 
 
@@ -36,13 +36,13 @@ const \mbox{\hyperlink{classMirroredLidarConfig}{Mirrored\+Lidar\+Config}} \& \m
 \item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}{clone}} () const override
 \begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}{generate\+\_\+rays}} () const override
+std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
-Capteur lidar à Miroir oscillant (Livox) 
+Capteur lidar à Miroir oscillant (Livox, Robosense) 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classMirroredLidarEntity_a46acaeffc0bdcbd4cdccde20ffad1b2c}\label{classMirroredLidarEntity_a46acaeffc0bdcbd4cdccde20ffad1b2c}} 
@@ -81,25 +81,30 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=336pt]{classMirroredLidarEntity_aee5cb437df0a6cb29f24cdd98c95e139_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}\label{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672}} 
+\mbox{\Hypertarget{classMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393}\label{classMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393}} 
 \index{MirroredLidarEntity@{MirroredLidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!MirroredLidarEntity@{MirroredLidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mirrored\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mirrored\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
 Génère tous les rayons pour le scan. 
 
 
+\begin{DoxyParams}{Parameters}
+{\em duration} & durée du scan (secondes). Mécanique \+: angle total = duration $\ast$ rotation\+\_\+rate $\ast$ 360° Miroir lissajou \+: n\+\_\+points = n\+\_\+points\+\_\+per\+\_\+second $\ast$ duration Flash \+: ignoré car capture instantanée \\
+\hline
+\end{DoxyParams}
 
-Implements \mbox{\hyperlink{classLidarEntity_a869b0d4ce82488f1daab22b3a77e0235}{Lidar\+Entity}}.
+
+Implements \mbox{\hyperlink{classLidarEntity_a1429a6e6844c7733f29973535576bbd8}{Lidar\+Entity}}.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=336pt]{classMirroredLidarEntity_abc1358b5d26aa77071f0ca17f0b2c672_cgraph}
+\includegraphics[width=336pt]{classMirroredLidarEntity_ae789ab8e66bd52516ffe376fdddc7393_cgraph}
 \end{center}
 \end{figure}
 
