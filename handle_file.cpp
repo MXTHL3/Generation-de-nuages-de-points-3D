@@ -6,14 +6,18 @@ void HandleFile::open_model(Gtk::Window& parent, std::function<void(const std::s
                                   Gtk::FILE_CHOOSER_ACTION_OPEN);
     dialog.set_transient_for(parent);
     dialog.set_modal(true);
+    dialog.set_select_multiple(true);
 
     dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
     dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
 
-    auto filter_obj = Gtk::FileFilter::create();
-    filter_obj->set_name("Modèles OBJ (*.obj)");
-    filter_obj->add_pattern("*.obj");
-    dialog.add_filter(filter_obj);
+    auto filter_mesh = Gtk::FileFilter::create();
+    filter_mesh->set_name("Modèles 3D (*.obj, *.ply, *.las, *.laz)");
+    filter_mesh->add_pattern("*.obj");
+    filter_mesh->add_pattern("*.ply");
+    filter_mesh->add_pattern("*.las");
+    filter_mesh->add_pattern("*.laz");
+    dialog.add_filter(filter_mesh);
 
     auto filter_all = Gtk::FileFilter::create();
     filter_all->set_name("Tous les fichiers");
@@ -23,10 +27,12 @@ void HandleFile::open_model(Gtk::Window& parent, std::function<void(const std::s
     int result = dialog.run();
 
     if (result == Gtk::RESPONSE_OK) {
-        std::string path = dialog.get_filename();
-        m_loaded_models.push_back(path);
-        if (on_loaded) on_loaded(path);
-        std::cout << "Modèle chargé : " << path << std::endl;
+        std::vector<std::string> paths = dialog.get_filenames(); 
+        for (const auto& path : paths) {
+            m_loaded_models.push_back(path);
+            if (on_loaded) on_loaded(path);
+            std::cout << "Modèle chargé : " << path << std::endl;
+        }
         std::cout << "Total modèles chargés : " << m_loaded_models.size() << std::endl;
     }
 }

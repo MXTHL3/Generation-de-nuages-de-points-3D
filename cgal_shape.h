@@ -5,8 +5,15 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <filesystem>
+#include <pdal/Options.hpp>
+#include <pdal/PointTable.hpp>
+#include <pdal/PointView.hpp>
+#include <pdal/io/LasReader.hpp>
 #include <CGAL/Polygon_mesh_processing/IO/polygon_mesh_io.h>
 #include <CGAL/Polygon_mesh_processing/triangulate_faces.h>
+#include <CGAL/Projection_traits_xy_3.h>
+#include <CGAL/Delaunay_triangulation_2.h>
 
 /// @brief Implémentation concrète de Cgal pour la construction de maillages.
 /// Prend en charge la génération d'un cube procédural et le chargement

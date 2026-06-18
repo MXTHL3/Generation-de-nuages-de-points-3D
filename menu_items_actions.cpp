@@ -13,6 +13,7 @@ void MenuItemsActions::load_scan() {
     _sub->signal_activate().connect([this]() {
         Gtk::FileChooserDialog dialog("Charger un nuage de points", Gtk::FILE_CHOOSER_ACTION_OPEN);
         dialog.set_transient_for(as_window());
+        dialog.set_select_multiple(true);                  
         dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
         dialog.add_button("Ouvrir",  Gtk::RESPONSE_OK);
 
@@ -28,8 +29,10 @@ void MenuItemsActions::load_scan() {
         filter_all->add_pattern("*");
         dialog.add_filter(filter_all);
 
-        if (dialog.run() == Gtk::RESPONSE_OK)
-            m_gl->load_scan(dialog.get_filename());
+        if (dialog.run() == Gtk::RESPONSE_OK) {
+            for (const auto& path : dialog.get_filenames()) 
+                m_gl->load_scan(path);
+        }
     });
 }
 

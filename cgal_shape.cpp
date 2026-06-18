@@ -35,13 +35,13 @@ void CgalShape::build_cube_mesh()
 
 void CgalShape::build_mesh_from_file(const std::string& filename)
 {
-    size_t last_occur = filename.rfind(".");
-    if (last_occur == std::string::npos) {
+    std::string ext = std::filesystem::path(filename).extension().string();
+    if (ext.empty()) {
         std::cerr << "Pas d'extension trouvée : " << filename << "\n";
         return;
     }
-
-    std::string ext = filename.substr(last_occur);
+    std::transform(ext.begin(), ext.end(), ext.begin(),
+                [](unsigned char c){ return static_cast<char>(std::tolower(c)); });
 
     if (ext == ".obj") {
         std::ifstream file(filename);
@@ -96,6 +96,58 @@ void CgalShape::build_mesh_from_file(const std::string& filename)
 
         std::cout << "Maillage chargé : " << m_mesh.number_of_vertices() << " sommets, "
                   << m_mesh.number_of_faces() << " faces\n";
+    }
+    else if (ext == ".las" || ext == ".laz") {
+        pdal::Options opts;
+        opts.add("filename", filename);
+
+        pdal::LasReader reader;
+        reader.setOptions(opts);
+
+        pdal::PointTable table;
+        reader.prepare(table);
+        pdal::PointViewSet viewSet = reader.execute(table);
+
+        typedef CGAL::Projection_traits_xy_3<Kernel> Gt;
+        typedef CGAL::Delaunay_triangulation_2<Gt>   Delaunay;
+
+        std::vector<Point> raw_points;
+        for (const auto& view : viewSet) {
+            raw_points.reserve(raw_points.size() + view->size());
+            for (pdal::PointId i = 0; i < view->size(); ++i) {
+                raw_points.emplace_back(
+                    view->getFieldAs<double>(pdal::Dimension::Id::X, i),
+                    view->getFieldAs<double>(pdal::Dimension::Id::Y, i),
+                    view->getFieldAs<double>(pdal::Dimension::Id::Z, i));
+            }
+        }
+
+        if (raw_points.empty()) {
+            std::cerr << "Aucun point lu dans : " << filename << "\n";
+            return;
+        }
+
+        Delaunay dt;
+        dt.insert(raw_points.begin(), raw_points.end());
+
+        if (dt.number_of_faces() == 0) {
+            std::cerr << "Triangulation vide (points coplanaires ou colinéaires ?) : " << filename << "\n";
+            return;
+        }
+
+        m_mesh.clear();
+
+        std::map<Delaunay::Vertex_handle, SurfaceMesh::Vertex_index> vh_map;
+        for (auto vit = dt.finite_vertices_begin(); vit != dt.finite_vertices_end(); ++vit)
+            vh_map[vit] = m_mesh.add_vertex(vit->point());
+
+        for (auto fit = dt.finite_faces_begin(); fit != dt.finite_faces_end(); ++fit)
+            m_mesh.add_face(vh_map[fit->vertex(0)],
+                            vh_map[fit->vertex(1)],
+                            vh_map[fit->vertex(2)]);
+
+        std::cout << "Maillage LAS/LAZ chargé : " << m_mesh.number_of_vertices()
+                << " sommets, " << m_mesh.number_of_faces() << " faces <- " << filename << "\n";
     }
     else {
         std::cerr << "Format non supporté : " << ext << "\n";
