@@ -1,0 +1,120 @@
+{
+    "lidar_entities": [
+        {
+            "lidar_config": "lidars_config/ouster_os2_128_rev7.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    1.25
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "step_index": 2
+        },
+        {
+            "lidar_config": "lidars_config/livox_mid_360.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    1.25
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "step_index": 2
+        },
+        {
+            "lidar_config": "lidars_config/velodyne_vlp32c.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    1.25
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "step_index": 2
+        },
+        {
+            "lidar_config": "lidars_config/continental_hfl110.json",
+            "pose": {
+                "position": [
+                    0.0,
+                    0.0,
+                    1.25
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "step_index": 2
+        }
+    ],
+    "static_entities": [
+        {
+            "name": "dataset",
+            "mesh_path": "dataset/objects/cube.ply",
+            "pose": {
+                "position": [
+                    5.0,
+                    0.0,
+                    0.0
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        }
+    ],
+    "pipeline": [
+        {
+            "entity_name": "dataset",
+            "type": "rotation",
+            "n_variations": 20
+        },
+        {
+            "type": "linear_position",
+            "entity_name": "dataset",
+            "axis": "x_axis",
+            "min": 1.0,
+            "max": 30.0,
+            "step": 2.0
+        },
+        {
+            "type": "keyframe",
+            "scenarios":[
+                {
+                    "scenario_name": "scan_dataset",
+                    "objects":[
+                        {
+                            "entity_name": "dataset",
+                            "keyframes_directory": "dataset/animations",
+                            "extension":".ply"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "scan_session":{
+        "strategy": "timed",
+        "duration": 0.1
+    }
+}
