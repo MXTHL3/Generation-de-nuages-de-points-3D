@@ -19,9 +19,6 @@ public:
     IEntity(Pose pose): m_pose(pose){};
     virtual ~IEntity(){};
 
-    /// @brief Crée une copie de l'entité.
-    virtual std::unique_ptr<IEntity> clone() const = 0;
-
     /// @brief Calcule la matrice de transformation pour placement dans la scène.
     Transform3 transform() const;    // Récupère la position dans la scene.
     /// @brief Retourne l'identifiant de l'entité.
@@ -107,7 +104,6 @@ public:
 
     /// @brief Accès typé à la config mécanique.
     const MechanicalLidarConfig& config() const{ return static_cast<const MechanicalLidarConfig&>(*m_config); }
-    std::unique_ptr<IEntity> clone() const override;
 
     /// @brief Génère les rayons pour un angle azimutal (horizontal) donné
     std::vector<Ray3> scan(double h_angle_deg) const;
@@ -139,8 +135,6 @@ public:
 
     const FlashLidarConfig& config() const{ return static_cast<const FlashLidarConfig&>(*m_config); };
 
-    std::unique_ptr<IEntity> clone() const override;
-
     std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 };
 /// @brief Capteur lidar à Miroir oscillant (Livox, Robosense)
@@ -149,8 +143,6 @@ public:
     MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p);
 
     const MirroredLidarConfig& config() const{ return static_cast<const MirroredLidarConfig&>(*m_config); };
-
-    std::unique_ptr<IEntity> clone() const override;
     
     std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 

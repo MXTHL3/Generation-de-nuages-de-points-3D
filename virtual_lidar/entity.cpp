@@ -5,9 +5,6 @@
 
 // STATIC ENTITY
 
-std::unique_ptr<IEntity> StaticEntity::clone() const {
-    return std::make_unique<StaticEntity>(*this);
-}
 Transform3 IEntity::transform() const { return m_pose.transform(); }
 
 StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p)
@@ -19,10 +16,6 @@ LidarEntity::LidarEntity(std::shared_ptr<LidarConfig> config, Pose p)
 MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p)
     : LidarEntity(config, p){}
 
-
-std::unique_ptr<IEntity> MechanicalLidarEntity::clone() const {
-    return std::make_unique<MechanicalLidarEntity>(*this);
-}
 
 std::vector<Ray3> MechanicalLidarEntity::generate_rays(double duration) const{
     std::vector<Ray3> all_rays;
@@ -97,10 +90,6 @@ std::vector<Ray3> generate_ray_grid(
 FlashLidarEntity::FlashLidarEntity(std::shared_ptr<FlashLidarConfig> config, Pose p)
     : LidarEntity(config, p) {}
 
-std::unique_ptr<IEntity> FlashLidarEntity::clone() const {
-    return std::make_unique<FlashLidarEntity>(*this);
-}
-
 std::vector<Ray3> FlashLidarEntity::generate_rays(double duration) const {
     const auto& l_config = config();
     return generate_ray_grid(m_pose.pos(), transform(),
@@ -111,10 +100,6 @@ std::vector<Ray3> FlashLidarEntity::generate_rays(double duration) const {
 
 MirroredLidarEntity::MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p)
     : LidarEntity(config, p){}
-
-std::unique_ptr<IEntity> MirroredLidarEntity::clone() const{
-    return std::make_unique<MirroredLidarEntity>(*this);
-}
 
 std::vector<Ray3> MirroredLidarEntity::generate_rays(double duration) const {
     if(config().is_lissajou()){
