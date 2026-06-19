@@ -165,6 +165,6 @@ std::vector<Ray3> MirroredLidarEntity::generate_raster() const {
     const auto& raster_cfg = std::get<RasterParams>(cfg.m_mirrored_scan_params);
     return generate_ray_grid(m_pose.pos(), transform(),
     cfg.m_fov_h_min, cfg.m_fov_h_max, 
-    cfg.m_fov_v_min, cfg.m_fov_h_max, 
+    cfg.m_fov_v_min, cfg.m_fov_v_max, 
     raster_cfg.resolution_h, raster_cfg.resolution_v);
 }

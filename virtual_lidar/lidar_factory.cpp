@@ -174,8 +174,8 @@ std::shared_ptr<MirroredLidarConfig> LidarFactory::parseMirroredLidar(const nloh
         lidar_config->m_mirrored_scan_params = LissajouParams{
             to_radians(lissajou_json.at("amplitude_h").get<double>()),
             to_radians(lissajou_json.at("amplitude_v").get<double>()),
-            to_radians(lissajou_json.at("freq_h").get<double>()),
-            to_radians(lissajou_json.at("freq_v").get<double>()),
+            lissajou_json.at("freq_h").get<double>(),
+            lissajou_json.at("freq_v").get<double>(),
             to_radians(lissajou_json.at("phase_diff").get<double>())
         };   
     }else if(mode == "raster"){

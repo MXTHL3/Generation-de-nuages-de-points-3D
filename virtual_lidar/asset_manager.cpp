@@ -55,6 +55,10 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
         CGAL_Point_3 p1 = mesh.point(mesh.target(h));
         CGAL_Point_3 p2 = mesh.point(mesh.target(mesh.next(h)));
 
+        Triangle3 new_tri = Triangle3(p0, p1, p2);
+        
+        if(new_tri.is_degenerate()) continue;
+        
         obj->m_triangles.push_back(Triangle3(p0, p1, p2));
     }
 
