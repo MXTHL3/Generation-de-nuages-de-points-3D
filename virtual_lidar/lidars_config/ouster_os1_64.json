@@ -1,9 +1,17 @@
 {
     "model": "Ouster OS1-64",
-    "min_range": 0.8,
-    "max_range": 120.0,
-    "h_step": [0.703125, 0.3515626, 0.1757825],
+    "min_range": 0.5,
+    "max_range": 170.0,
+    "rotation_rate": 10,
+    "horizontal_columns": 2048,
     "accuracy": 0.01,
+    "noise_profile":[
+        {
+            "max_distance": 30,
+            "sigma": 0.01
+        }
+    ],
+    "noise_resolution": 0.003,
     "lasers": [
         { "v_angle": -22.5, "h_offset": 0.0, "d_offset": 0.0 },
         { "v_angle": -21.79, "h_offset": 0.0, "d_offset": 0.0 },

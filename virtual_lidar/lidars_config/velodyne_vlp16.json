@@ -1,0 +1,34 @@
+{
+    "model": "Velodyne VLP-16",
+    "type": "mechanical",
+    "min_range": 0.5,
+    "max_range": 100.0,
+    "accuracy": 0.03,
+    "horizontal_resolution": 0.2,
+    "rotation_rate": 10,
+    "noise_resolution": 0.002,
+    "noise_profile":[
+        {
+            "max_distance": 100,
+            "sigma": 0.03
+        }
+    ],
+    "lasers": [
+        { "v_angle": -15.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -13.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -11.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -9.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -7.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -5.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -3.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": -1.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 1.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 3.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 5.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 7.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 9.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 11.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 13.0, "h_offset": 0.0, "d_offset": 0.0 },
+        { "v_angle": 15.0, "h_offset": 0.0, "d_offset": 0.0 }
+    ]
+}

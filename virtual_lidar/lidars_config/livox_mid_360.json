@@ -17,10 +17,6 @@
         "freq_v": 4115.0,
         "phase_diff": 0.0
     },
-    "raster":{
-        "resolution_h": 1800,
-        "resolution_v": 32
-    },
     "noise_profile":[
         {
             "max_distance": 1.0,

@@ -1,8 +1,18 @@
 {
-    "model_name": "Velodyne VLP-32C",
+    "model": "Velodyne VLP-32C",
+    "type":"mechanical",
+    "horizontal_resolution": 0.2,
     "min_range": 0.5,
     "max_range": 200.0,
-    "accuracy": 0.02,
+    "accuracy": 0.03,
+    "rotation_rate": 10,
+    "noise_profile":[
+      {
+        "max_distance": 200,
+        "sigma": 0.03
+      }
+    ],
+    "noise_resolution": 0.002,
     "lasers": [
     { "v_angle": -25.0,   "h_offset": 1.4,    "d_offset": 0.0 },
     { "v_angle": -15.639, "h_offset": -1.4,   "d_offset": 0.0 },
