@@ -1,6 +1,8 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -O3
-LIBS = -lgmp -lmpfr -lspdlog -lfmt
+CXXFLAGS := -std=c++17 -Wall -Wextra -O2 -Iinclude
+CXXFLAGS += $(shell pkg-config --cflags gtkmm-3.0 epoxy pdal libpng spdlog)
+LDFLAGS  := $(shell pkg-config --libs   gtkmm-3.0 epoxy pdal libpng spdlog)
+LDFLAGS  += -lgmp -lmpfr -lfmt
 
 # Nom de l'exécutable
 TARGET = scan_lidar
@@ -18,12 +20,15 @@ SOURCES = main.cpp \
 		noise_model.cpp \
 		pipeline.cpp \
 		lidar_scanner.cpp \
-		horizontal_step.cpp
+		horizontal_step.cpp \
+		scan_strategy.cpp \
+		object.cpp \
+		tlas_primitive.cpp
 
 all: $(TARGET)
 
 $(TARGET): $(SOURCES)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES) $(LDFLAGS)
 
 clean:
 	rm -f $(TARGET)

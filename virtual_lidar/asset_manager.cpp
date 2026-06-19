@@ -59,10 +59,12 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
         
         if(new_tri.is_degenerate()) continue;
         
-        obj->m_triangles.push_back(Triangle3(p0, p1, p2));
+        obj->m_triangles.push_back(new_tri);
     }
 
     SIM_INFO("Le fichier mesh : {} a été chargé !", path);
+
+    obj->build_tree();
     
     return obj;
 }

@@ -2,20 +2,9 @@
 #define SCENE_HPP
 
 #include "entity.hpp"
-#include <CGAL/AABB_tree.h>
-#include <CGAL/AABB_traits.h>
-#include <CGAL/AABB_triangle_primitive.h>
+#include "tlas_primitive.hpp"
 
-typedef CGAL::AABB_triangle_primitive<K, std::vector<Triangle3>::iterator> Primitive;
-typedef CGAL::AABB_traits<K, Primitive> Traits;
-typedef CGAL::AABB_tree<Traits> Tree;
-
-/// @brief Resultat d'une intersection rayon-triangle.
-struct Intersection {
-    Point3 point; ///< Point d'impact dans le repère global
-    double distance; ///< Ditance entre l'orgine du rayon et le point d'impact (mètres)
-    size_t face_index; ///< Indice du triangle intersecté dans le tableau d'une Scene
-};
+#include <optional>
 
 /// @brief Scène 3D contenant les entités statiques et l'arbre d'accélération AABB.
 /// La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l'intersection rayon_triangle via CGAL.
@@ -24,8 +13,8 @@ public:
 
     Scene() = default;
     ~Scene(){
-        m_triangles.clear();
-        m_tree.reset();
+        m_tlas_primitives.clear();
+        m_tlas_tree.reset();
     }
     /// @brief Constructeur de copie
     Scene(const Scene& scene);
@@ -40,7 +29,7 @@ public:
     /// @brief Lance un rayon et retourne pottentiellement l'intersection la plus proche de l'origine du rayon.
     /// @param ray Rayon à intersecter (origine et direction)
     /// @return L'intersection trouvée s'il en trouve sinon boost::none
-    boost::optional<Intersection> intersect(const Ray3& ray) const;
+    std::optional<Intersection> intersect(const Ray3& ray) const;
 
     /// @brief Accès en lecture aux entités de la scène
     const std::vector<std::unique_ptr<StaticEntity>>& entities() const { return m_entities; }
@@ -49,8 +38,8 @@ private:
     std::vector<std::unique_ptr<StaticEntity>> m_entities; ///< Objets de la scène
 
 
-    std::vector<Triangle3> m_triangles; ///< Triangles transformés des maillages de la scène
-    std::unique_ptr<Tree> m_tree; ///< structure d'arbre AABB de la scene pour calculer les intersections plus rapidement O(log n) > O(n)
+    std::vector<TlasPrimitive> m_tlas_primitives; ///<  boites englobantes des objets de la scène
+    std::unique_ptr<TlasTree> m_tlas_tree; ///< structure d'arbre AABB TLAS de la scene pour calculer les intersections des boites englobantes avant d'intersecter les maillages BLAS
 };
 
 #endif
