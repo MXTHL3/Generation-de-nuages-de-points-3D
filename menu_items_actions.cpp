@@ -843,9 +843,9 @@ void MenuItemsActions::scanner_settings() {
 
         auto* s_duration = make_slider("Durée (s)", 0.1, 10.0, 0.1, m_gl->get_scan_duration(), 1,
             [this](double v){ m_gl->set_scan_duration(v); });
-        auto* s_nscans   = make_slider("Nombre de scans", 1.0, 20.0, 1.0, m_gl->get_scan_n_scans(),  0,
+        auto* s_nscans = make_slider("Nombre de scans", 1.0, 20.0, 1.0, m_gl->get_scan_n_scans(),  0,
             [this](double v){ m_gl->set_scan_n_scans(static_cast<int>(v)); });
-        auto* s_threads  = make_slider("Threads", 1.0, 16.0, 1.0, m_gl->get_scan_threads(),  0,
+        auto* s_threads = make_slider("Threads", 1.0, 16.0, 1.0, m_gl->get_scan_threads(),  0,
             [this](double v){ m_gl->set_scan_threads(static_cast<int>(v)); });
 
         s_duration->set_sensitive(cur_strat == ScanStrategyType::Timed);
@@ -907,6 +907,106 @@ void MenuItemsActions::scanner_settings() {
         area->pack_start(*vbox, Gtk::PACK_SHRINK);
         dlg.show_all_children();
         dlg.run();
+    });
+}
+
+void MenuItemsActions::vary_poses() {
+    _sub->signal_activate().connect([this]() {
+        Gtk::Dialog dialog("Varier les poses (pipeline)", as_window(), true);
+        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        dialog.add_button("Générer", Gtk::RESPONSE_OK);
+
+        auto* content = dialog.get_content_area();
+        auto* box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 8);
+        box->set_margin_start(16); box->set_margin_end(16);
+        box->set_margin_top(12); box->set_margin_bottom(12);
+
+        auto* lbl = Gtk::make_managed<Gtk::Label>("Nombre de variations par modèle :");
+        lbl->set_xalign(0.0f);
+        Gtk::SpinButton spin_variations(1.0, 0);
+        spin_variations.set_range(1, 50);
+        spin_variations.set_value(3);
+
+        box->pack_start(*lbl, Gtk::PACK_SHRINK);
+        box->pack_start(spin_variations, Gtk::PACK_SHRINK);
+        content->pack_start(*box, Gtk::PACK_SHRINK);
+        dialog.show_all_children();
+
+        if (dialog.run() != Gtk::RESPONSE_OK) return;
+        size_t nb_variations = static_cast<size_t>(spin_variations.get_value_as_int());
+        dialog.hide();
+
+        size_t total_models = m_gl->model_count();
+        if (total_models <= 1) {
+            Gtk::MessageDialog msg(as_window(),
+                "Aucun modèle 3D importé dans la scène à varier.",
+                false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+            msg.run();
+            return;
+        }
+
+        std::vector<std::string> paths(m_gl->model_paths().begin(), m_gl->model_paths().end());
+        const auto& src_transforms = m_gl->transforms();
+
+        std::map<std::string, float> scale_by_path;
+        for (size_t i = 0; i < paths.size(); ++i) {
+            scale_by_path[paths[i]] = src_transforms[i + 1].scale;
+            std::cout << i << ":" << paths[i] << std::endl;
+        }
+
+        AssetManager assets;
+        auto base_scene = std::make_unique<Scene>();
+
+        try {
+
+            for (size_t i = 0; i < paths.size(); ++i) {
+                auto mesh = assets.get_mesh(paths[i]);
+                auto entity = std::make_unique<StaticEntity>(
+                    "model_" + std::to_string(i), mesh, Pose(), paths[i]);
+                base_scene->add_static_entity(std::move(entity));
+            }
+
+            Pipeline pipeline;
+            pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(nb_variations, 0.0, 360.0));
+            pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(1));
+
+            std::vector<std::unique_ptr<Scene>> scenes = pipeline.execute(std::move(base_scene), assets);
+
+            int total_generated = 0;
+            for (const auto& scene : scenes) {
+                for (const auto& entity : scene->entities()) {
+                    std::string path = entity->mesh_path();
+                    m_gl->load_file(path);
+
+                    int new_idx = static_cast<int>(m_gl->model_count()) - 1;
+                    const Pose& p = entity->pose();
+
+                    ModelTransform tr;
+                    tr.pos_x = static_cast<float>(p.pos().x());
+                    tr.pos_y = static_cast<float>(p.pos().y());
+                    tr.pos_z = static_cast<float>(p.pos().z());
+                    tr.angle_x = static_cast<float>(p.rx());
+                    tr.angle_y = static_cast<float>(p.ry());
+                    tr.angle_z = static_cast<float>(p.rz());
+                    tr.scale = scale_by_path.count(path) ? scale_by_path.at(path) : 1.0f;
+                    m_gl->set_transform(new_idx, tr);
+
+                    total_generated++;
+                }
+            }
+
+            Gtk::MessageDialog msg(as_window(),
+                std::to_string(total_generated) + " variation(s) générée(s) pour "
+                + std::to_string(paths.size()) + " modèle(s) source(s).",
+                false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
+            msg.run();
+
+        } catch (const std::exception& e) {
+            Gtk::MessageDialog msg(as_window(),
+                std::string("Erreur lors de la génération des variations :\n") + e.what(),
+                false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
+            msg.run();
+        }
     });
 }
 

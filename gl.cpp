@@ -849,29 +849,29 @@ void Gl::lidar_override_set_accuracy(double v) {
     ensure_override(m_lidar_override, m_lidar_config)->m_accuracy = v;
 }
 
-void Gl::reset_scene() {
+void Gl::reset_scene(int start_index) {
     if (gl_area.get_realized()) gl_area.make_current();
 
-    if (m_scenes.size() > 1)
-        m_scenes.erase(m_scenes.begin() + 1, m_scenes.end());
+    if (m_scenes.size() > static_cast<size_t>(start_index))
+        m_scenes.erase(m_scenes.begin() + start_index, m_scenes.end());
 
-    if (m_transforms.size() > 1)
-        m_transforms.erase(m_transforms.begin() + 1, m_transforms.end());
+    if (m_transforms.size() > static_cast<size_t>(start_index))
+        m_transforms.erase(m_transforms.begin() + start_index, m_transforms.end());
 
-    if (m_model_paths.size() > 1)
-        m_model_paths.erase(m_model_paths.begin() + 1, m_model_paths.end());
+    size_t path_index = start_index > 0 ? start_index - 1 : 0;
+    if (m_model_paths.size() > path_index)
+        m_model_paths.erase(m_model_paths.begin() + path_index, m_model_paths.end());
 
-    if (m_model_hidden.size() > 1)
-        m_model_hidden.erase(m_model_hidden.begin() + 1, m_model_hidden.end());    
+    if (m_model_hidden.size() > static_cast<size_t>(start_index))
+        m_model_hidden.erase(m_model_hidden.begin() + start_index, m_model_hidden.end());    
 
-    constexpr size_t MARKERS_PER_MODEL = 5;
-    constexpr size_t CUBE_MARKERS = MARKERS_PER_MODEL; 
+    const size_t MARKERS_PER_MODEL = 5; 
 
-    for (size_t i = CUBE_MARKERS; i < m_markers.size(); ++i)
+    for (size_t i = MARKERS_PER_MODEL; i < m_markers.size(); ++i)
         m_fixed.remove(*m_markers[i]);
 
-    if (m_markers.size() > CUBE_MARKERS)
-        m_markers.erase(m_markers.begin() + CUBE_MARKERS, m_markers.end());
+    if (m_markers.size() > MARKERS_PER_MODEL)
+        m_markers.erase(m_markers.begin() + MARKERS_PER_MODEL, m_markers.end());
 
     m_load_count = 0;
 

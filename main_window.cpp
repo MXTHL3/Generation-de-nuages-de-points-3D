@@ -32,7 +32,7 @@ MainWindow::MainWindow(std::unique_ptr<Gl> gl) : main_box(Gtk::ORIENTATION_VERTI
             "Ouvrir modèle 3D", "Charger scène (JSON)", "Exporter scène (JSON)", "Charger scan (PLY/LAS)",
             "Capturer image", "Quitter"},
         {"Scène",
-            "Supprimer sélection", "Réinitialiser scène"},
+            "Varier les poses (pipeline)", "Réinitialiser scène"},
         {"Scanner 3D",
             "Paramètres scanner", "Lancer scan scène complète", "Lancer un scan par modèle 3D",
             "Afficher/masquer nuage", "Réinitialiser scans"},
@@ -114,6 +114,7 @@ void MainWindow::add_menu_item(const std::string& menu_item,
         else if (label == "Charger scène (JSON)") { load_json_scene(); }
         else if (label == "Exporter scène (JSON)") { save_json_scene(); }
         else if (label == "Capturer image") { capture_image(); }
+        else if (label == "Varier les poses (pipeline)") { vary_poses(); }
         else if (label == "Réinitialiser scène") { reset_scene(); }
         else if (label == "Paramètres scanner") { scanner_settings(); }
         else if (label == "Lancer scan scène complète") { launch_full_scene_scan(); }

@@ -137,7 +137,7 @@ public:
     std::vector<std::unique_ptr<ModelMarker>>& get_markers() { return m_markers; };
     
     /// @brief Supprime tous les modèles chargés (conserve le cube par défaut).
-    void reset_scene();
+    void reset_scene(int start_index = 1);
     
     /// @brief Supprime tous les nuages de points chargés.
     void reset_scans();

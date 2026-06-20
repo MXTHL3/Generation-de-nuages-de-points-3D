@@ -77,6 +77,9 @@ protected:
     /// @brief Ouvre la boîte de dialogue des paramètres du scanner lidar.
     void scanner_settings();
 
+    /// @brief Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via le pipeline
+    void vary_poses();
+
     /// @brief Ferme la fenêtre principale et quitte l'application.
     void exit_app();
 };

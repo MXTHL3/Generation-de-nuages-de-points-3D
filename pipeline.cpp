@@ -10,6 +10,8 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
     SIM_INFO("Lancement de la génération des variations de scènes en fonction de rotations aléatoires sur [{}, {}]", m_start_angle, m_end_angle);
     SIM_INFO("Traitement de {} scènes sources ", input_scenes.size());
 
+    std::uniform_real_distribution<double> rot_x(m_start_angle, m_end_angle);
+    std::uniform_real_distribution<double> rot_y(m_start_angle, m_end_angle);
     std::uniform_real_distribution<double> rot_z(m_start_angle, m_end_angle);
 
 
@@ -22,14 +24,19 @@ std::vector<std::unique_ptr<Scene>> RotationLayoutAugmentation::process(std::vec
 
             size_t ent_index = 0;
             for(auto& entity : current_spatial_variation->entities()){
+                double r_x = rot_x(m_gen);
+                double r_y = rot_y(m_gen);
                 double r_z = rot_z(m_gen);
 
-                Pose random_pose({entity->pose().pos()}, 0.0, 0.0, r_z);
+                Pose random_pose({entity->pose().pos()}, r_x, r_y, r_z);
                 entity->pose(random_pose);
 
-                SIM_DEBUG("Entité copié : {} et orientée en Z: {:.2f}",
+                SIM_DEBUG("Entité copié : {} et orientée en X: {:.2f}, en Y: {:.3f} et en Z: {:.4f}",
                         entity->name(),
-                        random_pose.rz());
+                        random_pose.rx(),
+                        random_pose.ry(),
+                        random_pose.rz()
+                    );
 
                 ent_index++;
             }
@@ -50,7 +57,7 @@ std::vector<std::unique_ptr<Scene>> PositionLayoutAugmentation::process(std::vec
     SIM_INFO("Traitement de {} scènes sources ", input_scenes.size());
 
     std::uniform_real_distribution<double> dist_x(-20.0, 20.0);
-    std::uniform_real_distribution<double> dist_y(-20.0, 20.0);
+    std::uniform_real_distribution<double> dist_z(-20.0, 20.0);
 
 
     size_t scene_index = 0;
@@ -63,25 +70,32 @@ std::vector<std::unique_ptr<Scene>> PositionLayoutAugmentation::process(std::vec
             size_t ent_index = 0;
             for(auto& entity : current_spatial_variation->entities()){
                 double x = dist_x(m_gen);
-                double y = dist_y(m_gen);
-
+                double z = dist_z(m_gen);
+                /*
                 bool is_too_close = true;
 
                 while(is_too_close){
                     x = x < 5 && x > -5 ? dist_x(m_gen) : x;
-                    y = y < 5 && y > -5 ? dist_y(m_gen) : y;
+                    z = z < 5 && z > -5 ? dist_z(m_gen) : z;
 
-                    if(!(x < 5 && x > -5) || !(y < 5 && y > -5))
+                    if(!(x < 5 && x > -5) || !(z < 5 && z > -5))
                         is_too_close = false;
                 }
-
-                Pose random_pose({x, y, 0.0});
+                */
+                const Pose& current = entity->pose();
+                constexpr double RAD_TO_DEG = 180.0 / M_PI;
+                Pose random_pose(
+                    {x, 0.0, z},
+                    current.rx() * RAD_TO_DEG,
+                    current.ry() * RAD_TO_DEG,
+                    current.rz() * RAD_TO_DEG
+                );
                 entity->pose(random_pose);
 
-                SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Y: {:.2f}",
+                SIM_DEBUG("Entité copié : {} et positionnnée en X: {:.2f}, Z: {:.2f}",
                         entity->name(),
                         random_pose.pos().x(),
-                        random_pose.pos().y());
+                        random_pose.pos().z());
 
                 ent_index++;
             }
@@ -176,7 +190,7 @@ void Pipeline::add_step(std::unique_ptr<PipelineStep> step){
     }
 
 std::vector<std::unique_ptr<Scene>> Pipeline::execute(std::unique_ptr<Scene> input_scene, AssetManager& assets){
-    SIM_INFO("Démarrage du pieline de génération de scènes !");
+    SIM_INFO("Démarrage du pipeline de génération de scènes !");
 
     //"transfert de propriété"
     std::vector<std::unique_ptr<Scene>> output_scenes;
