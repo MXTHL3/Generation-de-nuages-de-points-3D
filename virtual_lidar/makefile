@@ -23,7 +23,8 @@ SOURCES = main.cpp \
 		horizontal_step.cpp \
 		scan_strategy.cpp \
 		object.cpp \
-		tlas_primitive.cpp
+		tlas_primitive.cpp \
+		manifest.cpp
 
 all: $(TARGET)
 

@@ -4,12 +4,11 @@
 #include "pose.hpp"
 #include "lidar.hpp"
 #include "noise_model.hpp"
+#include "object.hpp"
 
 #include <memory>
 #include <vector>
-
-typedef K::Ray_3 Ray3;
-typedef K::Triangle_3 Triangle3;
+#include <string>
 
 /// @brief Entité Abstraite présente dans la scène 3D.
 /// Classe de base pour tout les objets dans la scène.
@@ -32,13 +31,6 @@ protected:
     Pose m_pose; ///< Position et rotation dans le repère global.
 };
 
-/// @brief Maillage 3D sous forme de triangles.
-/// Le maillage peut être partagé entre les entités.
-class Object {
-public:
-    std::vector<Triangle3> m_triangles; ///< Faces triangulaires du maillage.
-};
-
 /// @brief  Objet statique de la scène (ne bouge pas !).
 
 /// Représente un élément géométrique.
@@ -49,8 +41,19 @@ public:
     /// @param obj ///< Maillage partagé.
     /// @param p ///< Position et rotation initale.
     StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p);
-    std::unique_ptr<IEntity> clone() const override; 
     const std::string& name() const override final {return m_name;};
+
+    /// @brief Transforme la bbox locale avec la Pose de la scène puis calcule la bbox pour la scène. 
+    /// @return Boite englobante alignée aux axes de la scène
+    CGAL::Bbox_3 world_bbox() const;
+
+    /// @brief Intersection rayon-triangle :
+    /// On transforme le rayon de la scène dans le repère local de l'objet
+    /// Intersection avec l'arbre AABB local BLAS
+    /// Retransformation du point d'impact local dans le repère de la scène 
+    /// @param world_ray Rayon en coordonnées de la scène
+    /// @return 
+    std::optional<Intersection> intersect(const Ray3& world_ray) const;
 
     /// @brief Retourne un accès en lecture aux triangles du maillage
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
@@ -58,6 +61,8 @@ public:
     /// @brief Remplace le maillage par un nouveau (utilisé dans KeyframeLayoutAugmentation !)
     void update_mesh(std::shared_ptr<Object> new_obj) { m_object = new_obj; }
 
+    /// @brief Retourne le path du fichier 3d qui a été utilisé pour charger l'Objet
+    const std::string& mesh_path() const { return m_object->m_source_path; }
 private:
     std::string m_name; ///< Identifiant unique dans la scène.
     std::shared_ptr<Object> m_object; ///< Maillage partagé.

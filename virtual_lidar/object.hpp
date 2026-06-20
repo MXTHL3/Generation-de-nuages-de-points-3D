@@ -39,6 +39,7 @@ public:
     std::optional<Intersection> intersect(const Ray3& ray) const;
 
     std::vector<Triangle3> m_triangles; ///< Faces triangulaires du maillage.
+    std::string m_source_path; ///< Path ver du fichier 3d d'origine
 private:
     std::unique_ptr<Tree> m_blas_tree; ///< Arbre AABB des triangles complexité 0(log N) en moyenne
 };

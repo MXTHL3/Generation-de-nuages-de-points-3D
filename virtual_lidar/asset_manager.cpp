@@ -65,6 +65,7 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
     SIM_INFO("Le fichier mesh : {} a été chargé !", path);
 
     obj->build_tree();
+    obj->m_source_path = path;
     
     return obj;
 }
