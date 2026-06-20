@@ -196,6 +196,7 @@ std::unique_ptr<PipelineStep> PipelineFactory::parse_step(const nlohmann::json& 
     if(type == "rotation")          return parse_rotation(step);
     if(type == "grid_position")     return parse_grid_position(step);
     if(type == "keyframe")          return parse_keyframe(step); 
+    if(type == "linear_position")   return parse_linear_position(step);
 
     SIM_ERROR("Type d'étape de pipeline inconnu ! {}", type);
     return nullptr;
@@ -250,6 +251,18 @@ std::unique_ptr<PipelineStep> PipelineFactory::parse_keyframe(const nlohmann::js
     return std::make_unique<KeyframeLayoutAugmentation>(configs);
 }
 
+std::unique_ptr<PipelineStep> PipelineFactory::parse_linear_position(const nlohmann::json &linear_position_step)
+{   
+    std::string temp = linear_position_step.at("entity_name").get<std::string>();
+    return std::make_unique<LinearPositionLayoutAugmentation>(
+        linear_position_step.at("entity_name").get<std::string>(),
+        Axis::X,
+        linear_position_step.at("min").get<double>(),
+        linear_position_step.at("max").get<double>(),
+        linear_position_step.at("step").get<double>()
+    );
+}
+
 GridPositionLayoutAugmentation::GridPositionLayoutAugmentation(std::string object_name, 
     double min_x, double max_x, double step_x, 
     double min_y, double max_y, double step_y, 
@@ -288,4 +301,34 @@ std::vector<std::unique_ptr<Scene>> GridPositionLayoutAugmentation::process(std:
         }
     }
     return output;
+}
+
+LinearPositionLayoutAugmentation::LinearPositionLayoutAugmentation(std::string entity_name, Axis axis, double min, double max, double step)
+    : m_entity_name(entity_name), m_axis{axis}, m_min(min), m_max(max), m_step(step){}
+
+std::vector<std::unique_ptr<Scene>> LinearPositionLayoutAugmentation::process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager &assets)
+{
+    std::vector<std::unique_ptr<Scene>> output_scenes;
+    for(const auto& scene : input_scenes){
+        for(double pos = m_min; pos <= m_max ;pos+= m_step){
+            auto variation_scene = std::make_unique<Scene>(*scene);
+
+            for(const auto& ent : variation_scene->entities()){
+                if(ent->name() == m_entity_name){
+                    if(m_axis == Axis::X) {
+                        Pose p({pos, ent->pose().pos().y(), ent->pose().pos().z()}, ent->pose().rx(), ent->pose().ry(), ent->pose().rz());
+                        ent->pose(p);
+                    }else{
+                        Pose p({ent->pose().pos().x(), pos, ent->pose().pos().z()}, ent->pose().rx(), ent->pose().ry(), ent->pose().rz());
+                        ent->pose(p);
+                    }
+
+                }
+
+            }
+
+            output_scenes.push_back(std::move(variation_scene));
+        }
+    }
+    return output_scenes;
 }

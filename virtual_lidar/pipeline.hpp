@@ -94,7 +94,7 @@ public:
     /// @param exclusion_radius Rayon d'exclusion autour de l'origine (mètres).
     GridPositionLayoutAugmentation(std::string object_name, 
                                     double min_x, double max_x, double step_x,
-                                    double min_y, double max_y, double step_y, 
+                                    double min_y = 0.0, double max_y = 0.0, double step_y = 0.0, 
                                     double exclusion_radius = 0.0);
 
     std::vector<std::unique_ptr<Scene>> process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets) override;
@@ -103,6 +103,24 @@ private:
         double m_min_x, m_max_x, m_step_x;
         double m_min_y, m_max_y, m_step_y;
         double m_exclusion_radius;
+};
+
+enum class Axis{
+    X = 1, 
+    Y = 2
+};
+
+class LinearPositionLayoutAugmentation : public PipelineStep {
+private:
+    std::string m_entity_name;
+    Axis m_axis;
+    double m_min;
+    double m_max;
+    double m_step;
+
+public:
+    LinearPositionLayoutAugmentation(std::string entity_name, Axis axis, double min, double max, double step);
+    std::vector<std::unique_ptr<Scene>> process(std::vector<std::unique_ptr<Scene>> input_scenes, AssetManager& assets) override;
 };
 
 /// @brief Pipeline séquentiel d'étapes d'augmentation de données.
@@ -131,10 +149,26 @@ class PipelineFactory{
         /// @param data Le contenu de json
         static Pipeline create_from_json(const nlohmann::json& data);
     private:
+        /// @brief Délègue le parsing d'une étape de pipeline d'augmentation sous format json vers le bon "type" de parseur.
+        /// @param step Objet Json décrivant une étape de pipeline d'augmentation (avec type "rotation", "grid_position", ...) 
+        /// @return L'étape construite
         static std::unique_ptr<PipelineStep> parse_step(const nlohmann::json &step);
+        /// @brief Parse d'une étape de rotation uniforme.
+        /// @param rotation_step Objet json contenant les paramètres d'une RotationLayoutAugmentation.
+        /// @return Objet RotationLayoutAugmentation
         static std::unique_ptr<PipelineStep> parse_rotation(const nlohmann::json& rotation_step);
+        /// @brief Parse d'une étape de positionnement sur grille XY.
+        /// @param grid_position_step Objet json contenant les paramètres d'une GridPositionLayoutAugmentation.
+        /// @return Objet GridPositionLayoutAugmentation
         static std::unique_ptr<PipelineStep> parse_grid_position(const nlohmann::json& grid_position_step);
+        /// @brief Parse d'une étpae de subsitution par keyframes d'animation.
+        /// @param keyframe_step Objet json contenant les paramètres d'une KeyframeLayoutAugmentation
+        /// @return KeyframeLayoutAugmentation
         static std::unique_ptr<PipelineStep> parse_keyframe(const nlohmann::json& keyframe_step);
+        /// @brief Parse une étape de postionnement linéaire sur axe X ou Y.
+        /// @param linear_position_step Objet json les paramètres d'un LinearPositionLayoutAugmentation  
+        /// @return LinearPositionLayoutAugmentation configuré 
+        static std::unique_ptr<PipelineStep> parse_linear_position(const nlohmann::json& linear_position_step);
 };
 
 #endif

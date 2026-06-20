@@ -122,8 +122,8 @@ std::shared_ptr<FlashLidarConfig> LidarFactory::parseFlashLidar(const nlohmann::
         params.fov_h_max = data["fov_h_max"].get<double>();
         params.fov_v_min = data["fov_v_min"].get<double>();
         params.fov_v_max = data["fov_v_max"].get<double>();
-        params.res_h = static_cast<int>(params.fov_h_max - params.fov_h_min / angular_resolution_h);
-        params.res_v = static_cast<int>(params.fov_v_max - params.fov_v_min / angular_resolution_v);
+        params.res_h = static_cast<int>((params.fov_h_max - params.fov_h_min) / angular_resolution_h);
+        params.res_v = static_cast<int>((params.fov_v_max - params.fov_v_min) / angular_resolution_v);
     }
 
     else if(has_angr && has_res){

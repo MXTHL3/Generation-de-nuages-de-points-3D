@@ -170,7 +170,7 @@ std::string MirroredLidarConfig::to_string() const{
 
 std::string LidarConfig::noise_to_string() const{
     std::ostringstream os;
-    os << "Noise : " << m_noise_profile.steps.size() << "paliers\n";
+    os << "Noise : " << m_noise_profile.steps.size() << " paliers\n";
     for(const auto& s : m_noise_profile.steps){
         os << "     [<" << s.max_distance << " m -> +-" << s.sigma * 100 << "cm]";
         os << "\n";
