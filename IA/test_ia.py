@@ -1,84 +1,92 @@
 import os
+import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import open3d as o3d
-import numpy as np
-from sklearn.cluster import DBSCAN
-from train_ia import PointNetSegmentation, preparer_nuage
+from model import PointNeXtClassifier
 
-def compter_silhouettes_dans_scene(chemin_fichier, modele):
-    try:
-        points_normalises, points_humains_reels_base = preparer_nuage(chemin_fichier, max_points=1024)
-
-        if points_normalises is None:
-            return "Fichier vide ou invalide"
-
-        # prédictions IA
-        tenseur_points = torch.tensor(points_normalises, dtype=torch.float32).unsqueeze(0)
-        with torch.no_grad(): # enlève la mémore
-            predictions = modele(tenseur_points) # 0 ou 1 dans matrice
-            tags_points = torch.argmax(predictions, dim=2).squeeze(0).numpy() # prend le score le plus haut
-
-        # Extraction échelle réelle 
-        points_humains_reels = points_humains_reels_base[tags_points == 1]
-
-        # si on a moins de 230 sur 1024 c est un objet non-humain direct
-        if len(points_humains_reels) < 30:
-            return "0 human"
-
-        # DBSCAN devine combien on a de groupes
-        # 60 cm entre groupe et groupe contient min 15 pts
-        clusteriseur = DBSCAN(eps=0.60, min_samples=15).fit(points_humains_reels)
-        labels_clusters = clusteriseur.labels_ # met des labels pour chaqu egroupe
-
-        groupes_distincts = set(labels_clusters) - {-1}
+# ==========================================
+# FONCTION DE PREDICTION 
+# ==========================================
+def predict_ply(file_path, model, device, num_points=1024):
+    categories = {0: "Non-Humain", 1: "Humain"} # Définir les labels 
+    
+    if os.path.exists(file_path):
+        pcd = o3d.io.read_point_cloud(file_path)
+        points = np.asarray(pcd.points)
         
-        centres_groupes = []
-        for g in groupes_distincts:
-            pts_groupe = points_humains_reels[labels_clusters == g]
+        # Prétraitement et normalisation 
+        if len(points) > num_points:
+            choice = np.random.choice(len(points), num_points, replace=False)
+            points = points[choice, :]
+        else:
+            choice = np.random.choice(len(points), num_points, replace=True)
+            points = points[choice, :]
             
-            # calcule la hauteur 
-            hauteur_reelle = np.max(pts_groupe[:, 2]) - np.min(pts_groupe[:, 2])
-            
-            if hauteur_reelle >= 0.80 and len(pts_groupe) >= 30: 
-                centres_groupes.append(np.mean(pts_groupe, axis=0))
+        centroid = np.mean(points, axis=0)
+        points = points - centroid
+        m = np.max(np.sqrt(np.sum(points**2, axis=1)))
+        if m > 0:
+            points = points / m
+    else:
+        print(f" Fichier '{file_path}' introuvable.")
+        points = np.random.rand(num_points, 3)
 
-        if len(centres_groupes) == 0:
-            return "0 human"
+    # Passage au format Tensor PyTorch 
+    points = points.astype(np.float32).T
+    points_tensor = torch.tensor(points).unsqueeze(0).to(device)
+    
+    # Test
+    with torch.no_grad():
+        outputs = model(points_tensor)
+        probabilities = F.softmax(outputs, dim=1)
+        confidence, predicted_idx = torch.max(probabilities, 1)
+        
+    return predicted_idx.item(), confidence.item() * 100  # Indice de la classe prédite et le score de confiance 
 
-        # fusion des custers une personne trop proche 
-        silhouettes_finales = []
-        for centre in centres_groupes:
-            trouve_voisin = False
-            for autre_centre in silhouettes_finales:
-                if np.linalg.norm(centre - autre_centre) < 0.90: 
-                    trouve_voisin = True
-                    break
-            if not trouve_voisin:
-                silhouettes_finales.append(centre)
-
-        return f"{len(silhouettes_finales)} human"
-
-    except Exception as e:
-        return f"Erreur d'analyse : {e}"
-
+# ==========================================
+# MAIN
+# ==========================================
 if __name__ == "__main__":
-    nom_modele = "modele_laser.pth"
-    if not os.path.exists(nom_modele):
-        print(f"Erreur : '{nom_modele}' introuvable.")
-        exit()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Inférence exécutée sur : {device}")
 
-    modele = PointNetSegmentation()
-    modele.load_state_dict(torch.load(nom_modele))
-    modele.eval()
+    model = PointNeXtClassifier(num_classes=2).to(device)
+    
+    # Avoir ce qu'à appris l'IA avant
+    model_path = "pointnext_human_classifier.pth"
+    if os.path.exists(model_path):
+        model.load_state_dict(torch.load(model_path, map_location=device))
+        print(f"Poids du modèle '{model_path}' chargés avec succès.")
+    else:
+        print(f" Fichier de poids '{model_path}' introuvable.")
 
-    dossier_scans = "." 
-    print("--- RECONNAISSANCE GLOBALE SUR LE DATASET ---")
+    model.eval() # Toujours être en mode évaluation 
 
-    compteur = 0
-    for nom_fichier in sorted(os.listdir(dossier_scans)):
-        if nom_fichier.lower().endswith(".ply"):
-            compteur += 1
-            chemin_complet = os.path.join(dossier_scans, nom_fichier)
-            verdict = compter_silhouettes_dans_scene(chemin_complet, modele)
-            print(f"[{compteur}] Fichier : {nom_fichier:<30} -> {verdict}")
+    categories = {0: "Non-Humain", 1: "Humain"} 
+    
+    # Tests boucle sur les vrais dossiers 
+    for class_name in ['humain', 'non-humain']:
+        dossier = os.path.join("dataset", class_name)
+        vrai_label = 1 if class_name == 'humain' else 0
+        
+        if os.path.exists(dossier):
+            fichiers = [f for f in os.listdir(dossier) if f.endswith('.ply')]
+            print(f"\n--- ÉVALUATION DU DOSSIER : {class_name.upper()} ({len(fichiers)} fichiers) ---")
+            
+            reussites = 0
+            for f in fichiers:
+                chemin = os.path.join(dossier, f)
+                pred, conf = predict_ply(chemin, model, device) # Renvoie la prédiction et la certitude
+                
+                status = " CORRECT" if pred == vrai_label else " ERREUR"
+                if pred == vrai_label:
+                    reussites += 1
+                    
+                print(f"Fichier: {f:20} -> Prédit: {categories[pred]:10} ({conf:.1f}%) | {status}")
+            
+            taux = (reussites / len(fichiers)) * 100 if fichiers else 0
+            print(f"-> Score global pour {class_name} : {taux:.2f}% de bonnes réponses.")
+        else:
+            print(f"\nDossier introuvable : {dossier}")
