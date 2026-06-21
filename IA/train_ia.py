@@ -2,122 +2,135 @@ import os
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.optim as optim
+import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 import open3d as o3d
+from model import PointNeXtClassifier
 
-# ==========================================
-# ARCHITECTURE POINTNET 
-# ==========================================
-class PointNetSegmentation(nn.Module):
-    def __init__(self):
-        super(PointNetSegmentation, self).__init__()
-        self.mlp1 = nn.Sequential(
-            nn.Linear(3, 64), nn.ReLU(),
-            nn.Linear(64, 128), nn.ReLU(),
-            nn.Linear(128, 512), nn.ReLU()
-        )
-        self.segmentation_head = nn.Sequential(
-            nn.Linear(512, 256), nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(256, 2) # [0: Décor, 1: Humain]
-        )
-
-    def forward(self, x):
-        feat = self.mlp1(x)
-        global_feat = torch.max(feat, dim=1, keepdim=True)[0]
-        x = feat + global_feat 
-        x = self.segmentation_head(x)
-        return x
-
-
-def preparer_nuage(chemin, max_points=1024):
-    pcd = o3d.io.read_point_cloud(chemin)
-        
-    # nettoyage du bruit pour pas que PointNet fasse une forme globale du nuage immense
-    if not pcd.is_empty():
-        pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
-        points_nettoyes = np.asarray(pcd.points)
-    else:
-        points_nettoyes = np.array([])
-
-    if len(points_nettoyes) == 0:
-        return None, None
-
-    # échantillonnage à 1024
-    if len(points_nettoyes) > max_points:
-         indices = np.random.choice(len(points_nettoyes), max_points, replace=False)
-    else:
-        indices = np.random.choice(len(points_nettoyes), max_points, replace=True)
-        
-    points_reels = points_nettoyes[indices]
-
-    # Normalisation géométrique
-    points_norm = points_reels - np.mean(points_reels, axis=0) #centré
-    dist_max = np.max(np.sqrt(np.sum(points_norm**2, axis=1)))
-    if dist_max > 0:
-        points_norm = points_norm / dist_max   # tout à la même échelle
-        
-    return points_norm, points_reels
 
 # ==========================================
 # DATASET
 # ==========================================
-class DatasetScans(Dataset):
-    def __init__(self, dossier=".", max_points=1024):
-        self.max_points = max_points
-        # on liste tous les fichiers pour s entrainer
-        self.fichiers = [os.path.join(dossier, f) for f in os.listdir(dossier) 
-                         if f.lower().endswith(".ply")]
+class PointCloudDataset(Dataset):
+    def __init__(self, root_dir, num_points=1024):
+        self.root_dir = root_dir
+        self.num_points = num_points
+        self.files = []
+        self.labels = []
+        self.class_map = {'non-humain': 0, 'humain': 1}
         
-    def __len__(self):
-        return min(len(self.fichiers), 400)
-        
+        humains_files = []
+        non_humains_files = []
+
+        if os.path.exists(root_dir):
+            h_dir = os.path.join(root_dir, 'humain')
+            if os.path.exists(h_dir):
+                humains_files = [os.path.join(h_dir, f) for f in os.listdir(h_dir) if f.endswith('.ply')]
+            
+            nh_dir = os.path.join(root_dir, 'non-humain')
+            if os.path.exists(nh_dir):
+                non_humains_files = [os.path.join(nh_dir, f) for f in os.listdir(nh_dir) if f.endswith('.ply')]
+
+        print(f"Dataset : {len(humains_files)} humains et {len(non_humains_files)} non-humains trouvés.")
+
+        # Equilibrer car les fichiers non-humains ne sont pas nombreux
+        if len(non_humains_files) > 0 and len(humains_files) > len(non_humains_files):
+            multiplicateur = len(humains_files) // len(non_humains_files)
+            non_humains_files = non_humains_files * max(1, multiplicateur)
+            print(f" Equilibrer : {len(non_humains_files)} objets non-humains rajoutés.")
+
+        for f in humains_files:
+            self.files.append(f)
+            self.labels.append(1)  # 1 : humain
+        for f in non_humains_files:
+            self.files.append(f)
+            self.labels.append(0)  # 0 : non-humain
+
+    def __len__(self):  
+        # Combien on a de fichiers
+        return len(self.files)
+
     def __getitem__(self, idx):
-        chemin = self.fichiers[idx]
-        points_norm, _ = preparer_nuage(chemin, self.max_points)
+        file_path = self.files[idx]
+        label = self.labels[idx]
         
-        if points_norm is None:
-            return torch.rand(self.max_points, 3), torch.zeros(self.max_points, dtype=torch.long)
+        pcd = o3d.io.read_point_cloud(file_path)
+        points = np.asarray(pcd.points)  # Matrice (nb points, 3)
+        
+        if len(points) == 0:  # Au cas où le fichier est vide
+            points = np.random.rand(self.num_points, 3)
 
-        labels = np.zeros(self.max_points, dtype=np.long)
-        hauteurs = points_norm[:, 2] # axe z donc la hauteur pour humain
+        # Matrice de taille identique
+        if len(points) > self.num_points:
+            choice = np.random.choice(len(points), self.num_points, replace=False)
+            points = points[choice, :]
+        else:
+            choice = np.random.choice(len(points), self.num_points, replace=True)
+            points = points[choice, :]
+        
+        # Normalisation
+        centroid = np.mean(points, axis=0)
+        points = points - centroid
+        m = np.max(np.sqrt(np.sum(points**2, axis=1)))
+        if m > 0:
+            points = points / m
 
-        # tous les points qui se trouvent au-dessus de ces 20 % sont humains
-        seuil_hauteur = np.percentile(hauteurs, 20) 
-        labels[hauteurs > seuil_hauteur] = 1
+        # Faire en sorte que les fichiers non-humain dupliqués soient différents
+        if label == 0: 
+            points += np.random.normal(0, 0.01, points.shape)
 
-        return torch.tensor(points_norm, dtype=torch.float32), torch.tensor(labels, dtype=torch.long)
+        points = points.astype(np.float32).T
+        return torch.tensor(points), torch.tensor(label, dtype=torch.long)
 
 # ==========================================
-# MAIN
+# BOUCLE D'ENTRAÎNEMENT
 # ==========================================
-if __name__ == "__main__":
-    print("--- ENTRAÎNEMENT DE L'IA SUR LES SCANS ---")
-    dataset = DatasetScans(dossier=".")
+def train_model():
+    BATCH_SIZE = 8  
+    EPOCHS = 20   # IA s'entraine 20 fois
+    NUM_POINTS = 1024
     
-    if len(dataset.fichiers) == 0:
-        print("Erreur : Aucun fichier .ply trouvé.")
-        exit()
-        
-    dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+    dataset = PointCloudDataset(root_dir='dataset', num_points=NUM_POINTS) # Charge et normalise les fichiers
+    dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, drop_last=True)
     
-    model = PointNetSegmentation()
+    # S'entraine sur la carte graphique ou le processeur
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Entraînement de PointNeXt sur : {device}\n")
+    
+    model = PointNeXtClassifier(num_classes=2).to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    
+    # Optimiseur AdamW + Weight Decay pour PointNeXt : empêche l'IA de surapprendre
+    optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=1e-4)
     
     model.train()
-    print(f"Apprentissage démarré sur {len(dataset.fichiers)} fichiers...")
-    for epoch in range(1, 16): #15 époques
-        perte_totale = 0.0
-        for scenes, labels in dataloader:
-            optimizer.zero_grad()
-            sorties = model(scenes)
-            loss = criterion(sorties.view(-1, 2), labels.view(-1))
-            loss.backward()
-            optimizer.step()
-            perte_totale += loss.item()
-        print(f"Époque {epoch}/15 - Perte (Loss) : {perte_totale/len(dataloader):.4f}")
+    for epoch in range(EPOCHS):
+        running_loss = 0.0
+        correct = 0
+        total = 0
         
-    torch.save(model.state_dict(), "modele_laser.pth")
-    print("\nL'IA s'est entraînée sur les fichiers !")
+        for points, labels in dataloader:
+            points, labels = points.to(device), labels.to(device)
+            
+            optimizer.zero_grad()  # Efface historique
+            outputs = model(points)  # IA devine
+            loss = criterion(outputs, labels)  # On note IA
+            loss.backward()  # Calcule erreur
+            optimizer.step()  # Ajuste neurones
+            
+            # Savoir si IA a juste ou faux
+            running_loss += loss.item()
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+            
+        epoch_loss = running_loss / len(dataloader)
+        epoch_acc = (correct / total) * 100
+        print(f"Epoch [{epoch+1}/{EPOCHS}] - Loss: {epoch_loss:.4f} - Précision: {epoch_acc:.2f}%")
+        
+    # Enregistrer dans un fichier la configuration des neurones
+    torch.save(model.state_dict(), "pointnext_human.pth")
+    print("\nModèle PointNeXt sauvegardé sous 'pointnext_human.pth' ")
+
+if __name__ == "__main__":
+    train_model()
