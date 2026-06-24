@@ -93,10 +93,6 @@ class PointCloudDataset(Dataset):
         if m > 0:
             points = points / m
 
-        # Faire en sorte que les fichiers non-humain dupliqués soient différents
-        if label == 0: 
-            points += np.random.normal(0, 0.01, points.shape)
-
         points = points.astype(np.float32).T
         return torch.tensor(points), torch.tensor(label, dtype=torch.long)
 
