@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import open3d as o3d
 from model import PointNeXtClassifier
+from train import charger_points_3d
 
 # ==========================================
 # FONCTION DE PREDICTION 
@@ -13,8 +14,7 @@ def predict_ply(file_path, model, device, num_points=1024):
     categories = {0: "Non-Humain", 1: "Humain"} # Définir les labels 
     
     if os.path.exists(file_path):
-        pcd = o3d.io.read_point_cloud(file_path)
-        points = np.asarray(pcd.points)
+        points = charger_points_3d(file_path)
         
         # Prétraitement et normalisation 
         if len(points) > num_points:
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     model = PointNeXtClassifier(num_classes=2).to(device)
     
     # Avoir ce qu'à appris l'IA avant
-    model_path = "pointnext_human_classifier.pth"
+    model_path = "pointnext_human.pth"
     if os.path.exists(model_path):
         model.load_state_dict(torch.load(model_path, map_location=device))
         print(f"Poids du modèle '{model_path}' chargés avec succès.")
@@ -65,6 +65,7 @@ if __name__ == "__main__":
     model.eval() # Toujours être en mode évaluation 
 
     categories = {0: "Non-Humain", 1: "Humain"} 
+    valid_extensions = ('.ply', '.las')
     
     # Tests boucle sur les vrais dossiers 
     for class_name in ['humain', 'non-humain']:
@@ -72,7 +73,7 @@ if __name__ == "__main__":
         vrai_label = 1 if class_name == 'humain' else 0
         
         if os.path.exists(dossier):
-            fichiers = [f for f in os.listdir(dossier) if f.endswith('.ply')]
+            fichiers = [f for f in os.listdir(dossier) if f.endswith(valid_extensions)]
             print(f"\n--- ÉVALUATION DU DOSSIER : {class_name.upper()} ({len(fichiers)} fichiers) ---")
             
             reussites = 0
