@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import open3d as o3d
 from model import PointNeXtClassifier
-from train import charger_points_3d
+from train_ia import charger_points_3d
 
 # ==========================================
 # FONCTION DE PREDICTION 
