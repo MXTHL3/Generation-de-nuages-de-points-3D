@@ -1,0 +1,12 @@
+<map id="MenuItemsActions::vary_poses" name="MenuItemsActions::vary_poses">
+<area shape="rect" id="node1" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="5,217,185,258"/>
+<area shape="rect" id="node2" href="$classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0" title="ajoute une nouvelle étape à la fin de la liste." alt="" coords="261,5,402,32"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,57,415,98"/>
+<area shape="rect" id="node4" href="$classPipeline.html#a71057c03f4ceb9378424211d6d353956" title="Execute toutes les étapes du pipeline." alt="" coords="265,123,398,149"/>
+<area shape="rect" id="node5" href="$classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title="Retourne le mesh pour un path donné (charge si nécessaire)." alt="" coords="238,173,425,200"/>
+<area shape="rect" id="node6" href="$classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="289,224,373,251"/>
+<area shape="rect" id="node7" href="$classPose.html#af69e1ca12c440103c3657974b6c6f873" title=" " alt="" coords="294,275,369,301"/>
+<area shape="rect" id="node8" href="$classPose.html#a525262b2e0219f06f64a882a47913a4f" title=" " alt="" coords="294,325,369,352"/>
+<area shape="rect" id="node9" href="$classPose.html#ad9b2d5a2671e7be99e730a61ddd906d3" title=" " alt="" coords="295,376,368,403"/>
+<area shape="rect" id="node10" href="$classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="233,427,429,469"/>
+</map>

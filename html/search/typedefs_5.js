@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['traits_686',['Traits',['../scene_8h.html#aee6af9dfd8924dd569f11b3e11d90dd3',1,'scene.h']]],
-  ['transform3_687',['Transform3',['../pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5',1,'pose.h']]],
-  ['tree_688',['Tree',['../scene_8h.html#a4afabc47bad26e2881913598e8f0b96f',1,'scene.h']]],
-  ['triangle3_689',['Triangle3',['../entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc',1,'entity.h']]]
+  ['point_761',['Point',['../classTlasPrimitive.html#a793f6d6fff17ccf560492488a7928d70',1,'TlasPrimitive::Point()'],['../cgal_8h.html#a34f5250ef707a575baad36c8a213ba4a',1,'Point():&#160;cgal.h'],['../object_8h.html#a24a1ac31cb2e7375885e1820df5b42c6',1,'Point():&#160;object.h']]],
+  ['point3_762',['Point3',['../pose_8h.html#a75a34daadee06ce2cb98447886b2d0e9',1,'pose.h']]],
+  ['primitive_763',['Primitive',['../object_8h.html#ae8c2c828e1aa12fd8594b6ac0c840109',1,'object.h']]]
 ];

@@ -1,5 +1,5 @@
 <map id="FlashLidarEntity" name="FlashLidarEntity">
-<area shape="rect" id="node1" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,447,157,568"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="9,219,153,399"/>
-<area shape="rect" id="node3" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="26,5,137,171"/>
+<area shape="rect" id="node1" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,432,157,539"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="9,204,153,384"/>
+<area shape="rect" id="node3" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="26,5,137,156"/>
 </map>

@@ -2,7 +2,7 @@
 \label{classLidarFactory}\index{LidarFactory@{LidarFactory}}
 
 
-Factory de création de configurations et sessions Lidar depuis des fichiers json.  
+Factory de création de configurations et sessions Lidar depuis des fichiers jsons.  
 
 
 
@@ -11,7 +11,8 @@ Factory de création de configurations et sessions Lidar depuis des fichiers jso
 
 
 
-Collaboration diagram for Lidar\+Factory\+:\nopagebreak
+Collaboration diagram for Lidar\+Factory\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,12 +24,14 @@ Collaboration diagram for Lidar\+Factory\+:\nopagebreak
 \item 
 static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} $>$ \mbox{\hyperlink{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}{create\+From\+Json\+Config}} (const std\+::string \&config\+Path)
 \begin{DoxyCompactList}\small\item\em Crée une configuration lidar depuis un fichier json. \end{DoxyCompactList}\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSessionScan}{Session\+Scan}} $>$ \mbox{\hyperlink{classLidarFactory_a7ae8d19fd4d58146b136cc320c8ef0a6}{parse\+Scan\+Session}} (const nlohmann\+::json \&data)
+\begin{DoxyCompactList}\small\item\em Crée une session de scan depuis le bloc \char`\"{}scan\+\_\+session\char`\"{} du JSON de scène. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}{save\+To\+Json}} (const std\+::string \&config\+Path, const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \&lidar\+\_\+config)
 \begin{DoxyCompactList}\small\item\em Sauvegarde une configuration lidar dans un fichier json. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Factory de création de configurations et sessions Lidar depuis des fichiers json. 
+Factory de création de configurations et sessions Lidar depuis des fichiers jsons. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}\label{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb}} 
@@ -56,6 +59,24 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classLidarFactory_a69af7f5cd3f5f3adc901cb3c3f3cfaeb_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classLidarFactory_a7ae8d19fd4d58146b136cc320c8ef0a6}\label{classLidarFactory_a7ae8d19fd4d58146b136cc320c8ef0a6}} 
+\index{LidarFactory@{LidarFactory}!parseScanSession@{parseScanSession}}
+\index{parseScanSession@{parseScanSession}!LidarFactory@{LidarFactory}}
+\doxysubsubsection{\texorpdfstring{parseScanSession()}{parseScanSession()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSessionScan}{Session\+Scan}} $>$ Lidar\+Factory\+::parse\+Scan\+Session (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Crée une session de scan depuis le bloc \char`\"{}scan\+\_\+session\char`\"{} du JSON de scène. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Json de scène complet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classSessionScan}{Session\+Scan}} avec la stratégie configurée 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}\label{classLidarFactory_a84e7ac0f70dd3080753f7858ece10466}} 
 \index{LidarFactory@{LidarFactory}!saveToJson@{saveToJson}}
 \index{saveToJson@{saveToJson}!LidarFactory@{LidarFactory}}

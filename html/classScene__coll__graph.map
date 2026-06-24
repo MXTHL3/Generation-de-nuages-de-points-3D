@@ -1,3 +1,3 @@
 <map id="Scene" name="Scene">
-<area shape="rect" id="node1" title="Scène 3D : ensemble d&#39;entités statiques et arbre AABB pour les intersections. Après ajout des entités..." alt="" coords="5,5,164,200"/>
+<area shape="rect" id="node1" title="Scène 3D contenant les entités statiques et l&#39;arbre d&#39;accélération AABB. La scène stocke les entités,..." alt="" coords="5,5,164,171"/>
 </map>

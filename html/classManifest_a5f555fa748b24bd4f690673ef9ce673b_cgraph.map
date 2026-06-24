@@ -1,0 +1,9 @@
+<map id="Manifest::add_scan" name="Manifest::add_scan">
+<area shape="rect" id="node1" title="Ajoute les informations d&#39;un scan dans l&#39;objet json m_data." alt="" coords="5,132,153,159"/>
+<area shape="rect" id="node2" href="$classScene.html#a3091106c25c63131813668b22ac4f163" title="Accès en lecture aux entités de la scène." alt="" coords="201,5,320,32"/>
+<area shape="rect" id="node3" href="$classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="219,56,303,83"/>
+<area shape="rect" id="node4" href="$classPose.html#af69e1ca12c440103c3657974b6c6f873" title=" " alt="" coords="223,107,298,133"/>
+<area shape="rect" id="node5" href="$classPose.html#a525262b2e0219f06f64a882a47913a4f" title=" " alt="" coords="223,157,298,184"/>
+<area shape="rect" id="node6" href="$classPose.html#ad9b2d5a2671e7be99e730a61ddd906d3" title=" " alt="" coords="224,208,297,235"/>
+<area shape="rect" id="node7" href="$units_8h.html#a0ecfe533cff2f2b9f53261770a0cb58b" title=" " alt="" coords="213,259,308,285"/>
+</map>

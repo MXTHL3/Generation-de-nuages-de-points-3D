@@ -4,24 +4,68 @@
 
 // STATIC ENTITY
 
-std::unique_ptr<IEntity> StaticEntity::clone() const {
-    return std::make_unique<StaticEntity>(*this);
-}
 Transform3 IEntity::transform() const { return m_pose.transform(); }
 
 StaticEntity::StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path)
     : IEntity(p), m_name(name), m_object(obj), m_mesh_path(std::move(mesh_path)) {}
+
+CGAL::Bbox_3 StaticEntity::world_bbox() const {
+    CGAL::Bbox_3 b = m_object->local_bbox();
+
+    Point3 vertices[] = {
+        Point3(b.xmin(), b.ymin(), b.zmin()),
+        Point3(b.xmin(), b.ymin(), b.zmax()),
+        Point3(b.xmin(), b.ymax(), b.zmax()),
+        Point3(b.xmin(), b.ymax(), b.zmin()),
+        Point3(b.xmax(), b.ymin(), b.zmin()),
+        Point3(b.xmax(), b.ymin(), b.zmax()),
+        Point3(b.xmax(), b.ymax(), b.zmin()),
+        Point3(b.xmax(), b.ymax(), b.zmax())
+    };
+
+    Transform3 xform = m_pose.transform();
+
+    for(auto& vertex : vertices){
+        vertex = xform(vertex);
+    }
+
+    return CGAL::bbox_3(std::begin(vertices), std::end(vertices));
+}
+
+std::optional<Intersection> StaticEntity::intersect(const Ray3& world_ray) const{
+    
+    Transform3 xform = m_pose.transform();
+    Transform3 inv_xform = xform.inverse();
+    
+    Ray3 local_ray(
+        inv_xform(world_ray.source()),
+        inv_xform(world_ray.direction())
+    );
+    
+    auto hit = m_object->intersect(local_ray);
+
+    if(hit){
+        hit->point = xform(hit->point);
+
+        Vector3 diff = hit->point - world_ray.source();
+        hit->distance = std::sqrt(CGAL::to_double(diff.squared_length()));
+            
+        return hit;
+    }
+    //else
+    return std::nullopt;
+}
+
+void StaticEntity::update_name(const std::string &new_name)
+{
+    m_name = new_name;
+}
 
 LidarEntity::LidarEntity(std::shared_ptr<LidarConfig> config, Pose p)
     : IEntity(p), m_config(config), m_noise_model(config->m_noise_profile){}
 
 MechanicalLidarEntity::MechanicalLidarEntity(std::shared_ptr<MechanicalLidarConfig> config, Pose p)
     : LidarEntity(config, p){}
-
-
-std::unique_ptr<IEntity> MechanicalLidarEntity::clone() const {
-    return std::make_unique<MechanicalLidarEntity>(*this);
-}
 
 std::vector<Ray3> MechanicalLidarEntity::generate_rays(double duration) const{
     std::vector<Ray3> all_rays;
@@ -96,10 +140,6 @@ std::vector<Ray3> generate_ray_grid(
 FlashLidarEntity::FlashLidarEntity(std::shared_ptr<FlashLidarConfig> config, Pose p)
     : LidarEntity(config, p) {}
 
-std::unique_ptr<IEntity> FlashLidarEntity::clone() const {
-    return std::make_unique<FlashLidarEntity>(*this);
-}
-
 std::vector<Ray3> FlashLidarEntity::generate_rays(double /*duration*/) const {
     const auto& l_config = config();
     return generate_ray_grid(m_pose.pos(), transform(),
@@ -110,10 +150,6 @@ std::vector<Ray3> FlashLidarEntity::generate_rays(double /*duration*/) const {
 
 MirroredLidarEntity::MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p)
     : LidarEntity(config, p){}
-
-std::unique_ptr<IEntity> MirroredLidarEntity::clone() const{
-    return std::make_unique<MirroredLidarEntity>(*this);
-}
 
 std::vector<Ray3> MirroredLidarEntity::generate_rays(double duration) const {
     if(config().is_lissajou()){
@@ -164,6 +200,6 @@ std::vector<Ray3> MirroredLidarEntity::generate_raster() const {
     const auto& raster_cfg = std::get<RasterParams>(cfg.m_mirrored_scan_params);
     return generate_ray_grid(m_pose.pos(), transform(),
     cfg.m_fov_h_min, cfg.m_fov_h_max, 
-    cfg.m_fov_v_min, cfg.m_fov_h_max, 
+    cfg.m_fov_v_min, cfg.m_fov_v_max, 
     raster_cfg.resolution_h, raster_cfg.resolution_v);
 }

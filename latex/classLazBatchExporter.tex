@@ -1,0 +1,157 @@
+\hypertarget{classLazBatchExporter}{}\doxysection{Laz\+Batch\+Exporter Class Reference}
+\label{classLazBatchExporter}\index{LazBatchExporter@{LazBatchExporter}}
+
+
+Export au format LAZ via PDAL.  
+
+
+
+
+{\ttfamily \#include $<$point\+\_\+cloud\+\_\+exporter.\+h$>$}
+
+
+
+Collaboration diagram for Laz\+Batch\+Exporter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classLazBatchExporter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLazBatchExporter_aeb7af330025db4619d79e9710794f85b}{Laz\+Batch\+Exporter}} (const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{classLazBatchExporter_a85cb55a0b062d02b39a2596ecc1f50db}{add\+\_\+point\+\_\+cloud}} (const std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Ajoute un nuage dans le fichier ouvert. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLazBatchExporter_a5fd64100386f16391e4b21c85ad52cc1}{save\+\_\+file}} ()
+\begin{DoxyCompactList}\small\item\em Sauvegarde le batch LAZ. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLazBatchExporter_ab6cf096c67f06afb7b4036c8fd382007}{is\+\_\+full}} ()
+\begin{DoxyCompactList}\small\item\em Retourne vrai si le batch doit être écrit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLazBatchExporter_a2ea670f6a819e1e3dcac02120b747bd4}{next\+\_\+batch}} ()
+\begin{DoxyCompactList}\small\item\em Enregistre le batch courant et créé le nouveau. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLazBatchExporter_a4e51ba9ad2c442ecb86b1e9bbed7bc36}{current\+\_\+filename}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le nom du batch courant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Export au format LAZ via PDAL. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLazBatchExporter_aeb7af330025db4619d79e9710794f85b}\label{classLazBatchExporter_aeb7af330025db4619d79e9710794f85b}} 
+\index{LazBatchExporter@{LazBatchExporter}!LazBatchExporter@{LazBatchExporter}}
+\index{LazBatchExporter@{LazBatchExporter}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{LazBatchExporter()}{LazBatchExporter()}}
+{\footnotesize\ttfamily Laz\+Batch\+Exporter\+::\+Laz\+Batch\+Exporter (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Chemin fichier qui sera sauvegardé \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLazBatchExporter_a85cb55a0b062d02b39a2596ecc1f50db}\label{classLazBatchExporter_a85cb55a0b062d02b39a2596ecc1f50db}} 
+\index{LazBatchExporter@{LazBatchExporter}!add\_point\_cloud@{add\_point\_cloud}}
+\index{add\_point\_cloud@{add\_point\_cloud}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{add\_point\_cloud()}{add\_point\_cloud()}}
+{\footnotesize\ttfamily void Laz\+Batch\+Exporter\+::add\+\_\+point\+\_\+cloud (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \&}]{points }\end{DoxyParamCaption})}
+
+
+
+Ajoute un nuage dans le fichier ouvert. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & Nuage de point à sauvegarder \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazBatchExporter_a85cb55a0b062d02b39a2596ecc1f50db_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLazBatchExporter_a4e51ba9ad2c442ecb86b1e9bbed7bc36}\label{classLazBatchExporter_a4e51ba9ad2c442ecb86b1e9bbed7bc36}} 
+\index{LazBatchExporter@{LazBatchExporter}!current\_filename@{current\_filename}}
+\index{current\_filename@{current\_filename}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{current\_filename()}{current\_filename()}}
+{\footnotesize\ttfamily std\+::string Laz\+Batch\+Exporter\+::current\+\_\+filename (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le nom du batch courant. 
+
+\mbox{\Hypertarget{classLazBatchExporter_ab6cf096c67f06afb7b4036c8fd382007}\label{classLazBatchExporter_ab6cf096c67f06afb7b4036c8fd382007}} 
+\index{LazBatchExporter@{LazBatchExporter}!is\_full@{is\_full}}
+\index{is\_full@{is\_full}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{is\_full()}{is\_full()}}
+{\footnotesize\ttfamily bool Laz\+Batch\+Exporter\+::is\+\_\+full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne vrai si le batch doit être écrit. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazBatchExporter_ab6cf096c67f06afb7b4036c8fd382007_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLazBatchExporter_a2ea670f6a819e1e3dcac02120b747bd4}\label{classLazBatchExporter_a2ea670f6a819e1e3dcac02120b747bd4}} 
+\index{LazBatchExporter@{LazBatchExporter}!next\_batch@{next\_batch}}
+\index{next\_batch@{next\_batch}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{next\_batch()}{next\_batch()}}
+{\footnotesize\ttfamily bool Laz\+Batch\+Exporter\+::next\+\_\+batch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enregistre le batch courant et créé le nouveau. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazBatchExporter_a2ea670f6a819e1e3dcac02120b747bd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazBatchExporter_a2ea670f6a819e1e3dcac02120b747bd4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLazBatchExporter_a5fd64100386f16391e4b21c85ad52cc1}\label{classLazBatchExporter_a5fd64100386f16391e4b21c85ad52cc1}} 
+\index{LazBatchExporter@{LazBatchExporter}!save\_file@{save\_file}}
+\index{save\_file@{save\_file}!LazBatchExporter@{LazBatchExporter}}
+\doxysubsubsection{\texorpdfstring{save\_file()}{save\_file()}}
+{\footnotesize\ttfamily bool Laz\+Batch\+Exporter\+::save\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde le batch LAZ. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazBatchExporter_a5fd64100386f16391e4b21c85ad52cc1_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{point__cloud__exporter_8h}{point\+\_\+cloud\+\_\+exporter.\+h}}\item 
+\mbox{\hyperlink{point__cloud__exporter_8cpp}{point\+\_\+cloud\+\_\+exporter.\+cpp}}\end{DoxyCompactItemize}

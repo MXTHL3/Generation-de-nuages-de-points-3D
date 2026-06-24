@@ -2,7 +2,9 @@
 \label{pipeline_8h}\index{pipeline.h@{pipeline.h}}
 {\ttfamily \#include \char`\"{}scene.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}asset\+\_\+manager.\+h\char`\"{}}\newline
-Include dependency graph for pipeline.\+h\+:\nopagebreak
+{\ttfamily \#include $<$cstdlib$>$}\newline
+Include dependency graph for pipeline.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,9 +22,9 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}
-\begin{DoxyCompactList}\small\item\em Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l\textquotesingle{}ensemble). Les étapes sont chaînées. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de scène en un nouveau ensemble plus grand (augmentation de l\textquotesingle{}ensemble). Les étapes sont chainés. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPositionLayoutAugmentation}{Position\+Layout\+Augmentation}}
-\begin{DoxyCompactList}\small\item\em Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. Attention cette classe est dépréciée ! Utiliser la classe \mbox{\hyperlink{classGridPositionLayoutAugmentation}{Grid\+Position\+Layout\+Augmentation}} à la place. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classRotationLayoutAugmentation}{Rotation\+Layout\+Augmentation}}
 \begin{DoxyCompactList}\small\item\em Rotations uniforme d\textquotesingle{}une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structObjectAnimation}{Object\+Animation}}
@@ -31,5 +33,42 @@ struct \mbox{\hyperlink{structKeyframesConfig}{Keyframes\+Config}}
 \begin{DoxyCompactList}\small\item\em Configurations\textquotesingle{}un scénario d\textquotesingle{}animation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}}
 \begin{DoxyCompactList}\small\item\em Génération de scènes par substitution de meshes (keyframes d\textquotesingle{}animation). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classGridPositionLayoutAugmentation}{Grid\+Position\+Layout\+Augmentation}}
+\begin{DoxyCompactList}\small\item\em Placement sur une grille déterministe avec un rayon d\textquotesingle{}exclusion. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classLinearPositionLayoutAugmentation}{Linear\+Position\+Layout\+Augmentation}}
+\item 
 class \mbox{\hyperlink{classPipeline}{Pipeline}}
-\begin{DoxyCompactList}\small\item\em Exécute une chaîne d\textquotesingle{}étapes d\textquotesingle{}augmentation sur une scène de base. Chaque étape (\mbox{\hyperlink{classPipelineStep}{Pipeline\+Step}}) reçoit l\textquotesingle{}ensemble des scènes produites par l\textquotesingle{}étape précédente et retourne un ensemble plus grand. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPipeline}{Pipeline}} séquentiel d\textquotesingle{}étapes d\textquotesingle{}augmentation de données. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPipelineFactory}{Pipeline\+Factory}}
+\begin{DoxyCompactList}\small\item\em Construit un \mbox{\hyperlink{classPipeline}{Pipeline}} depuis le bloc \char`\"{}pipeline\char`\"{} du JSON de scène. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}{Axis}} \{ \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea02129bb861061d1a052c592e2dc6b383}{X}} = 1
+, \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea57cec4137b614c87cb4e24a3d003a3e0}{Y}} = 2
+, \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea21c2e59531c8710156d34a3c30ac81d5}{Z}} = 3
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}\label{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}} 
+\index{pipeline.h@{pipeline.h}!Axis@{Axis}}
+\index{Axis@{Axis}!pipeline.h@{pipeline.h}}
+\doxysubsubsection{\texorpdfstring{Axis}{Axis}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}{Axis}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{X@{X}!pipeline.h@{pipeline.h}}\index{pipeline.h@{pipeline.h}!X@{X}}}\mbox{\Hypertarget{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea02129bb861061d1a052c592e2dc6b383}\label{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea02129bb861061d1a052c592e2dc6b383}} 
+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Y@{Y}!pipeline.h@{pipeline.h}}\index{pipeline.h@{pipeline.h}!Y@{Y}}}\mbox{\Hypertarget{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea57cec4137b614c87cb4e24a3d003a3e0}\label{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea57cec4137b614c87cb4e24a3d003a3e0}} 
+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Z@{Z}!pipeline.h@{pipeline.h}}\index{pipeline.h@{pipeline.h}!Z@{Z}}}\mbox{\Hypertarget{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea21c2e59531c8710156d34a3c30ac81d5}\label{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8ea21c2e59531c8710156d34a3c30ac81d5}} 
+Z&\\
+\hline
+
+\end{DoxyEnumFields}

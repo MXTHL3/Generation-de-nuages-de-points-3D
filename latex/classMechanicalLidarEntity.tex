@@ -11,7 +11,8 @@ Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai).
 
 
 
-Inheritance diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
+Inheritance diagram for Mechanical\+Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
+Collaboration diagram for Mechanical\+Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,11 +36,9 @@ Collaboration diagram for Mechanical\+Lidar\+Entity\+:\nopagebreak
 \item 
 const \mbox{\hyperlink{classMechanicalLidarConfig}{Mechanical\+Lidar\+Config}} \& \mbox{\hyperlink{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}{config}} () const
 \begin{DoxyCompactList}\small\item\em Accès typé à la config mécanique. \end{DoxyCompactList}\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{clone}} () const override
-\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657}{scan}} (double h\+\_\+angle\+\_\+deg) const
+std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a3649f85abd4cf73045891e02fe40d657}{scan}} (double h\+\_\+angle\+\_\+deg) const
 \begin{DoxyCompactList}\small\item\em Génère les rayons pour un angle azimutal (horizontal) donné \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
+std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classMechanicalLidarEntity_a423703adb3753fda740b0b1e10297b50}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -56,20 +56,6 @@ Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai).
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}\label{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}} 
-\index{MechanicalLidarEntity@{MechanicalLidarEntity}!clone@{clone}}
-\index{clone@{clone}!MechanicalLidarEntity@{MechanicalLidarEntity}}
-\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Mechanical\+Lidar\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Crée une copie de l\textquotesingle{}entité. 
-
-
-
-Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
-
 \mbox{\Hypertarget{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}\label{classMechanicalLidarEntity_ab954c5169dbde3e408733b0cdda14d29}} 
 \index{MechanicalLidarEntity@{MechanicalLidarEntity}!config@{config}}
 \index{config@{config}!MechanicalLidarEntity@{MechanicalLidarEntity}}
@@ -91,7 +77,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{MechanicalLidarEntity@{MechanicalLidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!MechanicalLidarEntity@{MechanicalLidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -117,7 +103,7 @@ Here is the call graph for this function\+:\nopagebreak
 \index{MechanicalLidarEntity@{MechanicalLidarEntity}!scan@{scan}}
 \index{scan@{scan}!MechanicalLidarEntity@{MechanicalLidarEntity}}
 \doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{h\+\_\+angle\+\_\+deg }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Mechanical\+Lidar\+Entity\+::scan (\begin{DoxyParamCaption}\item[{double}]{h\+\_\+angle\+\_\+deg }\end{DoxyParamCaption}) const}
 
 
 

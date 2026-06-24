@@ -1,17 +1,19 @@
 \hypertarget{scene_8h}{}\doxysection{scene.\+h File Reference}
 \label{scene_8h}\index{scene.h@{scene.h}}
 {\ttfamily \#include \char`\"{}entity.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$CGAL/\+AABB\+\_\+tree.\+h$>$}\newline
-{\ttfamily \#include $<$CGAL/\+AABB\+\_\+traits.\+h$>$}\newline
-{\ttfamily \#include $<$CGAL/\+AABB\+\_\+triangle\+\_\+primitive.\+h$>$}\newline
-Include dependency graph for scene.\+h\+:\nopagebreak
+{\ttfamily \#include \char`\"{}tlas\+\_\+primitive.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+Include dependency graph for scene.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{scene_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,37 +23,5 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structIntersection}{Intersection}}
-\begin{DoxyCompactList}\small\item\em Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Retourné par \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{Scene\+::intersect}}, regroupe le point d\textquotesingle{}impact, la distance depuis l\textquotesingle{}origine du rayon et l\textquotesingle{}index de la face touchée. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classScene}{Scene}}
-\begin{DoxyCompactList}\small\item\em Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour les intersections. Après ajout des entités, \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build()}} triangule la scène et construit l\textquotesingle{}arbre CGAL AABB permettant des requêtes d\textquotesingle{}intersection rayon/maillage. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef CGAL\+::\+AABB\+\_\+triangle\+\_\+primitive$<$ \mbox{\hyperlink{pose_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, std\+::vector$<$ \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}} $>$\+::iterator $>$ \mbox{\hyperlink{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}{Primitive}}
-\item 
-typedef CGAL\+::\+AABB\+\_\+traits$<$ \mbox{\hyperlink{pose_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, \mbox{\hyperlink{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}{Primitive}} $>$ \mbox{\hyperlink{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}{Traits}}
-\item 
-typedef CGAL\+::\+AABB\+\_\+tree$<$ \mbox{\hyperlink{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}{Traits}} $>$ \mbox{\hyperlink{scene_8h_a4afabc47bad26e2881913598e8f0b96f}{Tree}}
-\end{DoxyCompactItemize}
-
-
-\doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}\label{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}} 
-\index{scene.h@{scene.h}!Primitive@{Primitive}}
-\index{Primitive@{Primitive}!scene.h@{scene.h}}
-\doxysubsubsection{\texorpdfstring{Primitive}{Primitive}}
-{\footnotesize\ttfamily typedef CGAL\+::\+AABB\+\_\+triangle\+\_\+primitive$<$\mbox{\hyperlink{pose_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, std\+::vector$<$\mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}$>$\+::iterator$>$ \mbox{\hyperlink{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}{Primitive}}}
-
-\mbox{\Hypertarget{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}\label{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}} 
-\index{scene.h@{scene.h}!Traits@{Traits}}
-\index{Traits@{Traits}!scene.h@{scene.h}}
-\doxysubsubsection{\texorpdfstring{Traits}{Traits}}
-{\footnotesize\ttfamily typedef CGAL\+::\+AABB\+\_\+traits$<$\mbox{\hyperlink{pose_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, \mbox{\hyperlink{scene_8h_ae8c2c828e1aa12fd8594b6ac0c840109}{Primitive}}$>$ \mbox{\hyperlink{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}{Traits}}}
-
-\mbox{\Hypertarget{scene_8h_a4afabc47bad26e2881913598e8f0b96f}\label{scene_8h_a4afabc47bad26e2881913598e8f0b96f}} 
-\index{scene.h@{scene.h}!Tree@{Tree}}
-\index{Tree@{Tree}!scene.h@{scene.h}}
-\doxysubsubsection{\texorpdfstring{Tree}{Tree}}
-{\footnotesize\ttfamily typedef CGAL\+::\+AABB\+\_\+tree$<$\mbox{\hyperlink{scene_8h_aee6af9dfd8924dd569f11b3e11d90dd3}{Traits}}$>$ \mbox{\hyperlink{scene_8h_a4afabc47bad26e2881913598e8f0b96f}{Tree}}}
-
+\begin{DoxyCompactList}\small\item\em Scène 3D contenant les entités statiques et l\textquotesingle{}arbre d\textquotesingle{}accélération AABB. La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l\textquotesingle{}intersection rayon\+\_\+triangle via CGAL. \end{DoxyCompactList}\end{DoxyCompactItemize}

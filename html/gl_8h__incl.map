@@ -1,51 +1,52 @@
 <map id="gl.h" name="gl.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1396,5,1443,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="263,80,344,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="369,80,459,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="495,162,599,189"/>
-<area shape="rect" id="node5" title=" " alt="" coords="675,162,892,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="1559,80,1715,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="1739,80,1819,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1300,408,1363,435"/>
-<area shape="rect" id="node9" title=" " alt="" coords="1305,333,1382,360"/>
-<area shape="rect" id="node10" title=" " alt="" coords="1843,80,1934,107"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1958,80,2043,107"/>
-<area shape="rect" id="node12" title=" " alt="" coords="2068,80,2141,107"/>
-<area shape="rect" id="node13" title=" " alt="" coords="2166,80,2331,107"/>
-<area shape="rect" id="node14" title=" " alt="" coords="2355,80,2414,107"/>
-<area shape="rect" id="node15" title=" " alt="" coords="2439,80,2549,107"/>
-<area shape="rect" id="node16" href="$cgal_8h.html" title=" " alt="" coords="921,333,982,360"/>
-<area shape="rect" id="node19" href="$model__marker_8h.html" title=" " alt="" coords="484,80,611,107"/>
-<area shape="rect" id="node23" href="$scene_8h.html" title=" " alt="" coords="1022,162,1094,189"/>
-<area shape="rect" id="node24" href="$entity_8h.html" title=" " alt="" coords="1247,251,1317,278"/>
-<area shape="rect" id="node37" href="$lidar__factory_8h.html" title=" " alt="" coords="2019,251,2134,278"/>
-<area shape="rect" id="node38" href="$point__cloud__exporter_8h.html" title=" " alt="" coords="1670,251,1841,278"/>
-<area shape="rect" id="node44" href="$logger_8h.html" title=" " alt="" coords="2574,80,2649,107"/>
-<area shape="rect" id="node47" href="$lidar__scanner_8h.html" title=" " alt="" coords="1139,80,1259,107"/>
-<area shape="rect" id="node49" href="$cgal__glm__utils_8h.html" title=" " alt="" coords="703,80,831,107"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1003,408,1188,435"/>
-<area shape="rect" id="node18" title=" " alt="" coords="813,408,978,435"/>
-<area shape="rect" id="node20" title=" " alt="" coords="304,162,471,189"/>
-<area shape="rect" id="node21" title=" " alt="" coords="5,162,121,189"/>
-<area shape="rect" id="node22" title=" " alt="" coords="145,162,280,189"/>
-<area shape="rect" id="node34" title=" " alt="" coords="853,251,996,278"/>
-<area shape="rect" id="node35" title=" " alt="" coords="1020,251,1171,278"/>
-<area shape="rect" id="node36" title=" " alt="" coords="674,244,829,285"/>
-<area shape="rect" id="node25" href="$pose_8h.html" title=" " alt="" coords="1063,333,1128,360"/>
-<area shape="rect" id="node26" href="$lidar_8h.html" title=" " alt="" coords="2045,333,2108,360"/>
-<area shape="rect" id="node30" href="$noise__model_8h.html" title=" " alt="" coords="1869,408,1986,435"/>
-<area shape="rect" id="node27" title=" " alt="" coords="2297,483,2355,509"/>
-<area shape="rect" id="node28" title=" " alt="" coords="2220,408,2288,435"/>
-<area shape="rect" id="node29" title=" " alt="" coords="2019,483,2166,509"/>
-<area shape="rect" id="node33" href="$horizontal__step_8h.html" title=" " alt="" coords="2061,408,2196,435"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1817,483,1889,509"/>
-<area shape="rect" id="node32" title=" " alt="" coords="1913,483,1976,509"/>
-<area shape="rect" id="node39" title=" " alt="" coords="1871,333,2021,360"/>
-<area shape="rect" id="node40" title=" " alt="" coords="2133,333,2279,360"/>
-<area shape="rect" id="node41" title=" " alt="" coords="2304,333,2463,360"/>
-<area shape="rect" id="node42" title=" " alt="" coords="1508,333,1640,360"/>
-<area shape="rect" id="node43" title=" " alt="" coords="1664,333,1847,360"/>
-<area shape="rect" id="node45" title=" " alt="" coords="2469,162,2593,189"/>
-<area shape="rect" id="node46" title=" " alt="" coords="2617,155,2765,196"/>
-<area shape="rect" id="node48" title=" " alt="" coords="1169,162,1230,189"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1619,5,1666,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="445,80,526,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="551,80,641,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="740,155,844,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="970,155,1187,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1971,80,2127,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="2152,80,2232,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1938,603,2001,629"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1876,528,1953,555"/>
+<area shape="rect" id="node10" title=" " alt="" coords="2256,80,2347,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="2371,80,2456,107"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1325,528,1398,555"/>
+<area shape="rect" id="node13" title=" " alt="" coords="2480,80,2645,107"/>
+<area shape="rect" id="node14" title=" " alt="" coords="2669,80,2728,107"/>
+<area shape="rect" id="node15" title=" " alt="" coords="2753,80,2863,107"/>
+<area shape="rect" id="node16" href="$cgal_8h.html" title=" " alt="" coords="57,528,119,555"/>
+<area shape="rect" id="node19" href="$model__marker_8h.html" title=" " alt="" coords="666,80,793,107"/>
+<area shape="rect" id="node23" href="$scene_8h.html" title=" " alt="" coords="1625,304,1697,331"/>
+<area shape="rect" id="node24" href="$entity_8h.html" title=" " alt="" coords="1746,453,1817,480"/>
+<area shape="rect" id="node31" href="$logger_8h.html" title=" " alt="" coords="640,603,715,629"/>
+<area shape="rect" id="node39" href="$lidar__factory_8h.html" title=" " alt="" coords="1832,80,1947,107"/>
+<area shape="rect" id="node41" href="$lidar__scanner_8h.html" title=" " alt="" coords="1732,229,1852,256"/>
+<area shape="rect" id="node43" href="$point__cloud__exporter_8h.html" title=" " alt="" coords="969,453,1140,480"/>
+<area shape="rect" id="node50" href="$cgal__glm__utils_8h.html" title=" " alt="" coords="941,80,1069,107"/>
+<area shape="rect" id="node17" title=" " alt="" coords="430,603,615,629"/>
+<area shape="rect" id="node18" title=" " alt="" coords="5,603,171,629"/>
+<area shape="rect" id="node20" title=" " alt="" coords="549,155,715,181"/>
+<area shape="rect" id="node21" title=" " alt="" coords="250,155,366,181"/>
+<area shape="rect" id="node22" title=" " alt="" coords="390,155,525,181"/>
+<area shape="rect" id="node36" href="$tlas__primitive_8h.html" title=" " alt="" coords="1426,379,1550,405"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1364,453,1439,480"/>
+<area shape="rect" id="node38" title=" " alt="" coords="1626,379,1697,405"/>
+<area shape="rect" id="node25" href="$pose_8h.html" title=" " alt="" coords="533,528,598,555"/>
+<area shape="rect" id="node26" href="$lidar_8h.html" title=" " alt="" coords="2130,528,2193,555"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1708,603,1767,629"/>
+<area shape="rect" id="node29" href="$noise__model_8h.html" title=" " alt="" coords="2025,603,2143,629"/>
+<area shape="rect" id="node30" href="$object_8h.html" title=" " alt="" coords="1473,528,1548,555"/>
+<area shape="rect" id="node28" title=" " alt="" coords="2107,685,2253,711"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1354,603,1497,629"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1521,603,1671,629"/>
+<area shape="rect" id="node32" title=" " alt="" coords="695,685,819,711"/>
+<area shape="rect" id="node33" title=" " alt="" coords="523,677,671,719"/>
+<area shape="rect" id="node40" href="$scan__strategy_8h.html" title=" " alt="" coords="1828,155,1951,181"/>
+<area shape="rect" id="node42" title=" " alt="" coords="1791,304,1852,331"/>
+<area shape="rect" id="node44" title=" " alt="" coords="980,528,1129,555"/>
+<area shape="rect" id="node45" title=" " alt="" coords="1153,528,1300,555"/>
+<area shape="rect" id="node46" title=" " alt="" coords="194,528,353,555"/>
+<area shape="rect" id="node47" title=" " alt="" coords="377,528,509,555"/>
+<area shape="rect" id="node48" title=" " alt="" coords="674,528,857,555"/>
+<area shape="rect" id="node49" title=" " alt="" coords="881,528,956,555"/>
 </map>

@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classLidarFactory.html" title="Factory de création de configurations et sessions Lidar depuis des fichiers json." alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node1" href="$classLidarConfig.html" title="Configuration abstraite de base d&#39;un lidar. Contient les paramètres communs de tout les types de lida..." alt="" coords="5,56,100,83"/>
+<area shape="rect" id="node2" href="$classFlashLidarConfig.html" title="Configuration d&#39;un lidar flash (sans balayage)." alt="" coords="167,5,298,32"/>
+<area shape="rect" id="node3" href="$classMechanicalLidarConfig.html" title="Configuration d&#39;un lidar mécanique rotatif." alt="" coords="148,56,317,83"/>
+<area shape="rect" id="node4" href="$classMirroredLidarConfig.html" title="Configuration d&#39;un lidar à miroir (balayage de Lissajous)" alt="" coords="157,107,308,133"/>
 </map>

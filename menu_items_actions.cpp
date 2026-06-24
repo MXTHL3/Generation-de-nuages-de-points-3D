@@ -58,14 +58,27 @@ void MenuItemsActions::load_json_scene() {
         filter_all->add_pattern("*");
         dialog.add_filter(filter_all);
 
-        if (std::filesystem::exists("test_scene.json"))
-            dialog.set_filename("test_scene.json");
+        {
+            std::filesystem::path exe_dir = std::filesystem::canonical("/proc/self/exe").parent_path();
+            std::filesystem::path default_scene = exe_dir / "test_scene.json";
+            if (std::filesystem::exists(default_scene))
+                dialog.set_filename(default_scene.string());
+        }
 
         if (dialog.run() != Gtk::RESPONSE_OK)
             return;
 
         const std::string filepath = dialog.get_filename();
         std::filesystem::path base_dir = std::filesystem::canonical("/proc/self/exe").parent_path();
+
+        std::string first_lidar_cfg;
+        nlohmann::json jroot;
+        try {
+            std::ifstream f(filepath);
+            f >> jroot;
+            if (jroot.contains("lidar_entities") && !jroot["lidar_entities"].empty())
+                first_lidar_cfg = jroot["lidar_entities"][0].value("lidar_config", "");
+        } catch (...) {}
 
         Scene world;
         AssetManager assets;
@@ -125,16 +138,28 @@ void MenuItemsActions::load_json_scene() {
             break;
         }
 
-        {
-            std::ifstream f2(filepath);
-            nlohmann::json j2;
-            f2 >> j2;
-            if (j2.contains("lidar_entities") && !j2["lidar_entities"].empty()) {
-                std::string lidar_cfg = j2["lidar_entities"][0].value("lidar_config", "");
-                if (!lidar_cfg.empty()) {
-                    m_gl->set_lidar_config(lidar_cfg);
-                    m_gl->clear_lidar_override();
+        if (!first_lidar_cfg.empty()) {
+            m_gl->set_lidar_config(first_lidar_cfg);
+            m_gl->clear_lidar_override();
+        }
+
+        if (jroot.contains("scan_session")) {
+            try {
+                const auto& ss = jroot["scan_session"];
+                std::string strategy = ss.value("strategy", "360");
+                if (strategy == "timed") {
+                    m_gl->set_scan_strategy(ScanStrategyType::Timed);
+                    if (ss.contains("duration"))
+                        m_gl->set_scan_duration(ss["duration"].get<double>());
+                } else if (strategy == "multiple") {
+                    m_gl->set_scan_strategy(ScanStrategyType::Multiple);
+                    if (ss.contains("n_scans"))
+                        m_gl->set_scan_n_scans(ss["n_scans"].get<int>());
+                } else {
+                    m_gl->set_scan_strategy(ScanStrategyType::ThreeSixty);
                 }
+            } catch (const std::exception& e) {
+                SIM_WARNING("Erreur lecture scan_session : {}", e.what());
             }
         }
 
@@ -190,13 +215,9 @@ void MenuItemsActions::save_json_scene() {
 
         for (size_t i = 0; i < paths.size(); ++i) {
             const ModelTransform& tr = transforms[i + 1];
-            float off = m_gl->OFFSET_STEP * static_cast<float>(i + 1);
-            std::cout << "off : " << off << std::endl;
-            std::cout << "posXYZ : " << tr.pos_x + off << " " << tr.pos_y << " " << tr.pos_z << std::endl;
-            std::cout << "angleXYZ : " << tr.angle_x << " " << tr.angle_y << " " << tr.angle_z << std::endl;
 
             Pose pose(
-                Point3(tr.pos_x + off, tr.pos_y, tr.pos_z),
+                Point3(tr.pos_x, tr.pos_y, tr.pos_z),
                 glm::degrees(tr.angle_x),
                 glm::degrees(tr.angle_y),
                 glm::degrees(tr.angle_z)
@@ -247,15 +268,16 @@ void MenuItemsActions::save_json_scene() {
 
         if (ok) {
             try {
-                std::ifstream fin(filepath);
                 nlohmann::json j;
-                fin >> j;
-                fin.close();
-                if (j.contains("lidar_entities") && !j["lidar_entities"].empty())
-                    j["lidar_entities"][0]["step_index"] = 2;
-                std::ofstream fout(filepath);
-                fout << j.dump(4);
-            } catch (...) {}
+                { std::ifstream fin(filepath); fin >> j; }
+                if (j.contains("lidar_entities")) {
+                    for (auto& item : j["lidar_entities"])
+                        item["step_index"] = 2;
+                }
+                { std::ofstream fout(filepath); fout << j.dump(4); }
+            } catch (const std::exception& e) {
+                SIM_WARNING("Impossible d'injecter step_index dans {} : {}", filepath, e.what());
+            }
         }
 
         Gtk::MessageDialog msg(
@@ -411,69 +433,72 @@ void MenuItemsActions::generate_dataset() {
             Gtk::FILE_CHOOSER_ACTION_OPEN);
         dialog.set_transient_for(as_window());
         dialog.set_select_multiple(true);
-        dialog.add_button("Annuler",       Gtk::RESPONSE_CANCEL);
-        dialog.add_button("Sélectionner",  Gtk::RESPONSE_OK);
- 
+        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        dialog.add_button("Sélectionner", Gtk::RESPONSE_OK);
+
         auto filter_pc = Gtk::FileFilter::create();
         filter_pc->set_name("Nuages de points (*.ply, *.las, *.laz)");
         filter_pc->add_pattern("*.ply");
         filter_pc->add_pattern("*.las");
         filter_pc->add_pattern("*.laz");
         dialog.add_filter(filter_pc);
- 
+
         auto filter_all = Gtk::FileFilter::create();
         filter_all->set_name("Tous les fichiers");
         filter_all->add_pattern("*");
         dialog.add_filter(filter_all);
- 
+
         if (dialog.run() != Gtk::RESPONSE_OK) return;
         std::vector<std::string> fichiers = dialog.get_filenames();
         dialog.hide();
- 
+
         if (fichiers.empty()) return;
- 
+
         Gtk::Dialog cls_dialog("Classe des scans sélectionnés", as_window(), true);
-        cls_dialog.add_button("Annuler",   Gtk::RESPONSE_CANCEL);
+        cls_dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
         cls_dialog.add_button("Confirmer", Gtk::RESPONSE_OK);
- 
+
         auto* content = cls_dialog.get_content_area();
         auto* box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 8);
         box->set_margin_start(16); box->set_margin_end(16);
         box->set_margin_top(12);   box->set_margin_bottom(12);
- 
+
         auto* label_cls = Gtk::make_managed<Gtk::Label>(
             std::to_string(fichiers.size()) + " fichier(s) sélectionné(s).\n"
-            "Classe (ex: humain, non_humain) :");
+            "Classe (ex: humain, non-humain) :");
+        auto* lbl_hint = Gtk::make_managed<Gtk::Label>("(valeurs attendues : \"humain\" ou \"non-humain\")");
+        lbl_hint->set_xalign(0.0f);
         Gtk::Entry entry_cls;
         entry_cls.set_text("humain");
- 
+
         box->pack_start(*label_cls, Gtk::PACK_SHRINK);
-        box->pack_start(entry_cls,  Gtk::PACK_SHRINK);
-        content->pack_start(*box,   Gtk::PACK_SHRINK);
+        box->pack_start(*lbl_hint, Gtk::PACK_SHRINK);
+        box->pack_start(entry_cls, Gtk::PACK_SHRINK);
+        content->pack_start(*box, Gtk::PACK_SHRINK);
         cls_dialog.show_all_children();
- 
+
         if (cls_dialog.run() != Gtk::RESPONSE_OK) return;
         std::string cls = entry_cls.get_text();
         if (cls.empty()) cls = "inconnu";
-        cls_dialog.hide();  
- 
+        cls_dialog.hide();
+
         Gtk::FileChooserDialog dir_dialog(
             "Choisir le dossier de destination du dataset",
             Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
         dir_dialog.set_transient_for(as_window());
-        dir_dialog.add_button("Annuler",      Gtk::RESPONSE_CANCEL);
+        dir_dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
         dir_dialog.add_button("Sélectionner", Gtk::RESPONSE_OK);
- 
+
         if (dir_dialog.run() != Gtk::RESPONSE_OK) return;
-        std::string folder     = dir_dialog.get_filename();
+        std::string folder = dir_dialog.get_filename();
         std::string folder_cls = folder + "/" + cls;
-        dir_dialog.hide();  
- 
+        dir_dialog.hide();
+
         std::filesystem::create_directories(folder_cls);
- 
+
         int succes = 0;
         for (const auto& src : fichiers) {
-            std::string nom  = std::filesystem::path(src).filename().string();
+            std::string nom = std::filesystem::path(src).filename().string();
             std::string dest = folder_cls + "/" + nom;
             try {
                 std::filesystem::copy_file(src, dest,
@@ -483,36 +508,36 @@ void MenuItemsActions::generate_dataset() {
                 std::cerr << "Erreur copie " << nom << " : " << e.what() << "\n";
             }
         }
- 
+
         Gtk::MessageDialog msg(as_window(),
             "Dataset mis à jour !\n" +
             std::to_string(succes) + " / " + std::to_string(fichiers.size()) +
             " fichier(s) copiés dans :\n" + folder_cls,
             false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
         msg.run();
-        msg.hide();  
- 
+        msg.hide();
+
         std::filesystem::path base_dir =
             std::filesystem::canonical("/proc/self/exe").parent_path();
-        std::string script_dir   = (base_dir / "training_model").string();
+        std::string script_dir = (base_dir / "training_model").string();
         std::string train_script = (base_dir / "training_model/train_ai.py").string();
- 
+
         if (!std::filesystem::exists(train_script)) {
             std::cerr << "train_ai.py introuvable : " << train_script << "\n";
             return;
         }
- 
+
         Gtk::MessageDialog train_ask(as_window(),
             "Voulez-vous lancer l'entrainement IA maintenant\navec les nouvelles donnees ?",
             false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO, true);
         int train_rep = train_ask.run();
         train_ask.hide();
         if (train_rep != Gtk::RESPONSE_YES) return;
- 
+
         setenv("DATASET_DIR", folder.c_str(), 1);
- 
+
         std::string cmd = "cd \"" + script_dir + "\" && python3 \"" + train_script + "\" 2>&1";
- 
+
         FILE* pipe = popen(cmd.c_str(), "r");
         if (!pipe) {
             Gtk::MessageDialog err(as_window(), "Impossible de lancer Python.",
@@ -521,25 +546,25 @@ void MenuItemsActions::generate_dataset() {
             unsetenv("DATASET_DIR");
             return;
         }
- 
+
         std::string output;
         char buffer[256];
         while (fgets(buffer, sizeof(buffer), pipe))
             output += buffer;
         pclose(pipe);
- 
+
         unsetenv("DATASET_DIR");
- 
+
         Gtk::Dialog done("Entraînement terminé", as_window(), true);
         done.add_button("OK", Gtk::RESPONSE_OK);
 
         auto* area = done.get_content_area();
         auto* scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
         scroll->set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-        scroll->set_size_request(500, 300);  // largeur x hauteur fixe
+        scroll->set_size_request(500, 300);
 
         auto* tv = Gtk::make_managed<Gtk::TextView>();
-        tv->get_buffer()->set_text("Entraînement terminé :\n\n" + output);
+        tv->get_buffer()->set_text("Entraînement terminé.\nModèle sauvegardé : pointnext_human_classifier.pth\n\n" + output);
         tv->set_editable(false);
         tv->set_wrap_mode(Gtk::WRAP_WORD);
         scroll->add(*tv);
@@ -552,126 +577,107 @@ void MenuItemsActions::generate_dataset() {
 
 void MenuItemsActions::launch_recognition() {
     _sub->signal_activate().connect([this]() {
-
         Gtk::FileChooserDialog dialog(
             "Sélectionner un fichier .ply à analyser",
             Gtk::FILE_CHOOSER_ACTION_OPEN);
+
         dialog.set_transient_for(as_window());
         dialog.add_button("Annuler",  Gtk::RESPONSE_CANCEL);
         dialog.add_button("Analyser", Gtk::RESPONSE_OK);
- 
+
         auto filter_ply = Gtk::FileFilter::create();
-        filter_ply->set_name("Nuages de points (*.ply)");
+        filter_ply->set_name("Nuages de points (*.ply, *.las, *.laz)");
         filter_ply->add_pattern("*.ply");
+        filter_ply->add_pattern("*.las");
+        filter_ply->add_pattern("*.laz");
+
         dialog.add_filter(filter_ply);
- 
+
         auto filter_all = Gtk::FileFilter::create();
         filter_all->set_name("Tous les fichiers");
         filter_all->add_pattern("*");
+
         dialog.add_filter(filter_all);
- 
+
         if (dialog.run() != Gtk::RESPONSE_OK) return;
+
         std::string ply_path = dialog.get_filename();
+
         dialog.hide();
- 
-        std::filesystem::path base_dir =
-            std::filesystem::canonical("/proc/self/exe").parent_path();
+
+        std::filesystem::path base_dir = std::filesystem::canonical("/proc/self/exe").parent_path();
         std::string script_dir = (base_dir / "training_model").string();
-        std::string modele     = (base_dir / "training_model/modele_laser.pth").string();
-        std::string script     = (base_dir / "training_model/test_ai.py").string();
- 
-        std::cout << "base_dir       = " << base_dir << "\n"
-                  << "script         = " << script   << "\n"
-                  << "modele         = " << modele   << "\n"
-                  << "exists(script) = " << std::filesystem::exists(script) << "\n"
-                  << "exists(modele) = " << std::filesystem::exists(modele) << "\n";
- 
+        std::string modele = (base_dir / "training_model/pointnext_human_classifier.pth").string();
+        std::string script = (base_dir / "training_model/test_ai.py").string();
+
         if (!std::filesystem::exists(script)) {
             Gtk::MessageDialog err(as_window(),
                 "Script introuvable : " + script,
                 false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
             err.run(); return;
         }
+
         if (!std::filesystem::exists(modele)) {
             Gtk::MessageDialog err(as_window(),
                 "Modèle introuvable : " + modele +
-                "\nLancez d'abord train_ai.py pour générer 'modele_laser.pth'.",
+                "\nLancez d'abord l'entraînement IA pour générer 'pointnext_human_classifier.pth'.",
                 false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
             err.run(); return;
         }
- 
+
         setenv("PLY_PATH", ply_path.c_str(), 1);
         setenv("MODELE_PATH", modele.c_str(), 1);
- 
-        std::string cmd =
-            "cd \"" + script_dir + "\" && python3 \"" + script + "\" 2>&1";
- 
+
+        std::string cmd = "cd \"" + script_dir + "\" && python3 \"" + script + "\" 2>&1";
+
         FILE* pipe = popen(cmd.c_str(), "r");
+
         if (!pipe) {
-            Gtk::MessageDialog err(as_window(), "Impossible de lancer Python.",
-                false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
+            Gtk::MessageDialog err(as_window(), "Impossible de lancer Python.", false, Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK, true);
             err.run();
             unsetenv("PLY_PATH");
             unsetenv("MODELE_PATH");
             return;
         }
- 
+
         std::string output;
         char buffer[256];
+
         while (fgets(buffer, sizeof(buffer), pipe))
             output += buffer;
+
         int ret = pclose(pipe);
- 
+
         unsetenv("PLY_PATH");
         unsetenv("MODELE_PATH");
- 
-        std::string verdict;
-        {
-            std::istringstream iss(output);
-            std::string line;
-            while (std::getline(iss, line))
-                if (!line.empty()) verdict = line;
-        }
- 
-        int nb_humains = 0;
-        bool parse_ok = false;
-        try {
-            size_t space = verdict.find(' ');
-            if (space != std::string::npos) {
-                nb_humains = std::stoi(verdict.substr(0, space));
-                parse_ok = true;
-            }
-        } catch (...) {}
 
         std::string filename = std::filesystem::path(ply_path).filename().string();
-        std::string message  = "Fichier analysé : " + filename +
-                            "\n\nRésultat : " +
-                            (verdict.empty() ? "(aucune sortie)" : verdict) + "\n";
 
-        if (ret != 0 || verdict.find("Erreur") != std::string::npos || !parse_ok) {
-            message += "\nDétails :\n" + output;
-            Gtk::MessageDialog result(as_window(), message,
-                false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK, true);
-            result.set_title("Analyse IA — Erreur");
-            result.run();
-        } else if (nb_humains == 0) {
-            Gtk::MessageDialog result(as_window(), message,
-                false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_OK, true);
-            result.set_title("Analyse IA — Aucun humain détecté");
-            result.run();
-        } else {
-            std::string titre = "Analyse IA — " + std::to_string(nb_humains) +
-                                " silhouette" + (nb_humains > 1 ? "s" : "") + " humaine" +
-                                (nb_humains > 1 ? "s" : "") + " détectée" +
-                                (nb_humains > 1 ? "s" : "");
-            Gtk::MessageDialog result(as_window(), message,
-                false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
-            result.set_title(titre);
-            result.run();
-        }
+        Gtk::Dialog done("Résultat analyse IA - " + filename, as_window(), true);
+        done.add_button("OK", Gtk::RESPONSE_OK);
+
+        auto* area = done.get_content_area();
+
+        auto* scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
+        scroll->set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+        scroll->set_size_request(520, 320);
+
+        auto* tv = Gtk::make_managed<Gtk::TextView>();
+
+        std::string display = ret != 0 ? "Erreur lors de l'exécution du script :\n\n" + output : output;
+
+        tv->get_buffer()->set_text(display);
+        tv->set_editable(false);
+        tv->set_wrap_mode(Gtk::WRAP_WORD);
+
+        scroll->add(*tv);
+
+        area->pack_start(*scroll, Gtk::PACK_EXPAND_WIDGET);
+        area->show_all();
+
+        done.run();
     });
 }
-
 
 void MenuItemsActions::to_fullscreen() {
     _sub->signal_activate().connect([this]() {
@@ -912,29 +918,6 @@ void MenuItemsActions::scanner_settings() {
 
 void MenuItemsActions::vary_poses() {
     _sub->signal_activate().connect([this]() {
-        Gtk::Dialog dialog("Varier les poses (pipeline)", as_window(), true);
-        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
-        dialog.add_button("Générer", Gtk::RESPONSE_OK);
-
-        auto* content = dialog.get_content_area();
-        auto* box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 8);
-        box->set_margin_start(16); box->set_margin_end(16);
-        box->set_margin_top(12); box->set_margin_bottom(12);
-
-        auto* lbl = Gtk::make_managed<Gtk::Label>("Nombre de variations par modèle :");
-        lbl->set_xalign(0.0f);
-        Gtk::SpinButton spin_variations(1.0, 0);
-        spin_variations.set_range(1, 50);
-        spin_variations.set_value(3);
-
-        box->pack_start(*lbl, Gtk::PACK_SHRINK);
-        box->pack_start(spin_variations, Gtk::PACK_SHRINK);
-        content->pack_start(*box, Gtk::PACK_SHRINK);
-        dialog.show_all_children();
-
-        if (dialog.run() != Gtk::RESPONSE_OK) return;
-        size_t nb_variations = static_cast<size_t>(spin_variations.get_value_as_int());
-        dialog.hide();
 
         size_t total_models = m_gl->model_count();
         if (total_models <= 1) {
@@ -945,59 +928,159 @@ void MenuItemsActions::vary_poses() {
             return;
         }
 
+        Gtk::Dialog dialog("Varier les poses (pipeline)", as_window(), true);
+        dialog.add_button("Annuler", Gtk::RESPONSE_CANCEL);
+        dialog.add_button("Générer", Gtk::RESPONSE_OK);
+
+        auto* content = dialog.get_content_area();
+        auto* box = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_VERTICAL, 8);
+        box->set_margin_start(16); box->set_margin_end(16);
+        box->set_margin_top(12);   box->set_margin_bottom(12);
+
+        auto* lbl_rot = Gtk::make_managed<Gtk::Label>("Nombre de variations par modèle :");
+        lbl_rot->set_xalign(0.0f);
+        Gtk::SpinButton spin_rot(1.0, 0);
+        spin_rot.set_range(1, 72);
+        spin_rot.set_value(4);
+
+        auto* lbl_grid = Gtk::make_managed<Gtk::Label>("Grille de positions XYZ (mètres) :");
+        lbl_grid->set_xalign(0.0f);
+
+        auto make_spin = [](double min, double max, double step, double val) {
+            auto* s = Gtk::make_managed<Gtk::SpinButton>(step, 1);
+            s->set_range(min, max);
+            s->set_value(val);
+            return s;
+        };
+
+        auto* row_x = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 4);
+        auto* lbl_x = Gtk::make_managed<Gtk::Label>("X : min");
+        auto* spin_xmin = make_spin(-50.0, 0.0, 0.5, -10.0);
+        auto* lbl_xmax = Gtk::make_managed<Gtk::Label>("max");
+        auto* spin_xmax = make_spin(0.0, 50.0, 0.5, 10.0);
+        auto* lbl_xstep = Gtk::make_managed<Gtk::Label>("pas");
+        auto* spin_xstep = make_spin(0.5, 20.0, 0.5, 2.0);
+        row_x->pack_start(*lbl_x, Gtk::PACK_SHRINK);
+        row_x->pack_start(*spin_xmin, Gtk::PACK_SHRINK);
+        row_x->pack_start(*lbl_xmax, Gtk::PACK_SHRINK);
+        row_x->pack_start(*spin_xmax, Gtk::PACK_SHRINK);
+        row_x->pack_start(*lbl_xstep, Gtk::PACK_SHRINK);
+        row_x->pack_start(*spin_xstep, Gtk::PACK_SHRINK);
+
+        auto* row_y = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 4);
+        auto* lbl_y = Gtk::make_managed<Gtk::Label>("Y : min");
+        auto* spin_ymin = make_spin(-50.0, 0.0, 0.5, -10.0);
+        auto* lbl_ymax = Gtk::make_managed<Gtk::Label>("max");
+        auto* spin_ymax = make_spin(0.0, 50.0, 0.5, 10.0);
+        auto* lbl_ystep = Gtk::make_managed<Gtk::Label>("pas");
+        auto* spin_ystep = make_spin(0.5, 20.0, 0.5, 2.0);
+        row_y->pack_start(*lbl_y, Gtk::PACK_SHRINK);
+        row_y->pack_start(*spin_ymin, Gtk::PACK_SHRINK);
+        row_y->pack_start(*lbl_ymax, Gtk::PACK_SHRINK);
+        row_y->pack_start(*spin_ymax, Gtk::PACK_SHRINK);
+        row_y->pack_start(*lbl_ystep, Gtk::PACK_SHRINK);
+        row_y->pack_start(*spin_ystep,Gtk::PACK_SHRINK);
+
+        auto* row_z = Gtk::make_managed<Gtk::Box>(Gtk::ORIENTATION_HORIZONTAL, 4);
+        auto* lbl_z = Gtk::make_managed<Gtk::Label>("Z : min");
+        auto* spin_zmin = make_spin(-50.0, 0.0, 0.5, -10.0);
+        auto* lbl_zmax = Gtk::make_managed<Gtk::Label>("max");
+        auto* spin_zmax = make_spin(0.0, 50.0, 0.5, 10.0);
+        auto* lbl_zstep = Gtk::make_managed<Gtk::Label>("pas");
+        auto* spin_zstep = make_spin(0.5, 20.0, 0.5, 2.0);
+        row_z->pack_start(*lbl_z, Gtk::PACK_SHRINK);
+        row_z->pack_start(*spin_zmin, Gtk::PACK_SHRINK);
+        row_z->pack_start(*lbl_zmax, Gtk::PACK_SHRINK);
+        row_z->pack_start(*spin_zmax, Gtk::PACK_SHRINK);
+        row_z->pack_start(*lbl_zstep, Gtk::PACK_SHRINK);
+        row_z->pack_start(*spin_zstep,Gtk::PACK_SHRINK);
+
+        auto* lbl_excl = Gtk::make_managed<Gtk::Label>("Rayon d'exclusion autour de l'origine (m) :");
+        lbl_excl->set_xalign(0.0f);
+        auto* spin_excl = make_spin(0.0, 20.0, 0.5, 2.0);
+
+        box->pack_start(*lbl_rot, Gtk::PACK_SHRINK);
+        box->pack_start(spin_rot, Gtk::PACK_SHRINK);
+        box->pack_start(*Gtk::make_managed<Gtk::Separator>(Gtk::ORIENTATION_HORIZONTAL), Gtk::PACK_SHRINK);
+        box->pack_start(*lbl_grid, Gtk::PACK_SHRINK);
+        box->pack_start(*row_x, Gtk::PACK_SHRINK);
+        box->pack_start(*row_y, Gtk::PACK_SHRINK);
+        box->pack_start(*row_z, Gtk::PACK_SHRINK);
+        box->pack_start(*lbl_excl, Gtk::PACK_SHRINK);
+        box->pack_start(*spin_excl, Gtk::PACK_SHRINK);
+
+        content->pack_start(*box, Gtk::PACK_SHRINK);
+        dialog.show_all_children();
+
+        if (dialog.run() != Gtk::RESPONSE_OK) return;
+
+        size_t nb_rotations = static_cast<size_t>(spin_rot.get_value_as_int());
+        double xmin = spin_xmin->get_value();
+        double xmax = spin_xmax->get_value();
+        double xstep = spin_xstep->get_value();
+        double ymin = spin_ymin->get_value();
+        double ymax = spin_ymax->get_value();
+        double ystep = spin_ystep->get_value();
+        double zmin = spin_zmin->get_value();
+        double zmax = spin_zmax->get_value();
+        double zstep = spin_zstep->get_value();
+        double excl = spin_excl->get_value();
+        dialog.hide();
+
         std::vector<std::string> paths(m_gl->model_paths().begin(), m_gl->model_paths().end());
         const auto& src_transforms = m_gl->transforms();
 
         std::map<std::string, float> scale_by_path;
-        for (size_t i = 0; i < paths.size(); ++i) {
+        for (size_t i = 0; i < paths.size(); ++i)
             scale_by_path[paths[i]] = src_transforms[i + 1].scale;
-            std::cout << i << ":" << paths[i] << std::endl;
-        }
 
         AssetManager assets;
-        auto base_scene = std::make_unique<Scene>();
+        int total_generated = 0;
 
         try {
-
             for (size_t i = 0; i < paths.size(); ++i) {
-                auto mesh = assets.get_mesh(paths[i]);
-                auto entity = std::make_unique<StaticEntity>(
-                    "model_" + std::to_string(i), mesh, Pose(), paths[i]);
-                base_scene->add_static_entity(std::move(entity));
-            }
+                const std::string& path = paths[i];
+                const std::string  entity_name = "model_" + std::to_string(i);
 
-            Pipeline pipeline;
-            pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(nb_variations, 0.0, 360.0));
-            pipeline.add_step(std::make_unique<PositionLayoutAugmentation>(1));
+                auto base_scene = std::make_unique<Scene>();
+                auto mesh = assets.get_mesh(path);
+                base_scene->add_static_entity(
+                    std::make_unique<StaticEntity>(entity_name, mesh, Pose(), path));
 
-            std::vector<std::unique_ptr<Scene>> scenes = pipeline.execute(std::move(base_scene), assets);
+                Pipeline pipeline;
+                pipeline.add_step(std::make_unique<RotationLayoutAugmentation>(
+                    entity_name, nb_rotations));
+                pipeline.add_step(std::make_unique<GridPositionLayoutAugmentation>(
+                    entity_name, xmin, xmax, xstep, ymin, ymax, ystep, zmin, zmax, zstep, excl));
 
-            int total_generated = 0;
-            for (const auto& scene : scenes) {
-                for (const auto& entity : scene->entities()) {
-                    std::string path = entity->mesh_path();
-                    m_gl->load_file(path);
+                std::vector<std::unique_ptr<Scene>> scenes =
+                    pipeline.execute(std::move(base_scene), assets);
 
-                    int new_idx = static_cast<int>(m_gl->model_count()) - 1;
-                    const Pose& p = entity->pose();
+                for (const auto& scene : scenes) {
+                    for (const auto& entity : scene->entities()) {
+                        m_gl->load_file(entity->mesh_path());
+                        int new_idx = static_cast<int>(m_gl->model_count()) - 1;
+                        const Pose& p = entity->pose();
 
-                    ModelTransform tr;
-                    tr.pos_x = static_cast<float>(p.pos().x());
-                    tr.pos_y = static_cast<float>(p.pos().y());
-                    tr.pos_z = static_cast<float>(p.pos().z());
-                    tr.angle_x = static_cast<float>(p.rx());
-                    tr.angle_y = static_cast<float>(p.ry());
-                    tr.angle_z = static_cast<float>(p.rz());
-                    tr.scale = scale_by_path.count(path) ? scale_by_path.at(path) : 1.0f;
-                    m_gl->set_transform(new_idx, tr);
-
-                    total_generated++;
+                        ModelTransform tr;
+                        tr.pos_x = static_cast<float>(p.pos().x());
+                        tr.pos_y = static_cast<float>(p.pos().y());
+                        tr.pos_z = static_cast<float>(p.pos().z());
+                        tr.angle_x = static_cast<float>(p.rx());
+                        tr.angle_y = static_cast<float>(p.ry());
+                        tr.angle_z = static_cast<float>(p.rz());
+                        tr.scale = scale_by_path.count(path) ? scale_by_path.at(path) : 1.0f;
+                        m_gl->set_transform(new_idx, tr);
+                        total_generated++;
+                    }
                 }
             }
 
+            update_markers();
+
             Gtk::MessageDialog msg(as_window(),
                 std::to_string(total_generated) + " variation(s) générée(s) pour "
-                + std::to_string(paths.size()) + " modèle(s) source(s).",
+                + std::to_string(paths.size()) + " modèle(s).",
                 false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK, true);
             msg.run();
 

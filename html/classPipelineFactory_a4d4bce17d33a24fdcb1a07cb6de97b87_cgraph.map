@@ -1,0 +1,4 @@
+<map id="PipelineFactory::create_from_json" name="PipelineFactory::create_from_json">
+<area shape="rect" id="node1" title="Crée le pipeline à partir du contenu JSON." alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node2" href="$classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0" title="ajoute une nouvelle étape à la fin de la liste." alt="" coords="223,13,364,39"/>
+</map>

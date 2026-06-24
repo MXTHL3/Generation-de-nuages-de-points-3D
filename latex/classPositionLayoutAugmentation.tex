@@ -2,7 +2,7 @@
 \label{classPositionLayoutAugmentation}\index{PositionLayoutAugmentation@{PositionLayoutAugmentation}}
 
 
-Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion.  
+Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. Attention cette classe est dépréciée ! Utiliser la classe \mbox{\hyperlink{classGridPositionLayoutAugmentation}{Grid\+Position\+Layout\+Augmentation}} à la place.  
 
 
 
@@ -11,7 +11,8 @@ Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}e
 
 
 
-Inheritance diagram for Position\+Layout\+Augmentation\+:\nopagebreak
+Inheritance diagram for Position\+Layout\+Augmentation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Position\+Layout\+Augmentation\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Position\+Layout\+Augmentation\+:\nopagebreak
+Collaboration diagram for Position\+Layout\+Augmentation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,7 +39,7 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 
 
 \doxysubsection{Detailed Description}
-Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. 
+Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}exclusion. Attention cette classe est dépréciée ! Utiliser la classe \mbox{\hyperlink{classGridPositionLayoutAugmentation}{Grid\+Position\+Layout\+Augmentation}} à la place. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPositionLayoutAugmentation_a3fce31847753105a065bd3b155a853e2}\label{classPositionLayoutAugmentation_a3fce31847753105a065bd3b155a853e2}} 
@@ -48,9 +50,10 @@ Placement aléatoire des entités dans une scène avec zone d\textquotesingle{}e
 
 
 \begin{DoxyParams}{Parameters}
-{\em number\+\_\+of\+\_\+variations} & Nombre de variantes par scène d\textquotesingle{}entrée. \\
+{\em number\+\_\+of\+\_\+varaitions} & Nombre de variantes par scène d\textquotesingle{}entrée. \\
 \hline
-{\em seed} & Graine du générateur aléatoire. \\
+{\em seed} & Graine du générateur aléatoire. ~\newline
+ \\
 \hline
 \end{DoxyParams}
 
@@ -74,12 +77,20 @@ Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Scènes augmentées 
+Scènes augmentés 
 \end{DoxyReturn}
 
 
 Implements \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{Pipeline\+Step}}.
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classPositionLayoutAugmentation_ade02783b47885767566ad4d18768481c_cgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,8 +1,8 @@
 <map id="IEntity" name="IEntity">
-<area shape="rect" id="node1" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="305,5,415,171"/>
-<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="205,219,349,399"/>
-<area shape="rect" id="node6" href="$classStaticEntity.html" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="373,233,515,384"/>
-<area shape="rect" id="node3" href="$classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,454,157,575"/>
-<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai)." alt="" coords="182,447,373,583"/>
-<area shape="rect" id="node5" href="$classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="397,454,569,575"/>
+<area shape="rect" id="node1" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="305,5,415,156"/>
+<area shape="rect" id="node2" href="$classLidarEntity.html" title="Capteur Lidar abstrait dans la scène Gère la configuration d&#39;un lidar LidarConfig,..." alt="" coords="205,204,349,384"/>
+<area shape="rect" id="node6" href="$classStaticEntity.html" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="373,204,515,384"/>
+<area shape="rect" id="node3" href="$classFlashLidarEntity.html" title="Capteur lidar flash solid&#45;state (Continental HFL110)" alt="" coords="5,439,157,546"/>
+<area shape="rect" id="node4" href="$classMechanicalLidarEntity.html" title="Capteur lidar mécanique rotatif (Velodyne, Ouster, Hesai)." alt="" coords="182,432,373,553"/>
+<area shape="rect" id="node5" href="$classMirroredLidarEntity.html" title="Capteur lidar à Miroir oscillant (Livox, Robosense)" alt="" coords="397,439,569,546"/>
 </map>

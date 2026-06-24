@@ -1,4 +1,4 @@
 <map id="KeyframeLayoutAugmentation" name="KeyframeLayoutAugmentation">
 <area shape="rect" id="node1" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="5,145,252,237"/>
-<area shape="rect" id="node2" href="$classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="59,5,198,97"/>
+<area shape="rect" id="node2" href="$classPipelineStep.html" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="59,5,198,97"/>
 </map>

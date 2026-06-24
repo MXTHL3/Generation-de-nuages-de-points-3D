@@ -1,0 +1,4 @@
+<map id="LazBatchExporter::is_full" name="LazBatchExporter::is_full">
+<area shape="rect" id="node1" title="Retourne vrai si le batch doit être écrit." alt="" coords="221,13,404,39"/>
+<area shape="rect" id="node2" href="$classLazBatchExporter.html#a85cb55a0b062d02b39a2596ecc1f50db" title="Ajoute un nuage dans le fichier ouvert." alt="" coords="5,5,173,47"/>
+</map>

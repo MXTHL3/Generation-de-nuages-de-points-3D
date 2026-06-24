@@ -2,7 +2,7 @@
 \label{classScene}\index{Scene@{Scene}}
 
 
-Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour les intersections. Après ajout des entités, \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build()}} triangule la scène et construit l\textquotesingle{}arbre CGAL AABB permettant des requêtes d\textquotesingle{}intersection rayon/maillage.  
+Scène 3D contenant les entités statiques et l\textquotesingle{}arbre d\textquotesingle{}accélération AABB. La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l\textquotesingle{}intersection rayon\+\_\+triangle via CGAL.  
 
 
 
@@ -11,7 +11,8 @@ Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour 
 
 
 
-Collaboration diagram for Scene\+:\nopagebreak
+Collaboration diagram for Scene\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,25 +25,21 @@ Collaboration diagram for Scene\+:\nopagebreak
 \mbox{\hyperlink{classScene_a93ccc41b0a2f6c24e467d5d9de76ec0d}{Scene}} ()=default
 \item 
 \mbox{\hyperlink{classScene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$\+Scene}} ()
-\begin{DoxyCompactList}\small\item\em Détruit la scène en libérant les triangles et l\textquotesingle{}arbre AABB. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{classScene_aae99632f6bac1360a8c7463c9ab0f613}{Scene}} (const \mbox{\hyperlink{classScene}{Scene}} \&scene)
-\begin{DoxyCompactList}\small\item\em Constructeur de copie \+: clone toutes les entités statiques. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructeur de copie. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classScene_ab3499787d60be4fc615816aa4ada9423}{add\+\_\+static\+\_\+entity}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ ent)
 \begin{DoxyCompactList}\small\item\em Ajoute une entité statique à la scène. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} $>$ \mbox{\hyperlink{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}{scan}} (size\+\_\+t lidar\+\_\+id=0, double parameter=0.\+0) const
-\item 
 void \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build}} ()
-\begin{DoxyCompactList}\small\item\em Triangule toutes les entités et construit l\textquotesingle{}arbre AABB. Doit être appelé après tous les add\+\_\+static\+\_\+entity et avant tout intersect. \end{DoxyCompactList}\item 
-boost\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{intersect}} (const \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&ray) const
-\begin{DoxyCompactList}\small\item\em Calcule la première intersection d\textquotesingle{}un rayon avec la scène. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ $>$ \& \mbox{\hyperlink{classScene_a799db83d2c67e0f0d330bc02d6b28875}{entities}} ()
-\begin{DoxyCompactList}\small\item\em Retourne les entités statiques de la scène (accès en écriture). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Construit l\textquotesingle{}arbre AABB à partir des triangle transformés. Doit être appelé pour être mit à jour si des entités sont rajoutées. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ \mbox{\hyperlink{classScene_a99c3b54434cf47c0104d8e4c35b18723}{intersect}} (const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&ray) const
+\begin{DoxyCompactList}\small\item\em Lance un rayon et retourne pottentiellement l\textquotesingle{}intersection la plus proche de l\textquotesingle{}origine du rayon. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classStaticEntity}{Static\+Entity}} $>$ $>$ \& \mbox{\hyperlink{classScene_a3091106c25c63131813668b22ac4f163}{entities}} () const
-\begin{DoxyCompactList}\small\item\em Retourne les entités statiques de la scène (accès en lecture). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Accès en lecture aux entités de la scène. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour les intersections. Après ajout des entités, \mbox{\hyperlink{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a}{build()}} triangule la scène et construit l\textquotesingle{}arbre CGAL AABB permettant des requêtes d\textquotesingle{}intersection rayon/maillage. 
+Scène 3D contenant les entités statiques et l\textquotesingle{}arbre d\textquotesingle{}accélération AABB. La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l\textquotesingle{}intersection rayon\+\_\+triangle via CGAL. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classScene_a93ccc41b0a2f6c24e467d5d9de76ec0d}\label{classScene_a93ccc41b0a2f6c24e467d5d9de76ec0d}} 
@@ -57,10 +54,6 @@ Scène 3D \+: ensemble d\textquotesingle{}entités statiques et arbre AABB pour 
 \doxysubsubsection{\texorpdfstring{$\sim$Scene()}{~Scene()}}
 {\footnotesize\ttfamily Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Détruit la scène en libérant les triangles et l\textquotesingle{}arbre AABB. 
-
 \mbox{\Hypertarget{classScene_aae99632f6bac1360a8c7463c9ab0f613}\label{classScene_aae99632f6bac1360a8c7463c9ab0f613}} 
 \index{Scene@{Scene}!Scene@{Scene}}
 \index{Scene@{Scene}!Scene@{Scene}}
@@ -69,13 +62,8 @@ Détruit la scène en libérant les triangles et l\textquotesingle{}arbre AABB.
 
 
 
-Constructeur de copie \+: clone toutes les entités statiques. 
+Constructeur de copie. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em scene} & Scène source à copier. \\
-\hline
-\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -89,11 +77,6 @@ Constructeur de copie \+: clone toutes les entités statiques.
 
 Ajoute une entité statique à la scène. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em ent} & Entité à ajouter (prend la propriété). \\
-\hline
-\end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -109,73 +92,60 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Triangule toutes les entités et construit l\textquotesingle{}arbre AABB. Doit être appelé après tous les add\+\_\+static\+\_\+entity et avant tout intersect. 
+Construit l\textquotesingle{}arbre AABB à partir des triangle transformés. Doit être appelé pour être mit à jour si des entités sont rajoutées. 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classScene_a6e33abfb4027a9bc2a5bb944fe4c4c9a_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classScene_a799db83d2c67e0f0d330bc02d6b28875}\label{classScene_a799db83d2c67e0f0d330bc02d6b28875}} 
-\index{Scene@{Scene}!entities@{entities}}
-\index{entities@{entities}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{entities()}{entities()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classStaticEntity}{Static\+Entity}}$>$ $>$\& Scene\+::entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Retourne les entités statiques de la scène (accès en écriture). 
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classScene_a799db83d2c67e0f0d330bc02d6b28875_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classScene_a3091106c25c63131813668b22ac4f163}\label{classScene_a3091106c25c63131813668b22ac4f163}} 
 \index{Scene@{Scene}!entities@{entities}}
 \index{entities@{entities}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{entities()}{entities()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{entities()}{entities()}}
 {\footnotesize\ttfamily const std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classStaticEntity}{Static\+Entity}}$>$ $>$\& Scene\+::entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Retourne les entités statiques de la scène (accès en lecture). 
+Accès en lecture aux entités de la scène. 
 
-\mbox{\Hypertarget{classScene_a02db3e0311c490af05727af9f51f4b3a}\label{classScene_a02db3e0311c490af05727af9f51f4b3a}} 
-\index{Scene@{Scene}!intersect@{intersect}}
-\index{intersect@{intersect}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{intersect()}{intersect()}}
-{\footnotesize\ttfamily boost\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ Scene\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&}]{ray }\end{DoxyParamCaption}) const}
-
-
-
-Calcule la première intersection d\textquotesingle{}un rayon avec la scène. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em ray} & Rayon à tester. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{structIntersection}{Intersection}} (point, distance, index de face) ou boost\+::none si aucune. 
-\end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classScene_a02db3e0311c490af05727af9f51f4b3a_icgraph}
+\includegraphics[width=350pt]{classScene_a3091106c25c63131813668b22ac4f163_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}\label{classScene_a8f38f3e03adcbb1523bd528bcbb7b57c}} 
-\index{Scene@{Scene}!scan@{scan}}
-\index{scan@{scan}!Scene@{Scene}}
-\doxysubsubsection{\texorpdfstring{scan()}{scan()}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}}$>$ Scene\+::scan (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{lidar\+\_\+id = {\ttfamily 0},  }\item[{double}]{parameter = {\ttfamily 0.0} }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classScene_a99c3b54434cf47c0104d8e4c35b18723}\label{classScene_a99c3b54434cf47c0104d8e4c35b18723}} 
+\index{Scene@{Scene}!intersect@{intersect}}
+\index{intersect@{intersect}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ Scene\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&}]{ray }\end{DoxyParamCaption}) const}
 
+
+
+Lance un rayon et retourne pottentiellement l\textquotesingle{}intersection la plus proche de l\textquotesingle{}origine du rayon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ray} & Rayon à intersecter (origine et direction) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}intersection trouvée s\textquotesingle{}il en trouve sinon boost\+::none 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classScene_a99c3b54434cf47c0104d8e4c35b18723_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

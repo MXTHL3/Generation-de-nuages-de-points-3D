@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chaînées.  
+<p>Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de scène en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chainés.  
  <a href="classPipelineStep.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="pipeline_8h_source.html">pipeline.h</a>&gt;</code></p>
@@ -78,10 +78,12 @@ Inheritance diagram for PipelineStep:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPipelineStep__inherit__graph.png" border="0" usemap="#aPipelineStep_inherit__map" alt="Inheritance graph"/></div>
 <map name="aPipelineStep_inherit__map" id="aPipelineStep_inherit__map">
-<area shape="rect" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="323,5,462,97"/>
-<area shape="rect" href="classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="5,145,252,237"/>
-<area shape="rect" href="classPositionLayoutAugmentation.html" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion." alt="" coords="275,145,510,237"/>
-<area shape="rect" href="classRotationLayoutAugmentation.html" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="535,145,773,237"/>
+<area shape="rect" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="631,5,770,97"/>
+<area shape="rect" href="classGridPositionLayoutAugmentation.html" title="Placement sur une grille déterministe avec un rayon d&#39;exclusion." alt="" coords="5,145,268,237"/>
+<area shape="rect" href="classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="292,145,539,237"/>
+<area shape="rect" href="classLinearPositionLayoutAugmentation.html" title=" " alt="" coords="563,145,838,237"/>
+<area shape="rect" href="classPositionLayoutAugmentation.html" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion. Attention cette classe est dépr..." alt="" coords="862,145,1097,237"/>
+<area shape="rect" href="classRotationLayoutAugmentation.html" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="1121,145,1360,237"/>
 </map>
 </div>
 <div class="dynheader">
@@ -89,7 +91,7 @@ Collaboration diagram for PipelineStep:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPipelineStep__coll__graph.png" border="0" usemap="#aPipelineStep_coll__map" alt="Collaboration graph"/></div>
 <map name="aPipelineStep_coll__map" id="aPipelineStep_coll__map">
-<area shape="rect" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="5,5,144,97"/>
+<area shape="rect" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="5,5,144,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -102,7 +104,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aef178ca71fc7b7f3f43b64ad589ddf7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chaînées. </p>
+<div class="textblock"><p>Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de scène en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chainés. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9d707b9a09c3a2ad60b671e1bc5d297f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d707b9a09c3a2ad60b671e1bc5d297f">&#9670;&nbsp;</a></span>~PipelineStep()</h2>
@@ -172,9 +174,9 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Scènes augmentées </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scènes augmentés </dd></dl>
 
-<p>Implemented in <a class="el" href="classKeyframeLayoutAugmentation.html#a488a82b9ebf044e73e973a51e43f3830">KeyframeLayoutAugmentation</a>, <a class="el" href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">RotationLayoutAugmentation</a>, and <a class="el" href="classPositionLayoutAugmentation.html#ade02783b47885767566ad4d18768481c">PositionLayoutAugmentation</a>.</p>
+<p>Implemented in <a class="el" href="classLinearPositionLayoutAugmentation.html#ae7e5d00703eb3f7922f7e615e8816b5d">LinearPositionLayoutAugmentation</a>, <a class="el" href="classGridPositionLayoutAugmentation.html#a4f39476661efa3ff39ecd519eba63a8d">GridPositionLayoutAugmentation</a>, <a class="el" href="classKeyframeLayoutAugmentation.html#a488a82b9ebf044e73e973a51e43f3830">KeyframeLayoutAugmentation</a>, <a class="el" href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">RotationLayoutAugmentation</a>, and <a class="el" href="classPositionLayoutAugmentation.html#ade02783b47885767566ad4d18768481c">PositionLayoutAugmentation</a>.</p>
 
 </div>
 </div>

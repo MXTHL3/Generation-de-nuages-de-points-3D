@@ -11,7 +11,8 @@ Entité Abstraite présente dans la scène 3D. Classe de base pour tout les obje
 
 
 
-Inheritance diagram for IEntity\+:\nopagebreak
+Inheritance diagram for IEntity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for IEntity\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for IEntity\+:\nopagebreak
+Collaboration diagram for IEntity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,9 +36,7 @@ Collaboration diagram for IEntity\+:\nopagebreak
 \item 
 virtual \mbox{\hyperlink{classIEntity_a8aea4fbca51d17a0ce314aaa4633f28e}{$\sim$\+IEntity}} ()
 \item 
-virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{clone}} () const =0
-\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classIEntity_a671f515548fe22ae05d97f32b24c0117}{transform}} () const
+\mbox{\hyperlink{object_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \mbox{\hyperlink{classIEntity_a671f515548fe22ae05d97f32b24c0117}{transform}} () const
 \begin{DoxyCompactList}\small\item\em Calcule la matrice de transformation pour placement dans la scène. \end{DoxyCompactList}\item 
 virtual const std\+::string \& \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{name}} () const =0
 \begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
@@ -75,20 +75,6 @@ Entité Abstraite présente dans la scène 3D. Classe de base pour tout les obje
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classIEntity_aeb7b837f65889d824108ef63943ff066}\label{classIEntity_aeb7b837f65889d824108ef63943ff066}} 
-\index{IEntity@{IEntity}!clone@{clone}}
-\index{clone@{clone}!IEntity@{IEntity}}
-\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classIEntity}{IEntity}}$>$ IEntity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Crée une copie de l\textquotesingle{}entité. 
-
-
-
-Implemented in \mbox{\hyperlink{classMirroredLidarEntity_acee3395890d416956e6c67083be3363d}{Mirrored\+Lidar\+Entity}}, \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{Flash\+Lidar\+Entity}}, \mbox{\hyperlink{classMechanicalLidarEntity_aca93cc43978b05c8bf6e6d9d11ec620f}{Mechanical\+Lidar\+Entity}}, and \mbox{\hyperlink{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}{Static\+Entity}}.
-
 \mbox{\Hypertarget{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}\label{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}} 
 \index{IEntity@{IEntity}!name@{name}}
 \index{name@{name}!IEntity@{IEntity}}
@@ -133,7 +119,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{IEntity@{IEntity}!transform@{transform}}
 \index{transform@{transform}!IEntity@{IEntity}}
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} IEntity\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{object_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} IEntity\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 

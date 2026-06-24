@@ -1,9 +1,12 @@
 <map id="to_degrees" name="to_degrees">
-<area shape="rect" id="node1" title=" " alt="" coords="247,163,341,190"/>
-<area shape="rect" id="node2" href="$classMechanicalLidarConfig.html#abdea4ba942bb9732b7527926be5bc5a3" title="Serialise le configuration complète en JSON." alt="" coords="17,5,187,47"/>
-<area shape="rect" id="node3" href="$classFlashLidarConfig.html#a588ddea2bde4c9418743522aad55df16" title="Serialise le configuration complète en JSON." alt="" coords="5,71,199,98"/>
-<area shape="rect" id="node4" href="$classMirroredLidarConfig.html#a27e2f80a80a630b93d7fe669191ae1f3" title="Serialise le configuration complète en JSON." alt="" coords="27,123,177,164"/>
-<area shape="rect" id="node5" href="$classMechanicalLidarConfig.html#a31af5f337bc69feb6b76efb1d8575d70" title=" " alt="" coords="17,188,187,229"/>
-<area shape="rect" id="node6" href="$classFlashLidarConfig.html#a9d3e69337334e656f8b19f42012762f4" title=" " alt="" coords="27,253,177,295"/>
-<area shape="rect" id="node7" href="$classMirroredLidarConfig.html#a88302304b582ee2b42f5849522e28299" title=" " alt="" coords="27,319,177,360"/>
+<area shape="rect" id="node1" title=" " alt="" coords="291,253,385,280"/>
+<area shape="rect" id="node2" href="$classManifest.html#a5f555fa748b24bd4f690673ef9ce673b" title="Ajoute les informations d&#39;un scan dans l&#39;objet json m_data." alt="" coords="50,5,198,32"/>
+<area shape="rect" id="node3" href="$classPositionLayoutAugmentation.html#ade02783b47885767566ad4d18768481c" title="Traite les scènes d&#39;entrée et produit les scènes augmentées." alt="" coords="19,57,229,98"/>
+<area shape="rect" id="node4" href="$classGridPositionLayoutAugmentation.html#a4f39476661efa3ff39ecd519eba63a8d" title="Traite les scènes d&#39;entrée et produit les scènes augmentées." alt="" coords="5,122,243,163"/>
+<area shape="rect" id="node5" href="$classMechanicalLidarConfig.html#abdea4ba942bb9732b7527926be5bc5a3" title="Serialise le configuration complète en JSON." alt="" coords="39,187,209,229"/>
+<area shape="rect" id="node6" href="$classFlashLidarConfig.html#a588ddea2bde4c9418743522aad55df16" title="Serialise le configuration complète en JSON." alt="" coords="27,253,221,280"/>
+<area shape="rect" id="node7" href="$classMirroredLidarConfig.html#a27e2f80a80a630b93d7fe669191ae1f3" title="Serialise le configuration complète en JSON." alt="" coords="49,305,199,346"/>
+<area shape="rect" id="node8" href="$classMechanicalLidarConfig.html#a31af5f337bc69feb6b76efb1d8575d70" title=" " alt="" coords="39,370,209,411"/>
+<area shape="rect" id="node9" href="$classFlashLidarConfig.html#a9d3e69337334e656f8b19f42012762f4" title=" " alt="" coords="49,435,199,477"/>
+<area shape="rect" id="node10" href="$classMirroredLidarConfig.html#a88302304b582ee2b42f5849522e28299" title=" " alt="" coords="49,501,199,542"/>
 </map>

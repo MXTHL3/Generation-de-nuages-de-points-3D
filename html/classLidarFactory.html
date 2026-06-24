@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Factory de création de configurations et sessions Lidar depuis des fichiers json.  
+<p>Factory de création de configurations et sessions Lidar depuis des fichiers jsons.  
  <a href="classLidarFactory.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lidar__factory_8h_source.html">lidar_factory.h</a>&gt;</code></p>
@@ -78,7 +78,7 @@ Collaboration diagram for LidarFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLidarFactory__coll__graph.png" border="0" usemap="#aLidarFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aLidarFactory_coll__map" id="aLidarFactory_coll__map">
-<area shape="rect" title="Factory de création de configurations et sessions Lidar depuis des fichiers json." alt="" coords="5,5,195,97"/>
+<area shape="rect" title="Factory de création de configurations et sessions Lidar depuis des fichiers jsons." alt="" coords="5,5,195,112"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -87,12 +87,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classLidarConfig.html">LidarConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">createFromJsonConfig</a> (const std::string &amp;configPath)</td></tr>
 <tr class="memdesc:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une configuration lidar depuis un fichier json.  <a href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">More...</a><br /></td></tr>
 <tr class="separator:a69af7f5cd3f5f3adc901cb3c3f3cfaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae8d19fd4d58146b136cc320c8ef0a6"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classSessionScan.html">SessionScan</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a7ae8d19fd4d58146b136cc320c8ef0a6">parseScanSession</a> (const nlohmann::json &amp;data)</td></tr>
+<tr class="memdesc:a7ae8d19fd4d58146b136cc320c8ef0a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une session de scan depuis le bloc "scan_session" du JSON de scène.  <a href="classLidarFactory.html#a7ae8d19fd4d58146b136cc320c8ef0a6">More...</a><br /></td></tr>
+<tr class="separator:a7ae8d19fd4d58146b136cc320c8ef0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84e7ac0f70dd3080753f7858ece10466"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466">saveToJson</a> (const std::string &amp;configPath, const <a class="el" href="classLidarConfig.html">LidarConfig</a> &amp;lidar_config)</td></tr>
 <tr class="memdesc:a84e7ac0f70dd3080753f7858ece10466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde une configuration lidar dans un fichier json.  <a href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466">More...</a><br /></td></tr>
 <tr class="separator:a84e7ac0f70dd3080753f7858ece10466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Factory de création de configurations et sessions Lidar depuis des fichiers json. </p>
+<div class="textblock"><p>Factory de création de configurations et sessions Lidar depuis des fichiers jsons. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69af7f5cd3f5f3adc901cb3c3f3cfaeb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69af7f5cd3f5f3adc901cb3c3f3cfaeb">&#9670;&nbsp;</a></span>createFromJsonConfig()</h2>
@@ -137,6 +140,41 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a7ae8d19fd4d58146b136cc320c8ef0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae8d19fd4d58146b136cc320c8ef0a6">&#9670;&nbsp;</a></span>parseScanSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classSessionScan.html">SessionScan</a> &gt; LidarFactory::parseScanSession </td>
+          <td>(</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crée une session de scan depuis le bloc "scan_session" du JSON de scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Json de scène complet </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classSessionScan.html" title="Exécute un scan avec une stratégie choisie.">SessionScan</a> avec la stratégie configurée </dd></dl>
 
 </div>
 </div>

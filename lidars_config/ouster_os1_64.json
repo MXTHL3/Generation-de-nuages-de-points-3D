@@ -1,6 +1,6 @@
 {
-    "accuracy": 0.0,
-    "horizontal_columns": 1024,
+    "accuracy": 0.01,
+    "horizontal_columns": 2048,
     "lasers": [
         {
             "d_offset": 0.0,
@@ -323,15 +323,15 @@
             "v_angle": -22.5
         }
     ],
-    "max_range": 120.0,
-    "min_range": 0.8,
+    "max_range": 170.0,
+    "min_range": 0.5,
     "model": "Ouster OS1-64",
     "noise_profile": [
         {
-            "max_distance": 999.0,
-            "sigma": 0.03
+            "max_distance": 30.0,
+            "sigma": 0.01
         }
     ],
-    "noise_resolution": 0.0,
+    "noise_resolution": 0.003,
     "type": "mechanical"
 }

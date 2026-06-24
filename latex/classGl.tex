@@ -63,7 +63,7 @@ void \mbox{\hyperlink{classGl_a39222fbea430ff6081ecc704ac39d7a6}{toggle\+\_\+poi
 \begin{DoxyCompactList}\small\item\em Bascule l\textquotesingle{}affichage du nuage de points. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classModelMarker}{Model\+Marker}} $>$ $>$ \& \mbox{\hyperlink{classGl_a5e8b7a9c67a4a530cd18b31756091d4d}{get\+\_\+markers}} ()
 \begin{DoxyCompactList}\small\item\em Retourne la liste des marqueurs de transformation interactifs. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classGl_a622447c9e09b0491375e23ee1ab3debb}{reset\+\_\+scene}} ()
+void \mbox{\hyperlink{classGl_a94b62a4e8cf85a6b8b9c941cf2c04459}{reset\+\_\+scene}} (int start\+\_\+index=1)
 \begin{DoxyCompactList}\small\item\em Supprime tous les modèles chargés (conserve le cube par défaut). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGl_a8ea113f1de89d38b932b6ac3562c0ce9}{reset\+\_\+scans}} ()
 \begin{DoxyCompactList}\small\item\em Supprime tous les nuages de points chargés. \end{DoxyCompactList}\item 
@@ -495,11 +495,11 @@ Retourne les chemins des fichiers 3D chargés.
 
 Supprime tous les nuages de points chargés. 
 
-\mbox{\Hypertarget{classGl_a622447c9e09b0491375e23ee1ab3debb}\label{classGl_a622447c9e09b0491375e23ee1ab3debb}} 
+\mbox{\Hypertarget{classGl_a94b62a4e8cf85a6b8b9c941cf2c04459}\label{classGl_a94b62a4e8cf85a6b8b9c941cf2c04459}} 
 \index{Gl@{Gl}!reset\_scene@{reset\_scene}}
 \index{reset\_scene@{reset\_scene}!Gl@{Gl}}
 \doxysubsubsection{\texorpdfstring{reset\_scene()}{reset\_scene()}}
-{\footnotesize\ttfamily void Gl\+::reset\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Gl\+::reset\+\_\+scene (\begin{DoxyParamCaption}\item[{int}]{start\+\_\+index = {\ttfamily 1} }\end{DoxyParamCaption})}
 
 
 
@@ -522,7 +522,8 @@ Lance un scan lidar de la scène complète et exporte le nuage de points.
 {\em output\+\_\+path} & Chemin du fichier de sortie (PLY ou LAS). \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

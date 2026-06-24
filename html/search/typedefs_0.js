@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['cgal_5fmesh_674',['CGAL_Mesh',['../asset__manager_8cpp.html#a53a26d2f76976100df71da3d23fb55f7',1,'asset_manager.cpp']]],
-  ['cgal_5fpoint_5f3_675',['CGAL_Point_3',['../asset__manager_8cpp.html#a20f87ecbaf19276e57cc794528d3a84f',1,'asset_manager.cpp']]],
-  ['cgal_5fray_5f3_676',['CGAL_Ray_3',['../asset__manager_8cpp.html#a0815c4854020e77295b4b380515c9a4c',1,'asset_manager.cpp']]],
-  ['cgal_5ftriangle_5f3_677',['CGAL_Triangle_3',['../asset__manager_8cpp.html#a0a177e0b2a67716fd91432326736d5cb',1,'asset_manager.cpp']]],
-  ['cgal_5fvector_5f3_678',['CGAL_Vector_3',['../asset__manager_8cpp.html#ad41ee899d61e0dad191e3c2fa4adce4b',1,'asset_manager.cpp']]]
+  ['bbox_5f3_750',['Bbox_3',['../object_8h.html#addfe23033005db95e2e48130a55c8a6c',1,'object.h']]]
 ];

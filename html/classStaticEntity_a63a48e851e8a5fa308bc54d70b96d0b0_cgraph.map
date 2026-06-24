@@ -1,0 +1,4 @@
+<map id="StaticEntity::intersect" name="StaticEntity::intersect">
+<area shape="rect" id="node1" title="Intersection rayon&#45;triangle : On transforme le rayon de la scène dans le repère local de l&#39;objet Inte..." alt="" coords="5,5,167,32"/>
+<area shape="rect" id="node2" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="215,5,340,32"/>
+</map>

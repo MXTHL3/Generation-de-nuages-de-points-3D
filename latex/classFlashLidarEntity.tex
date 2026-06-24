@@ -11,7 +11,8 @@ Capteur lidar flash solid-\/state (Continental HFL110)
 
 
 
-Inheritance diagram for Flash\+Lidar\+Entity\+:\nopagebreak
+Inheritance diagram for Flash\+Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Flash\+Lidar\+Entity\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Flash\+Lidar\+Entity\+:\nopagebreak
+Collaboration diagram for Flash\+Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,9 +36,7 @@ Collaboration diagram for Flash\+Lidar\+Entity\+:\nopagebreak
 \item 
 const \mbox{\hyperlink{classFlashLidarConfig}{Flash\+Lidar\+Config}} \& \mbox{\hyperlink{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}{config}} () const
 \item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}{clone}} () const override
-\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
+std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classFlashLidarEntity_a760ec1091e2929ab9a0fd47c99139a31}{generate\+\_\+rays}} (double duration=-\/1.\+0) const override
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -54,20 +54,6 @@ Capteur lidar flash solid-\/state (Continental HFL110)
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}\label{classFlashLidarEntity_a8be7011702b118fd8142d8793d3d1810}} 
-\index{FlashLidarEntity@{FlashLidarEntity}!clone@{clone}}
-\index{clone@{clone}!FlashLidarEntity@{FlashLidarEntity}}
-\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Flash\+Lidar\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Crée une copie de l\textquotesingle{}entité. 
-
-
-
-Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
-
 \mbox{\Hypertarget{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}\label{classFlashLidarEntity_a935dff840f2020590c2bc41ed3a60df9}} 
 \index{FlashLidarEntity@{FlashLidarEntity}!config@{config}}
 \index{config@{config}!FlashLidarEntity@{FlashLidarEntity}}
@@ -85,7 +71,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{FlashLidarEntity@{FlashLidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!FlashLidarEntity@{FlashLidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Flash\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ Flash\+Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 

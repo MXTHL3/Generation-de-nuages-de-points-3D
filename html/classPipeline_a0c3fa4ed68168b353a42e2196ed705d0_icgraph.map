@@ -1,5 +1,6 @@
 <map id="Pipeline::add_step" name="Pipeline::add_step">
-<area shape="rect" id="node1" title=" " alt="" coords="529,13,671,39"/>
-<area shape="rect" id="node2" href="$classMenuItemsActions.html#aab7d34a1c6d9e934b994b864e41b046d" title=" " alt="" coords="272,5,481,47"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title="ajoute une nouvelle étape à la fin de la liste." alt="" coords="500,46,641,73"/>
+<area shape="rect" id="node2" href="$classPipelineFactory.html#a4d4bce17d33a24fdcb1a07cb6de97b87" title="Crée le pipeline à partir du contenu JSON." alt="" coords="277,5,447,47"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="272,71,452,112"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,78,224,105"/>
 </map>

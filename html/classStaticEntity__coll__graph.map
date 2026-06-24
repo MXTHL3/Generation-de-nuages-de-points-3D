@@ -1,5 +1,5 @@
 <map id="StaticEntity" name="StaticEntity">
-<area shape="rect" id="node1" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,433,147,584"/>
-<area shape="rect" id="node2" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,219,131,384"/>
+<area shape="rect" id="node1" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,419,147,599"/>
+<area shape="rect" id="node2" href="$classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,219,131,369"/>
 <area shape="rect" id="node3" href="$classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="21,5,131,156"/>
 </map>

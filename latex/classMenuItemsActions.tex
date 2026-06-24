@@ -11,7 +11,8 @@ Classe de base regroupant les actions des entrées de la barre de menus. Chaque 
 
 
 
-Inheritance diagram for Menu\+Items\+Actions\+:\nopagebreak
+Inheritance diagram for Menu\+Items\+Actions\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Menu\+Items\+Actions\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Menu\+Items\+Actions\+:\nopagebreak
+Collaboration diagram for Menu\+Items\+Actions\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -64,6 +66,8 @@ void \mbox{\hyperlink{classMenuItemsActions_ab72dc3b9d12fd2b89f32ffbbb60217f6}{r
 \begin{DoxyCompactList}\small\item\em Supprime tous les nuages de points chargés. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenuItemsActions_a9552461209a130606302ce65ebb995d1}{scanner\+\_\+settings}} ()
 \begin{DoxyCompactList}\small\item\em Ouvre la boîte de dialogue des paramètres du scanner lidar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8}{vary\+\_\+poses}} ()
+\begin{DoxyCompactList}\small\item\em Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via le pipeline. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classMenuItemsActions_a7da1c205624193511d2b0cf659bc21d4}{exit\+\_\+app}} ()
 \begin{DoxyCompactList}\small\item\em Ferme la fenêtre principale et quitte l\textquotesingle{}application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
@@ -92,7 +96,8 @@ Classe de base regroupant les actions des entrées de la barre de menus. Chaque 
 
 Retourne la fenêtre GTK parente (implémenté par \mbox{\hyperlink{classMainWindow}{Main\+Window}}). 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -270,7 +275,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Charge une scène complète depuis un fichier JSON. 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -400,7 +406,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Exporte la scène courante vers un fichier JSON. 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -472,11 +479,38 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Met à jour les marqueurs de transformation (implémenté par \mbox{\hyperlink{classMainWindow}{Main\+Window}}). 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8}\label{classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8}} 
+\index{MenuItemsActions@{MenuItemsActions}!vary\_poses@{vary\_poses}}
+\index{vary\_poses@{vary\_poses}!MenuItemsActions@{MenuItemsActions}}
+\doxysubsubsection{\texorpdfstring{vary\_poses()}{vary\_poses()}}
+{\footnotesize\ttfamily void Menu\+Items\+Actions\+::vary\+\_\+poses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via le pipeline. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_icgraph}
 \end{center}
 \end{figure}
 

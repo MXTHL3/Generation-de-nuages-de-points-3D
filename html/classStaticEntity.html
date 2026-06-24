@@ -78,8 +78,8 @@ Inheritance diagram for StaticEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classStaticEntity__inherit__graph.png" border="0" usemap="#aStaticEntity_inherit__map" alt="Inheritance graph"/></div>
 <map name="aStaticEntity_inherit__map" id="aStaticEntity_inherit__map">
-<area shape="rect" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,219,147,369"/>
-<area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,5,131,171"/>
+<area shape="rect" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,204,147,384"/>
+<area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,5,131,156"/>
 </map>
 </div>
 <div class="dynheader">
@@ -87,8 +87,8 @@ Collaboration diagram for StaticEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classStaticEntity__coll__graph.png" border="0" usemap="#aStaticEntity_coll__map" alt="Collaboration graph"/></div>
 <map name="aStaticEntity_coll__map" id="aStaticEntity_coll__map">
-<area shape="rect" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,433,147,584"/>
-<area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,219,131,384"/>
+<area shape="rect" title="Objet statique de la scène (ne bouge pas !)." alt="" coords="5,419,147,599"/>
+<area shape="rect" href="classIEntity.html" title="Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène." alt="" coords="21,219,131,369"/>
 <area shape="rect" href="classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,..." alt="" coords="21,5,131,156"/>
 </map>
 </div>
@@ -97,13 +97,18 @@ Collaboration diagram for StaticEntity:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a37e7e38330180630aa9bc29bc0602f9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#a37e7e38330180630aa9bc29bc0602f9c">StaticEntity</a> (std::string <a class="el" href="classStaticEntity.html#ae44708dfd2c0abe9da6b1ceef2ee02fe">name</a>, std::shared_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt; obj, <a class="el" href="classPose.html">Pose</a> p, std::string <a class="el" href="classStaticEntity.html#a4a20630d59000755c75c4fed9f3aa1d9">mesh_path</a>=&quot;&quot;)</td></tr>
 <tr class="separator:a37e7e38330180630aa9bc29bc0602f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b5699d6f6cf5539cca88e61fcb476b5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#a1b5699d6f6cf5539cca88e61fcb476b5">clone</a> () const override</td></tr>
-<tr class="memdesc:a1b5699d6f6cf5539cca88e61fcb476b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une copie de l'entité.  <a href="classStaticEntity.html#a1b5699d6f6cf5539cca88e61fcb476b5">More...</a><br /></td></tr>
-<tr class="separator:a1b5699d6f6cf5539cca88e61fcb476b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae44708dfd2c0abe9da6b1ceef2ee02fe"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#ae44708dfd2c0abe9da6b1ceef2ee02fe">name</a> () const override final</td></tr>
 <tr class="memdesc:ae44708dfd2c0abe9da6b1ceef2ee02fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'identifiant de l'entité.  <a href="classStaticEntity.html#ae44708dfd2c0abe9da6b1ceef2ee02fe">More...</a><br /></td></tr>
 <tr class="separator:ae44708dfd2c0abe9da6b1ceef2ee02fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8d8ed479968f75609d9cff7f37166da"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#af8d8ed479968f75609d9cff7f37166da">meshTriangles</a> () const</td></tr>
+<tr class="memitem:aa0898389087721e26077d4b1d0265c4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#addfe23033005db95e2e48130a55c8a6c">CGAL::Bbox_3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#aa0898389087721e26077d4b1d0265c4d">world_bbox</a> () const</td></tr>
+<tr class="memdesc:aa0898389087721e26077d4b1d0265c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforme la bbox locale avec la <a class="el" href="classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,...">Pose</a> de la scène puis calcule la bbox pour la scène.  <a href="classStaticEntity.html#aa0898389087721e26077d4b1d0265c4d">More...</a><br /></td></tr>
+<tr class="separator:aa0898389087721e26077d4b1d0265c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a48e851e8a5fa308bc54d70b96d0b0"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#a63a48e851e8a5fa308bc54d70b96d0b0">intersect</a> (const <a class="el" href="object_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;world_ray) const</td></tr>
+<tr class="memdesc:a63a48e851e8a5fa308bc54d70b96d0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> rayon-triangle : On transforme le rayon de la scène dans le repère local de l'objet <a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> avec l'arbre AABB local BLAS Retransformation du point d'impact local dans le repère de la scène.  <a href="classStaticEntity.html#a63a48e851e8a5fa308bc54d70b96d0b0">More...</a><br /></td></tr>
+<tr class="separator:a63a48e851e8a5fa308bc54d70b96d0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaac75a0c7cd97f08c4e24298358c2b1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#aaac75a0c7cd97f08c4e24298358c2b1c">update_name</a> (const std::string &amp;new_name)</td></tr>
+<tr class="separator:aaac75a0c7cd97f08c4e24298358c2b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8d8ed479968f75609d9cff7f37166da"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="object_8h.html#a1e66e7b57aee41015099fe0725d0289a">Triangle3</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#af8d8ed479968f75609d9cff7f37166da">meshTriangles</a> () const</td></tr>
 <tr class="memdesc:af8d8ed479968f75609d9cff7f37166da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne un accès en lecture aux triangles du maillage.  <a href="classStaticEntity.html#af8d8ed479968f75609d9cff7f37166da">More...</a><br /></td></tr>
 <tr class="separator:af8d8ed479968f75609d9cff7f37166da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e14c819885a70f7db9a7bc27cf986a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStaticEntity.html#a66e14c819885a70f7db9a7bc27cf986a">update_mesh</a> (std::shared_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt; new_obj)</td></tr>
@@ -116,7 +121,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7b7fe6e95576ede4260ec370b0eeb2ea inherit pub_methods_classIEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aea4fbca51d17a0ce314aaa4633f28e inherit pub_methods_classIEntity"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a8aea4fbca51d17a0ce314aaa4633f28e">~IEntity</a> ()</td></tr>
 <tr class="separator:a8aea4fbca51d17a0ce314aaa4633f28e inherit pub_methods_classIEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a671f515548fe22ae05d97f32b24c0117 inherit pub_methods_classIEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pose_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117">transform</a> () const</td></tr>
+<tr class="memitem:a671f515548fe22ae05d97f32b24c0117 inherit pub_methods_classIEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#a352c74fe120e1bb435c2df8ee255b1f5">Transform3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117">transform</a> () const</td></tr>
 <tr class="memdesc:a671f515548fe22ae05d97f32b24c0117 inherit pub_methods_classIEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la matrice de transformation pour placement dans la scène.  <a href="classIEntity.html#a671f515548fe22ae05d97f32b24c0117">More...</a><br /></td></tr>
 <tr class="separator:a671f515548fe22ae05d97f32b24c0117 inherit pub_methods_classIEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5d6fafc26283ebe9a57bc642a8c70f7 inherit pub_methods_classIEntity"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPose.html">Pose</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIEntity.html#ab5d6fafc26283ebe9a57bc642a8c70f7">pose</a> () const</td></tr>
@@ -184,32 +189,40 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1b5699d6f6cf5539cca88e61fcb476b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b5699d6f6cf5539cca88e61fcb476b5">&#9670;&nbsp;</a></span>clone()</h2>
+<a id="a63a48e851e8a5fa308bc54d70b96d0b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a48e851e8a5fa308bc54d70b96d0b0">&#9670;&nbsp;</a></span>intersect()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; StaticEntity::clone </td>
+          <td class="memname">std::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt; StaticEntity::intersect </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="object_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;&#160;</td>
+          <td class="paramname"><em>world_ray</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Crée une copie de l'entité. </p>
-
-<p>Implements <a class="el" href="classIEntity.html#aeb7b837f65889d824108ef63943ff066">IEntity</a>.</p>
+<p><a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> rayon-triangle : On transforme le rayon de la scène dans le repère local de l'objet <a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> avec l'arbre AABB local BLAS Retransformation du point d'impact local dans le repère de la scène. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">world_ray</td><td>Rayon en coordonnées de la scène </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><br  />
+ </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0_cgraph.png" border="0" usemap="#aclassStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0_cgraph" alt=""/></div>
+<map name="aclassStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0_cgraph" id="aclassStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0_cgraph">
+<area shape="rect" title="Intersection rayon&#45;triangle : On transforme le rayon de la scène dans le repère local de l&#39;objet Inte..." alt="" coords="5,5,167,32"/>
+<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="215,5,340,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -248,7 +261,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt;<a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a>&gt;&amp; StaticEntity::meshTriangles </td>
+          <td class="memname">const std::vector&lt;<a class="el" href="object_8h.html#a1e66e7b57aee41015099fe0725d0289a">Triangle3</a>&gt;&amp; StaticEntity::meshTriangles </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -319,6 +332,53 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Remplace le maillage par un nouveau (utilisé dans <a class="el" href="classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation).">KeyframeLayoutAugmentation</a> !) </p>
+
+</div>
+</div>
+<a id="aaac75a0c7cd97f08c4e24298358c2b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaac75a0c7cd97f08c4e24298358c2b1c">&#9670;&nbsp;</a></span>update_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StaticEntity::update_name </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>new_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0898389087721e26077d4b1d0265c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0898389087721e26077d4b1d0265c4d">&#9670;&nbsp;</a></span>world_bbox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="object_8h.html#addfe23033005db95e2e48130a55c8a6c">CGAL::Bbox_3</a> StaticEntity::world_bbox </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transforme la bbox locale avec la <a class="el" href="classPose.html" title="Position et rotation d&#39;un objet dans une scène 3D. Une position (x, y, z) et une rotation (x,...">Pose</a> de la scène puis calcule la bbox pour la scène. </p>
+<dl class="section return"><dt>Returns</dt><dd>Boite englobante alignée aux axes de la scène </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classStaticEntity_aa0898389087721e26077d4b1d0265c4d_cgraph.png" border="0" usemap="#aclassStaticEntity_aa0898389087721e26077d4b1d0265c4d_cgraph" alt=""/></div>
+<map name="aclassStaticEntity_aa0898389087721e26077d4b1d0265c4d_cgraph" id="aclassStaticEntity_aa0898389087721e26077d4b1d0265c4d_cgraph">
+<area shape="rect" title="Transforme la bbox locale avec la Pose de la scène puis calcule la bbox pour la scène." alt="" coords="5,5,184,32"/>
+<area shape="rect" href="classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="232,5,357,32"/>
+</map>
+</div>
 
 </div>
 </div>

@@ -79,7 +79,7 @@ Inheritance diagram for RotationLayoutAugmentation:</div>
 <div class="center"><img src="classRotationLayoutAugmentation__inherit__graph.png" border="0" usemap="#aRotationLayoutAugmentation_inherit__map" alt="Inheritance graph"/></div>
 <map name="aRotationLayoutAugmentation_inherit__map" id="aRotationLayoutAugmentation_inherit__map">
 <area shape="rect" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="5,145,244,237"/>
-<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
+<area shape="rect" href="classPipelineStep.html" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -88,14 +88,14 @@ Collaboration diagram for RotationLayoutAugmentation:</div>
 <div class="center"><img src="classRotationLayoutAugmentation__coll__graph.png" border="0" usemap="#aRotationLayoutAugmentation_coll__map" alt="Collaboration graph"/></div>
 <map name="aRotationLayoutAugmentation_coll__map" id="aRotationLayoutAugmentation_coll__map">
 <area shape="rect" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="5,145,244,237"/>
-<area shape="rect" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
+<area shape="rect" href="classPipelineStep.html" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="55,5,194,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a952550eed3955ff232f7b72bebef1933"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html#a952550eed3955ff232f7b72bebef1933">RotationLayoutAugmentation</a> (size_t number_of_variations, double start_angle, double end_angle, unsigned int seed=42)</td></tr>
-<tr class="separator:a952550eed3955ff232f7b72bebef1933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a6f5f9bad6ba8cb8f6a365e4d65208"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html#ae1a6f5f9bad6ba8cb8f6a365e4d65208">RotationLayoutAugmentation</a> (const std::string &amp;object_name, size_t number_of_variations)</td></tr>
+<tr class="separator:ae1a6f5f9bad6ba8cb8f6a365e4d65208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefacdf5d4f6b2b74450defcb0150400d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">process</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="classScene.html">Scene</a> &gt;&gt; input_scenes, <a class="el" href="classAssetManager.html">AssetManager</a> &amp;assets) override</td></tr>
 <tr class="memdesc:aefacdf5d4f6b2b74450defcb0150400d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traite les scènes d'entrée et produit les scènes augmentées.  <a href="classRotationLayoutAugmentation.html#aefacdf5d4f6b2b74450defcb0150400d">More...</a><br /></td></tr>
 <tr class="separator:aefacdf5d4f6b2b74450defcb0150400d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,8 +106,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Rotations uniforme d'une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a952550eed3955ff232f7b72bebef1933"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a952550eed3955ff232f7b72bebef1933">&#9670;&nbsp;</a></span>RotationLayoutAugmentation()</h2>
+<a id="ae1a6f5f9bad6ba8cb8f6a365e4d65208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a6f5f9bad6ba8cb8f6a365e4d65208">&#9670;&nbsp;</a></span>RotationLayoutAugmentation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,26 +118,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">RotationLayoutAugmentation::RotationLayoutAugmentation </td>
           <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>object_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>number_of_variations</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>start_angle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>end_angle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>seed</em> = <code>42</code>&#160;</td>
+          <td class="paramname"><em>number_of_variations</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -153,6 +141,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">object_name</td><td>Nom de l'entité à tourner. </td></tr>
     <tr><td class="paramname">number_of_variations</td><td>Nombre de variantes de rotation. </td></tr>
   </table>
   </dd>
@@ -203,7 +192,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Scènes augmentées </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Scènes augmentés </dd></dl>
 
 <p>Implements <a class="el" href="classPipelineStep.html#aef178ca71fc7b7f3f43b64ad589ddf7d">PipelineStep</a>.</p>
 

@@ -146,6 +146,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a9552461209a130606302ce65ebb995d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1">scanner_settings</a> ()</td></tr>
 <tr class="memdesc:a9552461209a130606302ce65ebb995d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre la boîte de dialogue des paramètres du scanner lidar.  <a href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1">More...</a><br /></td></tr>
 <tr class="separator:a9552461209a130606302ce65ebb995d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499bebd2bae8ecabeaf96441c67fa4e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8">vary_poses</a> ()</td></tr>
+<tr class="memdesc:a499bebd2bae8ecabeaf96441c67fa4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via le pipeline.  <a href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8">More...</a><br /></td></tr>
+<tr class="separator:a499bebd2bae8ecabeaf96441c67fa4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7da1c205624193511d2b0cf659bc21d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4">exit_app</a> ()</td></tr>
 <tr class="memdesc:a7da1c205624193511d2b0cf659bc21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ferme la fenêtre principale et quitte l'application.  <a href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4">More...</a><br /></td></tr>
 <tr class="separator:a7da1c205624193511d2b0cf659bc21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,7 +198,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph.png" border="0" usemap="#aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph" id="aclassMenuItemsActions_adbd8e12c6f355ccc6e862ed9c30b314b_icgraph">
-<area shape="rect" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="536,384,703,425"/>
+<area shape="rect" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="536,413,703,455"/>
 <area shape="rect" href="classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b" title="Capture le rendu OpenGL et l&#39;enregistre en PNG." alt="" coords="280,5,480,47"/>
 <area shape="rect" href="classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4" title="Ferme la fenêtre principale et quitte l&#39;application." alt="" coords="277,71,483,98"/>
 <area shape="rect" href="classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="275,123,485,164"/>
@@ -209,7 +212,8 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="289,632,471,673"/>
 <area shape="rect" href="classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1" title="Ouvre la boîte de dialogue des paramètres du scanner lidar." alt="" coords="279,697,481,739"/>
 <area shape="rect" href="classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title="Bascule le mode plein écran de la fenêtre." alt="" coords="298,763,462,804"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,391,224,418"/>
+<area shape="rect" href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="290,828,470,869"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,421,224,447"/>
 </map>
 </div>
 
@@ -552,8 +556,8 @@ Here is the call graph for this function:</div>
 <map name="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph" id="aclassMenuItemsActions_a735cedd1d996749b56d0a8a7c7904620_cgraph">
 <area shape="rect" title="Charge une scène complète depuis un fichier JSON." alt="" coords="5,232,184,273"/>
 <area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="247,5,413,47"/>
-<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="279,71,381,98"/>
-<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="271,122,389,149"/>
+<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Construit l&#39;arbre AABB à partir des triangle transformés. Doit être appelé pour être mit à jour si de..." alt="" coords="279,71,381,98"/>
+<area shape="rect" href="classScene.html#a3091106c25c63131813668b22ac4f163" title="Accès en lecture aux entités de la scène." alt="" coords="271,122,389,149"/>
 <area shape="rect" href="classSceneLoader.html#afaf374902e6c3536fa8ffad6f69a0b7e" title="Charge une scène complète (objets + lidars) depuis un fichier json." alt="" coords="237,173,423,215"/>
 <area shape="rect" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="288,239,372,266"/>
 <area shape="rect" href="classPose.html#af69e1ca12c440103c3657974b6c6f873" title=" " alt="" coords="293,290,367,317"/>
@@ -821,7 +825,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="247,57,414,98"/>
 <area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title="Crée une configuration lidar depuis un fichier json." alt="" coords="239,122,422,163"/>
 <area shape="rect" href="classSceneLoader.html#ada11215dfcac40405d228125b1df6794" title="Sauvegarde d&#39;une scène dans un fichier json." alt="" coords="236,187,425,229"/>
-<area shape="rect" href="classScene.html#a799db83d2c67e0f0d330bc02d6b28875" title="Retourne les entités statiques de la scène (accès en écriture)." alt="" coords="504,144,623,171"/>
+<area shape="rect" href="classScene.html#a3091106c25c63131813668b22ac4f163" title="Accès en lecture aux entités de la scène." alt="" coords="504,144,623,171"/>
 <area shape="rect" href="classGl.html#a282f1d04873290629695e206e9cd2fbe" title="Retourne le chemin du fichier de configuration lidar actif." alt="" coords="490,195,637,221"/>
 <area shape="rect" href="classLidarFactory.html#a84e7ac0f70dd3080753f7858ece10466" title="Sauvegarde une configuration lidar dans un fichier json." alt="" coords="473,245,653,272"/>
 <area shape="rect" href="classLidarConfig.html#a02b3411e3e2c8052b197bab919344d03" title="Serialise le configuration complète en JSON." alt="" coords="701,245,860,272"/>
@@ -958,11 +962,65 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph" alt=""/></div>
 <map name="aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph" id="aclassMenuItemsActions_a8aa5f616468bf3f24681bae701330a0d_icgraph">
-<area shape="rect" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="504,71,700,112"/>
+<area shape="rect" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="504,104,700,145"/>
 <area shape="rect" href="classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="275,5,453,47"/>
 <area shape="rect" href="classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="273,71,455,112"/>
 <area shape="rect" href="classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="272,136,456,177"/>
-<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,78,224,105"/>
+<area shape="rect" href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="274,201,454,243"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,111,224,138"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a499bebd2bae8ecabeaf96441c67fa4e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499bebd2bae8ecabeaf96441c67fa4e8">&#9670;&nbsp;</a></span>vary_poses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MenuItemsActions::vary_poses </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via le pipeline. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_cgraph.png" border="0" usemap="#aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_cgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_cgraph" id="aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_cgraph">
+<area shape="rect" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="5,217,185,258"/>
+<area shape="rect" href="classPipeline.html#a0c3fa4ed68168b353a42e2196ed705d0" title="ajoute une nouvelle étape à la fin de la liste." alt="" coords="261,5,402,32"/>
+<area shape="rect" href="classMenuItemsActions.html#adbd8e12c6f355ccc6e862ed9c30b314b" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="248,57,415,98"/>
+<area shape="rect" href="classPipeline.html#a71057c03f4ceb9378424211d6d353956" title="Execute toutes les étapes du pipeline." alt="" coords="265,123,398,149"/>
+<area shape="rect" href="classAssetManager.html#a818bd2f4278e56d1b5b94c159cfbfa1c" title="Retourne le mesh pour un path donné (charge si nécessaire)." alt="" coords="238,173,425,200"/>
+<area shape="rect" href="classPose.html#aae157bfbdb804365e7e2fea1c08facc7" title=" " alt="" coords="289,224,373,251"/>
+<area shape="rect" href="classPose.html#af69e1ca12c440103c3657974b6c6f873" title=" " alt="" coords="294,275,369,301"/>
+<area shape="rect" href="classPose.html#a525262b2e0219f06f64a882a47913a4f" title=" " alt="" coords="294,325,369,352"/>
+<area shape="rect" href="classPose.html#ad9b2d5a2671e7be99e730a61ddd906d3" title=" " alt="" coords="295,376,368,403"/>
+<area shape="rect" href="classMenuItemsActions.html#a8aa5f616468bf3f24681bae701330a0d" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="233,427,429,469"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_icgraph.png" border="0" usemap="#aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_icgraph" alt=""/></div>
+<map name="aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_icgraph" id="aclassMenuItemsActions_a499bebd2bae8ecabeaf96441c67fa4e8_icgraph">
+<area shape="rect" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="272,5,452,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
 </map>
 </div>
 

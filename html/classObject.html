@@ -62,6 +62,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classObject-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -72,25 +73,115 @@ $(function() {
 <p>Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités.  
  <a href="classObject.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="entity_8h_source.html">entity.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="object_8h_source.html">object.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Object:</div>
 <div class="dyncontent">
 <div class="center"><img src="classObject__coll__graph.png" border="0" usemap="#aObject_coll__map" alt="Collaboration graph"/></div>
 <map name="aObject_coll__map" id="aObject_coll__map">
-<area shape="rect" title="Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités." alt="" coords="5,5,120,83"/>
+<area shape="rect" title="Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités." alt="" coords="5,5,141,127"/>
 </map>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5b92044c7d9eceaa95cc4e83619e9775"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a5b92044c7d9eceaa95cc4e83619e9775">build_tree</a> ()</td></tr>
+<tr class="memdesc:a5b92044c7d9eceaa95cc4e83619e9775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit l'arbre AABB local (une seule fois au chargement).  <a href="classObject.html#a5b92044c7d9eceaa95cc4e83619e9775">More...</a><br /></td></tr>
+<tr class="separator:a5b92044c7d9eceaa95cc4e83619e9775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56225d48f071c43cc42badfd4131219d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="object_8h.html#addfe23033005db95e2e48130a55c8a6c">Bbox_3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a56225d48f071c43cc42badfd4131219d">local_bbox</a> ()</td></tr>
+<tr class="memdesc:a56225d48f071c43cc42badfd4131219d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la boite englobante du mesh dans le repère local.  <a href="classObject.html#a56225d48f071c43cc42badfd4131219d">More...</a><br /></td></tr>
+<tr class="separator:a56225d48f071c43cc42badfd4131219d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5212b9d47c33d216309de1ab873d1533"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a5212b9d47c33d216309de1ab873d1533">intersect</a> (const <a class="el" href="object_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;ray) const</td></tr>
+<tr class="memdesc:a5212b9d47c33d216309de1ab873d1533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'<a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> rayon-triangle en repère local.  <a href="classObject.html#a5212b9d47c33d216309de1ab873d1533">More...</a><br /></td></tr>
+<tr class="separator:a5212b9d47c33d216309de1ab873d1533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a44f41b4883c2078877c9b6401be9a624"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a44f41b4883c2078877c9b6401be9a624">m_triangles</a></td></tr>
+<tr class="memitem:a44f41b4883c2078877c9b6401be9a624"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="object_8h.html#a1e66e7b57aee41015099fe0725d0289a">Triangle3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a44f41b4883c2078877c9b6401be9a624">m_triangles</a></td></tr>
 <tr class="memdesc:a44f41b4883c2078877c9b6401be9a624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faces triangulaires du maillage.  <a href="classObject.html#a44f41b4883c2078877c9b6401be9a624">More...</a><br /></td></tr>
 <tr class="separator:a44f41b4883c2078877c9b6401be9a624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad138c7e729a6988449ee0ef37a1bb3b4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#ad138c7e729a6988449ee0ef37a1bb3b4">m_source_path</a></td></tr>
+<tr class="memdesc:ad138c7e729a6988449ee0ef37a1bb3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path ver du fichier 3d d'origine.  <a href="classObject.html#ad138c7e729a6988449ee0ef37a1bb3b4">More...</a><br /></td></tr>
+<tr class="separator:ad138c7e729a6988449ee0ef37a1bb3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5b92044c7d9eceaa95cc4e83619e9775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b92044c7d9eceaa95cc4e83619e9775">&#9670;&nbsp;</a></span>build_tree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Object::build_tree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construit l'arbre AABB local (une seule fois au chargement). </p>
+
+</div>
+</div>
+<a id="a5212b9d47c33d216309de1ab873d1533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5212b9d47c33d216309de1ab873d1533">&#9670;&nbsp;</a></span>intersect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="structIntersection.html">Intersection</a> &gt; Object::intersect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="object_8h.html#a61f0776eb03efc22508803e9b49c2242">Ray3</a> &amp;&#160;</td>
+          <td class="paramname"><em>ray</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'<a class="el" href="structIntersection.html" title="Resultat d&#39;une intersection rayon-triangle.">Intersection</a> rayon-triangle en repère local. </p>
+
+</div>
+</div>
+<a id="a56225d48f071c43cc42badfd4131219d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56225d48f071c43cc42badfd4131219d">&#9670;&nbsp;</a></span>local_bbox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="object_8h.html#addfe23033005db95e2e48130a55c8a6c">CGAL::Bbox_3</a> Object::local_bbox </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la boite englobante du mesh dans le repère local. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad138c7e729a6988449ee0ef37a1bb3b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad138c7e729a6988449ee0ef37a1bb3b4">&#9670;&nbsp;</a></span>m_source_path</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Object::m_source_path</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Path ver du fichier 3d d'origine. </p>
+
+</div>
+</div>
 <a id="a44f41b4883c2078877c9b6401be9a624"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44f41b4883c2078877c9b6401be9a624">&#9670;&nbsp;</a></span>m_triangles</h2>
 
@@ -98,7 +189,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a>&gt; Object::m_triangles</td>
+          <td class="memname">std::vector&lt;<a class="el" href="object_8h.html#a1e66e7b57aee41015099fe0725d0289a">Triangle3</a>&gt; Object::m_triangles</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -107,8 +198,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="entity_8h_source.html">entity.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="object_8h_source.html">object.h</a></li>
+<li><a class="el" href="object_8cpp.html">object.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

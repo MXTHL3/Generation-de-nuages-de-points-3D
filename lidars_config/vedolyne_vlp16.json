@@ -1,11 +1,12 @@
 {
     "model": "Velodyne VLP-16",
     "type": "mechanical",
-    "min_range": 0.9,
+    "min_range": 0.5,
     "max_range": 100.0,
+    "accuracy": 0.03,
+    "horizontal_resolution": 0.2,
     "rotation_rate": 10,
     "noise_resolution": 0.002,
-    "horizontal_resolution": 0.1,
     "noise_profile":[
         {
             "max_distance": 100,

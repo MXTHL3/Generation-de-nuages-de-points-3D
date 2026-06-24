@@ -1,6 +1,8 @@
 <map id="PipelineStep" name="PipelineStep">
-<area shape="rect" id="node1" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="323,5,462,97"/>
-<area shape="rect" id="node2" href="$classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="5,145,252,237"/>
-<area shape="rect" id="node3" href="$classPositionLayoutAugmentation.html" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion." alt="" coords="275,145,510,237"/>
-<area shape="rect" id="node4" href="$classRotationLayoutAugmentation.html" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="535,145,773,237"/>
+<area shape="rect" id="node1" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="631,5,770,97"/>
+<area shape="rect" id="node2" href="$classGridPositionLayoutAugmentation.html" title="Placement sur une grille déterministe avec un rayon d&#39;exclusion." alt="" coords="5,145,268,237"/>
+<area shape="rect" id="node3" href="$classKeyframeLayoutAugmentation.html" title="Génération de scènes par substitution de meshes (keyframes d&#39;animation)." alt="" coords="292,145,539,237"/>
+<area shape="rect" id="node4" href="$classLinearPositionLayoutAugmentation.html" title=" " alt="" coords="563,145,838,237"/>
+<area shape="rect" id="node5" href="$classPositionLayoutAugmentation.html" title="Placement aléatoire des entités dans une scène avec zone d&#39;exclusion. Attention cette classe est dépr..." alt="" coords="862,145,1097,237"/>
+<area shape="rect" id="node6" href="$classRotationLayoutAugmentation.html" title="Rotations uniforme d&#39;une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi." alt="" coords="1121,145,1360,237"/>
 </map>

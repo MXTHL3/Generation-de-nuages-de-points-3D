@@ -2,16 +2,17 @@
 \label{structIntersection}\index{Intersection@{Intersection}}
 
 
-Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Retourné par \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{Scene\+::intersect}}, regroupe le point d\textquotesingle{}impact, la distance depuis l\textquotesingle{}origine du rayon et l\textquotesingle{}index de la face touchée.  
+Resultat d\textquotesingle{}une intersection rayon-\/triangle.  
 
 
 
 
-{\ttfamily \#include $<$scene.\+h$>$}
+{\ttfamily \#include $<$object.\+h$>$}
 
 
 
-Collaboration diagram for Intersection\+:\nopagebreak
+Collaboration diagram for Intersection\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,16 +22,16 @@ Collaboration diagram for Intersection\+:\nopagebreak
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \mbox{\hyperlink{structIntersection_a72829cd51684d90e5571276078e6ea8f}{point}}
-\begin{DoxyCompactList}\small\item\em Coordonnées 3D du point d\textquotesingle{}impact. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{cgal_8h_a34f5250ef707a575baad36c8a213ba4a}{Point}} \mbox{\hyperlink{structIntersection_a07f03c400845418b2d36cb7bdae2ceed}{point}}
+\begin{DoxyCompactList}\small\item\em Point d\textquotesingle{}impact dans le repère global. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{structIntersection_a65da854f067b6f08175a97d262a17f1e}{distance}}
-\begin{DoxyCompactList}\small\item\em Distance entre l\textquotesingle{}origine du rayon et le point d\textquotesingle{}impact (mètres). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Ditance entre l\textquotesingle{}orgine du rayon et le point d\textquotesingle{}impact (mètres) \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{structIntersection_a64d498f560fc2c5b86383f6e98778e7b}{face\+\_\+index}}
-\begin{DoxyCompactList}\small\item\em Index du triangle intersecté dans le vecteur de triangles de la scène. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Indice du triangle intersecté dans le tableau d\textquotesingle{}une \mbox{\hyperlink{classScene}{Scene}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Retourné par \mbox{\hyperlink{classScene_a02db3e0311c490af05727af9f51f4b3a}{Scene\+::intersect}}, regroupe le point d\textquotesingle{}impact, la distance depuis l\textquotesingle{}origine du rayon et l\textquotesingle{}index de la face touchée. 
+Resultat d\textquotesingle{}une intersection rayon-\/triangle. 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{structIntersection_a65da854f067b6f08175a97d262a17f1e}\label{structIntersection_a65da854f067b6f08175a97d262a17f1e}} 
@@ -41,7 +42,7 @@ Résultat d\textquotesingle{}une intersection rayon/triangle dans la scène. Ret
 
 
 
-Distance entre l\textquotesingle{}origine du rayon et le point d\textquotesingle{}impact (mètres). 
+Ditance entre l\textquotesingle{}orgine du rayon et le point d\textquotesingle{}impact (mètres) 
 
 \mbox{\Hypertarget{structIntersection_a64d498f560fc2c5b86383f6e98778e7b}\label{structIntersection_a64d498f560fc2c5b86383f6e98778e7b}} 
 \index{Intersection@{Intersection}!face\_index@{face\_index}}
@@ -51,20 +52,20 @@ Distance entre l\textquotesingle{}origine du rayon et le point d\textquotesingle
 
 
 
-Index du triangle intersecté dans le vecteur de triangles de la scène. 
+Indice du triangle intersecté dans le tableau d\textquotesingle{}une \mbox{\hyperlink{classScene}{Scene}}. 
 
-\mbox{\Hypertarget{structIntersection_a72829cd51684d90e5571276078e6ea8f}\label{structIntersection_a72829cd51684d90e5571276078e6ea8f}} 
+\mbox{\Hypertarget{structIntersection_a07f03c400845418b2d36cb7bdae2ceed}\label{structIntersection_a07f03c400845418b2d36cb7bdae2ceed}} 
 \index{Intersection@{Intersection}!point@{point}}
 \index{point@{point}!Intersection@{Intersection}}
 \doxysubsubsection{\texorpdfstring{point}{point}}
-{\footnotesize\ttfamily \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} Intersection\+::point}
+{\footnotesize\ttfamily \mbox{\hyperlink{cgal_8h_a34f5250ef707a575baad36c8a213ba4a}{Point}} Intersection\+::point}
 
 
 
-Coordonnées 3D du point d\textquotesingle{}impact. 
+Point d\textquotesingle{}impact dans le repère global. 
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{scene_8h}{scene.\+h}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{object_8h}{object.\+h}}\end{DoxyCompactItemize}

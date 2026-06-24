@@ -747,6 +747,12 @@ void Gl::run_scan(const std::string& lidar_config_path, const std::string& outpu
             }
         }
 
+        std::cout << "Mesh " << i
+              << " : " << obj->m_triangles.size()
+              << " triangles\n";
+
+        obj->build_tree();
+
         auto entity = std::make_unique<StaticEntity>("mesh_" + std::to_string(i), obj, Pose());
         scene.add_static_entity(std::move(entity));
     }

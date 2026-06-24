@@ -1,0 +1,75 @@
+\hypertarget{classLinearPositionLayoutAugmentation}{}\doxysection{Linear\+Position\+Layout\+Augmentation Class Reference}
+\label{classLinearPositionLayoutAugmentation}\index{LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}}
+
+
+{\ttfamily \#include $<$pipeline.\+h$>$}
+
+
+
+Inheritance diagram for Linear\+Position\+Layout\+Augmentation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{classLinearPositionLayoutAugmentation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Linear\+Position\+Layout\+Augmentation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{classLinearPositionLayoutAugmentation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLinearPositionLayoutAugmentation_af98975adfc232084822ca5cd3e00fbf3}{Linear\+Position\+Layout\+Augmentation}} (std\+::string entity\+\_\+name, \mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}{Axis}} axis, double min, double max, double step)
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classLinearPositionLayoutAugmentation_ae7e5d00703eb3f7922f7e615e8816b5d}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets) override
+\begin{DoxyCompactList}\small\item\em Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLinearPositionLayoutAugmentation_af98975adfc232084822ca5cd3e00fbf3}\label{classLinearPositionLayoutAugmentation_af98975adfc232084822ca5cd3e00fbf3}} 
+\index{LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}!LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}}
+\index{LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}!LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}}
+\doxysubsubsection{\texorpdfstring{LinearPositionLayoutAugmentation()}{LinearPositionLayoutAugmentation()}}
+{\footnotesize\ttfamily Linear\+Position\+Layout\+Augmentation\+::\+Linear\+Position\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{std\+::string}]{entity\+\_\+name,  }\item[{\mbox{\hyperlink{pipeline_8h_ae3996976d8ffb3e58d88f58227473f8e}{Axis}}}]{axis,  }\item[{double}]{min,  }\item[{double}]{max,  }\item[{double}]{step }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLinearPositionLayoutAugmentation_ae7e5d00703eb3f7922f7e615e8816b5d}\label{classLinearPositionLayoutAugmentation_ae7e5d00703eb3f7922f7e615e8816b5d}} 
+\index{LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}!process@{process}}
+\index{process@{process}!LinearPositionLayoutAugmentation@{LinearPositionLayoutAugmentation}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ Linear\+Position\+Layout\+Augmentation\+::process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$}]{input\+\_\+scenes,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+scenes} & Scènes à transformer \\
+\hline
+{\em assets} & Gestionnaire de ressources (meshes, configs) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scènes augmentés 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{Pipeline\+Step}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pipeline_8h}{pipeline.\+h}}\item 
+\mbox{\hyperlink{pipeline_8cpp}{pipeline.\+cpp}}\end{DoxyCompactItemize}

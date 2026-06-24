@@ -16,6 +16,8 @@ public:
     /// @brief Effectue un scan.
     /// @param lidar_ent le lidar qui génère les rayons.
     /// @param scene la scène construite.
+    /// @param apply_noise Active ou désactive le bruit (vrai par défaut).
+    /// @param duration Durée du scan en secondes (en fonction de la stratégie).
     /// @return Nuage de points.
     std::vector<Point3> scan(const LidarEntity& lidar_ent, const Scene& scene,
         bool apply_noise = true, double duration = -1.0, unsigned int number_of_thread = 4) const;

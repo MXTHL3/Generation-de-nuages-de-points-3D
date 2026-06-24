@@ -1,0 +1,76 @@
+\hypertarget{tlas__primitive_8h}{}\doxysection{tlas\+\_\+primitive.\+h File Reference}
+\label{tlas__primitive_8h}\index{tlas\_primitive.h@{tlas\_primitive.h}}
+{\ttfamily \#include \char`\"{}entity.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$CGAL/\+AABB\+\_\+tree.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+AABB\+\_\+traits.\+h$>$}\newline
+{\ttfamily \#include $<$CGAL/\+Bbox\+\_\+3.\+h$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+Include dependency graph for tlas\+\_\+primitive.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tlas__primitive_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tlas__primitive_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTlasPrimitive}{Tlas\+Primitive}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef CGAL\+::\+Simple\+\_\+cartesian$<$ double $>$ \mbox{\hyperlink{tlas__primitive_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}
+\item 
+typedef CGAL\+::\+Iso\+\_\+cuboid\+\_\+3$<$ \mbox{\hyperlink{object_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}} $>$ \mbox{\hyperlink{tlas__primitive_8h_a47998043faadbdb1cce4ea8a96acc52c}{Iso\+\_\+cuboid\+\_\+3}}
+\item 
+typedef CGAL\+::\+AABB\+\_\+traits$<$ \mbox{\hyperlink{object_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, \mbox{\hyperlink{classTlasPrimitive}{Tlas\+Primitive}} $>$ \mbox{\hyperlink{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}{Tlas\+Traits}}
+\item 
+typedef CGAL\+::\+AABB\+\_\+tree$<$ \mbox{\hyperlink{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}{Tlas\+Traits}} $>$ \mbox{\hyperlink{tlas__primitive_8h_acdb8e4d91677384b367089fd44666b01}{Tlas\+Tree}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{tlas__primitive_8h_a47998043faadbdb1cce4ea8a96acc52c}\label{tlas__primitive_8h_a47998043faadbdb1cce4ea8a96acc52c}} 
+\index{tlas\_primitive.h@{tlas\_primitive.h}!Iso\_cuboid\_3@{Iso\_cuboid\_3}}
+\index{Iso\_cuboid\_3@{Iso\_cuboid\_3}!tlas\_primitive.h@{tlas\_primitive.h}}
+\doxysubsubsection{\texorpdfstring{Iso\_cuboid\_3}{Iso\_cuboid\_3}}
+{\footnotesize\ttfamily typedef CGAL\+::\+Iso\+\_\+cuboid\+\_\+3$<$\mbox{\hyperlink{object_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}$>$ \mbox{\hyperlink{tlas__primitive_8h_a47998043faadbdb1cce4ea8a96acc52c}{Iso\+\_\+cuboid\+\_\+3}}}
+
+\mbox{\Hypertarget{tlas__primitive_8h_aa845c5aa03fab5ada2f0a92bbb38176b}\label{tlas__primitive_8h_aa845c5aa03fab5ada2f0a92bbb38176b}} 
+\index{tlas\_primitive.h@{tlas\_primitive.h}!K@{K}}
+\index{K@{K}!tlas\_primitive.h@{tlas\_primitive.h}}
+\doxysubsubsection{\texorpdfstring{K}{K}}
+{\footnotesize\ttfamily typedef CGAL\+::\+Simple\+\_\+cartesian$<$double$>$ \mbox{\hyperlink{object_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}}
+
+Architecture BLAS/\+TLAS Le lancé de rayons utilise deux niveaux d\textquotesingle{}arbres AABB \+:
+\begin{DoxyItemize}
+\item BLAS (Bottom Level) \+: un arbre AABB par maillage/liste de triangles (\mbox{\hyperlink{classObject}{Object}}), construit une seule fois qui utilise l\textquotesingle{}arbre AABB par défaut qui a un AABB\+\_\+triangle\+\_\+primitive.
+\item TLAS (Top Level)\+: un arbre AABB de boîte englobantes (1 par entité de la scène), reconstruit pour chaque scène. Il utilise une primitive custom un Iso\+\_\+\+Cuboid\+\_\+3 qui est une boite 3D dont les faces sont parralèles aux X,Y,Z. Bbox\+\_\+3 est juste du stockage et n\textquotesingle{}est pas forcément parralèle aux axes X, Y, Z du repère monde alors que cette structure peut intersecter un rayon. Pour être acceptée par CGAL comme primitive custom, on a créé une classe qui satisfait le concept de AABBprimitive définie dans les exemples \+: \href{https://doc.cgal.org/latest/AABB_tree/AABB_tree_2AABB_custom_example_8cpp-example.html}{\texttt{ https\+://doc.\+cgal.\+org/latest/\+AABB\+\_\+tree/\+AABB\+\_\+tree\+\_\+2\+AABB\+\_\+custom\+\_\+example\+\_\+8cpp-\/example.\+html}} \href{https://doc.cgal.org/latest/AABB_tree/AABB_tree_2AABB_polyhedron_facet_intersection_example_8cpp-example.html}{\texttt{ https\+://doc.\+cgal.\+org/latest/\+AABB\+\_\+tree/\+AABB\+\_\+tree\+\_\+2\+AABB\+\_\+polyhedron\+\_\+facet\+\_\+intersection\+\_\+example\+\_\+8cpp-\/example.\+html}} La primitive doit fournir \+:
+\item Id \+: type identifiant
+\item Point \+: type point pour le calcul du referentiel (placé au milieu de la boite)
+\item Datum \+: type geometrique interserctable avec un rayon
+\item id() \+: retourne l\textquotesingle{}Id
+\item datum() \+: retourne l\textquotesingle{}objet de type Datum
+\item reference\+\_\+point()\+: retourne le point représentatif 
+\end{DoxyItemize}\mbox{\Hypertarget{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}\label{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}} 
+\index{tlas\_primitive.h@{tlas\_primitive.h}!TlasTraits@{TlasTraits}}
+\index{TlasTraits@{TlasTraits}!tlas\_primitive.h@{tlas\_primitive.h}}
+\doxysubsubsection{\texorpdfstring{TlasTraits}{TlasTraits}}
+{\footnotesize\ttfamily typedef CGAL\+::\+AABB\+\_\+traits$<$\mbox{\hyperlink{object_8h_aa845c5aa03fab5ada2f0a92bbb38176b}{K}}, \mbox{\hyperlink{classTlasPrimitive}{Tlas\+Primitive}}$>$ \mbox{\hyperlink{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}{Tlas\+Traits}}}
+
+\mbox{\Hypertarget{tlas__primitive_8h_acdb8e4d91677384b367089fd44666b01}\label{tlas__primitive_8h_acdb8e4d91677384b367089fd44666b01}} 
+\index{tlas\_primitive.h@{tlas\_primitive.h}!TlasTree@{TlasTree}}
+\index{TlasTree@{TlasTree}!tlas\_primitive.h@{tlas\_primitive.h}}
+\doxysubsubsection{\texorpdfstring{TlasTree}{TlasTree}}
+{\footnotesize\ttfamily typedef CGAL\+::\+AABB\+\_\+tree$<$\mbox{\hyperlink{tlas__primitive_8h_a8c9b1871f8a082fd1451158db0dab1f2}{Tlas\+Traits}}$>$ \mbox{\hyperlink{tlas__primitive_8h_acdb8e4d91677384b367089fd44666b01}{Tlas\+Tree}}}
+

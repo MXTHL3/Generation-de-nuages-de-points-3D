@@ -2,27 +2,13 @@
 #include "logger.h"
 #include "units.h"
 
-#include <iterator>
-
 Scene::Scene(const Scene& scene){
     for(const auto& entity : scene.m_entities){
         if(entity){
-            // TODO:: a virer rapidement
-            auto cloned_entity = entity->clone();
-
-            if(!cloned_entity){
-                SIM_WARNING("Echec du clonage d'une entité !");
-            }else{
-                auto static_entity = std::unique_ptr<StaticEntity>(dynamic_cast<StaticEntity*>(cloned_entity.release()));
-                if(!static_entity){
-                    SIM_WARNING("dynamic cast de static_entity echoué !");
-                }else{
-                    m_entities.push_back(std::move(static_entity));
-                }
-            }
+            m_entities.push_back(std::make_unique<StaticEntity>(*entity));
         }
-        SIM_DEBUG("Scene Copiée !");
     }
+            SIM_DEBUG("Scene Copiée ! {} entités", m_entities.size());
 }
 
 
@@ -31,76 +17,37 @@ void Scene::add_static_entity(std::unique_ptr<StaticEntity> ent) {
 }
 
 void Scene::build(){
-    m_triangles.clear();
-    for(auto& ent : m_entities) {
-        Transform3 xform = ent->transform();
-        const auto& local_tris = ent->meshTriangles();
 
-        for(const auto& tri : local_tris) {
-            Triangle3 t = tri.transform(xform);
-            if (t.is_degenerate()) continue;
-            m_triangles.push_back(t);
+    m_tlas_primitives.clear();
+    m_tlas_primitives.reserve(m_entities.size());
+
+    for(size_t i = 0; i < m_entities.size(); i++){
+        CGAL::Bbox_3 bbox = m_entities[i]->world_bbox();
+        m_tlas_primitives.emplace_back(i, bbox);
+    }
+
+    m_tlas_tree = std::make_unique<TlasTree>(m_tlas_primitives.begin(), m_tlas_primitives.end());
+    SIM_DEBUG("TLAS build : {} entités", m_entities.size());
+}
+
+std::optional<Intersection> Scene::intersect(const Ray3& ray) const {
+    if(!m_tlas_tree || m_tlas_tree->empty()) return std::nullopt;
+
+    std::optional<Intersection> best_hit = std::nullopt;
+    double min_dist = std::numeric_limits<double>::max();
+
+    std::vector<size_t> hit_ids;
+
+    // Jpp savoir avec uniquement avec la première bbox trouvée malheureusement !
+    m_tlas_tree->all_intersected_primitives(ray, std::back_inserter(hit_ids));
+
+    for(size_t entity_id : hit_ids){
+        auto hit = m_entities[entity_id]->intersect(ray);
+        if(hit && hit->distance < min_dist){
+            min_dist = hit->distance;
+            best_hit = hit;
         }
     }
 
-    // opti ou pas mais fait pas de mal
-    m_triangles.shrink_to_fit();
-
-    m_tree = std::make_unique<Tree>(m_triangles.begin(), m_triangles.end());
-    m_tree->accelerate_distance_queries();
+    return best_hit;
 }
-
-boost::optional<Intersection> Scene::intersect(const Ray3& ray) const {
-    if(!m_tree || m_tree->empty()) return boost::none;
-    auto impact = m_tree->first_intersection(ray);
-    if(!impact) return boost::none;
-
-    const Point3* impact_point = boost::get<Point3>(&(impact->first));
-    if(!impact_point) return boost::none;
-
-    size_t triangle_index = impact->second.base() - m_triangles.data();
-    Vector3 diff = *impact_point - ray.source();
-
-    double distance = std::sqrt(CGAL::to_double(diff.squared_length()));
-
-    return Intersection{ *impact_point, distance, triangle_index };
-}
-/*
-std::vector<Point3> Scene::scan(std::size_t lidar_id, double parameter) const{
-    if(lidar_id < m_lidars.size()){
-        std::vector<Point3> pointCloud;
-        std::shared_ptr<LidarEntity> lidar_ent = m_lidars[lidar_id];
-        std::shared_ptr<LidarConfig> lc = lidar_ent->config();
-        std::shared_ptr<MechanicalLidarConfig> config = std::dynamic_pointer_cast<MechanicalLidarConfig>(lc);
-
-        for (double hr = 0.0; hr < 360.0; hr += config->m_h_step[2])
-        {
-            std::vector<Ray3> rays = lidar_ent->scan(hr);
-            for (const Ray3 &ray : rays)
-            {
-                auto hit = intersect(ray);
-
-                if (hit)
-                {
-                    if (hit->distance >= config->m_min_dist && hit->distance <= config->m_max_dist)
-                    {
-
-                        double noisy_dist = lidar_ent->noisy_distance(hit->distance);
-                        Vector3 dir = ray.to_vector();
-                        dir = dir / std::sqrt(CGAL::to_double(dir.squared_length()));
-                        
-                        Point3 noisy_point = ray.source() + (dir * noisy_dist);
-                        pointCloud.push_back(noisy_point);
-                    }
-                }
-            }
-        }
-        if(pointCloud.empty()){
-            SIM_WARNING("Aucune intersection trouvée !");
-        }
-        return pointCloud;
-    }
-    throw std::runtime_error("L'index donné qui correspond à une 'entité Lidar' pour scanner la scène n'existe pas !");
-
-}
-*/

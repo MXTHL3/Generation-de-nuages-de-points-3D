@@ -3,16 +3,20 @@
 {\ttfamily \#include \char`\"{}pose.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}lidar.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}noise\+\_\+model.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}object.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-Include dependency graph for entity.\+h\+:\nopagebreak
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for entity.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{entity_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,8 +28,6 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 class \mbox{\hyperlink{classIEntity}{IEntity}}
 \begin{DoxyCompactList}\small\item\em Entité Abstraite présente dans la scène 3D. Classe de base pour tout les objets dans la scène. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classObject}{Object}}
-\begin{DoxyCompactList}\small\item\em Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classStaticEntity}{Static\+Entity}}
 \begin{DoxyCompactList}\small\item\em Objet statique de la scène (ne bouge pas !). \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classLidarEntity}{Lidar\+Entity}}
@@ -36,33 +38,11 @@ class \mbox{\hyperlink{classFlashLidarEntity}{Flash\+Lidar\+Entity}}
 \begin{DoxyCompactList}\small\item\em Capteur lidar flash solid-\/state (Continental HFL110) \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classMirroredLidarEntity}{Mirrored\+Lidar\+Entity}}
 \begin{DoxyCompactList}\small\item\em Capteur lidar à Miroir oscillant (Livox, Robosense) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef K\+::\+Ray\+\_\+3 \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}
-\item 
-typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}
-\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8h_ac7188ded18d9c338bae449fe9a08262a}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&wolrd\+\_\+xf, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max, int res\+\_\+h, int res\+\_\+v)
+std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{entity_8h_ac7188ded18d9c338bae449fe9a08262a}{generate\+\_\+ray\+\_\+grid}} (const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&origin, const \mbox{\hyperlink{object_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&wolrd\+\_\+xf, double fov\+\_\+h\+\_\+min, double fov\+\_\+h\+\_\+max, double fov\+\_\+v\+\_\+min, double fov\+\_\+v\+\_\+max, int res\+\_\+h, int res\+\_\+v)
 \begin{DoxyCompactList}\small\item\em Génère une grille régulière de rayons (partagé entre Flash et Miroir raster). \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{entity_8h_a61f0776eb03efc22508803e9b49c2242}\label{entity_8h_a61f0776eb03efc22508803e9b49c2242}} 
-\index{entity.h@{entity.h}!Ray3@{Ray3}}
-\index{Ray3@{Ray3}!entity.h@{entity.h}}
-\doxysubsubsection{\texorpdfstring{Ray3}{Ray3}}
-{\footnotesize\ttfamily typedef K\+::\+Ray\+\_\+3 \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}}
-
-\mbox{\Hypertarget{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}\label{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}} 
-\index{entity.h@{entity.h}!Triangle3@{Triangle3}}
-\index{Triangle3@{Triangle3}!entity.h@{entity.h}}
-\doxysubsubsection{\texorpdfstring{Triangle3}{Triangle3}}
-{\footnotesize\ttfamily typedef K\+::\+Triangle\+\_\+3 \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}}
-
 
 
 \doxysubsection{Function Documentation}
@@ -70,7 +50,7 @@ std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{R
 \index{entity.h@{entity.h}!generate\_ray\_grid@{generate\_ray\_grid}}
 \index{generate\_ray\_grid@{generate\_ray\_grid}!entity.h@{entity.h}}
 \doxysubsubsection{\texorpdfstring{generate\_ray\_grid()}{generate\_ray\_grid()}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{pose_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ generate\+\_\+ray\+\_\+grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{pose_8h_a75a34daadee06ce2cb98447886b2d0e9}{Point3}} \&}]{origin,  }\item[{const \mbox{\hyperlink{object_8h_a352c74fe120e1bb435c2df8ee255b1f5}{Transform3}} \&}]{wolrd\+\_\+xf,  }\item[{double}]{fov\+\_\+h\+\_\+min,  }\item[{double}]{fov\+\_\+h\+\_\+max,  }\item[{double}]{fov\+\_\+v\+\_\+min,  }\item[{double}]{fov\+\_\+v\+\_\+max,  }\item[{int}]{res\+\_\+h,  }\item[{int}]{res\+\_\+v }\end{DoxyParamCaption})}
 
 
 

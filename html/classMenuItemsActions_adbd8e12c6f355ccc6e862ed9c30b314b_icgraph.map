@@ -1,5 +1,5 @@
 <map id="MenuItemsActions::as_window" name="MenuItemsActions::as_window">
-<area shape="rect" id="node1" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="536,384,703,425"/>
+<area shape="rect" id="node1" title="Retourne la fenêtre GTK parente (implémenté par MainWindow)." alt="" coords="536,413,703,455"/>
 <area shape="rect" id="node2" href="$classMenuItemsActions.html#ade417250a4dea2671a85e53a4409f85b" title="Capture le rendu OpenGL et l&#39;enregistre en PNG." alt="" coords="280,5,480,47"/>
 <area shape="rect" id="node4" href="$classMenuItemsActions.html#a7da1c205624193511d2b0cf659bc21d4" title="Ferme la fenêtre principale et quitte l&#39;application." alt="" coords="277,71,483,98"/>
 <area shape="rect" id="node5" href="$classMenuItemsActions.html#a9b8a871fc63c41a49010e460636273e9" title="Ajoute des scans à un dataset et propose l&#39;entraînement de l&#39;IA." alt="" coords="275,123,485,164"/>
@@ -13,5 +13,6 @@
 <area shape="rect" id="node13" href="$classMenuItemsActions.html#a20c27afa80b4601809e602df07eddde0" title="Exporte la scène courante vers un fichier JSON." alt="" coords="289,632,471,673"/>
 <area shape="rect" id="node14" href="$classMenuItemsActions.html#a9552461209a130606302ce65ebb995d1" title="Ouvre la boîte de dialogue des paramètres du scanner lidar." alt="" coords="279,697,481,739"/>
 <area shape="rect" id="node15" href="$classMenuItemsActions.html#a96d4ca89cf57933315500eb704cd6d8f" title="Bascule le mode plein écran de la fenêtre." alt="" coords="298,763,462,804"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,391,224,418"/>
+<area shape="rect" id="node16" href="$classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="290,828,470,869"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,421,224,447"/>
 </map>

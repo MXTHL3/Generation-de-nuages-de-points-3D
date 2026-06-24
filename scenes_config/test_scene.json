@@ -3,59 +3,29 @@
         {
             "lidar_config": "lidars_config/ouster_os2_128_revd.json",
             "pose": {
-                "position": [0.0, 0.0, 10.0], "rotation": [0.0, 0.0, 0.0]
+                "position": [
+                    0.0,
+                    0.0,
+                    1.5
+                ],
+                "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
             },
             "step_index": 2
         }
     ],
     "static_entities": [
         {
-            "name": "human_1", "mesh_path": "ply_models/human_base.ply",
-            "pose": {
-                "position": [1.0, 0.0, 0.0],
-                "rotation": [-90.0, 0.0, 0.0]
-            }
-        },
-        {
-            "name": "human_2",
+            "name": "human_1",
             "mesh_path": "ply_models/human_base.ply",
             "pose": {
                 "position": [
-                    2.0,
-                    0.0,
-                    1.0
-                ],
-                "rotation": [
-                    -45.0,
+                    5.0,
                     0.0,
                     0.0
-                ]
-            }
-        },
-        {
-            "name": "human_3",
-            "mesh_path": "ply_models/human_base.ply",
-            "pose": {
-                "position": [
-                    2.0,
-                    -1.0,
-                    1.0
-                ],
-                "rotation": [
-                    0.0,
-                    0.0,
-                    0.0
-                ]
-            }
-        },
-        {
-            "name": "human_3",
-            "mesh_path": "ply_models/human_base.ply",
-            "pose": {
-                "position": [
-                    2.0,
-                    -1.0,
-                    1.0
                 ],
                 "rotation": [
                     0.0,
@@ -64,6 +34,5 @@
                 ]
             }
         }
-
     ]
 }

@@ -1,0 +1,136 @@
+\hypertarget{classManifest}{}\doxysection{Manifest Class Reference}
+\label{classManifest}\index{Manifest@{Manifest}}
+
+
+Génère un fichier manifest JSON décrivant chaque scan \+:  
+
+
+
+
+{\ttfamily \#include $<$manifest.\+h$>$}
+
+
+
+Collaboration diagram for Manifest\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classManifest__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classManifest_a1e00b28c95ef935d7a977f3c89a1e97e}{Manifest}} (const std\+::string \&filepath)
+\item 
+void \mbox{\hyperlink{classManifest_a5f555fa748b24bd4f690673ef9ce673b}{add\+\_\+scan}} (int scan\+\_\+index, const std\+::string \&output\+\_\+file, const std\+::string \&lidar\+\_\+name, const \mbox{\hyperlink{classPose}{Pose}} \&lidar\+\_\+pose, const \mbox{\hyperlink{classScene}{Scene}} \&scene, size\+\_\+t n\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Ajoute les informations d\textquotesingle{}un scan dans l\textquotesingle{}objet json m\+\_\+data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManifest_a0fc0bbeaca88188548eb16f38d123778}{save}} ()
+\begin{DoxyCompactList}\small\item\em Ecrit sur le disque. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManifest_a067ab6c6af5500b6681be67161108db0}{flush\+\_\+if\+\_\+equal}} (int interval=1000)
+\begin{DoxyCompactList}\small\item\em Ecrit tout les N scans. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Génère un fichier manifest JSON décrivant chaque scan \+: 
+
+
+\begin{DoxyItemize}
+\item l\textquotesingle{}index du scan
+\item les infos de la scène
+\item le path du fichier de sortie 3d
+\item le nom et la pose du capteur
+\item le nombre de points résultat du scan 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classManifest_a1e00b28c95ef935d7a977f3c89a1e97e}\label{classManifest_a1e00b28c95ef935d7a977f3c89a1e97e}} 
+\index{Manifest@{Manifest}!Manifest@{Manifest}}
+\index{Manifest@{Manifest}!Manifest@{Manifest}}
+\doxysubsubsection{\texorpdfstring{Manifest()}{Manifest()}}
+{\footnotesize\ttfamily Manifest\+::\+Manifest (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Chemin du fichier manifest \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classManifest_a5f555fa748b24bd4f690673ef9ce673b}\label{classManifest_a5f555fa748b24bd4f690673ef9ce673b}} 
+\index{Manifest@{Manifest}!add\_scan@{add\_scan}}
+\index{add\_scan@{add\_scan}!Manifest@{Manifest}}
+\doxysubsubsection{\texorpdfstring{add\_scan()}{add\_scan()}}
+{\footnotesize\ttfamily void Manifest\+::add\+\_\+scan (\begin{DoxyParamCaption}\item[{int}]{scan\+\_\+index,  }\item[{const std\+::string \&}]{output\+\_\+file,  }\item[{const std\+::string \&}]{lidar\+\_\+name,  }\item[{const \mbox{\hyperlink{classPose}{Pose}} \&}]{lidar\+\_\+pose,  }\item[{const \mbox{\hyperlink{classScene}{Scene}} \&}]{scene,  }\item[{size\+\_\+t}]{n\+\_\+points }\end{DoxyParamCaption})}
+
+
+
+Ajoute les informations d\textquotesingle{}un scan dans l\textquotesingle{}objet json m\+\_\+data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scan\+\_\+index} & Index du scan. \\
+\hline
+{\em output\+\_\+file} & Chemin du fichier du nuage de point 3d généré. \\
+\hline
+{\em lidar\+\_\+name} & Nom du capteur utilisé. \\
+\hline
+{\em lidar\+\_\+pose} & \mbox{\hyperlink{classPose}{Pose}} du capteur utilisé. \\
+\hline
+{\em scene} & La scène scannée pour récupérer les infos des entités. \\
+\hline
+{\em n\+\_\+points} & Nombre de points dans le nuage généré. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classManifest_a5f555fa748b24bd4f690673ef9ce673b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classManifest_a067ab6c6af5500b6681be67161108db0}\label{classManifest_a067ab6c6af5500b6681be67161108db0}} 
+\index{Manifest@{Manifest}!flush\_if\_equal@{flush\_if\_equal}}
+\index{flush\_if\_equal@{flush\_if\_equal}!Manifest@{Manifest}}
+\doxysubsubsection{\texorpdfstring{flush\_if\_equal()}{flush\_if\_equal()}}
+{\footnotesize\ttfamily void Manifest\+::flush\+\_\+if\+\_\+equal (\begin{DoxyParamCaption}\item[{int}]{interval = {\ttfamily 1000} }\end{DoxyParamCaption})}
+
+
+
+Ecrit tout les N scans. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{classManifest_a067ab6c6af5500b6681be67161108db0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classManifest_a0fc0bbeaca88188548eb16f38d123778}\label{classManifest_a0fc0bbeaca88188548eb16f38d123778}} 
+\index{Manifest@{Manifest}!save@{save}}
+\index{save@{save}!Manifest@{Manifest}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Manifest\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ecrit sur le disque. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{classManifest_a0fc0bbeaca88188548eb16f38d123778_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{manifest_8h}{manifest.\+h}}\item 
+\mbox{\hyperlink{manifest_8cpp}{manifest.\+cpp}}\end{DoxyCompactItemize}

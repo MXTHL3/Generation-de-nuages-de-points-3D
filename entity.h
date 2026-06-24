@@ -3,12 +3,11 @@
 #include "pose.h"
 #include "lidar.h"
 #include "noise_model.h"
+#include "object.h"
 
 #include <memory>
 #include <vector>
-
-typedef K::Ray_3 Ray3;
-typedef K::Triangle_3 Triangle3;
+#include <string>
 
 /// @brief Entité Abstraite présente dans la scène 3D.
 /// Classe de base pour tout les objets dans la scène.
@@ -17,9 +16,6 @@ public:
     /// @param pose Position et Rotation initiale dans le repère global.
     IEntity(Pose pose): m_pose(pose){};
     virtual ~IEntity(){};
-
-    /// @brief Crée une copie de l'entité.
-    virtual std::unique_ptr<IEntity> clone() const = 0;
 
     /// @brief Calcule la matrice de transformation pour placement dans la scène.
     Transform3 transform() const;    // Récupère la position dans la scene.
@@ -34,13 +30,6 @@ protected:
     Pose m_pose; ///< Position et rotation dans le repère global.
 };
 
-/// @brief Maillage 3D sous forme de triangles.
-/// Le maillage peut être partagé entre les entités.
-class Object {
-public:
-    std::vector<Triangle3> m_triangles; ///< Faces triangulaires du maillage.
-};
-
 /// @brief  Objet statique de la scène (ne bouge pas !).
 
 /// Représente un élément géométrique.
@@ -51,8 +40,22 @@ public:
     /// @param obj ///< Maillage partagé.
     /// @param p ///< Position et rotation initale.
     StaticEntity(std::string name, std::shared_ptr<Object> obj, Pose p, std::string mesh_path = "");
-    std::unique_ptr<IEntity> clone() const override; 
+ 
     const std::string& name() const override final {return m_name;};
+
+    /// @brief Transforme la bbox locale avec la Pose de la scène puis calcule la bbox pour la scène. 
+    /// @return Boite englobante alignée aux axes de la scène
+    CGAL::Bbox_3 world_bbox() const;
+
+    /// @brief Intersection rayon-triangle :
+    /// On transforme le rayon de la scène dans le repère local de l'objet
+    /// Intersection avec l'arbre AABB local BLAS
+    /// Retransformation du point d'impact local dans le repère de la scène 
+    /// @param world_ray Rayon en coordonnées de la scène
+    /// @return 
+    std::optional<Intersection> intersect(const Ray3& world_ray) const;
+
+    void update_name(const std::string &new_name);
 
     /// @brief Retourne un accès en lecture aux triangles du maillage
     const std::vector<Triangle3>& meshTriangles() const { return m_object->m_triangles; }
@@ -109,7 +112,6 @@ public:
 
     /// @brief Accès typé à la config mécanique.
     const MechanicalLidarConfig& config() const{ return static_cast<const MechanicalLidarConfig&>(*m_config); }
-    std::unique_ptr<IEntity> clone() const override;
 
     /// @brief Génère les rayons pour un angle azimutal (horizontal) donné
     std::vector<Ray3> scan(double h_angle_deg) const;
@@ -141,8 +143,6 @@ public:
 
     const FlashLidarConfig& config() const{ return static_cast<const FlashLidarConfig&>(*m_config); };
 
-    std::unique_ptr<IEntity> clone() const override;
-
     std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 };
 /// @brief Capteur lidar à Miroir oscillant (Livox, Robosense)
@@ -151,8 +151,6 @@ public:
     MirroredLidarEntity(std::shared_ptr<MirroredLidarConfig> config, Pose p);
 
     const MirroredLidarConfig& config() const{ return static_cast<const MirroredLidarConfig&>(*m_config); };
-
-    std::unique_ptr<IEntity> clone() const override;
     
     std::vector<Ray3> generate_rays(double duration = -1.0) const override;
 

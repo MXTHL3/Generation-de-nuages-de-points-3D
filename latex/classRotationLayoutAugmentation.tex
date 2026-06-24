@@ -11,7 +11,8 @@ Rotations uniforme d\textquotesingle{}une entité ciblée (pas = 360°/N) avec N
 
 
 
-Inheritance diagram for Rotation\+Layout\+Augmentation\+:\nopagebreak
+Inheritance diagram for Rotation\+Layout\+Augmentation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Rotation\+Layout\+Augmentation\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Rotation\+Layout\+Augmentation\+:\nopagebreak
+Collaboration diagram for Rotation\+Layout\+Augmentation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +32,7 @@ Collaboration diagram for Rotation\+Layout\+Augmentation\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classRotationLayoutAugmentation_a952550eed3955ff232f7b72bebef1933}{Rotation\+Layout\+Augmentation}} (size\+\_\+t number\+\_\+of\+\_\+variations, double start\+\_\+angle, double end\+\_\+angle, unsigned int seed=42)
+\mbox{\hyperlink{classRotationLayoutAugmentation_ae1a6f5f9bad6ba8cb8f6a365e4d65208}{Rotation\+Layout\+Augmentation}} (const std\+::string \&object\+\_\+name, size\+\_\+t number\+\_\+of\+\_\+variations)
 \item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classRotationLayoutAugmentation_aefacdf5d4f6b2b74450defcb0150400d}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets) override
 \begin{DoxyCompactList}\small\item\em Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -40,14 +42,16 @@ std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} 
 Rotations uniforme d\textquotesingle{}une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classRotationLayoutAugmentation_a952550eed3955ff232f7b72bebef1933}\label{classRotationLayoutAugmentation_a952550eed3955ff232f7b72bebef1933}} 
+\mbox{\Hypertarget{classRotationLayoutAugmentation_ae1a6f5f9bad6ba8cb8f6a365e4d65208}\label{classRotationLayoutAugmentation_ae1a6f5f9bad6ba8cb8f6a365e4d65208}} 
 \index{RotationLayoutAugmentation@{RotationLayoutAugmentation}!RotationLayoutAugmentation@{RotationLayoutAugmentation}}
 \index{RotationLayoutAugmentation@{RotationLayoutAugmentation}!RotationLayoutAugmentation@{RotationLayoutAugmentation}}
 \doxysubsubsection{\texorpdfstring{RotationLayoutAugmentation()}{RotationLayoutAugmentation()}}
-{\footnotesize\ttfamily Rotation\+Layout\+Augmentation\+::\+Rotation\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{number\+\_\+of\+\_\+variations,  }\item[{double}]{start\+\_\+angle,  }\item[{double}]{end\+\_\+angle,  }\item[{unsigned int}]{seed = {\ttfamily 42} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Rotation\+Layout\+Augmentation\+::\+Rotation\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{object\+\_\+name,  }\item[{size\+\_\+t}]{number\+\_\+of\+\_\+variations }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
+{\em object\+\_\+name} & Nom de l\textquotesingle{}entité à tourner. \\
+\hline
 {\em number\+\_\+of\+\_\+variations} & Nombre de variantes de rotation. \\
 \hline
 \end{DoxyParams}
@@ -72,7 +76,7 @@ Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Scènes augmentées 
+Scènes augmentés 
 \end{DoxyReturn}
 
 

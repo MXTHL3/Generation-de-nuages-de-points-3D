@@ -1,0 +1,112 @@
+\hypertarget{classGridPositionLayoutAugmentation}{}\doxysection{Grid\+Position\+Layout\+Augmentation Class Reference}
+\label{classGridPositionLayoutAugmentation}\index{GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}}
+
+
+Placement sur une grille déterministe avec un rayon d\textquotesingle{}exclusion.  
+
+
+
+
+{\ttfamily \#include $<$pipeline.\+h$>$}
+
+
+
+Inheritance diagram for Grid\+Position\+Layout\+Augmentation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{classGridPositionLayoutAugmentation__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Grid\+Position\+Layout\+Augmentation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{classGridPositionLayoutAugmentation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGridPositionLayoutAugmentation_a95dbf075ac523b7c1b61865be3c3250a}{Grid\+Position\+Layout\+Augmentation}} (std\+::string object\+\_\+name, double min\+\_\+x, double max\+\_\+x, double step\+\_\+x, double min\+\_\+y=0.\+0, double max\+\_\+y=0.\+0, double step\+\_\+y=0.\+0, double min\+\_\+z=0.\+0, double max\+\_\+z=0.\+0, double step\+\_\+z=0.\+0, double exclusion\+\_\+radius=0.\+0)
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ \mbox{\hyperlink{classGridPositionLayoutAugmentation_a4f39476661efa3ff39ecd519eba63a8d}{process}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$ input\+\_\+scenes, \mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&assets) override
+\begin{DoxyCompactList}\small\item\em Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Placement sur une grille déterministe avec un rayon d\textquotesingle{}exclusion. 
+
+Génère une nouvelle position pour une entité pour chaque points de la grille. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGridPositionLayoutAugmentation_a95dbf075ac523b7c1b61865be3c3250a}\label{classGridPositionLayoutAugmentation_a95dbf075ac523b7c1b61865be3c3250a}} 
+\index{GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}!GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}}
+\index{GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}!GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}}
+\doxysubsubsection{\texorpdfstring{GridPositionLayoutAugmentation()}{GridPositionLayoutAugmentation()}}
+{\footnotesize\ttfamily Grid\+Position\+Layout\+Augmentation\+::\+Grid\+Position\+Layout\+Augmentation (\begin{DoxyParamCaption}\item[{std\+::string}]{object\+\_\+name,  }\item[{double}]{min\+\_\+x,  }\item[{double}]{max\+\_\+x,  }\item[{double}]{step\+\_\+x,  }\item[{double}]{min\+\_\+y = {\ttfamily 0.0},  }\item[{double}]{max\+\_\+y = {\ttfamily 0.0},  }\item[{double}]{step\+\_\+y = {\ttfamily 0.0},  }\item[{double}]{min\+\_\+z = {\ttfamily 0.0},  }\item[{double}]{max\+\_\+z = {\ttfamily 0.0},  }\item[{double}]{step\+\_\+z = {\ttfamily 0.0},  }\item[{double}]{exclusion\+\_\+radius = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+\_\+name} & Nom de l\textquotesingle{}entité à déplacer. \\
+\hline
+{\em min\+\_\+x,max\+\_\+x} & Bornes X de la grille (mètres). \\
+\hline
+{\em step\+\_\+x} & Pas en X (mètres). \\
+\hline
+{\em min\+\_\+y,max\+\_\+y} & Bornes Y de la grille (mètres). \\
+\hline
+{\em step\+\_\+y} & Pas en Y (mètres). \\
+\hline
+{\em min\+\_\+z,max\+\_\+z} & Bornes Z de la grille (mètres). \\
+\hline
+{\em step\+\_\+z} & Pas en Z (mètres). \\
+\hline
+{\em exclusion\+\_\+radius} & Rayon d\textquotesingle{}exclusion autour de l\textquotesingle{}origine (mètres). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGridPositionLayoutAugmentation_a4f39476661efa3ff39ecd519eba63a8d}\label{classGridPositionLayoutAugmentation_a4f39476661efa3ff39ecd519eba63a8d}} 
+\index{GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}!process@{process}}
+\index{process@{process}!GridPositionLayoutAugmentation@{GridPositionLayoutAugmentation}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$ $>$ Grid\+Position\+Layout\+Augmentation\+::process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classScene}{Scene}} $>$$>$}]{input\+\_\+scenes,  }\item[{\mbox{\hyperlink{classAssetManager}{Asset\+Manager}} \&}]{assets }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Traite les scènes d\textquotesingle{}entrée et produit les scènes augmentées. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+scenes} & Scènes à transformer \\
+\hline
+{\em assets} & Gestionnaire de ressources (meshes, configs) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scènes augmentés 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPipelineStep_aef178ca71fc7b7f3f43b64ad589ddf7d}{Pipeline\+Step}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGridPositionLayoutAugmentation_a4f39476661efa3ff39ecd519eba63a8d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pipeline_8h}{pipeline.\+h}}\item 
+\mbox{\hyperlink{pipeline_8cpp}{pipeline.\+cpp}}\end{DoxyCompactItemize}

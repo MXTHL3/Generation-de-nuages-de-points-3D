@@ -1,7 +1,8 @@
 <map id="MenuItemsActions::update_markers" name="MenuItemsActions::update_markers">
-<area shape="rect" id="node1" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="504,71,700,112"/>
+<area shape="rect" id="node1" title="Met à jour les marqueurs de transformation (implémenté par MainWindow)." alt="" coords="504,104,700,145"/>
 <area shape="rect" id="node2" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="275,5,453,47"/>
 <area shape="rect" id="node4" href="$classMenuItemsActions.html#a6366a56abe6d2125101267073a04595c" title="Ouvre un fichier 3D et le charge dans la scène." alt="" coords="273,71,455,112"/>
 <area shape="rect" id="node5" href="$classMenuItemsActions.html#a8537f18b516d866d52e98361e72001fb" title="Supprime tous les modèles chargés (conserve le cube par défaut)." alt="" coords="272,136,456,177"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,78,224,105"/>
+<area shape="rect" id="node6" href="$classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="274,201,454,243"/>
+<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,111,224,138"/>
 </map>

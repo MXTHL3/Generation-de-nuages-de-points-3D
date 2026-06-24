@@ -1,5 +1,7 @@
 <map id="Pose::rz" name="Pose::rz">
-<area shape="rect" id="node1" title=" " alt="" coords="499,13,572,39"/>
-<area shape="rect" id="node2" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="272,5,451,47"/>
-<area shape="rect" id="node3" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+<area shape="rect" id="node1" title=" " alt="" coords="500,64,573,91"/>
+<area shape="rect" id="node2" href="$classManifest.html#a5f555fa748b24bd4f690673ef9ce673b" title="Ajoute les informations d&#39;un scan dans l&#39;objet json m_data." alt="" coords="288,5,436,32"/>
+<area shape="rect" id="node3" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="273,57,451,98"/>
+<area shape="rect" id="node5" href="$classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="272,122,452,163"/>
+<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,97,224,124"/>
 </map>

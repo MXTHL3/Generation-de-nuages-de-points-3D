@@ -7,33 +7,88 @@ Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les e
 
 
 
-{\ttfamily \#include $<$entity.\+h$>$}
+{\ttfamily \#include $<$object.\+h$>$}
 
 
 
-Collaboration diagram for Object\+:\nopagebreak
+Collaboration diagram for Object\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=166pt]{classObject__coll__graph}
+\includegraphics[width=182pt]{classObject__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classObject_a5b92044c7d9eceaa95cc4e83619e9775}{build\+\_\+tree}} ()
+\begin{DoxyCompactList}\small\item\em Construit l\textquotesingle{}arbre AABB local (une seule fois au chargement). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{object_8h_addfe23033005db95e2e48130a55c8a6c}{Bbox\+\_\+3}} \mbox{\hyperlink{classObject_a56225d48f071c43cc42badfd4131219d}{local\+\_\+bbox}} ()
+\begin{DoxyCompactList}\small\item\em Retourne la boite englobante du mesh dans le repère local. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ \mbox{\hyperlink{classObject_a5212b9d47c33d216309de1ab873d1533}{intersect}} (const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&ray) const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}\mbox{\hyperlink{structIntersection}{Intersection}} rayon-\/triangle en repère local. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}} $>$ \mbox{\hyperlink{classObject_a44f41b4883c2078877c9b6401be9a624}{m\+\_\+triangles}}
-\begin{DoxyCompactList}\small\item\em Faces triangulaires du maillage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::vector$<$ \mbox{\hyperlink{object_8h_a1e66e7b57aee41015099fe0725d0289a}{Triangle3}} $>$ \mbox{\hyperlink{classObject_a44f41b4883c2078877c9b6401be9a624}{m\+\_\+triangles}}
+\begin{DoxyCompactList}\small\item\em Faces triangulaires du maillage. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classObject_ad138c7e729a6988449ee0ef37a1bb3b4}{m\+\_\+source\+\_\+path}}
+\begin{DoxyCompactList}\small\item\em Path ver du fichier 3d d\textquotesingle{}origine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Maillage 3D sous forme de triangles. Le maillage peut être partagé entre les entités. 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classObject_a5b92044c7d9eceaa95cc4e83619e9775}\label{classObject_a5b92044c7d9eceaa95cc4e83619e9775}} 
+\index{Object@{Object}!build\_tree@{build\_tree}}
+\index{build\_tree@{build\_tree}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{build\_tree()}{build\_tree()}}
+{\footnotesize\ttfamily void Object\+::build\+\_\+tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construit l\textquotesingle{}arbre AABB local (une seule fois au chargement). 
+
+\mbox{\Hypertarget{classObject_a5212b9d47c33d216309de1ab873d1533}\label{classObject_a5212b9d47c33d216309de1ab873d1533}} 
+\index{Object@{Object}!intersect@{intersect}}
+\index{intersect@{intersect}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ Object\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&}]{ray }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}\mbox{\hyperlink{structIntersection}{Intersection}} rayon-\/triangle en repère local. 
+
+\mbox{\Hypertarget{classObject_a56225d48f071c43cc42badfd4131219d}\label{classObject_a56225d48f071c43cc42badfd4131219d}} 
+\index{Object@{Object}!local\_bbox@{local\_bbox}}
+\index{local\_bbox@{local\_bbox}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{local\_bbox()}{local\_bbox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{object_8h_addfe23033005db95e2e48130a55c8a6c}{CGAL\+::\+Bbox\+\_\+3}} Object\+::local\+\_\+bbox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la boite englobante du mesh dans le repère local. 
+
+
+
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classObject_ad138c7e729a6988449ee0ef37a1bb3b4}\label{classObject_ad138c7e729a6988449ee0ef37a1bb3b4}} 
+\index{Object@{Object}!m\_source\_path@{m\_source\_path}}
+\index{m\_source\_path@{m\_source\_path}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{m\_source\_path}{m\_source\_path}}
+{\footnotesize\ttfamily std\+::string Object\+::m\+\_\+source\+\_\+path}
+
+
+
+Path ver du fichier 3d d\textquotesingle{}origine. 
+
 \mbox{\Hypertarget{classObject_a44f41b4883c2078877c9b6401be9a624}\label{classObject_a44f41b4883c2078877c9b6401be9a624}} 
 \index{Object@{Object}!m\_triangles@{m\_triangles}}
 \index{m\_triangles@{m\_triangles}!Object@{Object}}
 \doxysubsubsection{\texorpdfstring{m\_triangles}{m\_triangles}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}$>$ Object\+::m\+\_\+triangles}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{object_8h_a1e66e7b57aee41015099fe0725d0289a}{Triangle3}}$>$ Object\+::m\+\_\+triangles}
 
 
 
@@ -41,6 +96,7 @@ Faces triangulaires du maillage.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{entity_8h}{entity.\+h}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{object_8h}{object.\+h}}\item 
+\mbox{\hyperlink{object_8cpp}{object.\+cpp}}\end{DoxyCompactItemize}

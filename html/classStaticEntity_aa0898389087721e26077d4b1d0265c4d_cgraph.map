@@ -1,0 +1,4 @@
+<map id="StaticEntity::world_bbox" name="StaticEntity::world_bbox">
+<area shape="rect" id="node1" title="Transforme la bbox locale avec la Pose de la scène puis calcule la bbox pour la scène." alt="" coords="5,5,184,32"/>
+<area shape="rect" id="node2" href="$classPose.html#aec890b33cbf23751f0ffa443adbf5b92" title="Calcule la matrice de transformation (translation + rotation)" alt="" coords="232,5,357,32"/>
+</map>

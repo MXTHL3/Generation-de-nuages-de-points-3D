@@ -11,7 +11,8 @@ Objet statique de la scène (ne bouge pas !).
 
 
 
-Inheritance diagram for Static\+Entity\+:\nopagebreak
+Inheritance diagram for Static\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Static\+Entity\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Static\+Entity\+:\nopagebreak
+Collaboration diagram for Static\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,11 +34,15 @@ Collaboration diagram for Static\+Entity\+:\nopagebreak
 \item 
 \mbox{\hyperlink{classStaticEntity_a37e7e38330180630aa9bc29bc0602f9c}{Static\+Entity}} (std\+::string \mbox{\hyperlink{classStaticEntity_ae44708dfd2c0abe9da6b1ceef2ee02fe}{name}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ obj, \mbox{\hyperlink{classPose}{Pose}} p, std\+::string \mbox{\hyperlink{classStaticEntity_a4a20630d59000755c75c4fed9f3aa1d9}{mesh\+\_\+path}}=\char`\"{}\char`\"{})
 \item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \mbox{\hyperlink{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}{clone}} () const override
-\begin{DoxyCompactList}\small\item\em Crée une copie de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classStaticEntity_ae44708dfd2c0abe9da6b1ceef2ee02fe}{name}} () const override final
 \begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-const std\+::vector$<$ \mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}} $>$ \& \mbox{\hyperlink{classStaticEntity_af8d8ed479968f75609d9cff7f37166da}{mesh\+Triangles}} () const
+\mbox{\hyperlink{object_8h_addfe23033005db95e2e48130a55c8a6c}{CGAL\+::\+Bbox\+\_\+3}} \mbox{\hyperlink{classStaticEntity_aa0898389087721e26077d4b1d0265c4d}{world\+\_\+bbox}} () const
+\begin{DoxyCompactList}\small\item\em Transforme la bbox locale avec la \mbox{\hyperlink{classPose}{Pose}} de la scène puis calcule la bbox pour la scène. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ \mbox{\hyperlink{classStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0}{intersect}} (const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&world\+\_\+ray) const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structIntersection}{Intersection}} rayon-\/triangle \+: On transforme le rayon de la scène dans le repère local de l\textquotesingle{}objet \mbox{\hyperlink{structIntersection}{Intersection}} avec l\textquotesingle{}arbre AABB local BLAS Retransformation du point d\textquotesingle{}impact local dans le repère de la scène. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStaticEntity_aaac75a0c7cd97f08c4e24298358c2b1c}{update\+\_\+name}} (const std\+::string \&new\+\_\+name)
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{object_8h_a1e66e7b57aee41015099fe0725d0289a}{Triangle3}} $>$ \& \mbox{\hyperlink{classStaticEntity_af8d8ed479968f75609d9cff7f37166da}{mesh\+Triangles}} () const
 \begin{DoxyCompactList}\small\item\em Retourne un accès en lecture aux triangles du maillage. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStaticEntity_a66e14c819885a70f7db9a7bc27cf986a}{update\+\_\+mesh}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classObject}{Object}} $>$ new\+\_\+obj)
 \begin{DoxyCompactList}\small\item\em Remplace le maillage par un nouveau (utilisé dans \mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}} !) \end{DoxyCompactList}\item 
@@ -69,20 +75,33 @@ Représente un élément géométrique. Son maillage peut être remplacé (notam
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}\label{classStaticEntity_a1b5699d6f6cf5539cca88e61fcb476b5}} 
-\index{StaticEntity@{StaticEntity}!clone@{clone}}
-\index{clone@{clone}!StaticEntity@{StaticEntity}}
-\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ Static\+Entity\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0}\label{classStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0}} 
+\index{StaticEntity@{StaticEntity}!intersect@{intersect}}
+\index{intersect@{intersect}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{intersect()}{intersect()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structIntersection}{Intersection}} $>$ Static\+Entity\+::intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} \&}]{world\+\_\+ray }\end{DoxyParamCaption}) const}
 
 
 
-Crée une copie de l\textquotesingle{}entité. 
+\mbox{\hyperlink{structIntersection}{Intersection}} rayon-\/triangle \+: On transforme le rayon de la scène dans le repère local de l\textquotesingle{}objet \mbox{\hyperlink{structIntersection}{Intersection}} avec l\textquotesingle{}arbre AABB local BLAS Retransformation du point d\textquotesingle{}impact local dans le repère de la scène. 
 
 
-
-Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEntity}}.
-
+\begin{DoxyParams}{Parameters}
+{\em world\+\_\+ray} & Rayon en coordonnées de la scène \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+~\newline
+ 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{classStaticEntity_a63a48e851e8a5fa308bc54d70b96d0b0_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classStaticEntity_a4a20630d59000755c75c4fed9f3aa1d9}\label{classStaticEntity_a4a20630d59000755c75c4fed9f3aa1d9}} 
 \index{StaticEntity@{StaticEntity}!mesh\_path@{mesh\_path}}
 \index{mesh\_path@{mesh\_path}!StaticEntity@{StaticEntity}}
@@ -93,7 +112,7 @@ Implements \mbox{\hyperlink{classIEntity_aeb7b837f65889d824108ef63943ff066}{IEnt
 \index{StaticEntity@{StaticEntity}!meshTriangles@{meshTriangles}}
 \index{meshTriangles@{meshTriangles}!StaticEntity@{StaticEntity}}
 \doxysubsubsection{\texorpdfstring{meshTriangles()}{meshTriangles()}}
-{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{entity_8h_a5d87d5c40d3f83a342da62dc4da611bc}{Triangle3}}$>$\& Static\+Entity\+::mesh\+Triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{object_8h_a1e66e7b57aee41015099fe0725d0289a}{Triangle3}}$>$\& Static\+Entity\+::mesh\+Triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -123,6 +142,33 @@ Implements \mbox{\hyperlink{classIEntity_a2cbdf9ca045189bc9132157fa020ae26}{IEnt
 
 Remplace le maillage par un nouveau (utilisé dans \mbox{\hyperlink{classKeyframeLayoutAugmentation}{Keyframe\+Layout\+Augmentation}} !) 
 
+\mbox{\Hypertarget{classStaticEntity_aaac75a0c7cd97f08c4e24298358c2b1c}\label{classStaticEntity_aaac75a0c7cd97f08c4e24298358c2b1c}} 
+\index{StaticEntity@{StaticEntity}!update\_name@{update\_name}}
+\index{update\_name@{update\_name}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{update\_name()}{update\_name()}}
+{\footnotesize\ttfamily void Static\+Entity\+::update\+\_\+name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classStaticEntity_aa0898389087721e26077d4b1d0265c4d}\label{classStaticEntity_aa0898389087721e26077d4b1d0265c4d}} 
+\index{StaticEntity@{StaticEntity}!world\_bbox@{world\_bbox}}
+\index{world\_bbox@{world\_bbox}!StaticEntity@{StaticEntity}}
+\doxysubsubsection{\texorpdfstring{world\_bbox()}{world\_bbox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{object_8h_addfe23033005db95e2e48130a55c8a6c}{CGAL\+::\+Bbox\+\_\+3}} Static\+Entity\+::world\+\_\+bbox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Transforme la bbox locale avec la \mbox{\hyperlink{classPose}{Pose}} de la scène puis calcule la bbox pour la scène. 
+
+\begin{DoxyReturn}{Returns}
+Boite englobante alignée aux axes de la scène 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classStaticEntity_aa0898389087721e26077d4b1d0265c4d_cgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

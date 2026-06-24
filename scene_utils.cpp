@@ -78,9 +78,6 @@ bool SceneLoader::load_scene_from_json(const std::string& filepath, Scene& world
                 SIM_WARNING("Type de lidar non reconnu pour : {}", config_path);
             }
         }
-    }else{
-        std::cerr << "Erreur aucun lidar lu dans le fichier scène : "<< filepath << std::endl;
-        return false;
     }
 
     return true;

@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Exécute une chaîne d'étapes d'augmentation sur une scène de base. Chaque étape (<a class="el" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s...">PipelineStep</a>) reçoit l'ensemble des scènes produites par l'étape précédente et retourne un ensemble plus grand.  
+<p><a class="el" href="classPipeline.html" title="Pipeline séquentiel d&#39;étapes d&#39;augmentation de données.">Pipeline</a> séquentiel d'étapes d'augmentation de données.  
  <a href="classPipeline.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="pipeline_8h_source.html">pipeline.h</a>&gt;</code></p>
@@ -78,7 +78,7 @@ Collaboration diagram for Pipeline:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPipeline__coll__graph.png" border="0" usemap="#aPipeline_coll__map" alt="Collaboration graph"/></div>
 <map name="aPipeline_coll__map" id="aPipeline_coll__map">
-<area shape="rect" title="Exécute une chaîne d&#39;étapes d&#39;augmentation sur une scène de base. Chaque étape (PipelineStep) reçoit ..." alt="" coords="5,5,112,97"/>
+<area shape="rect" title="Pipeline séquentiel d&#39;étapes d&#39;augmentation de données." alt="" coords="5,5,112,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -92,7 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a71057c03f4ceb9378424211d6d353956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Exécute une chaîne d'étapes d'augmentation sur une scène de base. Chaque étape (<a class="el" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s...">PipelineStep</a>) reçoit l'ensemble des scènes produites par l'étape précédente et retourne un ensemble plus grand. </p>
+<div class="textblock"><p><a class="el" href="classPipeline.html" title="Pipeline séquentiel d&#39;étapes d&#39;augmentation de données.">Pipeline</a> séquentiel d'étapes d'augmentation de données. </p>
+<p>Execute les étapes par ordre d'ajout : chaque étape reçoit les scènes produites par la précédente et les augmente. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0c3fa4ed68168b353a42e2196ed705d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c3fa4ed68168b353a42e2196ed705d0">&#9670;&nbsp;</a></span>add_step()</h2>
@@ -111,6 +112,17 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>ajoute une nouvelle étape à la fin de la liste. </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph.png" border="0" usemap="#aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph" alt=""/></div>
+<map name="aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph" id="aclassPipeline_a0c3fa4ed68168b353a42e2196ed705d0_icgraph">
+<area shape="rect" title="ajoute une nouvelle étape à la fin de la liste." alt="" coords="500,46,641,73"/>
+<area shape="rect" href="classPipelineFactory.html#a4d4bce17d33a24fdcb1a07cb6de97b87" title="Crée le pipeline à partir du contenu JSON." alt="" coords="277,5,447,47"/>
+<area shape="rect" href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="272,71,452,112"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,78,224,105"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -149,6 +161,16 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Toutes les scènes augmentées. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPipeline_a71057c03f4ceb9378424211d6d353956_icgraph.png" border="0" usemap="#aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph" alt=""/></div>
+<map name="aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph" id="aclassPipeline_a71057c03f4ceb9378424211d6d353956_icgraph">
+<area shape="rect" title="Execute toutes les étapes du pipeline." alt="" coords="500,13,633,39"/>
+<area shape="rect" href="classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="272,5,452,47"/>
+<area shape="rect" href="classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,13,224,39"/>
+</map>
+</div>
 
 </div>
 </div>

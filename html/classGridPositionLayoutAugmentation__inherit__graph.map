@@ -1,0 +1,4 @@
+<map id="GridPositionLayoutAugmentation" name="GridPositionLayoutAugmentation">
+<area shape="rect" id="node1" title="Placement sur une grille déterministe avec un rayon d&#39;exclusion." alt="" coords="5,145,268,237"/>
+<area shape="rect" id="node2" href="$classPipelineStep.html" title="Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de s..." alt="" coords="67,5,206,97"/>
+</map>

@@ -11,7 +11,8 @@ Capteur Lidar abstrait dans la scène Gère la configuration d\textquotesingle{}
 
 
 
-Inheritance diagram for Lidar\+Entity\+:\nopagebreak
+Inheritance diagram for Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Lidar\+Entity\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Lidar\+Entity\+:\nopagebreak
+Collaboration diagram for Lidar\+Entity\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,7 +40,7 @@ const std\+::string \& \mbox{\hyperlink{classLidarEntity_a61de62aac33a6ebbdb1ed0
 \begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}identifiant de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classLidarConfig}{Lidar\+Config}} \& \mbox{\hyperlink{classLidarEntity_a71631b7b04a8d72242322a32135f43f4}{config}} () const
 \item 
-virtual std\+::vector$<$ \mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classLidarEntity_a1429a6e6844c7733f29973535576bbd8}{generate\+\_\+rays}} (double duration=-\/1.\+0) const =0
+virtual std\+::vector$<$ \mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}} $>$ \mbox{\hyperlink{classLidarEntity_a1429a6e6844c7733f29973535576bbd8}{generate\+\_\+rays}} (double duration=-\/1.\+0) const =0
 \begin{DoxyCompactList}\small\item\em Génère tous les rayons pour le scan. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLidarEntity_ae08b8cea0223e9cf1d15a4451c363569}{noise\+\_\+model}} (const \mbox{\hyperlink{classNoiseModel}{Noise\+Model}} \&model)
 \begin{DoxyCompactList}\small\item\em Remplace le modèle de bruit. \end{DoxyCompactList}\item 
@@ -96,7 +98,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{LidarEntity@{LidarEntity}!generate\_rays@{generate\_rays}}
 \index{generate\_rays@{generate\_rays}!LidarEntity@{LidarEntity}}
 \doxysubsubsection{\texorpdfstring{generate\_rays()}{generate\_rays()}}
-{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{entity_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{object_8h_a61f0776eb03efc22508803e9b49c2242}{Ray3}}$>$ Lidar\+Entity\+::generate\+\_\+rays (\begin{DoxyParamCaption}\item[{double}]{duration = {\ttfamily -\/1.0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 

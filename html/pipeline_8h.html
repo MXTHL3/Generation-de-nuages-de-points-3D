@@ -62,38 +62,50 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">pipeline.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="scene_8h_source.html">scene.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="asset__manager_8h_source.html">asset_manager.h</a>&quot;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pipeline.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="pipeline_8h__incl.png" border="0" usemap="#apipeline_8h" alt=""/></div>
 <map name="apipeline_8h" id="apipeline_8h">
-<area shape="rect" title=" " alt="" coords="207,5,294,32"/>
-<area shape="rect" href="scene_8h.html" title=" " alt="" coords="324,80,396,107"/>
-<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="78,80,212,107"/>
-<area shape="rect" href="entity_8h.html" title=" " alt="" coords="187,162,258,189"/>
-<area shape="rect" title=" " alt="" coords="462,162,604,189"/>
-<area shape="rect" title=" " alt="" coords="628,162,779,189"/>
-<area shape="rect" title=" " alt="" coords="282,155,437,196"/>
-<area shape="rect" href="pose_8h.html" title=" " alt="" coords="190,244,255,271"/>
-<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="403,244,466,271"/>
-<area shape="rect" title=" " alt="" coords="262,319,324,345"/>
-<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="702,319,820,345"/>
-<area shape="rect" title=" " alt="" coords="88,244,165,271"/>
-<area shape="rect" title=" " alt="" coords="52,319,238,345"/>
-<area shape="rect" title=" " alt="" coords="333,393,392,420"/>
-<area shape="rect" title=" " alt="" coords="400,319,468,345"/>
-<area shape="rect" title=" " alt="" coords="554,393,701,420"/>
-<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="492,319,627,345"/>
-<area shape="rect" title=" " alt="" coords="725,393,797,420"/>
-<area shape="rect" title=" " alt="" coords="822,393,884,420"/>
-<area shape="rect" title=" " alt="" coords="57,162,108,189"/>
+<area shape="rect" title=" " alt="" coords="1048,5,1135,32"/>
+<area shape="rect" href="scene_8h.html" title=" " alt="" coords="385,80,457,107"/>
+<area shape="rect" href="asset__manager_8h.html" title=" " alt="" coords="1647,155,1781,181"/>
+<area shape="rect" title=" " alt="" coords="1129,80,1195,107"/>
+<area shape="rect" href="entity_8h.html" title=" " alt="" coords="1224,229,1295,256"/>
+<area shape="rect" href="tlas__primitive_8h.html" title=" " alt="" coords="359,155,483,181"/>
+<area shape="rect" title=" " alt="" coords="233,229,307,256"/>
+<area shape="rect" title=" " alt="" coords="212,155,283,181"/>
+<area shape="rect" href="pose_8h.html" title=" " alt="" coords="1053,304,1119,331"/>
+<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="1355,304,1417,331"/>
+<area shape="rect" title=" " alt="" coords="1285,386,1348,413"/>
+<area shape="rect" title=" " alt="" coords="1685,475,1743,502"/>
+<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="1143,386,1261,413"/>
+<area shape="rect" href="object_8h.html" title=" " alt="" coords="582,304,657,331"/>
+<area shape="rect" title=" " alt="" coords="1675,304,1753,331"/>
+<area shape="rect" title=" " alt="" coords="933,386,1119,413"/>
+<area shape="rect" title=" " alt="" coords="1424,386,1492,413"/>
+<area shape="rect" title=" " alt="" coords="1313,475,1459,502"/>
+<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="1516,386,1651,413"/>
+<area shape="rect" title=" " alt="" coords="1101,475,1173,502"/>
+<area shape="rect" title=" " alt="" coords="1197,475,1260,502"/>
+<area shape="rect" href="logger_8h.html" title=" " alt="" coords="493,386,567,413"/>
+<area shape="rect" title=" " alt="" coords="325,386,468,413"/>
+<area shape="rect" title=" " alt="" coords="5,386,156,413"/>
+<area shape="rect" title=" " alt="" coords="591,379,746,420"/>
+<area shape="rect" title=" " alt="" coords="770,386,909,413"/>
+<area shape="rect" title=" " alt="" coords="180,386,301,413"/>
+<area shape="rect" title=" " alt="" coords="388,475,512,502"/>
+<area shape="rect" title=" " alt="" coords="536,468,684,509"/>
+<area shape="rect" title=" " alt="" coords="1827,229,1878,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -116,10 +128,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipelineStep.html">PipelineStep</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de scènes en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chaînées.  <a href="classPipelineStep.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etape abstraite du pipeline de generation de scènes Chaque implémentation transforme un ensemble de scène en un nouveau ensemble plus grand (augmentation de l'ensemble). Les étapes sont chainés.  <a href="classPipelineStep.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionLayoutAugmentation.html">PositionLayoutAugmentation</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Placement aléatoire des entités dans une scène avec zone d'exclusion.  <a href="classPositionLayoutAugmentation.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Placement aléatoire des entités dans une scène avec zone d'exclusion. Attention cette classe est dépréciée ! Utiliser la classe <a class="el" href="classGridPositionLayoutAugmentation.html" title="Placement sur une grille déterministe avec un rayon d&#39;exclusion.">GridPositionLayoutAugmentation</a> à la place.  <a href="classPositionLayoutAugmentation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRotationLayoutAugmentation.html">RotationLayoutAugmentation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotations uniforme d'une entité ciblée (pas = 360°/N) avec N le nombre de rotations uniforme choisi.  <a href="classRotationLayoutAugmentation.html#details">More...</a><br /></td></tr>
@@ -133,10 +145,54 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKeyframeLayoutAugmentation.html">KeyframeLayoutAugmentation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génération de scènes par substitution de meshes (keyframes d'animation).  <a href="classKeyframeLayoutAugmentation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipeline.html">Pipeline</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute une chaîne d'étapes d'augmentation sur une scène de base. Chaque étape (<a class="el" href="classPipelineStep.html" title="Étape abstraite du pipeline de génération de scènes Chaque implémentation transforme un ensemble de s...">PipelineStep</a>) reçoit l'ensemble des scènes produites par l'étape précédente et retourne un ensemble plus grand.  <a href="classPipeline.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGridPositionLayoutAugmentation.html">GridPositionLayoutAugmentation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Placement sur une grille déterministe avec un rayon d'exclusion.  <a href="classGridPositionLayoutAugmentation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinearPositionLayoutAugmentation.html">LinearPositionLayoutAugmentation</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipeline.html">Pipeline</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classPipeline.html" title="Pipeline séquentiel d&#39;étapes d&#39;augmentation de données.">Pipeline</a> séquentiel d'étapes d'augmentation de données.  <a href="classPipeline.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPipelineFactory.html">PipelineFactory</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un <a class="el" href="classPipeline.html" title="Pipeline séquentiel d&#39;étapes d&#39;augmentation de données.">Pipeline</a> depuis le bloc "pipeline" du JSON de scène.  <a href="classPipelineFactory.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ae3996976d8ffb3e58d88f58227473f8e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pipeline_8h.html#ae3996976d8ffb3e58d88f58227473f8e">Axis</a> { <a class="el" href="pipeline_8h.html#ae3996976d8ffb3e58d88f58227473f8ea02129bb861061d1a052c592e2dc6b383">X</a> = 1
+, <a class="el" href="pipeline_8h.html#ae3996976d8ffb3e58d88f58227473f8ea57cec4137b614c87cb4e24a3d003a3e0">Y</a> = 2
+, <a class="el" href="pipeline_8h.html#ae3996976d8ffb3e58d88f58227473f8ea21c2e59531c8710156d34a3c30ac81d5">Z</a> = 3
+ }</td></tr>
+<tr class="separator:ae3996976d8ffb3e58d88f58227473f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ae3996976d8ffb3e58d88f58227473f8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3996976d8ffb3e58d88f58227473f8e">&#9670;&nbsp;</a></span>Axis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="pipeline_8h.html#ae3996976d8ffb3e58d88f58227473f8e">Axis</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae3996976d8ffb3e58d88f58227473f8ea02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae3996976d8ffb3e58d88f58227473f8ea57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae3996976d8ffb3e58d88f58227473f8ea21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

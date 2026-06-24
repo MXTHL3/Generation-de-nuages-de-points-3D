@@ -1,8 +1,10 @@
 <map id="Pose::pos" name="Pose::pos">
-<area shape="rect" id="node1" title=" " alt="" coords="547,64,631,91"/>
-<area shape="rect" id="node2" href="$classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31" title="Génère tous les rayons pour le scan." alt="" coords="272,5,499,32"/>
-<area shape="rect" id="node3" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="296,57,475,98"/>
-<area shape="rect" id="node5" href="$classMechanicalLidarEntity.html#a3649f85abd4cf73045891e02fe40d657" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="302,122,469,163"/>
-<area shape="rect" id="node4" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,64,224,91"/>
-<area shape="rect" id="node6" href="$classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="31,122,198,163"/>
+<area shape="rect" id="node1" title=" " alt="" coords="547,115,631,141"/>
+<area shape="rect" id="node2" href="$classManifest.html#a5f555fa748b24bd4f690673ef9ce673b" title="Ajoute les informations d&#39;un scan dans l&#39;objet json m_data." alt="" coords="311,5,459,32"/>
+<area shape="rect" id="node3" href="$classFlashLidarEntity.html#a760ec1091e2929ab9a0fd47c99139a31" title="Génère tous les rayons pour le scan." alt="" coords="272,56,499,83"/>
+<area shape="rect" id="node4" href="$classMenuItemsActions.html#a735cedd1d996749b56d0a8a7c7904620" title="Charge une scène complète depuis un fichier JSON." alt="" coords="296,107,475,149"/>
+<area shape="rect" id="node6" href="$classMechanicalLidarEntity.html#a3649f85abd4cf73045891e02fe40d657" title="Génère les rayons pour un angle azimutal (horizontal) donné" alt="" coords="302,238,469,279"/>
+<area shape="rect" id="node8" href="$classMenuItemsActions.html#a499bebd2bae8ecabeaf96441c67fa4e8" title="Génère des variations de position et rotation pour chaque modèle 3D chargé (hors cube par défaut) via..." alt="" coords="295,173,475,214"/>
+<area shape="rect" id="node5" href="$classMainWindow.html#a302bd3b05a435d07f74c8d24b9d4e052" title="Ajoute un élément de menu avec ses sous&#45;éléments et connecte les actions." alt="" coords="5,148,224,175"/>
+<area shape="rect" id="node7" href="$classMechanicalLidarEntity.html#a423703adb3753fda740b0b1e10297b50" title="Génère tous les rayons pour le scan." alt="" coords="31,238,198,279"/>
 </map>

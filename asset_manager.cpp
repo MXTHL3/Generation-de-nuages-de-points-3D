@@ -55,10 +55,17 @@ std::shared_ptr<Object> AssetManager::load_mesh_from_file(const std::string& pat
         CGAL_Point_3 p1 = mesh.point(mesh.target(h));
         CGAL_Point_3 p2 = mesh.point(mesh.target(mesh.next(h)));
 
-        obj->m_triangles.push_back(Triangle3(p0, p1, p2));
+        Triangle3 new_tri = Triangle3(p0, p1, p2);
+        
+        if(new_tri.is_degenerate()) continue;
+
+        obj->m_triangles.push_back(new_tri);
     }
 
     SIM_INFO("Le fichier mesh : {} a été chargé !", path);
+
+    obj->build_tree();
+    obj->m_source_path = path;
     
     return obj;
 }

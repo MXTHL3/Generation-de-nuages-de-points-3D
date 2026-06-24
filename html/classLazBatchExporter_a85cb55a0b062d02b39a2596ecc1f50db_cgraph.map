@@ -1,0 +1,6 @@
+<map id="LazBatchExporter::add_point_cloud" name="LazBatchExporter::add_point_cloud">
+<area shape="rect" id="node1" title="Ajoute un nuage dans le fichier ouvert." alt="" coords="5,27,173,69"/>
+<area shape="rect" id="node2" href="$classLazBatchExporter.html#ab6cf096c67f06afb7b4036c8fd382007" title="Retourne vrai si le batch doit être écrit." alt="" coords="221,5,404,32"/>
+<area shape="rect" id="node3" href="$classLazBatchExporter.html#a2ea670f6a819e1e3dcac02120b747bd4" title="Enregistre le batch courant et créé le nouveau." alt="" coords="226,57,399,98"/>
+<area shape="rect" id="node4" href="$classLazBatchExporter.html#a5fd64100386f16391e4b21c85ad52cc1" title="Sauvegarde le batch LAZ." alt="" coords="452,64,655,91"/>
+</map>

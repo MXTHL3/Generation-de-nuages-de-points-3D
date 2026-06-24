@@ -62,38 +62,46 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">scene.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="entity_8h_source.html">entity.h</a>&quot;</code><br />
-<code>#include &lt;CGAL/AABB_tree.h&gt;</code><br />
-<code>#include &lt;CGAL/AABB_traits.h&gt;</code><br />
-<code>#include &lt;CGAL/AABB_triangle_primitive.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="tlas__primitive_8h_source.html">tlas_primitive.h</a>&quot;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for scene.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="scene_8h__incl.png" border="0" usemap="#ascene_8h" alt=""/></div>
 <map name="ascene_8h" id="ascene_8h">
-<area shape="rect" title=" " alt="" coords="567,5,639,32"/>
-<area shape="rect" href="entity_8h.html" title=" " alt="" coords="352,87,423,114"/>
-<area shape="rect" title=" " alt="" coords="447,87,589,114"/>
-<area shape="rect" title=" " alt="" coords="613,87,764,114"/>
-<area shape="rect" title=" " alt="" coords="789,80,943,121"/>
-<area shape="rect" href="pose_8h.html" title=" " alt="" coords="104,169,169,196"/>
-<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="356,169,419,196"/>
-<area shape="rect" title=" " alt="" coords="215,244,277,271"/>
-<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="655,244,773,271"/>
-<area shape="rect" title=" " alt="" coords="494,169,571,196"/>
-<area shape="rect" title=" " alt="" coords="5,244,191,271"/>
-<area shape="rect" title=" " alt="" coords="355,319,414,345"/>
-<area shape="rect" title=" " alt="" coords="353,244,421,271"/>
-<area shape="rect" title=" " alt="" coords="507,319,654,345"/>
-<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="445,244,580,271"/>
-<area shape="rect" title=" " alt="" coords="678,319,750,345"/>
-<area shape="rect" title=" " alt="" coords="775,319,837,345"/>
+<area shape="rect" title=" " alt="" coords="1471,5,1543,32"/>
+<area shape="rect" href="entity_8h.html" title=" " alt="" coords="607,155,678,181"/>
+<area shape="rect" href="tlas__primitive_8h.html" title=" " alt="" coords="1395,80,1519,107"/>
+<area shape="rect" title=" " alt="" coords="1545,155,1620,181"/>
+<area shape="rect" title=" " alt="" coords="1595,80,1666,107"/>
+<area shape="rect" href="pose_8h.html" title=" " alt="" coords="710,229,775,256"/>
+<area shape="rect" href="lidar_8h.html" title=" " alt="" coords="407,229,470,256"/>
+<area shape="rect" title=" " alt="" coords="189,311,251,338"/>
+<area shape="rect" title=" " alt="" coords="563,401,621,427"/>
+<area shape="rect" href="noise__model_8h.html" title=" " alt="" coords="47,311,164,338"/>
+<area shape="rect" href="object_8h.html" title=" " alt="" coords="1167,229,1241,256"/>
+<area shape="rect" title=" " alt="" coords="305,229,383,256"/>
+<area shape="rect" title=" " alt="" coords="681,311,866,338"/>
+<area shape="rect" title=" " alt="" coords="327,311,395,338"/>
+<area shape="rect" title=" " alt="" coords="216,401,363,427"/>
+<area shape="rect" href="horizontal__step_8h.html" title=" " alt="" coords="419,311,554,338"/>
+<area shape="rect" title=" " alt="" coords="5,401,77,427"/>
+<area shape="rect" title=" " alt="" coords="102,401,165,427"/>
+<area shape="rect" href="logger_8h.html" title=" " alt="" coords="1232,311,1307,338"/>
+<area shape="rect" title=" " alt="" coords="1651,311,1794,338"/>
+<area shape="rect" title=" " alt="" coords="1331,311,1482,338"/>
+<area shape="rect" title=" " alt="" coords="891,304,1045,345"/>
+<area shape="rect" title=" " alt="" coords="1069,311,1208,338"/>
+<area shape="rect" title=" " alt="" coords="1506,311,1627,338"/>
+<area shape="rect" title=" " alt="" coords="1127,401,1251,427"/>
+<area shape="rect" title=" " alt="" coords="1275,393,1423,435"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -101,23 +109,28 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="scene_8h__dep__incl.png" border="0" usemap="#ascene_8hdep" alt=""/></div>
 <map name="ascene_8hdep" id="ascene_8hdep">
-<area shape="rect" title=" " alt="" coords="500,5,572,32"/>
-<area shape="rect" href="gl_8h.html" title=" " alt="" coords="278,155,325,181"/>
-<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="21,229,128,256"/>
-<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="428,80,548,107"/>
-<area shape="rect" href="scan__strategy_8h.html" title=" " alt="" coords="580,155,703,181"/>
-<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="693,80,779,107"/>
-<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="803,80,890,107"/>
-<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="203,229,264,256"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="125,453,208,480"/>
-<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="240,379,363,405"/>
-<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="339,304,509,331"/>
-<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="232,453,371,480"/>
-<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="387,379,571,405"/>
-<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="5,304,128,331"/>
-<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="421,155,555,181"/>
-<area shape="rect" href="scan__strategy_8cpp.html" title=" " alt="" coords="572,229,711,256"/>
-<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="727,155,828,181"/>
+<area shape="rect" title=" " alt="" coords="691,5,763,32"/>
+<area shape="rect" href="gl_8h.html" title=" " alt="" coords="599,304,646,331"/>
+<area shape="rect" href="scene__utils_8h.html" title=" " alt="" coords="421,379,528,405"/>
+<area shape="rect" href="lidar__scanner_8h.html" title=" " alt="" coords="565,80,685,107"/>
+<area shape="rect" href="scan__strategy_8h.html" title=" " alt="" coords="305,155,428,181"/>
+<area shape="rect" href="manifest_8h.html" title=" " alt="" coords="878,80,970,107"/>
+<area shape="rect" href="pipeline_8h.html" title=" " alt="" coords="767,80,854,107"/>
+<area shape="rect" href="scene_8cpp.html" title=" " alt="" coords="994,80,1081,107"/>
+<area shape="rect" href="gl_8cpp.html" title=" " alt="" coords="653,379,715,405"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="524,603,607,629"/>
+<area shape="rect" href="main__window_8h.html" title=" " alt="" coords="603,528,725,555"/>
+<area shape="rect" href="menu__items__actions_8h.html" title=" " alt="" coords="693,453,862,480"/>
+<area shape="rect" href="main__window_8cpp.html" title=" " alt="" coords="631,603,769,629"/>
+<area shape="rect" href="menu__items__actions_8cpp.html" title=" " alt="" coords="749,528,933,555"/>
+<area shape="rect" href="scene__utils_8cpp.html" title=" " alt="" coords="364,453,487,480"/>
+<area shape="rect" href="lidar__scanner_8cpp.html" title=" " alt="" coords="453,155,587,181"/>
+<area shape="rect" href="lidar__factory_8h.html" title=" " alt="" coords="313,229,428,256"/>
+<area shape="rect" href="scan__strategy_8cpp.html" title=" " alt="" coords="151,229,289,256"/>
+<area shape="rect" href="asset__manager_8cpp.html" title=" " alt="" coords="198,304,346,331"/>
+<area shape="rect" href="lidar__factory_8cpp.html" title=" " alt="" coords="45,304,174,331"/>
+<area shape="rect" href="manifest_8cpp.html" title=" " alt="" coords="940,155,1047,181"/>
+<area shape="rect" href="pipeline_8cpp.html" title=" " alt="" coords="764,155,865,181"/>
 </map>
 </div>
 </div>
@@ -125,65 +138,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntersection.html">Intersection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Résultat d'une intersection rayon/triangle dans la scène. Retourné par <a class="el" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène.">Scene::intersect</a>, regroupe le point d'impact, la distance depuis l'origine du rayon et l'index de la face touchée.  <a href="structIntersection.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScene.html">Scene</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scène 3D : ensemble d'entités statiques et arbre AABB pour les intersections. Après ajout des entités, <a class="el" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en...">build()</a> triangule la scène et construit l'arbre CGAL AABB permettant des requêtes d'intersection rayon/maillage.  <a href="classScene.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scène 3D contenant les entités statiques et l'arbre d'accélération AABB. La scène stocke les entités, contruit un arbre AABB à partir des maillages des entités transformées et fournit l'intersection rayon_triangle via CGAL.  <a href="classScene.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ae8c2c828e1aa12fd8594b6ac0c840109"><td class="memItemLeft" align="right" valign="top">typedef CGAL::AABB_triangle_primitive&lt; <a class="el" href="pose_8h.html#aa845c5aa03fab5ada2f0a92bbb38176b">K</a>, std::vector&lt; <a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a> &gt;::iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene_8h.html#ae8c2c828e1aa12fd8594b6ac0c840109">Primitive</a></td></tr>
-<tr class="separator:ae8c2c828e1aa12fd8594b6ac0c840109"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee6af9dfd8924dd569f11b3e11d90dd3"><td class="memItemLeft" align="right" valign="top">typedef CGAL::AABB_traits&lt; <a class="el" href="pose_8h.html#aa845c5aa03fab5ada2f0a92bbb38176b">K</a>, <a class="el" href="scene_8h.html#ae8c2c828e1aa12fd8594b6ac0c840109">Primitive</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene_8h.html#aee6af9dfd8924dd569f11b3e11d90dd3">Traits</a></td></tr>
-<tr class="separator:aee6af9dfd8924dd569f11b3e11d90dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4afabc47bad26e2881913598e8f0b96f"><td class="memItemLeft" align="right" valign="top">typedef CGAL::AABB_tree&lt; <a class="el" href="scene_8h.html#aee6af9dfd8924dd569f11b3e11d90dd3">Traits</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scene_8h.html#a4afabc47bad26e2881913598e8f0b96f">Tree</a></td></tr>
-<tr class="separator:a4afabc47bad26e2881913598e8f0b96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae8c2c828e1aa12fd8594b6ac0c840109"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8c2c828e1aa12fd8594b6ac0c840109">&#9670;&nbsp;</a></span>Primitive</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef CGAL::AABB_triangle_primitive&lt;<a class="el" href="pose_8h.html#aa845c5aa03fab5ada2f0a92bbb38176b">K</a>, std::vector&lt;<a class="el" href="entity_8h.html#a5d87d5c40d3f83a342da62dc4da611bc">Triangle3</a>&gt;::iterator&gt; <a class="el" href="scene_8h.html#ae8c2c828e1aa12fd8594b6ac0c840109">Primitive</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aee6af9dfd8924dd569f11b3e11d90dd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee6af9dfd8924dd569f11b3e11d90dd3">&#9670;&nbsp;</a></span>Traits</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef CGAL::AABB_traits&lt;<a class="el" href="pose_8h.html#aa845c5aa03fab5ada2f0a92bbb38176b">K</a>, <a class="el" href="scene_8h.html#ae8c2c828e1aa12fd8594b6ac0c840109">Primitive</a>&gt; <a class="el" href="scene_8h.html#aee6af9dfd8924dd569f11b3e11d90dd3">Traits</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4afabc47bad26e2881913598e8f0b96f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4afabc47bad26e2881913598e8f0b96f">&#9670;&nbsp;</a></span>Tree</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef CGAL::AABB_tree&lt;<a class="el" href="scene_8h.html#aee6af9dfd8924dd569f11b3e11d90dd3">Traits</a>&gt; <a class="el" href="scene_8h.html#a4afabc47bad26e2881913598e8f0b96f">Tree</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

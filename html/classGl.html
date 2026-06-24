@@ -149,9 +149,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classModelMarker.html">ModelMarker</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a5e8b7a9c67a4a530cd18b31756091d4d">get_markers</a> ()</td></tr>
 <tr class="memdesc:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des marqueurs de transformation interactifs.  <a href="classGl.html#a5e8b7a9c67a4a530cd18b31756091d4d">More...</a><br /></td></tr>
 <tr class="separator:a5e8b7a9c67a4a530cd18b31756091d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a622447c9e09b0491375e23ee1ab3debb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a622447c9e09b0491375e23ee1ab3debb">reset_scene</a> ()</td></tr>
-<tr class="memdesc:a622447c9e09b0491375e23ee1ab3debb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les modèles chargés (conserve le cube par défaut).  <a href="classGl.html#a622447c9e09b0491375e23ee1ab3debb">More...</a><br /></td></tr>
-<tr class="separator:a622447c9e09b0491375e23ee1ab3debb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b62a4e8cf85a6b8b9c941cf2c04459"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a94b62a4e8cf85a6b8b9c941cf2c04459">reset_scene</a> (int start_index=1)</td></tr>
+<tr class="memdesc:a94b62a4e8cf85a6b8b9c941cf2c04459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les modèles chargés (conserve le cube par défaut).  <a href="classGl.html#a94b62a4e8cf85a6b8b9c941cf2c04459">More...</a><br /></td></tr>
+<tr class="separator:a94b62a4e8cf85a6b8b9c941cf2c04459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGl.html#a8ea113f1de89d38b932b6ac3562c0ce9">reset_scans</a> ()</td></tr>
 <tr class="memdesc:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime tous les nuages de points chargés.  <a href="classGl.html#a8ea113f1de89d38b932b6ac3562c0ce9">More...</a><br /></td></tr>
 <tr class="separator:a8ea113f1de89d38b932b6ac3562c0ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -981,8 +981,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a622447c9e09b0491375e23ee1ab3debb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a622447c9e09b0491375e23ee1ab3debb">&#9670;&nbsp;</a></span>reset_scene()</h2>
+<a id="a94b62a4e8cf85a6b8b9c941cf2c04459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94b62a4e8cf85a6b8b9c941cf2c04459">&#9670;&nbsp;</a></span>reset_scene()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -990,7 +990,8 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Gl::reset_scene </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_index</em> = <code>1</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1041,7 +1042,7 @@ Here is the call graph for this function:</div>
 <map name="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph" id="aclassGl_ad7911c5da5492309af8bf125d26ecde1_cgraph">
 <area shape="rect" title="Lance un scan lidar de la scène complète et exporte le nuage de points." alt="" coords="5,180,108,207"/>
 <area shape="rect" href="classScene.html#ab3499787d60be4fc615816aa4ada9423" title="Ajoute une entité statique à la scène." alt="" coords="159,5,341,32"/>
-<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Triangule toutes les entités et construit l&#39;arbre AABB. Doit être appelé après tous les add_static_en..." alt="" coords="199,56,301,83"/>
+<area shape="rect" href="classScene.html#a6e33abfb4027a9bc2a5bb944fe4c4c9a" title="Construit l&#39;arbre AABB à partir des triangle transformés. Doit être appelé pour être mit à jour si de..." alt="" coords="199,56,301,83"/>
 <area shape="rect" href="classLidarFactory.html#a69af7f5cd3f5f3adc901cb3c3f3cfaeb" title="Crée une configuration lidar depuis un fichier json." alt="" coords="159,107,341,149"/>
 <area shape="rect" href="classGl.html#a2c4898a547382a3bbd66f7526f8e07c2" title="Retourne la position de la caméra dans le repère monde." alt="" coords="168,173,332,214"/>
 <area shape="rect" href="classGl.html#a5bdcca5a28273112b61476cfe13a2674" title="Charge un nuage de points et l&#39;affiche." alt="" coords="195,239,305,265"/>
@@ -1049,7 +1050,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classLidarScanner.html#a6735af09536d112d8c2aadc890ed999c" title="Effectue un scan." alt="" coords="178,340,322,367"/>
 <area shape="rect" href="classLidarEntity.html#a71631b7b04a8d72242322a32135f43f4" title=" " alt="" coords="419,289,557,316"/>
 <area shape="rect" href="classLidarEntity.html#a1429a6e6844c7733f29973535576bbd8" title="Génère tous les rayons pour le scan." alt="" coords="392,340,584,367"/>
-<area shape="rect" href="classScene.html#a02db3e0311c490af05727af9f51f4b3a" title="Calcule la première intersection d&#39;un rayon avec la scène." alt="" coords="425,391,551,417"/>
+<area shape="rect" href="classScene.html#a99c3b54434cf47c0104d8e4c35b18723" title="Lance un rayon et retourne pottentiellement l&#39;intersection la plus proche de l&#39;origine du rayon." alt="" coords="425,391,551,417"/>
 </map>
 </div>
 
