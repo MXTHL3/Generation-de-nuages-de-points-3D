@@ -1,11 +1,36 @@
+
 import os
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 import open3d as o3d
+import laspy  
 from model import PointNeXtClassifier
+
+# ==========================================
+# FONCTION DE LECTURE (PLY & LAS)
+# ==========================================
+def charger_points_3d(file_path):
+    # Lit un fichier .ply ou .las et retourne un tableau numpy (N, 3).
+    ext = os.path.splitext(file_path)[1].lower()
+    
+    try:
+        if ext == '.ply':
+            pcd = o3d.io.read_point_cloud(file_path)
+            return np.asarray(pcd.points)
+            
+        elif ext == '.las':
+            # Lecture du fichier .las avec laspy
+            las = laspy.read(file_path)
+            # On extrait les coordonnées X, Y, Z 
+            points = np.vstack((las.x, las.y, las.z)).T
+            return points
+            
+    except Exception as e:
+        print(f" Erreur lors de la lecture de {file_path} : {e}")
+        
+    return np.empty((0, 3)) 
 
 
 # ==========================================
@@ -18,6 +43,7 @@ class PointCloudDataset(Dataset):
         self.files = []
         self.labels = []
         self.class_map = {'non-humain': 0, 'humain': 1}
+        self.valid_extensions = ('.ply', '.las')
         
         humains_files = []
         non_humains_files = []
@@ -25,19 +51,13 @@ class PointCloudDataset(Dataset):
         if os.path.exists(root_dir):
             h_dir = os.path.join(root_dir, 'humain')
             if os.path.exists(h_dir):
-                humains_files = [os.path.join(h_dir, f) for f in os.listdir(h_dir) if f.endswith('.ply')]
+                humains_files = [os.path.join(h_dir, f) for f in os.listdir(h_dir) if f.endswith(self.valid_extensions)]
             
             nh_dir = os.path.join(root_dir, 'non-humain')
             if os.path.exists(nh_dir):
-                non_humains_files = [os.path.join(nh_dir, f) for f in os.listdir(nh_dir) if f.endswith('.ply')]
+                non_humains_files = [os.path.join(nh_dir, f) for f in os.listdir(nh_dir) if f.endswith(self.valid_extensions)]
 
         print(f"Dataset : {len(humains_files)} humains et {len(non_humains_files)} non-humains trouvés.")
-
-        # Equilibrer car les fichiers non-humains ne sont pas nombreux
-        if len(non_humains_files) > 0 and len(humains_files) > len(non_humains_files):
-            multiplicateur = len(humains_files) // len(non_humains_files)
-            non_humains_files = non_humains_files * max(1, multiplicateur)
-            print(f" Equilibrer : {len(non_humains_files)} objets non-humains rajoutés.")
 
         for f in humains_files:
             self.files.append(f)
@@ -53,9 +73,7 @@ class PointCloudDataset(Dataset):
     def __getitem__(self, idx):
         file_path = self.files[idx]
         label = self.labels[idx]
-        
-        pcd = o3d.io.read_point_cloud(file_path)
-        points = np.asarray(pcd.points)  # Matrice (nb points, 3)
+        points = charger_points_3d(file_path)
         
         if len(points) == 0:  # Au cas où le fichier est vide
             points = np.random.rand(self.num_points, 3)
