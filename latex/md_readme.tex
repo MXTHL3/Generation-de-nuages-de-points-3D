@@ -13,8 +13,36 @@ Ce projet est une application dédiée à l\textquotesingle{}analyse de nuage de
 Le projet a été développé et testé sous Linux (Ubuntu 22.\+04+).\hypertarget{md_readme_autotoc_md4}{}\doxysubsection{Dépendances système}\label{md_readme_autotoc_md4}
 Installer les paquets suivants \+:
 
-\`{}\`{}\`{}bash sudo apt update
 
-sudo apt install -\/y \textbackslash{} build-\/essential \textbackslash{} g++ \textbackslash{} make \textbackslash{} pkg-\/config \textbackslash{} libgtkmm-\/3.\+0-\/dev \textbackslash{} libepoxy-\/dev \textbackslash{} libpdal-\/dev \textbackslash{} pdal \textbackslash{} libpng-\/dev \textbackslash{} libcgal-\/dev \textbackslash{} libgmp-\/dev \textbackslash{} libmpfr-\/dev \textbackslash{} libspdlog-\/dev \textbackslash{} libfmt-\/dev \textbackslash{} libglm-\/dev \textbackslash{} libeigen3-\/dev \textbackslash{} nlohmann-\/json3-\/dev \textbackslash{} python3 \textbackslash{} python3-\/pip \textbackslash{} python3-\/dev
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt update}
+\DoxyCodeLine{}
+\DoxyCodeLine{sudo apt install -\/y \(\backslash\)}
+\DoxyCodeLine{    build-\/essential \(\backslash\)}
+\DoxyCodeLine{    g++ \(\backslash\)}
+\DoxyCodeLine{    make \(\backslash\)}
+\DoxyCodeLine{    pkg-\/config \(\backslash\)}
+\DoxyCodeLine{    libgtkmm-\/3.0-\/dev \(\backslash\)}
+\DoxyCodeLine{    libsigc++-\/2.0-\/dev \(\backslash\)}
+\DoxyCodeLine{    libepoxy-\/dev \(\backslash\)}
+\DoxyCodeLine{    libpdal-\/dev \(\backslash\)}
+\DoxyCodeLine{    pdal \(\backslash\)}
+\DoxyCodeLine{    liblaszip-\/dev \(\backslash\)}
+\DoxyCodeLine{    libpng-\/dev \(\backslash\)}
+\DoxyCodeLine{    libcgal-\/dev \(\backslash\)}
+\DoxyCodeLine{    libgmp-\/dev \(\backslash\)}
+\DoxyCodeLine{    libmpfr-\/dev \(\backslash\)}
+\DoxyCodeLine{    libspdlog-\/dev \(\backslash\)}
+\DoxyCodeLine{    libfmt-\/dev \(\backslash\)}
+\DoxyCodeLine{    libglm-\/dev \(\backslash\)}
+\DoxyCodeLine{    libeigen3-\/dev \(\backslash\)}
+\DoxyCodeLine{    nlohmann-\/json3-\/dev \(\backslash\)}
+\DoxyCodeLine{    python3 \(\backslash\)}
+\DoxyCodeLine{    python3-\/pip \(\backslash\)}
+\DoxyCodeLine{    python3-\/dev}
+\DoxyCodeLine{}
+\DoxyCodeLine{pip3 install torch torchvision -\/-\/index-\/url https://download.pytorch.org/whl/cpu}
+\DoxyCodeLine{pip3 install open3d numpy laspy}
 
-pip3 install torch torchvision --index-\/url \href{https://download.pytorch.org/whl/cpu}{\texttt{ https\+://download.\+pytorch.\+org/whl/cpu}} pip3 install open3d numpy 
+\end{DoxyCode}
+ 

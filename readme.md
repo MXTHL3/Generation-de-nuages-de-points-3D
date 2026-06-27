@@ -30,9 +30,11 @@ sudo apt install -y \
     make \
     pkg-config \
     libgtkmm-3.0-dev \
+    libsigc++-2.0-dev \
     libepoxy-dev \
     libpdal-dev \
     pdal \
+    liblaszip-dev \
     libpng-dev \
     libcgal-dev \
     libgmp-dev \
@@ -47,4 +49,5 @@ sudo apt install -y \
     python3-dev
 
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-pip3 install open3d numpy
+pip3 install open3d numpy laspy
+```
